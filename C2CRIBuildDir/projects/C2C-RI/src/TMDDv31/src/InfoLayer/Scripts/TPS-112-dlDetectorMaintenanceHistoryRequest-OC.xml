@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-24-dlDetectorMaintenanceHistoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDetectorMaintenanceHistoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.1.7 [Need for Detector History] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/17 23:58:43-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDetectorMaintenanceHistoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.1.7 [Need for Detector History] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether TMDD v3.0x Detector Maintenance History - Detector Type is required by the specification. (NRTM 3.3.7.4).  RECORD this information as: TMDD_N112R1197_TMDD_v30x_Detector_Maintenance_History___Detector_Type_Supported = ${TMDD_N112R1197_TMDD_v30x_Detector_Maintenance_History___Detector_Type_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.1" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 3 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 4 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 5 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 6 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlDetectorMaintenanceHistoryRequest RESPONSETIMEREQUIRED=TMDD_N24R512_Send_Detector_Maintenance_History_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlDetectorMaintenanceHistoryRequest" functionId="dlDetectorMaintenanceHistoryRequest" RESPONSETIMEREQUIRED="60000" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 7 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 7.1 IF TMDD_N112R1197_TMDD_v30x_Detector_Maintenance_History___Detector_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N112R1197_TMDD_v30x_Detector_Maintenance_History___Detector_Type_Supported}">
+                    <testStep functionId="Step 7.1.1 VERIFY that a detector-type-extended  data element exists within each instance of data frame detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-history-list.detector.tmddX:detectorMaintenanceHistoryDetailExt" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="detector-type-extended" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-history-list.detector.tmddX:detectorMaintenanceHistoryDetailExt" elementType="data-element" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-history-list.detector"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 7.2 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+          <testStep functionId="Step 8 IF ErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 8.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 9 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

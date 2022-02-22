@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Global Settings or Configuration</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, Configuration, Settings, Global Configuration, Test, Testing, Documentation, javadocs"/>
+
+    <body>
+        <section name="What are Global Settings">
+            <p>
+                In order to make automated scripts more abstract and environment independent, many things can be configured on a global basis.
+                Some examples of these settings are the organization, or test environment the tests are running in. While these settings can
+                be set at the script level, it would then require a mass search and replace just run the scripts against a different environment
+                or affiliate.
+            </p>
+            <p>
+                Jameleon provides a file called <b>jameleon.conf</b> which attempts to help alleviate some of this pain. The values
+                and variables set in this file are not available to the context of the test script. Instead, the configurations made 
+                here affect the behavior of the instance of Jameleon and/or the plug-ins used in the test script.
+            </p>
+            <p><b>jameleon.conf</b> must exist in the same directory where Jameleon was started from. For example, if starting Jameleon from
+                a <b>jameleon-test-suite</b> directory, <b>jameleon-test-suite/jameleon.conf</b> should exist. This allows for one version of 
+                Jameleon to be installed against several different configurations. The format of this file is a key=value setting per line. 
+                For example, to set the organization to Google and the testEnvironment to staging:
+                <source>
+organziation=Google
+testEnvironment=staging</source>
+            </p>
+        </section>
+        <section name="Available Global Settings">
+                <p>
+                    The following settings may be configured via jameleon.conf.
+                    <table border="1" cellpadding="1">
+                        <tr>
+                            <th>Property Name:</th>
+                            <th>Description</th>
+                            <th>Default Value</th>
+                        </tr>
+                        <tr>
+                            <td><a name="TestCaseListeners">TestCaseListeners</a></td>
+                            <td>
+                                To hook into the Jameleon Test Case Event model, define a space-separated list of classes that implement
+                                net.sf.jameleon.event.TestCaseListener.
+                            </td>
+                            <td>No Default</td>
+                        </tr>
+                        <tr>
+                            <td><a name="plugins">plugins</a></td>
+                            <td>
+                                To enable a plug-in, simple set the value of <b>plugins</b> to the name of the plug-in.
+                                For example, to enable the jiffie plug-in, set the value to jiffie-plugin. To enable both
+                                jiffie and httpunit, set the value to <i>jiffie-plugin httpunit-plugin</i>.
+                            </td>
+                            <td>junit-plugin</td>
+                        </tr>
+                        <tr>
+                            <td><a name="functionDelay">functionDelay</a></td>
+                            <td>This is a numerical setting in milliseconds. Whatever this is set to,
+                                each functional point will wait that period after execution. This setting
+                                is also available as a single functional point attribute</td>
+                            <td>0</td>
+                        </tr>
+                        <tr>
+                            <td><a name="csvCharset">csvCharset</a></td>
+                            <td>If testing in another language other than UTF-8 (the default), then this can be
+                                set at test-case tag level.</td>
+                            <td>UTF-8</td>
+                        </tr>
+                        <tr>
+                            <td><a name="csvDir">csvDir</a></td>
+                            <td>Sets the directory of which csv files will be searched for. This is based
+                            on the <a href="#baseDir">baseDir</a> setting.</td>
+                            <td>data</td>
+                        </tr>
+                        <tr>
+                            <td><a name="testEnvironment">testEnvironment</a></td>
+                            <td>The name of the environment the test case is to be executed against. Some 
+                            examples of testEnvironment are: prod, beta, dev, and localhost. Please read
+                            the documentation on <a href="dataDriving.html#Environment_and_Application_Specific_Data">
+                            testEnvironment-Applications.properties</a> for more information on using this 
+                            file to set variables. The testEnvironment value is also used to find
+                            the location of the data file if one is used. This is explained more 
+                            <a href="dataDriving.html#Applications_properties">here</a>
+                            </td>
+                            <td>No Default</td>
+                        </tr>
+                        <tr>
+                            <td><a name="organization">organization</a></td>
+                            <td>The name of the organization the test case is to be executed against. This
+                            is used only when the same application is &quot;deployed&quot; or installed to 
+                            different places with either different look and feels or business rules or both. 
+                            In this case, the same test case should be valid against the different installs 
+                            or deployments. The value of organization also influences the location of the 
+                            data file. If the organization is set, the test case will look for a CSV file in 
+                            the data/testEnvironment/organization directory. For example, when a test case 
+                            with <i>name</i> set to &quot;ExampleTestCase&quot;, <i>testEnvironment</i> set 
+                            to &quot;stg&quot;, and <i>organization</i> set to &quot;ACME&quot; is executed, 
+                            it will look for a file &quot;data/stg/ACME/ExampleTestCase.csv.</td>
+                            <td>No Default</td>
+                        </tr>
+                        <tr>
+                            <td><a name="assertLevel">assertLevel</a></td>
+                            <td>The level of asserts which will be executed in the functional points. This is 
+                            set to one level. Please see <a target="_new" href="apidocs/net/sf/jameleon/util//AssertLevel.html">AssertLevel</a> 
+                            for more information on this.</td>
+                            <td>Defaults to all levels</td>
+                        </tr>
+                        <tr>
+                            <td>assertLevels</td>
+                            <td>A comma separated list of assertLevels which will be executed in the 
+                            functional points. Please see <a target="_new" href="apidocs/net/sf/jameleon/util//AssertLevel.html">AssertLevel</a> 
+                            for more information on this.</td>
+                            <td>Defaults to all levels</td>
+                        </tr>
+                        <tr>
+                            <td>assertLessThanLevel</td>
+                            <td>The level of asserts which must be less than <b>OR</b> equal to in order to 
+                            be executed in the functional points. This is set to one level. Please see <a target="_new" href="apidocs/net/sf/jameleon/util/AssertLevel.html">AssertLevel</a> 
+                            for more information on this</td>
+                            <td>Defaults to all levels</td>
+                        </tr>
+                        <tr>
+                            <td>assertGreaterThanLevel</td>
+                            <td>The level of asserts which must be greater than <b>OR</b> equal to in order 
+                            to be executed in the functional points. This is set to one level. Please see <a target="_new" href="apidocs/net/sf/jameleon/util//AssertLevel.html">AssertLevel</a> 
+                            for more information on this</td>
+                            <td>Defaults to all levels</td>
+                        </tr>
+                        <tr>
+                            <td>storeStateEvent</td>
+                            <td>Sets the event which must occur in order for the application's state to be 
+                            recorded. Please see <a target="_new" href="apidocs/net/sf/jameleon/TestCaseTag.html#setStoreStateEvent(java.lang.String)">setStoreStateEvent()</a> 
+                            for more information on valid values.</td>
+                            <td>storeStateOnError.</td>
+                        </tr>
+                        <tr>
+                            <td>trace</td>
+                            <td>Print out all functionId's of each test case to the std out log. This is very helpful for
+                                debugging which functional point is getting executed and when.</td>
+                            <td>false</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>genTestCaseDocs</td>
+                            <td>Generates the test case documentation and creates links on the TestResults.html page for each test case name.
+                                It is assumed that each test case have a unique name. If not then all test cases with the same name will
+                                be linked to the last test case with that name generated..
+                                the generated docs.</td>
+                            <td>true</td>
+                        </tr>
+                        <tr>
+                            <td>executeTestCase</td>
+                            <td>Tells Jameleon to execute or not execute the test case or test cases.</td>
+                            <td>true</td>
+                        </tr>
+                        <tr>
+                            <td><a name="baseDir">baseDir</a></td>
+                            <td>Tells Jameleon where the project being executed is located.</td>
+                            <td><b>.</b></td>
+                        </tr>
+                        <tr>
+                            <td><a name="resultsDir">resultsDir</a></td>
+                            <td>Tells Jameleon where to put the recorded states of the applications changes.</td>
+                            <td>jameleon_test_results</td>
+                        </tr>
+                        <tr>
+                            <td><a name="bugTrackerUrl">bugTrackerUrl</a></td>
+                            <td>When the test case docs are being generated, and if there is a bug for
+                            that particular test case, then a link will be generated for that bug. Due
+                            to the nature of HTTP, the order of the parameters don't matter, so it should
+                            be enough to make the bugId parameter the last one. This has been tested against
+                            Bugzilla and the Sourceforge tracking site. For example, to use this against
+                            the Jameleon SourceForge project, http://sourceforge.net/tracker/index.php?func=detail&amp;group_id=84246&amp;atid=572239&amp;aid=
+                            would be used. The <i>aid</i> is the bug id.</td>
+                            <td>None</td>
+                        </tr>
+                        <tr>
+                            <td>genTestCaseDocsEncoding</td>
+                            <td>Tells Jameleon what encoding type to use when generating the docs.</td>
+                            <td>UTF-8</td>
+                        </tr>
+                        <tr>
+                            <td>failOnCSVFileNotFound</td>
+                            <td>If set to false, and an error due to the CSV file not being found happens, then
+                                the test case will not get logged. This is useful when trying to make test cases
+                                run against another organization or environment and you want to run the entire suite
+                                of tests that have the appropriate CSV files, but ignore the ones you haven't had
+                                time to port over yet.</td>
+                            <td>true</td>
+                        </tr>
+                        <tr>
+                            <td>genTestCaseDocsTemplate</td>
+                            <td>Jameleon will use this Velocity template to generate its test case documentation. The template
+                                file must exist in the CLASSPATH.</td>
+                            <td>TestCaseDocsTemplate.txt</td>
+                        </tr>
+                        <tr>
+                            <td>enableSslCertCheck</td>
+                            <td>This is an HTTP Specific tag, but for now to make things a bit easier,
+                                this is going here. Basically, if testing against a site with an invalid
+                                (expired, wrong host), this can be set to false and the key won't be validated.</td>
+                            <td>true</td>
+                        </tr>
+                    </table>
+                </p>
+        </section>
+    </body>
+</document>

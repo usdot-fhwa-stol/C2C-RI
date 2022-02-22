@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-106-dlArchivedDataTrafficMonitoringMetadataRequest-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlArchivedDataTrafficMonitoringMetadataRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.1.2 [Dialogs] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:54:49-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlArchivedDataTrafficMonitoringMetadataRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.1.2 [Dialogs] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Authentication - Traffic Monitoring Data (MonitorAuth) is required by the specification. (NRTM 3.3.6.1.1.2.2.1).  RECORD this information as: TMDD_N106R1131_Authentication___Traffic_Monitoring_Data__MonitorAuth__Supported = ${TMDD_N106R1131_Authentication___Traffic_Monitoring_Data__MonitorAuth__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Operator Identifier - Traffic Monitoring Data is required by the specification. (NRTM 3.3.6.1.1.2.2.1.1).  RECORD this information as: TMDD_N106R1132_Operator_Identifier___Traffic_Monitoring_Data_Supported = ${TMDD_N106R1132_Operator_Identifier___Traffic_Monitoring_Data_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Data Set Type is required by the specification. (NRTM 3.3.6.1.1.2.2.2).  RECORD this information as: TMDD_N106R1133_Data_Set_Type_Supported = ${TMDD_N106R1133_Data_Set_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Data Collection Period is required by the specification. (NRTM 3.3.6.1.1.2.2.3).  RECORD this information as: TMDD_N106R1134_Data_Collection_Period_Supported = ${TMDD_N106R1134_Data_Collection_Period_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Geographic Location - Traffic Monitoring Data is required by the specification. (NRTM 3.3.6.1.1.2.2.4).  RECORD this information as: TMDD_N106R1135_Geographic_Location___Traffic_Monitoring_Data_Supported = ${TMDD_N106R1135_Geographic_Location___Traffic_Monitoring_Data_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="OC">
+          <testStep functionId="Step 7 CONFIGURE: Define the response message that will be sent to the SUT.  RECORD this information as: ResponseMessage:  ${ResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 8 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 9 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 11 CONFIGURE: Identify the Organization Identifier expected for authentication during this test.  RECORD this information as: OrganizationID:  ${OrganizationID}" passfailResult="False"/>
+          <testStep functionId="Step 12 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 14 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 15 CONFIGURE: Determine whether the SUT is expected to have valid data available for a response message in this test.  RECORD this information as: DataValid:  ${DataValid}" passfailResult="False"/>
+          <testStep functionId="Step 16 REQUEST-RESPONSE-OC-RECEIVE with the following parameters:   DIALOG=dlArchivedDataTrafficMonitoringMetadataRequest RESPONSETIMEREQUIRED=TMDD_N106R1128_Send_Traffic_Monitoring_Data_Inventory_Information_Upon_Request_Parameter AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password ORGANIZATIONID = OrganizationID ALLOWACCESS = AllowAccess ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected DATAVALID = DataValid ">
+               <REQUEST-RESPONSE-OC-RECEIVE Dialog="dlArchivedDataTrafficMonitoringMetadataRequest" functionId="dlArchivedDataTrafficMonitoringMetadataRequest" RESPONSETIMEREQUIRED="${TMDD_N106R1128_Send_Traffic_Monitoring_Data_Inventory_Information_Upon_Request_Parameter}" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" ORGANIZATIONID="${OrganizationID}" ALLOWACCESS="${AllowAccess}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}" DATAVALID="${DataValid}"/>
+          </testStep>
+          <testStep functionId="Step 17 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 17.1 VERIFY that element archivedDataTrafficMonitoringMetadataRequestMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="archivedDataTrafficMonitoringMetadataRequestMsg" instanceName="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg" elementType="message" functionId="Looking for archivedDataTrafficMonitoringMetadataRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 17.2 VERIFY that element organization-information exists within archivedDataTrafficMonitoringMetadataRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="organization-information" instanceName="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg" elementType="data-frame" functionId="Looking for archivedDataTrafficMonitoringMetadataRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 17.3 VERIFY that element organization-requesting exists within archivedDataTrafficMonitoringMetadataRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="organization-requesting" instanceName="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg" elementType="data-frame" functionId="Looking for archivedDataTrafficMonitoringMetadataRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 17.4 IF TMDD_N106R1131_Authentication___Traffic_Monitoring_Data__MonitorAuth__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1131_Authentication___Traffic_Monitoring_Data__MonitorAuth__Supported}">
+                    <testStep functionId="Step 17.4.1 VERIFY that element authentication exists within archivedDataTrafficMonitoringMetadataRequestMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="authentication" instanceName="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg" elementType="data-frame" functionId="Looking for archivedDataTrafficMonitoringMetadataRequestMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.5 IF TMDD_N106R1132_Operator_Identifier___Traffic_Monitoring_Data_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1132_Operator_Identifier___Traffic_Monitoring_Data_Supported}">
+                    <testStep functionId="Step 17.5.1 VERIFY that element operator-id exists within each instance of archivedDataTrafficMonitoringMetadataRequestMsg.authentication" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="operator-id" instanceName="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg.authentication" elementType="data-element" functionId="Looking for archivedDataTrafficMonitoringMetadataRequestMsg.authentication"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.6 IF TMDD_N106R1133_Data_Set_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1133_Data_Set_Type_Supported}">
+                    <testStep functionId="Step 17.6.1 VERIFY that element filter-data-set-type exists within archivedDataTrafficMonitoringMetadataRequestMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="filter-data-set-type" instanceName="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg" elementType="data-element" functionId="Looking for archivedDataTrafficMonitoringMetadataRequestMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.7 IF TMDD_N106R1134_Data_Collection_Period_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1134_Data_Collection_Period_Supported}">
+                    <testStep functionId="Step 17.7.1 VERIFY that element filter-collection-period-start exists within archivedDataTrafficMonitoringMetadataRequestMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="filter-collection-period-start" instanceName="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg" elementType="data-frame" functionId="Looking for archivedDataTrafficMonitoringMetadataRequestMsg"/>
+                    </testStep>
+                    <testStep functionId="Step 17.7.2 VERIFY that element filter-collection-period-end exists within archivedDataTrafficMonitoringMetadataRequestMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="filter-collection-period-end" instanceName="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg" elementType="data-frame" functionId="Looking for archivedDataTrafficMonitoringMetadataRequestMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.8 IF TMDD_N106R1135_Geographic_Location___Traffic_Monitoring_Data_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1135_Geographic_Location___Traffic_Monitoring_Data_Supported}">
+                    <testStep functionId="Step 17.8.1 VERIFY that element filter-location-county exists within archivedDataTrafficMonitoringMetadataRequestMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="filter-location-county" instanceName="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg" elementType="data-element" functionId="Looking for archivedDataTrafficMonitoringMetadataRequestMsg"/>
+                    </testStep>
+                    <testStep functionId="Step 17.8.2 VERIFY that element filter-location-state exists within archivedDataTrafficMonitoringMetadataRequestMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="filter-location-state" instanceName="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg" elementType="data-element" functionId="Looking for archivedDataTrafficMonitoringMetadataRequestMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.9 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N106R1131_Authentication___Traffic_Monitoring_Data__MonitorAuth__Supported,authentication,tmdd:archivedDataTrafficMonitoringMetadataRequestMsg;TMDD_N106R1132_Operator_Identifier___Traffic_Monitoring_Data_Supported,operator-id,tmdd:archivedDataTrafficMonitoringMetadataRequestMsg.authentication;TMDD_N106R1133_Data_Set_Type_Supported,filter-data-set-type,tmdd:archivedDataTrafficMonitoringMetadataRequestMsg;TMDD_N106R1134_Data_Collection_Period_Supported,filter-collection-period-start,tmdd:archivedDataTrafficMonitoringMetadataRequestMsg;TMDD_N106R1134_Data_Collection_Period_Supported,filter-collection-period-end,tmdd:archivedDataTrafficMonitoringMetadataRequestMsg;TMDD_N106R1135_Geographic_Location___Traffic_Monitoring_Data_Supported,filter-location-county,tmdd:archivedDataTrafficMonitoringMetadataRequestMsg;TMDD_N106R1135_Geographic_Location___Traffic_Monitoring_Data_Supported,filter-location-state,tmdd:archivedDataTrafficMonitoringMetadataRequestMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 17.10 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                    <jl:set var="OptionalContentVerified" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 17.11 POSTCONDITION: REQUEST-RESPONSE-OC-REPLY with the following parameters:   DIALOG=dlArchivedDataTrafficMonitoringMetadataRequest RESPONSETIMEREQUIRED=TMDD_N106R1128_Send_Traffic_Monitoring_Data_Inventory_Information_Upon_Request_Parameter OPTIONALCONTENTVERIFIED = OptionalContentVerified RESPONSEMESSAGE = ResponseMessage ">
+                         <REQUEST-RESPONSE-OC-REPLY Dialog="dlArchivedDataTrafficMonitoringMetadataRequest" functionId="dlArchivedDataTrafficMonitoringMetadataRequest" RESPONSETIMEREQUIRED="${TMDD_N106R1128_Send_Traffic_Monitoring_Data_Inventory_Information_Upon_Request_Parameter}" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" RESPONSEMESSAGE="${ResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

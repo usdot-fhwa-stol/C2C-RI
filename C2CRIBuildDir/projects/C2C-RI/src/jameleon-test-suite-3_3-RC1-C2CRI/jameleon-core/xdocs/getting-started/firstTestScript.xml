@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<document>
+  <properties>
+    <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+    <title>Jameleon - Getting Started - First Test Script</title>
+  </properties>
+
+  <meta name="keyword" content="jameleon, automated, testing, automated testing, started, getting started, tutorial, howto"/>
+
+  <body>
+    <section name="Writing Your First Test Script">
+      <p>
+         In this section we are going to write a very basic automated test script that simply compares two values. For starters we
+         will hard-code the two values. The following is what the script will look like:
+        <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+  &lt;ju-session&gt;
+      &lt;ju-assert-equals
+          functionId="Compare two equaling values"
+          expected="value 1"
+          actual="value 1"/&gt;
+  &lt;/ju-session&gt;
+&lt;/testcase&gt;
+        </source>
+      </p>
+      <p>
+         Save the above code as <b><i>passingAssertEquals.xml</i></b> in the <b><i>jameleon-test-suite/scripts</i></b> folder. The
+        <b><i>scripts</i></b> folder is the default location for test scripts and the Jameleon GUI will display all scripts in that folder.
+      </p>
+    </section>
+    <section name="Line-by-Line Explanation">
+      <p>
+          We will go through the code below line by line and explain in detail what is happening.
+          <source>
+1. &lt;testcase xmlns="jelly:jameleon"&gt;
+2.   &lt;ju-session&gt;
+3.      &lt;ju-assert-equals
+4.          functionId="Compare two equaling values"
+5.          expected="value 1"
+6.          actual="value 1"/&gt;
+7.   &lt;/ju-session&gt;
+8. &lt;/testcase&gt;
+          </source>
+      </p>
+      <p>
+         <b> Line 1:</b><i>&lt;testcase xmlns="jelly:jameleon"&gt;</i><br/>
+         Every test script must have a &lt;testcase/&gt; tag. In this case, &lt;testcase/&gt; is our root tag. 
+      </p>
+      <p>
+         <b>Line 2:</b>  <i>&lt;ju-session&gt;</i><br/>
+          Jameleon requires all function tags to be enclosed within a session tag. A session tag is what keeps state of the application between 
+          different function tags. In this case we are using a ju-session tag.
+      </p>
+      <p>
+         <b>Line 3:</b> <i>&lt;ju-assert-equals</i><br/>
+         The <b>ju-assert-equals</b>tag is the functional point that will perform the actual test. In order for a test to be performed, the script 
+         requires a functional point.
+      </p>
+      <p>
+         <b>Line 4:</b>  <i>functionId="Compare two equaling values"</i><br/>
+         Each functional point requires a <b>functionId</b> attribute.  <b>functionId</b> uniquely defines this function from other functions that may also
+         exist in the same script. It is also used to define where the script failed and to auto-generate the test case documentation. You should always try 
+         to write a descriptive and accurate functionIdKeep this in mind when writing a test script.
+      </p>
+      <p>
+         <b>Line 5:</b> <i>expected="value 1"</i><br/>
+         This is the <i>expected</i> attribute in the ju-assert-equals tag. In this case, we are assigning it the value
+        <b>value 1</b>.
+      </p>
+      <p>
+         <b>Line 6:</b> <i>actual="value 1"</i><br/>
+         This is the <i>actual</i> attribute in the ju-assert-equals tag. In this case, we are assigning it the value
+        <b>value 1</b>; the same value as the expected value.
+      </p>
+      <p>
+         <b>Line 7:</b> <i>&lt;/junit-session&gt;</i><br/>
+         This is the closing junit-session tag. If a tag contains other tags or text, it must have a corresponding closing tag. Since the function tags
+         don't have any nested data, we close them by adding a <b>/</b> before the &gt;. 
+      </p>
+      <p>
+          <b>Line 8:</b> <i>&lt;/testcase&gt;</i><br/>
+          This is the closing testcase tag.
+      </p>
+      <p>
+         You have now written your first case! Please see the section called <a href="executingTestScriptsInGUI.html"><b><i>Executing Test Scripts</i></b></a>
+         for how to execute a test script.
+      </p>
+    </section>
+  </body>
+</document>

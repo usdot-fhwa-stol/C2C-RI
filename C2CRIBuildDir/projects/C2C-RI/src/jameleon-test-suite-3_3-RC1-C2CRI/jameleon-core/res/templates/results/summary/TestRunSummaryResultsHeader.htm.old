@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=${encoding}" />
+<title>Test Runs Results Summary</title>
+<style>
+	BODY{
+		font-family:Arial, Helvetica, sans-serif;
+		font-size:13px;
+	}
+	.txtHeader{
+		color:white;
+		font-size:15px;
+	}
+	.txtFailed{
+		color:red;
+	}
+	.txtPassed{
+		color:green;
+	}
+    tr.hide {
+        display:none;
+    }
+    tr.show {
+        display:;
+    }
+
+</style>
+<script language="javascript">
+    function showHide(ind, imageId) {
+      var image = document.getElementById(imageId);
+      var imageInd = image.src.substring(image.src.lastIndexOf(".") -1, image.src.lastIndexOf(".") );
+      image.src = image.src.substring(0, image.src.lastIndexOf(".") - 1) + ((imageInd.indexOf("0") != -1)?"1":"0") +".jpg";
+      var trE = document.getElementById(ind);
+      if(trE.className == 'hide') {
+        trE.className = 'show';
+      }else {
+        trE.className = 'hide';
+      }
+    }
+</script>
+</head>
+<body>
+  <div style="padding:10px">
+    <table cellspacing="0" border="0" cellpadding="0" width="100%">

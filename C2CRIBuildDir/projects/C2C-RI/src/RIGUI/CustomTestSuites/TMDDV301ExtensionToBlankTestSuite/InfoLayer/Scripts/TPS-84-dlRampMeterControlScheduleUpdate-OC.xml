@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-84-dlRampMeterControlScheduleUpdate-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterControlScheduleUpdate dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.9.8 [Need to Share Ramp Metering Schedule] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:16:01-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterControlScheduleUpdate dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.9.8 [Need to Share Ramp Metering Schedule] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Metered Lane Action Control is required by the specification. (NRTM 3.3.6.10.6.5.2.1).  RECORD this information as: TMDD_N84R879_Metered_Lane_Action_Control_Supported = ${TMDD_N84R879_Metered_Lane_Action_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Timebase Plan Control is required by the specification. (NRTM 3.3.6.10.6.5.2.2).  RECORD this information as: TMDD_N84R880_Timebase_Plan_Control_Supported = ${TMDD_N84R880_Timebase_Plan_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Timebase Rate Control is required by the specification. (NRTM 3.3.6.10.6.5.2.3).  RECORD this information as: TMDD_N84R881_Timebase_Rate_Control_Supported = ${TMDD_N84R881_Timebase_Rate_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Timebase Vehicles Per Green Control is required by the specification. (NRTM 3.3.6.10.6.5.2.4).  RECORD this information as: TMDD_N84R882_Timebase_Vehicles_Per_Green_Control_Supported = ${TMDD_N84R882_Timebase_Vehicles_Per_Green_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Timebase Control Minimum Metering Rate is required by the specification. (NRTM 3.3.6.10.6.5.2.5).  RECORD this information as: TMDD_N84R883_Timebase_Control_Minimum_Metering_Rate_Supported = ${TMDD_N84R883_Timebase_Control_Minimum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Timebase Control Maximum Metering Rate is required by the specification. (NRTM 3.3.6.10.6.5.2.6).  RECORD this information as: TMDD_N84R884_Timebase_Control_Maximum_Metering_Rate_Supported = ${TMDD_N84R884_Timebase_Control_Maximum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Timebase Control Lane Usage Mode is required by the specification. (NRTM 3.3.6.10.6.5.2.7).  RECORD this information as: TMDD_N84R885_Timebase_Control_Lane_Usage_Mode_Supported = ${TMDD_N84R885_Timebase_Control_Lane_Usage_Mode_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" publicationDialog="dlRampMeterControlScheduleUpdate" subscriptionDialog="dlDeviceInformationSubscription" riMode="EC">
+          <testStep functionId="Step 9 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 11 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 12 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 14 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 15 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 16 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 17 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 18 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlDeviceInformationSubscription SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlDeviceInformationSubscription" functionId="dlDeviceInformationSubscription" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 19 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 19.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 19.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlRampMeterControlScheduleUpdate PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlRampMeterControlScheduleUpdate" functionId="dlRampMeterControlScheduleUpdate" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 19.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 19.1.2.1 IF TMDD_N84R879_Metered_Lane_Action_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N84R879_Metered_Lane_Action_Control_Supported}">
+                              <testStep functionId="Step 19.1.2.1.1 VERIFY that element meter-action-control exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="meter-action-control" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.meter-action-control"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.2 IF TMDD_N84R880_Timebase_Plan_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N84R880_Timebase_Plan_Control_Supported}">
+                              <testStep functionId="Step 19.1.2.2.1 VERIFY that element meter-requested-plan exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="meter-requested-plan" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.meter-requested-plan"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.3 IF TMDD_N84R881_Timebase_Rate_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N84R881_Timebase_Rate_Control_Supported}">
+                              <testStep functionId="Step 19.1.2.3.1 VERIFY that element meter-requested-rate exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="meter-requested-rate" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.meter-requested-rate"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.4 IF TMDD_N84R882_Timebase_Vehicles_Per_Green_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N84R882_Timebase_Vehicles_Per_Green_Control_Supported}">
+                              <testStep functionId="Step 19.1.2.4.1 VERIFY that element meter-vehicles-per-green exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="meter-vehicles-per-green" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.meter-vehicles-per-green"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.5 IF TMDD_N84R883_Timebase_Control_Minimum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N84R883_Timebase_Control_Minimum_Metering_Rate_Supported}">
+                              <testStep functionId="Step 19.1.2.5.1 VERIFY that element min-meter-rate exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="min-meter-rate" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.min-meter-rate"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.6 IF TMDD_N84R884_Timebase_Control_Maximum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N84R884_Timebase_Control_Maximum_Metering_Rate_Supported}">
+                              <testStep functionId="Step 19.1.2.6.1 VERIFY that element max-meter-rate exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="max-meter-rate" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.max-meter-rate"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.7 IF TMDD_N84R885_Timebase_Control_Lane_Usage_Mode_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N84R885_Timebase_Control_Lane_Usage_Mode_Supported}">
+                              <testStep functionId="Step 19.1.2.7.1 VERIFY that element meter-lane-usage-mode exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="meter-lane-usage-mode" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.meter-lane-usage-mode"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.8 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N84R879_Metered_Lane_Action_Control_Supported,meter-action-control,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R880_Timebase_Plan_Control_Supported,meter-requested-plan,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R881_Timebase_Rate_Control_Supported,meter-requested-rate,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R882_Timebase_Vehicles_Per_Green_Control_Supported,meter-vehicles-per-green,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R883_Timebase_Control_Minimum_Metering_Rate_Supported,min-meter-rate,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R884_Timebase_Control_Maximum_Metering_Rate_Supported,max-meter-rate,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R885_Timebase_Control_Lane_Usage_Mode_Supported,meter-lane-usage-mode,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 19.1.2.9 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                              <jl:set var="OptionalContentVerified" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 19.1.2.10 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlRampMeterControlScheduleUpdate OPTIONALCONTENTVERIFIED = OptionalContentVerified PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlRampMeterControlScheduleUpdate" functionId="dlRampMeterControlScheduleUpdate" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

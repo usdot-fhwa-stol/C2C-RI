@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Getting Started</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, automated, testing, automated testing, started, getting started, tutorial, howto"/>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                The <b>Getting Started</b> section is intended for people who desire to learn basic principles that 
+                can be applied to the available plug-ins when writing automated tests. The best way to use this section 
+                is to download the <a target="_new" href="http://sourceforge.net/project/showfiles.php?group_id=84246&amp;package_id=157342">jameleon-test-suite-x.x.x.zip</a>
+                file, where the X's represent version numbers. This file can be unzipped anywhere and has all plug-ins enabled 
+                and installed.
+            </p>
+            <p>
+                The examples in this section will use the JUnit plug-in to explain some of the available features. While the JUnit plug-in
+                provides very limited functionality, it can be used to teach many automated testing prinicples and it can also be
+                used to accomplish tasks that would otherwise be difficult to automate.
+            </p>
+        </section>
+        <section name="Required Reading">
+            <p>
+                Please read the following before proceeding:
+                <ol>
+                    <li>The <b><i><a target="_new" href="../overview.html">Overview</a></i></b> section talks about basic principles and jargon
+                        that Jameleon uses.</li>
+                    <li>The <b><i><a target="_new" href="../xmlBasics.html">XML Basics</a></i></b> section teaches the XML principles required to understand and
+                        write Jameleon scripts.</li>
+                </ol>
+                 
+            </p>
+        </section>
+        <section name="Jameleon GUI">
+            <p>
+                The Jameleon GUI provides the ability to generate custom tags, view the properties of existing and custom tags as well as execute
+                and debug test scripts. All of these functions will be covered later in the Getting Started section.
+            </p>
+            <p>
+                To run the GUI, double-click on <b>jameleon.bat</b> in the <b>jameleon-test-suite</b> directory. 
+            </p>
+        </section>
+        <section name="Using the GUI to view available tags and their corresponding attributes">
+          <p>
+            <img src="../images/getting-started/functionTags.jpg"/>
+          </p>
+          <p>
+            The GUI can be used to view the available tags and their attributes. Let's take a look at all tags offered by the JUnit plug-in.
+          </p>
+          <p>
+             Click the <b>Function Tags</b> tab on the bottom-left side of the window. This will display a folder labeled <i>Functional Points</i>. 
+             Double-click on Functional Points followed  by the path illustrated above. In the above image, the ju-assert-equals tag is selected. 
+             The right side of the GUI shows all of the attributes that are supported by ju-assert-equals.
+          </p>
+          <p>
+             In the <b><i>Attributes</i></b>section, you will notice several attributes. All attributes from functionId down are common across
+             all function tags and plug-ins. And everything above functionId is specific to this tag.
+          </p>
+        </section>
+    </body>
+</document>

@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!--
+    Jameleon - An automation testing tool..
+    Copyright (C) 2003-2006 Christian W. Hargraves (engrean@hotmail.com)
+    
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+<testcase xmlns="jelly:jameleon" xmlns:j="jelly:core" name="SQL_Update_Tag_Success">
+  <test-case-summary>Tests that the sql-update tag does as expected</test-case-summary>
+  <test-case-author>Christian Hargraves</test-case-author>
+  <test-case-level>UNIT</test-case-level>
+  <functional-point-tested>sql</functional-point-tested>
+  <application-tested>framework</application-tested>
+  
+    <junit-session application="sql">
+        <map-variable toVariable="textToInsert">
+            <variable-value>it worked!</variable-value>
+        </map-variable>
+        <sql-update functionId="Create table named test">
+            create cached table test(
+              test_str varchar,
+              test_str2 varchar
+           );
+        </sql-update>
+        <sql-update functionId="Insert a row into test table">
+            insert into test(test_str) values('some text');
+        </sql-update>
+        <sql-update functionId="Insert a row into test table">
+            insert into test(test_str) values('${textToInsert}');
+        </sql-update>
+        <sql-update functionId="Delete row from test table"><![CDATA[
+            delete from test where test_str='some text';
+            -- some SQL comment
+            -- Another SQL comment
+                                                                     ]]>
+        </sql-update>
+        <sql-update functionId="Insert a row into test table via a prepared statement with one param value">
+            <map-variable toVariable="sqlUpdateSql">
+                <variable-value>insert into test(test_str) values(?)</variable-value>
+            </map-variable>
+            <sql-param>
+                <sql-param-value>even more text</sql-param-value>
+            </sql-param>
+        </sql-update>
+        <sql-update functionId="Insert a row into test table via a prepared statement with multiple param values">
+            <map-variable toVariable="sqlUpdateSql">
+                <variable-value>insert into test(test_str, test_str2) values(?,?)</variable-value>
+            </map-variable>
+            <sql-param>
+                <sql-param-value>text2</sql-param-value>
+                <sql-param-value>text3</sql-param-value>
+            </sql-param>
+        </sql-update>
+    </junit-session>
+    <junit-session application="sql2">
+      <j:remove var="sqlUpdateSql"/>
+        <sql-update 
+            functionId="Create a 'test2' table">
+            create cached table test2(
+              test_str varchar,
+              test_str2 varchar
+           );
+        </sql-update>
+        <sql-update 
+            functionId="Insert another row into test2 table">
+            insert into test2(test_str) values('${textToInsert}');
+        </sql-update>
+        <sql-update 
+            functionId="Delete row from test2 table">
+            <![CDATA[
+            delete from test2 where test_str='some text';
+            -- some SQL comment
+            -- Another SQL comment
+                                                                    ]]>
+        </sql-update>
+    </junit-session>
+    <map-variable toVariable="sqlUpdateSql">
+        <variable-value></variable-value>
+    </map-variable>
+
+    <postcondition>
+        <junit-session application="sql">
+            <sql-update functionId="Drop table named test">
+                drop table test;
+            </sql-update>
+        </junit-session>
+    </postcondition>
+
+</testcase>

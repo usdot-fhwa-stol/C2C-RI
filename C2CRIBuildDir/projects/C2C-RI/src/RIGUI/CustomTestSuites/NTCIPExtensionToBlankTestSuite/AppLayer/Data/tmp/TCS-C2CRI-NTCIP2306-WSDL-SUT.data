@@ -1,0 +1,28 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSDL-SUT
+#       Description:  TCS-C2CRI-NTCIP2306-WSDL-SUT
+#       Related Procedure:  null
+#       Version/Date: 2011/11/14 19:23:27
+#
+
+
+#ITERATION NAME = One
+#GROUP NAME = portType
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents the WSDL File to be verified.  It is specified in the Configuration File.
+WSDLFile=#CONTEXTVARIABLE#RI_WEBSERVICEURL#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomePassed = true
+
+
+
+
+
+
+
+

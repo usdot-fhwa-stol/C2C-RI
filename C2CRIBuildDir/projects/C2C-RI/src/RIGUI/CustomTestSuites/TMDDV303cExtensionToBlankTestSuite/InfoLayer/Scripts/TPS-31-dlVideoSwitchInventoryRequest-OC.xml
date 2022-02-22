@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-31-dlVideoSwitchInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlVideoSwitchInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.3.1 [Need to Share Video Switch Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2013/11/28 11:47:57-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlVideoSwitchInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.3.1 [Need to Share Video Switch Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Send Video Switch Inventory Information Upon Request (NTRM 3.3.5.4.1.1}.  RECORD this value as: TMDD_N31R548_Send_Video_Switch_Inventory_Information_Upon_Request_Parameter = ${TMDD_N31R548_Send_Video_Switch_Inventory_Information_Upon_Request_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Restrictions - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.1).  RECORD this information as: TMDD_N31R376_Restrictions___Device_Inventory_Supported = ${TMDD_N31R376_Restrictions___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Device Description is required by the specification. (NRTM 3.3.5.1.2.1.2.2).  RECORD this information as: TMDD_N31R377_Device_Description_Supported = ${TMDD_N31R377_Device_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Device Control Type is required by the specification. (NRTM 3.3.5.1.2.1.2.3).  RECORD this information as: TMDD_N31R378_Device_Control_Type_Supported = ${TMDD_N31R378_Device_Control_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Controller Description is required by the specification. (NRTM 3.3.5.1.2.1.2.4).  RECORD this information as: TMDD_N31R379_Controller_Description_Supported = ${TMDD_N31R379_Controller_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Roadway Network Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.5).  RECORD this information as: TMDD_N31R380_Roadway_Network_Identifier___Device_Inventory_Supported = ${TMDD_N31R380_Roadway_Network_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Node Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.6).  RECORD this information as: TMDD_N31R381_Node_Identifier___Device_Inventory_Supported = ${TMDD_N31R381_Node_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Node Name - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.7).  RECORD this information as: TMDD_N31R382_Node_Name___Device_Inventory_Supported = ${TMDD_N31R382_Node_Name___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Link Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.8).  RECORD this information as: TMDD_N31R383_Link_Identifier___Device_Inventory_Supported = ${TMDD_N31R383_Link_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Link Name - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.9).  RECORD this information as: TMDD_N31R384_Link_Name___Device_Inventory_Supported = ${TMDD_N31R384_Link_Name___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Link Direction - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.10).  RECORD this information as: TMDD_N31R385_Link_Direction___Device_Inventory_Supported = ${TMDD_N31R385_Link_Direction___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Linear Reference - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.11).  RECORD this information as: TMDD_N31R386_Linear_Reference___Device_Inventory_Supported = ${TMDD_N31R386_Linear_Reference___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Linear Reference Version is required by the specification. (NRTM 3.3.5.1.2.1.2.12).  RECORD this information as: TMDD_N31R387_Linear_Reference_Version_Supported = ${TMDD_N31R387_Linear_Reference_Version_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Route Designator - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.13).  RECORD this information as: TMDD_N31R388_Route_Designator___Device_Inventory_Supported = ${TMDD_N31R388_Route_Designator___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Device Uniform Resource Locator (URL) (DeviceURL) is required by the specification. (NRTM 3.3.5.1.2.1.2.14).  RECORD this information as: TMDD_N31R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported = ${TMDD_N31R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Device URL Reference Medium is required by the specification. (NRTM 3.3.5.1.2.1.2.15).  RECORD this information as: TMDD_N31R390_Device_URL_Reference_Medium_Supported = ${TMDD_N31R390_Device_URL_Reference_Medium_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Device Inventory Date and Time Change Information is required by the specification. (NRTM 3.3.5.1.2.1.2.16).  RECORD this information as: TMDD_N31R391_Device_Inventory_Date_and_Time_Change_Information_Supported = ${TMDD_N31R391_Device_Inventory_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Total Input Channels is required by the specification. (NRTM 3.3.5.4.1.5.2.1).  RECORD this information as: TMDD_N31R554_Total_Input_Channels_Supported = ${TMDD_N31R554_Total_Input_Channels_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Total Output Channels is required by the specification. (NRTM 3.3.5.4.1.5.2.2).  RECORD this information as: TMDD_N31R555_Total_Output_Channels_Supported = ${TMDD_N31R555_Total_Output_Channels_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 21 CONFIGURE: Determine whether Request Type is required by the specification. (NRTM 3.3.5.4.1.5.2.3).  RECORD this information as: TMDD_N31R556_Request_Type_Supported = ${TMDD_N31R556_Request_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 22 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N31R14_Restrictions___Error_Report_Supported = ${TMDD_N31R14_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 23 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 24 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 25 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 26 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlVideoSwitchInventoryRequest RESPONSETIMEREQUIRED=TMDD_N31R548_Send_Video_Switch_Inventory_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlVideoSwitchInventoryRequest" functionId="dlVideoSwitchInventoryRequest" RESPONSETIMEREQUIRED="${TMDD_N31R548_Send_Video_Switch_Inventory_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 27 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 27.1 VERIFY that a device-inventory-header data frame exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item" elementType="data-frame" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 27.2 VERIFY that a device-inventory-header data frame exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item" elementType="data-frame" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 27.3 VERIFY that an organization-information data frame exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 27.4 VERIFY that a device-id data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 27.5 VERIFY that a device-location data frame exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-location" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 27.6 VERIFY that a device-name data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-name" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 27.7 VERIFY that a videoSwitchInventoryMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="videoSwitchInventoryMsg" instanceName="tmdd:videoSwitchInventoryMsg" elementType="message" functionId="Looking for videoSwitchInventoryMsg"/>
+               </testStep>
+               <testStep functionId="Step 27.8 VERIFY that a device-inventory-header data frame exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item" elementType="data-frame" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 27.9 VERIFY that an input-channel-list data frame exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="input-channel-list" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item" elementType="data-frame" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 27.10 VERIFY that an output-channel-list data frame exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="output-channel-list" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item" elementType="data-frame" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 27.11 IF TMDD_N31R376_Restrictions___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R376_Restrictions___Device_Inventory_Supported}">
+                    <testStep functionId="Step 27.11.1 VERIFY that a restrictions data frame exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.12 IF TMDD_N31R377_Device_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R377_Device_Description_Supported}">
+                    <testStep functionId="Step 27.12.1 VERIFY that a device-description data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-description" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.13 IF TMDD_N31R378_Device_Control_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R378_Device_Control_Type_Supported}">
+                    <testStep functionId="Step 27.13.1 VERIFY that a device-control-type data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-control-type" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.14 IF TMDD_N31R379_Controller_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R379_Controller_Description_Supported}">
+                    <testStep functionId="Step 27.14.1 VERIFY that a controller-description data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="controller-description" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.15 IF TMDD_N31R380_Roadway_Network_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R380_Roadway_Network_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 27.15.1 VERIFY that a network-id data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="network-id" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.16 IF TMDD_N31R381_Node_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R381_Node_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 27.16.1 VERIFY that a node-id data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-id" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.17 IF TMDD_N31R382_Node_Name___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R382_Node_Name___Device_Inventory_Supported}">
+                    <testStep functionId="Step 27.17.1 VERIFY that a node-name data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-name" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.18 IF TMDD_N31R383_Link_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R383_Link_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 27.18.1 VERIFY that a link-id data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-id" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.19 IF TMDD_N31R384_Link_Name___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R384_Link_Name___Device_Inventory_Supported}">
+                    <testStep functionId="Step 27.19.1 VERIFY that a link-name data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-name" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.20 IF TMDD_N31R385_Link_Direction___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R385_Link_Direction___Device_Inventory_Supported}">
+                    <testStep functionId="Step 27.20.1 VERIFY that a link-direction data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-direction" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.21 IF TMDD_N31R386_Linear_Reference___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R386_Linear_Reference___Device_Inventory_Supported}">
+                    <testStep functionId="Step 27.21.1 VERIFY that a linear-reference data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.22 IF TMDD_N31R387_Linear_Reference_Version_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R387_Linear_Reference_Version_Supported}">
+                    <testStep functionId="Step 27.22.1 VERIFY that a linear-reference-version data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference-version" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.23 IF TMDD_N31R388_Route_Designator___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R388_Route_Designator___Device_Inventory_Supported}">
+                    <testStep functionId="Step 27.23.1 VERIFY that a route-designator data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="route-designator" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.24 IF TMDD_N31R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}">
+                    <testStep functionId="Step 27.24.1 VERIFY that a device-url data frame exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-url" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.25 IF TMDD_N31R390_Device_URL_Reference_Medium_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R390_Device_URL_Reference_Medium_Supported}">
+                    <testStep functionId="Step 27.25.1 VERIFY that an url-reference-medium data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header.device-url" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="url-reference-medium" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header.device-url" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header.device-url"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.26 IF TMDD_N31R391_Device_Inventory_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R391_Device_Inventory_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 27.26.1 VERIFY that a last-update-time data frame exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.27 IF TMDD_N31R554_Total_Input_Channels_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R554_Total_Input_Channels_Supported}">
+                    <testStep functionId="Step 27.27.1 VERIFY that an input-channel-count data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="input-channel-count" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.28 IF TMDD_N31R555_Total_Output_Channels_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R555_Total_Output_Channels_Supported}">
+                    <testStep functionId="Step 27.28.1 VERIFY that an output-channel-count data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="output-channel-count" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.29 IF TMDD_N31R556_Request_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R556_Request_Type_Supported}">
+                    <testStep functionId="Step 27.29.1 VERIFY that a request-supported-type data element exists within each instance of data frame videoSwitchInventoryMsg.video-switch-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="request-supported-type" instanceName="tmdd:videoSwitchInventoryMsg.video-switch-inventory-item" elementType="data-element" functionId="Looking for videoSwitchInventoryMsg.video-switch-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.30 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N31R376_Restrictions___Device_Inventory_Supported,restrictions,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R377_Device_Description_Supported,device-description,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R378_Device_Control_Type_Supported,device-control-type,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R379_Controller_Description_Supported,controller-description,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R380_Roadway_Network_Identifier___Device_Inventory_Supported,network-id,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R381_Node_Identifier___Device_Inventory_Supported,node-id,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R382_Node_Name___Device_Inventory_Supported,node-name,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R383_Link_Identifier___Device_Inventory_Supported,link-id,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R384_Link_Name___Device_Inventory_Supported,link-name,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R385_Link_Direction___Device_Inventory_Supported,link-direction,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R386_Linear_Reference___Device_Inventory_Supported,linear-reference,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R387_Linear_Reference_Version_Supported,linear-reference-version,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R388_Route_Designator___Device_Inventory_Supported,route-designator,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported,device-url,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R390_Device_URL_Reference_Medium_Supported,url-reference-medium,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header.device-url;TMDD_N31R391_Device_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item.device-inventory-header;TMDD_N31R554_Total_Input_Channels_Supported,input-channel-count,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item;TMDD_N31R555_Total_Output_Channels_Supported,output-channel-count,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item;TMDD_N31R556_Request_Type_Supported,request-supported-type,tmdd:videoSwitchInventoryMsg.video-switch-inventory-item;TMDD_N31R14_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+          <testStep functionId="Step 28 IF ErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 28.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 28.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 28.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 28.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 28.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 28.6 VERIFY that data element error-code is set to ErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${ErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 28.7 IF TMDD_N31R14_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N31R14_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 28.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <testStep functionId=" Step 29 EXIT" passfailResult="False"/>
+     </C2CRI-session>
+</testprocedure>

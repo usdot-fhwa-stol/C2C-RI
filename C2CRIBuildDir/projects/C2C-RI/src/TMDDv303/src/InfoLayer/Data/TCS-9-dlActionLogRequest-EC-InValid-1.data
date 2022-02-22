@@ -1,0 +1,73 @@
+ 
+#<!--   
+#       Title:  TCS-9-dlActionLogRequest-EC-InValid-1
+#       Description:  This test case is used to verify the SUTs support of the dlActionLogRequest dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.3.5 [Need to Share the Log of a Current Event]. This Test Case tests for an invalid response result. An error response message is expected be returned with an error-code set to 1 (unknown processing error).
+#       Related Procedure:  TPS-9-dlActionLogRequest-EC
+#       Version/Date: 2014/01/16 02:11:17
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Response Message to be sent to the SUT.
+ResponseMessage = NA
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication.  Valid values are True or False.
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid user name.
+Username = defaultUser
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid password.
+Password = defaultPassword
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid Operator Identifier.
+OperatorID = defaultOperatorID
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the privilege to access the information requested.  Valid values are True or False.
+AllowAccess = True
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether a request error is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of request error that is expected from the SUT.
+ErrorTypeExpected = 1
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT is expected to have valid data for a response.  Valid values are True or False.
+DataValid = True
+
+
+#GROUP NAME = Values
+

@@ -1,0 +1,59 @@
+ 
+#<!--   
+#       Title:  TCS-PreConditionTagTest-RIAsOC
+#       Description:  This test case is used to verify the RIs Precondition Tag
+#       Related Procedure:  TPS-PreConditionTagTest
+#       Version/Date: 2012/02/25 22:33:21
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the main script precondition will fail.
+PreconditionFailureFlag = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the subscript precondition will fail.
+SubscriptPreconditionFailureFlag = false
+
+#ITERATION NAME = Two
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the main script precondition will fail.
+PreconditionFailureFlag = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the subscript precondition will fail.
+SubscriptPreconditionFailureFlag = false
+
+#ITERATION NAME = Three
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the main script precondition will fail.
+PreconditionFailureFlag = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the subscript precondition will fail.
+SubscriptPreconditionFailureFlag = true
+

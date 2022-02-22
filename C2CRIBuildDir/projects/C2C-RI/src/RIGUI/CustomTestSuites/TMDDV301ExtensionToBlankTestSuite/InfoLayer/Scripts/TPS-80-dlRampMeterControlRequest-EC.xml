@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-80-dlRampMeterControlRequest-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterControlRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.9.4 [Need to Control a Remote Ramp Meter Device] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:15:17-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterControlRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.9.4 [Need to Control a Remote Ramp Meter Device] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Requested Plan is required by the specification. (NRTM 3.3.6.10.3.2.2.1).  RECORD this information as: TMDD_N80R868_Requested_Plan_Supported = ${TMDD_N80R868_Requested_Plan_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Requested Rate is required by the specification. (NRTM 3.3.6.10.3.2.2.2).  RECORD this information as: TMDD_N80R869_Requested_Rate_Supported = ${TMDD_N80R869_Requested_Rate_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlRampMeterControlRequest" riMode="OC">
+          <testStep functionId="Step 4 CONFIGURE: Define the response message that will be sent to the SUT.  RECORD this information as: ResponseMessage:  ${ResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 5 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 6 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 7 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 8 CONFIGURE: Identify the Organization Identifier expected for authentication during this test.  RECORD this information as: OrganizationID:  ${OrganizationID}" passfailResult="False"/>
+          <testStep functionId="Step 9 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 11 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 12 CONFIGURE: Determine whether the SUT is expected to have valid data available for a response message in this test.  RECORD this information as: DataValid:  ${DataValid}" passfailResult="False"/>
+          <testStep functionId="Step 13 REQUEST-RESPONSE-OC-RECEIVE with the following parameters:   DIALOG=dlRampMeterControlRequest AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password ORGANIZATIONID = OrganizationID ALLOWACCESS = AllowAccess ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected DATAVALID = DataValid ">
+               <REQUEST-RESPONSE-OC-RECEIVE Dialog="dlRampMeterControlRequest" functionId="dlRampMeterControlRequest" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" ORGANIZATIONID="${OrganizationID}" ALLOWACCESS="${AllowAccess}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}" DATAVALID="${DataValid}"/>
+          </testStep>
+          <testStep functionId="Step 14 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 14.1 IF TMDD_N80R868_Requested_Plan_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N80R868_Requested_Plan_Supported}">
+                    <testStep functionId="Step 14.1.1 VERIFY that element meter-requested-plan exists within each instance of rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="meter-requested-plan" instanceName="tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters" functionId="Looking for rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters.meter-requested-plan"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 14.2 IF TMDD_N80R869_Requested_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N80R869_Requested_Rate_Supported}">
+                    <testStep functionId="Step 14.2.1 VERIFY that element meter-requested-rate exists within each instance of rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="meter-requested-rate" instanceName="tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters" functionId="Looking for rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters.meter-requested-rate"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 14.3 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N80R868_Requested_Plan_Supported,meter-requested-plan,tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters;TMDD_N80R869_Requested_Rate_Supported,meter-requested-rate,tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 14.4 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                    <jl:set var="OptionalContentVerified" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 14.5 POSTCONDITION: REQUEST-RESPONSE-OC-REPLY with the following parameters:   DIALOG=dlRampMeterControlRequest OPTIONALCONTENTVERIFIED = OptionalContentVerified RESPONSEMESSAGE = ResponseMessage ">
+                         <REQUEST-RESPONSE-OC-REPLY Dialog="dlRampMeterControlRequest" functionId="dlRampMeterControlRequest" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" RESPONSEMESSAGE="${ResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

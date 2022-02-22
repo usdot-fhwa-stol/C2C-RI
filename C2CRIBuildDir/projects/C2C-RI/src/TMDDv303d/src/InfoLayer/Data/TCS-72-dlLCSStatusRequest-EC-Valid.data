@@ -1,0 +1,412 @@
+ 
+#<!--   
+#       Title:  TCS-72-dlLCSStatusRequest-EC-Valid
+#       Description:  This test case is used to verify the SUTs support of the dlLCSStatusRequest dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.8.3 [Need to Share Controllable Lanes Status]. This Test Case tests for a valid response result.
+#       Related Procedure:  TPS-72-dlLCSStatusRequest-EC
+#       Version/Date: 2014/01/16 03:04:58
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Response Message to be sent to the SUT.
+ResponseMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication.  Valid values are True or False.
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid user name.
+Username = #CONTEXTVARIABLE#RI_USERNAME#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid password.
+Password = #CONTEXTVARIABLE#RI_PASSWORD#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid Operator Identifier.
+OperatorID = defaultOperatorID
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the privilege to access the information requested.  Valid values are True or False.
+AllowAccess = True
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether a request error is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of request error that is expected from the SUT.
+ErrorTypeExpected = None
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT is expected to have valid data for a response.  Valid values are True or False.
+DataValid = True
+
+
+#GROUP NAME = Values
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = Testing for Requirement 3.3.5.9.2.4 in message deviceInformationRequestMsg
+tmdd:deviceInformationRequestMsg.device-information-type = 1,1,device status
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = Testing for Requirement 3.3.5.9.2.4 in message deviceInformationRequestMsg
+tmdd:deviceInformationRequestMsg.device-type = 1,1,lane control signal
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.restrictions.organization-information-forwarding-restrictions 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.restrictions.organization-information-forwarding-restrictions = unrestricted
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-id 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-id = State DOT Traffic Division
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-name 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-location 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-function 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.contact-id 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.person-name 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.person-title 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.phone-number 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.phone-alternate 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.fax-number 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.pager-number 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.pager-id 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.email-address 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.radio-unit 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.address-line1 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.address-line1 = 302 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.address-line2 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.city 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.state 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.state = VA
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.zip-code 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.country 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-id = StateDOTIdentifier
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.latitude = 34
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.longitude = -106
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = wgs-84egm-96
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.ft 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.ft = 0
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = wgs-84
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-type = fixed
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = 303 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state = NM
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.last-update-time.date 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.last-update-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.last-update-time.time 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.last-update-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.last-update-time.offset 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.organization-information.last-update-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.device-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.device-id = StateDOTEquipmentRef
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.device-id = StateDOTEquipmentRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.device-status 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.device-status = off
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.center-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.center-id = StateDOTIdentifier
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.device-comm-status  BaseType=anySimpleType  ParentType= DeviceStatusHeader
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.device-comm-status = operational
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.operator-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.operator-id = StateDOT_OPRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.event-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.event-id = StateDOTEventRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.response-plan-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.response-plan-id = StateResponseModel
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.last-comm-time.date 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.last-comm-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.last-comm-time.time 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.last-comm-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.device-status-header.last-comm-time.offset 
+tmdd:lCSStatusMsg.lcs-status-item.device-status-header.last-comm-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.lane-current-state 
+tmdd:lCSStatusMsg.lcs-status-item.lane-current-state = open
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:lCSStatusMsg.lcs-status-item.link-direction 
+tmdd:lCSStatusMsg.lcs-status-item.link-direction = s
+

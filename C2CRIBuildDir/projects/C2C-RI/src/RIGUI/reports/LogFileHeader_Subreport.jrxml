@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LogFileHeader_Subreport" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     InitEvent.fileName AS fileName,
+     InitEvent.creator AS creator,
+     InitEvent.description AS description,
+     InitEvent.c2criVersion AS c2criVersion,
+     InitEvent.selectedAppLayerTestSuite AS selectedAppLayerTestSuite,
+     InitEvent.selectedInfoLayerTestSuite AS selectedInfoLayerTestSuite,
+     InitEvent.externalCenterOperation AS externalCenterOperation,
+     InitEvent.checksum AS checksum,
+     InitEvent.configFileName AS configFileName,
+     InitEvent.startTime AS startTime,
+     InitEvent.emulationEnabled AS InitEvent_emulationEnabled,
+     InitEvent.emulationInitialization AS InitEvent_emulationInitialization
+FROM
+     InitEvent InitEvent]]>
+	</queryString>
+	<field name="fileName" class="java.lang.Object"/>
+	<field name="creator" class="java.lang.Object"/>
+	<field name="description" class="java.lang.Object"/>
+	<field name="c2criVersion" class="java.lang.Object"/>
+	<field name="selectedAppLayerTestSuite" class="java.lang.Object"/>
+	<field name="selectedInfoLayerTestSuite" class="java.lang.Object"/>
+	<field name="externalCenterOperation" class="java.lang.String"/>
+	<field name="checksum" class="java.lang.Object"/>
+	<field name="configFileName" class="java.lang.Object"/>
+	<field name="startTime" class="java.lang.Object"/>
+	<field name="InitEvent_emulationEnabled" class="java.lang.String"/>
+	<field name="InitEvent_emulationInitialization" class="java.lang.String"/>
+	<detail>
+		<band height="358" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="150" width="65" height="22"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="130" width="100" height="17"/>
+				<textElement lineSpacing="Single">
+					<font size="12" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Configuration File]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="110" width="68" height="20"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Information: ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="190" y="221" width="174" height="14" isRemoveLineWhenBlank="true"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font isUnderline="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{externalCenterOperation}.equalsIgnoreCase("True")?null:($F{InitEvent_emulationEnabled}!=null?"Entity Emulation Settings:":null))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="78" y="55" width="100" height="20"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{creator}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="78" y="110" width="476" height="20"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{selectedInfoLayerTestSuite}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="92" width="68" height="20"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Application: ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="78" y="92" width="476" height="18"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{selectedAppLayerTestSuite}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="75" width="100" height="17"/>
+				<textElement lineSpacing="Single">
+					<font size="12" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Test Suites: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="35" width="89" height="20"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[C2C RI Version:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="55" width="68" height="20"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Created by:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="250" y="238" width="227" height="20" isRemoveLineWhenBlank="true"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.4"/>
+					<leftPen lineWidth="0.4"/>
+					<bottomPen lineWidth="0.4"/>
+					<rightPen lineWidth="0.4"/>
+				</box>
+				<textElement lineSpacing="Single">
+					<font isItalic="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{externalCenterOperation}.equalsIgnoreCase("True")?null:($F{InitEvent_emulationInitialization}.equalsIgnoreCase("True")?"Emulation Intialization Before Test Case Enabled":"Emulation Intialization Before Test Case Disabled"))]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="196" width="68" height="20"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Checksum:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="81" y="150" width="484" height="43" isPrintWhenDetailOverflows="true"/>
+				<box topPadding="1" bottomPadding="1"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{configFileName}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MM/dd/yyyy h:mm a">
+				<reportElement x="401" y="35" width="164" height="20"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="81" y="196" width="270" height="20" isPrintWhenDetailOverflows="true"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{checksum}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="104" y="238" width="146" height="20" isRemoveLineWhenBlank="true"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.4"/>
+					<leftPen lineWidth="0.4"/>
+					<bottomPen lineWidth="0.4"/>
+					<rightPen lineWidth="0.4"/>
+				</box>
+				<textElement lineSpacing="Single">
+					<font isItalic="false" isUnderline="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{externalCenterOperation}.equalsIgnoreCase("True")?null:($F{InitEvent_emulationEnabled}.equalsIgnoreCase("True")?"Emulation Enabled":"Emulation Disabled"))]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="99" y="35" width="124" height="20"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{c2criVersion}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="310" width="112" height="16"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement lineSpacing="Single">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Log File Creation Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="126" y="294" width="439" height="16"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement lineSpacing="Single"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{creator}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="126" y="326" width="439" height="25"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement lineSpacing="Single"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{description}==null?"":$F{description}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="128" y="310" width="437" height="16"/>
+				<box leftPadding="0">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement lineSpacing="Single"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{startTime}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="10" y="264" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="14" y="294" width="112" height="16"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement lineSpacing="Single">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Log File Creator:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="126" y="275" width="439" height="19"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement lineSpacing="Single"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{fileName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="14" y="326" width="112" height="25"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement lineSpacing="Single">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Log File Description:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="275" width="112" height="19"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement lineSpacing="Single">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Log File Name:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="68" y="10" width="448" height="20"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{externalCenterOperation}.equalsIgnoreCase("True")?"SUT in Owner Center Mode":"SUT in External Center Mode")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

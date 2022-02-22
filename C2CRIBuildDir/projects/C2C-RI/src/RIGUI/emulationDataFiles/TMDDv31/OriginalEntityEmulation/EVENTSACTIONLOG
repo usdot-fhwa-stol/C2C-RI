@@ -1,0 +1,8 @@
+tmdd:actionLogMsg.log-entry.restrictions.organization-information-forwarding-restrictions = not to public
+tmdd:actionLogMsg.log-entry.event-id = string
+tmdd:actionLogMsg.log-entry.action-log-element-id = 5
+tmdd:actionLogMsg.log-entry.action-time.date = stringst
+tmdd:actionLogMsg.log-entry.action-time.time = string
+tmdd:actionLogMsg.log-entry.action-time.offset = strin
+tmdd:actionLogMsg.log-entry.action-description = string
+tmdd:actionLogMsg.log-entry.action-type = 6

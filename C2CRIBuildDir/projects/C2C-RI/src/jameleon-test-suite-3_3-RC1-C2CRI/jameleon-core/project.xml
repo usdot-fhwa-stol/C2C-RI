@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<project>
+    <pomVersion>3</pomVersion>
+    <name>Jameleon</name>
+    <id>jameleon-core</id>
+    <inceptionYear>2003</inceptionYear>
+    <package>net.sf.jameleon</package>
+    <organization>
+        <logo>/images/jameleon-logo.jpg</logo>
+        <url>http://jameleon.sourceforge.net/</url>
+        <name>Christian Hargraves</name>
+    </organization>
+    <shortDescription>An Automated Testing Tool</shortDescription>
+    <currentVersion>${version}</currentVersion>
+    <description/>
+
+    <url>http://jameleon.sourceforge.net</url>
+    <issueTrackingUrl>http://sourceforge.net/tracker/?atid=572239&amp;group_id=84246&amp;func=browse</issueTrackingUrl>
+    <siteAddress/>
+    <siteDirectory/>
+    <distributionDirectory/>
+
+    <repository>
+        <connection>
+           scm:svn:https://jameleon.svn.sourceforge.net/svnroot/jameleon/trunk
+        </connection>
+        <url>
+          http://sourceforge.net/svn/?group_id=84246
+        </url>
+    </repository>
+
+    <reports>
+        <report>maven-changes-plugin</report>
+        <report>maven-license-plugin</report>
+        <report>maven-javadoc-plugin</report>
+        <report>maven-jxr-plugin</report>
+        <report>maven-faq-plugin</report>
+    </reports>
+
+    <mailingLists>
+        <mailingList>
+            <name>Jameleon Users List</name>
+            <subscribe>http://lists.sourceforge.net/mailman/listinfo/jameleon-users</subscribe>
+            <unsubscribe>http://lists.sourceforge.net/mailman/listinfo/jameleon-users</unsubscribe>
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum_id=34319</archive>
+        </mailingList>
+        <mailingList>
+            <name>Jameleon Developers List</name>
+            <subscribe>http://lists.sourceforge.net/mailman/listinfo/jameleon-developers</subscribe>
+            <unsubscribe>http://lists.sourceforge.net/mailman/listinfo/jameleon-developers</unsubscribe>
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum_id=34553</archive>
+        </mailingList>
+        <mailingList>
+            <name>Jameleon Source Code Commits List</name>
+            <subscribe>http://lists.sourceforge.net/lists/listinfo/jameleon-cvscommits</subscribe>
+            <unsubscribe>http://lists.sourceforge.net/lists/listinfo/jameleon-cvscommits</unsubscribe>
+            <archive>http://sourceforge.net/mailarchive/forum.php?forum_id=35231</archive>
+        </mailingList>
+    </mailingLists>
+
+    <developers>
+        <developer>
+            <name>Christian W. Hargraves</name>
+            <id>engrean</id>
+            <email>engrean@users.sourceforge.net</email>
+            <roles>
+                <role>Project Founder</role>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Kay Johansen</name>
+            <id>utahkay</id>
+            <email>utahkay@users.sourceforge.net</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Matthias Marschall</name>
+            <id>marschall</id>
+            <email>marschall@users.sourceforge.net</email>
+            <roles>
+                <role>Jiffie plug-in Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>Joe Cline</name>
+        </contributor>
+        <contributor>
+        	<name>Sannie Kwakman</name>
+        </contributor>
+        <contributor>
+            <name>Steven Tyler</name>
+        </contributor>
+        <contributor>
+            <name>Hendrik Lipka</name>
+        </contributor>
+        <contributor>
+            <name>Andrey Chernyshov</name>
+        </contributor>
+        <contributor>
+            <name>Richard Hallier</name>
+            <email>rhallier@users.sourceforge.net</email>
+        </contributor>
+        <contributor>
+            <name>Fuat Atabey</name>
+        </contributor>
+    </contributors>
+    
+    <dependencies>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-jelly</groupId>
+            <artifactId>commons-jelly</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>jdic</groupId>
+            <artifactId>jdic</artifactId>
+            <version>0.9</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.2</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.14</version>
+        </dependency>
+        <dependency>
+            <groupId>ant</groupId>
+            <artifactId>ant</artifactId>
+            <version>1.6.5</version>
+        </dependency>
+        <dependency>
+            <groupId>ant-launcher</groupId>
+            <artifactId>ant-launcher</artifactId>
+            <version>1.6.5</version>
+        </dependency>
+        <dependency>
+            <groupId>tools</groupId>
+            <artifactId>SunTools</artifactId>
+            <jar>tools.jar</jar>
+        </dependency>
+        <dependency>
+            <groupId>velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>qdox</groupId>
+            <artifactId>qdox</artifactId>
+            <version>1.6.1</version>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <sourceDirectory>src/java</sourceDirectory>
+    </build>
+
+</project>

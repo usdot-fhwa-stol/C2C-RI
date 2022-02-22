@@ -1,0 +1,466 @@
+ 
+#<!--   
+#       Title:  TCS-63-dlHARStatusRequest-EC-Valid
+#       Description:  This test case is used to verify the SUTs support of the dlHARStatusRequest dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.7.3 [Need to Share HAR Device Status]. This Test Case tests for a valid response result.
+#       Related Procedure:  TPS-63-dlHARStatusRequest-EC
+#       Version/Date: 2014/01/16 02:58:20
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Response Message to be sent to the SUT.
+ResponseMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication.  Valid values are True or False.
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid user name.
+Username = #CONTEXTVARIABLE#RI_USERNAME#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid password.
+Password = #CONTEXTVARIABLE#RI_PASSWORD#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid Operator Identifier.
+OperatorID = defaultOperatorID
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the privilege to access the information requested.  Valid values are True or False.
+AllowAccess = True
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether a request error is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of request error that is expected from the SUT.
+ErrorTypeExpected = None
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT is expected to have valid data for a response.  Valid values are True or False.
+DataValid = True
+
+
+#GROUP NAME = Values
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = Testing for Requirement 3.3.5.8.2.4 in message deviceInformationRequestMsg
+tmdd:deviceInformationRequestMsg.device-information-type = 1,1,device status
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = Testing for Requirement 3.3.5.8.2.4 in message deviceInformationRequestMsg
+tmdd:deviceInformationRequestMsg.device-type = 1,1,highway advisory radio
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.restrictions.organization-information-forwarding-restrictions 
+tmdd:hARStatusMsg.har-status-item.device-status-header.restrictions.organization-information-forwarding-restrictions = unrestricted
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-id 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-id = State DOT Traffic Division
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-name 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-location 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-function 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.contact-id 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.person-name 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.person-title 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.phone-number 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.phone-alternate 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.fax-number 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.pager-number 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.pager-id 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.email-address 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.radio-unit 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.address-line1 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.address-line1 = 276 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.address-line2 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.city 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.state 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.state = NM
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.zip-code 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.country 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-id = StateDOTIdentifier
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.latitude = 34
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.longitude = -106
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = wgs-84egm-96
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.ft 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.ft = 0
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = wgs-84
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-type = fixed
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = 277 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state = NM
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.last-update-time.date 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.last-update-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.last-update-time.time 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.last-update-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.last-update-time.offset 
+tmdd:hARStatusMsg.har-status-item.device-status-header.organization-information.last-update-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.device-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:hARStatusMsg.har-status-item.device-status-header.device-id = StateDOTEquipmentRef
+tmdd:hARStatusMsg.har-status-item.device-status-header.device-id = StateDOTEquipmentRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.device-status 
+tmdd:hARStatusMsg.har-status-item.device-status-header.device-status = unavailable
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.center-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:hARStatusMsg.har-status-item.device-status-header.center-id = StateDOTIdentifier
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.device-comm-status  BaseType=anySimpleType  ParentType= DeviceStatusHeader
+tmdd:hARStatusMsg.har-status-item.device-status-header.device-comm-status = operational
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.operator-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:hARStatusMsg.har-status-item.device-status-header.operator-id = StateDOT_OPRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.event-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:hARStatusMsg.har-status-item.device-status-header.event-id = StateDOTEventRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.response-plan-id  BaseType=string  ParentType= DeviceStatusHeader
+tmdd:hARStatusMsg.har-status-item.device-status-header.response-plan-id = StateResponseModel
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.last-comm-time.date 
+tmdd:hARStatusMsg.har-status-item.device-status-header.last-comm-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.last-comm-time.time 
+tmdd:hARStatusMsg.har-status-item.device-status-header.last-comm-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.device-status-header.last-comm-time.offset 
+tmdd:hARStatusMsg.har-status-item.device-status-header.last-comm-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.har-current-message  BaseType=string  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.har-current-message = Winter advisory in affect.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.message-beacon  BaseType=unsignedByte  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.message-beacon = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.message-number  BaseType=string  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.message-number = StateDOTHARMessageNum
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.har-current-message-extended  BaseType=String  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.har-current-message-extended = The Winter advisory time period has been extened for an additional 24 hours.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-duration  BaseType=unsignedInt  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-duration = 300
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon2  BaseType=unsignedByte  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon2 = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon3  BaseType=unsignedByte  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon3 = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon4  BaseType=unsignedByte  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon4 = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon5  BaseType=unsignedByte  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon5 = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon6  BaseType=unsignedByte  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon6 = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon7  BaseType=unsignedByte  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon7 = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon8  BaseType=unsignedByte  ParentType= HARStatus
+tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.message-beacon8 = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.extension  
+tmdd:hARStatusMsg.har-status-item.tmddX:hARStatusExt.extension =

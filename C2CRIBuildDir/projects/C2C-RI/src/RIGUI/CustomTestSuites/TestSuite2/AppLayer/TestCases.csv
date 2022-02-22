@@ -1,0 +1,3 @@
+Name,ScriptFile,DataFile,Description,Type
+EXT-TC-NTCIP2306-EC-001,EXT-TC-NTCIP2306-EC-001.xml,EXT-TC-NTCIP2306-EC-001.dat,EC Mode - SOAP Profile Request Extended,EC
+EXT-TC-NTCIP2306-OC-001,EXT-TC-NTCIP2306-OC-001.xml,EXT-TC-NTCIP2306-OC-001.dat,OC Mode - SOAP Profile WSDL Verification Extended,OC

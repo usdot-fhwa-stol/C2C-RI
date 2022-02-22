@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-22-dlDetectorInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDetectorInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.1.5 [Need for Detector Data Correlation] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:19:44-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDetectorInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.1.5 [Need for Detector Data Correlation] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.1).  RECORD this information as: TMDD_N22R376_Restrictions___Device_Inventory_Supported = ${TMDD_N22R376_Restrictions___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Device Description is required by the specification. (NRTM 3.3.5.1.2.1.2.2).  RECORD this information as: TMDD_N22R377_Device_Description_Supported = ${TMDD_N22R377_Device_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Device Control Type is required by the specification. (NRTM 3.3.5.1.2.1.2.3).  RECORD this information as: TMDD_N22R378_Device_Control_Type_Supported = ${TMDD_N22R378_Device_Control_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Controller Description is required by the specification. (NRTM 3.3.5.1.2.1.2.4).  RECORD this information as: TMDD_N22R379_Controller_Description_Supported = ${TMDD_N22R379_Controller_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Linear Reference - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.11).  RECORD this information as: TMDD_N22R386_Linear_Reference___Device_Inventory_Supported = ${TMDD_N22R386_Linear_Reference___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Linear Reference Version is required by the specification. (NRTM 3.3.5.1.2.1.2.12).  RECORD this information as: TMDD_N22R387_Linear_Reference_Version_Supported = ${TMDD_N22R387_Linear_Reference_Version_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Route Designator - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.13).  RECORD this information as: TMDD_N22R388_Route_Designator___Device_Inventory_Supported = ${TMDD_N22R388_Route_Designator___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Device Uniform Resource Locator (URL) (DeviceURL) is required by the specification. (NRTM 3.3.5.1.2.1.2.14).  RECORD this information as: TMDD_N22R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported = ${TMDD_N22R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Device URL Reference Medium is required by the specification. (NRTM 3.3.5.1.2.1.2.15).  RECORD this information as: TMDD_N22R390_Device_URL_Reference_Medium_Supported = ${TMDD_N22R390_Device_URL_Reference_Medium_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Device Inventory Date and Time Change Information is required by the specification. (NRTM 3.3.5.1.2.1.2.16).  RECORD this information as: TMDD_N22R391_Device_Inventory_Date_and_Time_Change_Information_Supported = ${TMDD_N22R391_Device_Inventory_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Detector Station Inventory Information is required by the specification. (NRTM 3.3.5.2.1.5.2.1).  RECORD this information as: TMDD_N22R447_Detector_Station_Inventory_Information_Supported = ${TMDD_N22R447_Detector_Station_Inventory_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 13 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 14 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 15 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 16 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlDetectorInventoryRequest RESPONSETIMEREQUIRED=TMDD_N22R441_Send_Detector_Inventory_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlDetectorInventoryRequest" functionId="dlDetectorInventoryRequest" RESPONSETIMEREQUIRED="${TMDD_N22R441_Send_Detector_Inventory_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 17 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 17.1 VERIFY that element detector-station-inventory-header exists within each instance of detectorInventoryMsg.detector-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="detector-station-inventory-header" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 17.2 VERIFY that element detector-station-inventory-header exists within each instance of detectorInventoryMsg.detector-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="detector-station-inventory-header" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 17.3 VERIFY that element detector-inventory-header exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="detector-inventory-header" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector"/>
+               </testStep>
+               <testStep functionId="Step 17.4 VERIFY that element detector-inventory-header exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="detector-inventory-header" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector"/>
+               </testStep>
+               <testStep functionId="Step 17.5 VERIFY that element detector-station-inventory-header exists within each instance of detectorInventoryMsg.detector-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="detector-station-inventory-header" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 17.6 VERIFY that element detector-station-inventory-header exists within each instance of detectorInventoryMsg.detector-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="detector-station-inventory-header" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 17.7 VERIFY that element organization-information exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 17.8 VERIFY that element device-id exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 17.9 VERIFY that element device-location exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-location" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 17.10 VERIFY that element device-name exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-name" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 17.11 VERIFY that element link-id exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="link-id" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 17.12 VERIFY that element detectorInventoryMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="detectorInventoryMsg" instanceName="tmdd:detectorInventoryMsg" elementType="message" functionId="Looking for detectorInventoryMsg"/>
+               </testStep>
+               <testStep functionId="Step 17.13 VERIFY that element detector-inventory-header exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="detector-inventory-header" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector"/>
+               </testStep>
+               <testStep functionId="Step 17.14 VERIFY that element detector-type exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="detector-type" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector"/>
+               </testStep>
+               <testStep functionId="Step 17.15 VERIFY that element detection-lanes exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="detection-lanes" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector"/>
+               </testStep>
+               <testStep functionId="Step 17.16 IF TMDD_N22R376_Restrictions___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R376_Restrictions___Device_Inventory_Supported}">
+                    <testStep functionId="Step 17.16.1 VERIFY that element restrictions exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.17 IF TMDD_N22R377_Device_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R377_Device_Description_Supported}">
+                    <testStep functionId="Step 17.17.1 VERIFY that element device-description exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-description" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.18 IF TMDD_N22R378_Device_Control_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R378_Device_Control_Type_Supported}">
+                    <testStep functionId="Step 17.18.1 VERIFY that element device-control-type exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-control-type" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.19 IF TMDD_N22R379_Controller_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R379_Controller_Description_Supported}">
+                    <testStep functionId="Step 17.19.1 VERIFY that element controller-description exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="controller-description" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.20 IF TMDD_N22R386_Linear_Reference___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R386_Linear_Reference___Device_Inventory_Supported}">
+                    <testStep functionId="Step 17.20.1 VERIFY that element linear-reference exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.21 IF TMDD_N22R387_Linear_Reference_Version_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R387_Linear_Reference_Version_Supported}">
+                    <testStep functionId="Step 17.21.1 VERIFY that element linear-reference-version exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference-version" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.22 IF TMDD_N22R388_Route_Designator___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R388_Route_Designator___Device_Inventory_Supported}">
+                    <testStep functionId="Step 17.22.1 VERIFY that element route-designator exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="route-designator" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.23 IF TMDD_N22R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}">
+                    <testStep functionId="Step 17.23.1 VERIFY that element device-url exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-url" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.24 IF TMDD_N22R390_Device_URL_Reference_Medium_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R390_Device_URL_Reference_Medium_Supported}">
+                    <testStep functionId="Step 17.24.1 VERIFY that element url-reference-medium exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector.detector-inventory-header.device-url" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="url-reference-medium" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector.detector-inventory-header.device-url" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector.detector-inventory-header.device-url"/>
+                    </testStep>
+                    <testStep functionId="Step 17.24.2 VERIFY that element url-reference-medium exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header.device-url" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="url-reference-medium" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header.device-url" elementType="data-element" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header.device-url"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.25 IF TMDD_N22R391_Device_Inventory_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R391_Device_Inventory_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 17.25.1 VERIFY that element last-update-time exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.26 IF TMDD_N22R447_Detector_Station_Inventory_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N22R447_Detector_Station_Inventory_Information_Supported}">
+                    <testStep functionId="Step 17.26.1 VERIFY that element detector-station-inventory-header exists within each instance of detectorInventoryMsg.detector-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="detector-station-inventory-header" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item" elementType="data-frame" functionId="Looking for detectorInventoryMsg.detector-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.27 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N22R376_Restrictions___Device_Inventory_Supported,restrictions,tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header;TMDD_N22R377_Device_Description_Supported,device-description,tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header;TMDD_N22R378_Device_Control_Type_Supported,device-control-type,tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header;TMDD_N22R379_Controller_Description_Supported,controller-description,tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header;TMDD_N22R386_Linear_Reference___Device_Inventory_Supported,linear-reference,tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header;TMDD_N22R387_Linear_Reference_Version_Supported,linear-reference-version,tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header;TMDD_N22R388_Route_Designator___Device_Inventory_Supported,route-designator,tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header;TMDD_N22R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported,device-url,tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header;TMDD_N22R390_Device_URL_Reference_Medium_Supported,url-reference-medium,tmdd:detectorInventoryMsg.detector-inventory-item.detector-inventory-list.detector.detector-inventory-header.device-url;TMDD_N22R390_Device_URL_Reference_Medium_Supported,url-reference-medium,tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header.device-url;TMDD_N22R391_Device_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header;TMDD_N22R447_Detector_Station_Inventory_Information_Supported,detector-station-inventory-header,tmdd:detectorInventoryMsg.detector-inventory-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

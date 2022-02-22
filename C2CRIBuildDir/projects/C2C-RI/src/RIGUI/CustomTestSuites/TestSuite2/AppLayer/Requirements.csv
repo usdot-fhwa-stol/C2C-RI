@@ -1,0 +1,11 @@
+UniqueID,Title,TextData,ProjectRequirement,OtherRequirement,FlagName,FlagValue
+1,4.0.a,EXTENSION - WSDL Request-Respone,O,,4.0.a,FALSE
+2,4.0.b,EXTENSION - WSDL Subscription-Publicaton,O,,4.0.b,FALSE
+3,4.0.c,EXTENSION - Message Encoding,O.1(2),,4.0.c,FALSE
+4,4.0.d,EXTENSION - Message Transport,O.1(2),,4.0.d,FALSE
+5,4.0.d.2,EXTENSION - Message Transport - HTTPS,SOAPMessageTransport:O,,4.0.d.2,FALSE
+6,5.0.a,EXTENSION - WSDL Request Only (HTTP GET),O,,5.0.a,FALSE
+7,5.0.b,EXTENSION - WSDL Request-Response (HTTP POST),O,,5.0.b,FALSE
+8,5.0.d,EXTENSION - Message Encoding,O.2(2),,5.0.d,FALSE
+9,5.0.e,EXTENSION - Message Transport,O.2(2),,5.0.e,FALSE
+10,5.0.e.2,EXTENSION - Message Transport - HTTPS,XMLTransport:O,,5.0.e.2,FALSE

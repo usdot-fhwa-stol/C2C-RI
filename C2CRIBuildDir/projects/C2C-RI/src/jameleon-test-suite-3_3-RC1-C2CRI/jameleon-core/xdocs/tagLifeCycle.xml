@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Tag Life Cycle</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, documenting, script, test, automated, testing, automated testing, tag, lifecycle, tag lifecycle"/>
+
+    <body>
+        <section name="Lifecyle of a Jameleon Tag">
+            <p>
+                When the function tag is executed, Jameleon looks for all instance variables that have 
+                a @jameleon.attribute javadoc tag. It then makes those available to the tag via either the 
+                instance variable name, or the <b><i>contextName</i></b>. The <b><i>contextName</i></b> is used to 
+                bind the value of a variable read in from an external datasource to the instance variable. This 
+                makes working with the context as easy as working with instance variables. If using the context, it 
+                is a good idea to only use the contextName in your scripts as this will not confuse others that are 
+                using external data to drive your tag.
+            </p>
+            <p>
+                Once all of the instance variables are set via the script, Jameleon searches for variables that aren't
+                set, but have a <b><i>default="some value"</i></b> setting in the <b><i>@jameleon.attribute</i></b> tag
+                and sets the value of the instance variable to the value in the <b><i>default</i></b> setting. Jameleon
+                then validates that all instance variables that have <b><i>required=&quot;true&quot;</i></b> in the 
+                <b><i>@jameleon.attribute</i></b> javadoc are set to something other than <b><i>null</i></b> for Objects
+                or <b><i>0</i></b> for primitive variables. If an instance variable that is marked with
+                <b><i>required=&quot;true&quot;</i></b> is not set, then the execution of the tag completes and a message
+                is given stating the variable was not set. 
+            </p>
+            <p>
+                Once all of that is done, the <b><i>testBlock()</i></b> method is called. Every function tag should 
+                implement this method if it needs to do some sort of action, validation or navigation. 
+            </p>
+        </section>
+    </body>
+</document>

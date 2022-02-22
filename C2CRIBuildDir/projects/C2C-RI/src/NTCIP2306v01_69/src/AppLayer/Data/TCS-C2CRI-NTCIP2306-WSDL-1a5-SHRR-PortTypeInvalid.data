@@ -1,0 +1,246 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSDL-1a3-TypesInvalid
+#       Description:  TCS-C2CRI-NTCIP2306-WSDL-1a3-TypesInvalid
+#       Related Procedure:  null
+#       Version/Date: 2011/11/15 22:59:43
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a51.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 11 VERIFY that the WSDL file consists of 5 child sections: types/schema, message, portType, binding, service.
+
+#ITERATION NAME = Two
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a52.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+
+#ITERATION NAME = Three
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a53.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+#ITERATION NAME = Four
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a54.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.1 VERIFY that the message section includes the top-level messages defined in the XML Schema that apply to the project implementation and use a Request-Response transmission pattern.
+
+#ITERATION NAME = Five
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a55.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.1 VERIFY that the message section includes the top-level messages defined in the XML Schema that apply to the project implementation and use a Request-Response transmission pattern.
+
+#ITERATION NAME = Six
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a56.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.7 VERIFY that each operation name begins with the [OP_] prefix.
+
+#ITERATION NAME = Seven
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a57.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.8 VERIFY that each operation has one input tag followed by one output tag.
+
+#ITERATION NAME = Eight
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a58.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+#ITERATION NAME = Nine
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a59.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+#ITERATION NAME = Ten
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a5A.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.1 VERIFY that the message section includes the top-level messages defined in the XML Schema that apply to the project implementation and use a Request-Response transmission pattern.
+
+#ITERATION NAME = Eleven
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a5B.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.1 VERIFY that the message section includes the top-level messages defined in the XML Schema that apply to the project implementation and use a Request-Response transmission pattern.
+
+#ITERATION NAME = Twelve
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified. The WSDL document contains a request-response operation with an undefined input message.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a5C.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.1 VERIFY that the message section includes the top-level messages defined in the XML Schema that apply to the project implementation and use a Request-Response transmission pattern.
+
+#ITERATION NAME = Thirteen
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.  The WSDL document contains an output element with a message reference to a message missing from the message element.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a5D.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.1 VERIFY that the message section includes the top-level messages defined in the XML Schema that apply to the project implementation and use a Request-Response transmission pattern.
+
+#ITERATION NAME = Fourteen
+#GROUP NAME = PortType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.  The WSDL document contains a request-response operation with the prefix for the message part of the operation set to something other than [tns:].
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a5E.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.9 VERIFY that the input message references a message defined in the Message section of the WSDL.  The prefix for the message part of the operation must be [tns:].

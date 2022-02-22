@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-94-dlDeviceInformationSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.10.9 [Need to Share Controller Schedule] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/18 00:50:19-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.10.9 [Need to Share Controller Schedule] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Publish Signal Timing Pattern Schedule Information (NTRM 3.3.5.11.6.2}.  RECORD this value as: TMDD_N94R1053_Publish_Signal_Timing_Pattern_Schedule_Information_Parameter = ${TMDD_N94R1053_Publish_Signal_Timing_Pattern_Schedule_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine the dialog performance requirement for Subscribe to Signal Timing Pattern Schedule Information (NTRM 3.3.5.11.6.3}.  RECORD this value as: TMDD_N94R1054_Subscribe_to_Signal_Timing_Pattern_Schedule_Information_Parameter = ${TMDD_N94R1054_Subscribe_to_Signal_Timing_Pattern_Schedule_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N94R15_Restrictions___Error_Report_Supported = ${TMDD_N94R15_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Restrictions - Device Schedule is required by the specification. (NRTM 3.3.5.1.8.1.2.1).  RECORD this information as: TMDD_N94R445_Restrictions___Device_Schedule_Supported = ${TMDD_N94R445_Restrictions___Device_Schedule_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.1" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 6 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 7 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 8 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 9 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 11 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 12 CONFIGURE: Define the subscription message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 14 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 15 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlDeviceInformationSubscription RESPONSETIMEREQUIRED= SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlDeviceInformationSubscription" functionId="dlDeviceInformationSubscription" RESPONSETIMEREQUIRED="60000" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 16 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 16.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps.  Note:If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 16.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlIntersectionSignalControlScheduleUpdate RESPONSETIMEREQUIRED=TMDD_N94R1053_Publish_Signal_Timing_Pattern_Schedule_Information_Parameter PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlIntersectionSignalControlScheduleUpdate" functionId="dlIntersectionSignalControlScheduleUpdate" RESPONSETIMEREQUIRED="${TMDD_N94R1053_Publish_Signal_Timing_Pattern_Schedule_Information_Parameter}" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 16.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 16.1.2.1 VERIFY that an organization-information data frame exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-information" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-frame" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.2 VERIFY that a device-id data element exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="device-id" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.3 VERIFY that a time-base-schedule-number data element exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="time-base-schedule-number" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.4 VERIFY that a time-base-schedule-month data element exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="time-base-schedule-month" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.5 VERIFY that a time-base-schedule-day data element exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="time-base-schedule-day" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.6 VERIFY that a time-base-schedule-date data element exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="time-base-schedule-date" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.7 VERIFY that a time-base-schedule-day-plan data element exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="time-base-schedule-day-plan" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.8 VERIFY that a day-plan-hour data element exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="day-plan-hour" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.9 VERIFY that a day-plan-minute data element exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="day-plan-minute" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.10 VERIFY that a last-update-time data frame exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="last-update-time" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-frame" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.11 VERIFY that an intersectionSignalControlScheduleMsg message was received." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="intersectionSignalControlScheduleMsg" instanceName="tmdd:intersectionSignalControlScheduleMsg" elementType="message" functionId="Looking for intersectionSignalControlScheduleMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.12 VERIFY that a device-control-schedule-header data frame exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="device-control-schedule-header" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item" elementType="data-frame" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.13 VERIFY that a request-control-mode data element exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="request-control-mode" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item" elementType="data-element" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.14 VERIFY that a timing-pattern-id data element exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="timing-pattern-id" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item" elementType="data-element" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item"/>
+                         </testStep>
+                         <testStep functionId="Step 16.1.2.15 IF TMDD_N94R445_Restrictions___Device_Schedule_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N94R445_Restrictions___Device_Schedule_Supported}">
+                              <testStep functionId="Step 16.1.2.15.1 VERIFY that a restrictions data frame exists within each instance of data frame intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="restrictions" instanceName="tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header" elementType="data-frame" functionId="Looking for intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 16.1.2.16 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N94R445_Restrictions___Device_Schedule_Supported,restrictions,tmdd:intersectionSignalControlScheduleMsg.intersection-signal-control-schedule-item.device-control-schedule-header;TMDD_N94R15_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 16.1.2.17 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                              <jl:set var="CONTENTVERIFIED" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 16.1.2.18 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlIntersectionSignalControlScheduleUpdate RESPONSETIMEREQUIRED=TMDD_N94R1053_Publish_Signal_Timing_Pattern_Schedule_Information_Parameter CONTENTVERIFIED = CONTENTVERIFIED PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlIntersectionSignalControlScheduleUpdate" functionId="dlIntersectionSignalControlScheduleUpdate" RESPONSETIMEREQUIRED="${TMDD_N94R1053_Publish_Signal_Timing_Pattern_Schedule_Information_Parameter}" CONTENTVERIFIED="${CONTENTVERIFIED}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+          <testStep functionId="Step 17 IF SubscriptionErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 17.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 17.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 17.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 17.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 17.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 17.6 VERIFY that data element error-code is set to SubscriptionErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${SubscriptionErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 17.7 IF TMDD_N94R15_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N94R15_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 17.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 18 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

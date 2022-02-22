@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-50-dlESSObservationReportRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlESSObservationReportRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.5.4 [Need to Share ESS Environmental Observations] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:01:53-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlESSObservationReportRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.5.4 [Need to Share ESS Environmental Observations] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions is required by the specification. (NRTM 3.3.6.6.3.5.2.1).  RECORD this information as: TMDD_N50R654_Restrictions_Supported = ${TMDD_N50R654_Restrictions_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlESSObservationReportRequest" riMode="EC">
+          <testStep functionId="Step 3 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 4 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 5 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 6 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlESSObservationReportRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlESSObservationReportRequest" functionId="dlESSObservationReportRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 7 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 7.1 IF TMDD_N50R654_Restrictions_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N50R654_Restrictions_Supported}">
+                    <testStep functionId="Step 7.1.1 VERIFY that element restrictions exists within each instance of eSSObservationReportMsg.ess-observation-report-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:eSSObservationReportMsg.ess-observation-report-item" functionId="Looking for eSSObservationReportMsg.ess-observation-report-item.restrictions"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 7.2 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N50R654_Restrictions_Supported,restrictions,tmdd:eSSObservationReportMsg.ess-observation-report-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

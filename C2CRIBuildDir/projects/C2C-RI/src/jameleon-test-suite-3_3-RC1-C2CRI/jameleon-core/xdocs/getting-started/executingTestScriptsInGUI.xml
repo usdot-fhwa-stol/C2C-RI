@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Getting Started - Executing Test Scripts</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, executing, running, test script, script, automated, testing, automated testing, started, getting started, tutorial, howto"/>
+
+    <body>
+        <section name="Running a Passing Test Script">
+            <p>
+                In the section <a target="_new" href="firstTestScript.html"><b><i>First Test Script</i></b></a>, we created a simple script. 
+                This section will cover how to execute that script.
+            </p>
+            <p>
+                Start the GUI by double-clicking on <b>jameleon.bat</b> in the <b>jameleon-test-suite</b> directory. 
+                You should be presented with a screen with one file listed to the left.
+                This is the file we created in <a target="_new" href="firstTestScript.html"><b><i>First Test Script</i></b></a>. Simply click on this file 
+                and wait for the test case docs to be generated in the window to the right. You should see something like the picture below:
+            </p>
+            <p>
+                <image src="../images/getting-started/testScriptDocsNoDocs.jpg"/>
+            </p>
+            <p>
+                Notice how in the image above the <b><i>Summary, Author, Application Tested and ...</i></b> fields aren't populated. This 
+                will be covered in <a target="_new" href="documentingTestScripts.html"><b><i>Documenting Test Scripts</i></b></a>.
+            </p>
+            <p>
+                Now, click the <b><i>Run</i></b> button. It's the button with the icon of the blue person running. You should be presented with
+                the results tab, showing that the test passed.
+            </p>
+            <p>
+                <image src="../images/getting-started/testScriptPassed.jpg"/>
+            </p>
+            <p>
+                You can then click on the green checkmark and the html results should appear. Try it out!
+            </p>
+        </section>
+        <section name="Running a Failing Test Script">
+            <p>
+                Now let's make the script fail by creating a new file like the first test script and change the expected value to <b>value 2</b>. 
+                The script should now look like:<br/>
+                <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+  &lt;junit-session&gt;
+      &lt;ju-assert-equals 
+          functionId="Compare two different values"
+          expected="value 2"
+          actual="value 1"/&gt;
+  &lt;/junit-session&gt;
+&lt;/testcase&gt;
+                </source>
+            </p>
+            <p>
+                Save the above as <b><i>failingAssertEquals.xml</i></b> in the scripts folder. To see the new script, double-click on the 
+                <b><i>Test Cases</i></b> folder on the top left twice. Then click on the failing script and you should see something like:
+            </p>
+            <p>
+                <image src="../images/getting-started/testScriptDocs2Scripts.jpg"/>
+            </p>
+            <p>
+                Now, click the <b><i>Run</i></b> button like you did above You should be presented with the results tab, showing that the test failed.
+            </p>
+            <p>
+                <image src="../images/getting-started/testScriptFailed.jpg"/>
+            </p>
+            <p>
+                You can then click on the red X and the html results should appear. Try it out!
+            </p>
+            <p>
+                In the section marked with blue, there are several columns. Each of these columns are explained below
+                <ul>
+                    <li>Row - This is most useful for data-driven tests. This value represents the row of data where the failure occurred.</li>
+                    <li>Blank - If the row has an icon of a camera on it, you can click on the icon to see the state of the application when
+                                it failed. This functionality is dependent on the plug-in implementing this feature.  Since we are using the 
+                                JUnit plug-in this functionality is not available.</li>
+                    <li>Function Id - The description of the function or tag where the failure occurred.</li>
+                    <li>Failed Reason - This is the &quot;user-friendly&quot; message stating what error occurred. In the case of <b><i>failingAssertEquals.xml</i></b>, if we
+                        would have set the value of <b><i>msg</i></b> to something like <b><i>Values did not match</i></b> then the message would then include
+                        <i>Values did not match</i> in the error message.</li>
+                </ul>
+                Sometimes a single test script will have multiple failures. In that case, the highlighted section will have one row for each failure.
+                To see where in the code exactly the failure occurred or to debug the script, simply select the row of interest and the
+                text area below should be populated with a stack trace.
+            </p>
+        </section>
+        <section name="Running Multiple Scripts">
+            <p>
+                It is also possible to run multiple scripts. This can be done by holding down on the shift or ctrl key while selecting another script 
+                with your mouse. 
+            </p>
+            <p>
+                After selecting both the passing and failing script, click the run button. The results should appear like the image below. The order of execution
+                depends on the order the scripts were selected. Therefore, you may see the first script pass and the second script fail. Just look at
+                the test case name to be sure which script passed or failed.
+            </p>
+            <p>
+                <image src="../images/getting-started/multipleScriptResults.jpg"/>
+            </p>
+        </section>
+        <section name="Running Scripts in Ant">
+            <p>
+                If writing custom tags is required to test your application, you will need to use the provided Ant task to build and register your
+                tags. The scripts can still be executed via the GUI, but sometimes you may want to run your scripts via the command line.
+                An example build.xml file is provided in the <a target="_new" href="../install.html"><b><i>Installation</i></b></a> section of the 
+                site and all Ant tasks are documented in the <a target="_new" href="../antTasks.html"><b><i>Ant Tasks</i></b></a> section of the site. 
+                Please see those areas for full documentation. We run both Ant and the GUI. We keep the GUI running while we create and compile new tags 
+                or rebuild existing tags via Ant.
+            </p>
+        </section>
+    </body>
+</document>

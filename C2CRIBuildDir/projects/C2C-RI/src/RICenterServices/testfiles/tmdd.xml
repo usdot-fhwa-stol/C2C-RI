@@ -1,0 +1,37 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:c2c="http://www.ntcip.org/c2c-message-administration" xmlns:mes="http://www.tmdd.org/3/messages" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<soapenv:Header/>
+	<soapenv:Body>
+		<c2c:c2cMessagePublication>
+			<!--Optional:-->
+			<informationalText>?</informationalText>
+			<subscriptionID>?</subscriptionID>
+			<!--Optional:-->
+			<subscriptionName>?</subscriptionName>
+			<!--Optional:-->
+			<subscriptionFrequency>5</subscriptionFrequency>
+			<!--Optional:-->
+			<subscriptionCount>?</subscriptionCount>
+		</c2c:c2cMessagePublication>
+		<mes:actionLogMsg>
+			<log-entry>
+				<!--Optional:-->
+				<restrictions>
+					<organization-information-forwarding-restrictions>4</organization-information-forwarding-restrictions>
+					<!--You may enter ANY elements at this point-->
+				</restrictions>
+				<event-id>?</event-id>
+				<action-log-element-id>2</action-log-element-id>
+				<action-time>
+					<date>10101010</date>
+					<time>123456</time>
+					<!--Optional:-->
+					<offset>12345</offset>
+					<!--You may enter ANY elements at this point-->
+				</action-time>
+				<action-description>?</action-description>
+				<action-type>system update</action-type>
+				<!--You may enter ANY elements at this point-->
+			</log-entry>
+		</mes:actionLogMsg>
+	</soapenv:Body>
+</soapenv:Envelope>

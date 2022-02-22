@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-58-dlDeviceControlStatusRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceControlStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.6.5 [Need to Verify Gate Control Request Status] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:05:33-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceControlStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.6.5 [Need to Verify Gate Control Request Status] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Operator Identifier is required by the specification. (NRTM 3.3.6.1.4.2.2.1).  RECORD this information as: TMDD_N58R423_Operator_Identifier_Supported = ${TMDD_N58R423_Operator_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Operator Lock Identifier is required by the specification. (NRTM 3.3.6.1.4.2.2.2).  RECORD this information as: TMDD_N58R424_Operator_Lock_Identifier_Supported = ${TMDD_N58R424_Operator_Lock_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Operator Last Revised Date and Time is required by the specification. (NRTM 3.3.6.1.4.2.2.3).  RECORD this information as: TMDD_N58R425_Operator_Last_Revised_Date_and_Time_Supported = ${TMDD_N58R425_Operator_Last_Revised_Date_and_Time_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlDeviceControlStatusRequest" riMode="EC">
+          <testStep functionId="Step 5 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 6 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 7 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 8 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlDeviceControlStatusRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlDeviceControlStatusRequest" functionId="dlDeviceControlStatusRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 9 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 9.1 IF TMDD_N58R423_Operator_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N58R423_Operator_Identifier_Supported}">
+                    <testStep functionId="Step 9.1.1 VERIFY that element operator-id exists within deviceControlResponseMsg" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operator-id" instanceName="tmdd:deviceControlResponseMsg" functionId="Looking for deviceControlResponseMsg.operator-id"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 9.2 IF TMDD_N58R424_Operator_Lock_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N58R424_Operator_Lock_Identifier_Supported}">
+                    <testStep functionId="Step 9.2.1 VERIFY that element operator-lock-id exists within deviceControlResponseMsg" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operator-lock-id" instanceName="tmdd:deviceControlResponseMsg" functionId="Looking for deviceControlResponseMsg.operator-lock-id"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 9.3 IF TMDD_N58R425_Operator_Last_Revised_Date_and_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N58R425_Operator_Last_Revised_Date_and_Time_Supported}">
+                    <testStep functionId="Step 9.3.1 VERIFY that element operator-last-revised exists within deviceControlResponseMsg" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operator-last-revised" instanceName="tmdd:deviceControlResponseMsg" functionId="Looking for deviceControlResponseMsg.operator-last-revised"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 9.4 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N58R423_Operator_Identifier_Supported,operator-id,tmdd:deviceControlResponseMsg;TMDD_N58R424_Operator_Lock_Identifier_Supported,operator-lock-id,tmdd:deviceControlResponseMsg;TMDD_N58R425_Operator_Last_Revised_Date_and_Time_Supported,operator-last-revised,tmdd:deviceControlResponseMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-37-dlDMSInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDMSInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.4.1 [Need to Share DMS Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:25:45-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDMSInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.4.1 [Need to Share DMS Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.1).  RECORD this information as: TMDD_N37R376_Restrictions___Device_Inventory_Supported = ${TMDD_N37R376_Restrictions___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Device Description is required by the specification. (NRTM 3.3.5.1.2.1.2.2).  RECORD this information as: TMDD_N37R377_Device_Description_Supported = ${TMDD_N37R377_Device_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Device Control Type is required by the specification. (NRTM 3.3.5.1.2.1.2.3).  RECORD this information as: TMDD_N37R378_Device_Control_Type_Supported = ${TMDD_N37R378_Device_Control_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Controller Description is required by the specification. (NRTM 3.3.5.1.2.1.2.4).  RECORD this information as: TMDD_N37R379_Controller_Description_Supported = ${TMDD_N37R379_Controller_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Roadway Network Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.5).  RECORD this information as: TMDD_N37R380_Roadway_Network_Identifier___Device_Inventory_Supported = ${TMDD_N37R380_Roadway_Network_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Node Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.6).  RECORD this information as: TMDD_N37R381_Node_Identifier___Device_Inventory_Supported = ${TMDD_N37R381_Node_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Node Name - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.7).  RECORD this information as: TMDD_N37R382_Node_Name___Device_Inventory_Supported = ${TMDD_N37R382_Node_Name___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Link Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.8).  RECORD this information as: TMDD_N37R383_Link_Identifier___Device_Inventory_Supported = ${TMDD_N37R383_Link_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Link Name - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.9).  RECORD this information as: TMDD_N37R384_Link_Name___Device_Inventory_Supported = ${TMDD_N37R384_Link_Name___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Link Direction - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.10).  RECORD this information as: TMDD_N37R385_Link_Direction___Device_Inventory_Supported = ${TMDD_N37R385_Link_Direction___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Linear Reference - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.11).  RECORD this information as: TMDD_N37R386_Linear_Reference___Device_Inventory_Supported = ${TMDD_N37R386_Linear_Reference___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Linear Reference Version is required by the specification. (NRTM 3.3.5.1.2.1.2.12).  RECORD this information as: TMDD_N37R387_Linear_Reference_Version_Supported = ${TMDD_N37R387_Linear_Reference_Version_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Route Designator - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.13).  RECORD this information as: TMDD_N37R388_Route_Designator___Device_Inventory_Supported = ${TMDD_N37R388_Route_Designator___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Device Uniform Resource Locator (URL) (DeviceURL) is required by the specification. (NRTM 3.3.5.1.2.1.2.14).  RECORD this information as: TMDD_N37R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported = ${TMDD_N37R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Device URL Reference Medium is required by the specification. (NRTM 3.3.5.1.2.1.2.15).  RECORD this information as: TMDD_N37R390_Device_URL_Reference_Medium_Supported = ${TMDD_N37R390_Device_URL_Reference_Medium_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Device Inventory Date and Time Change Information is required by the specification. (NRTM 3.3.5.1.2.1.2.16).  RECORD this information as: TMDD_N37R391_Device_Inventory_Date_and_Time_Change_Information_Supported = ${TMDD_N37R391_Device_Inventory_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Sign Technology is required by the specification. (NRTM 3.3.5.5.1.5.2.1).  RECORD this information as: TMDD_N37R586_Sign_Technology_Supported = ${TMDD_N37R586_Sign_Technology_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Sign Pixel Height is required by the specification. (NRTM 3.3.5.5.1.5.2.2).  RECORD this information as: TMDD_N37R587_Sign_Pixel_Height_Supported = ${TMDD_N37R587_Sign_Pixel_Height_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Sign Pixel Width is required by the specification. (NRTM 3.3.5.5.1.5.2.3).  RECORD this information as: TMDD_N37R588_Sign_Pixel_Width_Supported = ${TMDD_N37R588_Sign_Pixel_Width_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 21 CONFIGURE: Determine whether Sign Height is required by the specification. (NRTM 3.3.5.5.1.5.2.4).  RECORD this information as: TMDD_N37R589_Sign_Height_Supported = ${TMDD_N37R589_Sign_Height_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 22 CONFIGURE: Determine whether Sign Width is required by the specification. (NRTM 3.3.5.5.1.5.2.5).  RECORD this information as: TMDD_N37R590_Sign_Width_Supported = ${TMDD_N37R590_Sign_Width_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 23 CONFIGURE: Determine whether Character Pixel Height is required by the specification. (NRTM 3.3.5.5.1.5.2.6).  RECORD this information as: TMDD_N37R591_Character_Pixel_Height_Supported = ${TMDD_N37R591_Character_Pixel_Height_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 24 CONFIGURE: Determine whether Character Pixel Width is required by the specification. (NRTM 3.3.5.5.1.5.2.7).  RECORD this information as: TMDD_N37R592_Character_Pixel_Width_Supported = ${TMDD_N37R592_Character_Pixel_Width_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 25 CONFIGURE: Determine whether DMS Beacon Type is required by the specification. (NRTM 3.3.5.5.1.5.2.8).  RECORD this information as: TMDD_N37R593_DMS_Beacon_Type_Supported = ${TMDD_N37R593_DMS_Beacon_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 26 CONFIGURE: Determine whether Vertical Border is required by the specification. (NRTM 3.3.5.5.1.5.2.9).  RECORD this information as: TMDD_N37R594_Vertical_Border_Supported = ${TMDD_N37R594_Vertical_Border_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 27 CONFIGURE: Determine whether Horizontal Border is required by the specification. (NRTM 3.3.5.5.1.5.2.10).  RECORD this information as: TMDD_N37R595_Horizontal_Border_Supported = ${TMDD_N37R595_Horizontal_Border_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 28 CONFIGURE: Determine whether Sign Vertical Pixel Pitch is required by the specification. (NRTM 3.3.5.5.1.5.2.11).  RECORD this information as: TMDD_N37R596_Sign_Vertical_Pixel_Pitch_Supported = ${TMDD_N37R596_Sign_Vertical_Pixel_Pitch_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 29 CONFIGURE: Determine whether Sign Horizontal Pixel Pitch is required by the specification. (NRTM 3.3.5.5.1.5.2.12).  RECORD this information as: TMDD_N37R597_Sign_Horizontal_Pixel_Pitch_Supported = ${TMDD_N37R597_Sign_Horizontal_Pixel_Pitch_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 30 CONFIGURE: Determine whether Maximum Number of Pages is required by the specification. (NRTM 3.3.5.5.1.5.2.13).  RECORD this information as: TMDD_N37R598_Maximum_Number_of_Pages_Supported = ${TMDD_N37R598_Maximum_Number_of_Pages_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 31 CONFIGURE: Determine whether Maximum Message Length is required by the specification. (NRTM 3.3.5.5.1.5.2.14).  RECORD this information as: TMDD_N37R599_Maximum_Message_Length_Supported = ${TMDD_N37R599_Maximum_Message_Length_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 32 CONFIGURE: Determine whether Color Scheme is required by the specification. (NRTM 3.3.5.5.1.5.2.15).  RECORD this information as: TMDD_N37R600_Color_Scheme_Supported = ${TMDD_N37R600_Color_Scheme_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 33 CONFIGURE: Determine whether MULTI Tags Supported is required by the specification. (NRTM 3.3.5.5.1.5.2.16).  RECORD this information as: TMDD_N37R601_MULTI_Tags_Supported_Supported = ${TMDD_N37R601_MULTI_Tags_Supported_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 34 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 35 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 36 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 37 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlDMSInventoryRequest RESPONSETIMEREQUIRED=TMDD_N37R580_Send_DMS_Inventory_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlDMSInventoryRequest" functionId="dlDMSInventoryRequest" RESPONSETIMEREQUIRED="${TMDD_N37R580_Send_DMS_Inventory_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 38 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 38.1 VERIFY that element device-inventory-header exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-frame" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 38.2 VERIFY that element device-inventory-header exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-frame" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 38.3 VERIFY that element organization-information exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 38.4 VERIFY that element device-id exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 38.5 VERIFY that element device-location exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-location" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 38.6 VERIFY that element device-name exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-name" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 38.7 VERIFY that element dMSInventoryMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="dMSInventoryMsg" instanceName="tmdd:dMSInventoryMsg" elementType="message" functionId="Looking for dMSInventoryMsg"/>
+               </testStep>
+               <testStep functionId="Step 38.8 VERIFY that element device-inventory-header exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-frame" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 38.9 VERIFY that element dms-sign-type exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="dms-sign-type" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 38.10 IF TMDD_N37R376_Restrictions___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R376_Restrictions___Device_Inventory_Supported}">
+                    <testStep functionId="Step 38.10.1 VERIFY that element restrictions exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.11 IF TMDD_N37R377_Device_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R377_Device_Description_Supported}">
+                    <testStep functionId="Step 38.11.1 VERIFY that element device-description exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-description" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.12 IF TMDD_N37R378_Device_Control_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R378_Device_Control_Type_Supported}">
+                    <testStep functionId="Step 38.12.1 VERIFY that element device-control-type exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-control-type" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.13 IF TMDD_N37R379_Controller_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R379_Controller_Description_Supported}">
+                    <testStep functionId="Step 38.13.1 VERIFY that element controller-description exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="controller-description" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.14 IF TMDD_N37R380_Roadway_Network_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R380_Roadway_Network_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 38.14.1 VERIFY that element network-id exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="network-id" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.15 IF TMDD_N37R381_Node_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R381_Node_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 38.15.1 VERIFY that element node-id exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-id" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.16 IF TMDD_N37R382_Node_Name___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R382_Node_Name___Device_Inventory_Supported}">
+                    <testStep functionId="Step 38.16.1 VERIFY that element node-name exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-name" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.17 IF TMDD_N37R383_Link_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R383_Link_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 38.17.1 VERIFY that element link-id exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-id" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.18 IF TMDD_N37R384_Link_Name___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R384_Link_Name___Device_Inventory_Supported}">
+                    <testStep functionId="Step 38.18.1 VERIFY that element link-name exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-name" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.19 IF TMDD_N37R385_Link_Direction___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R385_Link_Direction___Device_Inventory_Supported}">
+                    <testStep functionId="Step 38.19.1 VERIFY that element link-direction exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-direction" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.20 IF TMDD_N37R386_Linear_Reference___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R386_Linear_Reference___Device_Inventory_Supported}">
+                    <testStep functionId="Step 38.20.1 VERIFY that element linear-reference exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.21 IF TMDD_N37R387_Linear_Reference_Version_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R387_Linear_Reference_Version_Supported}">
+                    <testStep functionId="Step 38.21.1 VERIFY that element linear-reference-version exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference-version" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.22 IF TMDD_N37R388_Route_Designator___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R388_Route_Designator___Device_Inventory_Supported}">
+                    <testStep functionId="Step 38.22.1 VERIFY that element route-designator exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="route-designator" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.23 IF TMDD_N37R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}">
+                    <testStep functionId="Step 38.23.1 VERIFY that element device-url exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-url" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.24 IF TMDD_N37R390_Device_URL_Reference_Medium_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R390_Device_URL_Reference_Medium_Supported}">
+                    <testStep functionId="Step 38.24.1 VERIFY that element url-reference-medium exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header.device-url" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="url-reference-medium" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header.device-url" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header.device-url"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.25 IF TMDD_N37R391_Device_Inventory_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R391_Device_Inventory_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 38.25.1 VERIFY that element last-update-time exists within each instance of dMSInventoryMsg.dms-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for dMSInventoryMsg.dms-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.26 IF TMDD_N37R586_Sign_Technology_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R586_Sign_Technology_Supported}">
+                    <testStep functionId="Step 38.26.1 VERIFY that element signTechnology exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="signTechnology" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.27 IF TMDD_N37R587_Sign_Pixel_Height_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R587_Sign_Pixel_Height_Supported}">
+                    <testStep functionId="Step 38.27.1 VERIFY that element signHeightPixels exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="signHeightPixels" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.28 IF TMDD_N37R588_Sign_Pixel_Width_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R588_Sign_Pixel_Width_Supported}">
+                    <testStep functionId="Step 38.28.1 VERIFY that element signWidthPixels exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="signWidthPixels" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.29 IF TMDD_N37R589_Sign_Height_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R589_Sign_Height_Supported}">
+                    <testStep functionId="Step 38.29.1 VERIFY that element signHeight exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="signHeight" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.30 IF TMDD_N37R590_Sign_Width_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R590_Sign_Width_Supported}">
+                    <testStep functionId="Step 38.30.1 VERIFY that element signWidth exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="signWidth" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.31 IF TMDD_N37R591_Character_Pixel_Height_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R591_Character_Pixel_Height_Supported}">
+                    <testStep functionId="Step 38.31.1 VERIFY that element charHeightPixels exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="charHeightPixels" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.32 IF TMDD_N37R592_Character_Pixel_Width_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R592_Character_Pixel_Width_Supported}">
+                    <testStep functionId="Step 38.32.1 VERIFY that element charWidthPixels exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="charWidthPixels" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.33 IF TMDD_N37R593_DMS_Beacon_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R593_DMS_Beacon_Type_Supported}">
+                    <testStep functionId="Step 38.33.1 VERIFY that element dms-beacon-type exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="dms-beacon-type" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.34 IF TMDD_N37R594_Vertical_Border_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R594_Vertical_Border_Supported}">
+                    <testStep functionId="Step 38.34.1 VERIFY that element dms-vertical-border exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="dms-vertical-border" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.35 IF TMDD_N37R595_Horizontal_Border_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R595_Horizontal_Border_Supported}">
+                    <testStep functionId="Step 38.35.1 VERIFY that element dms-horizontal-border exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="dms-horizontal-border" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.36 IF TMDD_N37R596_Sign_Vertical_Pixel_Pitch_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R596_Sign_Vertical_Pixel_Pitch_Supported}">
+                    <testStep functionId="Step 38.36.1 VERIFY that element dms-vertical-pixel-pitch exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="dms-vertical-pixel-pitch" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.37 IF TMDD_N37R597_Sign_Horizontal_Pixel_Pitch_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R597_Sign_Horizontal_Pixel_Pitch_Supported}">
+                    <testStep functionId="Step 38.37.1 VERIFY that element dms-horizontal-pixel-pitch exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="dms-horizontal-pixel-pitch" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.38 IF TMDD_N37R598_Maximum_Number_of_Pages_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R598_Maximum_Number_of_Pages_Supported}">
+                    <testStep functionId="Step 38.38.1 VERIFY that element dms-max-pages exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="dms-max-pages" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.39 IF TMDD_N37R599_Maximum_Message_Length_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R599_Maximum_Message_Length_Supported}">
+                    <testStep functionId="Step 38.39.1 VERIFY that element dms-max-message-length exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="dms-max-message-length" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.40 IF TMDD_N37R600_Color_Scheme_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R600_Color_Scheme_Supported}">
+                    <testStep functionId="Step 38.40.1 VERIFY that element dms-color-scheme exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="dms-color-scheme" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.41 IF TMDD_N37R601_MULTI_Tags_Supported_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N37R601_MULTI_Tags_Supported_Supported}">
+                    <testStep functionId="Step 38.41.1 VERIFY that element dms-multi-tag-support exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="dms-multi-tag-support" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" elementType="data-element" functionId="Looking for dMSInventoryMsg.dms-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 38.42 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N37R376_Restrictions___Device_Inventory_Supported,restrictions,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R377_Device_Description_Supported,device-description,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R378_Device_Control_Type_Supported,device-control-type,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R379_Controller_Description_Supported,controller-description,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R380_Roadway_Network_Identifier___Device_Inventory_Supported,network-id,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R381_Node_Identifier___Device_Inventory_Supported,node-id,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R382_Node_Name___Device_Inventory_Supported,node-name,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R383_Link_Identifier___Device_Inventory_Supported,link-id,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R384_Link_Name___Device_Inventory_Supported,link-name,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R385_Link_Direction___Device_Inventory_Supported,link-direction,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R386_Linear_Reference___Device_Inventory_Supported,linear-reference,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R387_Linear_Reference_Version_Supported,linear-reference-version,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R388_Route_Designator___Device_Inventory_Supported,route-designator,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported,device-url,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R390_Device_URL_Reference_Medium_Supported,url-reference-medium,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header.device-url;TMDD_N37R391_Device_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:dMSInventoryMsg.dms-inventory-item.device-inventory-header;TMDD_N37R586_Sign_Technology_Supported,signTechnology,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R587_Sign_Pixel_Height_Supported,signHeightPixels,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R588_Sign_Pixel_Width_Supported,signWidthPixels,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R589_Sign_Height_Supported,signHeight,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R590_Sign_Width_Supported,signWidth,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R591_Character_Pixel_Height_Supported,charHeightPixels,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R592_Character_Pixel_Width_Supported,charWidthPixels,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R593_DMS_Beacon_Type_Supported,dms-beacon-type,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R594_Vertical_Border_Supported,dms-vertical-border,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R595_Horizontal_Border_Supported,dms-horizontal-border,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R596_Sign_Vertical_Pixel_Pitch_Supported,dms-vertical-pixel-pitch,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R597_Sign_Horizontal_Pixel_Pitch_Supported,dms-horizontal-pixel-pitch,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R598_Maximum_Number_of_Pages_Supported,dms-max-pages,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R599_Maximum_Message_Length_Supported,dms-max-message-length,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R600_Color_Scheme_Supported,dms-color-scheme,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R601_MULTI_Tags_Supported_Supported,dms-multi-tag-support,tmdd:dMSInventoryMsg.dms-inventory-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

@@ -1,0 +1,88 @@
+ 
+#<!--   
+#       Title:  TCS-94-dlDeviceInformationSubscription-EC-Valid
+#       Description:  This test case is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.6.10.9 [Need to Share Controller Schedule]. This Test Case tests for a Valid response result.
+#       Related Procedure:  TPS-94-dlDeviceInformationSubscription-EC
+#       Version/Date: 2012/02/14 23:21:12
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Publication Message to be sent to the SUT.
+PublicationMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates number of publication message transmissions expected as part of this test.
+PublicationCount = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a Publication  error response is expected from the SUT.
+PublicationErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of Publication response error that is expected from the SUT.
+PublicationErrorTypeExpected = None
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected user name.
+Username = defaultUser
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected password.
+Password = defaultPassword
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Organization Identifier.
+OrganizationID = defaultOrgID
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the priviledge to access the information requested.
+AllowAccess = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a subscription request error is expected from the SUT.
+SubscriptionErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of subscription request error that is expected from the SUT.
+SubscriptionErrorTypeExpected = None
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Subscription Response Message to be sent to the SUT.
+SubscriptionResponseMessage = #MESSAGESPEC#SubResponseMessage#MESSAGESPEC#
+
+
+#GROUP NAME = Values
+

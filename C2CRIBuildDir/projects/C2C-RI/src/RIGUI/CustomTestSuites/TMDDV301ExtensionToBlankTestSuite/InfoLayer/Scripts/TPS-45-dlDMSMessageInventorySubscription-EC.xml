@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-45-dlDMSMessageInventorySubscription-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDMSMessageInventorySubscription dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.4.9 [Need to Share DMS Message Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 22:59:41-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDMSMessageInventorySubscription dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.4.9 [Need to Share DMS Message Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether DMS Message Number Identifier is required by the specification. (NRTM 3.3.6.5.7.4.2.1).  RECORD this information as: TMDD_N45R614_DMS_Message_Number_Identifier_Supported = ${TMDD_N45R614_DMS_Message_Number_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether DMS Memory Type is required by the specification. (NRTM 3.3.6.5.7.4.2.2).  RECORD this information as: TMDD_N45R615_DMS_Memory_Type_Supported = ${TMDD_N45R615_DMS_Memory_Type_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" subscriptionDialog="dlDMSMessageInventorySubscription" publicationDialog="dlDMSMessageInventoryUpdate" riMode="OC">
+          <testStep functionId="Step 4 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: PublicationMessage:  ${PublicationMessage}" passfailResult="False"/>
+          <testStep functionId="Step 5 CONFIGURE: Determine the number of publication message transmissions that will be performed within this test.  RECORD this information as: PublicationCount:  ${PublicationCount}" passfailResult="False"/>
+          <testStep functionId="Step 6 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 7 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 8 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 9 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 11 CONFIGURE: Identify the Organization Identifier expected for authentication during this test.  RECORD this information as: OrganizationID:  ${OrganizationID}" passfailResult="False"/>
+          <testStep functionId="Step 12 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 14 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 15 CONFIGURE: Define the subscription response message that will be sent to the SUT.  RECORD this information as: SubscriptionResponseMessage:  ${SubscriptionResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 16 SUBSCRIPTION-OC-RECEIVE with the following parameters:   DIALOG=dlDMSMessageInventorySubscription AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password ORGANIZATIONID = OrganizationID ALLOWACCESS = AllowAccess SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-OC-RECEIVE Dialog="dlDMSMessageInventorySubscription" functionId="dlDMSMessageInventorySubscription" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" ORGANIZATIONID="${OrganizationID}" ALLOWACCESS="${AllowAccess}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 17 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 17.1 IF TMDD_N45R614_DMS_Message_Number_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N45R614_DMS_Message_Number_Identifier_Supported}">
+                    <testStep functionId="Step 17.1.1 VERIFY that element message-number exists within dMSMessageInventoryRequestMsg" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="message-number" instanceName="tmdd:dMSMessageInventoryRequestMsg" functionId="Looking for dMSMessageInventoryRequestMsg.message-number"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.2 IF TMDD_N45R615_DMS_Memory_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N45R615_DMS_Memory_Type_Supported}">
+                    <testStep functionId="Step 17.2.1 VERIFY that element message-memory-type exists within dMSMessageInventoryRequestMsg" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="message-memory-type" instanceName="tmdd:dMSMessageInventoryRequestMsg" functionId="Looking for dMSMessageInventoryRequestMsg.message-memory-type"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 17.3 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N45R614_DMS_Message_Number_Identifier_Supported,message-number,tmdd:dMSMessageInventoryRequestMsg;TMDD_N45R615_DMS_Memory_Type_Supported,message-memory-type,tmdd:dMSMessageInventoryRequestMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 17.4 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                    <jl:set var="OptionalContentVerified" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 17.5 POSTCONDITION: SUBSCRIPTION-OC-REPLY with the following parameters:   DIALOG=dlDMSMessageInventorySubscription OPTIONALCONTENTVERIFIED = OptionalContentVerified SUBSCRIPTIONRESPONSEMESSAGE = SubscriptionResponseMessage ">
+                         <SUBSCRIPTION-OC-REPLY Dialog="dlDMSMessageInventorySubscription" functionId="dlDMSMessageInventorySubscription" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" SUBSCRIPTIONRESPONSEMESSAGE="${SubscriptionResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+               <testStep functionId="Step 17.6 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 17.6.1 PUBLICATION-OC with the following parameters:   DIALOG=dlDMSMessageInventoryUpdate PUBLICATIONMESSAGE = PublicationMessage PUBLICATIONCOUNT = PublicationCount PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-OC Dialog="dlDMSMessageInventoryUpdate" functionId="dlDMSMessageInventoryUpdate" PUBLICATIONMESSAGE="${PublicationMessage}" PUBLICATIONCOUNT="${PublicationCount}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}"/>
+                    </testStep>
+               </jl:while>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

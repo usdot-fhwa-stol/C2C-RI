@@ -1,0 +1,41 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSDL-3c1-XFTr-FtpValid
+#       Description:  TCS-C2CRI-NTCIP2306-WSDL-3c1-XFTr-FtpValid
+#       Related Procedure:  null
+#       Version/Date: 2011/11/15 22:59:44
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = XFTrFtpValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData3c11.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 25.10 VERIFY that the address is a valid URL.
+
+#ITERATION NAME = Two
+#GROUP NAME = XFTrFtpValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData3c12.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 25.10 VERIFY that the address is a valid URL.

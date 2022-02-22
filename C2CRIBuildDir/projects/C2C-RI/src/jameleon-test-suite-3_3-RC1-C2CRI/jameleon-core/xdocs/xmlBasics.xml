@@ -1,0 +1,356 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - XML Basics</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, xml, basics, xml basics, xml howto"/>
+
+    <body>
+        <section name="XML Basics">
+            <p>
+                This document introduces some basic XML principles and is for those that 
+                don't fully know XML. Most of these principles are required to use the macro 
+                language. For a more detailed understanding, visit <a href="http://www.w3.org/XML/">the 
+                W3C XML site.</a>.
+            </p>
+        </section>
+        <section name="Prolog">
+            <p>
+                Every XML document should start with:
+                <source><![CDATA[
+<?xml version="1.0"?>]]></source>
+                This states the document type is XML and it uses version 1.0 of the w3c 
+                recommendation. This is not required to run Jameleon scripts and in most cases can be excluded.
+            </p>
+        </section>
+        <section name="Root Element">
+            <p>
+                XML is used to represent a nested or tree structure. The basic rule of XML 
+                is that a valid XML document must have ONLY one &quot;root&quot; element. A root 
+                element is simply an <i>element</i> that starts the document. Just as everything 
+                is supposed to have a beginning and end, a valid XML document has one too. An <i>element</i> 
+                is an alpha-numeric set of characters surrounded by &lt; and &gt;.<br/>
+
+                For example:
+            </p>
+            <p>
+                <source><![CDATA[
+<?xml version="1.0"?>
+<START>]]></source>
+                Is a valid element. However, in order for the above to become a valid XML 
+                document, it must have an ending element.
+            </p>
+            <p>
+                <source><![CDATA[
+<?xml version="1.0"?>
+<START>
+</START>]]></source>
+                Is a valid XML document! In this example, &lt;START&gt; is the opening root tag, &lt;/START&gt; 
+                is the closing root tag and everthing in between is considered owned by &lt;START&gt;
+            </p>
+            <p>
+                The above example can also be rewritten like this:
+            </p>
+            <p>
+                <source><![CDATA[
+<START/>]]></source>
+                As may be guessed, the &quot;/&quot; symbol at the end of an element means that 
+                this element does not have any children. A &quot;/&quot; at the end of the 
+                element ( before the &gt; symbol ) represents the closing of the same opening 
+                element. Closing an element is done by the "first opened, last closed" rule.
+            </p>
+        </section>
+        <section name="Multiple Elements">
+            <p>Now let's look at a bit more of a complex XML document that has nested elements.
+            </p>
+            <p>
+                <source>
+&lt;testcase&gt;
+&lt;name&gt;ExampleTestCase&lt;/name&gt;
+
+&lt;httpunit-session&gt;
+&lt;some-function-point/&gt;
+&lt;/httpunit-session&gt;
+&lt;/testcase&gt;</source>
+                This example has an opening &lt;testcase&gt; element which contains a &lt;name&gt; 
+                and an &lt;httpunit-session&gt; element which in turn contains a &lt;some-function-point&gt; 
+                element which does not contain anything so it closes itself. The &lt;httpunit-session&gt; 
+                then closes itselft, followed by a closing of the root element or the &lt;testcase&gt; 
+                element. Notice how the &lt;name&gt; element contains some arbitrary text. This is giving
+                the test case the name &quot;ExampleTestCase&quot;.
+            </p>
+            <p>
+                The above example represents a hierarchical structure, as do all XML documents. 
+                The biggest difference between a simple hierarchical diagram and an XML document 
+                is that most hierarchical diagrams don't show where the parent-child 
+                relationship ends. It is assumed visually by indentation or some other means. On 
+                the other hand, a well formatted XML document will normally include indentations 
+                for easy reading, but it is not a requirement so it requires an end tag for 
+                every open tag.
+            </p>
+            <p>
+                In the above example, it can be said that there is a testcase and the testcase 
+                is made up of a name and an httpunit-session. The session, in turn, is made up 
+                of some-function-point. It is that simple!
+            </p>
+            <p>
+                The text between element tags must not have &lt;, &gt;, or &amp; inside them. If 
+                it is required that these characters be in the text, then the text must look 
+                something like:
+                <source>
+&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;testcase&gt;
+    &lt;name&gt;&lt;![CDATA[Some text with some  &lt; invalid &gt; characaters in it.&amp;
+
+    ]]&gt;&lt;/name&gt;
+    &lt;httpunit-session&gt;
+        &lt;some-function-point/&gt;
+    &lt;/httpunit-session&gt;
+&lt;/testcase&gt;</source>
+            </p>
+        </section>
+        <section name="Element Attributes">
+            <p>
+                An Element Attribute is a more restrictive way to describe something. In the 
+                above example, we used a &lt;testcase&gt; that has a name, and a session. While 
+                a session is somewhat complex and would be very difficult to turn into a set of 
+                characters, the &lt;name&gt; is simply a set of characters. In this case, it 
+                would be appropriate to put it into the &lt;testcase&gt; tag as an attribute:
+            </p>
+            <p>
+            <source><![CDATA[
+<?xml version="1.0"?>
+<testcase name="ExampleTestCase">
+<httpunit-session application="sourceforge">
+
+<some-function-point functionId="A function point that does something"
+/>
+</httpunit-session>
+</testcase>]]></source>
+                Notice how &quot;name&quot; was brought into the &lt;testcase&gt; element. Now, 
+                the test case's attributes are defined inside the testcase element and the testcase's 
+                subelements can now all be represented as objects. Also notice that now both the &lt;httpunit-session&gt; 
+                and &lt;some-function-point&gt; elements both have attributes describing 
+                something simple about them.
+            </p>
+            <p>
+                The drawback to using an element attribute is that an attribute can have none of 
+                the invalid characters mentioned above. The CDATA marker cannot be used as an 
+                attribute's value.This obviously restricts the value of the attribute much more 
+                than that of an element's value.
+            </p>
+        </section>
+        <section name="XML Formatting">
+            <p>
+                An XML document does not need to be well-formatted to well-formed. The 
+                above example can also be written like:
+            </p>
+            <source><![CDATA[
+<?xml version="1.0"?>
+<testcase name="ExampleTestCase"><httpunit-session
+application="sourceforge">
+<some-function-point functionId="A function point that does something"/></httpunit-session>
+</testcase>]]></source>
+                    OR Like:
+            <p>
+            <source><![CDATA[
+<?xml version="1.0"?>
+<testcase name="ExampleTestCase">
+<httpunit-session
+application="sourceforge">
+<some-function-point
+functionId="A function point that does something"/>
+
+</httpunit-session>
+</testcase>]]></source>
+                In other words, XML doesn't care about "white space" (spaces, tabs, and blank 
+                lines). However, it is much easier to read when using "white space".
+            </p>
+        </section>
+        <section name="Restricting the Structure">
+            <p>
+                XML also allows a document to be validated against a predefined structure. 
+                There are currently two types of definition documents, Document Type Definition 
+                (DTD) and XML Schema. Basically, both of these document definitions accomplish 
+                the same thing, but in different ways. Without a DTD, an XML document's 
+                structure is not restricted except by the syntax rule mentioned earlier.
+            </p>
+            <p>
+                The original reason for the creation of XML was to store data in an 
+                implementation-independent format. In other words, being able to store the data 
+                in one language like C++ and then being able to read it in through different 
+                language like Java was a requirement of XML.
+            </p>
+            <p>
+                Normally, this would mean different implementations for parsing the document at 
+                the software level. Thus the idea of a DTD was introduced and a couple of years 
+                later XML schema was introduced. 
+            </p>
+            <p>
+                This puts the validation in the hands of the XML parser instead of the software 
+                that reads or writes the XML. In other words, using a DTD to restrict the 
+                structure of XML while trying to write some unsupported element would cause an 
+                error and XML could not be written to. Now data can be written in a standard 
+                format and a generic parser can be used to read and write this data without need 
+                to implement an in-house parser.
+            </p>
+            <p>
+                For more information on DTD's, click <a href="http://www.w3.org/TR/REC-xml/#sec-physical-struct">here</a>. 
+                For more information on XML schemas, click <a href="http://www.w3.org/XML/Schema">here</a>.
+            </p>
+            <p>
+                Jameleon does not restrict the structure of the XML since the XML is used as a scripting
+                language and the idea of creating function points on the fly would require the DTD to be 
+                specific for each customer. However, Jameleon does use this idea to know how to 
+                handle custom function points.
+            </p>
+        </section>
+        <section name="XML Namespaces">
+            <p>
+                Since it is likely that two seemingly independent XML documents that 
+                describe different things could actually be used together to describe more 
+                complex data, the chance of the element names of each document type being the 
+                same is pretty high. 
+            </p>
+            <p>
+                For example, let's say there is a trucking company that uses an XML document to 
+                describe it's shipping orders. This document would more than likely contain an 
+                element that describes the contents, size, and weight of the cargo it is 
+                shipping. It would also, more than likely describe the entity shipping and 
+                receiving the package. Now let's say there is a farmer that sells fruit. This 
+                farmer uses the before-mentioned trucking company to send his fruit across the 
+                country and he uses XML to describe his customers, products, and orders. 
+            </p>
+            <p>
+                Now let's say the two companies decide to use the same mechanism to share 
+                information. It is more than likely that the two different XML data-types above 
+                would use some of the same structure to describe their customers, packages, and 
+                products. And if they didn't, the data would mean very similar things and would 
+                likely become difficult to understand if the two put together. The farmer would 
+                want to keep his own data description and the trucking company would also want 
+                to keep their data description since they are working with several companies 
+                that ship various products. Wouldn't it be nice if their two data definitions 
+                could be included in the same XML document yet remain independent? 
+            </p>
+            <p>
+                XML provides a solution to this dilemma through namespaces. A namespace is 
+                basically the idea of defining a document's definition of elements as all 
+                starting with a different sequence of characters than it normal would. However, 
+                the XML parser is smart enough to give the software the same data structure it 
+                is expecting. For example, if we had a simple DTD that defined one single 
+                element as &lt;element/&gt; and set a namespace for that DTD to be &quot;jmln&quot;, 
+                then that element would now be expressed in the document as &lt;jmln:element/&gt;, 
+                but by the time it got to application that reads the XML in, it would only get &lt;element/&gt;. 
+                that DTD, 
+            </p>
+            <p>
+                Below is an example of how Jameleon uses namespaces:
+            </p>
+            <p>
+                <source>
+&lt;j:jelly xmlns:qa=&quot;jelly:jameleon&quot; xmlns:j=&quot;jelly:core&quot;&gt;
+                </source>
+            </p>
+            <p>
+                As might be guessed, the &quot;xmlns&quot; stands for XML Namespace. This above 
+                element imports two different xml document definitions. One for &quot;jelly:core&quot; 
+                (defined by <b>xmlns:j=&quot;jelly:core&quot;</b>) and one for &quot;jelly:jameleon&quot; 
+                (defined by <b>&quot;xmlns:qa=&quot;jelly:jameleon&quot;</b>). The import of &quot;jelly:core&quot; 
+                states that all elements described in &quot;jelly:core&quot; must start with &quot;j&quot;. 
+                The import of &quot;jelly:jameleon&quot; states that all elements described in 
+                jelly:jameleon must start with &quot;qa&quot;.
+            </p>
+            <p>
+                Notice the <b>:</b> after xmlns. This is the part that states what all elements 
+                of the type used after the <b>=</b> must begin with. Normally Jameleon would use 
+                the XML element, &lt;testcase&gt;. However, the namespace definition of jelly:jameleon, 
+                requires all Jameleon-based elements to begin with &quot;qa&quot;. So &lt;testcase&gt; 
+                turns into &lt;qa:testcase&gt;.
+            </p>
+            <p>
+                By excluding the <b>:</b> after xmlns, a default namespace can be defined. This means that the tags
+                for that namespace don't need to begin with anything. For example: &lt;testcase xmlns=&quot;jelly:core&quot;&gt;
+                works just fine. To make the Jameleon tags the default and the Jelly tags begin with j:, do this:
+                &lt;testcase xmlns=&quot;jelly:core&quot; xmlns:j=&quot;jelly:core&quot;&gt;
+            </p>
+            <p>
+                The value of the xmlns:qa is the location of the definition of the document. In 
+                this case, &quot;jelly:jameleon&quot; is the location of the structure 
+                definition. A namespace may be defined in any element. However, the namespace 
+                will only be valid for children of that element. In other words:
+                <source>
+&lt;jm:testcase xmlns:jm=&quot;jelly:jameleon&quot;&gt;
+                </source>
+                Will also work. Because jelly:core is not defined, only Jameleon-specific tags can be used directly under this tag.
+                However, if the child element declared the jelly:core namespace, it could be used for that element and all children
+                of that element. For most cases, using the above example for Jameleon will get the job done and it keeps the
+                test cases simpler and easier to read.
+            </p>
+        </section>
+        <section name="XML Fragments">
+            <p>
+                An XML fragment is considered an XML document that doesn't have a root 
+                element or even if it does, that root may become a child of another element. The 
+                idea of including existing XML into another document is very flexible and can be 
+                used as a workaround for having a set of the same data in many XML documents.
+            </p>
+            <p>
+                Including an XML fragment in another XML document is actually quite simple. 
+                First, the document that is going to be imported, must be defined and given a 
+                name. This definition of this document must be included after the prolog and 
+                before the root element of the XML document. Second, the name is used to include 
+                that xml fragment in the document wherever desired (as long as it stays a valid 
+                XML after the import).
+            </p>
+            <p>
+                For example:
+            </p>
+            <p>
+                <source>
+&lt;httpunit-session application=&quot;sourceforge&quot;&gt;
+&lt;some-function-point functionId=&quot;A function point that does something&quot;
+/&gt;
+
+&lt;/httpunit-session&gt;
+                </source>
+            </p>
+            <p>
+                is saved to the file some.xml.fragment.
+                <source>
+&lt;!DOCTYPE project [
+&lt;!ENTITY fragToInclude SYSTEM &quot;some.xml.fragment&quot;&gt;
+]&gt;
+&lt;testcase xmlns=&quot;jelly:jameleon&quot; name=&quot;ExampleTestCase&quot;&gt;
+&amp;fragToInclude;
+&lt;/testcase&gt;
+                </source>
+            </p>
+            <p>
+                In this file, &quot;some.xml.fragment&quot; is given the name &quot;fragToInclude&quot; 
+                at the top of the file. The &amp; followed by the name or fragToInclude followed 
+                by a ; or just &amp;fragToInclude; is used as the actual &quot;import here&quot; 
+                statement.
+            </p>
+            <p>
+                Once the XML is parsed, the document is brought together to look like:
+                <source>
+&lt;testcase xmlns=&quot;jelly:jameleon&quot;&gt;
+&lt;httpunit-session application=&quot;sourceforge&quot;&gt;
+&lt;q:some-function-point functionId=&quot;A function point that does something&quot;/&gt;
+&lt;/httpunit-session&gt;
+&lt;/testcase&gt;
+                </source>
+            </p>
+            <p>
+                Jameleon does not require the use of fragments, but it is recommended for testcases 
+                that test the same functionality but in different ways. Getting to the state 
+                where the functionality can be tested is most of the work and the grouping of 
+                the function points that get to that point can be put into a fragment for 
+                inclusion into the actual test cases.
+            </p>
+        </section>
+    </body>
+</document>

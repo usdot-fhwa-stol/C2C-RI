@@ -1,0 +1,11 @@
+tmdd:eventIndexMsg.eventIndex.feu-url.url-reference = string
+tmdd:eventIndexMsg.eventIndex.feu-url.url-reference-medium = string
+tmdd:eventIndexMsg.eventIndex.file-update-time.date = stringst
+tmdd:eventIndexMsg.eventIndex.file-update-time.time = string
+tmdd:eventIndexMsg.eventIndex.file-update-time.offset = strin
+tmdd:eventIndexMsg.eventIndex.event-update-time.date = stringst
+tmdd:eventIndexMsg.eventIndex.event-update-time.time = string
+tmdd:eventIndexMsg.eventIndex.event-update-time.offset = strin
+tmdd:eventIndexMsg.eventIndex.event-id = string
+tmdd:eventIndexMsg.eventIndex.event-update = 5
+tmdd:eventIndexMsg.eventIndex.status = ended

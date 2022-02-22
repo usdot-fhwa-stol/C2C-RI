@@ -1,0 +1,87 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=${encoding}"/>
+    <title>${testCase.Name} Results</title>
+    <link rel="stylesheet" href="${results_res_dir}/css/testCaseResults.css" type="text/css" media="all"/>
+</head>
+<body>
+<table width="100%" cellpadding="4" border="0">
+<tr>
+    <td width="75%" valign="top">
+        <div class="full_width">
+            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr class="info_bar">
+                    <td width="1" height="1"><img alt="top left" src="${results_res_dir}/images/lt_top_blue.gif"/></td>
+                    <td class="txtHeader padding">Test Case Details</td>
+                    <td class="padding">
+                        <div align="right">
+                            <a href="#" class="source_popup txtHeader">View Source
+                                <img alt="View Source" src="${results_res_dir}/images/view_src_icn_blue.gif" width="40" height="33"
+                                     border="0" align="absmiddle"/>
+                                <span>
+                                    <table width="100%" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td class="titlebar"><img alt="source" src="${results_res_dir}/images/lt_top_info.gif" align="absmiddle"/>View Script</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="source">
+                                              <div class="source">
+                                                  <pre>
+                                ${testCase.ScriptContents}
+                                                  </pre>
+                                              </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </span>
+                            </a>
+                        </div>
+                    </td>
+                    <td width="1" height="1"><img alt="top right" src="${results_res_dir}/images/rt_top_blue.gif"/></td>
+                </tr>
+            </table>
+        </div>
+        <div class="test_case_details">
+            <iframe
+                    SRC="summary.html"
+                    MARGINWIDTH="0"
+                    WIDTH="100%"
+                    HEIGHT="100%"
+                    MARGINHEIGHT="0"
+                    FRAMEBORDER="0"
+                    SCROLLING="AUTO">
+            </iframe>
+        </div>
+        <div class="full_width">
+            <table width="100%" cellpadding="0" cellspacing="0" class="info_bar">
+                <tr>
+                    <td width="1" height="1"><img alt="bottom left" src="${results_res_dir}/images/lt_bot_blue.gif"/></td>
+                    <td width="1" height="1">
+                        <div align="right"><img alt="bottom right" src="${results_res_dir}/images/rt_bot_blue.gif"/></div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </td>
+    <td width="25%" valign="top">
+        <div class="results_summary">
+            <iframe
+                    SRC="resultsSummary.html"
+                    MARGINWIDTH="0"
+                    WIDTH="100%"
+                    HEIGHT="100%"
+                    MARGINHEIGHT="0"
+                    FRAMEBORDER="0"
+                    SCROLLING="AUTO">
+            </iframe>
+        </div>
+    </td>
+</tr>
+<tr width="100%">
+<td colspan="2">
+${results}
+</td>
+</tr>
+</table>
+</body>
+</html>

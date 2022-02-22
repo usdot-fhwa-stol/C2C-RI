@@ -1,0 +1,30 @@
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+  <testStep functionId="Step 1.  Ensure that the postconditionFailureFlag variable is set to false.  The test case set the value to ${MainScriptTestStepFailure}.">	
+ 	   <ju-assert-equals functionId = "Check whether the flag is equal to false" 
+	      expected="false"
+	      actual = "${MainScriptTestStepFailure}"/>
+  </testStep>
+
+  <testStep functionId="Step 2.  This step is only executed if Step 1 passed.">	
+  </testStep>
+
+  <testStep functionId="Step 3.  Run the TPS-PostconditionSubscriptTest subscript.">	
+      <jl:set var="MasterStep" value="TPS-PostconditionSubScriptTest"/>
+      <ri-execute-script functionId="This is the ri-execute-script-tag" script="TPS-PostconditionSubScriptTest.xml" checkOutcomePassed="!${SubScriptTestStepFailure}||!${SubScriptPostConditionFailure}"/>
+   </testStep>
+
+
+  <postcondition>	
+     <testStep functionId="Step 4.  Postcondition: This step is always executed as part of a PostCondition Tag.">	
+     </testStep>
+
+     <testStep functionId="Step 5.  PostCondition: Ensure that the postconditionStepFailureFlag variable is set to false.  The test case set the value to ${MainScriptPostConditionFailure}.">
+ 	   <ju-assert-equals functionId = "Check whether false is equal to false" 
+	      expected="false"
+	      actual = "${MainScriptPostConditionFailure}"/>
+     </testStep>
+
+  </postcondition>
+
+</testprocedure>
+

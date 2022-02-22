@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ConformanceReport" pageWidth="638" pageHeight="825" columnWidth="598" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isTitleNewPage="true">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1126"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="BuildCreatedReportDB"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Documents and Settings\\crearw\\Desktop\\Reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="XML_DATA_DOCUMENT" class="org.w3c.dom.Document" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     creator,
+     selectedInfoLayerTestSuite,
+     selectedAppLayerTestSuite,
+     c2criVersion,
+     externalCenterOperation,
+     checksum,
+     configFileName,
+     fileName,
+     description,
+     InitEvent.ID AS InitEvent_ID,
+     InitEvent.EventID AS InitEvent_EventID,
+     InitEvent.fileName AS InitEvent_fileName,
+     InitEvent.startTime AS InitEvent_startTime,
+     InitEvent.creator AS InitEvent_creator,
+     InitEvent.description AS InitEvent_description,
+     InitEvent.c2criVersion AS InitEvent_c2criVersion,
+     InitEvent.configFileName AS InitEvent_configFileName,
+     InitEvent.checksum AS InitEvent_checksum,
+     InitEvent.selectedAppLayerTestSuite AS InitEvent_selectedAppLayerTestSuite,
+     InitEvent.selectedInfoLayerTestSuite AS InitEvent_selectedInfoLayerTestSuite,
+     InitEvent.configVersion AS InitEvent_configVersion,
+     InitEvent.configurationAuthor AS InitEvent_configurationAuthor,
+     InitEvent.externalCenterOperation AS InitEvent_externalCenterOperation,
+     InitEvent.emulationEnabled AS InitEvent_emulationEnabled,
+     InitEvent.emulationInitialization AS InitEvent_emulationInitialization
+FROM
+     InitEvent InitEvent]]>
+	</queryString>
+	<field name="creator" class="java.lang.String"/>
+	<field name="selectedInfoLayerTestSuite" class="java.lang.String"/>
+	<field name="selectedAppLayerTestSuite" class="java.lang.String"/>
+	<field name="c2criVersion" class="java.lang.String"/>
+	<field name="externalCenterOperation" class="java.lang.String"/>
+	<field name="checksum" class="java.lang.String"/>
+	<field name="configFileName" class="java.lang.String"/>
+	<field name="fileName" class="java.lang.String"/>
+	<field name="description" class="java.lang.String"/>
+	<field name="InitEvent_ID" class="java.lang.Object"/>
+	<field name="InitEvent_EventID" class="java.lang.Object"/>
+	<field name="InitEvent_fileName" class="java.lang.String"/>
+	<field name="InitEvent_startTime" class="java.lang.String"/>
+	<field name="InitEvent_creator" class="java.lang.String"/>
+	<field name="InitEvent_description" class="java.lang.String"/>
+	<field name="InitEvent_c2criVersion" class="java.lang.String"/>
+	<field name="InitEvent_configFileName" class="java.lang.String"/>
+	<field name="InitEvent_checksum" class="java.lang.String"/>
+	<field name="InitEvent_selectedAppLayerTestSuite" class="java.lang.String"/>
+	<field name="InitEvent_selectedInfoLayerTestSuite" class="java.lang.String"/>
+	<field name="InitEvent_configVersion" class="java.lang.String"/>
+	<field name="InitEvent_configurationAuthor" class="java.lang.String"/>
+	<field name="InitEvent_externalCenterOperation" class="java.lang.String"/>
+	<field name="InitEvent_emulationEnabled" class="java.lang.String"/>
+	<field name="InitEvent_emulationInitialization" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="785" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="598" height="44"/>
+				<textElement textAlignment="Center" rotation="None" lineSpacing="Single">
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Standard Conformance/Compliance Test]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="217" width="365" height="20"/>
+				<textElement lineSpacing="Single"/>
+				<text><![CDATA[Section 2 (Application Layer Standard Conformance/Compliance Report)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="71" width="339" height="45"/>
+				<textElement lineSpacing="Single">
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[This report provides an assessment of SUT conformance based upon the test cases performed and the needs and requirements selected for the project.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="135" width="598" height="1"/>
+			</line>
+			<line>
+				<reportElement x="0" y="212" width="598" height="1"/>
+			</line>
+			<staticText>
+				<reportElement x="19" y="170" width="537" height="38"/>
+				<textElement lineSpacing="Single">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[This section provides an indication of whether each project Information Layer Standard selected need and requirement was demonstrated to be satisfied and fulfilled respectively, based on the execution and results of the selected set of test cases.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="87" y="71" width="51" height="20"/>
+				<textElement lineSpacing="Single">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Summary:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="112" y="144" width="365" height="20"/>
+				<textElement lineSpacing="Single"/>
+				<text><![CDATA[Section 1 (Information Layer Standard Conformance/Compliance Report)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="243" width="537" height="38"/>
+				<textElement lineSpacing="Single">
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[This section provides an indication of whether each project Information Layer Standard selected need and requirement was demonstrated to be satisfied and fulfilled respectively, based on the execution and results of the selected set of test cases.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="38" splitType="Stretch">
+			<staticText>
+				<reportElement x="90" y="4" width="399" height="28"/>
+				<textElement textAlignment="Center" lineSpacing="Single">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Standard Conformance/Compliance Test Report]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<subreport>
+				<reportElement x="3" y="2" width="597" height="9"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "LogFileHeader_Subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="13">
+			<subreport>
+				<reportElement x="3" y="2" width="599" height="0"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ConformanceReport_Infosubreport.jasper"]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement x="0" y="0" width="1" height="5"/>
+			</line>
+			<subreport>
+				<reportElement positionType="Float" x="4" y="8" width="594" height="0"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "InfoLayerUnexecutedTestCases_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+		<band height="25" splitType="Stretch">
+			<subreport>
+				<reportElement positionType="Float" x="3" y="5" width="619" height="0"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "ConformanceReport_AppSubreport.jasper"]]></subreportExpression>
+			</subreport>
+			<line>
+				<reportElement x="0" y="0" width="1" height="5"/>
+			</line>
+			<subreport>
+				<reportElement positionType="Float" x="4" y="15" width="594" height="0"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "AppLayerUnexecutedTestCases_subreport.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="0" width="100" height="1"/>
+			</break>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<textField>
+				<reportElement x="356" y="1" width="160" height="20"/>
+				<textElement textAlignment="Right" lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Open Source   Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="516" y="1" width="40" height="20"/>
+				<textElement lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="1" width="46" height="20"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Source:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="46" y="1" width="380" height="20"/>
+				<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[""+$F{fileName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="13" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,50 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-EntityEmulation
+#       Description:  This test case is used to verify the SUTs support of Entity Emulation.
+#       Related Procedure:  TPS-C2CRI-EntityEmulation
+#       Version/Date: 2016/03/7 13:57:43
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication.  Valid values are True or False.
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid user name.
+Username = #CONTEXTVARIABLE#RI_USERNAME#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid password.
+Password = #CONTEXTVARIABLE#RI_PASSWORD#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid Operator Identifier.
+OperatorID = defaultOperatorID
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the privilege to access the information requested.  Valid values are True or False.
+AllowAccess = True
+

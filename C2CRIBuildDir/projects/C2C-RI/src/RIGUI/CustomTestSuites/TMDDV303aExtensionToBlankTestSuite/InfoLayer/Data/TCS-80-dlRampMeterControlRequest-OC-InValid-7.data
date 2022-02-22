@@ -1,0 +1,409 @@
+ 
+#<!--   
+#       Title:  TCS-80-dlRampMeterControlRequest-OC-InValid-7
+#       Description:  This test case is used to verify the SUTs support of the dlRampMeterControlRequest dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.9.4 [Need to Control a Remote Ramp Meter Device]. This Test Case tests for a InValid (7) response result.
+#       Related Procedure:  TPS-80-dlRampMeterControlRequest-OC
+#       Version/Date: 2013/09/25 10:46:24
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Request Message to be sent to the SUT.
+RequestMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether an error response is expected from the SUT.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of error response that is expected from the SUT.
+ErrorTypeExpected = 7
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.authentication.user-id 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.authentication.user-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.authentication.password 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.authentication.password = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.authentication.operator-id  BaseType=string  ParentType= Authentication
+tmdd:rampMeterControlRequestMsg.device-control-request-header.authentication.operator-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-id 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-id = transcore.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-name 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-location 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-location = stringstri
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-function 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-function = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.contact-id 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.person-name 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.person-title 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.phone-number 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.phone-alternate 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.mobile-phone-number 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.mobile-phone-id 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.fax-number 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.pager-number 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.pager-id 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.email-address 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.radio-unit 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.address-line1 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.address-line2 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.city 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.state 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.zip-code 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.country 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.organization-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-id 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-id = tcore_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-name 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum = wgs-84
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.altitude.kmDec 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.altitude.kmDec = 1000.00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-description 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-type 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.last-update-time.date 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.last-update-time.time 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.last-update-time.offset 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.organization-requesting.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.device-id  BaseType=string  ParentType= DeviceControlRequestHeader
+tmdd:rampMeterControlRequestMsg.device-control-request-header.device-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.request-id  BaseType=string  ParentType= DeviceControlRequestHeader
+tmdd:rampMeterControlRequestMsg.device-control-request-header.request-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.event-id  BaseType=string  ParentType= DeviceControlRequestHeader
+tmdd:rampMeterControlRequestMsg.device-control-request-header.event-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.response-plan-id  BaseType=string  ParentType= DeviceControlRequestHeader
+tmdd:rampMeterControlRequestMsg.device-control-request-header.response-plan-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.command-request-priority  BaseType=unsignedByte  ParentType= DeviceControlRequestHeader
+tmdd:rampMeterControlRequestMsg.device-control-request-header.command-request-priority = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.command-start-time.date 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.command-start-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.command-start-time.time 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.command-start-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.command-start-time.offset 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.command-start-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.command-end-time.date 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.command-end-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.command-end-time.time 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.command-end-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.command-end-time.offset 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.command-end-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.command-request-time.date 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.command-request-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.command-request-time.time 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.command-request-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.device-control-request-header.command-request-time.offset 
+tmdd:rampMeterControlRequestMsg.device-control-request-header.command-request-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.metered-lane-identifier  BaseType=unsignedByte  ParentType= RampMeterLaneControlDetails
+tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.metered-lane-identifier = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-request-command  BaseType=anySimpleType  ParentType= RampMeterLaneControlDetails
+tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-request-command = insert-extension-values-here
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters.meter-requested-plan  BaseType=unsignedByte  ParentType= RampControlDetails
+tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters.meter-requested-plan = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters.meter-requested-rate  BaseType=unsignedShort  ParentType= RampControlDetails
+tmdd:rampMeterControlRequestMsg.metered-lane-list.metered-lane.meter-command-parameters.meter-requested-rate = 5
+

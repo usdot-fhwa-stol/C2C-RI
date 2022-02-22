@@ -1,0 +1,482 @@
+<?xml version="1.0"?>
+<!--
+    Jameleon - An automation testing tool..
+    Copyright (C) 2003-2006 Christian W. Hargraves (engrean@hotmail.com)
+    
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+<testcase xmlns="jelly:jameleon">
+    <test-case-author>Christian Hargraves</test-case-author>
+    <test-case-level>FUNCTIONAL</test-case-level>
+    <application-tested>framework</application-tested>
+
+    <execute-jameleon-script
+        functionId="The wait tag delays as expected"
+        script="tst/xml/framework/waitTagSuccess.xml"
+        testCaseName="waitTagSuccess"
+        checkOutcomePassed="true"
+        executionTimeGreaterThan="295"
+        />
+
+    <execute-jameleon-script
+        functionId="The wait tag doesn't delay when a previous error occured"
+        script="tst/xml/framework/waitTagFail.xml"
+        testCaseName="waitTagFail"
+        checkOutcomeFailed="true"
+        executionTimeLessThan="100"
+        />
+
+    <execute-jameleon-script
+        functionId="The test case fails with the correct # when useCSV=true"
+        script="tst/xml/framework/test_case_use_csv_true.xml"
+        testCaseName="test_case_use_csv_true"
+        checkOutcomeFailed="true"
+        numOfTestCasesRun="4"
+        numOfTestCasesFailed="2"/>
+
+    <execute-jameleon-script
+        functionId="The test case fails when the testcase tag reads in a CSV file in an invalid format"
+        script="tst/xml/framework/test_case_csv_invalid_format.xml"
+        testCaseName="too_many_values"
+        checkOutcomeFailed="true"
+        errorMsgContains="has more values than keys!"
+        lineFailedFunctionId="testcase"
+        lineNumFailed="20"
+        numOfTestCasesRun="1"
+        numOfTestCasesFailed="1"/>
+
+    <execute-jameleon-script
+        functionId="The test case fails when a csv tag reads in a CSV file in an invalid format"
+        script="tst/xml/framework/csv_tag_invalid_format.xml"
+        testCaseName="csv_tag_invalid_format"
+        checkOutcomeFailed="true"
+        lineFailedFunctionId="csv"
+        lineNumFailed="28"
+        numOfTestCasesRun="1"
+        numOfTestCasesFailed="1"
+        />
+
+   <execute-jameleon-script
+       functionId="The test case fails when a RuntimeException is thrown"
+       script="tst/xml/framework/runtimeExceptionThrown.xml"
+       testCaseName="runtimeExceptionThrown"
+       checkOutcomeFailed="true"
+       numOfTestCasesRun="1"
+       numOfTestCasesFailed="1"
+       lineFailedReason="throwing an exception"
+       lineFailedFunctionId="throw an exception"
+       lineNumFailed="31"/>
+
+   <execute-jameleon-script
+       functionId="The session waits for the correct time after execution."
+       script="tst/xml/framework/sessionDelay.xml"
+       executionTimeGreaterThan="499"
+       checkOutcomePassed="true"/>
+
+   <execute-jameleon-script
+       functionId="error on unknown jameleon tag in testcase tag"
+       script="tst/xml/framework/unrecognizedTagInTestCaseTag.xml"
+       testCaseName="unrecognizedTagInTestCaseTag"
+       checkOutcomeFailed="true"
+       numOfTestCasesRun="1"
+       numOfTestCasesFailed="1"
+       errorMsgContains="&lt;some-bad-tag-name&gt; is not a recognized Jameleon tag. Please check the spelling and try again"
+       lineFailedFunctionId="testcase"
+       lineNumFailed="20"
+       />
+
+   <execute-jameleon-script
+       functionId="error on unknown jameleon tag in session tag"
+       script="tst/xml/framework/unrecognizedTagInSessionTag.xml"
+       testCaseName="unrecognizedTagInSessionTag"
+       checkOutcomeFailed="true"
+       numOfTestCasesRun="1"
+       numOfTestCasesFailed="1"
+       errorMsgContains="&lt;some-bad-tag-name&gt; is not a recognized Jameleon tag. Please check the spelling and try again"
+       lineFailedFunctionId="ju-session"
+       lineNumFailed="27"
+       />
+
+   <execute-jameleon-script
+       functionId="error on unknown jameleon tag in data drivable tag"
+       script="tst/xml/framework/unrecognizedTagInDataDrivableTag.xml"
+       testCaseName="unrecognizedTagInDataDrivableTag"
+       checkOutcomeFailed="true"
+       numOfTestCasesRun="1"
+       numOfTestCasesFailed="1"
+       errorMsgContains="&lt;some-bad-tag-name&gt; is not a recognized Jameleon tag. Please check the spelling and try again"
+       lineFailedFunctionId="csv"
+       lineNumFailed="28"
+       />
+
+   <execute-jameleon-script
+       functionId="skip-if organization."
+       script="tst/xml/framework/skipIfOrganization.xml"
+       testCaseName="skipIfOrganization"
+       checkOutcomeFailed="true"
+       lineFailedReason="assertTrue: "
+       lineFailedFunctionId="Don't skip this function"
+       lineNumFailed="38"
+       />
+
+   <execute-jameleon-script
+       functionId="skip-if test."
+       script="tst/xml/framework/skipIfTest.xml"
+       testCaseName="skipIfTest"
+       checkOutcomeFailed="true"
+       lineFailedReason="assertTrue: "
+       lineFailedFunctionId="Don't skip this function"
+       lineNumFailed="38"
+       />
+
+   <execute-jameleon-script
+       functionId="assert-not-null failing."
+       script="tst/xml/framework/assertNotNullFail.xml"
+       testCaseName="assertNotNullFail"
+       checkOutcomeFailed="true"
+       lineFailedReason="A expected null value was not null!"
+       lineFailedFunctionId="Check that a null variable is not null, hopefully causing a failure."
+       lineNumFailed="31"
+       />
+
+   <execute-jameleon-script
+       functionId="assert-true failing."
+       script="tst/xml/framework/assertTrueFail.xml"
+       testCaseName="assertTrueFail"
+       checkOutcomeFailed="true"
+       lineFailedReason="One does not equals two"
+       lineFailedFunctionId="do a failing boolean test"
+       lineNumFailed="32"
+       />
+
+   <execute-jameleon-script
+       functionId="assert-equals failing"
+       script="tst/xml/framework/assertEqualsFail.xml"
+       testCaseName="assertEqualsFail"
+       checkOutcomeFailed="true"
+       lineFailedReason="Value expected:&lt;value 1&gt; but was:&lt;value 2&gt;"
+       lineFailedFunctionId="Compare two different variables"
+       lineNumFailed="33"
+       />
+
+   <execute-jameleon-script
+       functionId="an appropriate error message is given when a test case fails at a functional point with precondition set to true"
+       script="tst/xml/framework/precondition.xml"
+       checkOutcomeFailed="true"
+       testCaseName="precondition"
+       lineFailedReason="PRECONDITION FAILURE: simpleFunction attribute 'test' should be set to true"
+       lineFailedFunctionId="Do a basic assertTrue"
+       lineNumFailed="30"/>
+
+   <execute-jameleon-script
+       functionId="an appropriate error message is given when a test case fails at a function tag nested in a precondition tag."
+       script="tst/xml/framework/preconditionTag.xml"
+       testCaseName="preconditionTag"
+       checkOutcomeFailed="true"
+       lineFailedReason="PRECONDITION FAILURE: simpleFunction attribute 'test' should be set to true"
+       lineFailedFunctionId="Do a basic assertTrue"
+       lineNumFailed="30"/>
+
+   <execute-jameleon-script
+       functionId="a functional point with postcondition='true' is called even after a failure from a previous precondition tag - first "
+       script="tst/xml/framework/postcondition.xml"
+       checkOutcomeFailed="true"
+       lineFailedReason="POSTCONDITION FAILURE: a postcondition failed as expected"
+       lineFailedFunctionId="Do a basic assertTrue with true in a postcondition"
+       testCaseName="postcondition"
+       lineNumFailed="42"/>
+
+   <execute-jameleon-script
+       functionId="functional points aren't executed in a csv tag when a function fails first outside of the csv tag."
+       script="tst/xml/framework/failure_outside_csv_tag.xml"
+       testCaseName="failure_outside_csv_tag"
+       checkOutcomeFailed="true"
+       noFailOnFunctionId="run some failing tests"
+       lineFailedReason="should fail here"
+       lineFailedFunctionId="fail"
+       numOfFunctionsRun="1"
+       lineNumFailed="32"/>
+
+   <execute-jameleon-script
+       functionId="non-existent script"
+       script="tst/junit_no_file.xml"
+       errorMsgContains="Could not execute"/>
+
+   <execute-jameleon-script
+       functionId="basic test case"
+       script="tst/xml/framework/jameleon_test_case_test.xml"
+       checkOutcomePassed="true"
+       testCaseDocsFile="/jameleon_test_case_test/index.html"/>
+
+   <execute-jameleon-script
+       functionId="failing script"
+       script="tst/xml/framework/jameleon_test_case_test_failure.xml"
+       checkOutcomeFailed="true"
+       testCaseDocsFile="/jameleon_test_case_test_failure/index.html"/>
+
+   <execute-jameleon-script
+       functionId="functional points aren't executed in a csv tag when a function fails inside a nested csv tag."
+       script="tst/xml/framework/failure_inside_nested_csv_tag.xml"
+       checkOutcomeFailed="true"
+       numOfFunctionsRun="12"
+       numOfFailures="4"
+       />
+
+   <execute-jameleon-script
+       functionId="skip-if test and organization."
+       script="tst/xml/framework/skipIfTestAndOrganization.xml"
+       checkOutcomeFailed="true"
+       numOfFunctionsRun="2"
+       numOfFailures="1"
+       lineNumFailed="45"
+       testCaseName="skipIfTestAndOrganization"
+       lineFailedReason="Expected tag failed"
+       lineFailedFunctionId="Don't skip this function - organization is false"
+       />
+
+   <execute-jameleon-script
+       functionId="a functional point with postcondition='true' is called even after a failure from a precondition tag"
+       script="tst/xml/framework/postconditionWithPrecondition.xml"
+       checkOutcomeFailed="true"
+       lineNumFailed="35"
+       testCaseName="postconditionWithPrecondition"
+       lineFailedReason="POSTCONDITION FAILURE: This postcondition was executed"
+       lineFailedFunctionId="Do a basic assertTrue with true with a postcondition"
+       numOfFunctionsRun="2"
+       numOfFailures="2"
+       />
+
+   <execute-jameleon-script
+       functionId="a functional point nested in a postcondition tag is called even after a failure from a previous tag"
+       script="tst/xml/framework/postconditionTag.xml"
+       checkOutcomeFailed="true"
+       lineNumFailed="41"
+       testCaseName="postconditionTag"
+       lineFailedReason="POSTCONDITION FAILURE: executed all the way to the bottom"
+       lineFailedFunctionId="Do a basic assertTrue with false in a postcondition"
+       numOfFunctionsRun="4"
+       numOfFailures="2"/>
+
+   <execute-jameleon-script
+       functionId="postcondition inside and outside a session tag"
+       script="tst/xml/framework/postconditionTagSessionTag.xml"
+       checkOutcomeFailed="true"
+       lineNumFailed="54"
+       testCaseName="postconditionTagSessionTag"
+       lineFailedReason="POSTCONDITION FAILURE: you told me to fail"
+       lineFailedFunctionId="validate that the session was started even though a previous failure occured, but still fail."
+       noFailOnFunctionId="validate that the session was not started because of a previous failure."
+       numOfFunctionsRun="4"
+       numOfFailures="2"/>
+
+   <execute-jameleon-script
+       functionId="postcondition inside a csv tag with passing and failing tests"
+       script="tst/xml/framework/postconditionWithCsvNoCountRow.xml"
+       checkOutcomeFailed="true"
+       testCaseName="postconditionWithCsvNoCountRow"
+       noFailOnFunctionId="This tag shouldn't get executed"
+       numOfFunctionsRun="6"
+       numOfFailures="5"/>
+
+   <execute-jameleon-script
+       functionId="the sql-update tag does as expected"
+       script="tst/xml/framework/sql_update_tag_success.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="10"
+       testCaseName="SQL_Update_Tag_Success"/>
+
+   <execute-jameleon-script
+       functionId="the sql-update tag fails when no sql is passed"
+       script="tst/xml/framework/sql_update_tag_failure.xml"
+       testCaseName="SQL_Update_Tag_Failure"
+       lineFailedReason="You must define an attribute called 'sqlUpdateSql' for this tag."
+       lineFailedFunctionId="Run sql-update without ANY parameters"
+       lineNumFailed="27"
+       checkOutcomeFailed="true"
+       numOfFunctionsRun="1"/>
+
+   <execute-jameleon-script
+       functionId="the function point fails when an exception is thrown and expectException is 'false'."
+       script="tst/xml/framework/exceptionNotExpected.xml"
+       checkOutcomeFailed="true"
+       testCaseName="exceptionNotExpected"
+       lineNumFailed="30"
+       lineFailedReason="Expected Exception throw"
+       lineFailedFunctionId="throw an exception"/>
+
+   <execute-jameleon-script
+       functionId="when failOnCSVFileNotFound is set to false, then an error isn't thrown and the results aren't even logged."
+       script="tst/xml/framework/csv_file_not_found_disabled.xml"
+       noTestCaseResults="true"/>
+
+   <execute-jameleon-script
+       functionId="when failOnCSVFileNotFound is not set to false in csv tag, then an error is thrown and the results are logged correctly."
+       script="tst/xml/framework/csv_file_not_found_enabled_csv_tag.xml"
+       testCaseName="csv_file_not_found_enabled_csv_tag"
+       checkOutcomeFailed="true"
+       lineNumFailed="29"
+       errorMsgContains="_non_existent_csv_file_.csv"
+       lineFailedFunctionId="csv"/>
+
+   <execute-jameleon-script
+       functionId="when failOnCSVFileNotFound is not set to false in testcase tag, then an error is thrown and the results are logged correctly."
+       script="tst/xml/framework/csv_file_not_found_enabled_tc_tag.xml"
+       testCaseName="_non_existent_csv_file_should_fail_"
+       checkOutcomeFailed="true"
+       lineNumFailed="19"
+       errorMsgContains="_non_existent_csv_file_should_fail_.csv"
+       lineFailedFunctionId="testcase"/>
+
+   <execute-jameleon-script
+       functionId="rows with comments '#' in csv files don't get executed for a csv tag."
+       script="tst/xml/framework/csv_tag_csv_comments.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="2"/>
+
+   <execute-jameleon-script
+       functionId="Nested csv tags"
+       script="tst/xml/framework/nestedCsvTag.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="3"/>
+
+   <execute-jameleon-script
+       functionId="old variable values aren't left around from the previous data row if the new value is not set."
+       script="tst/xml/framework/csv_not_cleaning_up_old_variables_previous_row.xml"
+       checkOutcomeFailed="true"/>
+
+   <execute-jameleon-script
+       functionId="Nothing happens when the maxExecutionTime is not exceeded"
+       script="tst/xml/framework/max_execution_time_not_exceeded.xml"
+       executionTimeGreaterThan="0"
+       executionTimeLessThan="500"
+       checkOutcomePassed="true"/>
+
+   <execute-jameleon-script
+       functionId="An appropriate error is displayed when the maxExecutionTime is exceeded"
+       script="tst/xml/framework/max_execution_time_exceeded.xml"
+       errorMsgContains="The maximum execution time &lt;10&gt; was exceeded"
+       executionTimeGreaterThan="40"
+       executionTimeLessThan="200"
+       checkOutcomeFailed="true"/>
+
+   <execute-jameleon-script
+       functionId="when a name isn't given the file name is used instead"
+       script="tst/xml/framework/testNameFromFileName.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="2"/>
+
+   <execute-jameleon-script
+       functionId="a variable in Applications.properties can be substituted multiple times based on variables in a csv file"
+       script="tst/xml/framework/subVars.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="4"/>
+
+   <execute-jameleon-script
+       functionId="variable values in Applications.properties may be substituted in CSV files. "
+       script="tst/xml/framework/csv_value_substitute.xml"
+       numOfFunctionsRun="6"
+       checkOutcomePassed="true"/>
+
+   <execute-jameleon-script
+       functionId="getKeyMapping in AbstractDataDrivableTag"
+       script="tst/xml/framework/dataDrivableMapVariable.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="10"
+       numOfTestCasesRun="2"
+       />
+
+   <execute-jameleon-script
+       functionId="iterate tag"
+       script="tst/xml/framework/iterateTagTest.xml"
+       checkOutcomePassed="true"
+       numOfTestCasesRun="2"
+       />
+
+   <execute-jameleon-script
+       functionId="behavior of poscondition in csv tag with count=true"
+       script="tst/xml/framework/postconditionWithCsvCountRow.xml"
+       checkOutcomeFailed="true"
+       testCaseName="postconditionWithCsvCountRow"
+       noFailOnFunctionId="This tag shouldn't get executed"
+       numOfFunctionsRun="6"
+       numOfFailures="5"
+       numOfTestCasesRun="3"
+       numOfTestCasesFailed="3"/>
+
+   <execute-jameleon-script
+       functionId="when countRow is enabled in a csv tag, that the correct number of tests are displayed in the HTML results"
+       script="tst/xml/framework/csv_test_failure_too_many_failures_count_row.xml"
+       checkOutcomeFailed="true"
+       numOfFunctionsRun="4"
+       numOfFailures="2"
+       numOfTestCasesRun="4"
+       numOfTestCasesFailed="2"
+       testCaseName="CsvTestFailureTooManyFailuresCountRow"/>
+
+   <execute-jameleon-script
+       functionId="when countRow is disabled in a csv tag, that the correct number of tests are displayed in the HTML results"
+       script="tst/xml/framework/csv_test_failure_too_many_failures_no_count_row.xml"
+       checkOutcomeFailed="true"
+       numOfFunctionsRun="4"
+       numOfFailures="2"
+       numOfTestCasesRun="1"
+       numOfTestCasesFailed="1"
+       testCaseName="CsvTestFailureTooManyFailuresNoCountRow"/>
+
+   <execute-jameleon-script
+       functionId="csv tag countRow attribute"
+       script="tst/xml/framework/csvTagCountRow.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="3"
+       numOfTestCasesRun="4"/>
+
+   <execute-jameleon-script
+       functionId="csv tag countRow with out testcase tag useCSV"
+       script="tst/xml/framework/csvTagCountRow2.xml"
+       checkOutcomeFailed="true"
+       numOfTestCasesRun="3"
+       numOfTestCasesFailed="1"
+       testCaseName="csvTagCountRow2"
+       lineNumFailed="30"/>
+
+   <execute-jameleon-script
+       functionId="rows with comments '#' in csv files don't get executed for a testcase tag."
+       script="tst/xml/framework/test_case_csv_comments.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="2"
+       numOfTestCasesRun="2"/>
+
+   <execute-jameleon-script
+       functionId="csvFileName can be set at both test-case and csv tags and that it only depends on the baseDir and csvDir."
+       script="tst/xml/framework/csv_file_name.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="2"
+       numOfTestCasesRun="1"/>
+
+   <execute-jameleon-script
+       functionId="sql tag without countRow setting"
+       script="tst/xml/framework/sqlTagCountRowFalse.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="8"
+       numOfTestCasesRun="1"/>
+
+   <execute-jameleon-script
+       functionId="sql tag with countRow setting"
+       script="tst/xml/framework/sqlTagCountRowTrue.xml"
+       checkOutcomePassed="true"
+       numOfFunctionsRun="8"
+       numOfTestCasesRun="2"/>
+
+</testcase>

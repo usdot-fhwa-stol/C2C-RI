@@ -1,0 +1,1 @@
+javaw -splash:RISplashScreen.jpg -jar .\dist\RIGUI.jar

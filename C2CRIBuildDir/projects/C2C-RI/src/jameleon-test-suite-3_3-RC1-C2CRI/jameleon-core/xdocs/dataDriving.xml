@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Functional Points</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, Functional, Function, Functional Points, Function Points, Test, Testing, javadocs"/>
+
+    <body>
+
+        <section name="Data Driving Topics">
+            <p>
+                <font size="-2">
+                <table>
+                    <tr>
+                        <td><a href="#Why Data Drive?">Why Data Drive?</a></td>
+                        <td>A basic introduction into the advantages data-driving.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Data Volatility Levels">Data Volatility Levels</a></td>
+                        <td>The different places to store different types of data.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Applications properties">Storing Data in Properties Files</a></td>
+                        <td>How to store data in properties files.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#CSV Data">Using CSV Data in Test Scripts</a></td>
+                        <td>How to store data in CSV files.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#SQL Data">Using a Data Stored in Databases in Test Scripts</a></td>
+                        <td>How to Use Data from a Relational Database Management System (RDBMS).</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Using Data">Referencing or Using Data in Test Scripts</a></td>
+                        <td>How to Reference Data Obtained from Various Data Sources in Jameleon Scripts.</td>
+                    </tr>
+                </table>
+                </font>
+            </p>
+        </section>
+        <section name="Why Data Drive?">
+            <p>
+                Having an automated script do one thing well is nice, but the one scenerio is still just one of thousands of possibilities.
+                One of the powers of automation is the ability to exercise the same script with different data. Data-driving an automated
+                script could help find bugs never before imagined.
+            </p>
+        </section>
+        <section name="Data Volatility Levels">
+            <p>
+                In Jameleon, data can be placed in several different places, depending on the how often the data changes. This is not a requirement,
+                only a feature that could end up saving maintenance time in the future.
+            </p>
+            <p>
+                When creating more than one script, it is likely there will be data that is shared across multiple scripts. 
+                This makes the test cases less maintainable when a change to that particular value occurs.
+            </p>
+            <p>
+                The following is a simple list of how Data Volatility Levels differ in an automated script:
+                <subsection name="Test Case Specific Data">
+                    <p>
+                        This type of data is data that changes between iterations of the script. Some examples of this might be the
+                        username used to log onto the application being tested. Another example might be the type of product to choose
+                        when ordering something; maybe the shopping cart behaves differently, depending on the product ordered. This 
+                        data type would be considered <b>highly</b> volatile and might exist in and external data source like a 
+                        <a href="#SQL Data">database</a> or a <a href="#CSV Data">CSV file</a>.
+                    </p>
+                </subsection>
+                <subsection name="Application Specific Data">
+                    <p>
+                        This type of data is not likely to change. Some examples of this data type might be the screen title, form field names,
+                        or even some text on a given screen. Jameleon has a mechanism to pull this type of data outside of the script. It 
+                        can be stored in a file with the same name as your appplication, followed by  <b><i>.properties</i></b> and it must be 
+                        in the root of your CLASSPATH. For example, to test a customer support application, a good name for that application might be <b>csr</b>. 
+                        Therefore a file named <b>csr.properties</b> would be created and put in the root of the CLASSPATH. This type of data could be considered
+                        low to non-volatile.
+                    </p>
+                    <p>
+                        See the <a href="#Variable_Naming_Standards">Variable Naming Standards</a> section for more information on the format of this file.
+                    </p>
+                </subsection>
+                <subsection name="Environment and Application Specific Data">
+                    <p>
+                        This step can be skipped for applications existing only in one environment.
+                    </p>
+                    <p>
+                        There is usually data that differs depending on the evironment the scripts are running against. For example, the way to start 
+                        an application or to browse an application may differ between environments. Maybe a connection to a database to search for
+                        possible test data is required. This will likely also change when testing against the sandbox environment versus the QA test
+                        environment. This type of data will be shared across functional points that don't test the same areas of the application. Because
+                        these settings will likely be very small between applications, they are all listed in the same file.
+                    </p>
+                    <p>
+                        See the <a href="#Environment-specific_Data">Environment-specific Data</a> section for more details and examples.
+                    </p>
+                </subsection>
+                <subsection name="Organization or Affiliate Specific Data">
+                    <p>
+                        This step can be skipped for applications that function the same no matter where they are deployed or who uses them.
+                    </p>
+                    <p>
+                        Sometimes there are applications with behavior that can be changed or configured. These type of applications have the same basic feature set, 
+                        but the business rules may change for each organization. 
+                    </p>
+                    <p>
+                        Let's use a shopping cart as an example. A shopping cart's basic functionality is to sell products and manage orders. However, usually there
+                        are several other features that can be turned on/off and/or must be configured against a specific environment to work properly.
+                        Most good shopping carts are designed to be configured and changed according an organization's needs and branding. Usually, the first thing 
+                        businesses will do is change the title, logos, categories, products offered, shipping and sales tax calculations, and available shipping
+                        methods.
+                    </p>
+                    <p> 
+                        If the basic functionality and usually the workflow are the same, why write separate test scripts for each organization? Why not just have the scripts
+                        use different data that drive the test execution?
+                    </p>
+                    <p>
+                        For more details and examples, see the <a href="#Using_Organizations">Using Organizations</a> section.
+                    </p>
+                </subsection>
+            </p>
+        </section>
+        <section name="Applications properties">
+            <p>
+                Jameleon uses several ways to send data to functional points. One of these ways is through a properties file. The rules for these files are:
+                <ul>
+                    <li>
+                        The name of the file begins with the name of the application being tested followed by <b>.properties</b>.
+                        Please see the section on <a href="#File Naming Standards">file naming standards</a> for a more thourough 
+                        explanation.
+                    </li>
+                    <li>
+                        It is recommended that all properties files exist in the same directory. This makes it easy to include that 
+                        directory in the CLASSPATH. If using the jameleon-test-suite distribution, the directory to place all properties 
+                        files is the <b>res</b> directory.
+                    </li>
+                    <li>
+                        The properties are in <a href="#Variable Naming Standards">key=value format</a>. For example, title=Jameleon - Home.
+                    </li>
+                    <li>
+                        If using an <a href="#Organization">organization</a> all variables differing among organziations must start with
+                        the <b><i>organziation's name</i></b> followed by a period.
+                    </li>
+                    <li>
+                        To use the same variable that differs between <a href="#Environment-specific Data">testing environments</a>, 
+                        create a file beginning with the name of testing environment, followed by <b><i>-Applications.properties</i>.</b>.
+                    </li>
+                    <li>
+                        <a href="#Variable_Substitution">Variable substitution</a> is supported.
+                    </li>
+                    <li>
+                        All variables gathered from these properties files are put in the context of the test script. The best way to use
+                        these variables is within the script itself and not in the code of custom tags. These variables can be used by
+                        ${varName}.
+                    </li>
+                    <li>
+                        To use these variables, simply set the <b><i>application</i></b> attribute in the 
+                        <a href="sessionTag.xml#Session_Tag_Common_Attributes">session tag</a>. This attribute tells Jameleon which file(s) to read and 
+                        which variables to throw in the context. Please see the section on <a href="#Using Properties Variables">using variables</a> 
+                        stored in properties files below.
+                    </li>
+                </ul>
+            </p>
+            <subsection name="Keep it Simple">
+                <p>
+                    The following features are for use only when needed. If the application is deployed to a single environment and there is only
+                    one instance of this application in production, then don't use the organization and/or environment features.
+                </p>
+            </subsection>
+            <subsection name="File Naming Standards">
+                <p>
+                    To store application-specific static data that can be used by Jameleon scripts, the file name must be the name of the
+                    application followed by <b>.properties</b>. For example, if testing a customer service representive admin tool, one might
+                    call that application <b>csr</b>. This means that the file with the name <b>csr.properties</b> would be created. This application
+                    name is then referenced in the session tag of the test script.
+                </p>
+                <p>
+                    Currently, all properties files are loaded via the CLASSPATH. This means that in order to use them, they must be placed
+                    in the root of the CLASSPATH. For example, if the files end up in a directory named <b>Build</b>, then <b>Build</b> must
+                    be in the CLASSPATH. This is accomplished in the jameleon-test-suite package by placing all properties files in the <b>res</b>
+                    directory.
+                </p>
+                <p>
+                    If organizations are used, it is likely that there will be data that is the same across
+                    the different organizations. To do this, simply create keys that don't begin with an 
+                    organization. Keys with an organization override keys without the organization. This way a 
+                    default value can be specified and overridden.
+                </p>
+            </subsection>
+            <subsection name="Variable Naming Standards">
+                <p>
+                    There is only one variable-value pair per line in the file. The variable name should be unique. An example of setting this variable in
+                    csr.properties might look like:
+                    <source>
+logonTitle=Customer Service Tool
+logonFormName=csrLogon
+logonUsernameField=j_username
+logonPasswordField=j_password
+                    </source>
+                    Of course, the form values could be declared as defualt values in the custom tag that represents the CSR logon screen. Or the variable values
+                    in the custom tag could be bound to the values in csr.properties by using the contextName 
+                    <a href="functionPoints.html#Attributes_or_Variables">jameleon.attribute</a>.
+                </p>
+            </subsection>
+            <subsection name="Using Organizations">
+                <p>
+                    For those applications that are basically the same, but have some modifications due to different affiliate requirements, Jameleon supports
+                    this by naming the organization and starting all keywords with the name of the organization followed by a <b>,</b>. For example if the
+                    the logon title of a csr application is different between Company A and Company B, then the following would work:
+<source>
+A.logonTitle=Company A - Customer Admin Tool
+B.logonTitle=Company B - Customer Admin Tool
+</source>
+                </p>
+                <p>
+                    To use organization-specific data, Jameleon must know about the organization. This can be set as a 
+                    <a href="globalSettings.html#organization">global variable</a>, in the <a href="testCaseTag.html#organization">test case tag</a>,
+                    or in the <a href="sessionTag.html#organization">session tag</a>. If defined in the session tag, then the global setting will 
+                    <b>not</b> override the session tag's setting. This is useful when a test case spans multiple applications and one of those 
+                    applications is deployed against only one of the organizations.
+                </p>
+            </subsection>
+            <subsection name="Environment-specific Data">
+                <p>
+                    Data can differ between the different environments the scripts run are against. For example, the way to start an application or to browse an 
+                    application may differ between environments. A connection to a database to search for possible test data will likely change when 
+                    testing against the sandbox environment versus the QA test environment.
+                </p>
+                <p>
+                    Because these settings will likely be very small between applications, they are all listed in the same file. The naming standard for this file is 
+                    the name of the environment followed by <b><i>-Applications.properties</i></b>. For example, to test an applicatoin deployed in <b><i>test</i></b> 
+                    environment, simply create a file named <b><i>test-Applications.properties</i></b>, following the guidelines in  
+                    <a href="#File_Naming_Standards">File Naming Standards</a>. Setting this variable is almost the same as explained above. The only difference is 
+                    that this file represents all applications. Therefore the variable name must start with the application name followed by a <b>.</b>. For example, 
+                    setting the <b>baseUrl</b>of the CSR application would look like:
+                    <source>csr.baseUrl=http://localhost:9123/tutorial</source>
+                </p>
+                <p>
+                    To use environment-specific data, Jameleon must know about the environment This can be set as a 
+                    <a href="globalSettings.html#testEnvironment">global variable</a>or in the <a href="testCaseTag.html#testEnvironment">test case tag</a>.
+                </p>
+                <p>
+                    To use environment-specific data against an organization, simply preprend the variable with the name of the organization. For example, to set
+                    the above <i>baseUrl</i> variable for the <i>csr</i> application in the <i>test</i> environment for the <i>acme</i> organization, the file name
+                    would be the same as the above example, but the variable would be defined with <i>csr.baseUrl</i>:
+                    <source>acme.csr.baseUrl=http://localhost:9123/tutorial</source>
+                </p>
+            </subsection>
+            <subsection name="Variable Substitution">
+                <p>
+                    This file can also handle variable substitution. So in the above example of company A and company B, <i>Customer Admin Tool</i> 
+                    is the same in both organizations. A new variable with that value can be created and used in a latter variable. For example:
+<source>
+appName=Customer Admin Tool
+A.companyName=Company A
+B.companyName=Company B
+logonTitle=${companyName} - ${appName}
+</source>
+                    Now if another affiliate comes around, we simply add C.companyName=Company C to the file and now the same script can run against the new
+                    affiliate.
+                </p>
+            </subsection>
+            <subsection name="Using Properties Variables">
+                <p>
+                    Properties variables can be used in test case scripts by surounding the variable name with ${}. For example:
+                    <source><![CDATA[<ju-assert-equals functionId="compare ${var1} against ${var2}" expected="${var1}" actual="${var2}"/>]]></source>
+                    New variables can be set via the Jelly &lt;set/&gt; tag. 
+                </p>
+                <p>
+                    Properties variables can also be accessed, changed and created in Java via the 
+                    <a href="apidocs/net/sf/jameleon/function/FunctionTag.html#getVariable(java.lang.String)">getVariable</a> and 
+                    <a href="apidocs/net/sf/jameleon/function/FunctionTag.html#setVariable(java.lang.String, java.lang.Object)">setVariable</a> methods of the FunctionTag.
+                </p>
+            </subsection>
+        </section>
+        <section name="CSV Data">
+            <p>
+                Jameleon can use a Comma Separated Value (CSV) file format to make test cases 
+                data-driven. This is a very simple format, but Jameleon has some features to 
+                allow for a more robust data set. Basically, if <a href="testCaseTag.html#useCSV">useCSV</a> 
+                is set to <em>true</em> in the testcase tag, then a file with the same name as the test case 
+                name followed by a <b>.csv</b> is used for data values. This can also be accomplished with the
+                <a href="syntax-reference.html#csv tag">csv tag</a>. For every row of data, except the 
+                first row which simply names the variables names to be set, the test case will be executed. 
+                The test case only passes if all of the rows of data passed.
+            </p>
+            <subsection name="Mapping to a CSV File">
+                <p>
+                    Jameleon uses a uses the following rules to locate the CSV file used for a 
+                    particular test case:
+                    <ol>
+                        <li>
+                            data - The base directory for all CSV files.
+                        </li>
+
+                        <li>
+                            <a href="testCaseTag.html#testEnvironment">testEnvironment</a> - the same 
+                            directory name as the test environment name.
+                        </li>
+                        <li>
+                            <a href="testCaseTag.html#organization">organization</a> - the name of the 
+                            organization if set. This is not a required attribute.
+                        </li>
+                        <li>
+                            <a href="testCaseTag.html#testCaseName">name</a> - The name of the test case.
+                        </li>
+
+                        <li>
+                            .csv - This is the ending of the file name.
+                        </li>
+                    </ol>
+                </p>
+                <p>
+                    For a test case that is run in the testEnvironment "beta" against the 
+                    organization "sourceforge" and with the name "SearchWithNoQuery", the Jameleon 
+                    engine will look for data/beta/sourceforge/SearchWithNoQuery.csv and run the test 
+                    case once for every row in the CSV file. The ./data directory is the directory 
+                    relative to where Jameleon was executed from.
+                </p>
+                <p>
+                    Because the CSV file name is based on the test case name, each test case should 
+                    have a unique name unless it is desired that multiple test cases share the same 
+                    data file. The reporting tool may be confusing since it shows the results based 
+                    on the test case name and it will look like the same test case was executed 
+                    multiple times.
+                </p>
+            </subsection>
+            <subsection name="Format of a CSV File">
+                <p>
+                    When using a CSV file in Jameleon, the first row must be a comma separated 
+                    list of variable ( or attribute ) names needed by each functional point 
+                    listed in the test case. The following rows should be a comma delimited list of 
+                    the values for each of the variables in the same order as the first row. A line
+                    starting with &quot;#&quot; is a comment and will be ignored. So if we 
+                    had a test case that used "searchTerm", "searchTitle", "resultsTitle", 
+                    "numOfResults", "singleResultsText", the CSV file might look something like:
+                    <source>
+    #This is a legal comment
+    searchTerm,searchTitle,resultsTitle,numOfResults,singleResultsText
+    Food,Google,Food,15,"Eat food, It's good"
+    #And this is also a legal comment
+    Gift,Google,Gift,9231,Christmas is upon us!
+    Jameleon,Google,Jameleon,80,Jameleon - Home
+                    </source>
+                    The quotes are optional, but they are useful when the value has commas or is 
+                    just long and is easier to tell the start and end because of quotes.
+                </p>
+            </subsection>
+        </section>
+        <section name="SQL Data">
+            <p>
+                Jameleon can also use a Relation Database (RDBMS) to drive scripts from. The use of this tag
+                is documented <a href="syntax-reference.html#sql tag">here.</a>.
+            </p>
+            <subsection name="Connecting to Environment-specific Databases.">
+                <p>
+                    There are no real standards or rules to accomplish connecting to a different database, depending
+                    on the environment and/or organization. This can all be accomplished by setting variables in the
+                    <a href="#Environment-specific Data">appropriate properties</a> file. In other words, while it would
+                    be perfectly okay to put the database connection settings in the script itself, they could also be placed
+                    in a properties file with the correct environment name and application name. 
+                </p>
+                <p>
+                    The only cavaet to defining the database connection settings in a properties file is that, as mentioned above, 
+                    in order to use a properties file, the <b>application</b> setting of the sesion tag must be set. This means that 
+                    if properties file is used to store data in that a sql tag cannot be used outside of a session tag because 
+                    Jameleon won't know which application to get the properties for. However, Jameleon does somewhat support nested session tags. 
+                    The automated documentation won't be exactly correctly (the inner session tag will be ignored), but it will execute
+                    fine.
+                </p>
+            </subsection>
+        </section>
+        <section name="Using Data">
+            <p>
+                Values retrieved from sources external to the script (properties files, CSV files, databases), are all stored in the scripting
+                engine's <b>context</b> for the script.being executed. This means that you define a variable with the same name in a properties
+                file and in a CSV file that the value will get overwritten depending on when the CSV file is read in. This is why it is best
+                to keep the variable names distinct. One trick that I use is to end all variable names read in from different datasources with
+                different letters. For example, variables defined in a CSV file end in <b>_c</b>, variables defined from a database end in an <b>_s</b>
+                and variables defined in properties files have no special ending.
+            </p>
+            <p>
+                Using <b>context</b> variables in your script is very simple. Simply surround that context variable with ${}. For example,
+                a variable named <b>firstName_c</b>, stored in a CSV file, would be referenced by <b>${firstName_c}</b> in the script. This would look something
+                like:
+                <source>
+&lt;testcase xmlns="jelly:jameleon" useCSV="true"&gt;
+
+    &lt;junit-session&gt;
+        &lt;csr-customer-profile
+              functionId="Change the customer's first name to ${firstName_c}"
+              customerFirstName="${firstName_c}"/&gt;
+    &lt;/junit-session&gt;
+
+&lt;/testcase&gt;</source>
+                Using multiple variables as a single value is also easy:
+                <source>
+&lt;testcase xmlns="jelly:jameleon" useCSV="true"&gt;
+
+    &lt;junit-session&gt;
+        &lt;csr-customer-search
+              functionId="Find all customers with ${firstName_c} ${middleInitial_c} ${lastName_c} as their full name."
+              customerFullName="${firstName_c} ${middleInitial_c} ${lastName_c}"/&gt;
+    &lt;/junit-session&gt;
+
+&lt;/testcase&gt;</source>
+                Don't forget that Jameleon simply uses <a href="http://jakarta.apache.org/commons/jelly">Jelly</a> for the scripting engine. This means you can
+                also use Jelly tags to <a href="http://jakarta.apache.org/commons/jelly/tags.html#core:set">create a new context variable</a> and use it.
+                <source>
+&lt;testcase xmlns="jelly:jameleon" xmlns:jl="jelly:core" useCSV="true"&gt;
+
+    &lt;jl:set var="fullName" value="${firstName_c} ${middleInitial_c} ${lastName_c}"/>
+    &lt;junit-session&gt;
+        &lt;csr-customer-search
+              functionId="Find all customers with ${fullName} as their full name."
+              customerFullName="${fullName}"/&gt;
+    &lt;/junit-session&gt;
+
+&lt;/testcase&gt;</source>
+            </p>
+        </section>
+    </body>
+</document>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Issue Tracking5</title>
+    </properties>
+  <body>
+    <section name="Issue Tracking ">
+      <p>
+        See <a href="http://sourceforge.net/tracker/?group_id=84246&amp;atid=572239&amp;func=browse" target="_blank">Jameleon SourceForge issue tracker</a>
+        for open bugs or to submit new requests.<br /> Where possible please attach a test case to any bug reports you submit.
+      </p>
+    </section>    
+  </body>
+</document>

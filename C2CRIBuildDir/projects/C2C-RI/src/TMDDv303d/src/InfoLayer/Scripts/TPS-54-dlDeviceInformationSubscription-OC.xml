@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-54-dlDeviceInformationSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.6.1 [Need to Share Gate Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/18 00:21:04-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.6.1 [Need to Share Gate Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Publish Gate Inventory Information (NTRM 3.3.5.7.1.2}.  RECORD this value as: TMDD_N54R764_Publish_Gate_Inventory_Information_Parameter = ${TMDD_N54R764_Publish_Gate_Inventory_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine the dialog performance requirement for Subscribe to Gate Inventory Information (NTRM 3.3.5.7.1.3}.  RECORD this value as: TMDD_N54R765_Subscribe_to_Gate_Inventory_Information_Parameter = ${TMDD_N54R765_Subscribe_to_Gate_Inventory_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N54R14_Restrictions___Error_Report_Supported = ${TMDD_N54R14_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Restrictions - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.1).  RECORD this information as: TMDD_N54R376_Restrictions___Device_Inventory_Supported = ${TMDD_N54R376_Restrictions___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Device Description is required by the specification. (NRTM 3.3.5.1.2.1.2.2).  RECORD this information as: TMDD_N54R377_Device_Description_Supported = ${TMDD_N54R377_Device_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Device Control Type is required by the specification. (NRTM 3.3.5.1.2.1.2.3).  RECORD this information as: TMDD_N54R378_Device_Control_Type_Supported = ${TMDD_N54R378_Device_Control_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Controller Description is required by the specification. (NRTM 3.3.5.1.2.1.2.4).  RECORD this information as: TMDD_N54R379_Controller_Description_Supported = ${TMDD_N54R379_Controller_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Roadway Network Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.5).  RECORD this information as: TMDD_N54R380_Roadway_Network_Identifier___Device_Inventory_Supported = ${TMDD_N54R380_Roadway_Network_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Node Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.6).  RECORD this information as: TMDD_N54R381_Node_Identifier___Device_Inventory_Supported = ${TMDD_N54R381_Node_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Node Name - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.7).  RECORD this information as: TMDD_N54R382_Node_Name___Device_Inventory_Supported = ${TMDD_N54R382_Node_Name___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Link Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.8).  RECORD this information as: TMDD_N54R383_Link_Identifier___Device_Inventory_Supported = ${TMDD_N54R383_Link_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Link Name - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.9).  RECORD this information as: TMDD_N54R384_Link_Name___Device_Inventory_Supported = ${TMDD_N54R384_Link_Name___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Link Direction - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.10).  RECORD this information as: TMDD_N54R385_Link_Direction___Device_Inventory_Supported = ${TMDD_N54R385_Link_Direction___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Linear Reference - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.11).  RECORD this information as: TMDD_N54R386_Linear_Reference___Device_Inventory_Supported = ${TMDD_N54R386_Linear_Reference___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Linear Reference Version is required by the specification. (NRTM 3.3.5.1.2.1.2.12).  RECORD this information as: TMDD_N54R387_Linear_Reference_Version_Supported = ${TMDD_N54R387_Linear_Reference_Version_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Route Designator - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.13).  RECORD this information as: TMDD_N54R388_Route_Designator___Device_Inventory_Supported = ${TMDD_N54R388_Route_Designator___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Device Uniform Resource Locator (URL) (DeviceURL) is required by the specification. (NRTM 3.3.5.1.2.1.2.14).  RECORD this information as: TMDD_N54R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported = ${TMDD_N54R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Device URL Reference Medium is required by the specification. (NRTM 3.3.5.1.2.1.2.15).  RECORD this information as: TMDD_N54R390_Device_URL_Reference_Medium_Supported = ${TMDD_N54R390_Device_URL_Reference_Medium_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Device Inventory Date and Time Change Information is required by the specification. (NRTM 3.3.5.1.2.1.2.16).  RECORD this information as: TMDD_N54R391_Device_Inventory_Date_and_Time_Change_Information_Supported = ${TMDD_N54R391_Device_Inventory_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 21 CONFIGURE: Determine whether Number of Lanes - Gate Inventory is required by the specification. (NRTM 3.3.5.7.1.5.2.1).  RECORD this information as: TMDD_N54R769_Number_of_Lanes___Gate_Inventory_Supported = ${TMDD_N54R769_Number_of_Lanes___Gate_Inventory_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03d" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 22 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 23 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 24 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 25 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 26 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 27 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 28 CONFIGURE: Define the subscription message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 29 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 30 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 31 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlDeviceInformationSubscription RESPONSETIMEREQUIRED= SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlDeviceInformationSubscription" functionId="dlDeviceInformationSubscription" RESPONSETIMEREQUIRED="60000" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 32 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 32.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps.  Note:If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 32.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlGateInventoryUpdate RESPONSETIMEREQUIRED=TMDD_N54R764_Publish_Gate_Inventory_Information_Parameter PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlGateInventoryUpdate" functionId="dlGateInventoryUpdate" RESPONSETIMEREQUIRED="${TMDD_N54R764_Publish_Gate_Inventory_Information_Parameter}" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 32.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 32.1.2.1 VERIFY that a device-inventory-header data frame exists within each instance of data frame gateInventoryMsg.gate-inventory-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="device-inventory-header" instanceName="tmdd:gateInventoryMsg.gate-inventory-item" elementType="data-frame" functionId="Looking for gateInventoryMsg.gate-inventory-item"/>
+                         </testStep>
+                         <testStep functionId="Step 32.1.2.2 VERIFY that an organization-information data frame exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-information" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                         </testStep>
+                         <testStep functionId="Step 32.1.2.3 VERIFY that a device-id data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="device-id" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                         </testStep>
+                         <testStep functionId="Step 32.1.2.4 VERIFY that a device-location data frame exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="device-location" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                         </testStep>
+                         <testStep functionId="Step 32.1.2.5 VERIFY that a device-name data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="device-name" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                         </testStep>
+                         <testStep functionId="Step 32.1.2.6 VERIFY that a gateInventoryMsg message was received." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="gateInventoryMsg" instanceName="tmdd:gateInventoryMsg" elementType="message" functionId="Looking for gateInventoryMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 32.1.2.7 VERIFY that a device-inventory-header data frame exists within each instance of data frame gateInventoryMsg.gate-inventory-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="device-inventory-header" instanceName="tmdd:gateInventoryMsg.gate-inventory-item" elementType="data-frame" functionId="Looking for gateInventoryMsg.gate-inventory-item"/>
+                         </testStep>
+                         <testStep functionId="Step 32.1.2.8 IF TMDD_N54R376_Restrictions___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R376_Restrictions___Device_Inventory_Supported}">
+                              <testStep functionId="Step 32.1.2.8.1 VERIFY that a restrictions data frame exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="restrictions" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.9 IF TMDD_N54R377_Device_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R377_Device_Description_Supported}">
+                              <testStep functionId="Step 32.1.2.9.1 VERIFY that a device-description data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="device-description" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.10 IF TMDD_N54R378_Device_Control_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R378_Device_Control_Type_Supported}">
+                              <testStep functionId="Step 32.1.2.10.1 VERIFY that a device-control-type data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="device-control-type" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.11 IF TMDD_N54R379_Controller_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R379_Controller_Description_Supported}">
+                              <testStep functionId="Step 32.1.2.11.1 VERIFY that a controller-description data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="controller-description" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.12 IF TMDD_N54R380_Roadway_Network_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R380_Roadway_Network_Identifier___Device_Inventory_Supported}">
+                              <testStep functionId="Step 32.1.2.12.1 VERIFY that a network-id data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="network-id" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.13 IF TMDD_N54R381_Node_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R381_Node_Identifier___Device_Inventory_Supported}">
+                              <testStep functionId="Step 32.1.2.13.1 VERIFY that a node-id data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="node-id" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.14 IF TMDD_N54R382_Node_Name___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R382_Node_Name___Device_Inventory_Supported}">
+                              <testStep functionId="Step 32.1.2.14.1 VERIFY that a node-name data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="node-name" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.15 IF TMDD_N54R383_Link_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R383_Link_Identifier___Device_Inventory_Supported}">
+                              <testStep functionId="Step 32.1.2.15.1 VERIFY that a link-id data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-id" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.16 IF TMDD_N54R384_Link_Name___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R384_Link_Name___Device_Inventory_Supported}">
+                              <testStep functionId="Step 32.1.2.16.1 VERIFY that a link-name data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-name" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.17 IF TMDD_N54R385_Link_Direction___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R385_Link_Direction___Device_Inventory_Supported}">
+                              <testStep functionId="Step 32.1.2.17.1 VERIFY that a link-direction data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-direction" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.18 IF TMDD_N54R386_Linear_Reference___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R386_Linear_Reference___Device_Inventory_Supported}">
+                              <testStep functionId="Step 32.1.2.18.1 VERIFY that a linear-reference data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="linear-reference" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.19 IF TMDD_N54R387_Linear_Reference_Version_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R387_Linear_Reference_Version_Supported}">
+                              <testStep functionId="Step 32.1.2.19.1 VERIFY that a linear-reference-version data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="linear-reference-version" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.20 IF TMDD_N54R388_Route_Designator___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R388_Route_Designator___Device_Inventory_Supported}">
+                              <testStep functionId="Step 32.1.2.20.1 VERIFY that a route-designator data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="route-designator" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.21 IF TMDD_N54R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}">
+                              <testStep functionId="Step 32.1.2.21.1 VERIFY that a device-url data frame exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="device-url" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.22 IF TMDD_N54R390_Device_URL_Reference_Medium_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R390_Device_URL_Reference_Medium_Supported}">
+                              <testStep functionId="Step 32.1.2.22.1 VERIFY that an url-reference-medium data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header.device-url" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="url-reference-medium" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header.device-url" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header.device-url"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.23 IF TMDD_N54R391_Device_Inventory_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R391_Device_Inventory_Date_and_Time_Change_Information_Supported}">
+                              <testStep functionId="Step 32.1.2.23.1 VERIFY that a last-update-time data frame exists within each instance of data frame gateInventoryMsg.gate-inventory-item.device-inventory-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="last-update-time" instanceName="tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for gateInventoryMsg.gate-inventory-item.device-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.24 IF TMDD_N54R769_Number_of_Lanes___Gate_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N54R769_Number_of_Lanes___Gate_Inventory_Supported}">
+                              <testStep functionId="Step 32.1.2.24.1 VERIFY that a link-lane-count data element exists within each instance of data frame gateInventoryMsg.gate-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-lane-count" instanceName="tmdd:gateInventoryMsg.gate-inventory-item" elementType="data-element" functionId="Looking for gateInventoryMsg.gate-inventory-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 32.1.2.25 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N54R376_Restrictions___Device_Inventory_Supported,restrictions,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R377_Device_Description_Supported,device-description,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R378_Device_Control_Type_Supported,device-control-type,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R379_Controller_Description_Supported,controller-description,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R380_Roadway_Network_Identifier___Device_Inventory_Supported,network-id,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R381_Node_Identifier___Device_Inventory_Supported,node-id,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R382_Node_Name___Device_Inventory_Supported,node-name,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R383_Link_Identifier___Device_Inventory_Supported,link-id,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R384_Link_Name___Device_Inventory_Supported,link-name,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R385_Link_Direction___Device_Inventory_Supported,link-direction,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R386_Linear_Reference___Device_Inventory_Supported,linear-reference,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R387_Linear_Reference_Version_Supported,linear-reference-version,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R388_Route_Designator___Device_Inventory_Supported,route-designator,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported,device-url,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R390_Device_URL_Reference_Medium_Supported,url-reference-medium,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header.device-url;TMDD_N54R391_Device_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:gateInventoryMsg.gate-inventory-item.device-inventory-header;TMDD_N54R769_Number_of_Lanes___Gate_Inventory_Supported,link-lane-count,tmdd:gateInventoryMsg.gate-inventory-item;TMDD_N54R14_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 32.1.2.26 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                              <jl:set var="CONTENTVERIFIED" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 32.1.2.27 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlGateInventoryUpdate RESPONSETIMEREQUIRED=TMDD_N54R764_Publish_Gate_Inventory_Information_Parameter CONTENTVERIFIED = CONTENTVERIFIED PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlGateInventoryUpdate" functionId="dlGateInventoryUpdate" RESPONSETIMEREQUIRED="${TMDD_N54R764_Publish_Gate_Inventory_Information_Parameter}" CONTENTVERIFIED="${CONTENTVERIFIED}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+          <testStep functionId="Step 33 IF SubscriptionErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 33.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 33.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 33.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 33.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 33.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 33.6 VERIFY that data element error-code is set to SubscriptionErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${SubscriptionErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 33.7 IF TMDD_N54R14_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N54R14_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 33.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 34 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

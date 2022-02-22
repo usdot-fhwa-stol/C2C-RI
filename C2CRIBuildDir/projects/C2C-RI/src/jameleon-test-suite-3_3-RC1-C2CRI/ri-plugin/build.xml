@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+    Jameleon Selenium plug-in - A plug-in that uses Selenium (http://www.openqa.org/selenium/) to drive web sites
+    Copyright (C) 2006 Christian W. Hargraves (engrean@hotmail.com)
+    
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+<project name="ri-plugin" default="main" basedir=".">
+  <property name="projectTag" value="${ant.project.name}" />
+  <property name="htdocs.baseDir" value="htdocs/${ant.project.name}" />
+
+  <delete file="${basedir}/lib/RICenterServices.jar"/>
+  <delete file="${basedir}/lib/RITestCaseData.jar"/>
+  <delete file="${basedir}/lib/RI_Properties.jar"/>
+  <copy file="../../RICenterServices/dist/RICenterServices.jar" todir="${basedir}/lib"/>
+  <copy file="../../RITestCaseData/dist/RITestCaseData.jar" todir="${basedir}/lib"/>
+  <copy file="../../RI_Properties/dist/RI_Properties.jar" todir="${basedir}/lib"/>
+  
+  <import file="../jameleon-core/src/xml/standard-build.xml"/>
+
+  <target name="acceptance" depends="execute.testcases"/>
+
+</project>

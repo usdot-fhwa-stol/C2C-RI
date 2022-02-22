@@ -1,0 +1,4 @@
+<jmln:testcase xmlns:jmln="jelly:jameleon" xmlns:j="jelly:core" name="foobar">
+  <jmln:test-case-author>Christian</jmln:test-case-author>
+  <j:set var="name" value="value"/>
+</jmln:testcase>

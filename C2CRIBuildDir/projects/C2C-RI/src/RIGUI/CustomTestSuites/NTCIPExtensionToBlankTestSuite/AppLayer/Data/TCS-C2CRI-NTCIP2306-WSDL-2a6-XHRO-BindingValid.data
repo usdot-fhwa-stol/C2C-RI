@@ -1,0 +1,229 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSDL-2a6-XHRO-BindingValid
+#       Description:  TCS-C2CRI-NTCIP2306-WSDL-2a6-XHRO-BindingValid
+#       Related Procedure:  null
+#       Version/Date: 2011/11/15 22:59:44
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a61.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.20 VERIFY that the service tag is followed by a port tag.  If the service tag includes a documentation tag, it must precede the port tag.
+
+#ITERATION NAME = Two
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a62.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+#ITERATION NAME = Three
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a63.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+#ITERATION NAME = Four
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a64.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 19.10 VERIFY that the binding tag is followed by a http:binding tag.
+
+#ITERATION NAME = Five
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a65.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 19.10 VERIFY that the binding tag is followed by a http:binding tag.
+
+#ITERATION NAME = Six
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a66.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 19.12 VERIFY that the operation name matches the operation as specified in the portType section of the WSDL for each operation (file) supported by the center.
+
+#ITERATION NAME = Seven
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a67.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 19.13 VERIFY that the operation tag is followed by the http:operation tag.
+
+#ITERATION NAME = Eight
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a68.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 19.14 VERIFY that the location attribute shall be the name of the file. The name of the file is to be defined by each center. However, it is recommended that the file name reflect the name of the message or messages contained. Documentation outlining these naming rules should be established and a link provided to it in the meta-data of the documentation section.
+
+#ITERATION NAME = Nine
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a69.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 19.14 VERIFY that the location attribute shall be the name of the file. The name of the file is to be defined by each center. However, it is recommended that the file name reflect the name of the message or messages contained. Documentation outlining these naming rules should be established and a link provided to it in the meta-data of the documentation section.
+
+#ITERATION NAME = Ten
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a6A.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 18.6 VERIFY that the requirement of the Request Only Binding is applied.
+
+#ITERATION NAME = Eleven
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a6B.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 19.16 VERIFY that the input tag is followed by a http:urlEncoded tag.
+
+#ITERATION NAME = Twelve
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a6C.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 19.17 VERIFY that the input tag set is followed by an output, /output tag set.
+
+#ITERATION NAME = Thirteen
+#GROUP NAME = BindingValid
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2a6D.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 19.18 VERIFY that the output tag is followed by a mime:content tag.
+

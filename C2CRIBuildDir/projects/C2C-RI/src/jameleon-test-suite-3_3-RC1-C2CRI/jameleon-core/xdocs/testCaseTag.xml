@@ -1,0 +1,283 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Test Case Tags</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, Test Case, Test Case Tag, Test, Testing, javadocs"/>
+
+    <body>
+        <section name="What is a Test Case">
+            <p>
+                A test case can be considered a single test. Just as it is a good idea to keep tests simple, it is a recommended
+                to keep test cases simple. A test case contains sessions or <b><a href="/apidocs/net/sf/jameleon/SessionTag.html">SessionTag</a></b>
+                which represent applications that then contain functional points or 
+                <b><a href="/apidocs/net/sf/jameleon/function/FunctionTag.html">FunctionTag</a></b> which represent functional areas 
+                in the application or session.
+            </p>
+            <p>
+                Out of the three classes listed above, TestCaseTag is the only class that is NOT abstract. TestCaseTag should be 
+                generic enough to work with any type of application. The relationship of the three main components is best 
+                described as a parent-child relationship with TestCaseTag being the grandparent. Please see the 
+                <a target="_new" href="apidocs/net/sf/jameleon/TestCaseTag.html">TestCaseTag's javadoc comments</a> to fully understand its purpose.
+            </p>
+        </section>
+        <section name="Test Case Tag Attributes">
+                <p>
+                    Currently, TestCaseTag is represented as &lt;testcase&gt; in the macro language. &lt;testcase&gt; has the following 
+                    properties that can be set as attributes. The jameleon.conf file mentioned below is simply a key=value file that must
+                    be in the classpath to be used. The values in this file override all values set in the test-case tag if they are supported:
+                    <table border="1" cellpadding="1">
+                        <tr>
+                            <th>Property Name:</th>
+                            <th>Description</th>
+                            <th>Required</th>
+                            <th>In jameleon.conf</th>
+                        </tr>
+                        <tr>
+                            <td><a name="breakPoint">breakPoint</a></td>
+                            <td>Used to help debug the script. This attribute is currently recognized by the GUI and it is only usable if
+                                the useCSV attribute is set to true. By pressing the debug button while the script is selected, the script
+                                will be stepped through for each execution of the test case tag according the CSV file the script is mapped
+                                to. The values from the CSV file can then be changed on the fly.</td>
+                            <td>No - Deafaults to &quot;false&quot;</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td><a name="useCSV">useCSV</a></td>
+                            <td>Set this to &quot;true&quot; if the test case is to use a data file (CSV). 
+                            The location and name of the CSV file depends on the &quot;name&quot;, &quot;testEnvironment&quot;, 
+                            and &quot;organization&quot; settings of the test case. In the case where this 
+                            is not set or set to &quot;false&quot;, the values of the test case for each 
+                            function point must be set as attributes of the function point elements</td>
+                            <td>No - Defaults to &quot;false&quot;</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><a name="csvCharset">csvCharset</a></td>
+                            <td>If testing in another language other than UTF-8 (the default), then this can be
+                                set at test-case tag level.</td>
+                            <td>No - Defaults to &quot;UTF-8&quot;</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><a name="csvDir">csvDir</a></td>
+                            <td>Sets the directory of which csv files will be searched for. This is based
+                            on the <a href="#baseDir">baseDir</a> setting.</td>
+                            <td>No - Defaults to &quot;etc&quot;</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>csvFileName</td>
+                            <td>Can be set in the test-case tag or csv tag. This tells Jameleon not to be 
+                                smart about finding the CSV file. It does however, using the baseDir and 
+                                csvDir attributes to begin the csvFileName with. The path should be 
+                                included in the name. When this is set, the name attribute is ignored when 
+                                finding the CSV file.</td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>failOnCSVFileNotFound</td>
+                            <td>If set to <b><i>false</i></b>, then a test case won't be shown in the results
+                                if the corresponding CSV file isn't found.</td>
+                            <td>No - Defaults to <b><i>true</i></b></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><a name="testCaseName">name</a></td>
+                            <td><p>The name of the test case. It is recommended that this name be unique. 
+                            If <i>useCSV=&quot;true&quot;</i>, then the test case will look for a file 
+                            named the name of the test case. For example, if the <i>name</i> is set to 
+                            &quot;ExampleTestCase&quot;, then the test 
+                            case will look for a file named &quot;ExampleTestCase.csv&quot; in the 
+                            appropriate directory.</p>
+                            <p>If the name attribute is not set in the test-case tag, then the name will
+                            be the name of the file minus the file extension. For example, if the script
+                            name is testMe.jml, then the name of the test case will become testMe and if
+                            useCsv is enabled, then it will look for a file named testMe.csv.
+                            </p></td>
+                            <td>Yes</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td><a name="testEnvironment">testEnvironment</a></td>
+                            <td>The name of the environment the test case is to be executed against. Some 
+                            examples of testEnvironment are: prod, beta, dev, and localhost. Please read
+                            the documentation on <a href="dataDriving.html#Applications properties">
+                            testEnvironment-Applications.properties</a> for more information on using this 
+                            file to set variables. The testEnvironment value is also used to find
+                            the location of the data file if one is used. This is explained more 
+                            <a href="dataDriving.html#dataFileMapping">here</a>
+                            </td>
+                            <td>No - As of version 1.8, this is no longer required.</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><a name="organization">organization</a></td>
+                            <td>The name of the organization the test case is to be executed against. This
+                            is used only when the same application is &quot;deployed&quot; or installed to 
+                            different places with either different look and feels or business rules or both. 
+                            In this case, the same test case should be valid against the different installs 
+                            or deployments. The value of organization also influences the location of the 
+                            data file. If the organization is set, the test case will look for a CSV file in 
+                            the etc/testEnvironment/organization directory. For example, when a test case 
+                            with <i>name</i> set to &quot;ExampleTestCase&quot;, <i>testEnvironment</i> set 
+                            to &quot;stg&quot;, and <i>organization</i> set to &quot;ACME&quot; is executed, 
+                            it will look for a file &quot;etc/stg/ACME/ExampleTestCase.csv.</td>
+                            <td>No</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><a name="assertLevel">assertLevel</a></td>
+                            <td>The level of asserts which will be executed in the functional points. This is 
+                            set to one level. Please see <a target="_new" href="apidocs/net/sf/jameleon/util//AssertLevel.html">AssertLevel</a> 
+                            for more information on this.</td>
+                            <td>No - Defaults to all levels</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>assertLevels</td>
+                            <td>A comma separated list of assertLevels which will be executed in the 
+                            functional points. Please see <a target="_new" href="apidocs/net/sf/jameleon/util//AssertLevel.html">AssertLevel</a> 
+                            for more information on this.</td>
+                            <td>No - Defaults to all levels</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>assertLessThanLevel</td>
+                            <td>The level of asserts which must be less than <b>OR</b> equal to in order to 
+                            be executed in the functional points. This is set to one level. Please see <a target="_new" href="apidocs/net/sf/jameleon/util/AssertLevel.html">AssertLevel</a> 
+                            for more information on this</td>
+                            <td>No - Defaults to all levels</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>assertGreaterThanLevel</td>
+                            <td>The level of asserts which must be greater than <b>OR</b> equal to in order 
+                            to be executed in the functional points. This is set to one level. Please see <a target="_new" href="apidocs/net/sf/jameleon/util//AssertLevel.html">AssertLevel</a> 
+                            for more information on this</td>
+                            <td>No - Defaults to all levels</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>storeStateEvent</td>
+                            <td>Sets the event which must occur in order for the application's state to be 
+                            recorded. Please see <a target="_new" href="apidocs/net/sf/jameleon/TestCaseTag.html#setStoreStateEvent(java.lang.String)">setStoreStateEvent()</a> 
+                            for more information on valid values.</td>
+                            <td>No - Defaults to storeStateOnError.</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>storeStateNever</td>
+                            <td>The applications state will never be recorded.</td>
+                            <td>No - Defaults to <i>false</i>.</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>storeStateOnChange</td>
+                            <td>The applications state will be recorded on any state change.</td>
+                            <td>No - Defaults to <i>false</i>.</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>storeStateOnError</td>
+                            <td>The applications state will be recorded on any error state.</td>
+                            <td>No - Defaults to <i>true</i>.</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>trace</td>
+                            <td>Print out all functionId's of each test case to the std out log. This is very helpful for
+                                debugging which functional point is getting executed and when.</td>
+                            <td>No - Defaults to <i>false</i>.</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>genTestCaseDocs</td>
+                            <td>Generates the test case documentation and creates links on the TestResults.html page for each test case name.
+                                It is assumed that each test case have a unique name. If not then all test cases with the same name will
+                                be linked to the last test case with that name generated..
+                                the generated docs.</td>
+                            <td>No - Defaults to <i>true</i>.</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>executeTestCase</td>
+                            <td>Tells Jameleon to execute or not execute the test case or test cases.</td>
+                            <td>No - Defaults to <i>true</i> which means to execute the test cases.</td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td><a name="baseDir">baseDir</a></td>
+                            <td>Tells Jameleon where the project being executed is located.</td>
+                            <td>No - Defaults to <b>.</b></td>
+                            <td>Yes - It is recommended that it be via the jameleon.conf file</td>
+                        </tr>
+                        <tr>
+                            <td><a name="resultsDir">resultsDir</a></td>
+                            <td>Tells Jameleon where to put the recorded states of the applications changes.</td>
+                            <td>No - Defaults to <i>jameleon_test_results</i></td>
+                            <td>Yes - It is recommended that it be via the jameleon.conf file</td>
+                        </tr>
+                        <tr>
+                            <td><a name="bugTrackerUrl">bugTrackerUrl</a></td>
+                            <td>When the test case docs are being generated, and if there is a bug for
+                            that particular test case, then a link will be generated for that bug. Due
+                            to the nature of HTTP, the order of the parameters don't matter, so it should
+                            be enough to make the bugId parameter the last one. This has been tested against
+                            Bugzilla and the Sourceforge tracking site. For example, to use this against
+                            the Jameleon SourceForge project, http://sourceforge.net/tracker/index.php?func=detail&amp;group_id=84246&amp;atid=572239&amp;aid=
+                            would be used. The <i>aid</i> is the bug id.</td>
+                            <td>No</td>
+                            <td>Yes - It is recommend to set this via the jameleon.conf file unless
+                                several bug tracking tools are used.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>genTestCaseDocsEncoding</td>
+                            <td>Tells Jameleon what encoding type to use when generating the docs.</td>
+                            <td>No - Defaults to <b>UTF-8</b></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>maxExecutionTime</td>
+                            <td>The maximum amount of time the test case can run before failing. Anything
+                                about zero means to validate the execution time.</td>
+                            <td>No - Defaults to <b>0</b></td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>failOnCSVFileNotFound</td>
+                            <td>If set to false, and an error due to the CSV file not being found happens, then
+                                the test case will not get logged. This is useful when trying to make test cases
+                                run against another organization or environment and you want to run the entire suite
+                                of tests that have the appropriate CSV files, but ignore the ones you haven't had
+                                time to port over yet.</td>
+                            <td>No - Defaults to <b>true</b></td>
+                            <td>Yes</td>
+                        </tr>
+                        <tr>
+                            <td>propsName</td>
+                            <td>
+                                To set variables that can be shared across the entire test case, set this value to the name of the properties
+                                file minus the <i>.properties</i> extension. The same properties file will be read in regardless of the testEnvironment
+                                setting.
+                            </td>
+                            <td>No</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>enableSslCertCheck</td>
+                            <td>This is an HTTP Specific tag, but for now to make things a bit easier,
+                                this is going here. Basically, if testing against a site with an invalid
+                                (expired, wrong host), this can be set to false and the key won't be validated.</td>
+                            <td>No - Defaults to <b>true</b></td>
+                            <td>Yes</td>
+                        </tr>
+                    </table>
+                </p>
+        </section>
+    </body>
+</document>

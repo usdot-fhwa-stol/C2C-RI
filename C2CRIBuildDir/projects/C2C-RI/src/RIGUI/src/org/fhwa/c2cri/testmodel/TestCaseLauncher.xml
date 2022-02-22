@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : TestCaseLauncher.xml
+    Created on : November 14, 2011, 7:57 AM
+    Author     : TransCore ITS
+    Description:
+        Purpose of the document follows.
+            This script is used to execute a selected test procedure and determine whether the test procedure completed with the expected result.
+		The parameters C2CRITestCaseID, RI_BASETCDATAFILE, RI_USERTCDATAFILE and C2CRITestCaseScriptFile are set by the RIExecuteTestCase object.
+                The other parameters (if applicable) are set in the Test Case Data File.
+-->
+
+<testcase xmlns="jelly:jameleon"  xmlns:jl="jelly:core" >
+	<test-case-id>${C2CRITestCaseID}</test-case-id>
+
+	<tcData name = "${RI_BASETCDATAFILE}" userTestCaseDataFileName="${RI_USERTCDATAFILE}">
+		<ri-execute-script functionId="${C2CRITestCaseID}"
+                                   script="${C2CRITestCaseScriptFile}"
+                                   checkOutcomePassed="${CheckOutcomePassed}"
+                                   checkOutcomeFailed="${CheckOutcomeFailed}"
+                                   failOnFunctionId="${FailedTestStepText}" />
+	</tcData>
+</testcase>

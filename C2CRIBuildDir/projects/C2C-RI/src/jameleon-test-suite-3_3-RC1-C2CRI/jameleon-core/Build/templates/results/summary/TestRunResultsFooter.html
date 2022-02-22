@@ -1,0 +1,26 @@
+</table>
+#if ($totalFailed > 0)
+    #set( $background = 'red')
+#else
+    #set( $background = 'green')
+#end
+
+<table cellspacing="1" cellpadding="0" border="0" width="100%">
+<tr>
+    <td class="txtHeader" style="background-color:${background};height:30px;padding-left:10px">Total Execution Time</td>
+    <td class="txtHeader" style="background-color:${background};height:30px;padding-left:10px">Total Tests Executed</td>
+    <td class="txtHeader" style="background-color:${background};height:30px;padding-left:10px">Total Tests Passed</td>
+    <td class="txtHeader" style="background-color:${background};height:30px;padding-left:10px">Total Tests Failed</td>
+    <td class="txtHeader" style="background-color:${background};height:30px;padding-left:10px">% Passed</td>
+</tr>
+<tr>
+    <td id="totalTime">$totalTime</td>
+    #set ($totalRun = $totalPassed + $totalFailed)
+    <td id="totalRun">$totalRun</td>
+    <td id="totalPassed">$totalPassed</td>
+    <td id="totalFailed">$totalFailed</td>
+    <td id="percentPassed">$percentPassed</td>
+</tr>
+</table>
+<br/>
+</body></html>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-79-dlRampMeterStatusRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.9.3 [Need to Share Ramp Meter Status] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:14:08-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.9.3 [Need to Share Ramp Meter Status] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Requested Metering Command Source is required by the specification. (NRTM 3.3.6.10.2.5.2.1).  RECORD this information as: TMDD_N79R844_Requested_Metering_Command_Source_Supported = ${TMDD_N79R844_Requested_Metering_Command_Source_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Implemented Metering Command Source is required by the specification. (NRTM 3.3.6.10.2.5.2.2).  RECORD this information as: TMDD_N79R845_Implemented_Metering_Command_Source_Supported = ${TMDD_N79R845_Implemented_Metering_Command_Source_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Implemented Plan is required by the specification. (NRTM 3.3.6.10.2.5.2.3).  RECORD this information as: TMDD_N79R846_Implemented_Plan_Supported = ${TMDD_N79R846_Implemented_Plan_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Implemented Rate is required by the specification. (NRTM 3.3.6.10.2.5.2.4).  RECORD this information as: TMDD_N79R847_Implemented_Rate_Supported = ${TMDD_N79R847_Implemented_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Implemented Vehicles Per Green is required by the specification. (NRTM 3.3.6.10.2.5.2.5).  RECORD this information as: TMDD_N79R848_Implemented_Vehicles_Per_Green_Supported = ${TMDD_N79R848_Implemented_Vehicles_Per_Green_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Requested Action is required by the specification. (NRTM 3.3.6.10.2.5.2.6).  RECORD this information as: TMDD_N79R849_Requested_Action_Supported = ${TMDD_N79R849_Requested_Action_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Requested Plan is required by the specification. (NRTM 3.3.6.10.2.5.2.7).  RECORD this information as: TMDD_N79R850_Requested_Plan_Supported = ${TMDD_N79R850_Requested_Plan_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Requested Rate is required by the specification. (NRTM 3.3.6.10.2.5.2.8).  RECORD this information as: TMDD_N79R851_Requested_Rate_Supported = ${TMDD_N79R851_Requested_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Requested Vehicles Per Green is required by the specification. (NRTM 3.3.6.10.2.5.2.9).  RECORD this information as: TMDD_N79R852_Requested_Vehicles_Per_Green_Supported = ${TMDD_N79R852_Requested_Vehicles_Per_Green_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Operational Minimum Metering Rate is required by the specification. (NRTM 3.3.6.10.2.5.2.10).  RECORD this information as: TMDD_N79R853_Operational_Minimum_Metering_Rate_Supported = ${TMDD_N79R853_Operational_Minimum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Operational Maximum Metering Rate is required by the specification. (NRTM 3.3.6.10.2.5.2.11).  RECORD this information as: TMDD_N79R854_Operational_Maximum_Metering_Rate_Supported = ${TMDD_N79R854_Operational_Maximum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Demand Detector Status is required by the specification. (NRTM 3.3.6.10.2.5.2.12).  RECORD this information as: TMDD_N79R855_Demand_Detector_Status_Supported = ${TMDD_N79R855_Demand_Detector_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Passage Detector Status is required by the specification. (NRTM 3.3.6.10.2.5.2.13).  RECORD this information as: TMDD_N79R856_Passage_Detector_Status_Supported = ${TMDD_N79R856_Passage_Detector_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Queue Detector Status is required by the specification. (NRTM 3.3.6.10.2.5.2.14).  RECORD this information as: TMDD_N79R857_Queue_Detector_Status_Supported = ${TMDD_N79R857_Queue_Detector_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Cycle Count is required by the specification. (NRTM 3.3.6.10.2.5.2.15).  RECORD this information as: TMDD_N79R858_Cycle_Count_Supported = ${TMDD_N79R858_Cycle_Count_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Passenger Vehicle Count is required by the specification. (NRTM 3.3.6.10.2.5.2.16).  RECORD this information as: TMDD_N79R859_Passenger_Vehicle_Count_Supported = ${TMDD_N79R859_Passenger_Vehicle_Count_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Queue Detected Flag is required by the specification. (NRTM 3.3.6.10.2.5.2.17).  RECORD this information as: TMDD_N79R860_Queue_Detected_Flag_Supported = ${TMDD_N79R860_Queue_Detected_Flag_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Violation Vehicle Count is required by the specification. (NRTM 3.3.6.10.2.5.2.18).  RECORD this information as: TMDD_N79R861_Violation_Vehicle_Count_Supported = ${TMDD_N79R861_Violation_Vehicle_Count_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Mainline Flow Rate is required by the specification. (NRTM 3.3.6.10.2.5.2.19).  RECORD this information as: TMDD_N79R862_Mainline_Flow_Rate_Supported = ${TMDD_N79R862_Mainline_Flow_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 21 CONFIGURE: Determine whether Mainline Vehicle Occupancy is required by the specification. (NRTM 3.3.6.10.2.5.2.20).  RECORD this information as: TMDD_N79R863_Mainline_Vehicle_Occupancy_Supported = ${TMDD_N79R863_Mainline_Vehicle_Occupancy_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 22 CONFIGURE: Determine whether Mainline Vehicle Speed is required by the specification. (NRTM 3.3.6.10.2.5.2.21).  RECORD this information as: TMDD_N79R864_Mainline_Vehicle_Speed_Supported = ${TMDD_N79R864_Mainline_Vehicle_Speed_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlRampMeterStatusRequest" riMode="EC">
+          <testStep functionId="Step 23 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 24 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 25 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 26 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlRampMeterStatusRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlRampMeterStatusRequest" functionId="dlRampMeterStatusRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 27 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 27.1 IF TMDD_N79R844_Requested_Metering_Command_Source_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R844_Requested_Metering_Command_Source_Supported}">
+                    <testStep functionId="Step 27.1.1 VERIFY that element requested-meter-command-source exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="requested-meter-command-source" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.requested-meter-command-source"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.2 IF TMDD_N79R845_Implemented_Metering_Command_Source_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R845_Implemented_Metering_Command_Source_Supported}">
+                    <testStep functionId="Step 27.2.1 VERIFY that element implemented-meter-command-source exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="implemented-meter-command-source" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.implemented-meter-command-source"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.3 IF TMDD_N79R846_Implemented_Plan_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R846_Implemented_Plan_Supported}">
+                    <testStep functionId="Step 27.3.1 VERIFY that element meter-implemented-plan exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-implemented-plan" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-implemented-plan"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.4 IF TMDD_N79R847_Implemented_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R847_Implemented_Rate_Supported}">
+                    <testStep functionId="Step 27.4.1 VERIFY that element meter-implemented-rate exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-implemented-rate" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-implemented-rate"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.5 IF TMDD_N79R848_Implemented_Vehicles_Per_Green_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R848_Implemented_Vehicles_Per_Green_Supported}">
+                    <testStep functionId="Step 27.5.1 VERIFY that element meter-implemented-vehicles-per-green exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-implemented-vehicles-per-green" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-implemented-vehicles-per-green"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.6 IF TMDD_N79R849_Requested_Action_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R849_Requested_Action_Supported}">
+                    <testStep functionId="Step 27.6.1 VERIFY that element meter-requested-action exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-requested-action" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-requested-action"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.7 IF TMDD_N79R850_Requested_Plan_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R850_Requested_Plan_Supported}">
+                    <testStep functionId="Step 27.7.1 VERIFY that element meter-requested-plan exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-requested-plan" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-requested-plan"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.8 IF TMDD_N79R851_Requested_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R851_Requested_Rate_Supported}">
+                    <testStep functionId="Step 27.8.1 VERIFY that element meter-requested-rate exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-requested-rate" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-requested-rate"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.9 IF TMDD_N79R852_Requested_Vehicles_Per_Green_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R852_Requested_Vehicles_Per_Green_Supported}">
+                    <testStep functionId="Step 27.9.1 VERIFY that element meter-requested-vehicles-per-green exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-requested-vehicles-per-green" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-requested-vehicles-per-green"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.10 IF TMDD_N79R853_Operational_Minimum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R853_Operational_Minimum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 27.10.1 VERIFY that element operational-min-meter-rate exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operational-min-meter-rate" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.operational-min-meter-rate"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.11 IF TMDD_N79R854_Operational_Maximum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R854_Operational_Maximum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 27.11.1 VERIFY that element operational-max-meter-rate exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operational-max-meter-rate" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.operational-max-meter-rate"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.12 IF TMDD_N79R855_Demand_Detector_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R855_Demand_Detector_Status_Supported}">
+                    <testStep functionId="Step 27.12.1 VERIFY that element meter-demand-detector-status exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-demand-detector-status" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-demand-detector-status"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.13 IF TMDD_N79R856_Passage_Detector_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R856_Passage_Detector_Status_Supported}">
+                    <testStep functionId="Step 27.13.1 VERIFY that element meter-passage-detector-status exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-passage-detector-status" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-passage-detector-status"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.14 IF TMDD_N79R857_Queue_Detector_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R857_Queue_Detector_Status_Supported}">
+                    <testStep functionId="Step 27.14.1 VERIFY that element meter-queue-detector-status exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-queue-detector-status" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-queue-detector-status"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.15 IF TMDD_N79R858_Cycle_Count_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R858_Cycle_Count_Supported}">
+                    <testStep functionId="Step 27.15.1 VERIFY that element meter-cycle-count exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-cycle-count" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-cycle-count"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.16 IF TMDD_N79R859_Passenger_Vehicle_Count_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R859_Passenger_Vehicle_Count_Supported}">
+                    <testStep functionId="Step 27.16.1 VERIFY that element metered-lane-vehicle-count exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="metered-lane-vehicle-count" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.metered-lane-vehicle-count"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.17 IF TMDD_N79R860_Queue_Detected_Flag_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R860_Queue_Detected_Flag_Supported}">
+                    <testStep functionId="Step 27.17.1 VERIFY that element meter-queue-detected-flag exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-queue-detected-flag" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.meter-queue-detected-flag"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.18 IF TMDD_N79R861_Violation_Vehicle_Count_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R861_Violation_Vehicle_Count_Supported}">
+                    <testStep functionId="Step 27.18.1 VERIFY that element metered-lane-violation-count exists within each instance of rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="metered-lane-violation-count" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane.metered-lane-violation-count"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.19 IF TMDD_N79R862_Mainline_Flow_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R862_Mainline_Flow_Rate_Supported}">
+                    <testStep functionId="Step 27.19.1 VERIFY that element mainline-flow-rate exists within each instance of rampMeterStatusMsg.ramp-meter-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="mainline-flow-rate" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.mainline-flow-rate"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.20 IF TMDD_N79R863_Mainline_Vehicle_Occupancy_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R863_Mainline_Vehicle_Occupancy_Supported}">
+                    <testStep functionId="Step 27.20.1 VERIFY that element mainline-vehicle-occupancy exists within each instance of rampMeterStatusMsg.ramp-meter-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="mainline-vehicle-occupancy" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.mainline-vehicle-occupancy"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.21 IF TMDD_N79R864_Mainline_Vehicle_Speed_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N79R864_Mainline_Vehicle_Speed_Supported}">
+                    <testStep functionId="Step 27.21.1 VERIFY that element mainline-vehicle-speed exists within each instance of rampMeterStatusMsg.ramp-meter-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="mainline-vehicle-speed" instanceName="tmdd:rampMeterStatusMsg.ramp-meter-status-item" functionId="Looking for rampMeterStatusMsg.ramp-meter-status-item.mainline-vehicle-speed"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 27.22 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N79R844_Requested_Metering_Command_Source_Supported,requested-meter-command-source,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R845_Implemented_Metering_Command_Source_Supported,implemented-meter-command-source,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R846_Implemented_Plan_Supported,meter-implemented-plan,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R847_Implemented_Rate_Supported,meter-implemented-rate,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R848_Implemented_Vehicles_Per_Green_Supported,meter-implemented-vehicles-per-green,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R849_Requested_Action_Supported,meter-requested-action,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R850_Requested_Plan_Supported,meter-requested-plan,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R851_Requested_Rate_Supported,meter-requested-rate,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R852_Requested_Vehicles_Per_Green_Supported,meter-requested-vehicles-per-green,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R853_Operational_Minimum_Metering_Rate_Supported,operational-min-meter-rate,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R854_Operational_Maximum_Metering_Rate_Supported,operational-max-meter-rate,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R855_Demand_Detector_Status_Supported,meter-demand-detector-status,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R856_Passage_Detector_Status_Supported,meter-passage-detector-status,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R857_Queue_Detector_Status_Supported,meter-queue-detector-status,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R858_Cycle_Count_Supported,meter-cycle-count,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R859_Passenger_Vehicle_Count_Supported,metered-lane-vehicle-count,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R860_Queue_Detected_Flag_Supported,meter-queue-detected-flag,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R861_Violation_Vehicle_Count_Supported,metered-lane-violation-count,tmdd:rampMeterStatusMsg.ramp-meter-status-item.metered-lane-list.metered-lane;TMDD_N79R862_Mainline_Flow_Rate_Supported,mainline-flow-rate,tmdd:rampMeterStatusMsg.ramp-meter-status-item;TMDD_N79R863_Mainline_Vehicle_Occupancy_Supported,mainline-vehicle-occupancy,tmdd:rampMeterStatusMsg.ramp-meter-status-item;TMDD_N79R864_Mainline_Vehicle_Speed_Supported,mainline-vehicle-speed,tmdd:rampMeterStatusMsg.ramp-meter-status-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

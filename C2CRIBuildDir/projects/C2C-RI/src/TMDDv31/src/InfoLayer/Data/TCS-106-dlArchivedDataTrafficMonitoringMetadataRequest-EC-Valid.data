@@ -1,0 +1,459 @@
+ 
+#<!--   
+#       Title:  TCS-106-dlArchivedDataTrafficMonitoringMetadataRequest-EC-Valid
+#       Description:  This test case is used to verify the SUTs support of the dlArchivedDataTrafficMonitoringMetadataRequest dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.6.1.2 [Need for Original Source Data for Traffic Monitoring Measurements]. This Test Case tests for a valid response result.
+#       Related Procedure:  TPS-106-dlArchivedDataTrafficMonitoringMetadataRequest-EC
+#       Version/Date: 2014/01/16 03:34:21
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Response Message to be sent to the SUT.
+ResponseMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication.  Valid values are True or False.
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid user name.
+Username = #CONTEXTVARIABLE#RI_USERNAME#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid password.
+Password = #CONTEXTVARIABLE#RI_PASSWORD#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid Operator Identifier.
+OperatorID = defaultOperatorID
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the privilege to access the information requested.  Valid values are True or False.
+AllowAccess = True
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether a request error is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of request error that is expected from the SUT.
+ErrorTypeExpected = None
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT is expected to have valid data for a response.  Valid values are True or False.
+DataValid = True
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.restrictions.organization-information-forwarding-restrictions 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.restrictions.organization-information-forwarding-restrictions = not to public
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-id 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-name 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-location 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-function 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.contact-id 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.person-name 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.person-title 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.phone-number 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.phone-alternate 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.fax-number 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.pager-number 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.pager-id 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.email-address 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.radio-unit 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.address-line1 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.address-line1 = 149 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.address-line2 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.city 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.state 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.zip-code 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.country 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-id 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.ft 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.ft = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = 150 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.last-update-time.date 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.last-update-time.time 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.last-update-time.offset 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.organization-information.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-type  BaseType=anySimpleType  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-type = other
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-description  BaseType=string  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-description = The information content describes a States DOT archived data traffic monitoring metadata.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-start.date 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-start.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-start.time 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-start.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-start.offset 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-start.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-end.date 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-end.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-end.time 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-end.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-end.offset 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-collection-time-period-end.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-publication-date-time.date 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-publication-date-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-publication-date-time.time 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-publication-date-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-publication-date-time.offset 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-publication-date-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-purpose  BaseType=string  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-purpose = The purpose of the State DOTDataSet is to store and retreive information pertaining to the State DOT Subsystems.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-title  BaseType=string  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-title = State DOTDataSet
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-version  BaseType=string  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-version = DataSet v03.03d
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-publication-information  BaseType=string  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-publication-information = The State DOTDataSet was published 2/16/2016.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-progress-status  BaseType=anySimpleType  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-progress-status = work in process
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-maintenance-frequency  BaseType=anySimpleType  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-maintenance-frequency = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-url.url-reference 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-url.url-reference = http://State.dot.gov/
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-url.url-reference-medium  BaseType=string  ParentType= UrlReference
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-url.url-reference-medium = rt:medium=referral
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-roadway-network-id-list.data-set-roadway-network-id-list  BaseType=anyType  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-roadway-network-id-list.data-set-roadway-network-id-list = StateDOTRoadwayListRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-link-id-list.data-set-link-id-list  BaseType=anyType  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-link-id-list.data-set-link-id-list = StateDOTDataSetLinkListRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-route-designator-list.data-set-route-designator 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-route-designator-list.data-set-route-designator = State DOTDataSet Route Assignment
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-linear-reference-list.data-set-linear-reference 
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-linear-reference-list.data-set-linear-reference = The milemarker where the detector is located
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-linear-reference-version  BaseType=unsignedByte  ParentType= ArchivedDataTrafficMonitoringMetadata
+tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-linear-reference-version = 6
+

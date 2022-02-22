@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-1-dlOrganizationInformationRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlOrganizationInformationRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.1.1 [Verify Connection Active] and is used for both valid and invalid test cases.
+       Version/Date: 2011/11/23 11:59:35-->
+<testcase xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlOrganizationInformationRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.1.1 [Verify Connection Active] and is used for both valid and invalid test cases.</test-case-summary>
+     <tcData name="${RI_BASETCDATAFILE}" userTestCaseDataFileName="${RI_USERTCDATAFILE}">
+          <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+          <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlOrganizationInformationRequest" riMode="EC">
+               <testStep functionId="Step 2 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+               <testStep functionId="Step 3 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+               <jl:if test="${ErrorResponseExpected}">
+                    <testStep functionId="Step 4 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+               </jl:if>
+               <testStep functionId="Step 5 REQUEST-RESPONSE-EC with the following parameters:   Dialog=dlOrganizationInformationRequest RequestMessage ErrorResponseExpected ErrorTypeExpected ">
+                    <REQUEST-RESPONSE-EC Dialog="dlOrganizationInformationRequest" functionId="dlOrganizationInformationRequest" RequestMessage="${RequestMessage}" ErrorResponseExpected="${ErrorResponseExpected}" ErrorTypeExpected="${ErrorTypeExpected}"/>
+               </testStep>
+          </C2CRI-session>
+     </tcData>
+</testcase>

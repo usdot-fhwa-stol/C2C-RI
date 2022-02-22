@@ -1,0 +1,742 @@
+ 
+#<!--   
+#       Title:  TCS-54-dlDeviceInformationSubscription-OC-InValid-7
+#       Description:  This test case is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.6.1 [Need to Share Gate Inventory]. This Test Case tests for an invalid response result. An error response message is expected be returned with an error-code set to 7 (authentication not recognized).
+#       Related Procedure:  TPS-54-dlDeviceInformationSubscription-OC
+#       Version/Date: 2014/01/16 02:51:22
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = LongInteger
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the number of publication message transmissions the test application is expected to receive as part of this test.  Valid values are 1 to 4,294,967,295.
+PublicationsToReceive = 0
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether a Publication update error response is expected from the SUT.  Valid values are True or False.
+PublicationErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of Publication update error is expected from the SUT.
+PublicationErrorTypeExpected = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Publication Response Message to be sent to the SUT.
+PublicationResponseMessage = #MESSAGESPEC#PubResponseMessage#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication.  Valid values are True or False.
+AuthenticationCheck = True
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the EC has the privilege to receive the information requested.  Valid values are True or False.
+AllowAccess = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Subscription Message to be sent to the SUT.
+SubscriptionMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether a subscription error response is expected from the SUT.  Valid values are True or False.
+SubscriptionErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of subscription error response that is expected from the SUT.
+SubscriptionErrorTypeExpected = 7
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageSubscription.informationalText 
+c2c:c2cMessageSubscription.informationalText = State DOT C2C Message Subscription Information
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageSubscription.returnAddress 
+c2c:c2cMessageSubscription.returnAddress = http://C2CRIEC:8086/TMDDWS/EC/tmddECSoapHttpService/tmddECSoapHttpServicePort/dlGateInventoryUpdate
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageSubscription.subscriptionAction.subscriptionAction-item 
+c2c:c2cMessageSubscription.subscriptionAction.subscriptionAction-item = newSubscription
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageSubscription.subscriptionType.subscriptionType-item 
+c2c:c2cMessageSubscription.subscriptionType.subscriptionType-item = periodic
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageSubscription.subscriptionID 
+c2c:c2cMessageSubscription.subscriptionID = StateDOTSubscriptionRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageSubscription.subscriptionName 
+c2c:c2cMessageSubscription.subscriptionName = StateDOTSubscriptionTitle
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageSubscription.subscriptionTimeFrame.start 
+c2c:c2cMessageSubscription.subscriptionTimeFrame.start = #CURRENTDATETIMEOFFSETINMINUTES#0#CURRENTDATETIMEOFFSETINMINUTES#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageSubscription.subscriptionTimeFrame.end 
+c2c:c2cMessageSubscription.subscriptionTimeFrame.end = #CURRENTDATETIMEOFFSETINMINUTES#5#CURRENTDATETIMEOFFSETINMINUTES#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageSubscription.subscriptionFrequency 
+c2c:c2cMessageSubscription.subscriptionFrequency = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageSubscription.broadcastAlerts.broadcastAlert 
+c2c:c2cMessageSubscription.broadcastAlerts.broadcastAlert = broadcastAlertsAccepted
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.authentication.user-id 
+tmdd:deviceInformationRequestMsg.authentication.user-id = UserId
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.authentication.password 
+tmdd:deviceInformationRequestMsg.authentication.password = P@ssW0rd
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.authentication.operator-id  BaseType=string  ParentType= Authentication
+tmdd:deviceInformationRequestMsg.authentication.operator-id = StateDOT_OPRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-id 
+tmdd:deviceInformationRequestMsg.organization-information.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-name 
+tmdd:deviceInformationRequestMsg.organization-information.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-location 
+tmdd:deviceInformationRequestMsg.organization-information.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-function 
+tmdd:deviceInformationRequestMsg.organization-information.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.contact-id 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.person-name 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.person-title 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.phone-number 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.phone-alternate 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.fax-number 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.pager-number 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.pager-id 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.email-address 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.radio-unit 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.address-line1 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.address-line1 = 195 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.address-line2 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.city 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.state 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.zip-code 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.country 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-id 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.height.verticalLevel 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = 196 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.last-update-time.date 
+tmdd:deviceInformationRequestMsg.organization-information.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.last-update-time.time 
+tmdd:deviceInformationRequestMsg.organization-information.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.last-update-time.offset 
+tmdd:deviceInformationRequestMsg.organization-information.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-name 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-location 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-function 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.contact-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.person-name 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.person-title 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.phone-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.phone-alternate 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.mobile-phone-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.mobile-phone-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.fax-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.pager-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.pager-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.email-address 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.radio-unit 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.address-line1 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.address-line1 = 197 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.address-line2 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.city 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.state 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.zip-code 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.country 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-name 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum = nad83
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalLevel 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-description 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-type 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-type = mobile
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 = 198 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.date 
+tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.time 
+tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.offset 
+tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-type  BaseType=anySimpleType  ParentType= DeviceInformationRequest
+tmdd:deviceInformationRequestMsg.device-type = gate
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-information-type  BaseType=anySimpleType  ParentType= DeviceInformationRequest
+tmdd:deviceInformationRequestMsg.device-information-type = device inventory
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.device-id-list.device-id 
+tmdd:deviceInformationRequestMsg.device-filter.device-id-list.device-id = StateDOTEquipmentRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.network-id-list.network-id 
+tmdd:deviceInformationRequestMsg.device-filter.network-id-list.network-id = StateDOTNetworkRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.link-id-list.link 
+tmdd:deviceInformationRequestMsg.device-filter.link-id-list.link = StateDOTFiberLink
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.link-designator-list.link-designator 
+tmdd:deviceInformationRequestMsg.device-filter.link-designator-list.link-designator = StateDOTLinkRtAssignment
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.linear-reference.linear-reference-start 
+tmdd:deviceInformationRequestMsg.device-filter.linear-reference.linear-reference-start = Exit 38 - Interstate Bypass
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.linear-reference.linear-reference-end 
+tmdd:deviceInformationRequestMsg.device-filter.linear-reference.linear-reference-end = Exit 38 - Interstate Bypass
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.section-id-list.section-id 
+tmdd:deviceInformationRequestMsg.device-filter.section-id-list.section-id = StateDOTSectionReference
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.pattern-id-list.pattern-id 
+tmdd:deviceInformationRequestMsg.device-filter.pattern-id-list.pattern-id = PatternId
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.center-id-list.center-id 
+tmdd:deviceInformationRequestMsg.device-filter.center-id-list.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.date 
+tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.time 
+tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.offset 
+tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.period-seconds 
+tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.period-seconds = 25
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.extension 
+tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.extension =
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.extension 
+tmdd:deviceInformationRequestMsg.device-filter.tmddX:deviceInformationRequestFilterExt.extension =
+
+
+
+#GROUP NAME = PubResponseMessage
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessageReceipt.informationalText 
+c2c:c2cMessageReceipt.informationalText = State DOT C2C Message Receipt Information
+

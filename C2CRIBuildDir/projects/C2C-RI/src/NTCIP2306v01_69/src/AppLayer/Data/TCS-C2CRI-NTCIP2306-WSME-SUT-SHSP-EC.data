@@ -1,0 +1,124 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSME-SUT-SOAP-Sub-Pub-EC
+#       Description:  TCS-C2CRI-NTCIP2306-WSME-SUT-SOAP-Sub-Pub-EC
+#       Related Procedure:  TPS-NTCIP2306-SOAP-Subscription-Publication-EC.xml
+#       Version/Date: 2011/11/15 22:59:44
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents the WSDL File to be verified.� It is specified in the Configuration File.
+WSDLFile=#CONTEXTVARIABLE#RI_WEBSERVICEURL#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Subscription Service defined in the WSDL that will be used during the test.
+SubscriptionServiceName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Port defined in the WSDL that is related to the selected Subscription Service Name and will be used during the test.
+SubscriptionPortName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Operation defined in the WSDL that is related to the selected Subscription Port Name and will be used during the test.
+SubscriptionOperationName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Publication Service defined in the WSDL that will be used during the test.
+PublicationServiceName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Port defined in the WSDL that is related to the selected Publication Service Name and will be used during the test.
+PublicationPortName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Publication Operation defined in the WSDL that is related to the selected Service Name and will be used during the test.
+PublicationOperationName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Publication Message that will be used during the test.
+PublicationMessage = #USERDEFINED#
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = Enter (True or False) whether an erroneous transport exchange is expected during this test. 
+SubscriptionTransportErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the type of Transport Error (if applicable) that is expected during this test. 
+SubscriptionTransportErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = Enter (True or False) whether an erroneous Subscription message is expected during this test. 
+SubscriptionMessageErrorExpected = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = Enter (True or False) whether a Subscription encoding error is expected during this test. 
+SubscriptionEncodingErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the Subscription encoding error type that is expected during this test. 
+SubscriptionEncodingErrorTypeExpected = NONE
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the type of Subscription message error (if applicable) is expected during this test. 
+SubscriptionMessageErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = Enter (True or False) whether an erroneous transport exchange is expected during the publication dialog of this test. 
+PublicationTransportErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the type of Transport Error (if applicable) that is expected during this publication dialog of this test. 
+PublicationTransportErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = Enter (True or False) whether an erroneous Publication message request is expected during this test. 
+PublicationMessageErrorExpected = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = Enter (True or False) whether a Publication encoding error is expected during this test. 
+PublicationEncodingErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the Publication encoding error type that is expected during this test. 
+PublicationEncodingErrorTypeExpected = NONE
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the type of Publication message error (if applicable) is expected during this test. 
+PublicationMessageErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = Enter (True or False) whether an erroneous transport exchange is expected during this test. 
+TransportErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the type of Transport Error (if applicable) that is expected during this test. 
+TransportErrorTypeExpected = NONE

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch4jConfig>
+  <dontWrapJar>true</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>RIGUI.jar</jar>
+  <outfile>C2CRI.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir></chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon></icon>
+  <classPath>
+    <mainClass>org.fhwa.c2cri.gui.C2CMainUI</mainClass>
+    <cp>.\dist\RIGUI.jar</cp>
+    <cp>.\dist\lib\classgraph-4.8.41.jar</cp>
+    <cp>.\dist\lib\ant\ant-launcher.jar</cp>
+    <cp>.\dist\lib\C2CRI-PDF-ExportFonts.jar</cp>
+    <cp>.\dist\lib\C2CRIReportsDBLibrary.jar</cp>
+    <cp>.\dist\lib\c2cschema.jar</cp>
+    <cp>.\dist\lib\2-xerces-2_9_1\zxercesImpl.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\commons-beanutils-1.8.0.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\commons-collections-2.1.1.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\commons-digester-1.7.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\commons-javaflow-20060411.jar</cp>
+    <cp>.\dist\lib\jameleon-test-suite\commons-jelly-1.0.jar</cp>
+    <cp>.\dist\lib\jameleon-core\commons-jexl-1.0.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\commons-logging-1.0.4.jar</cp>
+    <cp>.\dist\lib\jameleon-core\commons-logging-1.1.jar</cp>
+    <cp>.\dist\lib\commons-net-2.0.jar</cp>
+    <cp>.\dist\lib\commons-net-ftp-2.0.jar</cp>
+    <cp>.\dist\lib\jameleon-core\dom4j-1.6.1.jar</cp>
+    <cp>.\dist\lib\FTP\ftplet-api-1.0.5.jar</cp>
+    <cp>.\dist\lib\FTP\ftpserver-core-1.0.5.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\groovy-all-1.5.5.jar</cp>
+    <cp>.\dist\lib\ICEPdf-6.1.2\icepdf-core-6.1.2.jar</cp>
+    <cp>.\dist\lib\ICEPdf-6.1.2\icepdf-viewer-6.1.2.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\iText-2.1.7.jar</cp>
+    <cp>.\dist\lib\jameleon-core.jar</cp>
+    <cp>.\dist\lib\jameleon-launcher.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\jasperreports-3.7.3.jar</cp>
+    <cp>.\dist\lib\jetty\jasperreports-fonts-3.7.3.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\jasperreports-fonts-3.7.3.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\jasperreports-javaflow-3.7.3.jar</cp>
+    <cp>.\dist\lib\JAXBProject-1.0-SNAPSHOT-jar-with-dependencies.jar</cp>
+    <cp>.\dist\lib\jameleon-core\jaxen-1.1.1.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\jdt-compiler-3.1.1.jar</cp>
+    <cp>.\dist\lib\jetty\jetty-continuation-7.1.6.v20100715.jar</cp>
+    <cp>.\dist\lib\jetty\jetty-http-7.1.6.v20100715.jar</cp>
+    <cp>.\dist\lib\jetty\jetty-io-7.1.6.v20100715.jar</cp>
+    <cp>.\dist\lib\jetty\jetty-security-7.1.6.v20100715.jar</cp>
+    <cp>.\dist\lib\jetty\jetty-server-7.1.6.v20100715.jar</cp>
+    <cp>.\dist\lib\jetty\jetty-servlet-7.1.6.v20100715.jar</cp>
+    <cp>.\dist\lib\jetty\jetty-servlets-7.1.6.v20100715.jar</cp>
+    <cp>.\dist\lib\jetty\jetty-util-7.1.6.v20100715.jar</cp>
+    <cp>.\dist\lib\jspf-1_0_2\jspf.core-1.0.2.jar</cp>
+    <cp>.\dist\lib\jspf-1_0_2\jspf.remote-1.0.2.jar</cp>
+    <cp>.\dist\lib\jspf-1_0_2\jspf.remote.discovery-1.0.2.jar</cp>
+    <cp>.\dist\lib\jspf-1_0_2\jspf.remote.ermi-1.0.2.jar</cp>
+    <cp>.\dist\lib\jspf-1_0_2\jspf.remote.javascript-1.0.2.jar</cp>
+    <cp>.\dist\lib\jspf-1_0_2\jspf.remote.json-1.0.2.jar</cp>
+    <cp>.\dist\lib\jspf-1_0_2\jspf.remote.lipermi-1.0.2.jar</cp>
+    <cp>.\dist\lib\jspf-1_0_2\jspf.remote.xmlrpc-1.0.2.jar</cp>
+    <cp>.\dist\lib\jspf-1_0_2\jspf.remote.xmlrpcdelight-1.0.2.jar</cp>
+    <cp>.\dist\lib\1-xmlbeans-2.6.0\jsr173_1.0_api.jar</cp>
+    <cp>.\dist\lib\jameleon-core\junit.jar</cp>
+    <cp>.\dist\lib\log4j-1.2.14.jar</cp>
+    <cp>.\dist\lib\FTP\log4j-1.2.14.jar</cp>
+    <cp>.\dist\lib\FTP\mina-core-2.0.0-RC1.jar</cp>
+    <cp>.\dist\lib\NTCIP2306v01_69.jar</cp>
+    <cp>.\dist\lib\WSDL4j\qname.jar</cp>
+    <cp>.\dist\lib\2-xerces-2_9_1\resolver.jar</cp>
+    <cp>.\dist\lib\1-xmlbeans-2.6.0\resolver.jar</cp>
+    <cp>.\dist\lib\ri-plugin.jar</cp>
+    <cp>.\dist\lib\RI_Logging.jar</cp>
+    <cp>.\dist\lib\RI_Properties.jar</cp>
+    <cp>.\dist\lib\RI_Utilities.jar</cp>
+    <cp>.\dist\lib\RICenterServices.jar</cp>
+    <cp>.\dist\lib\RI_Connections.jar</cp>
+    <cp>.\dist\lib\RITestCaseData.jar</cp>
+    <cp>.\dist\lib\RITestCaseDefinitions.jar</cp>
+    <cp>.\dist\lib\saxonhe9-2-1-2j\saxon9he.jar</cp>
+    <cp>.\dist\lib\2-xerces-2_9_1\serializer.jar</cp>
+    <cp>.\dist\lib\jetty\servlet-api-2.5.jar</cp>
+    <cp>.\dist\lib\FTP\slf4j-api-1.5.2.jar</cp>
+    <cp>.\dist\lib\FTP\slf4j-log4j12-1.5.2.jar</cp>
+    <cp>.\dist\lib\sqlite-jdbc-3.7.15-M1.jar</cp>
+    <cp>.\dist\lib\TMDDv303.jar</cp>
+    <cp>.\dist\lib\velocity-dep-1.5.jar</cp>
+    <cp>.\dist\lib\jameleon-test-suite\watij-3.1.0.jar</cp>
+    <cp>.\dist\lib\WSDL4j\wsdl4j.jar</cp>
+    <cp>.\dist\lib\1-xmlbeans-2.6.0\xbean.jar</cp>
+    <cp>.\dist\lib\1-xmlbeans-2.6.0\xbean_xpath.jar</cp>
+    <cp>.\dist\lib\jameleon-test-suite\xercesImpl-2.6.2.jar</cp>
+    <cp>.\dist\lib\2-xerces-2_9_1\xml-apis.jar</cp>
+    <cp>.\dist\lib\1-xmlbeans-2.6.0\xmlbeans-qname.jar</cp>
+    <cp>.\dist\lib\jameleon-test-suite\xmlParserAPIs-2.6.2.jar</cp>
+    <cp>.\dist\lib\1-xmlbeans-2.6.0\xmlpublic.jar</cp>
+    <cp>.\dist\lib\jasperreports-3.7.3\z-xalan-2.7.1.jar</cp>
+    <cp>.\dist\lib\jameleon-core\commons-beanutils-1.7.0.jar</cp>
+    <cp>.\dist\lib\ant\ant-junit.jar</cp>
+    <cp>.\dist\lib\ant\ant.jar</cp>
+    <cp>.\dist\lib\commons-codec\commons-codec-1.10.jar</cp>
+    <cp>.\dist\lib\jelly\commons-jelly-1.0.jar</cp>
+    <cp>.\dist\lib\jelly\commons-jelly-tags-beanshell-1.0-SNAPSHOT.jar</cp>
+    <cp>.\dist\lib\jelly\commons-jexl-1.0.jar</cp>
+    <cp>.\dist\lib\commons-logging\commons-logging-1.1.1.jar</cp>
+    <cp>.\dist\lib\HTTP\httpclient-4.0.3.jar</cp>
+    <cp>.\dist\lib\HTTP\httpcore-4.0.1.jar</cp>
+    <cp>.\dist\lib\HTTP\httpcore-nio-4.0.1.jar</cp>
+    <cp>.\dist\lib\HTTP\httpmime-4.0.3.jar</cp>
+    <cp>.\dist\lib\juniversalchardet-1.0.3.jar</cp>
+    <cp>.\dist\lib\jelly\qdox-1.6.1.jar</cp>
+    <cp>.\dist\lib\commons-logging-api-1.1.1.jar</cp>
+    <cp>.\dist\lib\xmlsec-2.1.5.jar</cp>
+    <cp>.\dist\lib\bcpkix-jdk15on-165.jar</cp>
+    <cp>.\dist\lib\bcprov-jdk15on-165.jar</cp>
+    <cp>.\dist\lib\cjwizard-1.0.9.jar</cp>
+    <cp>.\dist\lib\apache\commons\lang\commons-lang3-3.12.0.jar</cp>
+    <cp>.\dist\lib\apache\commons\text\commons-text-1.9.jar</cp>
+	</classPath>
+  <jre>
+    <path>./jre</path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.7.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJdk</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+    <initialHeapSize>64</initialHeapSize>
+    <maxHeapSize>4096</maxHeapSize>
+	<opt>-Xmx4096m</opt>
+	<opt>-Xms64m</opt>
+	<opt>-Djdk.tls.client.protocols=TLSv1.2</opt>
+    <opt>--patch-module java.base=./dist/lib/RI_Connections.jar</opt>
+    <opt>--add-exports java.base/org.fhwa.c2cri.java.net=ALL-UNNAMED</opt>
+	<opt>-Dsun.java2d.uiScale.enabled=false</opt>
+  </jre>
+  <versionInfo>
+    <fileVersion>3.0.0.0</fileVersion>
+    <txtFileVersion>Release 3</txtFileVersion>
+    <fileDescription>C2C RI Release 3 Product</fileDescription>
+    <copyright>FHWA</copyright>
+    <productVersion>3.0.0.0</productVersion>
+    <txtProductVersion>Release 3</txtProductVersion>
+    <productName>Center To Center RI Application</productName>
+    <companyName></companyName>
+    <internalName>Release 3</internalName>
+    <originalFilename>C2CRI.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>ENGLISH_US</language>
+  </versionInfo>
+  <messages>
+    <startupErr>An error occurred while starting the application.</startupErr>
+    <bundledJreErr>This application was configured to use a bundled Java Runtime Environment but the runtime is missing or corrupted.</bundledJreErr>
+    <jreVersionErr>This application requires a Java Runtime Environment</jreVersionErr>
+    <launcherErr>The registry refers to a nonexistent Java Runtime Environment installation or the runtime is corrupted.</launcherErr>
+    <instanceAlreadyExistsMsg>An application instance is already running.</instanceAlreadyExistsMsg>
+  </messages>
+</launch4jConfig>

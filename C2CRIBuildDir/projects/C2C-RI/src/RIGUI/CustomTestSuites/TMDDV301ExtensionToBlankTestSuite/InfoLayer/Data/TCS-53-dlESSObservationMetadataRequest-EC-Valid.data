@@ -1,0 +1,1099 @@
+ 
+#<!--   
+#       Title:  TCS-53-dlESSObservationMetadataRequest-EC-Valid
+#       Description:  This test case is used to verify the SUTs support of the dlESSObservationMetadataRequest dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.6.5.7 [Need to Share ESS Organizational Metadata]. This Test Case tests for a Valid response result.
+#       Related Procedure:  TPS-53-dlESSObservationMetadataRequest-EC
+#       Version/Date: 2012/02/14 23:03:25
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Response Message to be sent to the SUT.
+ResponseMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected user name.
+Username = defaultUser
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected password.
+Password = defaultPassword
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Organization Identifier.
+OrganizationID = defaultOrgID
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the priviledge to access the information requested.
+AllowAccess = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a request error is expected from the SUT.
+ErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of request error that is expected from the SUT.
+ErrorTypeExpected = None
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT is expected to have valid data for a respone.
+DataValid = True
+
+
+#GROUP NAME = Values
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = Testing for Requirement 3.3.6.6.4.2 in message deviceInformationRequestMsg
+tmdd:deviceInformationRequestMsg.device-information-type = 1,1,device metadata
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = Testing for Requirement 3.3.6.6.4.2 in message deviceInformationRequestMsg
+tmdd:deviceInformationRequestMsg.device-type = 1,1,environmental sensor station
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.restrictions.organization-information-forwarding-restrictions  BaseType=anySimpleType  ParentType= Restrictions
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.restrictions.organization-information-forwarding-restrictions = 4
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-data-set-file-name  BaseType=string  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-data-set-file-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-data-set-file-directory-path  BaseType=string  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-data-set-file-directory-path = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-data-set-file-access-protocol  BaseType=anySimpleType  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-data-set-file-access-protocol = https
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-data-set-file-access-address  BaseType=string  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-data-set-file-access-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-data-set-file-access-port-address  BaseType=int  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-data-set-file-access-port-address = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-observation-collection-frequency  BaseType=unsignedInt  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-observation-collection-frequency = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-observation-collection-offset  BaseType=unsignedInt  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-observation-collection-offset = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-host-server-offset-minutes  BaseType=unsignedInt  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-host-server-offset-minutes = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-host-server-time-zone  BaseType=byte  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-host-server-time-zone = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-host-server-daylight-savings-in-effect-flag  BaseType=anySimpleType  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.ess-host-server-daylight-savings-in-effect-flag = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.user-id  BaseType=string  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.user-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.password  BaseType=string  ParentType= ESSObservationDataSetMetadataDetail
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata.password = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-positional-order  BaseType=int  ParentType= ESSObservationMetadataItem
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-positional-order = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-label  BaseType=string  ParentType= Ess-observation-positional-order
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-label = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-type  BaseType=anySimpleType  ParentType= Ess-object-label
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-type = insert-extension-values-here
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-null-value  BaseType=string  ParentType= Ess-object-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-null-value = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-units  BaseType=string  ParentType= Ess-object-null-value
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-units = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-decimal-scaling-factor  BaseType=float  ParentType= Ess-observation-units
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata.ess-observation-decimal-scaling-factor = 1.5E2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-id  BaseType=string  ParentType= OrganizationInformation
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-name  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-location  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-location = stringstri
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-function  BaseType=string  ParentType= Organization-location-fips
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-function = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.contact-id  BaseType=string  ParentType= ContactDetails
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.person-name  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.person-title  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.phone-number  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.phone-alternate  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.mobile-phone-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.mobile-phone-id  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.fax-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.pager-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.pager-id  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.email-address  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.radio-unit  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.address-line1  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.address-line2  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.city  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.state  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.zip-code  BaseType=string  ParentType= Contact-mailing-address-state
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.country  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.organization-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-id  BaseType=string  ParentType= OrganizationCenterInformation
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-name  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.latitude  BaseType=Int-latitude32  ParentType= GeoLocation
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.latitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.longitude  BaseType=Int-longitude32  ParentType= Latitude
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.longitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum  BaseType=anySimpleType  ParentType= Longitude
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.height.verticalLevel  BaseType=byte  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-description  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-type  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-type = mobile
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id  BaseType=string  ParentType= ContactDetails
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.city  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.state  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code  BaseType=string  ParentType= Contact-mailing-address-state
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.country  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.center-contact-list.center-contact-details.center-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.last-update-time.date  BaseType=string  ParentType= DateTimeZone
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.last-update-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.last-update-time.time  BaseType=string  ParentType= Date
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.last-update-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.last-update-time.offset  BaseType=string  ParentType= Time
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.organization-information.last-update-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.station-id  BaseType=string  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.station-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-id  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-description  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-information-distribution-group  BaseType=anySimpleType  ParentType= Event-description-notes-and-comments
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-information-distribution-group = do not distribute
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-installation-date.date  BaseType=string  ParentType= DateTimeZone
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-installation-date.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-installation-date.time  BaseType=string  ParentType= Date
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-installation-date.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-installation-date.offset  BaseType=string  ParentType= Time
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-installation-date.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.ess-observation-type  BaseType=anySimpleType  ParentType= Ess-object-label
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.ess-observation-type = essSnapshotCameraIndex
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-min-value-range  BaseType=int  ParentType= Ess-object-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-min-value-range = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-max-value-range  BaseType=int  ParentType= Ess-observation-value-range-number
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-max-value-range = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-manufacturer  BaseType=string  ParentType= Ess-observation-value-range-number
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-manufacturer = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-model-number  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-model-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-index  BaseType=int  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-index = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-rate-of-change-interval  BaseType=unsignedInt  ParentType= Ess-observation-sensor-index
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-rate-of-change-interval = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-max-positive-rate-of-change  BaseType=float  ParentType= Ess-time-span-seconds
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-max-positive-rate-of-change = 1.5E2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-max-negative-rate-of-change  BaseType=float  ParentType= Ess-observation-rate-of-change
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-max-negative-rate-of-change = 1.5E2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-persistence-interval  BaseType=unsignedInt  ParentType= Ess-observation-rate-of-change
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-persistence-interval = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-persistence-threshhold  BaseType=float  ParentType= Ess-time-span-seconds
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-persistence-threshhold = 1.5E2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-like-instrument-threshhold  BaseType=float  ParentType= Ess-observation-rate-of-change
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-like-instrument-threshhold = 1.5E2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-maintenance-calibration-date.date  BaseType=string  ParentType= DateTimeZone
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-maintenance-calibration-date.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-maintenance-calibration-date.time  BaseType=string  ParentType= Date
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-maintenance-calibration-date.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-maintenance-calibration-date.offset  BaseType=string  ParentType= Time
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-maintenance-calibration-date.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-maintenance-date.date  BaseType=string  ParentType= DateTimeZone
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-maintenance-date.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-maintenance-date.time  BaseType=string  ParentType= Date
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-maintenance-date.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-maintenance-date.offset  BaseType=string  ParentType= Time
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-maintenance-date.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-serial-number  BaseType=string  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-serial-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-resolution  BaseType=float  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-resolution = 1.5E2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-accuracy  BaseType=float  ParentType= Ess-sensor-resolution
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-accuracy = 1.5E2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-min-value-output  BaseType=int  ParentType= Ess-sensor-accuracy
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-min-value-output = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-max-value-output  BaseType=int  ParentType= Ess-observation-value-range-number
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-max-value-output = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-to-station-north-south-offset  BaseType=int  ParentType= Ess-observation-value-range-number
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-to-station-north-south-offset = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-to-station-east-west-offset  BaseType=int  ParentType= Ess-distance-meters
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-to-station-east-west-offset = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-to-station-elevation-offset  BaseType=int  ParentType= Ess-distance-meters
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-to-station-elevation-offset = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-to-surface-elevation-offset  BaseType=int  ParentType= Ess-distance-meters
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-to-surface-elevation-offset = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-embedded-material-description  BaseType=string  ParentType= Ess-distance-meters
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-embedded-material-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-output-average-interval  BaseType=unsignedInt  ParentType= Event-description-notes-and-comments
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-output-average-interval = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-output-internal-units  BaseType=string  ParentType= Ess-time-span-milliseconds
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-output-internal-units = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-begin-date-time.date  BaseType=string  ParentType= DateTimeZone
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-begin-date-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-begin-date-time.time  BaseType=string  ParentType= Date
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-begin-date-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-begin-date-time.offset  BaseType=string  ParentType= Time
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-begin-date-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-end-date-time.date  BaseType=string  ParentType= DateTimeZone
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-end-date-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-end-date-time.time  BaseType=string  ParentType= Date
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-end-date-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-end-date-time.offset  BaseType=string  ParentType= Time
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-last-out-of-service-end-date-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-sampling-interval  BaseType=unsignedInt  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-sensor-metadata-list.ess-sensor-metadata.sensor-sampling-interval = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-id  BaseType=string  ParentType= Ess-time-span-seconds
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-description  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-directions-description  BaseType=string  ParentType= Event-description-notes-and-comments
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-directions-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-representativeness  BaseType=string  ParentType= Event-description-notes-and-comments
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-representativeness = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-obstructions-description  BaseType=string  ParentType= Event-description-notes-and-comments
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-obstructions-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-landscape-description  BaseType=string  ParentType= Event-description-notes-and-comments
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-landscape-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-has-access-control-flag  BaseType=anySimpleType  ParentType= Event-description-notes-and-comments
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-has-access-control-flag = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-name  BaseType=string  ParentType= Binary-flag
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-linear-reference  BaseType=string  ParentType= Transportation-network-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-linear-reference = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-linear-reference-version  BaseType=unsignedByte  ParentType= Link-location-linear-reference
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-linear-reference-version = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-linear-reference-units  BaseType=anySimpleType  ParentType= Link-location-linear-reference-version
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-linear-reference-units = percentage
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-to-station-distance  BaseType=int  ParentType= LRMethod
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-to-station-distance = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-to-station-elevation  BaseType=int  ParentType= Ess-distance-meters
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-roadway-to-station-elevation = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-jurisdiction-name  BaseType=string  ParentType= Ess-distance-meters
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-jurisdiction-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-state-code  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-state-code = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-country-code  BaseType=anySimpleType  ParentType= Contact-mailing-address-state
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-country-code = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-slope-angle  BaseType=int  ParentType= Ess-site-country-code
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-slope-angle = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-grade-direction  BaseType=int  ParentType= Ess-angle-degrees
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-grade-direction = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-wind-roughness-from-north  BaseType=unsignedInt  ParentType= Ess-angle-degrees
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-wind-roughness-from-north = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-wind-roughness-from-south  BaseType=unsignedInt  ParentType= Ess-observation-percent
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-wind-roughness-from-south = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-wind-roughness-from-east  BaseType=unsignedInt  ParentType= Ess-observation-percent
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-wind-roughness-from-east = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-wind-roughness-from-west  BaseType=unsignedInt  ParentType= Ess-observation-percent
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-wind-roughness-from-west = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-soil-description  BaseType=string  ParentType= Ess-observation-percent
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-soil-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-soil-percent-sand  BaseType=unsignedInt  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-soil-percent-sand = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-soil-percent-silt  BaseType=unsignedInt  ParentType= Ess-observation-percent
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-soil-percent-silt = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-soil-percent-clay  BaseType=unsignedInt  ParentType= Ess-observation-percent
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.site-information.site-soil-percent-clay = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-category  BaseType=anySimpleType  ParentType= Ess-observation-percent
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-category = 4
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-id  BaseType=string  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-location.latitude  BaseType=Int-latitude32  ParentType= GeoLocation
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-location.latitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-location.longitude  BaseType=Int-longitude32  ParentType= Latitude
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-location.longitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-location.horizontalDatum  BaseType=anySimpleType  ParentType= Longitude
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-location.height.altitude.ft  BaseType=int  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-location.height.altitude.ft = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-location.height.verticalDatum  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-elevation  BaseType=short  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-elevation = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-description  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-type  BaseType=unsignedByte  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-type = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-horizontal-datum  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-horizontal-datum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-vertical-datum  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-vertical-datum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-power-source  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-power-source = insert-extension-values-here
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-door-status  BaseType=unsignedByte  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-door-status = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-battery-status  BaseType=unsignedByte  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-battery-status = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-line-volts  BaseType=unsignedByte  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-line-volts = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-group-name  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-group-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.contact-id  BaseType=string  ParentType= ContactDetails
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.person-name  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.person-title  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.phone-number  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.phone-alternate  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.mobile-phone-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.mobile-phone-id  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.fax-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.pager-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.pager-id  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.email-address  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.radio-unit  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.address-line1  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.address-line2  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.city  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.state  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.zip-code  BaseType=string  ParentType= Contact-mailing-address-state
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.country  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-contact-information.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-frequency  BaseType=unsignedInt  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-frequency = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-calibration-frequency  BaseType=unsignedInt  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-calibration-frequency = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-status  BaseType=anySimpleType  ParentType= Contact-mailing-address-entry
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-maintenance-status = insert-extension-values-here
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-installation-date.date  BaseType=string  ParentType= DateTimeZone
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-installation-date.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-installation-date.time  BaseType=string  ParentType= Date
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-installation-date.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-installation-date.offset  BaseType=string  ParentType= Time
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-installation-date.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-number-of-devices  BaseType=unsignedInt  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-number-of-devices = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-comm-method  BaseType=anySimpleType  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-comm-method = insert-extension-values-here
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-telephone-number  BaseType=string  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-telephone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-ip-address  BaseType=string  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-ip-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-manufacturer  BaseType=string  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-manufacturer = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-observation-collection-frequency  BaseType=unsignedInt  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-observation-collection-frequency = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-observation-collection-offset  BaseType=unsignedInt  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-observation-collection-offset = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-transmission-frequency  BaseType=unsignedInt  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-transmission-frequency = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-transmission-offset  BaseType=unsignedInt  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-transmission-offset = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-transmission-format  BaseType=string  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.station-information.station-transmission-format = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.climate-record-information.climate-observation-month  BaseType=anySimpleType  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.climate-record-information.climate-observation-month = January
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.climate-record-information.climate-observation-month-min-value  BaseType=int  ParentType= Ess-observation-month
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.climate-record-information.climate-observation-month-min-value = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.climate-record-information.climate-month-max-value  BaseType=int  ParentType= Ess-observation-value-range-number
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.climate-record-information.climate-month-max-value = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-description  BaseType=string  ParentType= Ess-observation-value-range-number
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-installation-date.date  BaseType=string  ParentType= DateTimeZone
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-installation-date.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-installation-date.time  BaseType=string  ParentType= Date
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-installation-date.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-installation-date.offset  BaseType=string  ParentType= Time
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-installation-date.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-manufacturer  BaseType=string  ParentType= Time-offset-utc
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-manufacturer = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-product-name  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-product-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-model-number-software-version  BaseType=string  ParentType= Organization-resource-name
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.data-collector-information.data-collector-model-number-software-version = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.image-information.image-description  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.image-information.image-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.image-information.image-url  BaseType=string  ParentType= Event-description-notes-and-comments
+tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.image-information.image-url = string
+

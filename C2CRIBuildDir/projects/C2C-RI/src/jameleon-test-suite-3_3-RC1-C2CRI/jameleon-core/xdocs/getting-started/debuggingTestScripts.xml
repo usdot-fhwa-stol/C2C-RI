@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Getting Started - Debugging Test Scripts</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, debug, debugging, script, test, automated, testing, automated testing, started, getting started, tutorial, howto"/>
+
+    <body>
+        <section name="Using the GUI to debug your script">
+            <p>
+                There are two major ways to debug your script in the GUI.
+                <ul>
+                    <li><a href="#Using Test Case Documentation">Using Test Case Documentation</a></li>
+                    <li><a href="#Using Debug Mode">Using Debug Mode</a></li>
+                </ul>
+                <subsection name="Using Test Case Documentation">
+                    <p>
+                        When Jameleon sees a tag it doesn't recognize, it fails during execution. This can have undesired affects in your script.
+                        As discussed in <a target="_new" href="documentingTestScripts.xml">Documenting Scripts</a>, when a test script is selected,
+                        the documentation is generated and displayed to the right. The <b><i>Execution Steps</i></b> area explains what Jameleon
+                        sees when running the script. This is one of the areas where having a unique functionId attribute for each tag is helpful. You can use this
+                        documentation to validate that each functionId in your script is displayed in test <b><i>Execution Steps</i></b>.
+                    </p>
+                    <p>
+                        Let's misspell  ju-assert-equals as ju-assert-equal, keeping a valid XML document, but giving Jameleon a tag it doesn't know about.
+                        <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+    &lt;test-case-summary&gt;
+        An example passing test that simply compares two equal values.
+    &lt;/test-case-summary&gt;
+    &lt;test-case-author&gt;Joe Blow&lt;/test-case-author&gt;
+    &lt;test-case-level&gt;FUNCTIONAL&lt;/test-case-level&gt;
+    &lt;functional-point-tested&gt;assert-equals&lt;/functional-point-tested&gt;
+    &lt;test-case-bug&gt;12345&lt;/test-case-bug&gt;
+    &lt;application-tested&gt;JUnit Plug-in&lt;/application-tested&gt;
+    &lt;test-case-requirement&gt;#AF323&lt;/test-case-requirement&gt;
+
+    &lt;ju-session&gt;
+        &lt;function-doc&gt;extra step to document&lt;/function-doc&gt;
+        &lt;ju-assert-equal
+            functionId="Compare two equaling variables"
+            expected="value 1"
+            actual="value 1"/&gt;
+    &lt;/ju-session&gt;
+&lt;/testcase&gt;
+                        </source>
+                    </p>
+                    <p>
+                        Save this file as brokenScript.xml in the <b><i>scripts</i></b> folder. When a new file is created, you must double-click
+                        on the parent of where the scripts exists to see the script. Because the parent of this script is <b><i>Test Cases</i></b>,
+                        we need to double-click <b><i>Test Cases</i></b> two times to see the new file.
+                    </p>
+                    <p>
+                        <image src="../images/getting-started/unrecognizedTag.jpg"/>
+                    </p>
+                    <p>
+                        Notice that the second functionId doesn't show up in the documentation. The function may get skipped when generating the docs, but
+                        when executing the script, you will get a failure at that tag. 
+                    </p>
+                    <p>
+                        Now let's go over an example with invalid XML. Misspell the opening ju-session as 
+                        ju-sessio, but leave the closing ju-session tag alone and see the results.
+                        <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+    &lt;test-case-summary&gt;
+        An example passing test that simply compares two equal values.
+    &lt;/test-case-summary&gt;
+    &lt;test-case-author&gt;Joe Blow&lt;/test-case-author&gt;
+    &lt;test-case-level&gt;FUNCTIONAL&lt;/test-case-level&gt;
+    &lt;functional-point-tested&gt;assert-equals&lt;/functional-point-tested&gt;
+    &lt;test-case-bug&gt;12345&lt;/test-case-bug&gt;
+    &lt;application-tested&gt;JUnit Plug-in&lt;/application-tested&gt;
+    &lt;test-case-requirement&gt;#AF323&lt;/test-case-requirement&gt;
+
+    &lt;ju-sessio&gt;
+        &lt;function-doc&gt;extra step to document&lt;/function-doc&gt;
+        &lt;ju-assert-equals
+            functionId="Compare two equaling variables"
+            expected="value 1"
+            actual="value 1"/&gt;
+    &lt;/ju-session&gt;
+&lt;/testcase&gt;
+                        </source>
+                        Save the file as described above, select it and you should see something like the image below.
+                    </p>
+                    <p>
+                        <image src="../images/getting-started/invalidXMLDialog.jpg"/>
+                    </p>
+                    <p>
+                        While the message in the dialog box isn't exactly intuitive, it does say that there is an opening ju-sessio, but not a closing one, thus
+                        creating an invalid XML document. Now it's up to you to figure out which tag is the correct one, ju-sessio or ju-session.
+                    </p>
+                </subsection>
+                <subsection name="Using Debug Mode">
+                    <p>
+                        Often times, your script is failing and you don't know for sure what is going on. In debug mode, you can step through the execution of your script
+                        and change the values of variables real-time. Currently, the variables with multiple values (arrays, Lists, HashMaps ...) are not supported in this mode.
+                    </p>
+                    <p>
+                        Let's start off by debugging the above example. To use the debug mode, you must set an attributed called <b><i>breakPoint</i></b> to <b><i>true</i></b>
+                        in the function tag you want to start debugging. Currently, this attribute can only be set in function and data-drivable tags. The function-doc tag is
+                        actually a function tag. Let's tell the debugger to start there by changing the above script to:
+                        <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+    &lt;test-case-summary&gt;
+        An example passing test that simply compares two equal values.
+    &lt;/test-case-summary&gt;
+    &lt;test-case-author&gt;Joe Blow&lt;/test-case-author&gt;
+    &lt;test-case-level&gt;FUNCTIONAL&lt;/test-case-level&gt;
+    &lt;functional-point-tested&gt;assert-equals&lt;/functional-point-tested&gt;
+    &lt;test-case-bug&gt;12345&lt;/test-case-bug&gt;
+    &lt;application-tested&gt;JUnit Plug-in&lt;/application-tested&gt;
+    &lt;test-case-requirement&gt;#AF323&lt;/test-case-requirement&gt;
+
+    &lt;ju-session&gt;
+        &lt;function-doc breakPoint="true"&gt;extra step to document&lt;/function-doc&gt;
+        &lt;ju-assert-equal
+            functionId="Compare two equaling variables"
+            expected="value 1"
+            actual="value 1"/&gt;
+    &lt;/ju-session&gt;
+&lt;/testcase&gt;
+                        </source>
+                    </p>
+                    <p>
+                        To run the script in debug mode, select the script to debug and press the <b><i>Debug Test(s)</i></b> button. This button is highlighted below.
+                    </p>
+                    <p>
+                        <img src="../images/getting-started/debugButton.jpg"/>
+                    </p>
+                    <p>
+                        After pressing the debug button, you should be prompted with a dialog box telling you which tag you are on as well as all
+                        variables that are settable in that tag. Below is the dialog that you should see after pressing the debug button:
+                    </p>
+                    <p>
+                        <image src="../images/getting-started/debugDialogFunctionDoc.jpg"/>
+                    </p>
+                    <p>
+                        The title of the dialog is the functionId of the tag being debugged. Below the title is the name of the tag and below that is a
+                        table that represents the variables that can be set and their corresponding values. I moved the debug dialog to the top-right in order
+                        to see the script. Notice that the functional point that we are on is highlighted in the script. If you press the <b><i>Go</i></b> button,
+                        the debugger will continue on until it finds another break point or until the script ends. If you press the <b><i>Step</i></b> 
+                        button, then the debugger will stop at the next function tag with a similar prompt.
+                    </p>
+                    <p>
+                        In our example, it doesn't matter whether we press <b><i>Go</i></b> or <b><i>Step</i></b> because the second tag is misspelled and not recognized by Jameleon. 
+                        Let's fix that by changing ju-assert-equal back to ju-assert-equals, saving the file and then pressing the debug button again. If you press the <b><i>Step</i></b>
+                        button again, a dialog box will appear for the ju-assert-equals tag.
+                    </p>
+                    <p>
+                        To better understand the debug functionality, experiment with changing the values in the debug dialog window for the ju-assert-equals tag and make it fail. 
+                    </p>
+                    <p>
+                        <b>NOTE:</b> You must hit the Enter key or select another cell to commit the changes that you made in the debug dialog window.
+                    </p>
+                </subsection>
+            </p>
+        </section>
+    </body>
+</document>

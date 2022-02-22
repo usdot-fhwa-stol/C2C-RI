@@ -1,0 +1,4 @@
+testEnvironment=dev
+failOnCSVFileNotFound=false
+genTestCaseDocs=false
+csvDir=etc

@@ -1,0 +1,837 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-8-dlFullEventUpdateSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlFullEventUpdateSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.3.4 [Need for Forecast Event Information] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/17 23:42:15-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlFullEventUpdateSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.3.4 [Need for Forecast Event Information] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Publish Event Information (NTRM 3.3.3.2}.  RECORD this value as: TMDD_N8R58_Publish_Event_Information_Parameter = ${TMDD_N8R58_Publish_Event_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine the dialog performance requirement for Subscribe to Event Information (NTRM 3.3.3.3}.  RECORD this value as: TMDD_N8R59_Subscribe_to_Event_Information_Parameter = ${TMDD_N8R59_Subscribe_to_Event_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N8R15_Restrictions___Error_Report_Supported = ${TMDD_N8R15_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether External Center Organization - Events is required by the specification. (NRTM 3.3.3.6.1.2.1).  RECORD this information as: TMDD_N8R83_External_Center_Organization___Events_Supported = ${TMDD_N8R83_External_Center_Organization___Events_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Responding Organization is required by the specification. (NRTM 3.3.3.6.1.2.2).  RECORD this information as: TMDD_N8R84_Responding_Organization_Supported = ${TMDD_N8R84_Responding_Organization_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Message Expiry Time is required by the specification. (NRTM 3.3.3.6.1.2.3).  RECORD this information as: TMDD_N8R85_Message_Expiry_Time_Supported = ${TMDD_N8R85_Message_Expiry_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Event Response Plan is required by the specification. (NRTM 3.3.3.6.2.2.1).  RECORD this information as: TMDD_N8R87_Event_Response_Plan_Supported = ${TMDD_N8R87_Event_Response_Plan_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Event Headline Element is required by the specification. (NRTM 3.3.3.6.3.2.1).  RECORD this information as: TMDD_N8R89_Event_Headline_Element_Supported = ${TMDD_N8R89_Event_Headline_Element_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Event Valid Period (EventValidPeriod) is required by the specification. (NRTM 3.3.3.6.4.1.2.1).  RECORD this information as: TMDD_N8R92_Event_Valid_Period__EventValidPeriod__Supported = ${TMDD_N8R92_Event_Valid_Period__EventValidPeriod__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Required Event Effective Period Information (EffectivePeriod) is required by the specification. (NRTM 3.3.3.6.4.1.2.1.1).  RECORD this information as: TMDD_N8R93_Required_Event_Effective_Period_Information__EffectivePeriod__Supported = ${TMDD_N8R93_Required_Event_Effective_Period_Information__EffectivePeriod__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Effective Period Qualifier is required by the specification. (NRTM 3.3.3.6.4.1.2.1.2.1).  RECORD this information as: TMDD_N8R94_Effective_Period_Qualifier_Supported = ${TMDD_N8R94_Effective_Period_Qualifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Days Event Not In Effect is required by the specification. (NRTM 3.3.3.6.4.1.2.1.2.2).  RECORD this information as: TMDD_N8R95_Days_Event_Not_In_Effect_Supported = ${TMDD_N8R95_Days_Event_Not_In_Effect_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Sequence Date/Time is required by the specification. (NRTM 3.3.3.6.4.1.2.3).  RECORD this information as: TMDD_N8R97_Sequence_Date_Time_Supported = ${TMDD_N8R97_Sequence_Date_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Event Start Date/Time is required by the specification. (NRTM 3.3.3.6.4.1.2.4).  RECORD this information as: TMDD_N8R98_Event_Start_Date_Time_Supported = ${TMDD_N8R98_Event_Start_Date_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Alternate Start Date/Time is required by the specification. (NRTM 3.3.3.6.4.1.2.5).  RECORD this information as: TMDD_N8R99_Alternate_Start_Date_Time_Supported = ${TMDD_N8R99_Alternate_Start_Date_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Alternate End Date/Time is required by the specification. (NRTM 3.3.3.6.4.1.2.6).  RECORD this information as: TMDD_N8R100_Alternate_End_Date_Time_Supported = ${TMDD_N8R100_Alternate_End_Date_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Recurrent Times Event in Effect is required by the specification. (NRTM 3.3.3.6.4.1.2.9).  RECORD this information as: TMDD_N8R103_Recurrent_Times_Event_in_Effect_Supported = ${TMDD_N8R103_Recurrent_Times_Event_in_Effect_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Element Identifier is required by the specification. (NRTM 3.3.3.6.4.2).  RECORD this information as: TMDD_N8R106_Element_Identifier_Supported = ${TMDD_N8R106_Element_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Event Category is required by the specification. (NRTM 3.3.3.6.4.4).  RECORD this information as: TMDD_N8R108_Event_Category_Supported = ${TMDD_N8R108_Event_Category_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 21 CONFIGURE: Determine whether Event Source (EventSource) is required by the specification. (NRTM 3.3.3.6.4.5).  RECORD this information as: TMDD_N8R109_Event_Source__EventSource__Supported = ${TMDD_N8R109_Event_Source__EventSource__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 22 CONFIGURE: Determine whether Information Source Organization is required by the specification. (NRTM 3.3.3.6.4.5.1).  RECORD this information as: TMDD_N8R110_Information_Source_Organization_Supported = ${TMDD_N8R110_Information_Source_Organization_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 23 CONFIGURE: Determine whether Event Detection Method is required by the specification. (NRTM 3.3.3.6.4.5.2).  RECORD this information as: TMDD_N8R111_Event_Detection_Method_Supported = ${TMDD_N8R111_Event_Detection_Method_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 24 CONFIGURE: Determine whether Event Description (EventDescription) is required by the specification. (NRTM 3.3.3.6.4.6).  RECORD this information as: TMDD_N8R112_Event_Description__EventDescription__Supported = ${TMDD_N8R112_Event_Description__EventDescription__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 25 CONFIGURE: Determine whether Event Quantity is required by the specification. (NRTM 3.3.3.6.4.6.1).  RECORD this information as: TMDD_N8R113_Event_Quantity_Supported = ${TMDD_N8R113_Event_Quantity_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 26 CONFIGURE: Determine whether Detour (Detour) is required by the specification. (NRTM 3.3.3.6.4.6.2).  RECORD this information as: TMDD_N8R114_Detour__Detour__Supported = ${TMDD_N8R114_Detour__Detour__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 27 CONFIGURE: Determine whether Required Detour Information is required by the specification. (NRTM 3.3.3.6.4.6.2.1).  RECORD this information as: TMDD_N8R115_Required_Detour_Information_Supported = ${TMDD_N8R115_Required_Detour_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 28 CONFIGURE: Determine whether Destination is required by the specification. (NRTM 3.3.3.6.4.6.2.2.1).  RECORD this information as: TMDD_N8R116_Destination_Supported = ${TMDD_N8R116_Destination_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 29 CONFIGURE: Determine whether Location on Alternate Route is required by the specification. (NRTM 3.3.3.6.4.6.2.2.2).  RECORD this information as: TMDD_N8R117_Location_on_Alternate_Route_Supported = ${TMDD_N8R117_Location_on_Alternate_Route_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 30 CONFIGURE: Determine whether Description Language is required by the specification. (NRTM 3.3.3.6.4.6.3.1).  RECORD this information as: TMDD_N8R118_Description_Language_Supported = ${TMDD_N8R118_Description_Language_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 31 CONFIGURE: Determine whether Report Medium is required by the specification. (NRTM 3.3.3.6.4.6.3.2).  RECORD this information as: TMDD_N8R119_Report_Medium_Supported = ${TMDD_N8R119_Report_Medium_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 32 CONFIGURE: Determine whether Event Location (EventLocation) is required by the specification. (NRTM 3.3.3.6.4.7).  RECORD this information as: TMDD_N8R120_Event_Location__EventLocation__Supported = ${TMDD_N8R120_Event_Location__EventLocation__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 33 CONFIGURE: Determine whether Area Identifier (AreaLocation) is required by the specification. (NRTM 3.3.3.6.4.7.1.1).  RECORD this information as: TMDD_N8R121_Area_Identifier__AreaLocation__Supported = ${TMDD_N8R121_Area_Identifier__AreaLocation__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 34 CONFIGURE: Determine whether Name of Area is required by the specification. (NRTM 3.3.3.6.4.7.1.2).  RECORD this information as: TMDD_N8R122_Name_of_Area_Supported = ${TMDD_N8R122_Name_of_Area_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 35 CONFIGURE: Determine whether Area Location Rank is required by the specification. (NRTM 3.3.3.6.4.7.1.3).  RECORD this information as: TMDD_N8R123_Area_Location_Rank_Supported = ${TMDD_N8R123_Area_Location_Rank_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 36 CONFIGURE: Determine whether Secondary Area Location Reference is required by the specification. (NRTM 3.3.3.6.4.7.1.4).  RECORD this information as: TMDD_N8R124_Secondary_Area_Location_Reference_Supported = ${TMDD_N8R124_Secondary_Area_Location_Reference_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 37 CONFIGURE: Determine whether Required Link Location Information (LinkLocation) is required by the specification. (NRTM 3.3.3.6.4.7.2).  RECORD this information as: TMDD_N8R125_Required_Link_Location_Information__LinkLocation__Supported = ${TMDD_N8R125_Required_Link_Location_Information__LinkLocation__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 38 CONFIGURE: Determine whether Link Ownership is required by the specification. (NRTM 3.3.3.6.4.7.3.1).  RECORD this information as: TMDD_N8R126_Link_Ownership_Supported = ${TMDD_N8R126_Link_Ownership_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 39 CONFIGURE: Determine whether Route Designator is required by the specification. (NRTM 3.3.3.6.4.7.3.2).  RECORD this information as: TMDD_N8R127_Route_Designator_Supported = ${TMDD_N8R127_Route_Designator_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 40 CONFIGURE: Determine whether Second Route Designator is required by the specification. (NRTM 3.3.3.6.4.7.3.3).  RECORD this information as: TMDD_N8R128_Second_Route_Designator_Supported = ${TMDD_N8R128_Second_Route_Designator_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 41 CONFIGURE: Determine whether Link Identifier is required by the specification. (NRTM 3.3.3.6.4.7.3.4).  RECORD this information as: TMDD_N8R129_Link_Identifier_Supported = ${TMDD_N8R129_Link_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 42 CONFIGURE: Determine whether Link Name - Events is required by the specification. (NRTM 3.3.3.6.4.7.3.5).  RECORD this information as: TMDD_N8R130_Link_Name___Events_Supported = ${TMDD_N8R130_Link_Name___Events_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 43 CONFIGURE: Determine whether Secondary Point is required by the specification. (NRTM 3.3.3.6.4.7.3.6).  RECORD this information as: TMDD_N8R131_Secondary_Point_Supported = ${TMDD_N8R131_Secondary_Point_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 44 CONFIGURE: Determine whether Link Direction is required by the specification. (NRTM 3.3.3.6.4.7.3.7).  RECORD this information as: TMDD_N8R132_Link_Direction_Supported = ${TMDD_N8R132_Link_Direction_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 45 CONFIGURE: Determine whether Link Alignment is required by the specification. (NRTM 3.3.3.6.4.7.3.8).  RECORD this information as: TMDD_N8R133_Link_Alignment_Supported = ${TMDD_N8R133_Link_Alignment_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 46 CONFIGURE: Determine whether Linear Reference Version - Events is required by the specification. (NRTM 3.3.3.6.4.7.3.9).  RECORD this information as: TMDD_N8R134_Linear_Reference_Version___Events_Supported = ${TMDD_N8R134_Linear_Reference_Version___Events_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 47 CONFIGURE: Determine whether Alternate Link Location is required by the specification. (NRTM 3.3.3.6.4.7.3.10).  RECORD this information as: TMDD_N8R135_Alternate_Link_Location_Supported = ${TMDD_N8R135_Alternate_Link_Location_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 48 CONFIGURE: Determine whether Required Point on a Link Location Information (PointOnALink) is required by the specification. (NRTM 3.3.3.6.4.7.4).  RECORD this information as: TMDD_N8R136_Required_Point_on_a_Link_Location_Information__PointOnALink__Supported = ${TMDD_N8R136_Required_Point_on_a_Link_Location_Information__PointOnALink__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 49 CONFIGURE: Determine whether Linear Reference Location is required by the specification. (NRTM 3.3.3.6.4.7.5.1).  RECORD this information as: TMDD_N8R137_Linear_Reference_Location_Supported = ${TMDD_N8R137_Linear_Reference_Location_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 50 CONFIGURE: Determine whether Link Name - Event Point is required by the specification. (NRTM 3.3.3.6.4.7.5.2).  RECORD this information as: TMDD_N8R138_Link_Name___Event_Point_Supported = ${TMDD_N8R138_Link_Name___Event_Point_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 51 CONFIGURE: Determine whether Point Name is required by the specification. (NRTM 3.3.3.6.4.7.5.3).  RECORD this information as: TMDD_N8R139_Point_Name_Supported = ${TMDD_N8R139_Point_Name_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 52 CONFIGURE: Determine whether Cross Street Identifier is required by the specification. (NRTM 3.3.3.6.4.7.5.4).  RECORD this information as: TMDD_N8R140_Cross_Street_Identifier_Supported = ${TMDD_N8R140_Cross_Street_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 53 CONFIGURE: Determine whether Cross Street Name is required by the specification. (NRTM 3.3.3.6.4.7.5.5).  RECORD this information as: TMDD_N8R141_Cross_Street_Name_Supported = ${TMDD_N8R141_Cross_Street_Name_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 54 CONFIGURE: Determine whether Signed Destination is required by the specification. (NRTM 3.3.3.6.4.7.5.6).  RECORD this information as: TMDD_N8R142_Signed_Destination_Supported = ${TMDD_N8R142_Signed_Destination_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 55 CONFIGURE: Determine whether Point Location Rank is required by the specification. (NRTM 3.3.3.6.4.7.5.7).  RECORD this information as: TMDD_N8R143_Point_Location_Rank_Supported = ${TMDD_N8R143_Point_Location_Rank_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 56 CONFIGURE: Determine whether Landmark Type is required by the specification. (NRTM 3.3.3.6.4.7.5.8).  RECORD this information as: TMDD_N8R144_Landmark_Type_Supported = ${TMDD_N8R144_Landmark_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 57 CONFIGURE: Determine whether Secondary Link Location is required by the specification. (NRTM 3.3.3.6.4.7.5.9).  RECORD this information as: TMDD_N8R145_Secondary_Link_Location_Supported = ${TMDD_N8R145_Secondary_Link_Location_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 58 CONFIGURE: Determine whether Required Landmark Location Information (Landmark) is required by the specification. (NRTM 3.3.3.6.4.7.6).  RECORD this information as: TMDD_N8R146_Required_Landmark_Location_Information__Landmark__Supported = ${TMDD_N8R146_Required_Landmark_Location_Information__Landmark__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 59 CONFIGURE: Determine whether Landmark Point Name is required by the specification. (NRTM 3.3.3.6.4.7.7.1).  RECORD this information as: TMDD_N8R147_Landmark_Point_Name_Supported = ${TMDD_N8R147_Landmark_Point_Name_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 60 CONFIGURE: Determine whether Landmark Location Rank is required by the specification. (NRTM 3.3.3.6.4.7.7.2).  RECORD this information as: TMDD_N8R148_Landmark_Location_Rank_Supported = ${TMDD_N8R148_Landmark_Location_Rank_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 61 CONFIGURE: Determine whether Landmark Location is required by the specification. (NRTM 3.3.3.6.4.7.7.3).  RECORD this information as: TMDD_N8R149_Landmark_Location_Supported = ${TMDD_N8R149_Landmark_Location_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 62 CONFIGURE: Determine whether Secondary Landmark Location is required by the specification. (NRTM 3.3.3.6.4.7.7.4).  RECORD this information as: TMDD_N8R150_Secondary_Landmark_Location_Supported = ${TMDD_N8R150_Secondary_Landmark_Location_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 63 CONFIGURE: Determine whether Geographic Location is required by the specification. (NRTM 3.3.3.6.4.7.8).  RECORD this information as: TMDD_N8R151_Geographic_Location_Supported = ${TMDD_N8R151_Geographic_Location_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 64 CONFIGURE: Determine whether Event Name is required by the specification. (NRTM 3.3.3.6.4.8).  RECORD this information as: TMDD_N8R152_Event_Name_Supported = ${TMDD_N8R152_Event_Name_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 65 CONFIGURE: Determine whether Event Lane (EventLane) is required by the specification. (NRTM 3.3.3.6.4.9).  RECORD this information as: TMDD_N8R153_Event_Lane__EventLane__Supported = ${TMDD_N8R153_Event_Lane__EventLane__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 66 CONFIGURE: Determine whether Lane Type is required by the specification. (NRTM 3.3.3.6.4.9.1.1).  RECORD this information as: TMDD_N8R154_Lane_Type_Supported = ${TMDD_N8R154_Lane_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 67 CONFIGURE: Determine whether Direction of Travel is required by the specification. (NRTM 3.3.3.6.4.9.1.2).  RECORD this information as: TMDD_N8R155_Direction_of_Travel_Supported = ${TMDD_N8R155_Direction_of_Travel_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 68 CONFIGURE: Determine whether Total Number of Lanes is required by the specification. (NRTM 3.3.3.6.4.9.1.3).  RECORD this information as: TMDD_N8R156_Total_Number_of_Lanes_Supported = ${TMDD_N8R156_Total_Number_of_Lanes_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 69 CONFIGURE: Determine whether Number of Lanes Affected is required by the specification. (NRTM 3.3.3.6.4.9.1.4).  RECORD this information as: TMDD_N8R157_Number_of_Lanes_Affected_Supported = ${TMDD_N8R157_Number_of_Lanes_Affected_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 70 CONFIGURE: Determine whether Lane Number Affected is required by the specification. (NRTM 3.3.3.6.4.9.1.5).  RECORD this information as: TMDD_N8R158_Lane_Number_Affected_Supported = ${TMDD_N8R158_Lane_Number_Affected_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 71 CONFIGURE: Determine whether Lane Status is required by the specification. (NRTM 3.3.3.6.4.9.1.6).  RECORD this information as: TMDD_N8R159_Lane_Status_Supported = ${TMDD_N8R159_Lane_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 72 CONFIGURE: Determine whether Event Transit Location (EventTransit) is required by the specification. (NRTM 3.3.3.6.4.10).  RECORD this information as: TMDD_N8R160_Event_Transit_Location__EventTransit__Supported = ${TMDD_N8R160_Event_Transit_Location__EventTransit__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 73 CONFIGURE: Determine whether Required Event Transit Location Information is required by the specification. (NRTM 3.3.3.6.4.10.1).  RECORD this information as: TMDD_N8R161_Required_Event_Transit_Location_Information_Supported = ${TMDD_N8R161_Required_Event_Transit_Location_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 74 CONFIGURE: Determine whether Transit Direction of Travel is required by the specification. (NRTM 3.3.3.6.4.10.2.1).  RECORD this information as: TMDD_N8R162_Transit_Direction_of_Travel_Supported = ${TMDD_N8R162_Transit_Direction_of_Travel_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 75 CONFIGURE: Determine whether Transit Stop Detail is required by the specification. (NRTM 3.3.3.6.4.10.2.2).  RECORD this information as: TMDD_N8R163_Transit_Stop_Detail_Supported = ${TMDD_N8R163_Transit_Stop_Detail_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 76 CONFIGURE: Determine whether Transit Location is required by the specification. (NRTM 3.3.3.6.4.10.2.3).  RECORD this information as: TMDD_N8R164_Transit_Location_Supported = ${TMDD_N8R164_Transit_Location_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 77 CONFIGURE: Determine whether Event Description Confidence Level is required by the specification. (NRTM 3.3.3.6.4.11).  RECORD this information as: TMDD_N8R165_Event_Description_Confidence_Level_Supported = ${TMDD_N8R165_Event_Description_Confidence_Level_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 78 CONFIGURE: Determine whether Event Access Level is required by the specification. (NRTM 3.3.3.6.4.12).  RECORD this information as: TMDD_N8R166_Event_Access_Level_Supported = ${TMDD_N8R166_Event_Access_Level_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 79 CONFIGURE: Determine whether Restrictions - Events is required by the specification. (NRTM 3.3.3.7.1).  RECORD this information as: TMDD_N8R171_Restrictions___Events_Supported = ${TMDD_N8R171_Restrictions___Events_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 80 CONFIGURE: Determine whether Event Indicator (Eventindicator) is required by the specification. (NRTM 3.3.3.7.3).  RECORD this information as: TMDD_N8R177_Event_Indicator__Eventindicator__Supported = ${TMDD_N8R177_Event_Indicator__Eventindicator__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 81 CONFIGURE: Determine whether Event Status is required by the specification. (NRTM 3.3.3.7.3.1).  RECORD this information as: TMDD_N8R178_Event_Status_Supported = ${TMDD_N8R178_Event_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 82 CONFIGURE: Determine whether Event Duration Exceeded Flag is required by the specification. (NRTM 3.3.3.7.3.2).  RECORD this information as: TMDD_N8R179_Event_Duration_Exceeded_Flag_Supported = ${TMDD_N8R179_Event_Duration_Exceeded_Flag_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 83 CONFIGURE: Determine whether Event Priority Level is required by the specification. (NRTM 3.3.3.7.3.3).  RECORD this information as: TMDD_N8R180_Event_Priority_Level_Supported = ${TMDD_N8R180_Event_Priority_Level_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 84 CONFIGURE: Determine whether Event Severity is required by the specification. (NRTM 3.3.3.7.3.4).  RECORD this information as: TMDD_N8R181_Event_Severity_Supported = ${TMDD_N8R181_Event_Severity_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 85 CONFIGURE: Determine whether Event Impact Level is required by the specification. (NRTM 3.3.3.7.3.5).  RECORD this information as: TMDD_N8R182_Event_Impact_Level_Supported = ${TMDD_N8R182_Event_Impact_Level_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 86 CONFIGURE: Determine whether Event Active Flag is required by the specification. (NRTM 3.3.3.7.3.6).  RECORD this information as: TMDD_N8R183_Event_Active_Flag_Supported = ${TMDD_N8R183_Event_Active_Flag_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 87 CONFIGURE: Determine whether Other References (EventReferences) is required by the specification. (NRTM 3.3.3.7.4).  RECORD this information as: TMDD_N8R185_Other_References__EventReferences__Supported = ${TMDD_N8R185_Other_References__EventReferences__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 88 CONFIGURE: Determine whether Trip Reference is required by the specification. (NRTM 3.3.3.7.4.1).  RECORD this information as: TMDD_N8R186_Trip_Reference_Supported = ${TMDD_N8R186_Trip_Reference_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 89 CONFIGURE: Determine whether Responsible Reference is required by the specification. (NRTM 3.3.3.7.4.2).  RECORD this information as: TMDD_N8R187_Responsible_Reference_Supported = ${TMDD_N8R187_Responsible_Reference_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 90 CONFIGURE: Determine whether Related Event is required by the specification. (NRTM 3.3.3.7.4.3).  RECORD this information as: TMDD_N8R188_Related_Event_Supported = ${TMDD_N8R188_Related_Event_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 91 CONFIGURE: Determine whether Previous Event is required by the specification. (NRTM 3.3.3.7.4.4).  RECORD this information as: TMDD_N8R189_Previous_Event_Supported = ${TMDD_N8R189_Previous_Event_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 92 CONFIGURE: Determine whether Split Event is required by the specification. (NRTM 3.3.3.7.4.5).  RECORD this information as: TMDD_N8R190_Split_Event_Supported = ${TMDD_N8R190_Split_Event_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 93 CONFIGURE: Determine whether Merged Event is required by the specification. (NRTM 3.3.3.7.4.6).  RECORD this information as: TMDD_N8R191_Merged_Event_Supported = ${TMDD_N8R191_Merged_Event_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 94 CONFIGURE: Determine whether Sibling Event is required by the specification. (NRTM 3.3.3.7.4.7).  RECORD this information as: TMDD_N8R192_Sibling_Event_Supported = ${TMDD_N8R192_Sibling_Event_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 95 CONFIGURE: Determine whether Associated Device is required by the specification. (NRTM 3.3.3.7.4.8).  RECORD this information as: TMDD_N8R193_Associated_Device_Supported = ${TMDD_N8R193_Associated_Device_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 96 CONFIGURE: Determine whether Associated URL is required by the specification. (NRTM 3.3.3.7.4.9).  RECORD this information as: TMDD_N8R194_Associated_URL_Supported = ${TMDD_N8R194_Associated_URL_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 97 CONFIGURE: Determine whether Event Comments (EventComments) is required by the specification. (NRTM 3.3.3.7.5).  RECORD this information as: TMDD_N8R195_Event_Comments__EventComments__Supported = ${TMDD_N8R195_Event_Comments__EventComments__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 98 CONFIGURE: Determine whether Required Event Comments is required by the specification. (NRTM 3.3.3.7.5.1).  RECORD this information as: TMDD_N8R196_Required_Event_Comments_Supported = ${TMDD_N8R196_Required_Event_Comments_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 99 CONFIGURE: Determine whether Operator Identifier - Event Comments is required by the specification. (NRTM 3.3.3.7.5.2.1).  RECORD this information as: TMDD_N8R197_Operator_Identifier___Event_Comments_Supported = ${TMDD_N8R197_Operator_Identifier___Event_Comments_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 100 CONFIGURE: Determine whether Operator Comments is required by the specification. (NRTM 3.3.3.7.5.2.2).  RECORD this information as: TMDD_N8R198_Operator_Comments_Supported = ${TMDD_N8R198_Operator_Comments_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 101 CONFIGURE: Determine whether Comment Description Language is required by the specification. (NRTM 3.3.3.7.5.2.3).  RECORD this information as: TMDD_N8R199_Comment_Description_Language_Supported = ${TMDD_N8R199_Comment_Description_Language_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 102 CONFIGURE: Determine whether Event Reports (EventReports) is required by the specification. (NRTM 3.3.3.7.6).  RECORD this information as: TMDD_N8R200_Event_Reports__EventReports__Supported = ${TMDD_N8R200_Event_Reports__EventReports__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 103 CONFIGURE: Determine whether Required Event Reports is required by the specification. (NRTM 3.3.3.7.6.1).  RECORD this information as: TMDD_N8R201_Required_Event_Reports_Supported = ${TMDD_N8R201_Required_Event_Reports_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 104 CONFIGURE: Determine whether Report Description Language is required by the specification. (NRTM 3.3.3.7.6.2.1).  RECORD this information as: TMDD_N8R202_Report_Description_Language_Supported = ${TMDD_N8R202_Report_Description_Language_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.1" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 105 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 106 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 107 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 108 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 109 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 110 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 111 CONFIGURE: Define the subscription message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 112 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 113 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 114 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlFullEventUpdateSubscription RESPONSETIMEREQUIRED= SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlFullEventUpdateSubscription" functionId="dlFullEventUpdateSubscription" RESPONSETIMEREQUIRED="60000" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 115 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 115.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps.  Note:If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 115.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlFullEventUpdateUpdate RESPONSETIMEREQUIRED=TMDD_N8R58_Publish_Event_Information_Parameter PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlFullEventUpdateUpdate" functionId="dlFullEventUpdateUpdate" RESPONSETIMEREQUIRED="${TMDD_N8R58_Publish_Event_Information_Parameter}" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 115.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 115.1.2.1 VERIFY that a fEUMsg message was received." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="fEUMsg" instanceName="tmdd:fEUMsg" elementType="message" functionId="Looking for fEUMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.2 VERIFY that a message-header data frame exists within each instance of data frame fEUMsg.FEU" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="message-header" instanceName="tmdd:fEUMsg.FEU" elementType="data-frame" functionId="Looking for fEUMsg.FEU"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.3 VERIFY that an event-reference data frame exists within each instance of data frame fEUMsg.FEU" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="event-reference" instanceName="tmdd:fEUMsg.FEU" elementType="data-frame" functionId="Looking for fEUMsg.FEU"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.4 VERIFY that an event-headline data frame exists within each instance of data frame fEUMsg.FEU" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="event-headline" instanceName="tmdd:fEUMsg.FEU" elementType="data-frame" functionId="Looking for fEUMsg.FEU"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.5 VERIFY that an event-element-details data frame exists within each instance of data frame fEUMsg.FEU" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="event-element-details" instanceName="tmdd:fEUMsg.FEU" elementType="data-frame" functionId="Looking for fEUMsg.FEU"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.6 VERIFY that an organization-sending data frame exists within each instance of data frame fEUMsg.FEU.message-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-sending" instanceName="tmdd:fEUMsg.FEU.message-header" elementType="data-frame" functionId="Looking for fEUMsg.FEU.message-header"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.7 VERIFY that a message-type-version data element exists within each instance of data frame fEUMsg.FEU.message-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="message-type-version" instanceName="tmdd:fEUMsg.FEU.message-header" elementType="data-element" functionId="Looking for fEUMsg.FEU.message-header"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.8 VERIFY that a message-number data element exists within each instance of data frame fEUMsg.FEU.message-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="message-number" instanceName="tmdd:fEUMsg.FEU.message-header" elementType="data-element" functionId="Looking for fEUMsg.FEU.message-header"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.9 VERIFY that a message-time-stamp data frame exists within each instance of data frame fEUMsg.FEU.message-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="message-time-stamp" instanceName="tmdd:fEUMsg.FEU.message-header" elementType="data-frame" functionId="Looking for fEUMsg.FEU.message-header"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.10 VERIFY that an event-id data element exists within each instance of data frame fEUMsg.FEU.event-reference" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="event-id" instanceName="tmdd:fEUMsg.FEU.event-reference" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-reference"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.11 VERIFY that an event-update data element exists within each instance of data frame fEUMsg.FEU.event-reference" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="event-update" instanceName="tmdd:fEUMsg.FEU.event-reference" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-reference"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.12 VERIFY that an update-time data frame exists within each instance of data frame fEUMsg.FEU.event-reference" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="update-time" instanceName="tmdd:fEUMsg.FEU.event-reference" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-reference"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.13 VERIFY that a headline data frame exists within each instance of data frame fEUMsg.FEU.event-headline" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="headline" instanceName="tmdd:fEUMsg.FEU.event-headline" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-headline"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.14 VERIFY that an event-times data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="event-times" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.15 VERIFY that an update-time data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-times" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="update-time" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-times"/>
+                         </testStep>
+                         <testStep functionId="Step 115.1.2.16 IF TMDD_N8R83_External_Center_Organization___Events_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R83_External_Center_Organization___Events_Supported}">
+                              <testStep functionId="Step 115.1.2.16.1 VERIFY that an organizations-receiving data frame exists within each instance of data frame fEUMsg.FEU.message-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="organizations-receiving" instanceName="tmdd:fEUMsg.FEU.message-header" elementType="data-frame" functionId="Looking for fEUMsg.FEU.message-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.17 IF TMDD_N8R84_Responding_Organization_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R84_Responding_Organization_Supported}">
+                              <testStep functionId="Step 115.1.2.17.1 VERIFY that an organizations-responding data frame exists within each instance of data frame fEUMsg.FEU.message-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="organizations-responding" instanceName="tmdd:fEUMsg.FEU.message-header" elementType="data-frame" functionId="Looking for fEUMsg.FEU.message-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.18 IF TMDD_N8R85_Message_Expiry_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R85_Message_Expiry_Time_Supported}">
+                              <testStep functionId="Step 115.1.2.18.1 VERIFY that a message-expiry-time data frame exists within each instance of data frame fEUMsg.FEU.message-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="message-expiry-time" instanceName="tmdd:fEUMsg.FEU.message-header" elementType="data-frame" functionId="Looking for fEUMsg.FEU.message-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.19 IF TMDD_N8R87_Event_Response_Plan_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R87_Event_Response_Plan_Supported}">
+                              <testStep functionId="Step 115.1.2.19.1 VERIFY that a response-plan-id data element exists within each instance of data frame fEUMsg.FEU.event-reference" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="response-plan-id" instanceName="tmdd:fEUMsg.FEU.event-reference" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-reference"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.20 IF TMDD_N8R89_Event_Headline_Element_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R89_Event_Headline_Element_Supported}">
+                              <testStep functionId="Step 115.1.2.20.1 VERIFY that a headline-element data element exists within each instance of data frame fEUMsg.FEU.event-headline" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="headline-element" instanceName="tmdd:fEUMsg.FEU.event-headline" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-headline"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.21 IF TMDD_N8R92_Event_Valid_Period__EventValidPeriod__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R92_Event_Valid_Period__EventValidPeriod__Supported}">
+                              <testStep functionId="Step 115.1.2.21.1 VERIFY that a valid-period data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-times" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="valid-period" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-times"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.22 IF TMDD_N8R93_Required_Event_Effective_Period_Information__EffectivePeriod__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R93_Required_Event_Effective_Period_Information__EffectivePeriod__Supported}">
+                              <testStep functionId="Step 115.1.2.22.1 VERIFY that a days-of-the-week data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="days-of-the-week" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.23 IF TMDD_N8R94_Effective_Period_Qualifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R94_Effective_Period_Qualifier_Supported}">
+                              <testStep functionId="Step 115.1.2.23.1 VERIFY that an effective-period-qualifier data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="effective-period-qualifier" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.24 IF TMDD_N8R95_Days_Event_Not_In_Effect_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R95_Days_Event_Not_In_Effect_Supported}">
+                              <testStep functionId="Step 115.1.2.24.1 VERIFY that a holiday-day data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="holiday-day" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.25 IF TMDD_N8R97_Sequence_Date_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R97_Sequence_Date_Time_Supported}">
+                              <testStep functionId="Step 115.1.2.25.1 VERIFY that a sequence-time data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-times" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="sequence-time" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-times"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.26 IF TMDD_N8R98_Event_Start_Date_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R98_Event_Start_Date_Time_Supported}">
+                              <testStep functionId="Step 115.1.2.26.1 VERIFY that a start-time data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-times" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="start-time" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-times"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.27 IF TMDD_N8R99_Alternate_Start_Date_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R99_Alternate_Start_Date_Time_Supported}">
+                              <testStep functionId="Step 115.1.2.27.1 VERIFY that an alternate-start-time data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-times" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="alternate-start-time" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-times"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.28 IF TMDD_N8R100_Alternate_End_Date_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R100_Alternate_End_Date_Time_Supported}">
+                              <testStep functionId="Step 115.1.2.28.1 VERIFY that an alternate-end-time data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-times" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="alternate-end-time" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-times"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.29 IF TMDD_N8R103_Recurrent_Times_Event_in_Effect_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R103_Recurrent_Times_Event_in_Effect_Supported}">
+                              <testStep functionId="Step 115.1.2.29.1 VERIFY that a recurrent-times data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-times" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="recurrent-times" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-times"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.30 IF TMDD_N8R106_Element_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R106_Element_Identifier_Supported}">
+                              <testStep functionId="Step 115.1.2.30.1 VERIFY that an element-id data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="element-id" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.31 IF TMDD_N8R108_Event_Category_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R108_Event_Category_Supported}">
+                              <testStep functionId="Step 115.1.2.31.1 VERIFY that an event-category data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-category" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.32 IF TMDD_N8R109_Event_Source__EventSource__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R109_Event_Source__EventSource__Supported}">
+                              <testStep functionId="Step 115.1.2.32.1 VERIFY that an event-source data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-source" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.33 IF TMDD_N8R110_Information_Source_Organization_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R110_Information_Source_Organization_Supported}">
+                              <testStep functionId="Step 115.1.2.33.1 VERIFY that an information-source data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-source" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="information-source" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-source"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.34 IF TMDD_N8R111_Event_Detection_Method_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R111_Event_Detection_Method_Supported}">
+                              <testStep functionId="Step 115.1.2.34.1 VERIFY that an event-detection-method data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-source" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-detection-method" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-source"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.35 IF TMDD_N8R112_Event_Description__EventDescription__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R112_Event_Description__EventDescription__Supported}">
+                              <testStep functionId="Step 115.1.2.35.1 VERIFY that an event-descriptions data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-descriptions" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.36 IF TMDD_N8R113_Event_Quantity_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R113_Event_Quantity_Supported}">
+                              <testStep functionId="Step 115.1.2.36.1 VERIFY that a quantity data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="quantity" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.37 IF TMDD_N8R114_Detour__Detour__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R114_Detour__Detour__Supported}">
+                              <testStep functionId="Step 115.1.2.37.1 VERIFY that a detour data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="detour" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.38 IF TMDD_N8R115_Required_Detour_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R115_Required_Detour_Information_Supported}">
+                              <testStep functionId="Step 115.1.2.38.1 VERIFY that an alternate-route-type data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="alternate-route-type" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.39 IF TMDD_N8R116_Destination_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R116_Destination_Supported}">
+                              <testStep functionId="Step 115.1.2.39.1 VERIFY that a destination data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="destination" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.40 IF TMDD_N8R117_Location_on_Alternate_Route_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R117_Location_on_Alternate_Route_Supported}">
+                              <testStep functionId="Step 115.1.2.40.1 VERIFY that a location-on-alternate-route data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="location-on-alternate-route" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.41 IF TMDD_N8R118_Description_Language_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R118_Description_Language_Supported}">
+                              <testStep functionId="Step 115.1.2.41.1 VERIFY that a language data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.additional-text" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="language" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.additional-text" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.additional-text"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.42 IF TMDD_N8R119_Report_Medium_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R119_Report_Medium_Supported}">
+                              <testStep functionId="Step 115.1.2.42.1 VERIFY that a report-medium data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.additional-text" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="report-medium" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.additional-text" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.additional-text"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.43 IF TMDD_N8R120_Event_Location__EventLocation__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R120_Event_Location__EventLocation__Supported}">
+                              <testStep functionId="Step 115.1.2.43.1 VERIFY that an event-locations data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-locations" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.44 IF TMDD_N8R121_Area_Identifier__AreaLocation__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R121_Area_Identifier__AreaLocation__Supported}">
+                              <testStep functionId="Step 115.1.2.44.1 VERIFY that an area-id data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="area-id" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.45 IF TMDD_N8R122_Name_of_Area_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R122_Name_of_Area_Supported}">
+                              <testStep functionId="Step 115.1.2.45.1 VERIFY that an area-name data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="area-name" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.46 IF TMDD_N8R123_Area_Location_Rank_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R123_Area_Location_Rank_Supported}">
+                              <testStep functionId="Step 115.1.2.46.1 VERIFY that a location-rank data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="location-rank" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.47 IF TMDD_N8R124_Secondary_Area_Location_Reference_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R124_Secondary_Area_Location_Reference_Supported}">
+                              <testStep functionId="Step 115.1.2.47.1 VERIFY that an upward-area-reference data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="upward-area-reference" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.48 IF TMDD_N8R125_Required_Link_Location_Information__LinkLocation__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R125_Required_Link_Location_Information__LinkLocation__Supported}">
+                              <testStep functionId="Step 115.1.2.48.1 VERIFY that a primary-location data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="primary-location" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.49 IF TMDD_N8R126_Link_Ownership_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R126_Link_Ownership_Supported}">
+                              <testStep functionId="Step 115.1.2.49.1 VERIFY that a link-ownership data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-ownership" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.50 IF TMDD_N8R127_Route_Designator_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R127_Route_Designator_Supported}">
+                              <testStep functionId="Step 115.1.2.50.1 VERIFY that a link-designator data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-designator" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.51 IF TMDD_N8R128_Second_Route_Designator_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R128_Second_Route_Designator_Supported}">
+                              <testStep functionId="Step 115.1.2.51.1 VERIFY that a second-link-designator data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="second-link-designator" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.52 IF TMDD_N8R129_Link_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R129_Link_Identifier_Supported}">
+                              <testStep functionId="Step 115.1.2.52.1 VERIFY that a link-id data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-id" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.53 IF TMDD_N8R130_Link_Name___Events_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R130_Link_Name___Events_Supported}">
+                              <testStep functionId="Step 115.1.2.53.1 VERIFY that a link-name data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-name" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.54 IF TMDD_N8R131_Secondary_Point_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R131_Secondary_Point_Supported}">
+                              <testStep functionId="Step 115.1.2.54.1 VERIFY that a secondary-location data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="secondary-location" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.55 IF TMDD_N8R132_Link_Direction_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R132_Link_Direction_Supported}">
+                              <testStep functionId="Step 115.1.2.55.1 VERIFY that a link-direction data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-direction" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.56 IF TMDD_N8R133_Link_Alignment_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R133_Link_Alignment_Supported}">
+                              <testStep functionId="Step 115.1.2.56.1 VERIFY that a link-alignment data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-alignment" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.57 IF TMDD_N8R134_Linear_Reference_Version___Events_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R134_Linear_Reference_Version___Events_Supported}">
+                              <testStep functionId="Step 115.1.2.57.1 VERIFY that a linear-reference-version data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="linear-reference-version" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.58 IF TMDD_N8R135_Alternate_Link_Location_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R135_Alternate_Link_Location_Supported}">
+                              <testStep functionId="Step 115.1.2.58.1 VERIFY that an alternate-designations data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="alternate-designations" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.59 IF TMDD_N8R136_Required_Point_on_a_Link_Location_Information__PointOnALink__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R136_Required_Point_on_a_Link_Location_Information__PointOnALink__Supported}">
+                              <testStep functionId="Step 115.1.2.59.1 VERIFY that a geo-location data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="geo-location" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.60 IF TMDD_N8R137_Linear_Reference_Location_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R137_Linear_Reference_Location_Supported}">
+                              <testStep functionId="Step 115.1.2.60.1 VERIFY that a linear-reference data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="linear-reference" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.61 IF TMDD_N8R138_Link_Name___Event_Point_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R138_Link_Name___Event_Point_Supported}">
+                              <testStep functionId="Step 115.1.2.61.1 VERIFY that a link-name data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-name" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.62 IF TMDD_N8R139_Point_Name_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R139_Point_Name_Supported}">
+                              <testStep functionId="Step 115.1.2.62.1 VERIFY that a point-name data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="point-name" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.63 IF TMDD_N8R140_Cross_Street_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R140_Cross_Street_Identifier_Supported}">
+                              <testStep functionId="Step 115.1.2.63.1 VERIFY that a cross-street-designator data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="cross-street-designator" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.64 IF TMDD_N8R141_Cross_Street_Name_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R141_Cross_Street_Name_Supported}">
+                              <testStep functionId="Step 115.1.2.64.1 VERIFY that a cross-street-name data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="cross-street-name" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.65 IF TMDD_N8R142_Signed_Destination_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R142_Signed_Destination_Supported}">
+                              <testStep functionId="Step 115.1.2.65.1 VERIFY that a signed-destination data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="signed-destination" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.66 IF TMDD_N8R143_Point_Location_Rank_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R143_Point_Location_Rank_Supported}">
+                              <testStep functionId="Step 115.1.2.66.1 VERIFY that a location-rank data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="location-rank" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.67 IF TMDD_N8R144_Landmark_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R144_Landmark_Type_Supported}">
+                              <testStep functionId="Step 115.1.2.67.1 VERIFY that a landmark-type data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="landmark-type" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.68 IF TMDD_N8R145_Secondary_Link_Location_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R145_Secondary_Link_Location_Supported}">
+                              <testStep functionId="Step 115.1.2.68.1 VERIFY that an upward-area-reference data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="upward-area-reference" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.69 IF TMDD_N8R146_Required_Landmark_Location_Information__Landmark__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R146_Required_Landmark_Location_Information__Landmark__Supported}">
+                              <testStep functionId="Step 115.1.2.69.1 VERIFY that a landmark-type data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="landmark-type" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark"/>
+                              </testStep>
+                              <testStep functionId="Step 115.1.2.69.2 VERIFY that a landmark-name data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="landmark-name" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.70 IF TMDD_N8R147_Landmark_Point_Name_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R147_Landmark_Point_Name_Supported}">
+                              <testStep functionId="Step 115.1.2.70.1 VERIFY that a landmark-point-name data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="landmark-point-name" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.71 IF TMDD_N8R148_Landmark_Location_Rank_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R148_Landmark_Location_Rank_Supported}">
+                              <testStep functionId="Step 115.1.2.71.1 VERIFY that a location-rank data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="location-rank" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.72 IF TMDD_N8R149_Landmark_Location_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R149_Landmark_Location_Supported}">
+                              <testStep functionId="Step 115.1.2.72.1 VERIFY that a geo-location data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="geo-location" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.73 IF TMDD_N8R150_Secondary_Landmark_Location_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R150_Secondary_Landmark_Location_Supported}">
+                              <testStep functionId="Step 115.1.2.73.1 VERIFY that an upward-area-reference data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="upward-area-reference" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.74 IF TMDD_N8R151_Geographic_Location_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R151_Geographic_Location_Supported}">
+                              <testStep functionId="Step 115.1.2.74.1 VERIFY that a geo-location data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="geo-location" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.75 IF TMDD_N8R152_Event_Name_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R152_Event_Name_Supported}">
+                              <testStep functionId="Step 115.1.2.75.1 VERIFY that an event-name data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-name" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.76 IF TMDD_N8R153_Event_Lane__EventLane__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R153_Event_Lane__EventLane__Supported}">
+                              <testStep functionId="Step 115.1.2.76.1 VERIFY that an event-lanes data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-lanes" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.77 IF TMDD_N8R154_Lane_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R154_Lane_Type_Supported}">
+                              <testStep functionId="Step 115.1.2.77.1 VERIFY that a lanes-type data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="lanes-type" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.78 IF TMDD_N8R155_Direction_of_Travel_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R155_Direction_of_Travel_Supported}">
+                              <testStep functionId="Step 115.1.2.78.1 VERIFY that a link-direction data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-direction" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.79 IF TMDD_N8R156_Total_Number_of_Lanes_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R156_Total_Number_of_Lanes_Supported}">
+                              <testStep functionId="Step 115.1.2.79.1 VERIFY that a lanes-total-original data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="lanes-total-original" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.80 IF TMDD_N8R157_Number_of_Lanes_Affected_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R157_Number_of_Lanes_Affected_Supported}">
+                              <testStep functionId="Step 115.1.2.80.1 VERIFY that a lanes-total-affected data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="lanes-total-affected" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.81 IF TMDD_N8R158_Lane_Number_Affected_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R158_Lane_Number_Affected_Supported}">
+                              <testStep functionId="Step 115.1.2.81.1 VERIFY that an event-lanes-affected data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-lanes-affected" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.82 IF TMDD_N8R159_Lane_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R159_Lane_Status_Supported}">
+                              <testStep functionId="Step 115.1.2.82.1 VERIFY that a lanes-status data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="lanes-status" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.83 IF TMDD_N8R160_Event_Transit_Location__EventTransit__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R160_Event_Transit_Location__EventTransit__Supported}">
+                              <testStep functionId="Step 115.1.2.83.1 VERIFY that an event-transit-locations data frame exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-transit-locations" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-frame" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.84 IF TMDD_N8R161_Required_Event_Transit_Location_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R161_Required_Event_Transit_Location_Information_Supported}">
+                              <testStep functionId="Step 115.1.2.84.1 VERIFY that a transit-route-id data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="transit-route-id" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.85 IF TMDD_N8R162_Transit_Direction_of_Travel_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R162_Transit_Direction_of_Travel_Supported}">
+                              <testStep functionId="Step 115.1.2.85.1 VERIFY that a transit-direction data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="transit-direction" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.86 IF TMDD_N8R163_Transit_Stop_Detail_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R163_Transit_Stop_Detail_Supported}">
+                              <testStep functionId="Step 115.1.2.86.1 VERIFY that a transit-stop-detail data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="transit-stop-detail" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.87 IF TMDD_N8R164_Transit_Location_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R164_Transit_Location_Supported}">
+                              <testStep functionId="Step 115.1.2.87.1 VERIFY that a transit-location-text data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="transit-location-text" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.88 IF TMDD_N8R165_Event_Description_Confidence_Level_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R165_Event_Description_Confidence_Level_Supported}">
+                              <testStep functionId="Step 115.1.2.88.1 VERIFY that a confidence-level data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="confidence-level" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.89 IF TMDD_N8R166_Event_Access_Level_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R166_Event_Access_Level_Supported}">
+                              <testStep functionId="Step 115.1.2.89.1 VERIFY that an access-level data element exists within each instance of data frame fEUMsg.FEU.event-element-details.event-element-detail" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="access-level" instanceName="tmdd:fEUMsg.FEU.event-element-details.event-element-detail" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-element-details.event-element-detail"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.90 IF TMDD_N8R171_Restrictions___Events_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R171_Restrictions___Events_Supported}">
+                              <testStep functionId="Step 115.1.2.90.1 VERIFY that a restrictions data frame exists within each instance of data frame fEUMsg.FEU" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="restrictions" instanceName="tmdd:fEUMsg.FEU" elementType="data-frame" functionId="Looking for fEUMsg.FEU"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.91 IF TMDD_N8R177_Event_Indicator__Eventindicator__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R177_Event_Indicator__Eventindicator__Supported}">
+                              <testStep functionId="Step 115.1.2.91.1 VERIFY that an event-indicators data frame exists within each instance of data frame fEUMsg.FEU" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-indicators" instanceName="tmdd:fEUMsg.FEU" elementType="data-frame" functionId="Looking for fEUMsg.FEU"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.92 IF TMDD_N8R178_Event_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R178_Event_Status_Supported}">
+                              <testStep functionId="Step 115.1.2.92.1 VERIFY that a status data element exists within each instance of data frame fEUMsg.FEU.event-indicators.event-indicator" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="status" instanceName="tmdd:fEUMsg.FEU.event-indicators.event-indicator" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-indicators.event-indicator"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.93 IF TMDD_N8R179_Event_Duration_Exceeded_Flag_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R179_Event_Duration_Exceeded_Flag_Supported}">
+                              <testStep functionId="Step 115.1.2.93.1 VERIFY that a duration-exceeded-flag data element exists within each instance of data frame fEUMsg.FEU.event-indicators.event-indicator" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="duration-exceeded-flag" instanceName="tmdd:fEUMsg.FEU.event-indicators.event-indicator" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-indicators.event-indicator"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.94 IF TMDD_N8R180_Event_Priority_Level_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R180_Event_Priority_Level_Supported}">
+                              <testStep functionId="Step 115.1.2.94.1 VERIFY that a priority-level data element exists within each instance of data frame fEUMsg.FEU.event-indicators.event-indicator" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="priority-level" instanceName="tmdd:fEUMsg.FEU.event-indicators.event-indicator" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-indicators.event-indicator"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.95 IF TMDD_N8R181_Event_Severity_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R181_Event_Severity_Supported}">
+                              <testStep functionId="Step 115.1.2.95.1 VERIFY that a severity data element exists within each instance of data frame fEUMsg.FEU.event-indicators.event-indicator" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="severity" instanceName="tmdd:fEUMsg.FEU.event-indicators.event-indicator" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-indicators.event-indicator"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.96 IF TMDD_N8R182_Event_Impact_Level_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R182_Event_Impact_Level_Supported}">
+                              <testStep functionId="Step 115.1.2.96.1 VERIFY that an impact-level data element exists within each instance of data frame fEUMsg.FEU.event-indicators.event-indicator" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="impact-level" instanceName="tmdd:fEUMsg.FEU.event-indicators.event-indicator" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-indicators.event-indicator"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.97 IF TMDD_N8R183_Event_Active_Flag_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R183_Event_Active_Flag_Supported}">
+                              <testStep functionId="Step 115.1.2.97.1 VERIFY that an active-flag data element exists within each instance of data frame fEUMsg.FEU.event-indicators.event-indicator" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="active-flag" instanceName="tmdd:fEUMsg.FEU.event-indicators.event-indicator" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-indicators.event-indicator"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.98 IF TMDD_N8R185_Other_References__EventReferences__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R185_Other_References__EventReferences__Supported}">
+                              <testStep functionId="Step 115.1.2.98.1 VERIFY that an other-references data frame exists within each instance of data frame fEUMsg.FEU" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="other-references" instanceName="tmdd:fEUMsg.FEU" elementType="data-frame" functionId="Looking for fEUMsg.FEU"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.99 IF TMDD_N8R186_Trip_Reference_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R186_Trip_Reference_Supported}">
+                              <testStep functionId="Step 115.1.2.99.1 VERIFY that a trip-reference data element exists within each instance of data frame fEUMsg.FEU.other-references.other-reference" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="trip-reference" instanceName="tmdd:fEUMsg.FEU.other-references.other-reference" elementType="data-element" functionId="Looking for fEUMsg.FEU.other-references.other-reference"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.100 IF TMDD_N8R187_Responsible_Reference_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R187_Responsible_Reference_Supported}">
+                              <testStep functionId="Step 115.1.2.100.1 VERIFY that a responsible-event data frame exists within each instance of data frame fEUMsg.FEU.other-references.other-reference" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="responsible-event" instanceName="tmdd:fEUMsg.FEU.other-references.other-reference" elementType="data-frame" functionId="Looking for fEUMsg.FEU.other-references.other-reference"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.101 IF TMDD_N8R188_Related_Event_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R188_Related_Event_Supported}">
+                              <testStep functionId="Step 115.1.2.101.1 VERIFY that a related-event data frame exists within each instance of data frame fEUMsg.FEU.other-references.other-reference" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="related-event" instanceName="tmdd:fEUMsg.FEU.other-references.other-reference" elementType="data-frame" functionId="Looking for fEUMsg.FEU.other-references.other-reference"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.102 IF TMDD_N8R189_Previous_Event_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R189_Previous_Event_Supported}">
+                              <testStep functionId="Step 115.1.2.102.1 VERIFY that a previous-event data frame exists within each instance of data frame fEUMsg.FEU.other-references.other-reference" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="previous-event" instanceName="tmdd:fEUMsg.FEU.other-references.other-reference" elementType="data-frame" functionId="Looking for fEUMsg.FEU.other-references.other-reference"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.103 IF TMDD_N8R190_Split_Event_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R190_Split_Event_Supported}">
+                              <testStep functionId="Step 115.1.2.103.1 VERIFY that a split-event data frame exists within each instance of data frame fEUMsg.FEU.other-references.other-reference" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="split-event" instanceName="tmdd:fEUMsg.FEU.other-references.other-reference" elementType="data-frame" functionId="Looking for fEUMsg.FEU.other-references.other-reference"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.104 IF TMDD_N8R191_Merged_Event_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R191_Merged_Event_Supported}">
+                              <testStep functionId="Step 115.1.2.104.1 VERIFY that a merged-event data frame exists within each instance of data frame fEUMsg.FEU.other-references.other-reference" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="merged-event" instanceName="tmdd:fEUMsg.FEU.other-references.other-reference" elementType="data-frame" functionId="Looking for fEUMsg.FEU.other-references.other-reference"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.105 IF TMDD_N8R192_Sibling_Event_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R192_Sibling_Event_Supported}">
+                              <testStep functionId="Step 115.1.2.105.1 VERIFY that a sibling-event data frame exists within each instance of data frame fEUMsg.FEU.other-references.other-reference" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="sibling-event" instanceName="tmdd:fEUMsg.FEU.other-references.other-reference" elementType="data-frame" functionId="Looking for fEUMsg.FEU.other-references.other-reference"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.106 IF TMDD_N8R193_Associated_Device_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R193_Associated_Device_Supported}">
+                              <testStep functionId="Step 115.1.2.106.1 VERIFY that an associated-device data frame exists within each instance of data frame fEUMsg.FEU.other-references.other-reference" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="associated-device" instanceName="tmdd:fEUMsg.FEU.other-references.other-reference" elementType="data-frame" functionId="Looking for fEUMsg.FEU.other-references.other-reference"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.107 IF TMDD_N8R194_Associated_URL_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R194_Associated_URL_Supported}">
+                              <testStep functionId="Step 115.1.2.107.1 VERIFY that an associated-url data frame exists within each instance of data frame fEUMsg.FEU.other-references.other-reference" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="associated-url" instanceName="tmdd:fEUMsg.FEU.other-references.other-reference" elementType="data-frame" functionId="Looking for fEUMsg.FEU.other-references.other-reference"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.108 IF TMDD_N8R195_Event_Comments__EventComments__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R195_Event_Comments__EventComments__Supported}">
+                              <testStep functionId="Step 115.1.2.108.1 VERIFY that an event-comments data frame exists within each instance of data frame fEUMsg.FEU" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-comments" instanceName="tmdd:fEUMsg.FEU" elementType="data-frame" functionId="Looking for fEUMsg.FEU"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.109 IF TMDD_N8R196_Required_Event_Comments_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R196_Required_Event_Comments_Supported}">
+                              <testStep functionId="Step 115.1.2.109.1 VERIFY that an event-comment data element exists within each instance of data frame fEUMsg.FEU.event-comments" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-comment" instanceName="tmdd:fEUMsg.FEU.event-comments" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-comments"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.110 IF TMDD_N8R197_Operator_Identifier___Event_Comments_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R197_Operator_Identifier___Event_Comments_Supported}">
+                              <testStep functionId="Step 115.1.2.110.1 VERIFY that an operator-id data element exists within each instance of data frame fEUMsg.FEU.event-comments" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="operator-id" instanceName="tmdd:fEUMsg.FEU.event-comments" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-comments"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.111 IF TMDD_N8R198_Operator_Comments_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R198_Operator_Comments_Supported}">
+                              <testStep functionId="Step 115.1.2.111.1 VERIFY that an operator-comment data element exists within each instance of data frame fEUMsg.FEU.event-comments" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="operator-comment" instanceName="tmdd:fEUMsg.FEU.event-comments" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-comments"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.112 IF TMDD_N8R199_Comment_Description_Language_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R199_Comment_Description_Language_Supported}">
+                              <testStep functionId="Step 115.1.2.112.1 VERIFY that a language data element exists within each instance of data frame fEUMsg.FEU.event-comments" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="language" instanceName="tmdd:fEUMsg.FEU.event-comments" elementType="data-element" functionId="Looking for fEUMsg.FEU.event-comments"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.113 IF TMDD_N8R200_Event_Reports__EventReports__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R200_Event_Reports__EventReports__Supported}">
+                              <testStep functionId="Step 115.1.2.113.1 VERIFY that a full-report-texts data frame exists within each instance of data frame fEUMsg.FEU" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="full-report-texts" instanceName="tmdd:fEUMsg.FEU" elementType="data-frame" functionId="Looking for fEUMsg.FEU"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.114 IF TMDD_N8R201_Required_Event_Reports_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R201_Required_Event_Reports_Supported}">
+                              <testStep functionId="Step 115.1.2.114.1 VERIFY that a report-medium data element exists within each instance of data frame fEUMsg.FEU.full-report-texts.full-report-text" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="report-medium" instanceName="tmdd:fEUMsg.FEU.full-report-texts.full-report-text" elementType="data-element" functionId="Looking for fEUMsg.FEU.full-report-texts.full-report-text"/>
+                              </testStep>
+                              <testStep functionId="Step 115.1.2.114.2 VERIFY that a description data element exists within each instance of data frame fEUMsg.FEU.full-report-texts.full-report-text" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="description" instanceName="tmdd:fEUMsg.FEU.full-report-texts.full-report-text" elementType="data-element" functionId="Looking for fEUMsg.FEU.full-report-texts.full-report-text"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.115 IF TMDD_N8R202_Report_Description_Language_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N8R202_Report_Description_Language_Supported}">
+                              <testStep functionId="Step 115.1.2.115.1 VERIFY that a language data element exists within each instance of data frame fEUMsg.FEU.full-report-texts.full-report-text" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="language" instanceName="tmdd:fEUMsg.FEU.full-report-texts.full-report-text" elementType="data-element" functionId="Looking for fEUMsg.FEU.full-report-texts.full-report-text"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 115.1.2.116 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N8R83_External_Center_Organization___Events_Supported,organizations-receiving,tmdd:fEUMsg.FEU.message-header;TMDD_N8R84_Responding_Organization_Supported,organizations-responding,tmdd:fEUMsg.FEU.message-header;TMDD_N8R85_Message_Expiry_Time_Supported,message-expiry-time,tmdd:fEUMsg.FEU.message-header;TMDD_N8R87_Event_Response_Plan_Supported,response-plan-id,tmdd:fEUMsg.FEU.event-reference;TMDD_N8R89_Event_Headline_Element_Supported,headline-element,tmdd:fEUMsg.FEU.event-headline;TMDD_N8R92_Event_Valid_Period__EventValidPeriod__Supported,valid-period,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times;TMDD_N8R93_Required_Event_Effective_Period_Information__EffectivePeriod__Supported,days-of-the-week,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period;TMDD_N8R94_Effective_Period_Qualifier_Supported,effective-period-qualifier,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period;TMDD_N8R95_Days_Event_Not_In_Effect_Supported,holiday-day,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.effective-periods.effective-period;TMDD_N8R97_Sequence_Date_Time_Supported,sequence-time,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times;TMDD_N8R98_Event_Start_Date_Time_Supported,start-time,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times;TMDD_N8R99_Alternate_Start_Date_Time_Supported,alternate-start-time,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times;TMDD_N8R100_Alternate_End_Date_Time_Supported,alternate-end-time,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times;TMDD_N8R103_Recurrent_Times_Event_in_Effect_Supported,recurrent-times,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times;TMDD_N8R106_Element_Identifier_Supported,element-id,tmdd:fEUMsg.FEU.event-element-details.event-element-detail;TMDD_N8R108_Event_Category_Supported,event-category,tmdd:fEUMsg.FEU.event-element-details.event-element-detail;TMDD_N8R109_Event_Source__EventSource__Supported,event-source,tmdd:fEUMsg.FEU.event-element-details.event-element-detail;TMDD_N8R110_Information_Source_Organization_Supported,information-source,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source;TMDD_N8R111_Event_Detection_Method_Supported,event-detection-method,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source;TMDD_N8R112_Event_Description__EventDescription__Supported,event-descriptions,tmdd:fEUMsg.FEU.event-element-details.event-element-detail;TMDD_N8R113_Event_Quantity_Supported,quantity,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description;TMDD_N8R114_Detour__Detour__Supported,detour,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description;TMDD_N8R115_Required_Detour_Information_Supported,alternate-route-type,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour;TMDD_N8R116_Destination_Supported,destination,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour;TMDD_N8R117_Location_on_Alternate_Route_Supported,location-on-alternate-route,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour;TMDD_N8R118_Description_Language_Supported,language,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.additional-text;TMDD_N8R119_Report_Medium_Supported,report-medium,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.additional-text;TMDD_N8R120_Event_Location__EventLocation__Supported,event-locations,tmdd:fEUMsg.FEU.event-element-details.event-element-detail;TMDD_N8R121_Area_Identifier__AreaLocation__Supported,area-id,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location;TMDD_N8R122_Name_of_Area_Supported,area-name,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location;TMDD_N8R123_Area_Location_Rank_Supported,location-rank,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location;TMDD_N8R124_Secondary_Area_Location_Reference_Supported,upward-area-reference,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location;TMDD_N8R125_Required_Link_Location_Information__LinkLocation__Supported,primary-location,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R126_Link_Ownership_Supported,link-ownership,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R127_Route_Designator_Supported,link-designator,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R128_Second_Route_Designator_Supported,second-link-designator,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R129_Link_Identifier_Supported,link-id,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R130_Link_Name___Events_Supported,link-name,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R131_Secondary_Point_Supported,secondary-location,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R132_Link_Direction_Supported,link-direction,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R133_Link_Alignment_Supported,link-alignment,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R134_Linear_Reference_Version___Events_Supported,linear-reference-version,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R135_Alternate_Link_Location_Supported,alternate-designations,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.location-on-link;TMDD_N8R136_Required_Point_on_a_Link_Location_Information__PointOnALink__Supported,geo-location,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location;TMDD_N8R137_Linear_Reference_Location_Supported,linear-reference,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location;TMDD_N8R138_Link_Name___Event_Point_Supported,link-name,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location;TMDD_N8R139_Point_Name_Supported,point-name,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location;TMDD_N8R140_Cross_Street_Identifier_Supported,cross-street-designator,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location;TMDD_N8R141_Cross_Street_Name_Supported,cross-street-name,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location;TMDD_N8R142_Signed_Destination_Supported,signed-destination,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location;TMDD_N8R143_Point_Location_Rank_Supported,location-rank,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location;TMDD_N8R144_Landmark_Type_Supported,landmark-type,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location;TMDD_N8R145_Secondary_Link_Location_Supported,upward-area-reference,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.detour.location-on-alternate-route.location-on-alternate-route-item.primary-location;TMDD_N8R146_Required_Landmark_Location_Information__Landmark__Supported,landmark-type,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark;TMDD_N8R146_Required_Landmark_Location_Information__Landmark__Supported,landmark-name,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark;TMDD_N8R147_Landmark_Point_Name_Supported,landmark-point-name,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark;TMDD_N8R148_Landmark_Location_Rank_Supported,location-rank,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark;TMDD_N8R149_Landmark_Location_Supported,geo-location,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark;TMDD_N8R150_Secondary_Landmark_Location_Supported,upward-area-reference,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.landmark;TMDD_N8R151_Geographic_Location_Supported,geo-location,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location;TMDD_N8R152_Event_Name_Supported,event-name,tmdd:fEUMsg.FEU.event-element-details.event-element-detail;TMDD_N8R153_Event_Lane__EventLane__Supported,event-lanes,tmdd:fEUMsg.FEU.event-element-details.event-element-detail;TMDD_N8R154_Lane_Type_Supported,lanes-type,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane;TMDD_N8R155_Direction_of_Travel_Supported,link-direction,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane;TMDD_N8R156_Total_Number_of_Lanes_Supported,lanes-total-original,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane;TMDD_N8R157_Number_of_Lanes_Affected_Supported,lanes-total-affected,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane;TMDD_N8R158_Lane_Number_Affected_Supported,event-lanes-affected,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane;TMDD_N8R159_Lane_Status_Supported,lanes-status,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane;TMDD_N8R160_Event_Transit_Location__EventTransit__Supported,event-transit-locations,tmdd:fEUMsg.FEU.event-element-details.event-element-detail;TMDD_N8R161_Required_Event_Transit_Location_Information_Supported,transit-route-id,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item;TMDD_N8R162_Transit_Direction_of_Travel_Supported,transit-direction,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item;TMDD_N8R163_Transit_Stop_Detail_Supported,transit-stop-detail,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item;TMDD_N8R164_Transit_Location_Supported,transit-location-text,tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item;TMDD_N8R165_Event_Description_Confidence_Level_Supported,confidence-level,tmdd:fEUMsg.FEU.event-element-details.event-element-detail;TMDD_N8R166_Event_Access_Level_Supported,access-level,tmdd:fEUMsg.FEU.event-element-details.event-element-detail;TMDD_N8R171_Restrictions___Events_Supported,restrictions,tmdd:fEUMsg.FEU;TMDD_N8R177_Event_Indicator__Eventindicator__Supported,event-indicators,tmdd:fEUMsg.FEU;TMDD_N8R178_Event_Status_Supported,status,tmdd:fEUMsg.FEU.event-indicators.event-indicator;TMDD_N8R179_Event_Duration_Exceeded_Flag_Supported,duration-exceeded-flag,tmdd:fEUMsg.FEU.event-indicators.event-indicator;TMDD_N8R180_Event_Priority_Level_Supported,priority-level,tmdd:fEUMsg.FEU.event-indicators.event-indicator;TMDD_N8R181_Event_Severity_Supported,severity,tmdd:fEUMsg.FEU.event-indicators.event-indicator;TMDD_N8R182_Event_Impact_Level_Supported,impact-level,tmdd:fEUMsg.FEU.event-indicators.event-indicator;TMDD_N8R183_Event_Active_Flag_Supported,active-flag,tmdd:fEUMsg.FEU.event-indicators.event-indicator;TMDD_N8R185_Other_References__EventReferences__Supported,other-references,tmdd:fEUMsg.FEU;TMDD_N8R186_Trip_Reference_Supported,trip-reference,tmdd:fEUMsg.FEU.other-references.other-reference;TMDD_N8R187_Responsible_Reference_Supported,responsible-event,tmdd:fEUMsg.FEU.other-references.other-reference;TMDD_N8R188_Related_Event_Supported,related-event,tmdd:fEUMsg.FEU.other-references.other-reference;TMDD_N8R189_Previous_Event_Supported,previous-event,tmdd:fEUMsg.FEU.other-references.other-reference;TMDD_N8R190_Split_Event_Supported,split-event,tmdd:fEUMsg.FEU.other-references.other-reference;TMDD_N8R191_Merged_Event_Supported,merged-event,tmdd:fEUMsg.FEU.other-references.other-reference;TMDD_N8R192_Sibling_Event_Supported,sibling-event,tmdd:fEUMsg.FEU.other-references.other-reference;TMDD_N8R193_Associated_Device_Supported,associated-device,tmdd:fEUMsg.FEU.other-references.other-reference;TMDD_N8R194_Associated_URL_Supported,associated-url,tmdd:fEUMsg.FEU.other-references.other-reference;TMDD_N8R195_Event_Comments__EventComments__Supported,event-comments,tmdd:fEUMsg.FEU;TMDD_N8R196_Required_Event_Comments_Supported,event-comment,tmdd:fEUMsg.FEU.event-comments;TMDD_N8R197_Operator_Identifier___Event_Comments_Supported,operator-id,tmdd:fEUMsg.FEU.event-comments;TMDD_N8R198_Operator_Comments_Supported,operator-comment,tmdd:fEUMsg.FEU.event-comments;TMDD_N8R199_Comment_Description_Language_Supported,language,tmdd:fEUMsg.FEU.event-comments;TMDD_N8R200_Event_Reports__EventReports__Supported,full-report-texts,tmdd:fEUMsg.FEU;TMDD_N8R201_Required_Event_Reports_Supported,report-medium,tmdd:fEUMsg.FEU.full-report-texts.full-report-text;TMDD_N8R201_Required_Event_Reports_Supported,description,tmdd:fEUMsg.FEU.full-report-texts.full-report-text;TMDD_N8R202_Report_Description_Language_Supported,language,tmdd:fEUMsg.FEU.full-report-texts.full-report-text;TMDD_N8R15_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 115.1.2.117 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                              <jl:set var="CONTENTVERIFIED" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 115.1.2.118 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlFullEventUpdateUpdate RESPONSETIMEREQUIRED=TMDD_N8R58_Publish_Event_Information_Parameter CONTENTVERIFIED = CONTENTVERIFIED PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlFullEventUpdateUpdate" functionId="dlFullEventUpdateUpdate" RESPONSETIMEREQUIRED="${TMDD_N8R58_Publish_Event_Information_Parameter}" CONTENTVERIFIED="${CONTENTVERIFIED}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+          <testStep functionId="Step 116 IF SubscriptionErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 116.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 116.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 116.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 116.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 116.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 116.6 VERIFY that data element error-code is set to SubscriptionErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${SubscriptionErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 116.7 IF TMDD_N8R15_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N8R15_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 116.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 117 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

@@ -1,0 +1,195 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSDL-1a3-TypesValid
+#       Description:  TCS-C2CRI-NTCIP2306-WSDL-1a3-TypesValid
+#       Related Procedure:  null
+#       Version/Date: 2011/11/15 22:59:43
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a71.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 11 VERIFY that the WSDL file consists of 5 child sections: types/schema, message, portType, binding, service.
+
+#ITERATION NAME = Two
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a72.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+#ITERATION NAME = Three
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a73.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+#ITERATION NAME = Four
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a74.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.22 VERIFY that the location attribute of the soap:address tag specifies a valid URL.
+
+#ITERATION NAME = Five
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a75.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+#ITERATION NAME = Six
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a76.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+#ITERATION NAME = Seven
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a77.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+#ITERATION NAME = Eight
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a78.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.20 VERIFY that the service tag is followed by a port tag.  If the service tag includes a documentation tag, it must precede the port tag.
+
+#ITERATION NAME = Nine
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a79.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.21 VERIFY that a soap:address tag follows a port tag.  There should be at least one present in the WSDL.  Verify that the port tag contains a location attribute.
+
+#ITERATION NAME = Ten
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a7A.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.21 VERIFY that a soap:address tag follows a port tag.  There should be at least one present in the WSDL.  Verify that the port tag contains a location attribute.
+
+#ITERATION NAME = Eleven
+#GROUP NAME = Service
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a7B.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 16.22 VERIFY that the location attribute of the soap:address tag specifies a valid URL.
+

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TestCaseSummarySubReport" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\projects\\Release2\\projects\\C2C-RI\\src\\RIGUI\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TESTCASESTARTTIME" class="java.lang.Long" isForPrompting="false">
+		<parameterDescription><![CDATA[The Start time of the parent test case in milliseconds]]></parameterDescription>
+		<defaultValueExpression><![CDATA[new Long("0")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TESTCASESCRIPTFILE" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[The name of the test cases script file.]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="TESTCASEENDTIME" class="java.lang.Long" isForPrompting="false">
+		<parameterDescription><![CDATA[The End time of the test case.]]></parameterDescription>
+		<defaultValueExpression><![CDATA[new Long("9999999999999")]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT eventSet.timestamp, eventSet.eventType, ScriptEvent.src, ScriptEvent.tag, ScriptEvent.type, ScriptEvent.line, ScriptEvent.column, ScriptEvent.file, ScriptEvent.functionId, ScriptEvent.[test-case-name], ScriptEvent.outcome, ScriptEvent.[execution-time], ScriptEvent.[execution-time-millis], ScriptEvent.error
+FROM eventSet INNER JOIN ScriptEvent ON eventSet.eventTypeID = ScriptEvent.eventTypeID
+WHERE (((eventSet.eventType)='scriptEvent') and (ScriptEvent.type = 'End'));]]>
+	</queryString>
+	<field name="timestamp" class="java.lang.String"/>
+	<field name="eventType" class="java.lang.Object"/>
+	<field name="src" class="java.lang.Object"/>
+	<field name="tag" class="java.lang.Object"/>
+	<field name="type" class="java.lang.Object"/>
+	<field name="line" class="java.lang.Object"/>
+	<field name="column" class="java.lang.Object"/>
+	<field name="file" class="java.lang.Object"/>
+	<field name="functionId" class="java.lang.Object"/>
+	<field name="test-case-name" class="java.lang.Object"/>
+	<field name="outcome" class="java.lang.Object"/>
+	<field name="execution-time" class="java.lang.Object"/>
+	<field name="execution-time-millis" class="java.lang.String"/>
+	<field name="error" class="java.lang.String"/>
+	<sortField name="timestamp"/>
+	<filterExpression><![CDATA[($F{tag}.equals("testStep")&&$F{type}.equals("End")&&(($P{TESTCASESTARTTIME}<=(new Long ($F{timestamp}))&&($P{TESTCASEENDTIME}>=(new Long ($F{timestamp}))))))]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH.mm.ss.SSS">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="90" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date(new Long ($F{timestamp}.toString())-new Long($F{execution-time-millis}))]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="90" y="0" width="174" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="397" y="0" width="58" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{outcome}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="264" y="0" width="133" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{functionId}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToBandHeight" x="455" y="0" width="100" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{error}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

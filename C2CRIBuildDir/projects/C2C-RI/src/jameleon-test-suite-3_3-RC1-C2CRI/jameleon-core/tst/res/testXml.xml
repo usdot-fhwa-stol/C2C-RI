@@ -1,0 +1,10 @@
+<x>
+  <a id="a1">one</a>
+  <a id="a2">two</a>
+  <b id="b1">true</b>
+  <b id="b2">false</b>
+  <b id="b3">yes</b>
+  <b id="b4">no</b>
+  <b id="b5">text value</b>
+  <c id="c1">null</c>
+</x>

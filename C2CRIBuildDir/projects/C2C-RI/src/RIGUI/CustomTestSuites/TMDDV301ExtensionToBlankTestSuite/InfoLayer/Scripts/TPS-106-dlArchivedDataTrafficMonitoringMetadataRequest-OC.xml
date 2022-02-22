@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-106-dlArchivedDataTrafficMonitoringMetadataRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlArchivedDataTrafficMonitoringMetadataRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.7.1.3 [Need for Processed Traffic Monitoring Data] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:26:22-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlArchivedDataTrafficMonitoringMetadataRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.7.1.3 [Need for Processed Traffic Monitoring Data] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions is required by the specification. (NRTM 3.3.7.1.1.3.2.1).  RECORD this information as: TMDD_N106R1066_Restrictions_Supported = ${TMDD_N106R1066_Restrictions_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Purpose of the Data Set is required by the specification. (NRTM 3.3.7.1.1.3.2.2).  RECORD this information as: TMDD_N106R1067_Purpose_of_the_Data_Set_Supported = ${TMDD_N106R1067_Purpose_of_the_Data_Set_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Title of the Data Set is required by the specification. (NRTM 3.3.7.1.1.3.2.3).  RECORD this information as: TMDD_N106R1068_Title_of_the_Data_Set_Supported = ${TMDD_N106R1068_Title_of_the_Data_Set_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Version of the Data Set is required by the specification. (NRTM 3.3.7.1.1.3.2.4).  RECORD this information as: TMDD_N106R1069_Version_of_the_Data_Set_Supported = ${TMDD_N106R1069_Version_of_the_Data_Set_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Publication Information of the Data Set is required by the specification. (NRTM 3.3.7.1.1.3.2.5).  RECORD this information as: TMDD_N106R1070_Publication_Information_of_the_Data_Set_Supported = ${TMDD_N106R1070_Publication_Information_of_the_Data_Set_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Progress of the Data Set is required by the specification. (NRTM 3.3.7.1.1.3.2.6).  RECORD this information as: TMDD_N106R1071_Progress_of_the_Data_Set_Supported = ${TMDD_N106R1071_Progress_of_the_Data_Set_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Maintenance of the Data Set is required by the specification. (NRTM 3.3.7.1.1.3.2.7).  RECORD this information as: TMDD_N106R1072_Maintenance_of_the_Data_Set_Supported = ${TMDD_N106R1072_Maintenance_of_the_Data_Set_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Uniform Resource Locator (URL) is required by the specification. (NRTM 3.3.7.1.1.3.2.8).  RECORD this information as: TMDD_N106R1073_Uniform_Resource_Locator_(URL)_Supported = ${TMDD_N106R1073_Uniform_Resource_Locator_(URL)_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Roadway Network Identifier is required by the specification. (NRTM 3.3.7.1.1.3.2.9).  RECORD this information as: TMDD_N106R1074_Roadway_Network_Identifier_Supported = ${TMDD_N106R1074_Roadway_Network_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Link Identifier is required by the specification. (NRTM 3.3.7.1.1.3.2.10).  RECORD this information as: TMDD_N106R1075_Link_Identifier_Supported = ${TMDD_N106R1075_Link_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Route Designator is required by the specification. (NRTM 3.3.7.1.1.3.2.11).  RECORD this information as: TMDD_N106R1076_Route_Designator_Supported = ${TMDD_N106R1076_Route_Designator_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Linear Reference is required by the specification. (NRTM 3.3.7.1.1.3.2.12).  RECORD this information as: TMDD_N106R1077_Linear_Reference_Supported = ${TMDD_N106R1077_Linear_Reference_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlArchivedDataTrafficMonitoringMetadataRequest" riMode="EC">
+          <testStep functionId="Step 14 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 15 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 16 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 17 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlArchivedDataTrafficMonitoringMetadataRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlArchivedDataTrafficMonitoringMetadataRequest" functionId="dlArchivedDataTrafficMonitoringMetadataRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 18 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 18.1 IF TMDD_N106R1066_Restrictions_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1066_Restrictions_Supported}">
+                    <testStep functionId="Step 18.1.1 VERIFY that element restrictions exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.restrictions"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.2 IF TMDD_N106R1067_Purpose_of_the_Data_Set_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1067_Purpose_of_the_Data_Set_Supported}">
+                    <testStep functionId="Step 18.2.1 VERIFY that element data-set-purpose exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-purpose" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-purpose"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.3 IF TMDD_N106R1068_Title_of_the_Data_Set_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1068_Title_of_the_Data_Set_Supported}">
+                    <testStep functionId="Step 18.3.1 VERIFY that element data-set-title exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-title" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-title"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.4 IF TMDD_N106R1069_Version_of_the_Data_Set_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1069_Version_of_the_Data_Set_Supported}">
+                    <testStep functionId="Step 18.4.1 VERIFY that element data-set-version exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-version" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-version"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.5 IF TMDD_N106R1070_Publication_Information_of_the_Data_Set_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1070_Publication_Information_of_the_Data_Set_Supported}">
+                    <testStep functionId="Step 18.5.1 VERIFY that element data-set-publication-information exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-publication-information" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-publication-information"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.6 IF TMDD_N106R1071_Progress_of_the_Data_Set_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1071_Progress_of_the_Data_Set_Supported}">
+                    <testStep functionId="Step 18.6.1 VERIFY that element data-set-progress-status exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-progress-status" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-progress-status"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.7 IF TMDD_N106R1072_Maintenance_of_the_Data_Set_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1072_Maintenance_of_the_Data_Set_Supported}">
+                    <testStep functionId="Step 18.7.1 VERIFY that element data-set-maintenance-frequency exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-maintenance-frequency" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-maintenance-frequency"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.8 IF TMDD_N106R1073_Uniform_Resource_Locator_(URL)_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1073_Uniform_Resource_Locator_(URL)_Supported}">
+                    <testStep functionId="Step 18.8.1 VERIFY that element data-set-url exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-url" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-url"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.9 IF TMDD_N106R1074_Roadway_Network_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1074_Roadway_Network_Identifier_Supported}">
+                    <testStep functionId="Step 18.9.1 VERIFY that element data-set-roadway-network-id-list exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-roadway-network-id-list" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-roadway-network-id-list"/>
+                    </testStep>
+                    <testStep functionId="Step 18.9.2 VERIFY that element data-set-roadway-network-id-list exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-roadway-network-id-list" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-roadway-network-id-list" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-roadway-network-id-list" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-roadway-network-id-list.data-set-roadway-network-id-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.10 IF TMDD_N106R1075_Link_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1075_Link_Identifier_Supported}">
+                    <testStep functionId="Step 18.10.1 VERIFY that element data-set-link-id-list exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-link-id-list" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-link-id-list"/>
+                    </testStep>
+                    <testStep functionId="Step 18.10.2 VERIFY that element data-set-link-id-list exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-link-id-list" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-link-id-list" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-link-id-list" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-link-id-list.data-set-link-id-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.11 IF TMDD_N106R1076_Route_Designator_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1076_Route_Designator_Supported}">
+                    <testStep functionId="Step 18.11.1 VERIFY that element data-set-route-designator-list exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-route-designator-list" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-route-designator-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.12 IF TMDD_N106R1077_Linear_Reference_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N106R1077_Linear_Reference_Supported}">
+                    <testStep functionId="Step 18.12.1 VERIFY that element data-set-linear-reference-list exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-linear-reference-list" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-linear-reference-list"/>
+                    </testStep>
+                    <testStep functionId="Step 18.12.2 VERIFY that element data-set-linear-reference-version exists within each instance of archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-set-linear-reference-version" instanceName="tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item" functionId="Looking for archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-linear-reference-version"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.13 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N106R1066_Restrictions_Supported,restrictions,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1067_Purpose_of_the_Data_Set_Supported,data-set-purpose,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1068_Title_of_the_Data_Set_Supported,data-set-title,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1069_Version_of_the_Data_Set_Supported,data-set-version,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1070_Publication_Information_of_the_Data_Set_Supported,data-set-publication-information,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1071_Progress_of_the_Data_Set_Supported,data-set-progress-status,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1072_Maintenance_of_the_Data_Set_Supported,data-set-maintenance-frequency,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1073_Uniform_Resource_Locator_(URL)_Supported,data-set-url,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1074_Roadway_Network_Identifier_Supported,data-set-roadway-network-id-list,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1074_Roadway_Network_Identifier_Supported,data-set-roadway-network-id-list,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-roadway-network-id-list;TMDD_N106R1075_Link_Identifier_Supported,data-set-link-id-list,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1075_Link_Identifier_Supported,data-set-link-id-list,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item.data-set-link-id-list;TMDD_N106R1076_Route_Designator_Supported,data-set-route-designator-list,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1077_Linear_Reference_Supported,data-set-linear-reference-list,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;TMDD_N106R1077_Linear_Reference_Supported,data-set-linear-reference-version,tmdd:archivedDataTrafficMonitoringMetadataMsg.archived-data-traffic-monitoring-metadata-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

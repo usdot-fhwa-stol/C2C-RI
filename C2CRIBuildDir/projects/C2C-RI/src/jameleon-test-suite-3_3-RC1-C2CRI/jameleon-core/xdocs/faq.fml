@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs title="Jameleon - Frequently Asked Questions" toplink="false">
+
+  <part id="general">
+    <title>General Questions</title>
+   
+    <faq id="why-jameleon">
+      <question>
+        Why the Name Jameleon?
+      </question>
+      <answer>
+        <p>
+            <i><b>Jameleon</b></i> was derived from the word <b><i>Chameleon</i></b>. However, this
+            lizard was written in Java. Thus, the term <b>J</b>ameleon. One of the basic concepts behind 
+            Jameleon is that just as Chameleons can adapt to their environment, tests written with 
+            Jameleon can be run against applications that exist in different environments. Chameleons 
+            are also masters at catching bugs.
+        </p>
+      </answer>
+    </faq>
+
+    <faq id="logo">
+      <question>
+        Who designed the logo?
+      </question>
+      <answer>
+        <p>
+            A co-worker named Matt Grandon. He also did some of the icons and other graphics on the site.
+        </p>
+      </answer>
+    </faq>
+
+    <faq id="application-types">
+      <question>
+        What types of applications can Jameleon test?
+      </question>
+      <answer>
+          <p>
+              Jameleon itself is simply a testing harness that is application interface
+              agnostic. Currently, there is support for web applications and database testing.
+          </p>
+      </answer>
+    </faq>
+    <faq id="x-technology">
+    <question>
+      Can I use Jameleon to test my web application that uses X technology?
+    </question>
+    <answer>
+        <p>
+            Depending on the plug-in, different types of testing are supported. One of the 
+            plug-ins allows for complete control of Internet Explorer while the other web 
+            plug-ins simply emulate a browser's behavior and therefore prove more difficult 
+            to test web applications that use Java Applets, JavaScript or similar technologies.
+        </p>
+    </answer>
+    </faq>
+    <faq id="what-plugins">
+    <question>
+      What plug-ins are currently available?
+    </question>
+    <answer>
+        <p>
+            See the <b>Plug-ins</b> section on the left for a list of current plug-ins.
+        </p>
+    </answer>
+    </faq>
+    <faq id="which-file">
+    <question>
+      Which file should I download?
+    </question>
+    <answer>
+        <p>
+          If you are asking this question, then you should probably download jameleon-test-suite-x.x.x.zip. The x's
+          mean version numbers. This file is a pre-configured version of Jameleon, set up to be used as a test
+          suite. This file has every plug-in and the most common features enabled.
+        </p>
+    </answer>
+    </faq>
+
+  </part>
+  
+  <part id="tags">
+    <title>Execution or Registration of Custom Tags Questions</title>
+
+    <faq id="is-tag-executing">
+      <question>
+        How do I see whether X tag is getting executed?
+      </question>
+      <answer>
+          <p>
+              Since Jameleon 3.0.2, Jameleon fails on unrecognized tags, describing which tag is invalid. This only works
+              for tags tag begin with the namespace defined. In other words, &lt;j:foo-bar/&gt; will fail, but
+              &lt;foo-bar/&gt; won't get recognized and will get skipped. The answer below is for previous versions.
+          </p>
+          <p>
+              By setting trace="true" in <a href="globalSettings.html#trace">jameleon.conf</a> or in the 
+              <a href="testCaseTag.html">test case</a> being debugged. This basically prints something out to the console
+              for every tag being executed. For custom tags, the required attribute, <b>functionId</b>, is printed out.
+          </p>
+          <p>
+              Basically, if the functionId of the tag in question is printed out to the console, then it is being executed.
+          </p>
+      </answer>
+    </faq>
+    <faq id="tag-not-executing">
+      <question>
+        Why isn't my tag getting executed?
+      </question>
+      <answer>
+        <p>
+            There are a few possible reasons why your tag isn't getting executed in your test script. Please see the possible reasons below:
+            <ul>
+                <li>
+                    The jameleon-test-suite-x.x.x.zip distribution's Ant task is configured to only look for java files that end in <b>Tag.java</b>.
+                    In other words, SomeFunctionality.java should be renamed to SomeFunctionalityTag.java. This can, of course, be reconfigured to search
+                    for all java files via the <a href="antTasks.html#Tag Registration Task">Custom Tag Registration Ant Task</a> in the build.xml file
+                    in the jameleon-test-suite directory.
+                </li>
+                <li>
+                    You forgot to run the <a href="antTasks.html#Tag Registration Task">Custom Tag Registration Ant Task</a> when building
+                    custom tags.
+                </li>
+                <li>
+                    The <a href="http://ant.apache.org/manual/CoreTypes/fileset.html">fileset</a> provided in the 
+                    <a href="antTasks.html#Tag Registration Task">Custom Tag Registration Ant Task</a> doesn't match the custom tag you 
+                    are trying to register.
+                </li>
+                <li>
+                    The package defined in your custom tag, doesn't match the actual directory structure the tag is in. For example the tag
+                    in question defined a package of net.sf, but it exists in net.sf.tags. 
+                </li>
+                <li>If you are using namespaces, you forgot to add the <a href="xmlBasics.html#XML Namespaces">Jameleon Namespace</a> to your new custom tag. In other words:
+                    <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+&lt;test-case-summary&gt;Notice how custom-tag doesn't start with  &lt;/test-case-summary&gt;
+&lt;test-case-author&gt;Christian Hargraves&lt;/test-case-author&gt;
+&lt;test-case-level&gt;ACCEPTANCE&lt;/test-case-level&gt;
+&lt;functional-point-tested&gt;properties&lt;/functional-point-tested&gt;
+
+&lt;junit-session application="appName" organization="sf"&gt;
+&lt;custom-tag 
+    functionId="compare two variables"
+    var1="${var3}"
+    var2="${var4}"/&gt;
+&lt;/junit-session&gt;
+
+&lt;/testcase&gt;</source>
+                    In the above example, xmlns:j="jelly:jameleon", tells the scripting engine to search for all Jameleon-specific tags
+                    in the namespace where elements begin with &lt;j:.. Notice how <b>&lt;custom-tag</b> does not have a namespace. 
+                    The scripting engine will ignore this tag because it doesn't start with <b>&lt;j:</b>. The example below fixes this problem:
+                    <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+&lt;test-case-summary&gt;Now custom-tag starts with  &lt;/test-case-summary&gt;
+&lt;test-case-author&gt;Christian Hargraves&lt;/test-case-author&gt;
+&lt;test-case-level&gt;ACCEPTANCE&lt;/test-case-level&gt;
+&lt;functional-point-tested&gt;properties&lt;/functional-point-tested&gt;
+
+&lt;junit-session application="appName" organization="sf"&gt;
+&lt;custom-tag 
+    functionId="compare two variables"
+    var1="${var3}"
+    var2="${var4}"/&gt;
+&lt;/junit-session&gt;
+
+&lt;/testcase&gt;</source>
+                    Of course, not using namespaces in the first place would resolve this, assuming you aren't using the jelly core tags:
+                    <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+&lt;test-case-summary&gt;Now custom-tag starts with  &lt;/test-case-summary&gt;
+&lt;test-case-author&gt;Christian Hargraves&lt;/test-case-author&gt;
+&lt;test-case-level&gt;ACCEPTANCE&lt;/test-case-level&gt;
+&lt;functional-point-tested&gt;properties&lt;/functional-point-tested&gt;
+
+&lt;junit-session application="appName" organization="sf"&gt;
+&lt;custom-tag 
+functionId="compare two variables"
+var1="${var3}"
+var2="${var4}"/&gt;
+&lt;/junit-session&gt;
+
+&lt;/testcase&gt;</source>
+                </li>
+            </ul>
+        </p>
+      </answer>
+    </faq>
+    <faq id="why-tag-not-registering">
+      <question>
+        Why isn't my tag getting registered?
+      </question>
+      <answer>
+        <p>
+            There are a few possible reasons why your tag isn't getting registered. Please see the possible reasons below:
+            <ul>
+                <li>
+                    You forgot to run the <a href="antTasks.html#Tag Registration Task">Custom Tag Registration Ant Task</a> when building
+                    custom tags.
+                </li>
+                <li>
+                    The <a href="http://ant.apache.org/manual/CoreTypes/fileset.html">fileset</a> provided in the 
+                    <a href="antTasks.html#Tag Registration Task">Custom Tag Registration Ant Task</a> doesn't match the custom tag you 
+                    are trying to register.
+                </li>
+                <li>
+                    The package defined in your custom tag, doesn't match the actual directory structure the tag is in. For example the tag
+                    in question defined a package of net.sf, but it exists in net.sf.tags. 
+                </li>
+            </ul>
+            To check to see if your tag is getting registered, a file called "TestCaseTagDefs.properties" should be generated by the 
+            <a href="antTasks.html#Tag Registration Task">Custom Tag Registration Ant Task</a>. This file is in the format of 
+            tagName=package.of.custom.tag.class. Look for your tag in this file. If it isn't in there, this means your tag isn't getting
+            registered.
+        </p>
+      </answer>
+    </faq>
+  </part>  
+
+  <part id="data-driving">
+    <title>Data-driving Questions</title>
+    <faq id="countrow">
+      <question>
+        How can csv/sql tags be used to increment test cases run?
+      </question>
+      <answer>
+            <p>
+              If you set <b>countRow</b> to <b>true</b>, then not only will Jameleon count each row as a test case, but
+              it will also continue to execute even if the previous row fails. This is attribute is common across all 
+              Jameleon-provided data-drivable tags. Please see the documents on tag of interest for more information.
+            </p>
+      </answer>
+    </faq>
+    <faq id="baseUrl">
+      <question>
+        Why doesn't my session tag get baseUrl when being set in the script?
+      </question>
+      <answer>
+            <p>
+              This question is specific to why when the variable is set in a properties, it can't be used directly in a session tag.
+              For example, why does the following not work:
+              <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;hu-session application="appName" baseUrl="${someUrl}"&gt;
+...
+&lt;/hu-session&gt;
+&lt;/testcase&gt;</source>
+or even
+              <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;hu-session application="appName" baseUrl="${baseUrl}"&gt;
+...
+&lt;/hu-session&gt;
+&lt;/testcase&gt;</source>
+And why does the following does work:
+              <source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;hu-session application="appName"&gt;
+...
+&lt;/hu-session&gt;
+&lt;/testcase&gt;</source>
+              The properties files are read in during the execution of the session tag itself. The problem is that Jelly tries to resolve ${} 
+              variables before the session tag is actually executed. And because the ${} variables haven't be read in yet, Jelly resolves them 
+              to nothing.
+            </p>
+            <p>
+              Most plug-ins have gotten around this, by supporting both context variables and direct settings for the baseUrl attribute. In 
+              other words they support setting the baseUrl to a hard value like: <b>baseUrl="http://some.domain.com"</b> or they support reading
+              them in directly via the properties file, but they don't support setting the value in the script via the context variable.
+            </p>
+            <p>
+              If you still don't understand the answer, just refer to the above examples. Set the baseUrl variable in your properties file, but don't
+              set it in the script. Setting the application="appName" magically does this for you.
+            </p>
+      </answer>
+    </faq>
+  </part>
+</faqs>

@@ -1,0 +1,334 @@
+ 
+#<!--   
+#       Title:  TCS-12-dlRouteInventoryRequest-OC-InValid-2
+#       Description:  This test case is used to verify the SUTs support of the dlRouteInventoryRequest dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.4.1.3 [Need for Route Inventory]. This Test Case tests for a InValid (2) response result.
+#       Related Procedure:  TPS-12-dlRouteInventoryRequest-OC
+#       Version/Date: 2013/09/25 10:20:29
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Request Message to be sent to the SUT.
+RequestMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether an error response is expected from the SUT.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of error response that is expected from the SUT.
+ErrorTypeExpected = 2
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.authentication.user-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.authentication.user-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.authentication.password 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.authentication.password = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.authentication.operator-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.authentication.operator-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-id = transcore.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-name 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-location 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-location = stringstri
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-function 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-function = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.contact-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.person-name 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.person-title 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.phone-number 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.phone-alternate 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.mobile-phone-number 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.mobile-phone-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.fax-number 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.pager-number 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.pager-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.email-address 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.radio-unit 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.address-line1 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.address-line2 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.city 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.state 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.zip-code 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.country 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.organization-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-id = tcore_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-name 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum = wgs-84
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-location.height.altitude.kmDec 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-location.height.altitude.kmDec = 1000.00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-description 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-type 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.last-update-time.date 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.last-update-time.time 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.last-update-time.offset 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.organization-requesting.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.network-information-type 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.network-information-type = route inventory
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.network-identifiers.network-identifier 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.network-identifiers.network-identifier = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:trafficNetworkInformationRequestMsgErrorAddOn.roadway-network-id-list.roadway-network-id 
+tmdd:trafficNetworkInformationRequestMsgErrorAddOn.roadway-network-id-list.roadway-network-id = string
+

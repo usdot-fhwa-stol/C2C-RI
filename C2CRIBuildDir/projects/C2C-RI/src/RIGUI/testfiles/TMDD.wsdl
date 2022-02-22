@@ -1,0 +1,2886 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.tmdd.org/3/dialogs" xmlns:tmdd="http://www.tmdd.org/3/messages" xmlns:c2c="http://www.ntcip.org/c2c-message-administration" xmlns:ftp="http://schemas.ntcip.org/wsdl/ftp/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns2="http://www.ITIS-Adopted-03-00-02" xmlns:ns3="http://www.LRMS-Adopted-02-00-00" xmlns:ns4="http://www.LRMS-Local-02-00-00" xmlns:ns5="http://www.ntcip.org/c2f-objects" xmlns:ns6="http://www.ITIS-Local-03-00-02" xmlns:ns7="http://www.ntcip.org/c2f-object-references" name="TMDDCenterServices" targetNamespace="http://www.tmdd.org/3/dialogs">
+	<documentation>
+			TMDD V3.0 v9.0 Balloted Standard
+			Last Updated: November 18, 2008 - Manny Insignares, ConSysTec
+	</documentation>
+	<types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:import namespace="http://www.tmdd.org/3/messages" schemaLocation="tmdd.xsd"/>
+			<xs:import namespace="http://www.ntcip.org/c2c-message-administration" schemaLocation="C2C.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="MSG_ArchivedDataTrafficMonitoringMetadataRequest">
+		<!-- ARCHIVED DATA Messages-->
+		<part name="message" element="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg"/>
+	</message>
+	<message name="MSG_ArchivedDataTrafficMonitoringMetadata">
+		<part name="message" element="tmdd:archivedDataTrafficMonitoringMetadataMsg"/>
+	</message>
+	<message name="MSG_ArchivedDataProcessingDocumentationMetadataRequest">
+		<part name="message" element="tmdd:archivedDataProcessingDocumentationMetadataRequestMsg"/>
+	</message>
+	<message name="MSG_ArchivedDataProcessingDocumentationMetadata">
+		<part name="message" element="tmdd:archivedDataProcessingDocumentationMetadataMsg"/>
+	</message>
+	<message name="MSG_CCTVInventory">
+		<!-- CCTV - Closed Circuit Television Camera Messages -->
+		<part name="message" element="tmdd:cCTVInventoryMsg"/>
+	</message>
+	<message name="MSG_CCTVInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:cCTVInventoryMsg"/>
+	</message>
+	<message name="MSG_CCTVStatus">
+		<part name="message" element="tmdd:cCTVStatusMsg"/>
+	</message>
+	<message name="MSG_CCTVStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:cCTVStatusMsg"/>
+	</message>
+	<message name="MSG_CCTVControlRequest">
+		<part name="message" element="tmdd:cCTVControlRequestMsg"/>
+	</message>
+	<message name="MSG_ConfirmationReceipt">
+		<!-- CONNECTION MANAGEMENT Messages -->
+		<part name="message" element="c2c:c2cMessageReceipt"/>
+	</message>
+	<message name="MSG_ErrorReport">
+		<part name="message" element="tmdd:errorReportMsg"/>
+	</message>
+	<message name="MSG_CenterActiveVerificationRequest">
+		<part name="message" element="tmdd:centerActiveVerificationRequestMsg"/>
+	</message>
+	<message name="MSG_CenterActiveVerificationSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:centerActiveVerificationRequestMsg"/>
+	</message>
+	<message name="MSG_CenterActiveVerificationResponse">
+		<part name="message" element="tmdd:centerActiveVerificationResponseMsg"/>
+	</message>
+	<message name="MSG_CenterActiveVerificationUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:centerActiveVerificationResponseMsg"/>
+	</message>
+	<message name="MSG_DetectorInventory">
+		<!-- DETECTOR Messages -->
+		<part name="message" element="tmdd:detectorInventoryMsg"/>
+	</message>
+	<message name="MSG_DetectorInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:detectorInventoryMsg"/>
+	</message>
+	<message name="MSG_DetectorStatus">
+		<part name="message" element="tmdd:detectorStatusMsg"/>
+	</message>
+	<message name="MSG_DetectorStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:detectorStatusMsg"/>
+	</message>
+	<message name="MSG_DetectorDataRequest">
+		<part name="message" element="tmdd:detectorDataRequestMsg"/>
+	</message>
+	<message name="MSG_DetectorDataSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:detectorDataRequestMsg"/>
+	</message>
+	<message name="MSG_DetectorData">
+		<part name="message" element="tmdd:detectorDataMsg"/>
+	</message>
+	<message name="MSG_DetectorDataUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:detectorDataMsg"/>
+	</message>
+	<message name="MSG_DetectorMaintenanceHistoryRequest">
+		<part name="message" element="tmdd:detectorMaintenanceHistoryRequestMsg"/>
+	</message>
+	<message name="MSG_DetectorMaintenanceHistory">
+		<part name="message" element="tmdd:detectorMaintenanceHistoryMsg"/>
+	</message>
+	<message name="MSG_DeviceCancelControlRequest">
+		<!-- DEVICE Messages -->
+		<part name="message" element="tmdd:deviceCancelControlRequestMsg"/>
+	</message>
+	<message name="MSG_DeviceControlStatusRequest">
+		<part name="message" element="tmdd:deviceControlStatusRequestMsg"/>
+	</message>
+	<message name="MSG_DeviceControlResponse">
+		<part name="message" element="tmdd:deviceControlResponseMsg"/>
+	</message>
+	<message name="MSG_DevicePriorityQueueRequest">
+		<part name="message" element="tmdd:devicePriorityQueueRequestMsg"/>
+	</message>
+	<message name="MSG_DeviceInformationRequest">
+		<part name="message" element="tmdd:deviceInformationRequestMsg"/>
+	</message>
+	<message name="MSG_DeviceInformationSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:deviceInformationRequestMsg"/>
+	</message>
+	<message name="MSG_DMSInventory">
+		<!-- DMS - Dynamic Message Sign Messages -->
+		<part name="message" element="tmdd:dMSInventoryMsg"/>
+	</message>
+	<message name="MSG_DMSInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:dMSInventoryMsg"/>
+	</message>
+	<message name="MSG_DMSStatus">
+		<part name="message" element="tmdd:dMSStatusMsg"/>
+	</message>
+	<message name="MSG_DMSStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:dMSStatusMsg"/>
+	</message>
+	<message name="MSG_DMSMessageInventoryRequest">
+		<part name="message" element="tmdd:dMSMessageInventoryRequestMsg"/>
+	</message>
+	<message name="MSG_DMSMessageInventorySubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:dMSMessageInventoryRequestMsg"/>
+	</message>
+	<message name="MSG_DMSMessageInventory">
+		<part name="message" element="tmdd:dMSMessageInventoryMsg"/>
+	</message>
+	<message name="MSG_DMSMessageInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:dMSMessageInventoryMsg"/>
+	</message>
+	<message name="MSG_DMSMessageAppearanceRequest">
+		<part name="message" element="tmdd:dMSMessageAppearanceRequestMsg"/>
+	</message>
+	<message name="MSG_DMSMessageAppearance">
+		<part name="message" element="tmdd:dMSMessageAppearanceMsg"/>
+	</message>
+	<message name="MSG_DMSFontTableRequest">
+		<part name="message" element="tmdd:dMSFontTableRequestMsg"/>
+	</message>
+	<message name="MSG_DMSFontTable">
+		<part name="message" element="tmdd:dMSFontTableMsg"/>
+	</message>
+	<message name="MSG_DMSControlRequest">
+		<part name="message" element="tmdd:dMSControlRequestMsg"/>
+	</message>
+	<message name="MSG_DMSPriorityQueue">
+		<part name="message" element="tmdd:dMSPriorityQueueMsg"/>
+	</message>
+	<message name="MSG_ESSInventory">
+		<!-- ESS - Environmental Senso Station Messages -->
+		<part name="message" element="tmdd:eSSInventoryMsg"/>
+	</message>
+	<message name="MSG_ESSInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:eSSInventoryMsg"/>
+	</message>
+	<message name="MSG_ESSStatus">
+		<part name="message" element="tmdd:eSSStatusMsg"/>
+	</message>
+	<message name="MSG_ESSStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:eSSStatusMsg"/>
+	</message>
+	<message name="MSG_ESSObservationMetadata">
+		<part name="message" element="tmdd:eSSObservationMetadataMsg"/>
+	</message>
+	<message name="MSG_ESSObservationReport">
+		<part name="message" element="tmdd:eSSObservationReportMsg"/>
+	</message>
+	<message name="MSG_EventRequest">
+		<!-- EVENT Messages -->
+		<part name="message" element="tmdd:eventRequestMsg"/>
+	</message>
+	<message name="MSG_FullEventUpdate">
+		<part name="message" element="tmdd:fEUMsg"/>
+	</message>
+	<message name="MSG_EventIndex">
+		<part name="message" element="tmdd:eventIndexMsg"/>
+	</message>
+	<message name="MSG_ActionLog">
+		<part name="message" element="tmdd:actionLogMsg"/>
+	</message>
+	<message name="MSG_EventSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:eventRequestMsg"/>
+	</message>
+	<message name="MSG_EventIndexSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:eventIndexMsg"/>
+	</message>
+	<message name="MSG_ActionLogSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:actionLogMsg"/>
+	</message>
+	<message name="MSG_FullEventUpdateUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:fEUMsg"/>
+	</message>
+	<message name="MSG_EventIndexUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:eventIndexMsg"/>
+	</message>
+	<message name="MSG_ActionLogUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:actionLogMsg"/>
+	</message>
+	<message name="MSG_GateInventory">
+		<!-- GATE - Lane Closure Gate Messages -->
+		<part name="message" element="tmdd:gateInventoryMsg"/>
+	</message>
+	<message name="MSG_GateInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:gateInventoryMsg"/>
+	</message>
+	<message name="MSG_GateStatus">
+		<part name="message" element="tmdd:gateStatusMsg"/>
+	</message>
+	<message name="MSG_GateStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:gateStatusMsg"/>
+	</message>
+	<message name="MSG_GateControlRequest">
+		<part name="message" element="tmdd:gateControlRequestMsg"/>
+	</message>
+	<message name="MSG_GateControlSchedule">
+		<part name="message" element="tmdd:gateControlScheduleMsg"/>
+	</message>
+	<message name="MSG_GateControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:gateControlScheduleMsg"/>
+	</message>
+	<message name="MSG_HARInventory">
+		<!-- HAR - Highway Advisory Radio Messages -->
+		<part name="message" element="tmdd:gateInventoryMsg"/>
+	</message>
+	<message name="MSG_HARMessageInventory">
+		<part name="message" element="tmdd:gateInventoryMsg"/>
+	</message>
+	<message name="MSG_HARInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:hARInventoryMsg"/>
+	</message>
+	<message name="MSG_HARStatus">
+		<part name="message" element="tmdd:hARStatusMsg"/>
+	</message>
+	<message name="MSG_HARStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:hARStatusMsg"/>
+	</message>
+	<message name="MSG_HARControlRequest">
+		<part name="message" element="tmdd:hARControlRequestMsg"/>
+	</message>
+	<message name="MSG_HARControlSchedule">
+		<part name="message" element="tmdd:hARControlScheduleMsg"/>
+	</message>
+	<message name="MSG_HARControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:hARControlScheduleMsg"/>
+	</message>
+	<message name="MSG_HARPriorityQueue">
+		<part name="message" element="tmdd:hARPriorityQueueMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalInventory">
+		<!-- INTERSECTIONSIGNAL Messages -->
+		<part name="message" element="tmdd:intersectionSignalInventoryMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:intersectionSignalInventoryMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalStatus">
+		<part name="message" element="tmdd:intersectionSignalStatusMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:intersectionSignalStatusMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalTimingPatternInventoryRequest">
+		<part name="message" element="tmdd:intersectionSignalTimingPatternInventoryRequestMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalTimingPatternInventorySubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:intersectionSignalTimingPatternInventoryRequestMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalTimingPatternInventory">
+		<part name="message" element="tmdd:intersectionSignalTimingPatternInventoryMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalTimingPatternInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:intersectionSignalTimingPatternInventoryMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalControlRequest">
+		<part name="message" element="tmdd:intersectionSignalControlRequestMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalControlResponse">
+		<part name="message" element="tmdd:intersectionSignalControlResponseMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalControlSchedule">
+		<part name="message" element="tmdd:intersectionSignalControlScheduleMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:intersectionSignalControlScheduleMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalPriorityQueue">
+		<part name="message" element="tmdd:intersectionSignalPriorityQueueMsg"/>
+	</message>
+	<message name="MSG_LCSInventory">
+		<!-- LCS - Lane Control Signal Messages -->
+		<part name="message" element="tmdd:lCSInventoryMsg"/>
+	</message>
+	<message name="MSG_LCSInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:lCSInventoryMsg"/>
+	</message>
+	<message name="MSG_LCSStatus">
+		<part name="message" element="tmdd:lCSStatusMsg"/>
+	</message>
+	<message name="MSG_LCSStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:lCSStatusMsg"/>
+	</message>
+	<message name="MSG_LCSControlRequest">
+		<part name="message" element="tmdd:lCSControlRequestMsg"/>
+	</message>
+	<message name="MSG_LCSControlSchedule">
+		<part name="message" element="tmdd:lCSControlScheduleMsg"/>
+	</message>
+	<message name="MSG_LCSControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:lCSControlScheduleMsg"/>
+	</message>
+	<message name="MSG_LinkInventory">
+		<!-- LINK Messages-->
+		<part name="message" element="tmdd:linkInventoryMsg"/>
+	</message>
+	<message name="MSG_LinkInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:linkInventoryMsg"/>
+	</message>
+	<message name="MSG_LinkStatus">
+		<part name="message" element="tmdd:linkStatusMsg"/>
+	</message>
+	<message name="MSG_LinkStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:linkStatusMsg"/>
+	</message>
+	<message name="MSG_NodeInventory">
+		<!-- NODE Messages-->
+		<part name="message" element="tmdd:nodeInventoryMsg"/>
+	</message>
+	<message name="MSG_NodeInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:nodeInventoryMsg"/>
+	</message>
+	<message name="MSG_NodeStatus">
+		<part name="message" element="tmdd:nodeStatusMsg"/>
+	</message>
+	<message name="MSG_NodeStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:nodeStatusMsg"/>
+	</message>
+	<message name="MSG_OrganizationInformationRequest">
+		<!-- ORGANIZATION Messages -->
+		<part name="message" element="tmdd:organizationInformationRequestMsg"/>
+	</message>
+	<message name="MSG_OrganizationInformationSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:organizationInformationRequestMsg"/>
+	</message>
+	<message name="MSG_OrganizationInformation">
+		<part name="message" element="tmdd:organizationInformationMsg"/>
+	</message>
+	<message name="MSG_OrganizationInformationUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:organizationInformationMsg"/>
+	</message>
+	<message name="MSG_RampMeterInventory">
+		<!-- RAMPMETER Messages -->
+		<part name="message" element="tmdd:rampMeterInventoryMsg"/>
+	</message>
+	<message name="MSG_RampMeterInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:rampMeterInventoryMsg"/>
+	</message>
+	<message name="MSG_RampMeterStatus">
+		<part name="message" element="tmdd:rampMeterStatusMsg"/>
+	</message>
+	<message name="MSG_RampMeterStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:rampMeterStatusMsg"/>
+	</message>
+	<message name="MSG_RampMeterControlRequest">
+		<part name="message" element="tmdd:rampMeterControlRequestMsg"/>
+	</message>
+	<message name="MSG_RampMeterControlSchedule">
+		<part name="message" element="tmdd:rampMeterControlScheduleMsg"/>
+	</message>
+	<message name="MSG_RampMeterControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:rampMeterControlScheduleMsg"/>
+	</message>
+	<message name="MSG_RampMeterPriorityQueue">
+		<part name="message" element="tmdd:rampMeterPriorityQueueMsg"/>
+	</message>
+	<message name="MSG_RampMeterPlanInventoryRequest">
+		<part name="message" element="tmdd:deviceInformationRequestMsg"/>
+	</message>
+	<message name="MSG_RampMeterPlanInventory">
+		<part name="message" element="tmdd:rampMeterPlanInventoryMsg"/>
+	</message>
+	<message name="MSG_RampMeterPlanInventorySubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:deviceInformationRequestMsg"/>
+	</message>
+	<message name="MSG_RampMeterPlanInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:rampMeterPlanInventoryMsg"/>
+	</message>
+	<message name="MSG_RouteInventory">
+		<!-- ROUTE Messages-->
+		<part name="message" element="tmdd:routeInventoryMsg"/>
+	</message>
+	<message name="MSG_RouteInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:routeInventoryMsg"/>
+	</message>
+	<message name="MSG_RouteStatus">
+		<part name="message" element="tmdd:routeStatusMsg"/>
+	</message>
+	<message name="MSG_RouteStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:routeStatusMsg"/>
+	</message>
+	<message name="MSG_SectionControlRequest">
+		<!-- SECTION Messages -->
+		<part name="message" element="tmdd:sectionControlRequestMsg"/>
+	</message>
+	<message name="MSG_SectionControlStatusRequest">
+		<part name="message" element="tmdd:sectionControlStatusRequestMsg"/>
+	</message>
+	<message name="MSG_SectionControlResponse">
+		<part name="message" element="tmdd:sectionControlResponseMsg"/>
+	</message>
+	<message name="MSG_SectionPriorityQueue">
+		<part name="message" element="tmdd:sectionPriorityQueueMsg"/>
+	</message>
+	<message name="MSG_SectionStatus">
+		<part name="message" element="tmdd:sectionStatusMsg"/>
+	</message>
+	<message name="MSG_SectionStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:sectionStatusMsg"/>
+	</message>
+	<message name="MSG_SectionControlScheduleResponse">
+		<part name="message" element="tmdd:sectionControlScheduleMsg"/>
+	</message>
+	<message name="MSG_SectionControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:sectionControlScheduleMsg"/>
+	</message>
+	<message name="MSG_TrafficNetworkInformationRequest">
+		<!-- TRANSPORTATIONNETWORK Messages-->
+		<part name="message" element="tmdd:trafficNetworkInformationRequestMsg"/>
+	</message>
+	<message name="MSG_TrafficNetworkStatusSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:trafficNetworkInformationRequestMsg"/>
+	</message>
+	<message name="MSG_VideoSwitchInventory">
+		<!-- VIDEOSWITCH Messages -->
+		<part name="message" element="tmdd:videoSwitchInventoryMsg"/>
+	</message>
+	<message name="MSG_VideoSwitchInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:videoSwitchInventoryMsg"/>
+	</message>
+	<message name="MSG_VideoSwitchStatus">
+		<part name="message" element="tmdd:videoSwitchStatusMsg"/>
+	</message>
+	<message name="MSG_VideoSwitchStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:videoSwitchStatusMsg"/>
+	</message>
+	<message name="MSG_VideoSwitchControlRequest">
+		<part name="message" element="tmdd:videoSwitchControlRequestMsg"/>
+	</message>
+	<portType name="tmddOCSoapHttpServicePortType">
+		<!-- ********************************************* -->
+		<!-- OWNER CENTER Operation PortType -->
+		<!-- ********************************************* -->
+		<!-- ArchivedData -->
+		<operation name="DlArchivedDataTrafficMonitoringMetadataRequest">
+			<documentation><objectClass>ArchivedData</objectClass><msgPattern>R-R</msgPattern><requirement>REQ796</requirement></documentation>
+			<input message="tns:MSG_ArchivedDataTrafficMonitoringMetadataRequest"/>
+			<output message="tns:MSG_ArchivedDataTrafficMonitoringMetadata"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlArchivedDataProcessingDocumentationMetadataRequest">
+			<documentation><objectClass>ArchivedData</objectClass><msgPattern>R-R</msgPattern><requirement>REQ776</requirement></documentation>
+			<input message="tns:MSG_ArchivedDataProcessingDocumentationMetadataRequest"/>
+			<output message="tns:MSG_ArchivedDataProcessingDocumentationMetadata"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- CCTV -->
+		<operation name="DlCCTVInventoryRequest">
+			<documentation><objectClass>CCTV</objectClass><msgPattern>R-R</msgPattern><requirement>REQ549</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_CCTVInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlCCTVStatusRequest">
+			<documentation><objectClass>CCTV</objectClass><msgPattern>R-R</msgPattern><requirement>REQ546</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_CCTVStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlCCTVControlRequest">
+			<documentation><objectClass>CCTV</objectClass><msgPattern>R-R</msgPattern><requirement>REQ545</requirement></documentation>
+			<input message="tns:MSG_CCTVControlRequest"/>
+			<output message="tns:MSG_DeviceControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- ConnectionManagement -->
+		<operation name="DlCenterActiveVerificationRequest">
+			<documentation><objectClass>ConnectionManagement</objectClass><msgPattern>R-R</msgPattern><requirement>REQ199</requirement></documentation>
+			<input message="tns:MSG_CenterActiveVerificationRequest"/>
+			<output message="tns:MSG_CenterActiveVerificationResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlCenterActiveVerificationSubscription">
+			<documentation><objectClass>ConnectionManagement</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1259</requirement></documentation>
+			<input message="tns:MSG_CenterActiveVerificationSubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- Detector -->
+		<operation name="DlDetectorInventoryRequest">
+			<documentation><objectClass>Detector</objectClass><msgPattern>R-R</msgPattern><requirement>REQ412</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_DetectorInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDetectorStatusRequest">
+			<documentation><objectClass>Detector</objectClass><msgPattern>R-R</msgPattern><requirement>REQ416</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_DetectorStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDetectorDataRequest">
+			<documentation><objectClass>Detector</objectClass><msgPattern>R-R</msgPattern><requirement>REQ420</requirement></documentation>
+			<input message="tns:MSG_DetectorDataRequest"/>
+			<output message="tns:MSG_DetectorData"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDetectorDataSubscription">
+			<documentation><objectClass>Detector</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1271</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationSubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDetectorMaintenanceHistoryRequest">
+			<documentation><objectClass>Detector</objectClass><msgPattern>R-R</msgPattern><requirement>REQ424</requirement></documentation>
+			<input message="tns:MSG_DetectorMaintenanceHistoryRequest"/>
+			<output message="tns:MSG_DetectorMaintenanceHistory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- Device -->
+		<operation name="DlDeviceCancelControlRequest">
+			<documentation><objectClass>Device</objectClass><msgPattern>R-R</msgPattern><requirement>REQ345</requirement></documentation>
+			<input message="tns:MSG_DeviceCancelControlRequest"/>
+			<output message="tns:MSG_DeviceControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDeviceControlStatusRequest">
+			<documentation><objectClass>Device</objectClass><msgPattern>R-R</msgPattern><requirement>REQ342</requirement></documentation>
+			<input message="tns:MSG_DeviceControlStatusRequest"/>
+			<output message="tns:MSG_DeviceControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDeviceInformationSubscription">
+			<documentation><objectClass>Device</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1269<!-- Detector Inventory -->
+</requirement><requirement>REQ1270<!-- Detector Status -->
+</requirement><requirement>REQ1296<!-- Intersection Inventory -->
+</requirement><requirement>REQ1297<!-- Intersection Status -->
+</requirement><requirement>REQ1298<!-- Intersection Control Schedule -->
+</requirement><requirement>REQ1300<!-- Section Status -->
+</requirement><requirement>REQ1344<!-- Section Timing Pattern Schedule -->
+</requirement><requirement>REQ1292<!-- RampMeter Inventory -->
+</requirement><requirement>REQ1293<!-- RampMeter Status -->
+</requirement><requirement>REQ1294<!-- RampMeter Control Schedule -->
+</requirement><requirement>REQ1272<!-- CCTV Inventory -->
+</requirement><requirement>REQ1273<!-- CCTV Status -->
+</requirement><requirement>REQ1274<!-- VideoSwitch Inventory -->
+</requirement><requirement>REQ1275<!-- VideoSwitch Status -->
+</requirement><requirement>REQ1276<!-- DMS Inventory -->
+</requirement><requirement>REQ1277<!-- DMS Status -->
+</requirement><requirement>REQ1279<!-- ESS Inventory -->
+</requirement><requirement>REQ1280<!-- ESS Status -->
+</requirement><requirement>REQ1281<!-- ESS Observation Report -->
+</requirement><requirement>REQ1282<!-- Gate Inventory -->
+</requirement><requirement>REQ1283<!-- Gate Status -->
+</requirement><requirement>REQ1284<!-- Gate Control Schedule -->
+</requirement><requirement>REQ1285<!-- HAR Inventory -->
+</requirement><requirement>REQ1286<!-- HAR Status -->
+</requirement><requirement>REQ1287<!-- HAR Control Schedule -->
+</requirement><requirement>REQ1288<!-- HAR Message Inventory -->
+</requirement><requirement>REQ1289<!-- LCS Inventory -->
+</requirement><requirement>REQ1290<!-- LCS Status -->
+</requirement><requirement>REQ1291<!-- LCS Control Schedule -->
+</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationSubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- DMS -->
+		<operation name="DlDMSInventoryRequest">
+			<documentation><objectClass>DMS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ2</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_DMSInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDMSStatusRequest">
+			<documentation><objectClass>DMS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ31</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_DMSStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDMSMessageInventoryRequest">
+			<documentation><objectClass>DMS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1160</requirement></documentation>
+			<input message="tns:MSG_DMSMessageAppearanceRequest"/>
+			<output message="tns:MSG_DMSMessageAppearance"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDMSMessageInventorySubscription">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1278</requirement></documentation>
+			<input message="tns:MSG_DMSMessageInventorySubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDMSMessageAppearanceRequest">
+			<documentation><objectClass>DMS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ59</requirement></documentation>
+			<input message="tns:MSG_DMSMessageInventoryRequest"/>
+			<output message="tns:MSG_DMSMessageInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDMSFontTableRequest">
+			<documentation><objectClass>DMS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ62</requirement></documentation>
+			<input message="tns:MSG_DMSFontTableRequest"/>
+			<output message="tns:MSG_DMSFontTable"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDMSControlRequest">
+			<documentation><objectClass>DMS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ45</requirement></documentation>
+			<input message="tns:MSG_DMSControlRequest"/>
+			<output message="tns:MSG_DeviceControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDMSPriorityQueueRequest">
+			<documentation><objectClass>DMS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ929</requirement><requirement>REQ1220</requirement></documentation>
+			<input message="tns:MSG_DevicePriorityQueueRequest"/>
+			<output message="tns:MSG_DMSPriorityQueue"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- ESS -->
+		<operation name="DlESSInventoryRequest">
+			<documentation><objectClass>ESS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ666</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_ESSInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlESSStatusRequest">
+			<documentation><objectClass>ESS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ663</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_ESSStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlESSObservationMetadataRequest">
+			<documentation><objectClass>ESS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ671</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_ESSObservationMetadata"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlESSObservationReportRequest">
+			<documentation><objectClass>ESS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1213</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_ESSObservationReport"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- EVENT -->
+		<operation name="DlFullEventUpdateRequest">
+			<documentation><objectClass>Event</objectClass><msgPattern>R-R</msgPattern><requirement>REQ939</requirement></documentation>
+			<input message="tns:MSG_EventRequest"/>
+			<output message="tns:MSG_FullEventUpdate"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlEventIndexRequest">
+			<documentation><objectClass>Event</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1301</requirement></documentation>
+			<input message="tns:MSG_EventRequest"/>
+			<output message="tns:MSG_EventIndex"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlActionLogRequest">
+			<documentation><objectClass>Event</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1031</requirement></documentation>
+			<input message="tns:MSG_EventRequest"/>
+			<output message="tns:MSG_ActionLog"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlFullEventUpdateSubscription">
+			<documentation><objectClass>Event</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1261</requirement></documentation>
+			<input message="tns:MSG_EventSubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlEventIndexSubscription">
+			<documentation><objectClass>Event</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1303</requirement></documentation>
+			<input message="tns:MSG_EventSubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlActionLogSubscription">
+			<documentation><objectClass>Event</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1262</requirement></documentation>
+			<input message="tns:MSG_EventSubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- GATE -->
+		<operation name="DlGateInventoryRequest">
+			<documentation><objectClass>Gate</objectClass><msgPattern>R-R</msgPattern><requirement>REQ860</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_GateInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlGateStatusRequest">
+			<documentation><objectClass>Gate</objectClass><msgPattern>R-R</msgPattern><requirement>REQ863</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_GateStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlGateControlRequest">
+			<documentation><objectClass>Gate</objectClass><msgPattern>R-R</msgPattern><requirement>REQ867</requirement></documentation>
+			<input message="tns:MSG_GateControlRequest"/>
+			<output message="tns:MSG_DeviceControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlGateControlScheduleRequest">
+			<documentation><objectClass>Gate</objectClass><msgPattern>R-R</msgPattern><requirement>REQ870</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_GateControlSchedule"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- HAR -->
+		<operation name="DlHARInventoryRequest">
+			<documentation><objectClass>HAR</objectClass><msgPattern>R-R</msgPattern><requirement>REQ874</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_HARInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlHARMessageInventoryRequest">
+			<documentation><objectClass>HAR</objectClass><msgPattern>R-R</msgPattern><requirement>REQ886</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_HARMessageInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlHARStatusRequest">
+			<documentation><objectClass>HAR</objectClass><msgPattern>R-R</msgPattern><requirement>REQ877</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_HARStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlHARControlRequest">
+			<documentation><objectClass>HAR</objectClass><msgPattern>R-R</msgPattern><requirement>REQ880</requirement></documentation>
+			<input message="tns:MSG_HARControlRequest"/>
+			<output message="tns:MSG_DeviceControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlHARControlScheduleRequest">
+			<documentation><objectClass>HAR</objectClass><msgPattern>R-R</msgPattern><requirement>REQ882</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_HARControlSchedule"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlHARPriorityQueueRequest">
+			<documentation><objectClass>HAR</objectClass><msgPattern>R-R</msgPattern><requirement>REQ930</requirement><requirement>REQ1220</requirement></documentation>
+			<input message="tns:MSG_DevicePriorityQueueRequest"/>
+			<output message="tns:MSG_HARPriorityQueue"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- INTERSECTIONSIGNAL -->
+		<operation name="DlIntersectionSignalInventoryRequest">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>R-R</msgPattern><requirement>REQ844</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_IntersectionSignalInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlIntersectionSignalStatusRequest">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>R-R</msgPattern><requirement>REQ840</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_IntersectionSignalStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlIntersectionSignalTimingPatternInventoryRequest">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>R-R</msgPattern><requirement>REQ820</requirement></documentation>
+			<input message="tns:MSG_IntersectionSignalTimingPatternInventoryRequest"/>
+			<output message="tns:MSG_IntersectionSignalTimingPatternInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlIntersectionSignalTimingPatternInventorySubscription">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1299</requirement></documentation>
+			<input message="tns:MSG_IntersectionSignalTimingPatternInventorySubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlIntersectionSignalControlRequest">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>R-R</msgPattern><requirement>REQ836</requirement></documentation>
+			<input message="tns:MSG_IntersectionSignalControlRequest"/>
+			<output message="tns:MSG_IntersectionSignalControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlIntersectionSignalControlScheduleRequest">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>R-R</msgPattern><requirement>REQ827</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_IntersectionSignalControlSchedule"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlIntersectionSignalPriorityQueueRequest">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>R-R</msgPattern><requirement>REQ935</requirement><requirement>REQ1220</requirement></documentation>
+			<input message="tns:MSG_DevicePriorityQueueRequest"/>
+			<output message="tns:MSG_IntersectionSignalPriorityQueue"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- LCS -->
+		<operation name="DlLCSInventoryRequest">
+			<documentation><objectClass>LCS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ888</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_LCSInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlLCSStatusRequest">
+			<documentation><objectClass>LCS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ891</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_LCSStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlLCSControlRequest">
+			<documentation><objectClass>LCS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ895</requirement></documentation>
+			<input message="tns:MSG_LCSControlRequest"/>
+			<output message="tns:MSG_DeviceControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlLCSControlScheduleRequest">
+			<documentation><objectClass>LCS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ898</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_LCSControlSchedule"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- LINK -->
+		<operation name="DlLinkInventoryRequest">
+			<documentation><objectClass>Link</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1052</requirement></documentation>
+			<input message="tns:MSG_TrafficNetworkInformationRequest"/>
+			<output message="tns:MSG_LinkInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlLinkStatusRequest">
+			<documentation><objectClass>Link</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1055</requirement></documentation>
+			<input message="tns:MSG_TrafficNetworkInformationRequest"/>
+			<output message="tns:MSG_LinkStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- NODE -->
+		<operation name="DlNodeInventoryRequest">
+			<documentation><objectClass>Node</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1049</requirement></documentation>
+			<input message="tns:MSG_TrafficNetworkInformationRequest"/>
+			<output message="tns:MSG_NodeInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlNodeStatusRequest">
+			<documentation><objectClass>Node</objectClass><msgPattern>R-R</msgPattern><requirement>REQ260</requirement></documentation>
+			<input message="tns:MSG_TrafficNetworkInformationRequest"/>
+			<output message="tns:MSG_NodeStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- ORGANIZATION -->
+		<operation name="DlOrganizationInformationRequest">
+			<documentation><objectClass>Organization</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1069</requirement></documentation>
+			<input message="tns:MSG_OrganizationInformationRequest"/>
+			<output message="tns:MSG_OrganizationInformation"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlOrganizationInformationSubscription">
+			<documentation><objectClass>Organization</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1260</requirement></documentation>
+			<input message="tns:MSG_OrganizationInformationSubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- RAMPMETER -->
+		<operation name="DlRampMeterInventoryRequest">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>R-R</msgPattern><requirement>REQ902</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_RampMeterInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRampMeterStatusRequest">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>R-R</msgPattern><requirement>REQ905</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_RampMeterStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRampMeterControlRequest">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>R-R</msgPattern><requirement>REQ908</requirement></documentation>
+			<input message="tns:MSG_RampMeterControlRequest"/>
+			<output message="tns:MSG_DeviceControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRampMeterControlScheduleRequest">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>R-R</msgPattern><requirement>REQ910</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_RampMeterControlSchedule"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRampMeterPriorityQueueRequest">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>R-R</msgPattern><requirement>REQ933</requirement><requirement>REQ1220</requirement></documentation>
+			<input message="tns:MSG_DevicePriorityQueueRequest"/>
+			<output message="tns:MSG_RampMeterPriorityQueue"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRampMeterPlanInventoryRequest">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>R-R</msgPattern><requirement>REQ848</requirement></documentation>
+			<input message="tns:MSG_RampMeterPlanInventoryRequest"/>
+			<output message="tns:MSG_RampMeterPlanInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRampMeterPlanInventorySubscription">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1295</requirement></documentation>
+			<input message="tns:MSG_RampMeterPlanInventorySubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- ROUTE -->
+		<operation name="DlRouteInventoryRequest">
+			<documentation><objectClass>Route</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1061</requirement></documentation>
+			<input message="tns:MSG_TrafficNetworkInformationRequest"/>
+			<output message="tns:MSG_RouteInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRouteStatusRequest">
+			<documentation><objectClass>Route</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1057</requirement></documentation>
+			<input message="tns:MSG_TrafficNetworkInformationRequest"/>
+			<output message="tns:MSG_RouteStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- SECTION -->
+		<operation name="DlSectionStatusRequest">
+			<documentation><objectClass>Section</objectClass><msgPattern>R-R</msgPattern><requirement>REQ810</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_SectionStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlSectionControlRequest">
+			<documentation><objectClass>Section</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1187</requirement></documentation>
+			<input message="tns:MSG_SectionControlRequest"/>
+			<output message="tns:MSG_SectionControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlSectionControlScheduleRequest">
+			<documentation><objectClass>Section</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1342</requirement></documentation>
+			<input message="tns:MSG_SectionControlRequest"/>
+			<output message="tns:MSG_SectionControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlSectionControlStatusRequest">
+			<documentation><objectClass>Section</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1339</requirement></documentation>
+			<input message="tns:MSG_SectionControlStatusRequest"/>
+			<output message="tns:MSG_SectionControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlSectionPriorityQueueRequest">
+			<documentation><objectClass>Section</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1324</requirement></documentation>
+			<input message="tns:MSG_DevicePriorityQueueRequest"/>
+			<output message="tns:MSG_SectionPriorityQueue"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlSectionTimingPatternRequest">
+			<documentation><objectClass>Section</objectClass><msgPattern>R-R</msgPattern><requirement>REQ1342</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_SectionControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- TRANSPORTATIONNETWORK -->
+		<operation name="DlTrafficNetworkInformationSubscription">
+			<documentation><objectClass>TransportationNetwork</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1263<!-- Node Inventory -->
+</requirement><requirement>REQ1265<!-- Link Inventory -->
+</requirement><requirement>REQ1267<!-- Route Inventory -->
+</requirement><requirement>REQ1264<!-- Node Status -->
+</requirement><requirement>REQ1266<!-- Link Status -->
+</requirement><requirement>REQ1268<!-- Route Status -->
+</requirement></documentation>
+			<input message="tns:MSG_TrafficNetworkStatusSubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- VIDEOSWITCH -->
+		<operation name="DlVideoSwitchInventoryRequest">
+			<documentation><objectClass>VideoSwitch</objectClass><msgPattern>R-R</msgPattern><requirement>REQ541</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_VideoSwitchInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlVideoSwitchStatusRequest">
+			<documentation><objectClass>VideoSwitch</objectClass><msgPattern>R-R</msgPattern><requirement>REQ538</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_VideoSwitchStatus"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlVideoSwitchControlRequest">
+			<documentation><objectClass>VideoSwitch</objectClass><msgPattern>R-R</msgPattern><requirement>REQ537</requirement></documentation>
+			<input message="tns:MSG_VideoSwitchControlRequest"/>
+			<output message="tns:MSG_DeviceControlResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+	</portType>
+	<portType name="tmddECSoapHttpServicePortType">
+		<!-- ************************************************ -->
+		<!-- EXTERNAL CENTER Operation PortType -->
+		<!-- ************************************************ -->
+		<!-- CCTV -->
+		<operation name="DlCCTVInventoryUpdate">
+			<documentation><objectClass>CCTV</objectClass><msgPattern>Pub</msgPattern><requirement>REQ550</requirement></documentation>
+			<input message="tns:MSG_CCTVInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlCCTVStatusUpdate">
+			<documentation><objectClass>CCTV</objectClass><msgPattern>Pub</msgPattern><requirement>REQ547</requirement></documentation>
+			<input message="tns:MSG_CCTVStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- CONNECTIONMANAGEMENT -->
+		<operation name="DlCenterActiveVerificationUpdate">
+			<documentation><objectClass>ConnectionManagement</objectClass><msgPattern>Pub</msgPattern><requirement>REQ200</requirement></documentation>
+			<input message="tns:MSG_CenterActiveVerificationUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- DETECTOR -->
+		<operation name="DlDetectorInventoryUpdate">
+			<documentation><objectClass>Detector</objectClass><msgPattern>Pub</msgPattern><requirement>REQ413</requirement></documentation>
+			<input message="tns:MSG_DetectorInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDetectorStatusUpdate">
+			<documentation><objectClass>Detector</objectClass><msgPattern>Pub</msgPattern><requirement>REQ417</requirement></documentation>
+			<input message="tns:MSG_DetectorStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDetectorDataUpdate">
+			<documentation><objectClass>Detector</objectClass><msgPattern>Pub</msgPattern><requirement>REQ421</requirement></documentation>
+			<input message="tns:MSG_DetectorData"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- DMS -->
+		<operation name="DlDMSInventoryUpdate">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1</requirement></documentation>
+			<input message="tns:MSG_DMSInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDMSMessageInventoryUpdate">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1161</requirement></documentation>
+			<input message="tns:MSG_DMSMessageInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlDMSStatusUpdate">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ32</requirement></documentation>
+			<input message="tns:MSG_DMSStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- ESS -->
+		<operation name="DlESSInventoryUpdate">
+			<documentation><objectClass>ESS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ667</requirement></documentation>
+			<input message="tns:MSG_ESSInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlESSStatusUpdate">
+			<documentation><objectClass>ESS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ664</requirement></documentation>
+			<input message="tns:MSG_ESSStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlESSObservationReportUpdate">
+			<documentation><objectClass>ESS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1214</requirement></documentation>
+			<input message="tns:MSG_ESSObservationReport"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- EVENT -->
+		<operation name="DlFullEventUpdateUpdate">
+			<documentation><objectClass>Event</objectClass><msgPattern>Pub</msgPattern><requirement>REQ940</requirement></documentation>
+			<input message="tns:MSG_FullEventUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlEventIndexUpdate">
+			<documentation><objectClass>Event</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1302</requirement></documentation>
+			<input message="tns:MSG_EventIndexUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlActionLogUpdate">
+			<documentation><objectClass>Event</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1252</requirement></documentation>
+			<input message="tns:MSG_ActionLogUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- GATE -->
+		<operation name="DlGateInventoryUpdate">
+			<documentation><objectClass>Gate</objectClass><msgPattern>Pub</msgPattern><requirement>REQ861</requirement></documentation>
+			<input message="tns:MSG_GateInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlGateStatusUpdate">
+			<documentation><objectClass>Gate</objectClass><msgPattern>Pub</msgPattern><requirement>REQ864</requirement></documentation>
+			<input message="tns:MSG_GateStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlGateControlScheduleUpdate">
+			<documentation><objectClass>Gate</objectClass><msgPattern>Pub</msgPattern><requirement>REQ871</requirement></documentation>
+			<input message="tns:MSG_GateControlSchedule"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- HAR -->
+		<operation name="DlHARInventoryUpdate">
+			<documentation><objectClass>HAR</objectClass><msgPattern>Pub</msgPattern><requirement>REQ875</requirement></documentation>
+			<input message="tns:MSG_HARInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlHARMessageInventoryUpdate">
+			<documentation><objectClass>HAR</objectClass><msgPattern>Pub</msgPattern><requirement>REQ887</requirement></documentation>
+			<input message="tns:MSG_HARMessageInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlHARStatusUpdate">
+			<documentation><objectClass>HAR</objectClass><msgPattern>Pub</msgPattern><requirement>REQ878</requirement></documentation>
+			<input message="tns:MSG_HARStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlHARControlScheduleUpdate">
+			<documentation><objectClass>HAR</objectClass><msgPattern>Pub</msgPattern><requirement>REQ883</requirement></documentation>
+			<input message="tns:MSG_HARControlSchedule"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- INTERSECTIONSIGNAL -->
+		<operation name="DlIntersectionSignalInventoryUpdate">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>Pub</msgPattern><requirement>REQ843</requirement></documentation>
+			<input message="tns:MSG_IntersectionSignalInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlIntersectionSignalTimingPatternInventoryUpdate">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>Pub</msgPattern><requirement>REQ819</requirement></documentation>
+			<input message="tns:MSG_IntersectionSignalTimingPatternInventoryUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlIntersectionSignalStatusUpdate">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>Pub</msgPattern><requirement>REQ839</requirement></documentation>
+			<input message="tns:MSG_IntersectionSignalStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlIntersectionSignalControlScheduleUpdate">
+			<documentation><objectClass>IntersectionSignal</objectClass><msgPattern>Pub</msgPattern><requirement>REQ826</requirement></documentation>
+			<input message="tns:MSG_IntersectionSignalControlSchedule"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- LCS -->
+		<operation name="DlLCSInventoryUpdate">
+			<documentation><objectClass>LCS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ889</requirement></documentation>
+			<input message="tns:MSG_LCSInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlLCSStatusUpdate">
+			<documentation><objectClass>LCS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ892</requirement></documentation>
+			<input message="tns:MSG_LCSStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlLCSControlScheduleUpdate">
+			<documentation><objectClass>LCS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ899</requirement></documentation>
+			<input message="tns:MSG_LCSControlSchedule"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- ORGANIZATION -->
+		<operation name="DlOrganizationInformationUpdate">
+			<documentation><objectClass>Organization</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1224</requirement></documentation>
+			<input message="tns:MSG_OrganizationInformationUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- RAMPMETER -->
+		<operation name="DlRampMeterInventoryUpdate">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>Pub</msgPattern><requirement>REQ903</requirement></documentation>
+			<input message="tns:MSG_RampMeterInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRampMeterStatusUpdate">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>Pub</msgPattern><requirement>REQ906</requirement></documentation>
+			<input message="tns:MSG_RampMeterStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRampMeterControlScheduleUpdate">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>Pub</msgPattern><requirement>REQ911</requirement></documentation>
+			<input message="tns:MSG_RampMeterControlSchedule"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRampMeterPlanInventoryUpdate">
+			<documentation><objectClass>RampMeter</objectClass><msgPattern>Pub</msgPattern><requirement>REQ847</requirement></documentation>
+			<input message="tns:MSG_RampMeterPlanInventoryUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- SECTION -->
+		<operation name="DlSectionStatusUpdate">
+			<documentation><objectClass>Section</objectClass><msgPattern>Pub</msgPattern><requirement>REQ809</requirement></documentation>
+			<input message="tns:MSG_SectionStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlSectionControlScheduleUpdate">
+			<documentation><objectClass>Section</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1243</requirement></documentation>
+			<input message="tns:MSG_SectionControlScheduleResponse"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlSectionTimingPatternUpdate">
+			<documentation><objectClass>Section</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1343</requirement></documentation>
+			<input message="tns:MSG_SectionControlResponse"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- LINK -->
+		<operation name="DlLinkInventoryUpdate">
+			<documentation><objectClass>Link</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1053</requirement></documentation>
+			<input message="tns:MSG_LinkInventoryUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlLinkStatusUpdate">
+			<documentation><objectClass>Link</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1056</requirement></documentation>
+			<input message="tns:MSG_LinkStatusUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- NODE -->
+		<operation name="DlNodeInventoryUpdate">
+			<documentation><objectClass>Node</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1050</requirement></documentation>
+			<input message="tns:MSG_NodeInventoryUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlNodeStatusUpdate">
+			<documentation><objectClass>Node</objectClass><msgPattern>Pub</msgPattern><requirement>REQ261</requirement></documentation>
+			<input message="tns:MSG_NodeStatusUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- ROUTE -->
+		<operation name="DlRouteInventoryUpdate">
+			<documentation><objectClass>Route</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1062</requirement></documentation>
+			<input message="tns:MSG_RouteInventoryUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlRouteStatusUpdate">
+			<documentation><objectClass>Route</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1058</requirement></documentation>
+			<input message="tns:MSG_RouteStatusUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- VIDEOSWITCH -->
+		<operation name="DlVideoSwitchInventoryUpdate">
+			<documentation><objectClass>VideoSwitch</objectClass><msgPattern>Pub</msgPattern><requirement>REQ542</requirement></documentation>
+			<input message="tns:MSG_VideoSwitchInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="DlVideoSwitchStatusUpdate">
+			<documentation><objectClass>VideoSwitch</objectClass><msgPattern>Pub</msgPattern><requirement>REQ539</requirement></documentation>
+			<input message="tns:MSG_VideoSwitchStatus"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+	</portType>
+	<binding name="tmddOCSoapHttpServiceBinding" type="tns:tmddOCSoapHttpServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!-- ******************************** -->
+		<!-- OWNER CENTER Bindings -->
+		<!-- ******************************** -->
+		<!-- ARCHIVEDDATA -->
+		<operation name="DlArchivedDataProcessingDocumentationMetadataRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlArchivedDataTrafficMonitoringMetadataRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- CCTV -->
+		<operation name="DlCCTVInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlCCTVStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlCCTVControlRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- CONNECTIONMANAGEMENT -->
+		<operation name="DlCenterActiveVerificationRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlCenterActiveVerificationSubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- DETECTOR -->
+		<operation name="DlDetectorInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDetectorStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDetectorDataRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDetectorDataSubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDetectorMaintenanceHistoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- DEVICE -->
+		<operation name="DlDeviceCancelControlRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDeviceControlStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDeviceInformationSubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- DMS -->
+		<operation name="DlDMSInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDMSStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDMSMessageInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDMSMessageInventorySubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDMSMessageAppearanceRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDMSFontTableRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDMSControlRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDMSPriorityQueueRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- ESS -->
+		<operation name="DlESSInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlESSStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlESSObservationMetadataRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlESSObservationReportRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- EVENT -->
+		<operation name="DlFullEventUpdateRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlEventIndexRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlActionLogRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlFullEventUpdateSubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlEventIndexSubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlActionLogSubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- GATE -->
+		<operation name="DlGateInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlGateStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlGateControlRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlGateControlScheduleRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- HAR -->
+		<operation name="DlHARInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlHARMessageInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlHARStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlHARControlRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlHARControlScheduleRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlHARPriorityQueueRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- INTERSECTIONSIGNAL  -->
+		<operation name="DlIntersectionSignalInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlIntersectionSignalStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlIntersectionSignalTimingPatternInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlIntersectionSignalTimingPatternInventorySubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlIntersectionSignalControlRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlIntersectionSignalControlScheduleRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlIntersectionSignalPriorityQueueRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- LCS -->
+		<operation name="DlLCSInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlLCSStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlLCSControlRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlLCSControlScheduleRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- LINK -->
+		<operation name="DlLinkInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlLinkStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- NODE -->
+		<operation name="DlNodeInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlNodeStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- ORGANIZATION -->
+		<operation name="DlOrganizationInformationRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlOrganizationInformationSubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- RAMPMETER  -->
+		<operation name="DlRampMeterInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRampMeterStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRampMeterControlRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRampMeterControlScheduleRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRampMeterPriorityQueueRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRampMeterPlanInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRampMeterPlanInventorySubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- ROUTE  -->
+		<operation name="DlRouteInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRouteStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- SECTION  -->
+		<operation name="DlSectionStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlSectionControlRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlSectionControlStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlSectionControlScheduleRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlSectionPriorityQueueRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlSectionTimingPatternRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- TRANSPORTATIONNETWORK -->
+		<operation name="DlTrafficNetworkInformationSubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- VIDEOSWITCH -->
+		<operation name="DlVideoSwitchInventoryRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlVideoSwitchStatusRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlVideoSwitchControlRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<binding name="tmddECSoapHttpServiceBinding" type="tns:tmddECSoapHttpServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!-- *********************************** -->
+		<!-- EXTERNAL CENTER Bindings -->
+		<!-- *********************************** -->
+		<!-- CCTV -->
+		<operation name="DlCCTVInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlCCTVStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- CONNECTIONMANAGEMENT -->
+		<operation name="DlCenterActiveVerificationUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- DETECTOR -->
+		<operation name="DlDetectorInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDetectorStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDetectorDataUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- DMS -->
+		<operation name="DlDMSInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDMSMessageInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlDMSStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- ESS -->
+		<operation name="DlESSInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlESSStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlESSObservationReportUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- EVENT -->
+		<operation name="DlFullEventUpdateUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlEventIndexUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlActionLogUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- GATE -->
+		<operation name="DlGateInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlGateStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlGateControlScheduleUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- HAR -->
+		<operation name="DlHARInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlHARMessageInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlHARStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlHARControlScheduleUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- INTERSECTIONSIGNAL -->
+		<operation name="DlIntersectionSignalInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlIntersectionSignalTimingPatternInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlIntersectionSignalStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlIntersectionSignalControlScheduleUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- LCS -->
+		<operation name="DlLCSInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlLCSStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlLCSControlScheduleUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- LINK -->
+		<operation name="DlLinkInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlLinkStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- NODE -->
+		<operation name="DlNodeInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlNodeStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- ORGANIZATION -->
+		<operation name="DlOrganizationInformationUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- RAMPMETER -->
+		<operation name="DlRampMeterInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRampMeterStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRampMeterControlScheduleUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRampMeterPlanInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- ROUTE -->
+		<operation name="DlRouteInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlRouteStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- SECTION -->
+		<operation name="DlSectionStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlSectionControlScheduleUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlSectionTimingPatternUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- VIDEOSWITCH -->
+		<operation name="DlVideoSwitchInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="DlVideoSwitchStatusUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="tmddOCSoapHttpService">
+		<!-- ************************ -->
+		<!-- OWNER CENTER Services -->
+		<!-- ************************ -->
+		<port name="tmddOCSoapHttpServicePort" binding="tns:tmddOCSoapHttpServiceBinding">
+			<soap:address location="http://tmdd.owner.center.com/c2cxml/"/>
+		</port>
+	</service>
+	<service name="tmddECSoapHttpService">
+		<!-- ************************ -->
+		<!-- EXTERNAL CENTER Services -->
+		<!-- ************************ -->
+		<port name="tmddECSoapHttpServicePort" binding="tns:tmddECSoapHttpServiceBinding">
+			<soap:address location="http://tmdd.external.center.com/c2cxml/"/>
+		</port>
+	</service>
+</definitions>

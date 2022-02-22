@@ -1,0 +1,329 @@
+<TestProcedureDescriptions>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-WSDL
+</testProcedureName>
+		<testProcedureId>NTCIP 2306 Web Service Definition Language File Verfication Procedure
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a WSDL files conformance to NTCIP 2306.This procedure supports verification of requirements related to user needs 1, 2 and 3 (SOAP, XML Direct and FTP Profiles) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>1.a
+1.b
+2.a
+2.b
+3.a
+</Requirements>
+		<Variables>WSDLFile [String]
+NTCIP2306_N1R1_WSDL_Request_Response_Flag [Boolean]
+NTCIP2306_N1R2_WSDL_Subscription_Publication_Flag [Boolean]
+NTCIP2306_N2R7_WSDL_Request_Response_HTTP_POST_Flag [Boolean]
+NTCIP2306_N2R6_WSDL_Request_Only_HTTP_GET_Flag [Boolean]
+NTCIP2306_N3R11_WSDL_Request_Only_FTP_GET_Flag [Boolean]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-FTP-GET-OC 
+</testProcedureName>
+		<testProcedureId>FTP Profile Get Command test for an SUT acting as an OC
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a SUTs conformance to the FTP encoding and transport subprofiles of NTCIP 2306 when acting as an OC. This procedure supports verification of requirements related to user needs 3 (FTP Profile) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>3.b
+3.c 
+</Requirements>
+		<Variables>WSDLFile [String]
+ServiceName [String]
+PortName [String]
+OperationName [String]
+TransportErrorExpected [Boolean]
+TransportErrorTypeExpected [String]
+EncodingErrorExpected [Boolean]
+MessageErrorExpected [Boolean]
+MessageErrorTypeExpected [String]
+TRANSPORTERRORRESULT [Boolean]
+TRANSPORTERRORTYPE [String]
+ENCODINGFAILURERESULT [Boolean]
+ENCODINGFAILURETYPE [String]
+MESSAGEERRORRESULT [Boolean]
+MESSAGEERRORTYPE [String]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-FTP-GET-EC
+</testProcedureName>
+		<testProcedureId>FTP Profile Get Command test for an SUT acting as an EC
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a SUTs conformance to the FTP encoding and transport subprofiles of NTCIP 2306 when acting as an EC. This procedure supports verification of requirements related to user needs 3 (FTP Profile) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>3.b
+3.c
+</Requirements>
+		<Variables>WSDLFile [String]
+ServiceName [String]
+PortName [String]
+OperationName [String]
+TransportErrorExpected [Boolean]
+TransportErrorTypeExpected [String]
+ResponseMessage [String]
+TRANSPORTERRORRESULT [Boolean]
+TRANSPORTERRORTYPE [String]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-HTTP-GET-OC 
+</testProcedureName>
+		<testProcedureId>HTTP Profile Get Command test for an SUT acting as an OC
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a SUTs conformance to the XML Direct Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an OC. This procedure supports verification of requirements related to user need 2 (XML Direct) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>2.d
+2.e
+2.e.2 
+</Requirements>
+		<Variables>WSDLFile [String]
+ServiceName [String]
+PortName [String]
+OperationName [String]
+TransportErrorExpected [String]
+TransportErrorTypeExpected [String]
+EncodingErrorExpected [String]
+MessageErrorExpected [String]
+MessageErrorTypeExpected [String]
+NTCIP2306_N2R9_Message_Transport_Flag [Boolean]
+NTCIP2306_N2R10_Message_Transport_HTTPS_Flag [Boolean]
+TRANSPORTERRORRESULT [Boolean]
+TRANSPORTERRORTYPE [String]
+ENCODINGFAILURERESULT [Boolean]
+ENCODINGFAILURETYPE [String]
+MESSAGEERRORRESULT [Boolean]
+MESSAGEERRORTYPE [String]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-HTTP-GET-EC
+</testProcedureName>
+		<testProcedureId>HTTP Profile Get Command test for an SUT acting as an EC
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a SUTs conformance to the HTTP encoding and transport subprofiles of NTCIP 2306 when acting as an EC. This procedure supports verification of requirements related to user need 2 (XML Direct) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>2.d
+2.e
+2.e.2
+</Requirements>
+		<Variables>WSDLFile [String]
+ServiceName [String]
+PortName [String]
+OperationName [String]
+TransportErrorExpected [String]
+TransportErrorTypeExpected [String]
+ResponseMessage [String]
+NTCIP2306_N2R9_Message_Transport_Flag [Boolean]
+NTCIP2306_N2R10_Message_Transport_HTTPS_Flag [Boolean]
+TRANSPORTERRORRESULT [Boolean]
+TRANSPORTERRORTYPE [String]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-HTTP-POST-OC 
+</testProcedureName>
+		<testProcedureId>HTTP Profile POST Command test for an SUT acting as an OC
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a SUTs conformance to the XML Direct Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an OC using the POST command. This procedure supports verification of requirements related to user need 2 (XML Direct) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>2.d
+2.e
+2.e.2 
+</Requirements>
+		<Variables>WSDLFile [String]
+ServiceName [String]
+PortName [String]
+OperationName [String]
+TransportErrorExpected [String]
+TransportErrorTypeExpected [String]
+EncodingErrorExpected [String]
+MessageErrorExpected [String]
+MessageErrorTypeExpected [String]
+RequestMessage [String]
+NTCIP2306_N2R9_Message_Transport_Flag [Boolean]
+NTCIP2306_N2R10_Message_Transport_HTTPS_Flag [Boolean]
+TRANSPORTERRORRESULT [Boolean]
+TRANSPORTERRORTYPE [String]
+ENCODINGERRORRESULT [Boolean]
+MESSAGEERRORRESULT [Boolean]
+MESSAGEERRORTYPE [String]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-HTTP-POST-EC
+</testProcedureName>
+		<testProcedureId>HTTP Profile POST Command test for an SUT acting as an EC
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a SUTs conformance to the HTTP encoding and transport subprofiles of NTCIP 2306 when acting as an EC using the POST command. This procedure supports verification of requirements related to user need 2 (XML Direct Profile) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>2.d
+2.e
+2.e.2
+</Requirements>
+		<Variables>WSDLFile [String]
+ServiceName [String]
+PortName [String]
+OperationName [String]
+ResponseMessage [String]
+NTCIP2306_N2R9_Message_Transport_Flag [Boolean]
+NTCIP2306_N2R10_Message_Transport_HTTPS_Flag [Boolean]
+TRANSPORTERRORRESULT [Boolean]
+TRANSPORTERRORTYPE [String]
+ENCODINGERRORRESULT [Boolean]
+ENCODINGERRORDESCRIPTION [String]
+MESSAGEERRORRESULT [Boolean]
+MESSAGEERRORTYPE [String]
+MESSAGEVALIDATIONERRORRESULT [Boolean]
+MESSAGEVALIDATIONERRORDESCRIPTION [String]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-SOAP-RR-OC 
+</testProcedureName>
+		<testProcedureId>SOAP Profile Request Response test for an SUT acting as an OC
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a SUTs conformance to the SOAP Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an OC using the Request-Response pattern. This procedure supports verification of requirements related to user need 1 (SOAP) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>1.c
+1.d
+1.d.2 
+</Requirements>
+		<Variables>WSDLFile [String]
+ServiceName [String]
+PortName [String]
+OperationName [String]
+TransportErrorExpected [String]
+TransportErrorTypeExpected [String]
+EncodingErrorExpected [String]
+MessageErrorExpected [String]
+MessageErrorTypeExpected [String]
+RequestMessage [String]
+NTCIP2306_N1R4_Message_Transport_Flag [Boolean]
+NTCIP2306_N1R5_Message_Transport_HTTPS_Flag [Boolean]
+TRANSPORTERRORRESULT [Boolean]
+TRANSPORTERRORTYPE [String]
+ENCODINGERRORRESULT [Boolean]
+MESSAGEERRORRESULT [Boolean]
+MESSAGEERRORTYPE [String]
+MESSAGEVALIDATIONERRORRESULT [Boolean]
+MESSAGEVALIDATIONERRORTYPE [String]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-SOAP-RR-EC
+</testProcedureName>
+		<testProcedureId>SOAP Profile Request Response test for an SUT acting as an EC
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a SUTs conformance to the SOAP Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an EC using the Request-Response pattern. This procedure supports verification of requirements related to user need 1 (SOAP) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>1.c
+1.d
+1.d.2
+</Requirements>
+		<Variables>WSDLFile [String]
+ServiceName [String]
+PortName [String]
+OperationName [String]
+ResponseMessage [String]
+NTCIP2306_N1R4_Message_Transport_Flag [Boolean]
+NTCIP2306_N1R5_Message_Transport_HTTPS_Flag [Boolean]
+TRANSPORTERRORRESULT [Boolean]
+TRANSPORTERRORTYPE [String]
+ENCODINGERRORRESULT [Boolean]
+ENCODINGERRORDESCRIPTION [String]
+MESSAGEERRORRESULT [Boolean]
+MESSAGEERRORTYPE [String]
+MESSAGEVALIDATIONERRORRESULT [Boolean]
+MESSAGEVALIDATIONERRORTYPE [String]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-SOAP-Subscription-Publication-EC
+</testProcedureName>
+		<testProcedureId>SOAP Profile Subscription-Publication test for an SUT acting as an EC
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a SUTs conformance to the SOAP Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an EC using the Subscription-Publication pattern. This procedure supports verification of requirements related to user need 1 (SOAP) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>1.c
+1.d
+1.d.2
+</Requirements>
+		<Variables>WSDLFile [String]
+SubscriptionServiceName [String]
+SubscriptionPortName [String]
+SubscriptionOperation [String]
+SubscriptionEncodingErrorExpected [String]
+SubscriptionMessageErrorExpected [String]
+SubscriptionMessageErrorTypeExpected [String]
+PublicationServiceName [String]
+PublicationPortName [String]
+PublicationOperationName [String]
+PublicationMessage [String]
+NTCIP2306_N1R4_Message_Transport_Flag [Boolean]
+NTCIP2306_N1R5_Message_Transport_HTTPS_Flag [Boolean]
+TRANSPORTERRORRESULT [Boolean]
+TRANSPORTERRORTYPE [String]
+ENCODINGERRORRESULT [Boolean]
+ENCODINGERRORDESCRIPTION [String]
+MESSAGEERRORRESULT [Boolean]
+MESSAGEERRORTYPE [String]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+	<TestProcedureDescription>
+		<testProcedureName>TPS-NTCIP2306-SOAP-Subscription-Publication-OC
+</testProcedureName>
+		<testProcedureId>SOAP Profile Subscription-Publication test for an SUT acting as an OC
+</testProcedureId>
+		<testProcedureDescription>This test procedure is called by a test case and is used to verify a SUTs conformance to the SOAP Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an OC using the Subscription-Publication pattern. This procedure supports verification of requirements related to user need 1 (SOAP) and is used for both valid and invalid test cases.
+</testProcedureDescription>
+		<Requirements>1.c
+1.d
+1.d.2
+</Requirements>
+		<Variables>WSDLFile [String]
+SubscriptionServiceName [String]
+SubscriptionPortName [String]
+SubscriptionOperationName [String]
+SubscriptionEncodingErrorExpected [String]
+SubscriptionMessageErrorExpected [String]
+SubscriptionMessageErrorTypeExpected [String]
+SubscriptionMessage [String]
+PublicationServiceName [String]
+PublicationPortName [String]
+PublicationOperation [String]
+NTCIP2306_N1R4_Message_Transport_Flag [Boolean]
+NTCIP2306_N1R5_Message_Transport_HTTPS_Flag [Boolean]
+TRANSPORTERRORRESULT [Boolean]
+TRANSPORTERRORTYPE [String]
+ENCODINGERRORRESULT [Boolean]
+ENCODINGERRORDESCRIPTION [String]
+MESSAGEERRORRESULT [Boolean]
+MESSAGEERRORTYPE [String]
+</Variables>
+		<PassFailCriteria>The SUT shall pass every verification step included within the Test Procedure in order to pass the Test Procedure.
+</PassFailCriteria>
+	</TestProcedureDescription>
+</TestProcedureDescriptions>

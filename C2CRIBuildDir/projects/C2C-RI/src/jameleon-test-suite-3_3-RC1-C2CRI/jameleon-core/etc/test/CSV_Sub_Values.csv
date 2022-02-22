@@ -1,0 +1,4 @@
+simpleFunctionCompVar1,simpleFunctionCompVar2
+Testing variable1,Testing ${var1}
+Testing variable1,Testing ${var1}
+Testing variable2,Testing ${var2}

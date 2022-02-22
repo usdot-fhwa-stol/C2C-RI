@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-53-dlESSObservationMetadataRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlESSObservationMetadataRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.5.7 [Need to Share ESS Organizational Metadata] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:32:30-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlESSObservationMetadataRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.5.7 [Need to Share ESS Organizational Metadata] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Username is required by the specification. (NRTM 3.3.5.6.4.3.2.1).  RECORD this information as: TMDD_N53R679_Username_Supported = ${TMDD_N53R679_Username_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Password is required by the specification. (NRTM 3.3.5.6.4.3.2.2).  RECORD this information as: TMDD_N53R680_Password_Supported = ${TMDD_N53R680_Password_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Collector Configuration Information (CollectorConfig) is required by the specification. (NRTM 3.3.5.6.4.3.3).  RECORD this information as: TMDD_N53R681_Collector_Configuration_Information__CollectorConfig__Supported = ${TMDD_N53R681_Collector_Configuration_Information__CollectorConfig__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Owner Organization - ESS Metadata is required by the specification. (NRTM 3.3.5.6.4.3.5).  RECORD this information as: TMDD_N53R684_Owner_Organization___ESS_Metadata_Supported = ${TMDD_N53R684_Owner_Organization___ESS_Metadata_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Data Collector Information is required by the specification. (NRTM 3.3.5.6.4.3.10).  RECORD this information as: TMDD_N53R757_Data_Collector_Information_Supported = ${TMDD_N53R757_Data_Collector_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Restrictions - ESS Metadata is required by the specification. (NRTM 3.3.5.6.4.3.12).  RECORD this information as: TMDD_N53R759_Restrictions___ESS_Metadata_Supported = ${TMDD_N53R759_Restrictions___ESS_Metadata_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 8 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 9 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 10 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 11 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlESSObservationMetadataRequest RESPONSETIMEREQUIRED=TMDD_N53R675_Send_ESS_Metadata_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlESSObservationMetadataRequest" functionId="dlESSObservationMetadataRequest" RESPONSETIMEREQUIRED="${TMDD_N53R675_Send_ESS_Metadata_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 12 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 12.1 VERIFY that element eSSObservationMetadataMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="eSSObservationMetadataMsg" instanceName="tmdd:eSSObservationMetadataMsg" elementType="message" functionId="Looking for eSSObservationMetadataMsg"/>
+               </testStep>
+               <testStep functionId="Step 12.2 VERIFY that element ess-data-set-file-name exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ess-data-set-file-name" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+               </testStep>
+               <testStep functionId="Step 12.3 VERIFY that element ess-data-set-file-directory-path exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ess-data-set-file-directory-path" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+               </testStep>
+               <testStep functionId="Step 12.4 VERIFY that element ess-data-set-file-access-protocol exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ess-data-set-file-access-protocol" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+               </testStep>
+               <testStep functionId="Step 12.5 VERIFY that element ess-data-set-file-access-address exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ess-data-set-file-access-address" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+               </testStep>
+               <testStep functionId="Step 12.6 VERIFY that element ess-data-set-file-access-port-address exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ess-data-set-file-access-port-address" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+               </testStep>
+               <testStep functionId="Step 12.7 VERIFY that element ess-observation-collection-frequency exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ess-observation-collection-frequency" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+               </testStep>
+               <testStep functionId="Step 12.8 VERIFY that element ess-observation-collection-offset exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ess-observation-collection-offset" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+               </testStep>
+               <testStep functionId="Step 12.9 VERIFY that element ess-host-server-offset-minutes exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ess-host-server-offset-minutes" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+               </testStep>
+               <testStep functionId="Step 12.10 VERIFY that element ess-host-server-time-zone exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ess-host-server-time-zone" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+               </testStep>
+               <testStep functionId="Step 12.11 VERIFY that element ess-host-server-daylight-savings-in-effect-flag exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ess-host-server-daylight-savings-in-effect-flag" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+               </testStep>
+               <testStep functionId="Step 12.12 IF TMDD_N53R679_Username_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N53R679_Username_Supported}">
+                    <testStep functionId="Step 12.12.1 VERIFY that element user-id exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="user-id" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.13 IF TMDD_N53R680_Password_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N53R680_Password_Supported}">
+                    <testStep functionId="Step 12.13.1 VERIFY that element password exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="password" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.14 IF TMDD_N53R681_Collector_Configuration_Information__CollectorConfig__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N53R681_Collector_Configuration_Information__CollectorConfig__Supported}">
+                    <testStep functionId="Step 12.14.1 VERIFY that element ess-observation-positional-order exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="ess-observation-positional-order" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata"/>
+                    </testStep>
+                    <testStep functionId="Step 12.14.2 VERIFY that element ess-observation-label exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="ess-observation-label" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata"/>
+                    </testStep>
+                    <testStep functionId="Step 12.14.3 VERIFY that element ess-observation-units exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="ess-observation-units" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata"/>
+                    </testStep>
+                    <testStep functionId="Step 12.14.4 VERIFY that element ess-observation-decimal-scaling-factor exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="ess-observation-decimal-scaling-factor" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata" elementType="data-element" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.15 IF TMDD_N53R684_Owner_Organization___ESS_Metadata_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N53R684_Owner_Organization___ESS_Metadata_Supported}">
+                    <testStep functionId="Step 12.15.1 VERIFY that element organization-information exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item" elementType="data-frame" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.16 IF TMDD_N53R757_Data_Collector_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N53R757_Data_Collector_Information_Supported}">
+                    <testStep functionId="Step 12.16.1 VERIFY that element data-collector-information exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="data-collector-information" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item" elementType="data-frame" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.17 IF TMDD_N53R759_Restrictions___ESS_Metadata_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N53R759_Restrictions___ESS_Metadata_Supported}">
+                    <testStep functionId="Step 12.17.1 VERIFY that element restrictions exists within each instance of eSSObservationMetadataMsg.ess-observation-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item" elementType="data-frame" functionId="Looking for eSSObservationMetadataMsg.ess-observation-metadata-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.18 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N53R679_Username_Supported,user-id,tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata;TMDD_N53R680_Password_Supported,password,tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-observation-data-set-metadata;TMDD_N53R681_Collector_Configuration_Information__CollectorConfig__Supported,ess-observation-positional-order,tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata;TMDD_N53R681_Collector_Configuration_Information__CollectorConfig__Supported,ess-observation-label,tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata;TMDD_N53R681_Collector_Configuration_Information__CollectorConfig__Supported,ess-observation-units,tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata;TMDD_N53R681_Collector_Configuration_Information__CollectorConfig__Supported,ess-observation-decimal-scaling-factor,tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item.ess-collector-configuration.ess-collector-metadata;TMDD_N53R684_Owner_Organization___ESS_Metadata_Supported,organization-information,tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item;TMDD_N53R757_Data_Collector_Information_Supported,data-collector-information,tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item;TMDD_N53R759_Restrictions___ESS_Metadata_Supported,restrictions,tmdd:eSSObservationMetadataMsg.ess-observation-metadata-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

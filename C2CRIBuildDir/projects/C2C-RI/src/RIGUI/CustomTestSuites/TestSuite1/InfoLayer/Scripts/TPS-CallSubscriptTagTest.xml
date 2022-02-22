@@ -1,0 +1,7 @@
+<testcase xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+   <testStep functionId="Step 1.  Run the TPS-PreconditionandPostconditionSubscriptTest subscript.">	
+  	<jl:set var="MasterStep" value="TPS-PreconditionandPostconditionSubScriptTest"/>
+      <ri-execute-script functionId="This is the ri-execute-script-tag" script="TPS-PreconditionandPostconditionSubScriptTest.xml"/>
+   </testStep>
+</testcase>
+

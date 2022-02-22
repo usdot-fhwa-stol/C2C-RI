@@ -1,0 +1,36 @@
+#if ( $totalFailed > 0 )
+    #set( $color = "red" )
+#else
+    #set( $color = "green" )
+#end
+  <tr style="background-image:url(images/midtop${color}.jpg)" class="txtHeader">
+    <td width="1"><a href="javascript:showHide('${testRunId}', '${testRunId}_img')"><img id="${testRunId}_img"  src="images/lefttop${color}0.jpg" width="26" height="28" border="0"/></a></td>
+    <td nowrap="nowrap" style="padding-right:15px">ID: ${testRunId}</td>
+    <td nowrap="nowrap" style="padding-right:15px">Total Run: ${totalRun}</td>
+    <td nowrap="nowrap" style="padding-right:15px">Total Failed: ${totalFailed}</td>
+    <td nowrap="nowrap" style="padding-right:15px">Percent Passed: ${percentPassed}</td>
+    <td nowrap="nowrap" style="padding-right:15px">Execution Time: ${totalTime}</td>
+    <td width="1"><div align="right"><a href="${testRunId}/TestResults.html"><img src="images/righttop${color}.jpg" width="77" height="28" border="0" /></a></div></td>
+  </tr>
+  <tr id="${testRunId}" class="hide">
+    <td colspan="7">
+      <IFRAME
+        id="${testRunId}_iframe"
+        SRC="${testRunId}/TestResults.html"
+        WIDTH="99%"
+        HEIGHT="500"
+        MARGINWIDTH=0
+        MARGINHEIGHT=0
+        FRAMEBORDER="NO"
+        SCROLLING="YES"
+        STYLE="border-right: 6px ${color} solid;border-left: 3px ${color} solid;"
+      ></IFRAME>
+    </td>
+  </tr>
+  <tr border="0" cellspacing="0"  cellpadding="0" style="height: 6px; width: 100%; background-image:url(images/botmid${color}.jpg)">
+    <td width="1" height="6"><img src="images/leftbot${color}.jpg" width="26" height="6" /></td>
+    <td colspan="5" height="6"></td>
+    <td width="1" height="6"><div align="right"><img src="images/rightbot${color}0.jpg" width="76" height="6" /></div></td>
+  </tr>
+  <tr height="3"><td colspan="7"></td></tr>
+

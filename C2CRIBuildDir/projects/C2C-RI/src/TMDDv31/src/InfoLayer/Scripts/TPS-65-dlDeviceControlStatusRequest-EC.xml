@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-65-dlDeviceControlStatusRequest-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceControlStatusRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.5 [Need to Verify HAR Control Request Status] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/18 00:28:59-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceControlStatusRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.5 [Need to Verify HAR Control Request Status] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Send Device Control Status Upon Request (NTRM 3.3.5.1.5.1}.  RECORD this value as: TMDD_N65R420_Send_Device_Control_Status_Upon_Request_Parameter = ${TMDD_N65R420_Send_Device_Control_Status_Upon_Request_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine the dialog performance requirement for Send HAR Control Status Upon Request (NTRM 3.3.5.8.4.1}.  RECORD this value as: TMDD_N65R837_Send_HAR_Control_Status_Upon_Request_Parameter = ${TMDD_N65R837_Send_HAR_Control_Status_Upon_Request_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Authentication - Device Control Status (ControlStatusAuth) is required by the specification. (NRTM 3.3.5.1.5.2.2.1).  RECORD this information as: TMDD_N65R423_Authentication___Device_Control_Status__ControlStatusAuth__Supported = ${TMDD_N65R423_Authentication___Device_Control_Status__ControlStatusAuth__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Operator Identifier - Device Control Status is required by the specification. (NRTM 3.3.5.1.5.2.2.1.1).  RECORD this information as: TMDD_N65R424_Operator_Identifier___Device_Control_Status_Supported = ${TMDD_N65R424_Operator_Identifier___Device_Control_Status_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.1" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="OC">
+          <testStep functionId="Step 6 CONFIGURE: Define the response message that will be sent to the SUT.  RECORD this information as: ResponseMessage:  ${ResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 7 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 8 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 9 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Identify the Operator Identifier expected for authentication during this test.  RECORD this information as: OperatorID:  ${OperatorID}" passfailResult="False"/>
+          <testStep functionId="Step 11 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 12 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 13 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 14 CONFIGURE: Determine whether the SUT is expected to have valid data available for a response message in this test.  RECORD this information as: DataValid:  ${DataValid}" passfailResult="False"/>
+          <testStep functionId="Step 15 REQUEST-RESPONSE-OC-RECEIVE with the following parameters:   DIALOG=dlDeviceControlStatusRequest RESPONSETIMEREQUIRED=TMDD_N65R837_Send_HAR_Control_Status_Upon_Request_Parameter AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password OPERATORID = OperatorID ALLOWACCESS = AllowAccess ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected DATAVALID = DataValid ">
+               <REQUEST-RESPONSE-OC-RECEIVE Dialog="dlDeviceControlStatusRequest" functionId="dlDeviceControlStatusRequest" RESPONSETIMEREQUIRED="${TMDD_N65R837_Send_HAR_Control_Status_Upon_Request_Parameter}" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" OPERATORID="${OperatorID}" ALLOWACCESS="${AllowAccess}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}" DATAVALID="${DataValid}"/>
+          </testStep>
+          <testStep functionId="Step 16 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 16.1 VERIFY that a deviceControlStatusRequestMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="deviceControlStatusRequestMsg" instanceName="tmdd:deviceControlStatusRequestMsg" elementType="message" functionId="Looking for deviceControlStatusRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.2 VERIFY that an organization-requesting data frame exists within message deviceControlStatusRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="organization-requesting" instanceName="tmdd:deviceControlStatusRequestMsg" elementType="data-frame" functionId="Looking for deviceControlStatusRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.3 VERIFY that a device-id data element exists within message deviceControlStatusRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="device-id" instanceName="tmdd:deviceControlStatusRequestMsg" elementType="data-element" functionId="Looking for deviceControlStatusRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.4 VERIFY that a request-id data element exists within message deviceControlStatusRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="request-id" instanceName="tmdd:deviceControlStatusRequestMsg" elementType="data-element" functionId="Looking for deviceControlStatusRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.5 VERIFY that a deviceControlStatusRequestMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="deviceControlStatusRequestMsg" instanceName="tmdd:deviceControlStatusRequestMsg" elementType="message" functionId="Looking for deviceControlStatusRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.6 IF TMDD_N65R423_Authentication___Device_Control_Status__ControlStatusAuth__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N65R423_Authentication___Device_Control_Status__ControlStatusAuth__Supported}">
+                    <testStep functionId="Step 16.6.1 VERIFY that an authentication data frame exists within message deviceControlStatusRequestMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="authentication" instanceName="tmdd:deviceControlStatusRequestMsg" elementType="data-frame" functionId="Looking for deviceControlStatusRequestMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.7 IF TMDD_N65R424_Operator_Identifier___Device_Control_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N65R424_Operator_Identifier___Device_Control_Status_Supported}">
+                    <testStep functionId="Step 16.7.1 VERIFY that an operator-id data element exists within each instance of data frame deviceControlStatusRequestMsg.authentication" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="operator-id" instanceName="tmdd:deviceControlStatusRequestMsg.authentication" elementType="data-element" functionId="Looking for deviceControlStatusRequestMsg.authentication"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.8 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N65R423_Authentication___Device_Control_Status__ControlStatusAuth__Supported,authentication,tmdd:deviceControlStatusRequestMsg;TMDD_N65R424_Operator_Identifier___Device_Control_Status_Supported,operator-id,tmdd:deviceControlStatusRequestMsg.authentication;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 16.9 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                    <jl:set var="CONTENTVERIFIED" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 16.10 POSTCONDITION: REQUEST-RESPONSE-OC-REPLY with the following parameters:   DIALOG=dlDeviceControlStatusRequest RESPONSETIMEREQUIRED=TMDD_N65R837_Send_HAR_Control_Status_Upon_Request_Parameter CONTENTVERIFIED = CONTENTVERIFIED RESPONSEMESSAGE = ResponseMessage ">
+                         <REQUEST-RESPONSE-OC-REPLY Dialog="dlDeviceControlStatusRequest" functionId="dlDeviceControlStatusRequest" RESPONSETIMEREQUIRED="${TMDD_N65R837_Send_HAR_Control_Status_Upon_Request_Parameter}" CONTENTVERIFIED="${CONTENTVERIFIED}" RESPONSEMESSAGE="${ResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 17 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

@@ -1,0 +1,9 @@
+﻿//Test Case Name: TCS-C2CRI-NTCIP2306-WSME-SUT-XFRO-OC
+
+ServiceName = tmddOCSoapHttpService
+
+
+
+PortName = tmddOCFtpGetServicePort
+
+OperationName = OP_RIXMLFtpDMSInventory

@@ -1,0 +1,303 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp1 (http://www.altova.com) by Manny Insignares (ConSysTec Corp.) -->
+<!-- Output of XML portions of the registry data into file: LRMS-Draft-02-00-00.xsd -->
+<!-- Run on Mini-Edit [Version 2.1.442] -->
+<!-- From node C:136-5448-3969 Created on 11/14/2006 at 12:21:01 PM  -->
+<!-- Source DB File: lrms_adopted-2-0-0.ITS rendered into namespace: LRMS  -->
+<!-- Edit namespaces to reflect the schema releases you will be using. -->
+<!-- Place at: www.YourSite.xxx/ITSschemas/LRMS-02-00-00/lrms-draft-02-00-00.xsd  -->
+<!-- Local copy saved to: C:/Documents and Settings/DavidK/My Documents/code/MiniEdit/ITSschemas/LRMS-02-00-00/lrms-draft-02-00-00.xsd -->
+<!-- Production releases of ITS schemas can be found at: http://www.ITSware.net/XML/readme.htm -->
+<!--  -->
+<xs:schema xmlns="http://www.LRMS-Adopted-02-00-00" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ns="http://www.LRMS-Local-02-00-00" targetNamespace="http://www.LRMS-Adopted-02-00-00" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="Adopted">
+	<!-- add for each space you define: xmlns:$NAME$="http://www.$NAME$-$RELEASE_TYPE$-$REVISION_STRING$ -->
+	<xs:import namespace="http://www.LRMS-Local-02-00-00" schemaLocation="LRMS-Local-02-00-00.xsd"/>
+	<xs:annotation>
+		<xs:documentation>
+      Exported on: 12:21:01 PM Tuesday, November 14, 2006 From file: lrms_adopted-2-0-0.ITS [By: Mini-Edit Rev 2.1.442] 
+   </xs:documentation>
+	</xs:annotation>
+	<!-- Descriptive Name: Distanceframe -->
+	<xs:complexType name="Distance">
+		<xs:choice>
+			<xs:element name="m">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="-10000000"/>
+						<xs:maxInclusive value="+10000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="mDec">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="-10000000"/>
+						<xs:maxInclusive value="+10000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="mm">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="-1000000"/>
+						<xs:maxInclusive value="+1000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="mmDec">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="-1000000"/>
+						<xs:maxInclusive value="+1000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="dm">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="-1000000"/>
+						<xs:maxInclusive value="+1000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="dmDec">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="-1000000"/>
+						<xs:maxInclusive value="+1000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="yd">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="-17600000"/>
+						<xs:maxInclusive value="+17600000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ydDec">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="-17600000"/>
+						<xs:maxInclusive value="+17600000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ft">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="-52800000"/>
+						<xs:maxInclusive value="+52800000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="ftDec">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="-52800000"/>
+						<xs:maxInclusive value="+52800000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="in">
+				<xs:simpleType>
+					<xs:restriction base="xs:int">
+						<xs:minInclusive value="-1000000"/>
+						<xs:maxInclusive value="+1000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="inDec">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="-1000000"/>
+						<xs:maxInclusive value="+1000000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="mi">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="-10000"/>
+						<xs:maxInclusive value="+10000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="miDec">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="-10000"/>
+						<xs:maxInclusive value="+10000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="km">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="-10000"/>
+						<xs:maxInclusive value="+10000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="kmDec">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="-10000"/>
+						<xs:maxInclusive value="+10000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="block">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="-1000"/>
+						<xs:maxInclusive value="+1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="blkDec">
+				<xs:simpleType>
+					<xs:restriction base="xs:decimal">
+						<xs:minInclusive value="-1000"/>
+						<xs:maxInclusive value="+1000"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:choice>
+	</xs:complexType>
+	<!-- Descriptive Name: GeoLocationframe -->
+	<xs:complexType name="GeoLocation">
+		<xs:sequence>
+			<xs:element name="latitude" type="Latitude"/>
+			<xs:element name="longitude" type="Longitude"/>
+			<xs:element name="horizontalDatum" type="HorizontalDatum" minOccurs="0"/>
+			<xs:element name="height" type="Height" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Descriptive Name: Heightframe -->
+	<xs:complexType name="Height">
+		<xs:choice>
+			<xs:sequence>
+				<xs:element name="altitude" type="Distance"/>
+				<xs:element name="verticalDatum" type="VerticalDatum" minOccurs="0"/>
+			</xs:sequence>
+			<xs:element name="verticalLevel" type="VerticalLevel"/>
+		</xs:choice>
+	</xs:complexType>
+	<!-- Descriptive Name: HorizontalDatumcd -->
+	<xs:simpleType name="HorizontalDatum">
+		<xs:annotation>
+			<xs:appinfo>
+            wgs-84 (0)
+            wgs-84egm-96 (1)
+            nad83 (2)
+            nad27 (3) -- LOCAL_CONTENT
+         </xs:appinfo>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:unsignedInt">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="3"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="wgs-84"/>
+					<xs:enumeration value="wgs-84egm-96"/>
+					<xs:enumeration value="nad83"/>
+					<xs:enumeration value="nad27"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<!-- Descriptive Name: Int-latitude32 -->
+	<xs:simpleType name="Int-latitude32">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="-90000000"/>
+			<xs:maxInclusive value="+90000000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Descriptive Name: Int-longitude32 -->
+	<xs:simpleType name="Int-longitude32">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="-180000000"/>
+			<xs:maxInclusive value="+180000000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Descriptive Name: LatitudeInt-latitude32 -->
+	<xs:simpleType name="Latitude">
+		<xs:restriction base="Int-latitude32"/>
+	</xs:simpleType>
+	<!-- Descriptive Name: LongitudeInt-longitude32 -->
+	<xs:simpleType name="Longitude">
+		<xs:restriction base="Int-longitude32"/>
+	</xs:simpleType>
+	<!-- Descriptive Name: LRReferenceMethodcd -->
+	<xs:simpleType name="LRMethod">
+		<xs:annotation>
+			<xs:appinfo>
+            milepoint (0)
+            kilopoint (1)
+            percentage (2)
+            milepost (3)
+            referencePost (4)
+            countyMilepost (5)
+            stationing (6)
+            streetAddress (7)
+            crossStreet (8)
+         </xs:appinfo>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:unsignedInt">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="8"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="milepoint"/>
+					<xs:enumeration value="kilopoint"/>
+					<xs:enumeration value="percentage"/>
+					<xs:enumeration value="milepost"/>
+					<xs:enumeration value="referencePost"/>
+					<xs:enumeration value="countyMilepost"/>
+					<xs:enumeration value="stationing"/>
+					<xs:enumeration value="streetAddress"/>
+					<xs:enumeration value="crossStreet"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<!-- Descriptive Name: VerticalDatumcd -->
+	<xs:simpleType name="VerticalDatum">
+		<xs:annotation>
+			<xs:appinfo>
+            wgs-84 (0)
+            navd (1)
+         </xs:appinfo>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:unsignedInt">
+					<xs:minInclusive value="0"/>
+					<xs:maxInclusive value="1"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="wgs-84"/>
+					<xs:enumeration value="navd"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<!-- Descriptive Name: VerticalLevelqty -->
+	<xs:simpleType name="VerticalLevel">
+		<xs:restriction base="xs:byte">
+			<xs:minInclusive value="-128"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

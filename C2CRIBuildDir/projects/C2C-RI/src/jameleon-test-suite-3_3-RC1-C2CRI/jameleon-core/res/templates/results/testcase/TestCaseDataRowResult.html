@@ -1,0 +1,99 @@
+#if($result.Error)
+    #set( $icon = "${results_res_dir}/images/data_results_error.gif" )
+    #set( $tClass = "txtFailed" )
+#else
+    #set( $icon = "${results_res_dir}/images/data_results_good.gif" )
+    #set( $tClass = "txtPassed" )
+#end
+
+<div class="txtHeader result_set_header" title="Data Driven Result">
+<table width="100%" cellpadding="3" cellspacing="0">
+    <tr>
+        <td><img alt="result set" src="$icon"
+                 align="left"/>
+            <span class="$tClass"> <b>Result ${result.RowNum}</b></span></td>
+        <td>
+            <div align="right">
+                <a class="tooltip" href="#">
+                    <img alt="data" src="${results_res_dir}/images/data_btn.gif" class="button"/>
+                <span>
+                    <table cellpadding="2" title="data entries">
+                    #foreach ( $name in $result.RowData.keySet() )
+                    <tr>
+                        <td class="txtLabel">$name</td>
+                        <td class="txtLabelVal" nowrap="nowrap">$!result.RowData.get("$name")</td>
+                    </tr>
+                    #end
+                    </table>
+                </span>
+                </a>
+                <a class="tooltip" href="#">
+                    <img alt="info" src="${results_res_dir}/images/info_white_blue_bkg.gif" class="button"/>
+                  <span>
+                  <table cellpadding="2">
+                      <tr>
+                          <td class="txtLabel">tag</td>
+                          <td class="txtLabelVal" nowrap="nowrap">$result.tag.defaultTagName</td>
+                      </tr>
+                      #if ($result.Error)
+                      <tr>
+                          <td class="txtLabel">Failed line #</td>
+                          <td class="txtLabelVal" nowrap="nowrap">$!result.LineNumber</td>
+                      </tr>
+                      #end                      
+                      <tr>
+                          <td class="txtLabel">exec time</td>
+                          <td class="txtLabelVal" nowrap="nowrap">$result.executionTimeToDisplay</td>
+                      </tr>
+                      <tr>
+                          <td class="txtLabel">date time</td>
+                          <td class="txtLabelVal" nowrap="nowrap">$result.dateTimeExecuted.Time</td>
+                      </tr>
+                      #foreach ( $name in $result.tag.attributes )
+                        #set( $attr = $result.Tag.getAttribute("$name") )
+                        #if ( $attr.value && !$attr.name.equals('functionId') )
+                      <tr>
+                          <td class="txtLabel">$name</td>
+                          <td class="txtLabelVal" nowrap="nowrap">$attr.DisplayedValue</td>
+                      </tr>
+                        #end
+                      #end
+                  </table></span>
+                </a>
+            </div>
+            
+        </td>
+    </tr>
+</table>
+    #if($result.Error)
+    <div class="txtHeader" title="Error Information">
+        <div class="indent full_width">
+            <table width="100%" cellpadding="3" cellspacing="0">
+                <tr>
+                    <td><img alt="error message" src="${results_res_dir}/images/error_msg.jpg" align="left"/>
+                        <span class="txtFailed" title="Error Message">$result.htmlFormattedErrorMsg</span>
+                    </td>
+                    <td>
+                        <div class="full_width">
+                            <a class="tooltip" href="#">
+                                <img alt="stack" src="${results_res_dir}/images/viewstack_btn.gif"/>
+                                <span title="Stack Trace">
+<pre>$result.HtmlFormattedStackTrace</pre>
+                                </span>
+                            </a>
+                            #if ($result.errorFile)
+                            <a href="../${results_res_dir}/$result.errorFile" target="_new"><img alt="snapshot" src="${results_res_dir}/images/snapshot_btn.gif" class="button"/></a>
+                            #end
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    #end
+<div class="txtHeader result_set_children">
+<div class="indent">
+    $!childrenResults
+</div>
+</div>
+</div>

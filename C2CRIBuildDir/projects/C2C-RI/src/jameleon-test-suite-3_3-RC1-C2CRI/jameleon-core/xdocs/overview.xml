@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon Installation</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, automated, framework, automated testing framework"/>
+
+    <body>
+        <section name="Overview of Jameleon">
+            <p><b>Jameleon</b> is a data-driven automated testing tool that is easily extensible via plug-ins. 
+            Features of applications are automated in Java and tied together independently in XML, 
+            creating self-documenting automated test cases.</p>
+            <p> The learning curve is small and maintenance is minimal because Jameleon is broken up into different 
+            layers that can be learned by people of different skill sets. Jameleon breaks 
+            applications up into features and allows testing at any level, simply by passing 
+            in different data for the same test. And because Jameleon is based on Java and 
+            XML, there is no need to learn a proprietary technology. </p>
+            <p>
+            Jameleon can also be used be used to generate the test case documentation based on the grouping 
+            order of the functional points inside the script. In this tool, when a functional point's script 
+            or documentation is updated, the test case documentation also automatically gets the updates.</p>
+            <p>
+            In order to develop Jameleon in the shortest time possible, Jameleon uses 
+            several independent open-source projects:
+            <ol>
+                <li>
+                    <a href="http://jakarta.apache.org/commons/jelly">Jelly</a> - an open-source 
+                    macro language.
+                </li>
+                <li>
+                    <a href="http://www.junit.org">JUnit</a>. - an open-source unit testing 
+                    framework for Java. 
+                </li>
+            </ol>
+            </p>
+        </section>
+        <section name="Components of Jameleon">
+            <subsection name="Applications">
+	          <p>
+                  An <b><i>application</i></b> is software with features.
+		    </p>
+            </subsection>
+            <subsection name="Feature/Functional Points">
+		    <p>
+                A functional point is a feature of the application. Some examples of 
+                features might be search, login, signup, and edit preferences. Because there is 
+                much more to those features than just a simple description, it is recommended to 
+                categorize the functional points into three types for maximum reuse,:Please note 
+                that separating these functional points is only a recommendation.
+                <table>
+                    <tr>
+                        <td><b><a name="actionPoint">Action Point</a></b></td>
+                    </tr>
+                    <tr>
+                        <td>An action point can be thought of as the act of doing. Let's 
+                        take search for example. Usually search only has two UI elements to it, a text 
+                        box where the search term(s) are entered and a search button that submits the 
+                        search term(s). The action point doesn't necessarily care about 
+                        the search results. It only cares that the search page was loaded correctly, the 
+                        search term was inserted and the search button was clicked.<br/>
+                        In other words, a action point doesn't validate what happened after the action occurred, 
+                        it only performs the action.
+                        </td>
+                    </tr>
+            
+                    <tr>
+                        <td><b><a name="validationPoint">Validation Point</a></b></td>
+                    </tr>
+                    <tr>
+                        <td>A validation point verifies the outcome of the action point. Usually an action 
+                        has several possible outcomes. For example, login might behave differently depending 
+                        on whether the username and password are correct, incorrect, too long, too short or 
+                        just non-existent.The action point is the act of logging in and the validation point 
+                        verifies the outcome when using valid, invalid, too long, too short or just non-existent 
+                        usernames and passwords.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><b><a name="navigationPoint">Navigation Point</a></b></td>
+                    </tr>
+                    <tr>
+                        <td>Navigation points traverse to the action point or the validation point so it can be 
+                        executed. For example, there are websites that have a navigation bar on the top no matter 
+                        which page is loaded. In this case the navigation point simply clicks on the link in the 
+                        navigation bar while on any of the pages in order to load the page to perform the action 
+                        or validation.</td>
+                    </tr>
+                </table>
+		    </p>
+            </subsection>
+            <subsection name="Session">
+                <p>
+                    A session is the means of grouping together functional points of a single application. The session
+                    keeps state and tracks variables of all the functional points grouped in a single session.
+                </p>
+            </subsection>
+            <subsection name="Test Case">
+                <p>
+                    A test case contains one or more Sessions. For example, maybe you want to test the delete user 
+                    action point in the admin interface of an application that allows customers to login. A valid 
+                    test might be to:
+                    <br/>
+                    <font size="-2">
+                    <table border="1">
+                        <tr>
+                            <td><b>Description</b></td>
+                            <td><b>Functional Point Type</b></td>
+                            <td><b>Session</b></td>
+                        </tr>
+                        <tr>
+                            <td>Log into the site with a valid customer preferences.</td>
+                            <td>Action Point</td>
+                            <td>Session 1</td>
+                        </tr>
+                        <tr>
+                            <td>Verify the login succeeds.</td>
+                            <td>Validation Point</td>
+                            <td>Session 1</td>
+                        </tr>
+                        <tr>
+                            <td>Navigate to the admin application.</td>
+                            <td>Navigation Point</td>
+                            <td>Session 2</td>
+                        </tr>
+                        <tr>
+                            <td>Log into the admin interface.</td>
+                            <td>Action Point</td>
+                            <td>Session 2</td>
+                        </tr>
+                        <tr>
+                            <td>Validate the login succeeds.</td>
+                            <td>Validation Point</td>
+                            <td>Session 2</td>
+                        </tr>
+                        <tr>
+                            <td>Search for the customer.</td>
+                            <td>Action Point</td>
+                            <td>Session 2</td>
+                        </tr>
+                        <tr>
+                            <td>Validate the customer to be deleted is in the results of the search.</td>
+                            <td>Validation Point</td>
+                            <td>Session 2</td>
+                        </tr>
+                        <tr>
+                            <td>Select to delete the user.</td>
+                            <td>Action Point</td>
+                            <td>Session 2</td>
+                        </tr>
+                        <tr>
+                            <td>Verify the confirmation page is displayed.</td>
+                            <td>Validation Point</td>
+                            <td>Session 2</td>
+                        </tr>
+                        <tr>
+                            <td>Confirm customer deletion.</td>
+                            <td>Action Point</td>
+                            <td>Session 2</td>
+                        </tr>
+                        <tr>
+                            <td>Navigate to customer login page.</td>
+                            <td>Navigation Point</td>
+                            <td>Session 3</td>
+                        </tr>
+                        <tr>
+                            <td>Login as deleted customer.</td>
+                            <td>Action Point</td>
+                            <td>Session 3</td>
+                        </tr>
+                        <tr>
+                            <td>Verify failed login.</td>
+                            <td>Validation Point</td>
+                            <td>Session 3</td>
+                        </tr>
+                    </table>
+                    </font>
+                    <br/>
+                    In this example, the first trial of logging in with a valid customer would be in one session. 
+                    Deleting the customer in the admin site would be another session. Verifying the customer can 
+                    no longer log in would be a third session. Thus the test case would contain three separate 
+                    sessions. Also note that in this scenario the customer login action point is used twice, but
+                    two different validation points are used to verify the outcome.
+                </p>
+            </subsection>
+            <subsection name="Scripting Engine">
+                <p>
+                    While the functional points are written in Java, the test case is written in an XML scripting 
+                    language. Seemingly unrelated functional points can be tied together in one or more sessions 
+                    with minimal effort with the scripting language, . A tester with a limited programming 
+                    background can develop the functional points and a tester with no programming 
+                    knowledge can then group those functional points into a test case.
+                </p>
+            </subsection>
+            <subsection name="Data Engine">
+                <p>
+                    Testing a functional point is not as simple as just running one test against it. Usually a 
+                    functional point has rules and boundaries that define failures and successes. With Jameleon, 
+                    test cases can be data-driven. For each row of data, the test case is executed once and it 
+                    isn't successful unless each row of data passes. For example, testing a "change email" 
+                    functional point can't be done with one test. A valid email address adheres to several restrictions. 
+                    For example, it can't have spaces, quotes, colons, etc in it. The only way to test the "change email" 
+                    functional point, would be to run the same test case multiple times, each time with a different email 
+                    address that has a different invalid character in it. Jameleon does this without requiring the 
+                    script to be changed in any way. In fact, a test case can be run by using a data file or by defining 
+                    a single set of variables right in the test case itself.
+                </p>
+            </subsection>
+            <subsection name="Organization">
+                <p>
+                    Sometimes the same application exists in multiple Organizations. The application deployed to different 
+                    organizations has the same functionality, except the application is customized for each organization
+                    For example, a company owns several sites that each sell different products. The same application or 
+                    shopping cart exists on each of those sites, but the customer discounts are different. The only major 
+                    differences are simply the look and feel and the products sold on the sites.
+                    <br/>
+                    Why write a separate test case for each site when the only difference is the data that is validated? 
+                    In Jameleon, test cases can be scripted independent of an organization. The Organization is defined 
+                    outside the test case and Jameleon can be told to run the Test Case against any of the organizations 
+                    the test case is configured to run against.
+                </p>
+            </subsection>
+            <subsection name="Environment">
+                <p>
+                    Most medium to large sized organizations have many environments their applications run in. Usually, 
+                    an Organization will have a sand box or development environment, a testing environment, possibly a 
+                    staging environment and obviously, a production environment. Except for a few differences, the 
+                    applications work the same in each environment. A web application, for example, would probably have 
+                    different host names where the application can be accessed. The data the application uses might be 
+                    different. Usually, however, the functionality is the same. Jameleon takes these subtle differences 
+                    into account and allows a test case to be run in many different environments without changing one line 
+                    of code.
+                </p>
+            </subsection>
+            <subsection name="Results">
+                <p>
+                    Jameleon is an object oriented automation testing tool that does not have many of the weaknesses that 
+                    are inherent in automated testing. The learning curve is small and maintenance is minimal because Jameleon 
+                    is separated up into different layers that can be learned by people of different skill sets. Separating 
+                    applications up into features, allows testing at any level, simply by passing in different data for the same 
+                    test. And because Jameleon is based on Java and XML, there is no need to learn a proprietary technology.
+                </p>
+                <p>
+                    Jameleon is just the beginning of a more advanced tool that will be used to generate the test scripts and 
+                    test case documentation based on the grouping order of the functional points. In this tool, when a functional 
+                    point's script or documentation is updated, the test case documentation will also automatically see the changes.
+                </p>
+            </subsection>
+            <subsection name="Summary">
+                <p>
+                    One of the hardest things with automated testing is interpreting the results. 
+                    Sometimes, testers will spend most of their time looking through cryptic logs to 
+                    find out why the test failed. In Jameleon, the results are categorized into 
+                    importance levels. While one resource gathers only the very important results, 
+                    another resource gathers all results. The results are recorded in a human-readable 
+                    XML format. The person writing the <b><i>functional points</i></b> need not 
+                    worry about the results being recorded, Jameleon keeps track of everything from 
+                    execution time at each level to the sum of each of the asserts run, passed, 
+                    failed and errored at each level. 
+                </p>
+            </subsection>
+        </section>
+    </body>
+</document>

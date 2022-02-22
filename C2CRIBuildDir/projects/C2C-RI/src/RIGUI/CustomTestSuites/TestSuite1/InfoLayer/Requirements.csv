@@ -1,0 +1,5 @@
+UniqueID,Title,TextData,ProjectRequirement,OtherRequirement,FlagName,FlagValue
+1057,X.3.4.7.4,EXTENSION - Processing Method Description,O,,X_3_4_7_4,FALSE
+1058,X.3.4.7.4.1,EXTENSION - Application Rules,O,,X_3_4_7_4_1,FALSE
+1059,X.3.4.7.4.2.1,EXTENSION - Enumeration,O,,X_3_4_7_4_2_1,FALSE
+1060,X.3.8,EXTENSION - Accept Null Values,M,,X_3_8,TRUE

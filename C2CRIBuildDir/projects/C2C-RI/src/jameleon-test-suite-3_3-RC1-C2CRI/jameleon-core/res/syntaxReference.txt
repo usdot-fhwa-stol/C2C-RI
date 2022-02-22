@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Syntax Reference</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, $pluginName, syntax reference, automated testing framework"/>
+    <link href="default.css" rel="stylesheet" type="text/css"/>
+
+    <body>
+        <section name="Available Tags">
+            <p>
+                 This is a list of available tags for $pluginName. This list of tags is also available in
+                 the Jameleon GUI. You can get there by selecting the "Functional Points" tab on the lower-left. All
+                  tags, including custom tags and other enabled plug-ins' tags, show up in the GUI.
+            </p>
+        </section>
+        <section name="$pluginName Tags">
+            <p>
+                <table>
+                        <tr>
+                           <th>Tag</th>
+                           <th>Short Description</th>
+                        </tr>
+                        #foreach ( $fp in $tags )
+                        <tr>
+                            <td><a href="#$fp.defaultTagName">&lt;$fp.defaultTagName/&gt;</a></td>
+                            <td>$!fp.shortDescription</td>
+                        </tr>
+                        #end
+                </table>
+            </p>
+            #foreach ( $fp in $tags )
+            <subsection name="$fp.defaultTagName">
+                <p>
+                    <a name="$fp.defaultTagName">$fp.description</a>
+                </p>
+                <p>
+                    #set ($html = ".html")
+                    #set ($path = "$fp.getClassName().replace('.', '/')$html")
+                    Take a look at this tag's <a href="apidocs/$path">API docs</a> and <a href="xref/$path">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                   #if( $fp.attributes.size() > 0)
+                   <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                      #foreach ( $attr in $fp.attributes ) <tr>
+                          <td>$!attr.name</td>
+                          <td>$!attr.contextName</td>
+                          <td>
+                              <p>
+                                  $!attr.description
+                              </p>
+                          </td>
+                          <td>$!attr.defaultValue</td>
+                          <td>$!attr.required</td>
+                          <td>$!attr.type</td>
+                      </tr>
+                      #end
+                   </table>
+                   #end
+                </p>
+            </subsection>
+            #end
+        </section>
+    </body>
+</document>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-1-dlCenterActiveVerificationRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlCenterActiveVerificationRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.1.1 [Verify Connection Active] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:04:22-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlCenterActiveVerificationRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.1.1 [Verify Connection Active] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Center Active is required by the specification. (NRTM 3.3.1.1.5.2.1).  RECORD this information as: TMDD_N1R8_Restrictions___Center_Active_Supported = ${TMDD_N1R8_Restrictions___Center_Active_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 3 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 4 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 5 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 6 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlCenterActiveVerificationRequest RESPONSETIMEREQUIRED=TMDD_N1R1_Send_Center_Active_Verification_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlCenterActiveVerificationRequest" functionId="dlCenterActiveVerificationRequest" RESPONSETIMEREQUIRED="${TMDD_N1R1_Send_Center_Active_Verification_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 7 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 7.1 VERIFY that element centerActiveVerificationResponseMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="centerActiveVerificationResponseMsg" instanceName="tmdd:centerActiveVerificationResponseMsg" elementType="message" functionId="Looking for centerActiveVerificationResponseMsg"/>
+               </testStep>
+               <testStep functionId="Step 7.2 VERIFY that element organization-information exists within centerActiveVerificationResponseMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:centerActiveVerificationResponseMsg" elementType="data-frame" functionId="Looking for centerActiveVerificationResponseMsg"/>
+               </testStep>
+               <testStep functionId="Step 7.3 VERIFY that element center-id exists within centerActiveVerificationResponseMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="center-id" instanceName="tmdd:centerActiveVerificationResponseMsg" elementType="data-element" functionId="Looking for centerActiveVerificationResponseMsg"/>
+               </testStep>
+               <testStep functionId="Step 7.4 VERIFY that element center-name exists within centerActiveVerificationResponseMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="center-name" instanceName="tmdd:centerActiveVerificationResponseMsg" elementType="data-element" functionId="Looking for centerActiveVerificationResponseMsg"/>
+               </testStep>
+               <testStep functionId="Step 7.5 IF TMDD_N1R8_Restrictions___Center_Active_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N1R8_Restrictions___Center_Active_Supported}">
+                    <testStep functionId="Step 7.5.1 VERIFY that element restrictions exists within centerActiveVerificationResponseMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:centerActiveVerificationResponseMsg" elementType="data-frame" functionId="Looking for centerActiveVerificationResponseMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 7.6 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N1R8_Restrictions___Center_Active_Supported,restrictions,tmdd:centerActiveVerificationResponseMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

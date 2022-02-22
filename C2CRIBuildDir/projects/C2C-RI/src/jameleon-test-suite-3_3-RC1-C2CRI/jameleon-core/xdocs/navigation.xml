@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Jameleon">
+  <title>Jameleon - An Automated Testing Tool</title>
+  <body>
+    <menu name="Learning Jameleon">
+      <item name="Jameleon Manual in PDF" href="http://sourceforge.net/project/downloading.php?group_id=84246&amp;use_mirror=osdn&amp;filename=Jameleon_manual-0.6.pdf" />
+      <item name="Introduction" href="/index.html" />
+      <item name="Overview" href="/overview.html" />
+      <item name="XML Basics" href="/xmlBasics.html" />
+      <item name="Getting Started" href="/getting-started/index.html" collapse="true">
+        <item name="Introduction" href="/getting-started/index.html" collapse="true"/>
+        <item name="First Test Script" href="/getting-started/firstTestScript.html" collapse="true"/>
+        <item name="Executing Test Scripts" href="/getting-started/executingTestScriptsInGUI.html" collapse="true"/>
+        <item name="Documenting Test Scripts" href="/getting-started/documentingTestScripts.html" collapse="true"/>
+        <item name="Debugging Test Scripts" href="/getting-started/debuggingTestScripts.html" collapse="true"/>
+        <item name="Installing Plug-ins" href="/getting-started/installingPlugins.html" collapse="true"/>
+        <item name="Custom Functional Points" href="/getting-started/customFunctionalPoints.html" collapse="true"/>
+      </item>
+    </menu>
+    <menu name="Helpful Links">
+      <item name="FAQ" href="/faq.html" />
+      <item name="Changes" href="/changes-report.html" />
+      <item name="Download" href="http://prdownloads.sourceforge.net/jameleon/jameleon-test-suite-3.3-RC1.zip?download" />
+      <item name="Report a Bug" href="http://sourceforge.net/tracker/?atid=572239&amp;group_id=84246&amp;func=browse" />
+      <item name="Request a Feature" href="http://sourceforge.net/tracker/?atid=572242&amp;group_id=84246&amp;func=browse" />
+    </menu>
+    <menu name="Plug-ins">
+      <item name="Developing a Plug-in" href="/pluginDevelopment.html"/>
+      <item name="JUnit plug-in" href="/junit-plugin.html" />
+      <item name="Jiffie plug-in" href="/jiffie-plugin/index.html" />
+      <item name="Selenium plug-in" href="/selenium-plugin/index.html" />
+      <item name="Watij plug-in" href="/watij-plugin/index.html" />
+      <item name="Jagacy (3270) plug-in" href="/jagacy-plugin/index.html" />
+      <item name="HtmlUnit plug-in" href="/htmlunit-plugin/index.html" />
+      <item name="HttpUnit plug-in" href="/httpunit-plugin/index.html" />
+      <item name="jWebUnit plug-in" href="/jwebunit-plugin/index.html" />
+    </menu>
+    <menu name="Technical Documentation">
+      <item name="Syntax Reference" href="/syntax-reference.html" />
+      <item name="Lifecycle of a Tag" href="/tagLifeCycle.html" />
+      <item name="Test Case Tag" href="/testCaseTag.html" />
+      <item name="Session Tag" href="/sessionTag.html" />
+      <item name="Function Points" href="/functionPoints.html" />
+      <item name="Ant Tasks" href="/antTasks.html" />
+      <item name="Assert Levels" href="/assertLevels.html" />
+      <item name="Global Settings" href="/globalSettings.html" />
+      <item name="Data-driving Strategies" href="/dataDriving.html" />
+      <item name="Installation" href="/install.html" />
+      <item name="Java API" href="/apidocs/index.html" target="_new"/>
+    </menu>
+    <menu name="" type="footer">
+      <item name="Support Jameleon" href="http://sourceforge.net/donate/index.php?group_id=84246" img="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support Jameleon" />
+      <item name="SourceForge.net Logo" href="http://sourceforge.net/projects/jameleon" img="http://sourceforge.net/sflogo.php?group_id=84246&amp;type=1" alt="SourceForge Logo"/>
+    </menu>
+  </body>
+</project>

@@ -1,0 +1,59 @@
+<?xml version="1.0" ?> 
+<testcase xmlns="jelly:jameleon"  xmlns:jl="jelly:core" >
+
+<jl:set var="lcl.preconditionpassed">false</jl:set>
+<precondition>
+	<function-doc functionId = "The Requirement TMDD 3.3.6.5.1.4 requirement  = ${TMDD_3_3_6_5_1_4}"/>
+	<ju-assert-equals functionId = "Check for Requirement 3.3.6.5.1.4" 
+	expected="true"
+	actual = "${TMDD_3_3_6_5_1_4}"/>
+	<jl:set var="lcl.preconditionpassed">true</jl:set>
+</precondition>
+
+<function-doc functionId = "After precondition The precondition flag = ${lcl.preconditionpassed}"/>
+
+<jl:if test="${lcl.preconditionpassed ==true}">
+	<map-variable toVariable="resultsText" variableType="list">
+	<variable-value>value 1</variable-value>
+	<variable-value>value 2</variable-value>
+	<variable-value>value 3</variable-value>
+	<variable-value>value 4</variable-value>
+	</map-variable>
+	
+	     <function-doc functionId="After the Map-Variable statement resultsText value = ${resultsText}" />
+	
+	<iterate varName="someVar" items="${resultsText}">
+	     <function-doc functionId="During the Map-Variable iteration resultsText value = ${someVar}" />
+	</iterate>
+	
+	
+	<jl:set var="lcl.receivedDeviceInformationResponse">example1</jl:set>
+	<jl:set var="lcl.tmddMessages_10">example1</jl:set>
+	
+	<testStep functionId = "Step 1 Reading all system context variables.">
+	  <jl:if test="${lcl.tmddMessages_10 == lcl.receivedDeviceInformationResponse}"> 
+	 <!--    <ri-if expected="${lcl.receivedDeviceInformationResponse}" actual="${lcl.tmddMessages_10}">  -->
+		<function-doc functionId="key = ${iter.key} value = ${iter.value}" />
+		<jl:forEach var="iter" items="${systemScope}">
+			<jl:set var="name" value="${iter.key}"/>
+		        <function-doc functionId="key = ${iter.key} value = ${iter.value}" />
+		</jl:forEach>
+	<!--     </ri-if>   -->
+	  </jl:if>
+	</testStep>
+
+	<testStep functionId = "Step 2 checking for context variables from Config File">
+	     <function-doc functionId="After the if Statement key = ${iter.key} value = ${iter.value}" />
+	     <function-doc functionId="After the if Statement key = {X_3_8} value = ${X_3_8}" />
+	     <function-doc functionId="After the if Statement key = {X_3_4_7_4_2_1} value = ${X_3_4_7_4_2_1}" />
+	</testStep>
+
+	<ju-session>
+		<testStep functionId = "Step 3 checking for valid and invalid assertions.">
+			<ju-assert-true functionId = "Do a basic assertTrue with false" msg="fail here" test="false"/>
+			<ju-assert-true functionId = "Do a basic assertTrue with false in a postcondition" msg="executed all the way to here" test="false"/>
+		</testStep>
+	</ju-session>
+
+</jl:if>
+</testcase>

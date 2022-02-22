@@ -1,0 +1,664 @@
+ 
+#<!--   
+#       Title:  TCS-93-dlIntersectionSignalTimingPatternInventoryRequest-OC-InValid-8
+#       Description:  This test case is used to verify the SUTs support of the dlIntersectionSignalTimingPatternInventoryRequest dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.10.8 [Need to Share Controller Timing Patterns]. This Test Case tests for an invalid response result. An error response message is expected be returned with an error-code set to 8 (no valid data available).
+#       Related Procedure:  TPS-93-dlIntersectionSignalTimingPatternInventoryRequest-OC
+#       Version/Date: 2014/01/16 03:21:40
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Request Message to be sent to the SUT.
+RequestMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether an error response is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of error response that is expected from the SUT.
+ErrorTypeExpected = 8
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.user-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.user-id = UserId
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.password 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.password = P@ssW0rd
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.operator-id  BaseType=string  ParentType= Authentication
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.operator-id = StateDOT_OPRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-name 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-location 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-function 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.contact-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.person-name 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.person-title 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.phone-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.phone-alternate 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.fax-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.pager-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.pager-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.email-address 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.radio-unit 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.address-line1 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.address-line1 = 292 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.address-line2 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.city 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.state 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.zip-code 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.country 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = wgs-84
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec = 1000.00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = 293 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.date 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.time 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.offset 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-name 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-location 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-function 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.contact-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.person-name 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.person-title 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.phone-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.phone-alternate 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.mobile-phone-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.mobile-phone-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.fax-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.pager-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.pager-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.email-address 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.radio-unit 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.address-line1 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.address-line1 = 294 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.address-line2 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.city 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.state 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.zip-code 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.country 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-name 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalLevel 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-description 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-type 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-type = mobile
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 = 295 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.date 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.time 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.offset 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-type  BaseType=anySimpleType  ParentType= DeviceInformationRequest
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-type = signal controller
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-information-type  BaseType=anySimpleType  ParentType= DeviceInformationRequest
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-information-type = device plan
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.device-id-list.device-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.device-id-list.device-id = StateDOTEquipmentRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.network-id-list.network-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.network-id-list.network-id = StateDOTNetworkRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.link-id-list.link 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.link-id-list.link = StateDOTLink
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.link-designator-list.link-designator 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.link-designator-list.link-designator = StateDOTLinkRtAssignment
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.linear-reference.linear-reference-start 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.linear-reference.linear-reference-start = Exit 38 - Interstate Bypass
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.linear-reference.linear-reference-end 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.linear-reference.linear-reference-end = Exit 38 - Interstate Bypass
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.section-id-list.section-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.section-id-list.section-id = StateDOTSectionReference
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.pattern-id-list.pattern-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.pattern-id-list.pattern-id = PatternId
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.center-id-list.center-id 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.center-id-list.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.date 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.time 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.offset 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.start-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.period-seconds 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.period-seconds = 25
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.extension 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.time-range.extension =
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.extension 
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.tmddX:deviceInformationRequestFilterExt.extension =
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalTimingPatternInventoryRequestMsg.timing-pattern-id  BaseType=string  ParentType= IntersectionSignalTimingPatternInventoryRequest
+tmdd:intersectionSignalTimingPatternInventoryRequestMsg.timing-pattern-id = StateDOTTimingPatternRef
+

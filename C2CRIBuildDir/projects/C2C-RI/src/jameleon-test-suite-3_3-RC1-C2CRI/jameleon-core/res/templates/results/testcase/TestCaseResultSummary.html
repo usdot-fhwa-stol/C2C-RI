@@ -1,0 +1,112 @@
+#if($result.failed())
+    #set( $outcome = "failed" )
+    #set( $header = "Failed" )
+    #set( $icon = "${results_res_dir}/images/doc-errored.gif" )
+#else
+    #set( $outcome = "passed" )
+    #set( $header = "Passed" )
+    #set( $icon = "${results_res_dir}/images/doc-passed.gif" )
+#end
+
+<html>
+   <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=${encoding}"/>
+       <link rel="stylesheet" href="${results_res_dir}/css/testCaseResults.css" type="text/css" media="all"/>
+   </head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+    <div class="full_width">
+        <table cellpadding="0" cellspacing="0" class="result_${outcome}" title="Result Header">
+            <tr>
+                <td width="1" height="1"><img alt="left top" src="${results_res_dir}/images/lt_top_${outcome}.gif"/></td>
+                <td class="txtHeader padding">${header}</td>
+                <td width="1" height="1"><img alt="right top" src="${results_res_dir}/images/rt_top_${outcome}.gif"/></td>
+            </tr>
+        </table>
+    </div>
+        </td>
+    </tr>
+    <tr>
+    <td>
+    <div class="summary_results_data_${outcome}">
+        <div class="summary_results_key_value">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td valign="top">
+                        <div class="txtLabel">Execution Time</div>
+                    </td>
+                    <td valign="top">
+                        <div class="txtLabelVal" align="right">$result.executionTimeToDisplay</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="summary_results_key_value">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td height="25" valign="top">
+                        <div class="txtLabel">Number Run</div>
+                    </td>
+                    <td valign="top">
+                        <div class="txtLabelVal" align="right">$result.countableResults.size()</div>
+                    </td>
+                </tr>
+            </table>
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td valign="top">
+                        <div class="txtLabel">Number Failed</div>
+                    </td>
+                    <td valign="top">
+                        <div class="txtLabelVal" align="right">$result.failedCountableResults.size()</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="summary_results_key_value">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td valign="top">
+                        <div class="txtLabel">Percent Passed</div>
+                    </td>
+                    <td valign="top">
+                        <div class="txtLabelVal" align="right">$result.getPercentagePassed()</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        #if ($result.failed())
+        <div class="summary_results_key_value" title="Summary of Failures">
+            <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td valign="top">
+                        <div class="txtLabel txt${header}">Summary of Failures</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        #foreach ( $res in $result.getFailedResults() )
+            <div class="txtLabelVal summary_results_key_value" title="Error Message">$res.htmlFormattedErrorMsg</div>
+        #end
+        #end
+    </div>
+                   </td>
+        </tr>
+        <tr>
+            <td>
+    <div class="full_width">
+        <table cellpadding="0" cellspacing="0" class="result_${outcome}" title="Result Footer">
+            <tr>
+                <td><img src="${results_res_dir}/images/lt_bot_${outcome}.gif"/></td>
+                <td width="100%"></td>
+                <td><img src="${results_res_dir}/images/rt_bot_${outcome}.gif"/></td>
+            </tr>
+        </table>
+    </div>
+               </td>
+        </tr>
+    </table>
+</body>
+</html>

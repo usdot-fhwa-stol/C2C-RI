@@ -1,0 +1,54 @@
+<?xml version="1.0" ?> 
+<!--   
+       Title:  TPS-NTCIP2306-HTTP-GET-EC
+       Description:  This test procedure is called by a test case and is used to verify a SUTs conformance to the XML Direct Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an EC. 
+                     This procedure supports verification of requirements related to user need 2 (XML Direct) and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/03 12:45 (Manual)
+-->
+
+<testprocedure xmlns="jelly:jameleon"  xmlns:jl="jelly:core" >
+<test-case-id>${C2CRITestCaseID}</test-case-id>
+<test-case-summary>This test procedure is called by a test case and is used to verify a SUTs conformance to the XML Direct Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an EC. 
+                     This procedure supports verification of requirements related to user need 2 (XML Direct) and is used for both valid and invalid test cases.
+</test-case-summary>
+
+
+<NTCIP2306-session testCaseIdentifier="${C2CRITestCaseID}" riMode="OC" wsdlURL="${WSDLFile}">
+
+<testStep functionId = "Step 1 CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.  RECORD the WSDL File Name value as: WSDLFile"  passfailResult="False"/>
+
+<testStep functionId = "Step 2 CONFIGURE: Identify the HTTP related Service defined in the WSDL that will be used for the one-way Get operation during the test.  RECORD the Service name value as: ServiceName = ${ServiceName}"  passfailResult="False"/>
+<testStep functionId = "Step 3 CONFIGURE: Identify the port related to the HTTP Get service that will used during the test.  If NTCIP2306_N2R9_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP2306_N2R10_Message_Transport_HTTPS_Flag is true then any port utilizing the https protocol may be selected.  RECORD this value as: PortName =${PortName}"  passfailResult="False"/>
+<testStep functionId = "Step 4 CONFIGURE: Select a Get operation related to the HTTP Service selected to be used for the test.  RECORD this value as: OperationName = ${OperationName}"  passfailResult="False"/>
+<testStep functionId = "Step 5 CONFIGURE: Determine whether an HTTP transport error is expected during this test.  RECORD this value as: TransportErrorExpected = ${TransportErrorExpected}"  passfailResult="False"/>
+<testStep functionId = "Step 6 CONFIGURE: RECORD the expected type of HTTP transport error expected as: TransportErrorTypeExpected = ${TransportErrorTypeExpected}"  passfailResult="False"/>
+<testStep functionId = "Step 7 CONFIGURE: Determine the XML message to be returned during this test.  RECORD this value as: ResponseMessage = ${ResponseMessage}"  passfailResult="False"/>
+
+<testStep functionId = "Step 8 PERFORM TPS_NTCIP2306_WSDL."  passfailResult="True">
+		<ri-execute-script functionId="${C2CRITestCaseID}"
+                                   script="TPS-NTCIP2306-WSDL.xml"
+                                   checkOutcomePassed="true"/>
+ 								   
+</testStep>
+
+<testStep functionId = "Step 9 CONFIGURE: Prepare the SUT to act as an HTTP Client connection to a server with the parameters defined by the selected service. "  passfailResult="False"/>
+
+<testStep functionId = "Step 10 HTTP-GET-OC with the following parameter(s): Service Name = ServiceName, Response Message = ResponseMessage, Operation Name = OperationName  Returns TRANSPORTERRORRESULT, TRANSPORTERRORTYPE"  passfailResult="False">
+	<HTTP-GET-OC functionId="HTTP-GET-OC" SERVICENAME="${ServiceName}" PORTNAME="${PortName}" OPERATIONNAME="${OperationName}" RESPONSEMESSAGE="${ResponseMessage}"/>
+</testStep>
+
+	<testStep functionId = "Step 11 VERIFY that TRANSPORTERRORRESULT = TransportErrorExpected" >
+          <ju-assert-equals functionId="Verify the TRANSPORTERRORRESULT" msg="Error: TransportErrorExpected was ${TransportErrorExpected} while TRANSPORTERRORRESULT was ${TRANSPORTERRORRESULT} and TRANSPORTERRORTYPE was ${TRANSPORTERRORTYPE}."  actual="${TRANSPORTERRORRESULT}" expected="${TransportErrorExpected}"/>
+    </testStep>
+
+	<testStep functionId = "Step 12 VERIFY that TRANSPORTERRORTYPE = TransportErrorTypeExpected" >
+          <ju-assert-equals functionId="Verify the TRANSPORTERRORTYPE" msg="Error: TransportErrorTypeExpected was ${TransportErrorTypeExpected} while TRANSPORTERRORTYPE was ${TRANSPORTERRORTYPE}."  actual="${TRANSPORTERRORTYPE}" expected="${TransportErrorTypeExpected}"/>
+      </testStep>
+	  
+
+<postcondition>
+<testStep functionId=" Step 13 EXIT" passfailResult="False"/>
+</postcondition>
+	
+</NTCIP2306-session>
+</testprocedure>

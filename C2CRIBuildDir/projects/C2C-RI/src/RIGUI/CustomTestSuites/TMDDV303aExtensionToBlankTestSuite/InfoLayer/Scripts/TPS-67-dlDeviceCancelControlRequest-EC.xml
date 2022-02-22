@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-67-dlDeviceCancelControlRequest-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceCancelControlRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.7 [Need to Cancel HAR Control Requests] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:37:30-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceCancelControlRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.7 [Need to Cancel HAR Control Requests] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Operator Identifier - Cancel Device Control is required by the specification. (NRTM 3.3.5.1.6.2.2.1).  RECORD this information as: TMDD_N67R424_Operator_Identifier___Cancel_Device_Control_Supported = ${TMDD_N67R424_Operator_Identifier___Cancel_Device_Control_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="OC">
+          <testStep functionId="Step 3 CONFIGURE: Define the response message that will be sent to the SUT.  RECORD this information as: ResponseMessage:  ${ResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 4 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 5 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 6 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 7 CONFIGURE: Identify the Organization Identifier expected for authentication during this test.  RECORD this information as: OrganizationID:  ${OrganizationID}" passfailResult="False"/>
+          <testStep functionId="Step 8 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 9 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 10 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 11 CONFIGURE: Determine whether the SUT is expected to have valid data available for a response message in this test.  RECORD this information as: DataValid:  ${DataValid}" passfailResult="False"/>
+          <testStep functionId="Step 12 REQUEST-RESPONSE-OC-RECEIVE with the following parameters:   DIALOG=dlDeviceCancelControlRequest RESPONSETIMEREQUIRED= AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password ORGANIZATIONID = OrganizationID ALLOWACCESS = AllowAccess ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected DATAVALID = DataValid ">
+               <REQUEST-RESPONSE-OC-RECEIVE Dialog="dlDeviceCancelControlRequest" functionId="dlDeviceCancelControlRequest" RESPONSETIMEREQUIRED="${}" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" ORGANIZATIONID="${OrganizationID}" ALLOWACCESS="${AllowAccess}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}" DATAVALID="${DataValid}"/>
+          </testStep>
+          <testStep functionId="Step 13 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 13.1 VERIFY that element deviceCancelControlRequestMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="deviceCancelControlRequestMsg" instanceName="tmdd:deviceCancelControlRequestMsg" elementType="message" functionId="Looking for deviceCancelControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 13.2 VERIFY that element authentication exists within deviceCancelControlRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="authentication" instanceName="tmdd:deviceCancelControlRequestMsg" elementType="data-frame" functionId="Looking for deviceCancelControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 13.3 VERIFY that element organization-requesting exists within deviceCancelControlRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="organization-requesting" instanceName="tmdd:deviceCancelControlRequestMsg" elementType="data-frame" functionId="Looking for deviceCancelControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 13.4 VERIFY that element device-id exists within deviceCancelControlRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="device-id" instanceName="tmdd:deviceCancelControlRequestMsg" elementType="data-element" functionId="Looking for deviceCancelControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 13.5 VERIFY that element request-id exists within deviceCancelControlRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="request-id" instanceName="tmdd:deviceCancelControlRequestMsg" elementType="data-element" functionId="Looking for deviceCancelControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 13.6 VERIFY that element deviceCancelControlRequestMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="deviceCancelControlRequestMsg" instanceName="tmdd:deviceCancelControlRequestMsg" elementType="message" functionId="Looking for deviceCancelControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 13.7 IF TMDD_N67R424_Operator_Identifier___Cancel_Device_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N67R424_Operator_Identifier___Cancel_Device_Control_Supported}">
+                    <testStep functionId="Step 13.7.1 VERIFY that element operator-id exists within each instance of deviceCancelControlRequestMsg.authentication" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="operator-id" instanceName="tmdd:deviceCancelControlRequestMsg.authentication" elementType="data-element" functionId="Looking for deviceCancelControlRequestMsg.authentication"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.8 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N67R424_Operator_Identifier___Cancel_Device_Control_Supported,operator-id,tmdd:deviceCancelControlRequestMsg.authentication;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 13.9 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                    <jl:set var="OptionalContentVerified" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 13.10 POSTCONDITION: REQUEST-RESPONSE-OC-REPLY with the following parameters:   DIALOG=dlDeviceCancelControlRequest RESPONSETIMEREQUIRED= OPTIONALCONTENTVERIFIED = OptionalContentVerified RESPONSEMESSAGE = ResponseMessage ">
+                         <REQUEST-RESPONSE-OC-REPLY Dialog="dlDeviceCancelControlRequest" functionId="dlDeviceCancelControlRequest" RESPONSETIMEREQUIRED="${}" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" RESPONSEMESSAGE="${ResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

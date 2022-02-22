@@ -1,0 +1,73 @@
+ 
+#<!--   
+#       Title:  TCS-96-dlDeviceInformationSubscription-OC-InValid-4
+#       Description:  This test case is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.6.10.11 [Need to Share Time Synchronization Information]. This Test Case tests for a InValid (4) response result.
+#       Related Procedure:  TPS-96-dlDeviceInformationSubscription-OC
+#       Version/Date: 2012/02/14 23:22:37
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable inicates the number of publication message transmissions the test application is expected to receive as part of this test.
+PublicationsToReceive = 0
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a Publication update error response is expected from the SUT.
+PublicationErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of Publication update error is expected from the SUT.
+PublicationErrorTypeExpected = 4
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Publication Response Message to be sent to the SUT.
+PublicationResponseMessage = #MESSAGESPEC#PubResponseMessage#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the priviledge to send the information requested.
+AllowAccess = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Subscription Message to be sent to the SUT.
+SubscriptionMessage = <soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><c2c:c2cMessageSubscription xmlns:c2c="http://www.ntcip.org/c2c-message-administration"><informationalText>string</informationalText><returnAddress>string</returnAddress><subscriptionAction><subscriptionAction-item>cancelSubscription</subscriptionAction-item></subscriptionAction><subscriptionType><subscriptionType-item>3</subscriptionType-item></subscriptionType><subscriptionID>string</subscriptionID><subscriptionName>string</subscriptionName><subscriptionTimeFrame><start>2014-09-18T19:18:33</start><end>2006-08-19T13:27:14-04:00</end></subscriptionTimeFrame><subscriptionFrequency>7</subscriptionFrequency><broadcastAlerts><broadcastAlert>broadcastAlertsAccepted</broadcastAlert></broadcastAlerts></c2c:c2cMessageSubscription><mes:deviceInformationRequestMsg xmlns:mes="http://www.tmdd.org/302/messages"><authentication><user-id>string</user-id><password>string</password><operator-id>string</operator-id></authentication><organization-information><organization-id>string</organization-id><organization-name>string</organization-name><organization-location>stringstri</organization-location><organization-function>string</organization-function><organization-contact-details><contact-id>string</contact-id><person-name>string</person-name><person-title>string</person-title><phone-number>string</phone-number><phone-alternate>string</phone-alternate><mobile-phone-number>string</mobile-phone-number><mobile-phone-id>string</mobile-phone-id><fax-number>string</fax-number><pager-number>string</pager-number><pager-id>string</pager-id><email-address>string</email-address><radio-unit>string</radio-unit><address-line1>string</address-line1><address-line2>string</address-line2><city>string</city><state>st</state><zip-code>string</zip-code><country>string</country></organization-contact-details><center-contact-list><center-contact-details><center-id>string</center-id><center-name>string</center-name><center-location xmlns:lrms="http://www.LRMS-Adopted-02-00-00"><latitude>3</latitude><longitude>3</longitude><horizontalDatum>3</horizontalDatum><height><verticalLevel>2</verticalLevel></height></center-location><center-description>string</center-description><center-type>2</center-type><center-contact-details><contact-id>string</contact-id><person-name>string</person-name><person-title>string</person-title><phone-number>string</phone-number><phone-alternate>string</phone-alternate><mobile-phone-number>string</mobile-phone-number><mobile-phone-id>string</mobile-phone-id><fax-number>string</fax-number><pager-number>string</pager-number><pager-id>string</pager-id><email-address>string</email-address><radio-unit>string</radio-unit><address-line1>string</address-line1><address-line2>string</address-line2><city>string</city><state>st</state><zip-code>string</zip-code><country>string</country></center-contact-details></center-contact-details></center-contact-list><last-update-time><date>stringst</date><time>string</time><offset>strin</offset></last-update-time></organization-information><organization-requesting><organization-id>string</organization-id><organization-name>string</organization-name><organization-location>stringstri</organization-location><organization-function>string</organization-function><organization-contact-details><contact-id>string</contact-id><person-name>string</person-name><person-title>string</person-title><phone-number>string</phone-number><phone-alternate>string</phone-alternate><mobile-phone-number>string</mobile-phone-number><mobile-phone-id>string</mobile-phone-id><fax-number>string</fax-number><pager-number>string</pager-number><pager-id>string</pager-id><email-address>string</email-address><radio-unit>string</radio-unit><address-line1>string</address-line1><address-line2>string</address-line2><city>string</city><state>st</state><zip-code>string</zip-code><country>string</country></organization-contact-details><center-contact-list><center-contact-details><center-id>string</center-id><center-name>string</center-name><center-location xmlns:lrms="http://www.LRMS-Adopted-02-00-00"><latitude>3</latitude><longitude>3</longitude><horizontalDatum>nad83</horizontalDatum><height><verticalLevel>2</verticalLevel></height></center-location><center-description>string</center-description><center-type>2</center-type><center-contact-details><contact-id>string</contact-id><person-name>string</person-name><person-title>string</person-title><phone-number>string</phone-number><phone-alternate>string</phone-alternate><mobile-phone-number>string</mobile-phone-number><mobile-phone-id>string</mobile-phone-id><fax-number>string</fax-number><pager-number>string</pager-number><pager-id>string</pager-id><email-address>string</email-address><radio-unit>string</radio-unit><address-line1>string</address-line1><address-line2>string</address-line2><city>string</city><state>st</state><zip-code>string</zip-code><country>string</country></center-contact-details></center-contact-details></center-contact-list><last-update-time><date>stringst</date><time>string</time><offset>strin</offset></last-update-time></organization-requesting><device-type>7</device-type><device-information-type>insert-extension-values-here</device-information-type><device-filter><device-id-list><device-id>string</device-id></device-id-list><network-id-list><network-id>string</network-id></network-id-list><link-id-list><link>string</link></link-id-list><link-designator-list><link-designator>string</link-designator></link-designator-list><linear-reference>string</linear-reference><section-id-list><section-id>string</section-id></section-id-list><pattern-id-list><pattern-id>string</pattern-id></pattern-id-list></device-filter></mes:deviceInformationRequestMsg></soapenv:Body></soapenv:Envelope>
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a subscription error response is expected from the SUT.
+SubscriptionErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of subscription error response that is expected from the SUT.
+SubscriptionErrorTypeExpected = 4
+
+
+#GROUP NAME = Values
+

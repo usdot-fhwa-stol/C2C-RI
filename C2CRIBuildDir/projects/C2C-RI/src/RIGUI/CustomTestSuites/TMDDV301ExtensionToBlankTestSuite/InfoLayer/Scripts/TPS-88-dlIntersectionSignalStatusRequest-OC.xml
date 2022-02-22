@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-88-dlIntersectionSignalStatusRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlIntersectionSignalStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.10.3 [Need to Share Intersection Status] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:18:39-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlIntersectionSignalStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.10.3 [Need to Share Intersection Status] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Section Identifier is required by the specification. (NRTM 3.3.6.11.2.5.2.1).  RECORD this information as: TMDD_N88R937_Section_Identifier_Supported = ${TMDD_N88R937_Section_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Planned Signal Timing Mode Description is required by the specification. (NRTM 3.3.6.11.2.5.2.2).  RECORD this information as: TMDD_N88R938_Planned_Signal_Timing_Mode_Description_Supported = ${TMDD_N88R938_Planned_Signal_Timing_Mode_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Timing Patten Identifier - Current is required by the specification. (NRTM 3.3.6.11.2.5.2.3).  RECORD this information as: TMDD_N88R939_Timing_Patten_Identifier_-_Current_Supported = ${TMDD_N88R939_Timing_Patten_Identifier_-_Current_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Timing Pattern Description is required by the specification. (NRTM 3.3.6.11.2.5.2.4).  RECORD this information as: TMDD_N88R940_Timing_Pattern_Description_Supported = ${TMDD_N88R940_Timing_Pattern_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Actuation Mode is required by the specification. (NRTM 3.3.6.11.2.5.2.5).  RECORD this information as: TMDD_N88R941_Actuation_Mode_Supported = ${TMDD_N88R941_Actuation_Mode_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Plan Mode is required by the specification. (NRTM 3.3.6.11.2.5.2.6).  RECORD this information as: TMDD_N88R942_Plan_Mode_Supported = ${TMDD_N88R942_Plan_Mode_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Cycle Length - Planned is required by the specification. (NRTM 3.3.6.11.2.5.2.7).  RECORD this information as: TMDD_N88R943_Cycle_Length_-_Planned_Supported = ${TMDD_N88R943_Cycle_Length_-_Planned_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Cycle Length - Current is required by the specification. (NRTM 3.3.6.11.2.5.2.8).  RECORD this information as: TMDD_N88R944_Cycle_Length_-_Current_Supported = ${TMDD_N88R944_Cycle_Length_-_Current_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Cycle Length - Previous is required by the specification. (NRTM 3.3.6.11.2.5.2.9).  RECORD this information as: TMDD_N88R945_Cycle_Length_-_Previous_Supported = ${TMDD_N88R945_Cycle_Length_-_Previous_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Master Cycle Length - Actual is required by the specification. (NRTM 3.3.6.11.2.5.2.10).  RECORD this information as: TMDD_N88R946_Master_Cycle_Length_-_Actual_Supported = ${TMDD_N88R946_Master_Cycle_Length_-_Actual_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Controller Cycle Counter is required by the specification. (NRTM 3.3.6.11.2.5.2.11).  RECORD this information as: TMDD_N88R947_Controller_Cycle_Counter_Supported = ${TMDD_N88R947_Controller_Cycle_Counter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Master Cycle Counter is required by the specification. (NRTM 3.3.6.11.2.5.2.12).  RECORD this information as: TMDD_N88R948_Master_Cycle_Counter_Supported = ${TMDD_N88R948_Master_Cycle_Counter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Offset Reference is required by the specification. (NRTM 3.3.6.11.2.5.2.13).  RECORD this information as: TMDD_N88R949_Offset_Reference_Supported = ${TMDD_N88R949_Offset_Reference_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Offset - Planned is required by the specification. (NRTM 3.3.6.11.2.5.2.14).  RECORD this information as: TMDD_N88R950_Offset_-_Planned_Supported = ${TMDD_N88R950_Offset_-_Planned_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Offset - Actual is required by the specification. (NRTM 3.3.6.11.2.5.2.15).  RECORD this information as: TMDD_N88R951_Offset_-_Actual_Supported = ${TMDD_N88R951_Offset_-_Actual_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Offset - Previous is required by the specification. (NRTM 3.3.6.11.2.5.2.16).  RECORD this information as: TMDD_N88R952_Offset_-_Previous_Supported = ${TMDD_N88R952_Offset_-_Previous_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Controller Timestamp is required by the specification. (NRTM 3.3.6.11.2.5.2.17).  RECORD this information as: TMDD_N88R953_Controller_Timestamp_Supported = ${TMDD_N88R953_Controller_Timestamp_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Phase Split is required by the specification. (NRTM 3.3.6.11.2.5.2.18).  RECORD this information as: TMDD_N88R954_Phase_Split_Supported = ${TMDD_N88R954_Phase_Split_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Ring Status is required by the specification. (NRTM 3.3.6.11.2.5.2.19).  RECORD this information as: TMDD_N88R955_Ring_Status_Supported = ${TMDD_N88R955_Ring_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 21 CONFIGURE: Determine whether Active Phases is required by the specification. (NRTM 3.3.6.11.2.5.2.20).  RECORD this information as: TMDD_N88R956_Active_Phases_Supported = ${TMDD_N88R956_Active_Phases_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 22 CONFIGURE: Determine whether Phase Status Greens is required by the specification. (NRTM 3.3.6.11.2.5.2.21).  RECORD this information as: TMDD_N88R957_Phase_Status_Greens_Supported = ${TMDD_N88R957_Phase_Status_Greens_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 23 CONFIGURE: Determine whether Phase Status Yellows is required by the specification. (NRTM 3.3.6.11.2.5.2.22).  RECORD this information as: TMDD_N88R958_Phase_Status_Yellows_Supported = ${TMDD_N88R958_Phase_Status_Yellows_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 24 CONFIGURE: Determine whether Phase Status Reds is required by the specification. (NRTM 3.3.6.11.2.5.2.23).  RECORD this information as: TMDD_N88R959_Phase_Status_Reds_Supported = ${TMDD_N88R959_Phase_Status_Reds_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 25 CONFIGURE: Determine whether Phase Status Walks is required by the specification. (NRTM 3.3.6.11.2.5.2.24).  RECORD this information as: TMDD_N88R960_Phase_Status_Walks_Supported = ${TMDD_N88R960_Phase_Status_Walks_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 26 CONFIGURE: Determine whether Phase Status Pedestrian Clearance is required by the specification. (NRTM 3.3.6.11.2.5.2.25).  RECORD this information as: TMDD_N88R961_Phase_Status_Pedestrian_Clearance_Supported = ${TMDD_N88R961_Phase_Status_Pedestrian_Clearance_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 27 CONFIGURE: Determine whether Phase Status Dont Walks is required by the specification. (NRTM 3.3.6.11.2.5.2.26).  RECORD this information as: TMDD_N88R962_Phase_Status_Dont_Walks_Supported = ${TMDD_N88R962_Phase_Status_Dont_Walks_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 28 CONFIGURE: Determine whether Overlap Phase Status Greens is required by the specification. (NRTM 3.3.6.11.2.5.2.27).  RECORD this information as: TMDD_N88R963_Overlap_Phase_Status_Greens_Supported = ${TMDD_N88R963_Overlap_Phase_Status_Greens_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 29 CONFIGURE: Determine whether Overlap Phase Status Yellows is required by the specification. (NRTM 3.3.6.11.2.5.2.28).  RECORD this information as: TMDD_N88R964_Overlap_Phase_Status_Yellows_Supported = ${TMDD_N88R964_Overlap_Phase_Status_Yellows_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 30 CONFIGURE: Determine whether Overlap Phase Status Reds is required by the specification. (NRTM 3.3.6.11.2.5.2.29).  RECORD this information as: TMDD_N88R965_Overlap_Phase_Status_Reds_Supported = ${TMDD_N88R965_Overlap_Phase_Status_Reds_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 31 CONFIGURE: Determine whether Special Functions is required by the specification. (NRTM 3.3.6.11.2.5.2.30).  RECORD this information as: TMDD_N88R966_Special_Functions_Supported = ${TMDD_N88R966_Special_Functions_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 32 CONFIGURE: Determine whether Preemption Description is required by the specification. (NRTM 3.3.6.11.2.5.2.31).  RECORD this information as: TMDD_N88R967_Preemption_Description_Supported = ${TMDD_N88R967_Preemption_Description_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlIntersectionSignalStatusRequest" riMode="EC">
+          <testStep functionId="Step 33 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 34 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 35 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 36 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlIntersectionSignalStatusRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlIntersectionSignalStatusRequest" functionId="dlIntersectionSignalStatusRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 37 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 37.1 IF TMDD_N88R937_Section_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R937_Section_Identifier_Supported}">
+                    <testStep functionId="Step 37.1.1 VERIFY that element section-id exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="section-id" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.section-id"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.2 IF TMDD_N88R938_Planned_Signal_Timing_Mode_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R938_Planned_Signal_Timing_Mode_Description_Supported}">
+                    <testStep functionId="Step 37.2.1 VERIFY that element planned-signal-timing-mode-description exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="planned-signal-timing-mode-description" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.planned-signal-timing-mode-description"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.3 IF TMDD_N88R939_Timing_Patten_Identifier_-_Current_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R939_Timing_Patten_Identifier_-_Current_Supported}">
+                    <testStep functionId="Step 37.3.1 VERIFY that element timing-pattern-id-current exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="timing-pattern-id-current" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.timing-pattern-id-current"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.4 IF TMDD_N88R940_Timing_Pattern_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R940_Timing_Pattern_Description_Supported}">
+                    <testStep functionId="Step 37.4.1 VERIFY that element timing-pattern-description exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="timing-pattern-description" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.timing-pattern-description"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.5 IF TMDD_N88R941_Actuation_Mode_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R941_Actuation_Mode_Supported}">
+                    <testStep functionId="Step 37.5.1 VERIFY that element actuation-mode exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="actuation-mode" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.actuation-mode"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.6 IF TMDD_N88R942_Plan_Mode_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R942_Plan_Mode_Supported}">
+                    <testStep functionId="Step 37.6.1 VERIFY that element timing-phase-plan-mode exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="timing-phase-plan-mode" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.timing-phase-plan-mode"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.7 IF TMDD_N88R943_Cycle_Length_-_Planned_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R943_Cycle_Length_-_Planned_Supported}">
+                    <testStep functionId="Step 37.7.1 VERIFY that element cycle-length-planned exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="cycle-length-planned" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-planned"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.8 IF TMDD_N88R944_Cycle_Length_-_Current_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R944_Cycle_Length_-_Current_Supported}">
+                    <testStep functionId="Step 37.8.1 VERIFY that element cycle-length-current exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="cycle-length-current" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-current"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.9 IF TMDD_N88R945_Cycle_Length_-_Previous_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R945_Cycle_Length_-_Previous_Supported}">
+                    <testStep functionId="Step 37.9.1 VERIFY that element cycle-length-previous exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="cycle-length-previous" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-previous"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.10 IF TMDD_N88R946_Master_Cycle_Length_-_Actual_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R946_Master_Cycle_Length_-_Actual_Supported}">
+                    <testStep functionId="Step 37.10.1 VERIFY that element cycle-length-master exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="cycle-length-master" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-master"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.11 IF TMDD_N88R947_Controller_Cycle_Counter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R947_Controller_Cycle_Counter_Supported}">
+                    <testStep functionId="Step 37.11.1 VERIFY that element cycle-counter exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="cycle-counter" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.cycle-counter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.12 IF TMDD_N88R948_Master_Cycle_Counter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R948_Master_Cycle_Counter_Supported}">
+                    <testStep functionId="Step 37.12.1 VERIFY that element cycle-counter-master exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="cycle-counter-master" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.cycle-counter-master"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.13 IF TMDD_N88R949_Offset_Reference_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R949_Offset_Reference_Supported}">
+                    <testStep functionId="Step 37.13.1 VERIFY that element offset-reference exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="offset-reference" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.offset-reference"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.14 IF TMDD_N88R950_Offset_-_Planned_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R950_Offset_-_Planned_Supported}">
+                    <testStep functionId="Step 37.14.1 VERIFY that element offset-time-planned exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="offset-time-planned" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.offset-time-planned"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.15 IF TMDD_N88R951_Offset_-_Actual_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R951_Offset_-_Actual_Supported}">
+                    <testStep functionId="Step 37.15.1 VERIFY that element offset-time-current exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="offset-time-current" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.offset-time-current"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.16 IF TMDD_N88R952_Offset_-_Previous_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R952_Offset_-_Previous_Supported}">
+                    <testStep functionId="Step 37.16.1 VERIFY that element offset-time-previous exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="offset-time-previous" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.offset-time-previous"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.17 IF TMDD_N88R953_Controller_Timestamp_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R953_Controller_Timestamp_Supported}">
+                    <testStep functionId="Step 37.17.1 VERIFY that element controller-timestamp exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="controller-timestamp" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.controller-timestamp"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.18 IF TMDD_N88R954_Phase_Split_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R954_Phase_Split_Supported}">
+                    <testStep functionId="Step 37.18.1 VERIFY that element phase-split-list exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-split-list" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-split-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.19 IF TMDD_N88R955_Ring_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R955_Ring_Status_Supported}">
+                    <testStep functionId="Step 37.19.1 VERIFY that element ring-status-list exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="ring-status-list" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.ring-status-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.20 IF TMDD_N88R956_Active_Phases_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R956_Active_Phases_Supported}">
+                    <testStep functionId="Step 37.20.1 VERIFY that element phase-status-group-number exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-number" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-number"/>
+                    </testStep>
+                    <testStep functionId="Step 37.20.2 VERIFY that element phase-status-group-greens exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-greens" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-greens"/>
+                    </testStep>
+                    <testStep functionId="Step 37.20.3 VERIFY that element phase-status-group-walks exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-walks" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-walks"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.21 IF TMDD_N88R957_Phase_Status_Greens_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R957_Phase_Status_Greens_Supported}">
+                    <testStep functionId="Step 37.21.1 VERIFY that element phase-status-group-number exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-number" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-number"/>
+                    </testStep>
+                    <testStep functionId="Step 37.21.2 VERIFY that element phase-status-group-greens exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-greens" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-greens"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.22 IF TMDD_N88R958_Phase_Status_Yellows_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R958_Phase_Status_Yellows_Supported}">
+                    <testStep functionId="Step 37.22.1 VERIFY that element phase-status-group-number exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-number" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-number"/>
+                    </testStep>
+                    <testStep functionId="Step 37.22.2 VERIFY that element phase-status-group-yellows exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-yellows" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-yellows"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.23 IF TMDD_N88R959_Phase_Status_Reds_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R959_Phase_Status_Reds_Supported}">
+                    <testStep functionId="Step 37.23.1 VERIFY that element phase-status-group-number exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-number" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-number"/>
+                    </testStep>
+                    <testStep functionId="Step 37.23.2 VERIFY that element phase-status-group-reds exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-reds" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-reds"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.24 IF TMDD_N88R960_Phase_Status_Walks_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R960_Phase_Status_Walks_Supported}">
+                    <testStep functionId="Step 37.24.1 VERIFY that element phase-status-group-number exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-number" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-number"/>
+                    </testStep>
+                    <testStep functionId="Step 37.24.2 VERIFY that element phase-status-group-walks exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-walks" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-walks"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.25 IF TMDD_N88R961_Phase_Status_Pedestrian_Clearance_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R961_Phase_Status_Pedestrian_Clearance_Supported}">
+                    <testStep functionId="Step 37.25.1 VERIFY that element phase-status-group-number exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-number" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-number"/>
+                    </testStep>
+                    <testStep functionId="Step 37.25.2 VERIFY that element phase-status-group-pedclears exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-pedclears" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-pedclears"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.26 IF TMDD_N88R962_Phase_Status_Dont_Walks_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R962_Phase_Status_Dont_Walks_Supported}">
+                    <testStep functionId="Step 37.26.1 VERIFY that element phase-status-group-number exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-number" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-number"/>
+                    </testStep>
+                    <testStep functionId="Step 37.26.2 VERIFY that element phase-status-group-dontwalks exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="phase-status-group-dontwalks" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-dontwalks"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.27 IF TMDD_N88R963_Overlap_Phase_Status_Greens_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R963_Overlap_Phase_Status_Greens_Supported}">
+                    <testStep functionId="Step 37.27.1 VERIFY that element overlap-status-group-number exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="overlap-status-group-number" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-number"/>
+                    </testStep>
+                    <testStep functionId="Step 37.27.2 VERIFY that element overlap-status-group-greens exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="overlap-status-group-greens" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-greens"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.28 IF TMDD_N88R964_Overlap_Phase_Status_Yellows_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R964_Overlap_Phase_Status_Yellows_Supported}">
+                    <testStep functionId="Step 37.28.1 VERIFY that element overlap-status-group-number exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="overlap-status-group-number" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-number"/>
+                    </testStep>
+                    <testStep functionId="Step 37.28.2 VERIFY that element overlap-status-group-yellows exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="overlap-status-group-yellows" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-yellows"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.29 IF TMDD_N88R965_Overlap_Phase_Status_Reds_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R965_Overlap_Phase_Status_Reds_Supported}">
+                    <testStep functionId="Step 37.29.1 VERIFY that element overlap-status-group-number exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="overlap-status-group-number" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-number"/>
+                    </testStep>
+                    <testStep functionId="Step 37.29.2 VERIFY that element overlap-status-group-reds exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="overlap-status-group-reds" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-reds"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.30 IF TMDD_N88R966_Special_Functions_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R966_Special_Functions_Supported}">
+                    <testStep functionId="Step 37.30.1 VERIFY that element active-special-functions-list exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="active-special-functions-list" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.active-special-functions-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.31 IF TMDD_N88R967_Preemption_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N88R967_Preemption_Description_Supported}">
+                    <testStep functionId="Step 37.31.1 VERIFY that element preempt-description exists within each instance of intersectionSignalStatusMsg.intersection-signal-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="preempt-description" instanceName="tmdd:intersectionSignalStatusMsg.intersection-signal-status-item" functionId="Looking for intersectionSignalStatusMsg.intersection-signal-status-item.preempt-description"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 37.32 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N88R937_Section_Identifier_Supported,section-id,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R938_Planned_Signal_Timing_Mode_Description_Supported,planned-signal-timing-mode-description,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R939_Timing_Patten_Identifier_-_Current_Supported,timing-pattern-id-current,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R940_Timing_Pattern_Description_Supported,timing-pattern-description,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R941_Actuation_Mode_Supported,actuation-mode,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R942_Plan_Mode_Supported,timing-phase-plan-mode,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R943_Cycle_Length_-_Planned_Supported,cycle-length-planned,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R944_Cycle_Length_-_Current_Supported,cycle-length-current,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R945_Cycle_Length_-_Previous_Supported,cycle-length-previous,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R946_Master_Cycle_Length_-_Actual_Supported,cycle-length-master,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R947_Controller_Cycle_Counter_Supported,cycle-counter,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R948_Master_Cycle_Counter_Supported,cycle-counter-master,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R949_Offset_Reference_Supported,offset-reference,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R950_Offset_-_Planned_Supported,offset-time-planned,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R951_Offset_-_Actual_Supported,offset-time-current,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R952_Offset_-_Previous_Supported,offset-time-previous,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R953_Controller_Timestamp_Supported,controller-timestamp,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R954_Phase_Split_Supported,phase-split-list,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R955_Ring_Status_Supported,ring-status-list,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R956_Active_Phases_Supported,phase-status-group-number,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R956_Active_Phases_Supported,phase-status-group-greens,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R956_Active_Phases_Supported,phase-status-group-walks,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R957_Phase_Status_Greens_Supported,phase-status-group-number,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R957_Phase_Status_Greens_Supported,phase-status-group-greens,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R958_Phase_Status_Yellows_Supported,phase-status-group-number,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R958_Phase_Status_Yellows_Supported,phase-status-group-yellows,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R959_Phase_Status_Reds_Supported,phase-status-group-number,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R959_Phase_Status_Reds_Supported,phase-status-group-reds,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R960_Phase_Status_Walks_Supported,phase-status-group-number,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R960_Phase_Status_Walks_Supported,phase-status-group-walks,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R961_Phase_Status_Pedestrian_Clearance_Supported,phase-status-group-number,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R961_Phase_Status_Pedestrian_Clearance_Supported,phase-status-group-pedclears,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R962_Phase_Status_Dont_Walks_Supported,phase-status-group-number,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R962_Phase_Status_Dont_Walks_Supported,phase-status-group-dontwalks,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group;TMDD_N88R963_Overlap_Phase_Status_Greens_Supported,overlap-status-group-number,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group;TMDD_N88R963_Overlap_Phase_Status_Greens_Supported,overlap-status-group-greens,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group;TMDD_N88R964_Overlap_Phase_Status_Yellows_Supported,overlap-status-group-number,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group;TMDD_N88R964_Overlap_Phase_Status_Yellows_Supported,overlap-status-group-yellows,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group;TMDD_N88R965_Overlap_Phase_Status_Reds_Supported,overlap-status-group-number,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group;TMDD_N88R965_Overlap_Phase_Status_Reds_Supported,overlap-status-group-reds,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group;TMDD_N88R966_Special_Functions_Supported,active-special-functions-list,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;TMDD_N88R967_Preemption_Description_Supported,preempt-description,tmdd:intersectionSignalStatusMsg.intersection-signal-status-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

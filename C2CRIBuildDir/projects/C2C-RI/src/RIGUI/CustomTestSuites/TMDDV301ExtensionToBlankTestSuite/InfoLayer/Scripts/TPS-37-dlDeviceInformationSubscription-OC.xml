@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-37-dlDeviceInformationSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.4.1 [Need to Share DMS Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 22:57:07-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.4.1 [Need to Share DMS Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Sign Technology is required by the specification. (NRTM 3.3.6.5.1.5.2.1).  RECORD this information as: TMDD_N37R571_Sign_Technology_Supported = ${TMDD_N37R571_Sign_Technology_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Sign Pixel Height is required by the specification. (NRTM 3.3.6.5.1.5.2.2).  RECORD this information as: TMDD_N37R572_Sign_Pixel_Height_Supported = ${TMDD_N37R572_Sign_Pixel_Height_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Sign Pixel Width is required by the specification. (NRTM 3.3.6.5.1.5.2.3).  RECORD this information as: TMDD_N37R573_Sign_Pixel_Width_Supported = ${TMDD_N37R573_Sign_Pixel_Width_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Sign Height is required by the specification. (NRTM 3.3.6.5.1.5.2.4).  RECORD this information as: TMDD_N37R574_Sign_Height_Supported = ${TMDD_N37R574_Sign_Height_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Sign Width is required by the specification. (NRTM 3.3.6.5.1.5.2.5).  RECORD this information as: TMDD_N37R575_Sign_Width_Supported = ${TMDD_N37R575_Sign_Width_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Character Pixel Height is required by the specification. (NRTM 3.3.6.5.1.5.2.6).  RECORD this information as: TMDD_N37R576_Character_Pixel_Height_Supported = ${TMDD_N37R576_Character_Pixel_Height_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Character Pixel Width is required by the specification. (NRTM 3.3.6.5.1.5.2.7).  RECORD this information as: TMDD_N37R577_Character_Pixel_Width_Supported = ${TMDD_N37R577_Character_Pixel_Width_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether DMS Beacon Type is required by the specification. (NRTM 3.3.6.5.1.5.2.8).  RECORD this information as: TMDD_N37R578_DMS_Beacon_Type_Supported = ${TMDD_N37R578_DMS_Beacon_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Vertical Border is required by the specification. (NRTM 3.3.6.5.1.5.2.9).  RECORD this information as: TMDD_N37R579_Vertical_Border_Supported = ${TMDD_N37R579_Vertical_Border_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Horizontal Border is required by the specification. (NRTM 3.3.6.5.1.5.2.10).  RECORD this information as: TMDD_N37R580_Horizontal_Border_Supported = ${TMDD_N37R580_Horizontal_Border_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Sign Vertical Pixel Pitch is required by the specification. (NRTM 3.3.6.5.1.5.2.11).  RECORD this information as: TMDD_N37R581_Sign_Vertical_Pixel_Pitch_Supported = ${TMDD_N37R581_Sign_Vertical_Pixel_Pitch_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Sign Horizontal Pixel Pitch is required by the specification. (NRTM 3.3.6.5.1.5.2.12).  RECORD this information as: TMDD_N37R582_Sign_Horizontal_Pixel_Pitch_Supported = ${TMDD_N37R582_Sign_Horizontal_Pixel_Pitch_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Maximum Number of Pages is required by the specification. (NRTM 3.3.6.5.1.5.2.13).  RECORD this information as: TMDD_N37R583_Maximum_Number_of_Pages_Supported = ${TMDD_N37R583_Maximum_Number_of_Pages_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Maximum Message Length is required by the specification. (NRTM 3.3.6.5.1.5.2.14).  RECORD this information as: TMDD_N37R584_Maximum_Message_Length_Supported = ${TMDD_N37R584_Maximum_Message_Length_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Color Scheme is required by the specification. (NRTM 3.3.6.5.1.5.2.15).  RECORD this information as: TMDD_N37R585_Color_Scheme_Supported = ${TMDD_N37R585_Color_Scheme_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether MULTI Tags Supported is required by the specification. (NRTM 3.3.6.5.1.5.2.16).  RECORD this information as: TMDD_N37R586_MULTI_Tags_Supported_Supported = ${TMDD_N37R586_MULTI_Tags_Supported_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" subscriptionDialog="dlDeviceInformationSubscription" publicationDialog="dlDMSInventoryUpdate" riMode="EC">
+          <testStep functionId="Step 18 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 19 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 20 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 21 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 22 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 23 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 24 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 25 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 26 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 27 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlDeviceInformationSubscription SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlDeviceInformationSubscription" functionId="dlDeviceInformationSubscription" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 28 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 28.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 28.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlDMSInventoryUpdate PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlDMSInventoryUpdate" functionId="dlDMSInventoryUpdate" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 28.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 28.1.2.1 IF TMDD_N37R571_Sign_Technology_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R571_Sign_Technology_Supported}">
+                              <testStep functionId="Step 28.1.2.1.1 VERIFY that element signTechnology exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="signTechnology" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.signTechnology"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.2 IF TMDD_N37R572_Sign_Pixel_Height_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R572_Sign_Pixel_Height_Supported}">
+                              <testStep functionId="Step 28.1.2.2.1 VERIFY that element signHeightPixels exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="signHeightPixels" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.signHeightPixels"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.3 IF TMDD_N37R573_Sign_Pixel_Width_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R573_Sign_Pixel_Width_Supported}">
+                              <testStep functionId="Step 28.1.2.3.1 VERIFY that element signWidthPixels exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="signWidthPixels" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.signWidthPixels"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.4 IF TMDD_N37R574_Sign_Height_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R574_Sign_Height_Supported}">
+                              <testStep functionId="Step 28.1.2.4.1 VERIFY that element signHeight exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="signHeight" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.signHeight"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.5 IF TMDD_N37R575_Sign_Width_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R575_Sign_Width_Supported}">
+                              <testStep functionId="Step 28.1.2.5.1 VERIFY that element signWidth exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="signWidth" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.signWidth"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.6 IF TMDD_N37R576_Character_Pixel_Height_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R576_Character_Pixel_Height_Supported}">
+                              <testStep functionId="Step 28.1.2.6.1 VERIFY that element charHeightPixels exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="charHeightPixels" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.charHeightPixels"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.7 IF TMDD_N37R577_Character_Pixel_Width_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R577_Character_Pixel_Width_Supported}">
+                              <testStep functionId="Step 28.1.2.7.1 VERIFY that element charWidthPixels exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="charWidthPixels" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.charWidthPixels"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.8 IF TMDD_N37R578_DMS_Beacon_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R578_DMS_Beacon_Type_Supported}">
+                              <testStep functionId="Step 28.1.2.8.1 VERIFY that element dms-beacon-type exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="dms-beacon-type" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.dms-beacon-type"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.9 IF TMDD_N37R579_Vertical_Border_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R579_Vertical_Border_Supported}">
+                              <testStep functionId="Step 28.1.2.9.1 VERIFY that element dms-vertical-border exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="dms-vertical-border" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.dms-vertical-border"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.10 IF TMDD_N37R580_Horizontal_Border_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R580_Horizontal_Border_Supported}">
+                              <testStep functionId="Step 28.1.2.10.1 VERIFY that element dms-horizontal-border exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="dms-horizontal-border" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.dms-horizontal-border"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.11 IF TMDD_N37R581_Sign_Vertical_Pixel_Pitch_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R581_Sign_Vertical_Pixel_Pitch_Supported}">
+                              <testStep functionId="Step 28.1.2.11.1 VERIFY that element dms-vertical-pixel-pitch exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="dms-vertical-pixel-pitch" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.dms-vertical-pixel-pitch"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.12 IF TMDD_N37R582_Sign_Horizontal_Pixel_Pitch_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R582_Sign_Horizontal_Pixel_Pitch_Supported}">
+                              <testStep functionId="Step 28.1.2.12.1 VERIFY that element dms-horizontal-pixel-pitch exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="dms-horizontal-pixel-pitch" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.dms-horizontal-pixel-pitch"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.13 IF TMDD_N37R583_Maximum_Number_of_Pages_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R583_Maximum_Number_of_Pages_Supported}">
+                              <testStep functionId="Step 28.1.2.13.1 VERIFY that element dms-max-pages exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="dms-max-pages" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.dms-max-pages"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.14 IF TMDD_N37R584_Maximum_Message_Length_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R584_Maximum_Message_Length_Supported}">
+                              <testStep functionId="Step 28.1.2.14.1 VERIFY that element dms-max-message-length exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="dms-max-message-length" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.dms-max-message-length"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.15 IF TMDD_N37R585_Color_Scheme_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R585_Color_Scheme_Supported}">
+                              <testStep functionId="Step 28.1.2.15.1 VERIFY that element dms-color-scheme exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="dms-color-scheme" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.dms-color-scheme"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.16 IF TMDD_N37R586_MULTI_Tags_Supported_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N37R586_MULTI_Tags_Supported_Supported}">
+                              <testStep functionId="Step 28.1.2.16.1 VERIFY that element dms-multi-tag-support exists within each instance of dMSInventoryMsg.dms-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="dms-multi-tag-support" instanceName="tmdd:dMSInventoryMsg.dms-inventory-item" functionId="Looking for dMSInventoryMsg.dms-inventory-item.dms-multi-tag-support"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 28.1.2.17 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N37R571_Sign_Technology_Supported,signTechnology,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R572_Sign_Pixel_Height_Supported,signHeightPixels,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R573_Sign_Pixel_Width_Supported,signWidthPixels,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R574_Sign_Height_Supported,signHeight,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R575_Sign_Width_Supported,signWidth,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R576_Character_Pixel_Height_Supported,charHeightPixels,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R577_Character_Pixel_Width_Supported,charWidthPixels,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R578_DMS_Beacon_Type_Supported,dms-beacon-type,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R579_Vertical_Border_Supported,dms-vertical-border,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R580_Horizontal_Border_Supported,dms-horizontal-border,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R581_Sign_Vertical_Pixel_Pitch_Supported,dms-vertical-pixel-pitch,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R582_Sign_Horizontal_Pixel_Pitch_Supported,dms-horizontal-pixel-pitch,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R583_Maximum_Number_of_Pages_Supported,dms-max-pages,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R584_Maximum_Message_Length_Supported,dms-max-message-length,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R585_Color_Scheme_Supported,dms-color-scheme,tmdd:dMSInventoryMsg.dms-inventory-item;TMDD_N37R586_MULTI_Tags_Supported_Supported,dms-multi-tag-support,tmdd:dMSInventoryMsg.dms-inventory-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 28.1.2.18 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                              <jl:set var="OptionalContentVerified" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 28.1.2.19 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlDMSInventoryUpdate OPTIONALCONTENTVERIFIED = OptionalContentVerified PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlDMSInventoryUpdate" functionId="dlDMSInventoryUpdate" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

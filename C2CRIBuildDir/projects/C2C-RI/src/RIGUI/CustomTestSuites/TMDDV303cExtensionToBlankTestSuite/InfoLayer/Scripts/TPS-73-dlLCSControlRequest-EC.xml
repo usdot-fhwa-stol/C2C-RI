@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-73-dlLCSControlRequest-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlLCSControlRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.8.4 [Need to Control a Remote Lane Control Device] and is used for both valid and invalid test cases.
+       Version/Date: 2013/11/28 12:12:16-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlLCSControlRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.8.4 [Need to Control a Remote Lane Control Device] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Send LCS Control Response Upon Request (NTRM 3.3.5.9.3.1}.  RECORD this value as: TMDD_N73R841_Send_LCS_Control_Response_Upon_Request_Parameter = ${TMDD_N73R841_Send_LCS_Control_Response_Upon_Request_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Operator Identifier - Device Control is required by the specification. (NRTM 3.3.5.1.4.1.2.1).  RECORD this information as: TMDD_N73R403_Operator_Identifier___Device_Control_Supported = ${TMDD_N73R403_Operator_Identifier___Device_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Event Identifier - Device Control is required by the specification. (NRTM 3.3.5.1.4.1.2.2).  RECORD this information as: TMDD_N73R404_Event_Identifier___Device_Control_Supported = ${TMDD_N73R404_Event_Identifier___Device_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Event Response Plan - Device Control is required by the specification. (NRTM 3.3.5.1.4.1.2.3).  RECORD this information as: TMDD_N73R405_Event_Response_Plan___Device_Control_Supported = ${TMDD_N73R405_Event_Response_Plan___Device_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Request Priority - Device Control is required by the specification. (NRTM 3.3.5.1.4.1.2.4).  RECORD this information as: TMDD_N73R406_Request_Priority___Device_Control_Supported = ${TMDD_N73R406_Request_Priority___Device_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Control Request Start Date and Time is required by the specification. (NRTM 3.3.5.1.4.1.2.5).  RECORD this information as: TMDD_N73R407_Control_Request_Start_Date_and_Time_Supported = ${TMDD_N73R407_Control_Request_Start_Date_and_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Control Request Expiration Date and Time is required by the specification. (NRTM 3.3.5.1.4.1.2.6).  RECORD this information as: TMDD_N73R408_Control_Request_Expiration_Date_and_Time_Supported = ${TMDD_N73R408_Control_Request_Expiration_Date_and_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Control Request Date and Time Information is required by the specification. (NRTM 3.3.5.1.4.1.2.7).  RECORD this information as: TMDD_N73R409_Control_Request_Date_and_Time_Information_Supported = ${TMDD_N73R409_Control_Request_Date_and_Time_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="OC">
+          <testStep functionId="Step 10 CONFIGURE: Define the response message that will be sent to the SUT.  RECORD this information as: ResponseMessage:  ${ResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 11 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 12 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 14 CONFIGURE: Identify the Operator Identifier expected for authentication during this test.  RECORD this information as: OperatorID:  ${OperatorID}" passfailResult="False"/>
+          <testStep functionId="Step 15 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 16 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 17 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 18 CONFIGURE: Determine whether the SUT is expected to have valid data available for a response message in this test.  RECORD this information as: DataValid:  ${DataValid}" passfailResult="False"/>
+          <testStep functionId="Step 19 REQUEST-RESPONSE-OC-RECEIVE with the following parameters:   DIALOG=dlLCSControlRequest RESPONSETIMEREQUIRED=TMDD_N73R841_Send_LCS_Control_Response_Upon_Request_Parameter AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password OPERATORID = OperatorID ALLOWACCESS = AllowAccess ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected DATAVALID = DataValid ">
+               <REQUEST-RESPONSE-OC-RECEIVE Dialog="dlLCSControlRequest" functionId="dlLCSControlRequest" RESPONSETIMEREQUIRED="${TMDD_N73R841_Send_LCS_Control_Response_Upon_Request_Parameter}" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" OPERATORID="${OperatorID}" ALLOWACCESS="${AllowAccess}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}" DATAVALID="${DataValid}"/>
+          </testStep>
+          <testStep functionId="Step 20 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 20.1 VERIFY that a device-control-request-header data frame exists within message lCSControlRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="device-control-request-header" instanceName="tmdd:lCSControlRequestMsg" elementType="data-frame" functionId="Looking for lCSControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 20.2 VERIFY that an authentication data frame exists within each instance of data frame lCSControlRequestMsg.device-control-request-header" passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="authentication" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header" elementType="data-frame" functionId="Looking for lCSControlRequestMsg.device-control-request-header"/>
+               </testStep>
+               <testStep functionId="Step 20.3 VERIFY that an organization-requesting data frame exists within each instance of data frame lCSControlRequestMsg.device-control-request-header" passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="organization-requesting" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header" elementType="data-frame" functionId="Looking for lCSControlRequestMsg.device-control-request-header"/>
+               </testStep>
+               <testStep functionId="Step 20.4 VERIFY that a device-id data element exists within each instance of data frame lCSControlRequestMsg.device-control-request-header" passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="device-id" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header" elementType="data-element" functionId="Looking for lCSControlRequestMsg.device-control-request-header"/>
+               </testStep>
+               <testStep functionId="Step 20.5 VERIFY that a request-id data element exists within each instance of data frame lCSControlRequestMsg.device-control-request-header" passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="request-id" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header" elementType="data-element" functionId="Looking for lCSControlRequestMsg.device-control-request-header"/>
+               </testStep>
+               <testStep functionId="Step 20.6 VERIFY that a lCSControlRequestMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="lCSControlRequestMsg" instanceName="tmdd:lCSControlRequestMsg" elementType="message" functionId="Looking for lCSControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 20.7 IF TMDD_N73R403_Operator_Identifier___Device_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N73R403_Operator_Identifier___Device_Control_Supported}">
+                    <testStep functionId="Step 20.7.1 VERIFY that an operator-id data element exists within each instance of data frame lCSControlRequestMsg.device-control-request-header.authentication" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="operator-id" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header.authentication" elementType="data-element" functionId="Looking for lCSControlRequestMsg.device-control-request-header.authentication"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.8 IF TMDD_N73R404_Event_Identifier___Device_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N73R404_Event_Identifier___Device_Control_Supported}">
+                    <testStep functionId="Step 20.8.1 VERIFY that an event-id data element exists within each instance of data frame lCSControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="event-id" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header" elementType="data-element" functionId="Looking for lCSControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.9 IF TMDD_N73R405_Event_Response_Plan___Device_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N73R405_Event_Response_Plan___Device_Control_Supported}">
+                    <testStep functionId="Step 20.9.1 VERIFY that a response-plan-id data element exists within each instance of data frame lCSControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="response-plan-id" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header" elementType="data-element" functionId="Looking for lCSControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.10 IF TMDD_N73R406_Request_Priority___Device_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N73R406_Request_Priority___Device_Control_Supported}">
+                    <testStep functionId="Step 20.10.1 VERIFY that a command-request-priority data element exists within each instance of data frame lCSControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="command-request-priority" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header" elementType="data-element" functionId="Looking for lCSControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.11 IF TMDD_N73R407_Control_Request_Start_Date_and_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N73R407_Control_Request_Start_Date_and_Time_Supported}">
+                    <testStep functionId="Step 20.11.1 VERIFY that a command-start-time data frame exists within each instance of data frame lCSControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="command-start-time" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header" elementType="data-frame" functionId="Looking for lCSControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.12 IF TMDD_N73R408_Control_Request_Expiration_Date_and_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N73R408_Control_Request_Expiration_Date_and_Time_Supported}">
+                    <testStep functionId="Step 20.12.1 VERIFY that a command-end-time data frame exists within each instance of data frame lCSControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="command-end-time" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header" elementType="data-frame" functionId="Looking for lCSControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.13 IF TMDD_N73R409_Control_Request_Date_and_Time_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N73R409_Control_Request_Date_and_Time_Information_Supported}">
+                    <testStep functionId="Step 20.13.1 VERIFY that a command-request-time data frame exists within each instance of data frame lCSControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="command-request-time" instanceName="tmdd:lCSControlRequestMsg.device-control-request-header" elementType="data-frame" functionId="Looking for lCSControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.14 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N73R403_Operator_Identifier___Device_Control_Supported,operator-id,tmdd:lCSControlRequestMsg.device-control-request-header.authentication;TMDD_N73R404_Event_Identifier___Device_Control_Supported,event-id,tmdd:lCSControlRequestMsg.device-control-request-header;TMDD_N73R405_Event_Response_Plan___Device_Control_Supported,response-plan-id,tmdd:lCSControlRequestMsg.device-control-request-header;TMDD_N73R406_Request_Priority___Device_Control_Supported,command-request-priority,tmdd:lCSControlRequestMsg.device-control-request-header;TMDD_N73R407_Control_Request_Start_Date_and_Time_Supported,command-start-time,tmdd:lCSControlRequestMsg.device-control-request-header;TMDD_N73R408_Control_Request_Expiration_Date_and_Time_Supported,command-end-time,tmdd:lCSControlRequestMsg.device-control-request-header;TMDD_N73R409_Control_Request_Date_and_Time_Information_Supported,command-request-time,tmdd:lCSControlRequestMsg.device-control-request-header;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 20.15 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                    <jl:set var="CONTENTVERIFIED" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 20.16 POSTCONDITION: REQUEST-RESPONSE-OC-REPLY with the following parameters:   DIALOG=dlLCSControlRequest RESPONSETIMEREQUIRED=TMDD_N73R841_Send_LCS_Control_Response_Upon_Request_Parameter CONTENTVERIFIED = CONTENTVERIFIED RESPONSEMESSAGE = ResponseMessage ">
+                         <REQUEST-RESPONSE-OC-REPLY Dialog="dlLCSControlRequest" functionId="dlLCSControlRequest" RESPONSETIMEREQUIRED="${TMDD_N73R841_Send_LCS_Control_Response_Upon_Request_Parameter}" CONTENTVERIFIED="${CONTENTVERIFIED}" RESPONSEMESSAGE="${ResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+          </jl:if>
+          <testStep functionId=" Step 21 EXIT" passfailResult="False"/>
+     </C2CRI-session>
+</testprocedure>

@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<!--
+    Jameleon - An automation testing tool..
+    Copyright (C) 2003-2006 Christian W. Hargraves (engrean@hotmail.com)     
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+    
+    6/28/2021 *** Removed References to other previously included libraries ***
+-->
+<project name="jameleon-core" default="main" basedir=".">
+  <property name="projectTag" value="${ant.project.name}" />
+  <property name="htdocs.baseDir" value="htdocs" />
+  <property name="jameleon.core" value="true"/>
+  <import file="./src/xml/standard-build.xml"/>
+
+  <target name="acceptance" depends="init.taskdefs, copyJameleonConf">
+    <delete dir="tst/_tmp"/>
+    <jmln-test debug="true" printTestSuiteSummary="false" throwExceptionOnFailure="false">
+      <fileset dir="tst/xml/acceptance">
+        <include name="*.xml"/>
+      </fileset>
+    </jmln-test>
+    <jmln-test debug="true" printTestSuiteSummary="false" throwExceptionOnFailure="false">
+      <fileset dir="tst/xml/framework">
+        <include name="passVar.xml"/>
+      </fileset>
+      <variable name="message" value="hello"/>
+    </jmln-test>
+    <jmln-test debug="true">
+      <fileset dir="tst/xml/">
+        <include name="antTestScript.xml"/>
+      </fileset>
+      <config name="testEnvironment" value="dev"/>
+      <config name="organization" value="sf"/>
+    </jmln-test>
+  </target>
+
+  
+  <!--     PACKAGING TARGETS        -->
+  <target name="package.releases" description="creates a src, bin and tutorial zip file"
+              depends="package.release.src, package.release.bin, package.test-suite, package.htdocs">
+    <antcall target="copy.zip.files">
+        <param name="plugin" value="jameleon-core"/>
+    </antcall>
+  </target>
+
+  <target name="copy.zip.files">
+      <copy todir="target">
+          <fileset dir="../${plugin}">
+              <include name="*.zip"/>
+          </fileset>
+      </copy>
+  </target>
+
+  <target name="build.plugin">
+      <ant dir="../${plugin}" antfile="../${plugin}/build.xml" target="package.release.src" inheritAll="false"/>
+      <ant dir="../${plugin}" antfile="../${plugin}/build.xml" inheritAll="false"/>
+      <ant dir="../${plugin}" antfile="../${plugin}/build.xml" target="package.release.bin" inheritAll="false"/>
+      <antcall target="copy.zip.files">
+          <param name="plugin" value="${plugin}"/>
+      </antcall>
+  </target>
+
+  <target name="build.ripoc" description="builds the ri-plugin">
+      <antcall target="build.plugin">
+          <param name="plugin" value="ri-plugin"/>
+      </antcall>
+  </target>
+
+  <target name="build.plugins" depends="build.ripoc"/>
+
+  <target name="clean.ripoc" description="cleans the ri-plugin">
+    <ant antfile="../ri-plugin/build.xml" target="clean" inheritAll="false"/>
+  </target>
+
+  <target name="clean.plugins" depends="clean.ripoc"/>
+
+  <target name="maven.site" depends="package.test-suite" description="builds site docs">
+      <maven-site dir="."/>
+      <maven-site dir="../ri-plugin"/>
+  </target>
+
+  <target name="package.htdocs" depends="maven.site" description="creates a src release">
+    <property name="docs" value="target/docs"/>
+    <zip destfile="htdocs.zip">
+      <zipfileset dir="${docs}" prefix="htdocs"/>
+      <zipfileset dir="../ri-plugin/${docs}" prefix="htdocs/ri-plugin"/>
+    </zip>
+  </target>
+
+  <target name="package.test-suite" description="creates a test-suite release" depends="main">
+    <antcall target="build.plugins"/>
+    <antcall target="cleanTest"/>
+    <antcall target="cleanLogs"/>
+    <fixcrlf srcdir="src/test-suite"
+             eol="lf"
+             eof="remove"
+             includes="*.sh"
+            />
+    <zip destfile="jameleon-test-suite-${test.suite.version}.zip">
+      <zipfileset dir="${dist.dir}" prefix="jameleon-test-suite/lib">
+        <include name="jameleon-core.jar"/>
+        <include name="jameleon-launcher.jar"/>
+      </zipfileset>
+      <zipfileset dir="lib" prefix="jameleon-test-suite/lib" filemode="755">
+        <include name="**"/>
+      </zipfileset>
+      <zipfileset dir="../ri-plugin/${dist.dir}" prefix="jameleon-test-suite/lib">
+        <include name="ri-plugin.jar"/>
+      </zipfileset>
+      <zipfileset dir="../ri-plugin/lib" prefix="jameleon-test-suite/lib">
+        <include name="*.jar"/>
+      </zipfileset>
+      <zipfileset dir="../ri-plugin/lib" prefix="jameleon-test-suite/lib" filemode="755">
+        <include name="*.dll"/>
+      </zipfileset>
+      <zipfileset dir="src/test-suite" prefix="jameleon-test-suite">
+        <include name="build.xml"/>
+        <include name="upgrade.xml"/>
+        <include name="build.properties"/>
+        <include name="jameleon.conf"/>
+      </zipfileset>
+      <zipfileset dir="src/test-suite" prefix="jameleon-test-suite" filemode="755">
+        <include name="build.sh"/>
+        <include name="build.bat"/>
+        <include name="jameleon.sh"/>
+        <include name="jameleon.bat"/>
+      </zipfileset>
+      <zipfileset dir="src/test-suite" prefix="jameleon-test-suite">
+        <include name="README.txt"/>
+      </zipfileset>
+      <zipfileset dir="src/test-suite" prefix="jameleon-test-suite/scripts">
+        <include name="*-sourceforge.xml"/>
+      </zipfileset>
+
+      <zipfileset dir="" prefix="jameleon-test-suite/data">
+        <exclude name="**/*"/>
+      </zipfileset>
+      <zipfileset dir="" prefix="jameleon-test-suite/res">
+        <exclude name="**/*"/>
+      </zipfileset>
+      <zipfileset dir="" prefix="jameleon-test-suite/src/java">
+        <exclude name="**/*"/>
+      </zipfileset>
+    </zip>
+  </target>
+
+  <macrodef name="maven-site">
+    <attribute name="dir"/>
+    <sequential>
+     <exec dir="@{dir}" executable="${ENV.MAVEN_HOME}/bin/maven.bat">
+          <arg line="site"/>
+      </exec>
+    </sequential>
+  </macrodef>
+
+</project>

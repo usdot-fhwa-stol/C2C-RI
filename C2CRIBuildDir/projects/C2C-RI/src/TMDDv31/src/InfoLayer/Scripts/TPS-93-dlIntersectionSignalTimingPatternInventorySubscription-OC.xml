@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-93-dlIntersectionSignalTimingPatternInventorySubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlIntersectionSignalTimingPatternInventorySubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.10.8 [Need to Share Controller Timing Patterns] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/18 00:49:21-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlIntersectionSignalTimingPatternInventorySubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.10.8 [Need to Share Controller Timing Patterns] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Publish Signal Timing Pattern Information (NTRM 3.3.5.11.7.2}.  RECORD this value as: TMDD_N93R1059_Publish_Signal_Timing_Pattern_Information_Parameter = ${TMDD_N93R1059_Publish_Signal_Timing_Pattern_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine the dialog performance requirement for Subscribe to Signal Timing Pattern Information (NTRM 3.3.5.11.7.3}.  RECORD this value as: TMDD_N93R1060_Subscribe_to_Signal_Timing_Pattern_Information_Parameter = ${TMDD_N93R1060_Subscribe_to_Signal_Timing_Pattern_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N93R15_Restrictions___Error_Report_Supported = ${TMDD_N93R15_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Restrictions - Timing Pattern is required by the specification. (NRTM 3.3.5.11.7.5.2.1).  RECORD this information as: TMDD_N93R1066_Restrictions___Timing_Pattern_Supported = ${TMDD_N93R1066_Restrictions___Timing_Pattern_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Description of Timing Pattern is required by the specification. (NRTM 3.3.5.11.7.5.2.2).  RECORD this information as: TMDD_N93R1067_Description_of_Timing_Pattern_Supported = ${TMDD_N93R1067_Description_of_Timing_Pattern_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Maximum Green Duration is required by the specification. (NRTM 3.3.5.11.7.5.2.3).  RECORD this information as: TMDD_N93R1068_Maximum_Green_Duration_Supported = ${TMDD_N93R1068_Maximum_Green_Duration_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Minimum Green Duration is required by the specification. (NRTM 3.3.5.11.7.5.2.4).  RECORD this information as: TMDD_N93R1069_Minimum_Green_Duration_Supported = ${TMDD_N93R1069_Minimum_Green_Duration_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Vehicle Clearance Duration is required by the specification. (NRTM 3.3.5.11.7.5.2.5).  RECORD this information as: TMDD_N93R1070_Vehicle_Clearance_Duration_Supported = ${TMDD_N93R1070_Vehicle_Clearance_Duration_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Vehicle Red Duration is required by the specification. (NRTM 3.3.5.11.7.5.2.6).  RECORD this information as: TMDD_N93R1071_Vehicle_Red_Duration_Supported = ${TMDD_N93R1071_Vehicle_Red_Duration_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Minimum Walk Duration is required by the specification. (NRTM 3.3.5.11.7.5.2.7).  RECORD this information as: TMDD_N93R1072_Minimum_Walk_Duration_Supported = ${TMDD_N93R1072_Minimum_Walk_Duration_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Pedestrian Clearance Duration is required by the specification. (NRTM 3.3.5.11.7.5.2.8).  RECORD this information as: TMDD_N93R1073_Pedestrian_Clearance_Duration_Supported = ${TMDD_N93R1073_Pedestrian_Clearance_Duration_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Steady-dont-walk Duration is required by the specification. (NRTM 3.3.5.11.7.5.2.9).  RECORD this information as: TMDD_N93R1074_Steady_dont_walk_Duration_Supported = ${TMDD_N93R1074_Steady_dont_walk_Duration_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Phase Sequence Information is required by the specification. (NRTM 3.3.5.11.7.5.2.10).  RECORD this information as: TMDD_N93R1075_Phase_Sequence_Information_Supported = ${TMDD_N93R1075_Phase_Sequence_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Timing Pattern Inventory Date and Time Change Information is required by the specification. (NRTM 3.3.5.11.7.5.2.11).  RECORD this information as: TMDD_N93R1076_Timing_Pattern_Inventory_Date_and_Time_Change_Information_Supported = ${TMDD_N93R1076_Timing_Pattern_Inventory_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.1" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 16 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 17 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 18 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 19 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 20 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 21 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 22 CONFIGURE: Define the subscription message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 23 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 24 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 25 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlIntersectionSignalTimingPatternInventorySubscription RESPONSETIMEREQUIRED= SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlIntersectionSignalTimingPatternInventorySubscription" functionId="dlIntersectionSignalTimingPatternInventorySubscription" RESPONSETIMEREQUIRED="60000" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 26 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 26.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps.  Note:If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 26.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlIntersectionSignalTimingPatternInventoryUpdate RESPONSETIMEREQUIRED=TMDD_N93R1059_Publish_Signal_Timing_Pattern_Information_Parameter PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlIntersectionSignalTimingPatternInventoryUpdate" functionId="dlIntersectionSignalTimingPatternInventoryUpdate" RESPONSETIMEREQUIRED="${TMDD_N93R1059_Publish_Signal_Timing_Pattern_Information_Parameter}" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 26.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 26.1.2.1 VERIFY that an intersectionSignalTimingPatternInventoryMsg message was received." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="intersectionSignalTimingPatternInventoryMsg" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg" elementType="message" functionId="Looking for intersectionSignalTimingPatternInventoryMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 26.1.2.2 VERIFY that an organization-information data frame exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-information" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item"/>
+                         </testStep>
+                         <testStep functionId="Step 26.1.2.3 VERIFY that a device-id data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="device-id" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item"/>
+                         </testStep>
+                         <testStep functionId="Step 26.1.2.4 VERIFY that a timing-pattern-id data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="timing-pattern-id" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item"/>
+                         </testStep>
+                         <testStep functionId="Step 26.1.2.5 VERIFY that a cycle-length data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="cycle-length" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item"/>
+                         </testStep>
+                         <testStep functionId="Step 26.1.2.6 VERIFY that an offset-time data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="offset-time" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item"/>
+                         </testStep>
+                         <testStep functionId="Step 26.1.2.7 VERIFY that a phase-identifier data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="phase-identifier" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                         </testStep>
+                         <testStep functionId="Step 26.1.2.8 VERIFY that a coordinated-phase data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="coordinated-phase" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                         </testStep>
+                         <testStep functionId="Step 26.1.2.9 VERIFY that a split-mode data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="split-mode" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                         </testStep>
+                         <testStep functionId="Step 26.1.2.10 VERIFY that a phase-split data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="phase-split" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                         </testStep>
+                         <testStep functionId="Step 26.1.2.11 IF TMDD_N93R1066_Restrictions___Timing_Pattern_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1066_Restrictions___Timing_Pattern_Supported}">
+                              <testStep functionId="Step 26.1.2.11.1 VERIFY that a restrictions data frame exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="restrictions" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.12 IF TMDD_N93R1067_Description_of_Timing_Pattern_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1067_Description_of_Timing_Pattern_Supported}">
+                              <testStep functionId="Step 26.1.2.12.1 VERIFY that a timing-pattern-name data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="timing-pattern-name" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.13 IF TMDD_N93R1068_Maximum_Green_Duration_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1068_Maximum_Green_Duration_Supported}">
+                              <testStep functionId="Step 26.1.2.13.1 VERIFY that a maximum-green-duration data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="maximum-green-duration" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.14 IF TMDD_N93R1069_Minimum_Green_Duration_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1069_Minimum_Green_Duration_Supported}">
+                              <testStep functionId="Step 26.1.2.14.1 VERIFY that a minimum-green-duration data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="minimum-green-duration" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.15 IF TMDD_N93R1070_Vehicle_Clearance_Duration_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1070_Vehicle_Clearance_Duration_Supported}">
+                              <testStep functionId="Step 26.1.2.15.1 VERIFY that a vehicle-clearance-duration data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="vehicle-clearance-duration" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.16 IF TMDD_N93R1071_Vehicle_Red_Duration_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1071_Vehicle_Red_Duration_Supported}">
+                              <testStep functionId="Step 26.1.2.16.1 VERIFY that a vehicle-red-duration data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="vehicle-red-duration" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.17 IF TMDD_N93R1072_Minimum_Walk_Duration_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1072_Minimum_Walk_Duration_Supported}">
+                              <testStep functionId="Step 26.1.2.17.1 VERIFY that a minimum-walk-duration data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="minimum-walk-duration" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.18 IF TMDD_N93R1073_Pedestrian_Clearance_Duration_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1073_Pedestrian_Clearance_Duration_Supported}">
+                              <testStep functionId="Step 26.1.2.18.1 VERIFY that a pedestrian-clearance-duration data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="pedestrian-clearance-duration" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.19 IF TMDD_N93R1074_Steady_dont_walk_Duration_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1074_Steady_dont_walk_Duration_Supported}">
+                              <testStep functionId="Step 26.1.2.19.1 VERIFY that a steady-dont-walk-duration data element exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="steady-dont-walk-duration" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases" elementType="data-element" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.20 IF TMDD_N93R1075_Phase_Sequence_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1075_Phase_Sequence_Information_Supported}">
+                              <testStep functionId="Step 26.1.2.20.1 VERIFY that a sequence-information data frame exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="sequence-information" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.21 IF TMDD_N93R1076_Timing_Pattern_Inventory_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N93R1076_Timing_Pattern_Inventory_Date_and_Time_Change_Information_Supported}">
+                              <testStep functionId="Step 26.1.2.21.1 VERIFY that a last-update-time data frame exists within each instance of data frame intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="last-update-time" instanceName="tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 26.1.2.22 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N93R1046_Restrictions___Timing_Pattern_Supported,restrictions,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item;TMDD_N93R1047_Description_of_Timing_Pattern_Supported,timing-pattern-name,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item;TMDD_N93R1045_Maximum_Green_Duration_Supported,maximum-green-duration,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases;TMDD_N93R1046_Minimum_Green_Duration_Supported,minimum-green-duration,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases;TMDD_N93R1047_Vehicle_Clearance_Duration_Supported,vehicle-clearance-duration,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases;TMDD_N93R1045_Vehicle_Red_Duration_Supported,vehicle-red-duration,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases;TMDD_N93R1046_Minimum_Walk_Duration_Supported,minimum-walk-duration,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases;TMDD_N93R1047_Pedestrian_Clearance_Duration_Supported,pedestrian-clearance-duration,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases;TMDD_N93R1074_Steady_dont_walk_Duration_Supported,steady-dont-walk-duration,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item.phase-tp-list.phases;TMDD_N93R1075_Phase_Sequence_Information_Supported,sequence-information,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item;TMDD_N93R1076_Timing_Pattern_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:intersectionSignalTimingPatternInventoryMsg.intersection-signal-timing-pattern-inventory-item;TMDD_N93R15_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 26.1.2.23 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                              <jl:set var="CONTENTVERIFIED" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 26.1.2.24 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlIntersectionSignalTimingPatternInventoryUpdate RESPONSETIMEREQUIRED=TMDD_N93R1059_Publish_Signal_Timing_Pattern_Information_Parameter CONTENTVERIFIED = CONTENTVERIFIED PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlIntersectionSignalTimingPatternInventoryUpdate" functionId="dlIntersectionSignalTimingPatternInventoryUpdate" RESPONSETIMEREQUIRED="${TMDD_N93R1059_Publish_Signal_Timing_Pattern_Information_Parameter}" CONTENTVERIFIED="${CONTENTVERIFIED}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+          <testStep functionId="Step 27 IF SubscriptionErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 27.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 27.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 27.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 27.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 27.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 27.6 VERIFY that data element error-code is set to SubscriptionErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${SubscriptionErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 27.7 IF TMDD_N93R15_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N93R15_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 27.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 28 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

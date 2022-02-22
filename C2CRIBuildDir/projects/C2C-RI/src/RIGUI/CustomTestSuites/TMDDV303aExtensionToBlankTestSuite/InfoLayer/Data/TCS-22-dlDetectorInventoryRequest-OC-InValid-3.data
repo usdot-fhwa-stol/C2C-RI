@@ -1,0 +1,49 @@
+ 
+#<!--   
+#       Title:  TCS-22-dlDetectorInventoryRequest-OC-InValid-3
+#       Description:  This test case is used to verify the SUTs support of the dlDetectorInventoryRequest dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.1.5 [Need for Detector Data Correlation]. This Test Case tests for a InValid (3) response result.
+#       Related Procedure:  TPS-22-dlDetectorInventoryRequest-OC
+#       Version/Date: 2013/09/25 10:25:14
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Request Message to be sent to the SUT.
+RequestMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether an error response is expected from the SUT.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of error response that is expected from the SUT.
+ErrorTypeExpected = 3
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.authentication.user-id 
+tmdd:deviceInformationRequestMsg.authentication.user-id = string
+

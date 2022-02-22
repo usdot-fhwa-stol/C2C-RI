@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Developing a Plug-in</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, plugin, plug-in, develop, develop jameleon plug-in,"/>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                Developing a plug-in for Jameleon requires writing two classes, a session tag, and an
+                abstract function tag. Most interfaces require some sort of handle on the application/system
+                being tested. This handle is across multiple function tags. For lack of a better word at the time, 
+                this handle is represented as a session tag.
+            </p>
+            <p>
+                A session may contain several generic tags (csv tag, map-variable tag, etc ...) as well
+                as plug-in specific function tags. This function tag is what is used to test components of the
+                application. Please be sure to read <a href="overview.html">Architectural Overview</a> for
+                a better understanding of the basic design of Jameleon.
+            </p>
+        </section>
+        <section name="Design Phase">
+            <p>
+                The first step to developing anything is usually designing it. Even if it's a simple design,
+                at least some thought needs to be put into it. The first thing to do is decide whether or
+                not the state of the application will need to be known between functional points.
+            </p>
+            <p>
+                If a handle is not required, then only a very simple implementation of SessioTag needs to be 
+                implemented. In fact, all that is required is a class that extends SessioTag and that does 
+                nothing else. However, if it is required that the functional points have a handle on the
+                application's state or just the application itself, then a bit more complex implementation
+                of SessionTag is required.
+            </p>
+            <p>
+                The next phase is to decide how to implement a base function tag that others can implement
+                to test their applications. The first decision to make is how much control is desired and
+                how easy a function tag will be to use. For the current plug-ins, the facade pattern was 
+                used to create a single place where all methods could be called from. If the library you 
+                are wishing to add support for doesn't use listeners for application access or state change,
+                then developing this base function tag will likely be more involved.
+            </p>
+        </section>
+        <section name="Developing a Session Tag">
+            <p>
+                For the most part, the steps to develop a session tag are documented in the javadocs for 
+                <a href="/apidocs/net/sf/jameleon/SessionTag.html">SessionTag</a>. Please refer there
+                for now.
+            </p>
+            <p>
+                To register your new session tag in Jameleon, all you need to do is add @jameleon.function name="tag-name"
+                to the class-level javadocs, as described <a href="functionPoints.html#Class File Declarations">here</a>.
+            </p>
+            <p>
+                Some things to keep in mind when developing a session tag.
+                <ul>
+                    <li>The plug-in's session tag should not require an extension to use.</li>
+                    <li>Everything it needs should be configurable via the script itself.</li>
+                    <li>If the application type being tested requires some sort of handle,
+                        then create an instance variable which represents this handle and create
+                        corresponding public set and get methods for it.</li>
+                </ul>
+            </p>
+        </section>
+        <section name="Developing an abstract Function Tag">
+            <p>
+                Creating an abstract Function Tag is as simple as creating a class that extends
+                <a href="/apidocs/net/sf/jameleon/function/FunctionTag.html">FunctionTag</a> and nothing
+                more. The steps to creating a Function Tag for a plug-in are listed in the 
+                <a href="/apidocs/net/sf/jameleon/function/FunctionTag.html">FunctionTag javadocs</a>.
+            </p>
+            <p>
+                The important thing to remember is that the session will likely contain some sort of
+                handle on the application. The handle on the application should be referenced locally
+                in the Function Tag. This action should occur in the 
+                <a href="/apidocs/net/sf/jameleon/function/FunctionTag.html#setupEnvironment">setupEnvironment method</a>.
+                Don't forget to call super.setupEnvironment() before doing anything else in this method. Please see the source
+                code for HttpUnitFunctionTag and HttpFunctionTag for more examples of this. This method can also be used
+                to enforce that the new Function Tag only exist under the plug-in provided Session Tag. An example of this
+                might look like:
+                <source>
+/**
+* Only used to guarantee that the parent of this tag is
+*/
+public void setupEnvironment() {
+super.setupEnvironment();
+Object obj =  findAncestorWithClass(JUnitSessionTag.class);
+JUnitSessionTag s = null;
+if (obj instanceof JUnitSessionTag) {
+s = (JUnitSessionTag)obj;
+} else {
+throw new ClassCastException(&quot;Can only execute a JUnit&quot;+
+                         &quot;function tag under the JUnit&quot;+
+                         &quot;session tag&quot;);
+}
+}</source>
+            </p>
+            <p>
+                Do not provide a @jameleon.function javadoc for this class since it is abstract and should
+                not be used directly for behavior. To create attributes that all extending function tags can
+                use, please read the section on <a href="functionPoints.html#FP_Javadocs">javadocs</a>.
+            </p>
+        </section>
+        <section name="Register Plug-in Tags">
+            <p>
+              The last step to writing a plug-in is to registering the plug-in specific tags into a properties file with an
+              appropriate name. This is documented at the <a href="antTasks.html#Tag_Registration_Task">Tag Registration Ant Task</a>.
+            </p>
+        </section>
+        <section name="Conclusion">
+            <p>
+                This just a begining to a much more thorough document. Before it can become more
+                thorough however, we will need feedback as to what could be explained better. We ask
+                that everyone attempting to develop a plug-in to notify us and we will try our best
+                to provide special attention to those that require it.
+            </p>
+            <p>
+                Please send all extensions to open-source libaries to a Jameleon administrator for inclusion
+                into the Jameleon release. This way, before any major changes are made to API, we will know
+                what side affects may occur. This also assumes unit and acceptances are written for each
+                plug-in. Full credit will be given to the plug-in contributor(s) and depending on the complexity of the
+                plug-in, commit access to CVS may be given to the plug-in contributor(s).
+            </p>
+        </section>
+    </body>
+</document>

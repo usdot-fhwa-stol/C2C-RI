@@ -1,0 +1,76 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSDL-1b4-MessagesValid
+#       Description:  TCS-C2CRI-NTCIP2306-WSDL-1b4-MessagesValid
+#       Related Procedure:  null
+#       Version/Date: 2011/11/15 22:59:43
+#-->
+
+
+#ITERATION NAME = One
+#GROUP NAME = Messages
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1b41.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 17.3 VERIFY that the message has 2 parts.  The name attribute of the first part shall always be [c2cMsgAdmin], and the element attribute is [c2c:c2cMessageSubscription].
+
+#ITERATION NAME = Two
+#GROUP NAME = Messages
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1b42.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 17.3 VERIFY that the message has 2 parts.  The name attribute of the first part shall always be [c2cMsgAdmin], and the element attribute is [c2c:c2cMessageSubscription].
+
+#ITERATION NAME = Three
+#GROUP NAME = Messages
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1b43.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 17.7 VERIFY that the message has 2 parts.  The name attribute of the first part shall always be [c2cMsgAdmin], and the element attribute is [c2c:c2cMessagePublication].
+
+#ITERATION NAME = Four
+#GROUP NAME = Messages
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1b44.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 17.7 VERIFY that the message has 2 parts.  The name attribute of the first part shall always be [c2cMsgAdmin], and the element attribute is [c2c:c2cMessagePublication].

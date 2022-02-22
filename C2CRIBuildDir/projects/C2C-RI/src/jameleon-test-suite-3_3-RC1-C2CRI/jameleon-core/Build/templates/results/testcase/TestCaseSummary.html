@@ -1,0 +1,129 @@
+<html>
+   <head>
+       <meta http-equiv="Content-Type" content="text/html; charset=${encoding}"/>
+       <link rel="stylesheet" href="${results_res_dir}/css/testCaseResults.css" type="text/css" media="all"/>
+   </head>
+<body bgcolor="#FFFFFF">
+
+<div class="test_case_summary_separator">
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Time Executed</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal">${result.dateTimeExecuted.Time}</div>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Test Case</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabel">$!tc.name</div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="test_case_summary_separator">
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Summary</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal">$!tc.summary</div>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Test Case ID</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal">$!tc.testCaseId</div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="test_case_summary_separator">
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Requirement ID</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal">$!tc.testCaseRequirement</div>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Author</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal">$!tc.author</div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="test_case_summary_separator">
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Bug(s)</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal" id="bugs">#foreach ( $bug in $tc.bugs ) <a target="window" href="${bugTrackerUrl}${bug}">$bug</a> #end</div>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Application Tested</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal">$!tc.Application</div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="test_case_summary_separator">
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Feature Tested</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal">$!tc.functionalPointTested</div>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Test Level(s)</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal">#foreach ( $level in $tc.testLevels ) $level #end</div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="test_case_summary_separator">
+    <table width="100%" cellpadding="0" cellspacing="0">
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Test Environment</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal">$!tc.testEnvironment</div>
+            </td>
+        </tr>
+        <tr>
+            <td width="150" valign="top">
+                <div class="txtLabel">Organization</div>
+            </td>
+            <td valign="top">
+                <div class="txtLabelVal">$!tc.organization</div>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

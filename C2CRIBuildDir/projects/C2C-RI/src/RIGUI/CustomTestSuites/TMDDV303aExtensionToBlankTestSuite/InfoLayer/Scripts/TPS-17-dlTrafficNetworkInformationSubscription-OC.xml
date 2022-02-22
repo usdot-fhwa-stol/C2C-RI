@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-17-dlTrafficNetworkInformationSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlTrafficNetworkInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.4.4 [Need to Share Route Data] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:17:33-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlTrafficNetworkInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.4.4 [Need to Share Route Data] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Route Status is required by the specification. (NRTM 3.3.4.4.2.5.2.1).  RECORD this information as: TMDD_N17R340_Restrictions___Route_Status_Supported = ${TMDD_N17R340_Restrictions___Route_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Route Name - Route Status is required by the specification. (NRTM 3.3.4.4.2.5.2.2).  RECORD this information as: TMDD_N17R341_Route_Name___Route_Status_Supported = ${TMDD_N17R341_Route_Name___Route_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Route Detour Status Flag is required by the specification. (NRTM 3.3.4.4.2.5.2.3).  RECORD this information as: TMDD_N17R342_Route_Detour_Status_Flag_Supported = ${TMDD_N17R342_Route_Detour_Status_Flag_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Route Surface Conditions is required by the specification. (NRTM 3.3.4.4.2.5.2.4).  RECORD this information as: TMDD_N17R343_Route_Surface_Conditions_Supported = ${TMDD_N17R343_Route_Surface_Conditions_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Route Existing Capacity is required by the specification. (NRTM 3.3.4.4.2.5.2.5).  RECORD this information as: TMDD_N17R344_Route_Existing_Capacity_Supported = ${TMDD_N17R344_Route_Existing_Capacity_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Route Level of Service is required by the specification. (NRTM 3.3.4.4.2.5.2.6).  RECORD this information as: TMDD_N17R345_Route_Level_of_Service_Supported = ${TMDD_N17R345_Route_Level_of_Service_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Route Saturation is required by the specification. (NRTM 3.3.4.4.2.5.2.7).  RECORD this information as: TMDD_N17R346_Route_Saturation_Supported = ${TMDD_N17R346_Route_Saturation_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Route Data Stored Type is required by the specification. (NRTM 3.3.4.4.2.5.2.8).  RECORD this information as: TMDD_N17R347_Route_Data_Stored_Type_Supported = ${TMDD_N17R347_Route_Data_Stored_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Route Traffic Algorithm Data Type is required by the specification. (NRTM 3.3.4.4.2.5.2.9).  RECORD this information as: TMDD_N17R348_Route_Traffic_Algorithm_Data_Type_Supported = ${TMDD_N17R348_Route_Traffic_Algorithm_Data_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Route Delay Time is required by the specification. (NRTM 3.3.4.4.2.5.2.10).  RECORD this information as: TMDD_N17R349_Route_Delay_Time_Supported = ${TMDD_N17R349_Route_Delay_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Route Delay Time - Alternate Route is required by the specification. (NRTM 3.3.4.4.2.5.2.11).  RECORD this information as: TMDD_N17R350_Route_Delay_Time___Alternate_Route_Supported = ${TMDD_N17R350_Route_Delay_Time___Alternate_Route_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Route Headway is required by the specification. (NRTM 3.3.4.4.2.5.2.12).  RECORD this information as: TMDD_N17R351_Route_Headway_Supported = ${TMDD_N17R351_Route_Headway_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Route Travel Time is required by the specification. (NRTM 3.3.4.4.2.5.2.13).  RECORD this information as: TMDD_N17R352_Route_Travel_Time_Supported = ${TMDD_N17R352_Route_Travel_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Route Travel Time Increase is required by the specification. (NRTM 3.3.4.4.2.5.2.14).  RECORD this information as: TMDD_N17R353_Route_Travel_Time_Increase_Supported = ${TMDD_N17R353_Route_Travel_Time_Increase_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Route Volume is required by the specification. (NRTM 3.3.4.4.2.5.2.15).  RECORD this information as: TMDD_N17R354_Route_Volume_Supported = ${TMDD_N17R354_Route_Volume_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Route Average Speed is required by the specification. (NRTM 3.3.4.4.2.5.2.16).  RECORD this information as: TMDD_N17R355_Route_Average_Speed_Supported = ${TMDD_N17R355_Route_Average_Speed_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Route Density is required by the specification. (NRTM 3.3.4.4.2.5.2.17).  RECORD this information as: TMDD_N17R356_Route_Density_Supported = ${TMDD_N17R356_Route_Density_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Route Occupancy is required by the specification. (NRTM 3.3.4.4.2.5.2.18).  RECORD this information as: TMDD_N17R357_Route_Occupancy_Supported = ${TMDD_N17R357_Route_Occupancy_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Route Current Advisory Speed is required by the specification. (NRTM 3.3.4.4.2.5.2.19).  RECORD this information as: TMDD_N17R358_Route_Current_Advisory_Speed_Supported = ${TMDD_N17R358_Route_Current_Advisory_Speed_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 21 CONFIGURE: Determine whether Speed Limit Units - Route Status is required by the specification. (NRTM 3.3.4.4.2.5.2.20).  RECORD this information as: TMDD_N17R359_Speed_Limit_Units___Route_Status_Supported = ${TMDD_N17R359_Speed_Limit_Units___Route_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 22 CONFIGURE: Determine whether Event Description Time - Route Status is required by the specification. (NRTM 3.3.4.4.2.5.2.21).  RECORD this information as: TMDD_N17R360_Event_Description_Time___Route_Status_Supported = ${TMDD_N17R360_Event_Description_Time___Route_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 23 CONFIGURE: Determine whether Route Status Date and Time Change Information is required by the specification. (NRTM 3.3.4.4.2.5.2.22).  RECORD this information as: TMDD_N17R361_Route_Status_Date_and_Time_Change_Information_Supported = ${TMDD_N17R361_Route_Status_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 24 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 25 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 26 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 27 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 28 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 29 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 30 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 31 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 32 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 33 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlTrafficNetworkInformationSubscription SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlTrafficNetworkInformationSubscription" functionId="dlTrafficNetworkInformationSubscription" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 34 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 34.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 34.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlRouteStatusUpdate RESPONSETIMEREQUIRED=TMDD_N17R335_Publish_Route_Status_Information_Parameter PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlRouteStatusUpdate" functionId="dlRouteStatusUpdate" RESPONSETIMEREQUIRED="${TMDD_N17R335_Publish_Route_Status_Information_Parameter}" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 34.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 34.1.2.1 VERIFY that element routeStatusMsg exists." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="routeStatusMsg" instanceName="tmdd:routeStatusMsg" elementType="message" functionId="Looking for routeStatusMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 34.1.2.2 VERIFY that element organization-information exists within each instance of routeStatusMsg.route-status-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-information" instanceName="tmdd:routeStatusMsg.route-status-item" elementType="data-frame" functionId="Looking for routeStatusMsg.route-status-item"/>
+                         </testStep>
+                         <testStep functionId="Step 34.1.2.3 VERIFY that element network-id exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="network-id" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                         </testStep>
+                         <testStep functionId="Step 34.1.2.4 VERIFY that element route-id exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="route-id" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                         </testStep>
+                         <testStep functionId="Step 34.1.2.5 VERIFY that element route-status exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="route-status" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                         </testStep>
+                         <testStep functionId="Step 34.1.2.6 IF TMDD_N17R340_Restrictions___Route_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R340_Restrictions___Route_Status_Supported}">
+                              <testStep functionId="Step 34.1.2.6.1 VERIFY that element restrictions exists within each instance of routeStatusMsg.route-status-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="restrictions" instanceName="tmdd:routeStatusMsg.route-status-item" elementType="data-frame" functionId="Looking for routeStatusMsg.route-status-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.7 IF TMDD_N17R341_Route_Name___Route_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R341_Route_Name___Route_Status_Supported}">
+                              <testStep functionId="Step 34.1.2.7.1 VERIFY that element route-name exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="route-name" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.8 IF TMDD_N17R342_Route_Detour_Status_Flag_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R342_Route_Detour_Status_Flag_Supported}">
+                              <testStep functionId="Step 34.1.2.8.1 VERIFY that element detour-route-in-effect-flag exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="detour-route-in-effect-flag" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.9 IF TMDD_N17R343_Route_Surface_Conditions_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R343_Route_Surface_Conditions_Supported}">
+                              <testStep functionId="Step 34.1.2.9.1 VERIFY that element surface-condition exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="surface-condition" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.10 IF TMDD_N17R344_Route_Existing_Capacity_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R344_Route_Existing_Capacity_Supported}">
+                              <testStep functionId="Step 34.1.2.10.1 VERIFY that element route-capacity exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="route-capacity" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.11 IF TMDD_N17R345_Route_Level_of_Service_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R345_Route_Level_of_Service_Supported}">
+                              <testStep functionId="Step 34.1.2.11.1 VERIFY that element level-of-service exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="level-of-service" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.12 IF TMDD_N17R346_Route_Saturation_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R346_Route_Saturation_Supported}">
+                              <testStep functionId="Step 34.1.2.12.1 VERIFY that element saturation-flag exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="saturation-flag" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.13 IF TMDD_N17R347_Route_Data_Stored_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R347_Route_Data_Stored_Type_Supported}">
+                              <testStep functionId="Step 34.1.2.13.1 VERIFY that element route-data-stored-type exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="route-data-stored-type" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.14 IF TMDD_N17R348_Route_Traffic_Algorithm_Data_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R348_Route_Traffic_Algorithm_Data_Type_Supported}">
+                              <testStep functionId="Step 34.1.2.14.1 VERIFY that element route-traffic-data-algorithm exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="route-traffic-data-algorithm" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.15 IF TMDD_N17R349_Route_Delay_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R349_Route_Delay_Time_Supported}">
+                              <testStep functionId="Step 34.1.2.15.1 VERIFY that element delay exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="delay" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.16 IF TMDD_N17R350_Route_Delay_Time___Alternate_Route_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R350_Route_Delay_Time___Alternate_Route_Supported}">
+                              <testStep functionId="Step 34.1.2.16.1 VERIFY that element alternate-route-delay exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="alternate-route-delay" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.17 IF TMDD_N17R351_Route_Headway_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R351_Route_Headway_Supported}">
+                              <testStep functionId="Step 34.1.2.17.1 VERIFY that element headway exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="headway" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.18 IF TMDD_N17R352_Route_Travel_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R352_Route_Travel_Time_Supported}">
+                              <testStep functionId="Step 34.1.2.18.1 VERIFY that element travel-time exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="travel-time" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.19 IF TMDD_N17R353_Route_Travel_Time_Increase_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R353_Route_Travel_Time_Increase_Supported}">
+                              <testStep functionId="Step 34.1.2.19.1 VERIFY that element travel-time-increase exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="travel-time-increase" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.20 IF TMDD_N17R354_Route_Volume_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R354_Route_Volume_Supported}">
+                              <testStep functionId="Step 34.1.2.20.1 VERIFY that element volume exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="volume" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.21 IF TMDD_N17R355_Route_Average_Speed_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R355_Route_Average_Speed_Supported}">
+                              <testStep functionId="Step 34.1.2.21.1 VERIFY that element speed-average exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="speed-average" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.22 IF TMDD_N17R356_Route_Density_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R356_Route_Density_Supported}">
+                              <testStep functionId="Step 34.1.2.22.1 VERIFY that element density exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="density" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.23 IF TMDD_N17R357_Route_Occupancy_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R357_Route_Occupancy_Supported}">
+                              <testStep functionId="Step 34.1.2.23.1 VERIFY that element occupancy exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="occupancy" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.24 IF TMDD_N17R358_Route_Current_Advisory_Speed_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R358_Route_Current_Advisory_Speed_Supported}">
+                              <testStep functionId="Step 34.1.2.24.1 VERIFY that element current-speed-advisory exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="current-speed-advisory" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.25 IF TMDD_N17R359_Speed_Limit_Units___Route_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R359_Speed_Limit_Units___Route_Status_Supported}">
+                              <testStep functionId="Step 34.1.2.25.1 VERIFY that element speed-limit-units exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="speed-limit-units" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.26 IF TMDD_N17R360_Event_Description_Time___Route_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R360_Event_Description_Time___Route_Status_Supported}">
+                              <testStep functionId="Step 34.1.2.26.1 VERIFY that element event-description-time exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-description-time" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-element" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.27 IF TMDD_N17R361_Route_Status_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N17R361_Route_Status_Date_and_Time_Change_Information_Supported}">
+                              <testStep functionId="Step 34.1.2.27.1 VERIFY that element last-update-time exists within each instance of routeStatusMsg.route-status-item.route-status-list.route" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="last-update-time" instanceName="tmdd:routeStatusMsg.route-status-item.route-status-list.route" elementType="data-frame" functionId="Looking for routeStatusMsg.route-status-item.route-status-list.route"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 34.1.2.28 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N17R340_Restrictions___Route_Status_Supported,restrictions,tmdd:routeStatusMsg.route-status-item;TMDD_N17R341_Route_Name___Route_Status_Supported,route-name,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R342_Route_Detour_Status_Flag_Supported,detour-route-in-effect-flag,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R343_Route_Surface_Conditions_Supported,surface-condition,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R344_Route_Existing_Capacity_Supported,route-capacity,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R345_Route_Level_of_Service_Supported,level-of-service,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R346_Route_Saturation_Supported,saturation-flag,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R347_Route_Data_Stored_Type_Supported,route-data-stored-type,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R348_Route_Traffic_Algorithm_Data_Type_Supported,route-traffic-data-algorithm,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R349_Route_Delay_Time_Supported,delay,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R350_Route_Delay_Time___Alternate_Route_Supported,alternate-route-delay,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R351_Route_Headway_Supported,headway,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R352_Route_Travel_Time_Supported,travel-time,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R353_Route_Travel_Time_Increase_Supported,travel-time-increase,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R354_Route_Volume_Supported,volume,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R355_Route_Average_Speed_Supported,speed-average,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R356_Route_Density_Supported,density,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R357_Route_Occupancy_Supported,occupancy,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R358_Route_Current_Advisory_Speed_Supported,current-speed-advisory,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R359_Speed_Limit_Units___Route_Status_Supported,speed-limit-units,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R360_Event_Description_Time___Route_Status_Supported,event-description-time,tmdd:routeStatusMsg.route-status-item.route-status-list.route;TMDD_N17R361_Route_Status_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:routeStatusMsg.route-status-item.route-status-list.route;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 34.1.2.29 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                              <jl:set var="OptionalContentVerified" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 34.1.2.30 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlRouteStatusUpdate RESPONSETIMEREQUIRED=TMDD_N17R335_Publish_Route_Status_Information_Parameter OPTIONALCONTENTVERIFIED = OptionalContentVerified PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlRouteStatusUpdate" functionId="dlRouteStatusUpdate" RESPONSETIMEREQUIRED="${TMDD_N17R335_Publish_Route_Status_Information_Parameter}" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

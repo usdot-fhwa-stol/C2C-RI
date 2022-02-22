@@ -1,0 +1,144 @@
+ 
+#<!--   
+#       Title:  TCS-PostConditionTagTest-RIAsEC
+#       Description:  This test case is used to verify the RIs Postcondition Tag
+#       Related Procedure:  TPS-PostConditionTagTest
+#       Version/Date: 2012/02/25 22:33:21
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a main script test step is expected to fail.
+MainScriptTestStepFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a test step in the main script postcondition is expected to fail.
+MainScriptPostConditionFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a sub script test step is expected to fail.
+SubScriptTestStepFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a test step in the sub script postcondition is expected to fail.
+SubScriptPostConditionFailure = false
+
+#ITERATION NAME = Two
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a main script test step is expected to fail.
+MainScriptTestStepFailure = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a test step in the main script postcondition is expected to fail.
+MainScriptPostConditionFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a sub script test step is expected to fail.
+SubScriptTestStepFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a test step in the sub script postcondition is expected to fail.
+SubScriptPostConditionFailure = false
+
+#ITERATION NAME = Three
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a main script test step is expected to fail.
+MainScriptTestStepFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a test step in the main script postcondition is expected to fail.
+MainScriptPostConditionFailure = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a sub script test step is expected to fail.
+SubScriptTestStepFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a test step in the sub script postcondition is expected to fail.
+SubScriptPostConditionFailure = false
+
+#ITERATION NAME = Four
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a main script test step is expected to fail.
+MainScriptTestStepFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a test step in the main script postcondition is expected to fail.
+MainScriptPostConditionFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a sub script test step is expected to fail.
+SubScriptTestStepFailure = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a test step in the sub script postcondition is expected to fail.
+SubScriptPostConditionFailure = false
+
+#ITERATION NAME = Five
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a main script test step is expected to fail.
+MainScriptTestStepFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a test step in the main script postcondition is expected to fail.
+MainScriptPostConditionFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a sub script test step is expected to fail.
+SubScriptTestStepFailure = false
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a test step in the sub script postcondition is expected to fail.
+SubScriptPostConditionFailure = true
+
+

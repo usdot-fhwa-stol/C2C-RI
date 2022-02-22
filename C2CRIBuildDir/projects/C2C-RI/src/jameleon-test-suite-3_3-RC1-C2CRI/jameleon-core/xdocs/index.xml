@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Overview</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, automated, framework, automated testing framework"/>
+    <link href="default.css" rel="stylesheet" type="text/css"/>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                <b>Jameleon</b> is an automated testing framework that can be easily used by technical and
+                non-technical users alike. One of the main concepts behind Jameleon is to create a group of 
+                keywords or tags that represent different screens of an application. All of the logic required 
+                to automate each particular screen can be defined in Java and mapped to these keywords. The 
+                keywords can then be organized with different data sets to form test scripts without requiring 
+                an in-depth knowledge of how the application works. The test scripts are then used to 
+                automate testing and to generate manual test case documentation. 
+            </p>
+            <p>
+                Jameleon was designed to test many kinds of applications. To make this possible, Jameleon
+                was designed with a plug-in model. Currently, there are five plug-ins offered:
+                <ul>
+                  <li>A <a href="junit-plugin.html">JUnit plug-in</a> which can be used to test at a white 
+                      box level. All JUnit function tags can be used in conjunction with other plug-ins.</li>
+                  <li>A <a href="jiffie-plugin/index.html">Jiffie plug-in</a> which drives Internet Explorer
+                      and can therefore only be run on Windows. Most testers like this plug-in the most.</li>
+                  <li>An <a href="htmlunit-plugin/index.html">HtmlUnit plug-in</a> 
+                      which emulates a browser and supports JavaScript quite well. Because it emulates a browser,
+                      tests written in this plug-in can execute on any OS supported by Java.</li>
+                  <li>A <a href="selenium-plugin/index.html">Selenium Plug-in</a> 
+                      which drives the most popular browsers. tests written in this plug-in can execute on
+                      the most popular OSes. Seee the <a href="http://www.openqa.org/selenium-rc/">selenium site</a>
+                      for more in-depth information about Selenium-RC.</li>
+                  <li>A <a href="watij-plugin/index.html">Watij Plug-in</a>
+                      which drives Internet Explorer and can therefore only run on Windows. This plug-in has a lot
+                      of potential.</li>
+                  <li>An <a href="httpunit-plugin/index.html">HttpUnit plug-in</a>
+                      which emulates a browser, but doesn't have very good JavaScript support. Developers like this 
+                      plug-in the most. Because it emulates a browser, tests written in this plug-in can execute on 
+                      any OS supported by Java.</li>
+                  <li>A <a href="jagacy-plugin/index.html">3270 (Jagacy) plug-in</a> which is used to automate mainframe
+                      applications.</li>
+                  <li>A <a href="jwebunit-plugin/index.html">jWebUnit plug-in</a> 
+                      which is the most basic among the provided plug-ins and currently has no generic tags other than
+                      a session tag. This plug-in is available for backwards compatibility only and should be avoided
+                      for new projects.</li>
+                </ul>
+            </p>
+            <p>
+                If Jameleon doesn't have some feature or plug-in, please feel free to request it as a feature via the 
+                <a target="_new" href="http://sourceforge.net/tracker/?atid=572242&amp;group_id=84246&amp;func=browse">
+                Request a Feature</a> link. Implementing Jameleon plug-ins is simple and can usually be done in less 
+                than a hour.
+            </p>
+            <p>
+                Even though it would be possible to write unit tests using Jameleon, Jameleon was designed with 
+                integration, regression, functional, and acceptance-level testing in mind. Most bugs are found and 
+                fixed by good unit tests. However, this does not eliminate the need to test the application as a whole.
+            </p>
+        </section>
+        <section name="Intrinsic Problems with Automated Testing">
+            <p>
+                Automated testing does not solve all of the testing needs. In fact, it usually introduces several new problems.
+                While many of these problems may be addressed by being extremely disciplined in an automated testing approach,
+                it is still important to be aware of these problems.
+            </p>
+            <subsection name="Automated Scripts Become Outdated by Frequent Changes to the Application.">
+                <p>
+                    Unless scripted by a self-disciplined group of testers who understand 
+                    object-oriented principles, it is likely the automated scripts will contain a lot of duplicated code. 
+                    Imagine having hundreds or even thousands of automated scripts written against
+                    a word processor. It is highly likely that those scripts will end up using several 
+                    features of the word processor just to arrive at the point being tested. Let's take 
+                    editing a file as an example. To test the underline feature, the application must be 
+                    started, a file must be opened, text must be selected, the underline button must be 
+                    pressed and finally the text must validated as being underlined. This single test includes 
+                    four actions; not to mention, validating the successful completion of each of the 
+                    actions. A change in any of these application features necessitates changes in the 
+                    underline test as well as many other tests.
+                </p>
+            </subsection>
+            <subsection name="Flexibility and Power is Often Sacrificed for Ease of Scripting.">
+                <p>
+                    Many of the available tools have as a selling point that they make writing automated tests
+                    quick and easy. To do this they rely on simplified scripting languages, which don't allow access to external
+                    resources or publicly developed and supported libraries. The languages also often limit the extent of abstraction 
+                    and reuse, or at the least do not encourage good coding practices for maintainability over the long run. 
+                    To make scripting easier, the tools lose the complexity of a full language, so organizations can only feasibly 
+                    test the easier problems, missing most of the unique value of automation. Because of the lack of flexibility, 
+                    it is common to see organizations needing several different tools for web testing, desktop GUI testing, client/server 
+                    testing, load testing, etc. Now testers have to learn many simplified scripting languages, so
+                    in the long run it may not be so simple to learn.
+                </p>
+            </subsection>
+            <subsection name="Automated Scripts are Hard to Read and External Docs Get Out of Sync.">
+                <p>
+                    For both automated and manual testing, test cases which document the 
+                    steps required to pass the business rules, are the base of any test plan. Because 
+                    automated scripts are usually managed separate from the test cases, the automated 
+                    scripts and the test cases have a high probability of getting out of sync. Soon, 
+                    no one knows whether the test case or the test script represent the current 
+                    state of the application.
+                </p>
+            </subsection>
+            <subsection name="Too Much Work to Test all Possible Scenarios.">
+                <p> 
+                    In many cases, the data being tested cannot be easily separated from the actual test 
+                    script. This requires creating several test scripts or requiring the data be included
+                    in the code itselft in order to test the many small rules of a single business rule. This not 
+                    only requires extra work to test a that single feature, but it also makes it a nightmare to 
+                    maintain the test scripts that only differ in the data being used to test the application.
+                </p>
+            </subsection>
+            <subsection name="Automated Scripts can be Difficult to Port Between Environments.">
+                <p>
+                   Many of the automated testing frameworks available don't take the lifecycle 
+                   of a product into consideration. A product must go through development, alpha 
+                   testing, beta testing, and performance testing before it reaches the masses. 
+                   Because of the infeasibility of editing large numbers of scripts, many organizations only 
+                   run their automated tests against one environment, thus missing opportunities for 
+                   validation and regression testing as the application advances in the product lifecycle.
+                </p>
+            </subsection>
+            <subsection name="Need to Learn Proprietary Technologies.">
+                <p> 
+                    Most testing tools require learning a propriety language or technology. This 
+                    makes it harder to find experienced people, which restricts a company's options in
+                    selecting testing tools. The narrow applicability of proprietary technologies may also 
+                    deter current employees from acquiring a more in-depth knowledge of the tool.
+                </p>
+            </subsection>
+        </section>
+        <section name="Jameleon to the Rescue">
+          <p>
+            Jameleon attempts to solve many of the intrinsic problems ...
+          </p>
+            <subsection name="Jameleon Takes a More Object-Oriented Approach to Testing Applications.">
+                <p>
+                    Jameleon separates applications into features that get scripted 
+                    independently in Java. These features can then be tied together to create a test-case. 
+                    When a feature in the application is changed, the only file to change is the 
+                    feature that was coded in Java. All test cases can remain untouched and still pick up the
+			  the new changes.
+                </p>
+            </subsection>
+            <subsection name="Jameleon Supports Scripting at Different Levels of Complexity.">
+                <p>
+                    Jameleon is an engine, not a specific solution, so the same architecture and scripting 
+                    language can be used for almost any testing problem. Jameleon offers a macro language to make
+                    scripting easier, but it is designed from the beginning with the assumption that the macro language 
+                    will be extended to meet each organization's specific testing needs. Because Jameleon
+                    is written to open standards such as Java and XML, it gives test script developers full control by its ability 
+                    to interface with code written in any language. The automated scripts themselves are simply a series
+                    of keywords that represent complete actions or "functional points" which are, in fact,
+                    components that are often custom-written for the application. Currently, Jameleon comes with plug-ins 
+                    that offer ready-made functional points for Java, web applications and mainframes; but it is architected
+                    to be extensible to permit the community to add support for other technologies.
+                </p>
+            </subsection>
+            <subsection name="Test Cases and Test Scripts are the Same.">
+                <p>     
+                    Because a test case is simply a set of organized features, Jameleon requires that 
+                    only the features need be documented. The test case's documentation is therefore 
+                    generated by the order of the features' documentation. The documentation and the 
+                    scripts can then be generated simply by selecting the order of functions to be 
+                    executed. Now if a feature's documentation changes, all of the test cases that 
+                    include that feature get the documented changes automatically.
+                </p>
+            </subsection>
+            <subsection name="No Environment Information in the Automated Tests.">
+                <p>     
+                    Jameleon allows for a test script to be run against different environments 
+                    without any changes to the test script itself. In Jameleon, test scripts and 
+                    environments are separate entities. After registering an application and the
+                    environment(s) it will be run in, it is as simple as telling Jameleon to run 
+                    the test scripts against that environment.
+                </p>
+            </subsection>
+            <subsection name="Data-Driven Tests.">
+                <p>
+                    Jameleon allows test-scripts to be data-driven from any external data source. Currently,
+			  there is support for CSV (Comma Separated Values) and JDBC (Java Database Connectivity). 
+			  This allows one feature to be tested by one script, but with multiple values being passed 
+			  for each row in the data file. A test can then be defined as one execution for each row of 
+			  the data source or as one execution for all rows of the data source. 
+                </p>
+            </subsection>
+            <subsection name="No Need to Know a Proprietary Technology.">
+                <p>
+                    In Jameleon, the features are coded in Java and they are mapped together in 
+                    XML. These technologies can be learned just about anywhere and are open-standards 
+                    that many companies adhere to.
+                </p>
+            </subsection>
+        </section>
+    </body>
+</document>

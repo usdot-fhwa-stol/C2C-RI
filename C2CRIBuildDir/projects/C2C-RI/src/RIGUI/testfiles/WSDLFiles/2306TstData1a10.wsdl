@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  F O R   T E S T I N G   P U R P O S E S   O N L Y  -->
+<!-- A WSDL document properly defined -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.tmdd.org/3/dialogs" xmlns:tmdd="http://www.tmdd.org/3/messages" xmlns:c2c="http://www.ntcip.org/c2c-message-administration" xmlns:ftp="http://schemas.ntcip.org/wsdl/ftp/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns2="http://www.ITIS-Adopted-03-00-02" xmlns:ns3="http://www.LRMS-Adopted-02-00-00" xmlns:ns4="http://www.LRMS-Local-02-00-00" xmlns:ns5="http://www.ntcip.org/c2f-objects" xmlns:ns6="http://www.ITIS-Local-03-00-02" xmlns:ns7="http://www.ntcip.org/c2f-object-references" name="TMDDCenterServices" targetNamespace="http://www.tmdd.org/3/dialogs">
+	<documentation>
+			C2C RI Test WSDL file
+			Last Updated: November 8, 2011 
+
+			This file is a WSDL for testing whether the C2C RI Application and NTCIP 2306 Test Suite 
+                  properly test for the requirements of NTCIP 2306.  This WSDL file should have no errors.
+	</documentation>
+	<types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:import namespace="http://www.tmdd.org/3/messages" schemaLocation="tmdd.xsd"/>
+			<xs:import namespace="http://www.ntcip.org/c2c-message-administration" schemaLocation="C2C.xsd"/>
+		</xs:schema>
+	</types>
+
+	<message name="MSG_centerActiveVerificationRequestMsg">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:centerActiveVerificationRequestMsg"/>
+	</message>
+
+	<message name="MSG_centerActiveVerificationResponseMsg">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:centerActiveVerificationResponseMsg"/>
+	</message>
+
+	<message name="MSG_c2cMessageReceipt">
+		<!-- CONNECTION MANAGEMENT Messages -->
+		<part name="message" element="c2c:c2cMessageReceipt"/>
+	</message>
+
+	<message name="MSG_deviceControlStatusRequestMsg">
+		<part name="message" element="tmdd:deviceControlStatusRequestMsg"/>
+	</message>
+
+	<message name="MSG_deviceControlResponseMsg">
+		<part name="message" element="tmdd:deviceControlResponseMsg"/>
+	</message>
+
+	<message name="MSG_deviceInformationRequestMsg">
+		<part name="message" element="tmdd:deviceInformationRequestMsg"/>
+	</message>
+
+	<message name="MSG_c2cMessageSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:deviceInformationRequestMsg"/>
+	</message>
+
+	<message name="MSG_dMSInventoryMsg">
+		<!-- DMS - Dynamic Message Sign Messages -->
+		<part name="message" element="tmdd:dMSInventoryMsg"/>
+	</message>
+
+	<message name="MSG_c2cMessagePublication">
+		<!-- DMS - Dynamic Message Sign Messages -->
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:dMSInventoryMsg"/>
+	</message>
+
+	<message name="MSG_errorReportMsg">
+		<part name="message" element="tmdd:errorReportMsg"/>
+	</message>
+
+	<portType name="tmddOCSoapHttpServicePortType">
+		<!-- ********************************************* -->
+		<!-- OWNER CENTER Operation PortType -->
+		<!-- ********************************************* -->
+		<operation name="OP_DeviceInformationSubscription">
+			<input message="tns:MSG_c2cMessageSubscription"/>
+			<output message="tns:MSG_c2cMessageReceipt"/>
+			<fault name="errorReport" message="tns:MSG_errorReportMsg"/>
+		</operation>
+		<!-- DMS -->
+		<operation name="OP_DMSInventoryRequest">
+			<documentation><objectClass>DMS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ2</requirement></documentation>
+			<input message="tns:MSG_deviceInformationRequestMsg"/>
+			<output message="tns:MSG_dMSInventoryMsg"/>
+			<fault name="errorReport" message="tns:MSG_errorReportMsg"/>
+		</operation>
+
+		<!-- ConnectionManagement -->
+		<operation name="OP_DlCenterActiveVerificationRequest">
+			<documentation><objectClass>ConnectionManagement</objectClass><msgPattern>R-R</msgPattern><requirement>REQ199</requirement></documentation>
+			<input message="tns:MSG_deviceControlStatusRequestMsg"/>
+			<output message="tns:MSG_deviceControlResponseMsg"/>
+			<fault name="errorReport" message="tns:MSG_errorReportMsg"/>
+		</operation>
+		<operation name="OP_dlCenterActiveVerificationSubscription">
+			<documentation><objectClass>ConnectionManagement</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1259</requirement></documentation>
+			<input message="tns:MSG_centerActiveVerificationRequestMsg"/>
+			<output message="tns:MSG_c2cMessageReceipt"/>
+			<fault name="errorReport" message="tns:MSG_errorReportMsg"/>
+		</operation>
+	</portType>
+	<portType name="tmddOCFtpServicePortType">
+		<!-- ********************************************* -->
+		<!-- OWNER CENTER Operation PortType -->
+		<!-- ********************************************* -->
+
+		<!-- DMS -->
+		<operation name="OP_RIXMLFtpDMSInventory">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Get</msgPattern><requirement>REQ2</requirement></documentation>
+			<input message="tns:MSG_deviceInformationRequestMsg"/>
+		</operation>
+	</portType>
+
+
+	<portType name="tmddOCHttpPostServicePortType">
+		<!-- ********************************************* -->
+		<!-- OWNER CENTER Operation PortType -->
+		<!-- ********************************************* -->
+
+		<!-- DMS -->
+		<operation name="OP_RIXMLHttpPostDMSInventory">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Post</msgPattern><requirement>REQ2</requirement></documentation>
+			<input message="tns:MSG_deviceInformationRequestMsg"/>
+			<output message="tns:MSG_dMSInventoryMsg"/>
+		</operation>
+	</portType>
+
+	<portType name="tmddOCHttpGetServicePortType">
+		<!-- ********************************************* -->
+		<!-- OWNER CENTER Operation PortType -->
+		<!-- ********************************************* -->
+
+		<!-- DMS -->
+		<operation name="OP_RIXMLHttpGetDMSInventory">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Get</msgPattern><requirement>REQ2</requirement></documentation>
+			<input message="tns:MSG_deviceInformationRequestMsg"/>
+		</operation>
+	</portType>
+
+	<portType name="tmddECSoapHttpServicePortType">
+		<!-- ************************************************ -->
+		<!-- EXTERNAL CENTER Operation PortType -->
+		<!-- ************************************************ -->
+		<!-- CONNECTIONMANAGEMENT -->
+		<operation name="OP_dlCenterActiveVerificationUpdate">
+			<documentation><objectClass>ConnectionManagement</objectClass><msgPattern>Pub</msgPattern><requirement>REQ200</requirement></documentation>
+			<input message="tns:MSG_centerActiveVerificationResponseMsg"/>
+			<output message="tns:MSG_c2cMessageReceipt"/>
+			<fault name="errorReport" message="tns:MSG_errorReportMsg"/>
+		</operation>
+		<!-- DMS -->
+		<operation name="OP_DeviceInformationUpdate">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1</requirement></documentation>
+			<input message="tns:MSG_c2cMessagePublication"/>
+			<output message="tns:MSG_c2cMessageReceipt"/>
+			<fault name="errorReport" message="tns:MSG_errorReportMsg"/>
+		</operation>
+	</portType>
+
+
+
+
+	<binding name="tmddOCSoapHttpServiceBinding" type="tns:tmddOCSoapHttpServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!-- ******************************** -->
+		<!-- OWNER CENTER Bindings -->
+		<!-- ******************************** -->
+		<operation name="OP_DeviceInformationSubscription">
+			<soap:operation soapAction="''" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- DMS -->
+		<operation name="OP_DMSInventoryRequest">
+			<soap:operation soapAction="http://C2CRIOC:8080/OP_DMSInventoryRequestSOAPAction" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- CONNECTIONMANAGEMENT -->
+		<operation name="OP_DlCenterActiveVerificationRequest">
+			<soap:operation soapAction="''" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="OP_dlCenterActiveVerificationSubscription">
+			<soap:operation soapAction="''" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+
+	</binding>
+	<binding name="tmddOCHttpGetServiceBinding" type="tns:tmddOCHttpGetServicePortType">
+		<http:binding verb="GET"/>
+		<!-- ******************************** -->
+		<!-- OWNER CENTER Bindings -->
+		<!-- ******************************** -->
+		<!-- DMS -->
+		<operation name="OP_RIXMLHttpGetDMSInventory">
+			<http:operation location="RIDMSInventory.xml"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:content type="gzip"/>
+			</output>
+		</operation>
+
+	</binding>
+	<binding name="tmddOCHttpPostServiceBinding" type="tns:tmddOCHttpPostServicePortType">
+		<http:binding verb="POST"/>
+		<!-- ******************************** -->
+		<!-- OWNER CENTER Bindings -->
+		<!-- ******************************** -->
+		<!-- DMS -->
+		<operation name="OP_RIXMLHttpPostDMSInventory">
+			<http:operation location="RIDMSInventory.xml"/>
+			<input>
+				<mime:content type="application/x-www-form-urlencoded"/>
+			</input>
+			<output>
+				<mime:content type="text/xml"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="tmddOCFtpGetServiceBinding" type="tns:tmddOCFtpServicePortType">
+		<ftp:binding verb="GET"/>
+		<!-- ******************************** -->
+		<!-- OWNER CENTER Bindings -->
+		<!-- ******************************** -->
+		<!-- DMS -->
+		<operation name="OP_RIXMLFtpDMSInventory">
+			<ftp:operation location="RIDMSInventory.zip"/>
+			<input>
+				<ftp:urlEncoded/>
+			</input>
+			<output>
+				<mime:content type="gzip"/>
+			</output>
+		</operation>
+	</binding>
+
+
+	<binding name="tmddECSoapHttpServiceBinding" type="tns:tmddECSoapHttpServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!-- *********************************** -->
+		<!-- EXTERNAL CENTER Bindings -->
+		<!-- *********************************** -->
+		<!-- CONNECTIONMANAGEMENT -->
+		<operation name="OP_dlCenterActiveVerificationUpdate">
+			<soap:operation soapAction="" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- DMS -->
+		<operation name="OP_DeviceInformationUpdate">
+			<soap:operation soapAction="" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="tmddOCSoapHttpService">
+		<!-- ************************ -->
+		<!-- OWNER CENTER Services -->
+		<!-- ************************ -->
+		<port name="tmddOCSoapHttpServicePort" binding="tns:tmddOCSoapHttpServiceBinding">
+			<soap:address location="http://C2CRIOC:8080/SoapTry"/>
+		</port>
+		<port name="tmddOCSoapHttpsServicePort" binding="tns:tmddOCSoapHttpServiceBinding">
+			<soap:address location="https://C2CRIOC:8080/SoapTry"/>
+		</port>
+		<port name="tmddOCHttpGetServicePort" binding="tns:tmddOCHttpGetServiceBinding">
+			<http:address location="http://C2CRIOC:8080/HttpGetService"/>
+		</port>
+		<port name="tmddOCHttpPostServicePort" binding="tns:tmddOCHttpPostServiceBinding">
+			<http:address location="http://C2CRIOC:8080/HTTPPostService"/>
+		</port>
+		<port name="tmddOCFtpGetServicePort" binding="tns:tmddOCFtpGetServiceBinding">
+			<ftp:address location="ftp://C2CRIOC:2221"/>
+		</port>
+	</service>
+	<service name="tmddECSoapHttpService">
+		<!-- ************************ -->
+		<!-- EXTERNAL CENTER Services -->
+		<!-- ************************ -->
+		<port name="tmddECSoapHttpServicePort" binding="tns:tmddECSoapHttpServiceBinding">
+			<soap:address location="http://C2CRIOC:8080/SoapTry2"/>
+		</port>
+	</service>
+</definitions>

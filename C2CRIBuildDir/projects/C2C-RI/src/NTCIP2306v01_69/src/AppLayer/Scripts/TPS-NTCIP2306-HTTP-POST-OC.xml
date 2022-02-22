@@ -1,0 +1,80 @@
+<?xml version="1.0" ?> 
+<!--   
+       Title:  TPS-NTCIP2306-HTTP-POST-OC
+       Description:  This test procedure is called by a test case and is used to verify a SUTs conformance to the XML Direct Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an OC using the POST command. 
+                     This procedure supports verification of requirements related to user need 2 (XML Direct) and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/03 12:47 (Manual)
+-->
+
+<testprocedure xmlns="jelly:jameleon"  xmlns:jl="jelly:core" >
+<test-case-id>${C2CRITestCaseID}</test-case-id>
+<test-case-summary>This test procedure is called by a test case and is used to verify a SUTs conformance to the XML Direct Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an OC using the POST command. This procedure supports verification of requirements related to user need 2 (XML Direct) and is used for both valid and invalid test cases.
+</test-case-summary>
+
+
+
+<testStep functionId = "Step 1 CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.  RECORD the WSDL File Name value as: WSDLFile = ${WSDLFile}"  passfailResult="False"/>
+<testStep functionId = "Step 2 CONFIGURE: Identify the HTTP related Service defined in the WSDL that will be used for the two-way POST operation during the test.  RECORD the Service name value as: ServiceName = ${ServiceName}"  passfailResult="False"/>
+<testStep functionId = "Step 3 CONFIGURE: Identify the port related to the HTTP POST service that will used during the test.  If NTCIP2306_N2R9_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP2306_N2R10_Message_Transport_HTTPS_Flag is true THEN any port utilizing the https protocol may be selected.  RECORD this value as: PortName =${PortName}"  passfailResult="False"/>
+<testStep functionId = "Step 4 CONFIGURE: Select a POST operation related to the HTTP Service selected to be used for the test.  RECORD this value as: OperationName = ${OperationName}"  passfailResult="False"/>
+<testStep functionId = "Step 5 CONFIGURE: Determine whether an HTTP transport error is expected during this test.  RECORD this value as: TransportErrorExpected = ${TransportErrorExpected}"  passfailResult="False"/>
+<testStep functionId = "Step 6 CONFIGURE: RECORD the expected type of HTTP transport  error as: TransportErrorTypeExpected = ${TransportErrorTypeExpected}"  passfailResult="False"/>
+<testStep functionId = "Step 7 CONFIGURE: Determine the XML message to be returned during this test.  RECORD this value as RequestMessage = ${RequestMessage}"  passfailResult="False"/>
+<testStep functionId = "Step 8 CONFIGURE: Determine whether an encoding error is expected during this test.  RECORD this value as EncodingErrorExpected = ${EncodingErrorExpected}"  passfailResult="False"/>
+<testStep functionId = "Step 9 CONFIGURE: RECORD the expected type of encoding error as: EncodingErrorTypeExpected = ${EncodingErrorTypeExpected}"  passfailResult="False"/>
+<testStep functionId = "Step 10 CONFIGURE: Determine whether an XML message error is expected during this test.  RECORD this value as MessageErrorExpected = ${MessageErrorExpected}"  passfailResult="False"/>
+<testStep functionId = "Step 11 CONFIGURE: RECORD the expected type of message error as: MessageErrorTypeExpected = ${MessageErrorTypeExpected}"  passfailResult="False"/>
+<testStep functionId = "Step 12 PERFORM TPS_NTCIP2306_WSDL."  passfailResult="True">
+		<ri-execute-script functionId="${C2CRITestCaseID}"
+                                   script="TPS-NTCIP2306-WSDL.xml"
+                                   checkOutcomePassed="true"/>
+ 								   
+</testStep>
+<testStep functionId = "Step 13 CONFIGURE: Prepare the SUT to support HTTP POST Service specified by ServiceName.  "  passfailResult="False">
+<NTCIP2306-session testCaseIdentifier="${C2CRITestCaseID}" riMode="EC" wsdlURL="${WSDLFile}">
+<testStep functionId = "Step 14 HTTP-POST-EC with the following parameter(s): SERVICENAME = ServiceName, PORTNAME = PortName, REQUESTMESSAGE = RequestMessage, OPERATIONNAME = OperationName  Returns:  TRANSPORTERRORRESULT, TRANSPORTERRORTYPE. ENCODINGERRORRESULT, ENCODINGERRORDESCRIPTION, MESSAGEERRORRESULT, MESSAGEERRORTYPE"  passfailResult="False">
+	<HTTP-POST-EC functionId="HTTP-POST-EC" SERVICENAME="${ServiceName}" PORTNAME="${PortName}" OPERATIONNAME="${OperationName}" REQUESTMESSAGE="${RequestMessage}"/>
+</testStep>
+
+	<testStep functionId = "Step 15 VERIFY that TRANSPORTERRORRESULT = TransportErrorExpected" >
+          <ju-assert-equals functionId="Verify the TRANSPORTERRORRESULT" msg="Error: TransportErrorExpected was ${TransportErrorExpected} while TRANSPORTERRORRESULT was ${TRANSPORTERRORRESULT} with TRANSPORTERRORTYPE was ${TRANSPORTERRORTYPE}."  actual="${TRANSPORTERRORRESULT}" expected="${TransportErrorExpected}"/>
+    </testStep>
+
+	<testStep functionId = "Step 16 VERIFY that TRANSPORTERRORTYPE = TransportErrorTypeExpected" >
+          <ju-assert-equals functionId="Verify the TRANSPORTERRORTYPE" msg="Error: TransportErrorTypeExpected was ${TransportErrorTypeExpected} while TRANSPORTERRORTYPE was ${TRANSPORTERRORTYPE}."  actual="${TRANSPORTERRORTYPE}" expected="${TransportErrorTypeExpected}"/>
+      </testStep>
+	  
+	<testStep functionId = "Step 17 IF TRANSPORTERRORRESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."  passfailResult="False"/>
+	<jl:if test="${!TRANSPORTERRORRESULT}">
+
+		<testStep functionId = "Step 17.1 VERIFY that ENCODINGERRORRESULT = EncodingErrorExpected" >
+			<ju-assert-equals functionId="Verify the ENCODINGERRORRESULT" msg="Error: EncodingErrorExpected was ${EncodingErrorExpected} while ENCODINGERRORRESULT was ${ENCODINGERRORRESULT} with ENCODINGERRORTYPE = ${ENCODINGERRORTYPE}."  actual="${ENCODINGERRORRESULT}" expected="${EncodingErrorExpected}"/>
+		</testStep>
+
+		<testStep functionId = "Step 17.2 VERIFY that ENCODINGERRORTYPE = EncodingErrorTypeExpected" >
+			<ju-assert-equals functionId="Verify the ENCODINGERRORTYPE" msg="Error: EncodingErrorTypeExpected was ${EncodingErrorTypeExpected} while ENCODINGERRORTYPE was ${ENCODINGERRORTYPE}."  actual="${ENCODINGERRORTYPE}" expected="${EncodingErrorTypeExpected}"/>
+		</testStep>
+	  
+		<testStep functionId = "Step 17.3 IF ENCODINGERRORRESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."  passfailResult="False"/>
+		<jl:if test="${!ENCODINGERRORRESULT}">
+
+			<testStep functionId = "Step 17.3.1 VERIFY that MESSAGEERRORRESULT = MessageErrorExpected" >
+				<ju-assert-equals functionId="Verify the MESSAGEERRORRESULT" msg="Error: MessageErrorExpected was ${MessageErrorExpected} while MESSAGEERRORRESULT was ${MESSAGEERRORRESULT} with MESSAGEERRORTYPE = ${MESSAGEERRORTYPE}."  actual="${MESSAGEERRORRESULT}" expected="${MessageErrorExpected}"/>
+			</testStep>
+
+			<testStep functionId = "Step 17.3.2 VERIFY that MESSAGEERRORTYPE = MessageErrorTypeExpected" >
+				<ju-assert-equals functionId="Verify the MESSAGEERRORTYPE" msg="Error: MessageErrorTypeExpected was ${MessageErrorTypeExpected} while MESSAGEERRORTYPE was ${MESSAGEERRORTYPE}."  actual="${MESSAGEERRORTYPE}" expected="${MessageErrorTypeExpected}"/>
+			</testStep>			
+	
+		</jl:if>
+
+	</jl:if>
+		
+</NTCIP2306-session>
+</testStep>
+
+<postcondition>
+<testStep functionId=" Step 18 EXIT" passfailResult="False"/>
+</postcondition>
+
+</testprocedure>

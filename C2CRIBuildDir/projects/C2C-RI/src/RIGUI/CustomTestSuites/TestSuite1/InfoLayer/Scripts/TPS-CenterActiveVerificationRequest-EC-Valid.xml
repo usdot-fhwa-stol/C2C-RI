@@ -1,0 +1,49 @@
+<testcase xmlns="jelly:jameleon">
+  <precondition>	
+     <testStep functionId="Step 1. Ensure that the required needs (2.3.1.1) and requirements (3.3.1.1.1, 3.3.1.1.5 and 3.3.1.1.5.1) were selected in the NRTM.">
+
+ 	   <ju-assert-equals functionId = "Confirm Need 2.3.1.1 Setting is true" 
+	      expected="true"
+	      actual = "${TMDD_Need_2_3_1_1}"/>
+
+ 	   <ju-assert-equals functionId = "Check for Dialog Requirement 3.3.1.1.1 Setting is true" 
+	      expected="true"
+	      actual = "${TMDD_3_3_1_1_1}"/>
+
+ 	   <ju-assert-equals functionId = "Check for Message Requirement 3.3.1.1.5 Setting is true" 
+	      expected="true"
+	      actual = "${TMDD_3_3_1_1_5}"/>
+
+ 	   <ju-assert-equals functionId = "Check for Message Content Requirement 3.3.1.1.5.1 Setting is true" 
+	      expected="true"
+	      actual = "${TMDD_3_3_1_1_5_1}"/>
+
+     </testStep>
+  </precondition>
+
+  <C2CRI-session appStd = "NTCIP2306" infoStd = "TMDDV3" beginSession="true" riMode="EC" serviceName="tmddOCSoapHttpService"
+    portName = "tmddOCSoapHttpServicePort" operationName="DlCenterActiveVerificationRequest" useWSDL="true"
+    isPublicationOperation="false" testCaseIdentifier="TPS-CenterActiveVerificationRequest-EC-Valid" userName="anonymous" password="Anything">
+
+     <testStep functionId="Step 2. Create the Request Message to be sent to the Owner Center related to operation ${operationName}.">
+        <ri-create-message msgName="SampleRequest" msgType="Request" testCaseID="TPS-CenterActiveVerificationRequest-EC-Valid" 
+                        operationName="DlCenterActiveVerificationRequest"  operationMessageType="Input" overwrite="true" autoGenerate="true" 
+                        functionId="Create the Request Message" />
+     </testStep>
+
+     <testStep functionId="Step 3. Send the request message to the Owner Center related to operation ${operationName}.">
+        <ri-request messageName="SampleRequest" messageContent="" functionId="See what happens with the request." />
+     </testStep>
+
+     <testStep functionId="Step 4.  Receive the Response message from the Owner Center.">	
+        <ri-receive messageName="SampleReceipt" functionId="See what happens with the response." />
+     </testStep>
+
+     <testStep functionId="Step 5.  Validate the Response message from the Owner Center.">
+	  <ri-validate messageName="SampleReceipt" useTheProvidedWSDL="true" 
+                     functionId="Validating the received message using the Test Config WSDL Schema" />	
+     </testStep>
+
+  </C2CRI-session>
+</testcase>
+

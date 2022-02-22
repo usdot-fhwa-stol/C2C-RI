@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-91-dlIntersectionSignalPriorityQueueRequest-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlIntersectionSignalPriorityQueueRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.10.6 [Need to View Traffic Signal Controller Plan Queue] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/18 00:48:34-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlIntersectionSignalPriorityQueueRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.10.6 [Need to View Traffic Signal Controller Plan Queue] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Send Signal Control Priority Queue Information Upon Request (NTRM 3.3.5.11.13.1}.  RECORD this value as: TMDD_N91R1098_Send_Signal_Control_Priority_Queue_Information_Upon_Request_Parameter = ${TMDD_N91R1098_Send_Signal_Control_Priority_Queue_Information_Upon_Request_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Authentication - Device Queue (QueueAuth) is required by the specification. (NRTM 3.3.5.1.7.1.2.1).  RECORD this information as: TMDD_N91R428_Authentication___Device_Queue__QueueAuth__Supported = ${TMDD_N91R428_Authentication___Device_Queue__QueueAuth__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Operator Identifier - Device Queue is required by the specification. (NRTM 3.3.5.1.7.1.2.1.1).  RECORD this information as: TMDD_N91R429_Operator_Identifier___Device_Queue_Supported = ${TMDD_N91R429_Operator_Identifier___Device_Queue_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03d" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="OC">
+          <testStep functionId="Step 5 CONFIGURE: Define the response message that will be sent to the SUT.  RECORD this information as: ResponseMessage:  ${ResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 6 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 7 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 8 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 9 CONFIGURE: Identify the Operator Identifier expected for authentication during this test.  RECORD this information as: OperatorID:  ${OperatorID}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 11 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 12 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether the SUT is expected to have valid data available for a response message in this test.  RECORD this information as: DataValid:  ${DataValid}" passfailResult="False"/>
+          <testStep functionId="Step 14 REQUEST-RESPONSE-OC-RECEIVE with the following parameters:   DIALOG=dlIntersectionSignalPriorityQueueRequest RESPONSETIMEREQUIRED=TMDD_N91R1098_Send_Signal_Control_Priority_Queue_Information_Upon_Request_Parameter AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password OPERATORID = OperatorID ALLOWACCESS = AllowAccess ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected DATAVALID = DataValid ">
+               <REQUEST-RESPONSE-OC-RECEIVE Dialog="dlIntersectionSignalPriorityQueueRequest" functionId="dlIntersectionSignalPriorityQueueRequest" RESPONSETIMEREQUIRED="${TMDD_N91R1098_Send_Signal_Control_Priority_Queue_Information_Upon_Request_Parameter}" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" OPERATORID="${OperatorID}" ALLOWACCESS="${AllowAccess}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}" DATAVALID="${DataValid}"/>
+          </testStep>
+          <testStep functionId="Step 15 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 15.1 VERIFY that a devicePriorityQueueRequestMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="devicePriorityQueueRequestMsg" instanceName="tmdd:devicePriorityQueueRequestMsg" elementType="message" functionId="Looking for devicePriorityQueueRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 15.2 VERIFY that an organization-requesting data frame exists within message devicePriorityQueueRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="organization-requesting" instanceName="tmdd:devicePriorityQueueRequestMsg" elementType="data-frame" functionId="Looking for devicePriorityQueueRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 15.3 VERIFY that a device-id-list data frame exists within message devicePriorityQueueRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="device-id-list" instanceName="tmdd:devicePriorityQueueRequestMsg" elementType="data-element" functionId="Looking for devicePriorityQueueRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 15.4 VERIFY that a devicePriorityQueueRequestMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="devicePriorityQueueRequestMsg" instanceName="tmdd:devicePriorityQueueRequestMsg" elementType="message" functionId="Looking for devicePriorityQueueRequestMsg"/>
+               </testStep>
+<!--               
+               <testStep functionId="Step 15.5 VERIFY that data element device-type is set to signal controller." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-type" instanceName="tmdd:intersectionSignalPriorityQueueMsg.intersection-signal-priority-queue-item.device-priority-queue-header" instanceValue="signal controller" elementType="data-element" functionId="Looking for intersectionSignalPriorityQueueMsg.intersection-signal-priority-queue-item.device-priority-queue-header"/>
+               </testStep>
+-->               
+               <testStep functionId="Step 15.5 IF TMDD_N91R428_Authentication___Device_Queue__QueueAuth__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N91R428_Authentication___Device_Queue__QueueAuth__Supported}">
+                    <testStep functionId="Step 15.5.1 VERIFY that an authentication data frame exists within message devicePriorityQueueRequestMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="authentication" instanceName="tmdd:devicePriorityQueueRequestMsg" elementType="data-frame" functionId="Looking for devicePriorityQueueRequestMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 15.6 IF TMDD_N91R429_Operator_Identifier___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N91R429_Operator_Identifier___Device_Queue_Supported}">
+                    <testStep functionId="Step 15.6.1 VERIFY that an operator-id data element exists within each instance of data frame devicePriorityQueueRequestMsg.authentication" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="operator-id" instanceName="tmdd:devicePriorityQueueRequestMsg.authentication" elementType="data-element" functionId="Looking for devicePriorityQueueRequestMsg.authentication"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 15.7 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N91R428_Authentication___Device_Queue__QueueAuth__Supported,authentication,tmdd:devicePriorityQueueRequestMsg;TMDD_N91R429_Operator_Identifier___Device_Queue_Supported,operator-id,tmdd:devicePriorityQueueRequestMsg.authentication;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 15.8 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                    <jl:set var="CONTENTVERIFIED" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 15.9 POSTCONDITION: REQUEST-RESPONSE-OC-REPLY with the following parameters:   DIALOG=dlIntersectionSignalPriorityQueueRequest RESPONSETIMEREQUIRED=TMDD_N91R1098_Send_Signal_Control_Priority_Queue_Information_Upon_Request_Parameter CONTENTVERIFIED = CONTENTVERIFIED RESPONSEMESSAGE = ResponseMessage ">
+                         <REQUEST-RESPONSE-OC-REPLY Dialog="dlIntersectionSignalPriorityQueueRequest" functionId="dlIntersectionSignalPriorityQueueRequest" RESPONSETIMEREQUIRED="${TMDD_N91R1098_Send_Signal_Control_Priority_Queue_Information_Upon_Request_Parameter}" CONTENTVERIFIED="${CONTENTVERIFIED}" RESPONSEMESSAGE="${ResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 16 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

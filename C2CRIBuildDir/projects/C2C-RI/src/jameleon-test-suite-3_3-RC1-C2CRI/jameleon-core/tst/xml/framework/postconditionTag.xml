@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+    Jameleon - An automation testing tool..
+    Copyright (C) 2003-2006 Christian W. Hargraves (engrean@hotmail.com)
+    
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+<testcase xmlns="jelly:jameleon">
+    <test-case-summary>
+        Tests that when a function tag in nested in a postcondition tag that the particular 
+        function tags are executed no matter what
+    </test-case-summary>
+    <test-case-bug>1111816</test-case-bug>
+    <ju-session>
+        <postcondition>
+            <ju-assert-true
+                functionId="Do a basic assertTrue with false"
+                msg="fail here"
+                test="false"/>
+            <ju-assert-true 
+                functionId="This tag should get executed even though the previous one failed!"
+                test="true"/>
+            <ju-assert-true 
+                functionId="This tag should get executed also!"
+                test="true"/>
+            <ju-assert-true 
+                functionId="Do a basic assertTrue with false in a postcondition"
+                msg="executed all the way to the bottom"
+                test="false"/>
+        </postcondition>
+    </ju-session>
+
+    <ju-session>
+        <ju-assert-true 
+            functionId="This tag shouldn't get executed"
+            test="false"/>
+    </ju-session>
+</testcase>
+
+

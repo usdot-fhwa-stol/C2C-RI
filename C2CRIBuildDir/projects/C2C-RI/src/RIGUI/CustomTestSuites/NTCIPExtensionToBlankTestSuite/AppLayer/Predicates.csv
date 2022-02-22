@@ -1,0 +1,8 @@
+Predicate,Section
+SOAPWSDLRR,1.a
+SOAPWSDLSP,1.b
+SOAPMessageTransport,1.d
+XMLDirectGET,2.a
+XMLDirectRR,2.b
+XMLTransport,2.e
+XMLoverFTPEncoding,3.b

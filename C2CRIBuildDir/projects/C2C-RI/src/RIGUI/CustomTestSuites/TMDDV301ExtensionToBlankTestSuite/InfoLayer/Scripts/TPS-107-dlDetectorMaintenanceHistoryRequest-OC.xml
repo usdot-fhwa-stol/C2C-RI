@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-107-dlDetectorMaintenanceHistoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDetectorMaintenanceHistoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.7.1.4 [Need for Data Collection System Metadata] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:26:33-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDetectorMaintenanceHistoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.7.1.4 [Need for Data Collection System Metadata] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions is required by the specification. (NRTM 3.3.6.2.4.3.2.1).  RECORD this information as: TMDD_N107R493_Restrictions_Supported = ${TMDD_N107R493_Restrictions_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Detector Station is required by the specification. (NRTM 3.3.6.2.4.3.2.2).  RECORD this information as: TMDD_N107R494_Detector_Station_Supported = ${TMDD_N107R494_Detector_Station_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Detector Type is required by the specification. (NRTM 3.3.6.2.4.3.2.3).  RECORD this information as: TMDD_N107R495_Detector_Type_Supported = ${TMDD_N107R495_Detector_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Installation Date is required by the specification. (NRTM 3.3.6.2.4.3.2.4).  RECORD this information as: TMDD_N107R496_Installation_Date_Supported = ${TMDD_N107R496_Installation_Date_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Detector Calibration Date is required by the specification. (NRTM 3.3.6.2.4.3.2.5).  RECORD this information as: TMDD_N107R497_Detector_Calibration_Date_Supported = ${TMDD_N107R497_Detector_Calibration_Date_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Detector Calibration Method is required by the specification. (NRTM 3.3.6.2.4.3.2.6).  RECORD this information as: TMDD_N107R498_Detector_Calibration_Method_Supported = ${TMDD_N107R498_Detector_Calibration_Method_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Operational Date and Time is required by the specification. (NRTM 3.3.6.2.4.3.2.7).  RECORD this information as: TMDD_N107R499_Operational_Date_and_Time_Supported = ${TMDD_N107R499_Operational_Date_and_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Non-Operational Date and Time is required by the specification. (NRTM 3.3.6.2.4.3.2.8).  RECORD this information as: TMDD_N107R500_Non-Operational_Date_and_Time_Supported = ${TMDD_N107R500_Non-Operational_Date_and_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Description of Repair is required by the specification. (NRTM 3.3.6.2.4.3.2.9).  RECORD this information as: TMDD_N107R501_Description_of_Repair_Supported = ${TMDD_N107R501_Description_of_Repair_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether History Date and Time Change Information is required by the specification. (NRTM 3.3.6.2.4.3.2.10).  RECORD this information as: TMDD_N107R502_History_Date_and_Time_Change_Information_Supported = ${TMDD_N107R502_History_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlDetectorMaintenanceHistoryRequest" riMode="EC">
+          <testStep functionId="Step 12 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 14 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 15 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlDetectorMaintenanceHistoryRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlDetectorMaintenanceHistoryRequest" functionId="dlDetectorMaintenanceHistoryRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 16 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 16.1 IF TMDD_N107R493_Restrictions_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N107R493_Restrictions_Supported}">
+                    <testStep functionId="Step 16.1.1 VERIFY that element restrictions exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.restrictions"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.2 IF TMDD_N107R494_Detector_Station_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N107R494_Detector_Station_Supported}">
+                    <testStep functionId="Step 16.2.1 VERIFY that element station-id exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="station-id" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector.station-id"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.3 IF TMDD_N107R495_Detector_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N107R495_Detector_Type_Supported}">
+                    <testStep functionId="Step 16.3.1 VERIFY that element detector-type exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="detector-type" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector.detector-type"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.4 IF TMDD_N107R496_Installation_Date_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N107R496_Installation_Date_Supported}">
+                    <testStep functionId="Step 16.4.1 VERIFY that element detector-installation-date exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="detector-installation-date" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector.detector-installation-date"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.5 IF TMDD_N107R497_Detector_Calibration_Date_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N107R497_Detector_Calibration_Date_Supported}">
+                    <testStep functionId="Step 16.5.1 VERIFY that element detector-calibration-date exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="detector-calibration-date" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector.detector-calibration-date"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.6 IF TMDD_N107R498_Detector_Calibration_Method_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N107R498_Detector_Calibration_Method_Supported}">
+                    <testStep functionId="Step 16.6.1 VERIFY that element detector-calibration-method exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="detector-calibration-method" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector.detector-calibration-method"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.7 IF TMDD_N107R499_Operational_Date_and_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N107R499_Operational_Date_and_Time_Supported}">
+                    <testStep functionId="Step 16.7.1 VERIFY that element detector-last-operational-date exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="detector-last-operational-date" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector.detector-last-operational-date"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.8 IF TMDD_N107R500_Non-Operational_Date_and_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N107R500_Non-Operational_Date_and_Time_Supported}">
+                    <testStep functionId="Step 16.8.1 VERIFY that element detector-last-non-operational-date exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="detector-last-non-operational-date" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector.detector-last-non-operational-date"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.9 IF TMDD_N107R501_Description_of_Repair_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N107R501_Description_of_Repair_Supported}">
+                    <testStep functionId="Step 16.9.1 VERIFY that element detector-repair-description exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="detector-repair-description" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector.detector-repair-description"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.10 IF TMDD_N107R502_History_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N107R502_History_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 16.10.1 VERIFY that element last-update-time exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item.organization-information" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.organization-information" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.organization-information.last-update-time"/>
+                    </testStep>
+                    <testStep functionId="Step 16.10.2 VERIFY that element last-update-time exists within each instance of detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector" functionId="Looking for detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector.last-update-time"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.11 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N107R493_Restrictions_Supported,restrictions,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item;TMDD_N107R494_Detector_Station_Supported,station-id,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector;TMDD_N107R495_Detector_Type_Supported,detector-type,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector;TMDD_N107R496_Installation_Date_Supported,detector-installation-date,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector;TMDD_N107R497_Detector_Calibration_Date_Supported,detector-calibration-date,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector;TMDD_N107R498_Detector_Calibration_Method_Supported,detector-calibration-method,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector;TMDD_N107R499_Operational_Date_and_Time_Supported,detector-last-operational-date,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector;TMDD_N107R500_Non-Operational_Date_and_Time_Supported,detector-last-non-operational-date,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector;TMDD_N107R501_Description_of_Repair_Supported,detector-repair-description,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector;TMDD_N107R502_History_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.organization-information;TMDD_N107R502_History_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:detectorMaintenanceHistoryMsg.detector-maintenance-history-item.detector-list.detector;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

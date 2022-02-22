@@ -1,0 +1,2685 @@
+<TestCaseDescriptions>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1a1-GeneralValid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the general formatting requirements specified by NTCIP 2306.
+</testCaseDescription>
+		<testCaseItems>
+1.a.1
+</testCaseItems>
+		<testCaseInputs>A WSDL document properly defined named 2306TstData1a10.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1a2-DefinitionsInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Definitions section requirements specified by NTCIP 2306.
+</testCaseDescription>
+		<testCaseItems>
+1.a.2
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the definition tag named 2306TstData1a21.wsdl.
+A WSDL document missing the definition tag’s name attribute named 2306TstData1a22.wsdl.
+A WSDL document with malformed standard namespace attributes (i.e. xmlns) named 2306TstData1a23.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1a3-TypesInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Types section requirements specified by NTCIP 2306.
+</testCaseDescription>
+		<testCaseItems>
+1.a.3
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the types section named 2306TstData1a31.wsdl.
+A WSDL document missing the types start tag named 2306TstData1a32.wsdl.
+A WSDL document missing the types end tag named 2306TstData1a33.wsdl.
+A WSDL document that references an external schema file without the supporting external schema file available named 2306TstData1a34.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1a4-MessagesInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Messages section requirements specified by NTCIP 2306.
+</testCaseDescription>
+		<testCaseItems>
+1.a.4
+</testCaseItems>
+		<testCaseInputs>A WSDL document without any message sections named 2306TstData1a41.wsdl. 
+A WSDL document missing a message start tag named 2306TstData1a42.wsdl.
+A WSDL document missing a message end tag named 2306TstData1a43.wsdl.
+A WSDL document with a message name attribute starting with other than “MSG” named 2306TstData1a44.wsdl.
+A WSDL document with a misspelled schema message name named 2306TstData1a45.wsdl. 
+A WSDL document with a part element attribute missing the namespace reference (tmdd:) named 2306TstData1a46.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1a5-SHRR-PortTypeInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the PortType element requirements specified by NTCIP 2306 for a SOAP over HTTP Request-Response operation.
+</testCaseDescription>
+		<testCaseItems>
+1.a.5
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the portType section named 2306TstData1a51.wsdl.
+A WSDL document missing the portType start tag named 2306TstData1a52.wsdl.
+A WSDL document missing the portType end tag named 2306TstData1a53.wsdl.
+A WSDL document missing a message referenced by the portType tag named 2306TstData1a54.wsdl.
+A WSDL document with a message unreferenced by the portType tag named 2306TstData1a55.wsdl.
+A WSDL document with an operation name starting with a value other than “OP” named 2306TstData1a56.wsdl.
+A WSDL document with the input message following the output message named 2306TstData1a57.wsdl.
+A WSDL document containing an input element with a message attribute that starts with a value other than “tns:” named 2306TstData1a58.wsdl. 
+A WSDL document containing an output element with a message attribute that starts with a value other than “tns:” named 2306TstData1a59.wsdl. 
+A WSDL document containing an input element with a message reference to a message missing from the message element named 2306TstData1a5A.wsdl. 
+A WSDL document containing an output element with a reference to a message missing from the message element named 2306TstData1a5B.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1a6-SHRR-BindingInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Binding element requirements specified by NTCIP 2306 for a SOAP over HTTP Request-Response operation.
+</testCaseDescription>
+		<testCaseItems>
+1.a.6
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the binding section named 2306TstData1a61.wsdl.
+A WSDL document missing the binding start tag named 2306TstData1a62.wsdl.
+A WSDL document missing the binding end tag named 2306TstData1a63.wsdl.
+A WSDL document without a soap:binding element immediately following the binding element named 2306TstData1a64.wsdl.
+A WSDL document with a soap:binding style attribute other than document named 2306TstData1a65.wsdl.
+A WSDL document with a soap:binding transport attribute different from http://schemas.xmlsoap.org/soap/http named 2306TstData1a66.wsdl.
+A WSDL document with a operation name attribute not matching the operation names specified in the portType section named 2306TstData1a67.wsdl.
+A WSDL document with the soap:operation element’s soapAction attribute missing named 2306TstData1a68.wsdl.
+A WSDL document with the &lt;soap:operation&gt; tag followed by an &lt;output&gt; &lt;/output&gt; section (i.e. missing the input element) named 2306TstData1a69.wsdl.
+A WSDL document with the &lt;input&gt; tag followed by a &lt;output&gt; tag (i.e. missing the &lt;soap:body&gt; tag) named 2306TstData1a6A.wsdl.
+A WSDL document with the of the &lt;soap:body element’s use attribute set to “literall” named 2306TstData1a6B.wsdl.
+A WSDL document with the &lt;output&gt; tag set missing named 2306TstData1a6C.wsdl.
+A WSDL document with the &lt;output&gt; tag followed by a &lt;/output&gt; tag (i.e. missing the &lt;soap:body&gt; tag) named 2306TstData1a6D.wsdl.
+A WSDL document with the of the soap:body element’s use attribute set to “literall” named 2306TstData1a6E.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1a7-SHRR-ServiceInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Service element requirements specified by NTCIP 2306 for a SOAP over HTTP Request-Response operation.
+</testCaseDescription>
+		<testCaseItems>
+1.a.7
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the service section named 2306TstData1a71.wsdl.
+A WSDL document missing the service start tag named 2306TstData1a72.wsdl.
+A WSDL document missing the service end tag named 2306TstData1a73.wsdl.
+A WSDL document with the service endpoint of “http :” named 2306TstData1a74.wsdl.
+A WSDL document with the &lt;service&gt; tag not containing a name attribute named 2306TstData1a75.wsdl.
+A WSDL document with the port element’s name attribute missing named 2306TstData1a76.wsdl.
+ A WSDL document with the port element’s binding attribute missing named 2306TstData1a77.wsdl.
+A WSDL document with the port element’s binding attribute referencing a binding not defined in the binding section named 2306TstData1a78.wsdl.
+A WSDL document without the soap:address element following the port element named 2306TstData1a79.wsdl. 
+A WSDL document with the soap:address element’s location attribute missing named 2306TstData1a7A.wsdl.
+A WSDL document with the soap:address element’s location attribute specifying an improperly formed URL named 2306TstData1a7B.wsdl.
+A WSDL document The service endpoint must specify a valid URL.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1b1-GeneralValid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a1-GeneralValid description.
+</testCaseDescription>
+		<testCaseItems>
+1.b.1
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a1-GeneralValid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix..
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1b2-DefinitionsInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a2-DefinitionsInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+1.b.2
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a2-DefinitionsInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1b3-TypesInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a3-TypesInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+1.b.3
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a3-TypesInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1b4-MessagesInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Messages section requirements specified by NTCIP 2306.
+</testCaseDescription>
+		<testCaseItems>
+1.b.4
+</testCaseItems>
+		<testCaseInputs>A WSDL document with a subscription message with the c2cMsgAdmin part containing a misspelled element attribute named 2306TstData1b41.wsdl.
+A WSDL document with a subscription message containing the c2cMsgAdmin part element as the second part statement named 2306TstData1b42.wsdl. 
+A WSDL document with a publication message with the c2cMsgAdmin part containing a misspelled element attribute named 2306TstData1b43.wsdl.
+A WSDL document with a publication message containing the c2cMsgAdmin part element as the second part statement named 2306TstData1b44.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1b5-SHSP-PortTypeInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the PortType element requirements specified by NTCIP 2306 for a SOAP over HTTP Subscription-Publication operation.
+</testCaseDescription>
+		<testCaseItems>
+1.b.5
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the portType section named 2306TstData1b51.wsdl.
+A WSDL document missing the portType start tag named 2306TstData1b52.wsdl.
+A WSDL document missing the portType end tag named 2306TstData1b53.wsdl.
+A WSDL document missing a message referenced by the portType tag named 2306TstData1b54.wsdl.
+A WSDL document with a message unreferenced by the portType tag named 2306TstData1b55.wsdl.
+A WSDL document with an operation name starting with a value other than “OP” named 2306TstData1b56.wsdl.
+A WSDL document with an operation element containing two or more input messages named 2306TstData1b57.wsdl.
+A WSDL document with an operation element containing two or more output messages named 2306TstData1b58.wsdl.
+A WSDL document with the input message following the output message named 2306TstData1b59.wsdl.
+A WSDL document containing an input element with a message attribute that starts with a namespace value other than “tns:” named 2306TstData1b5A.wsdl. 
+A WSDL document containing an output element with a message attribute that starts with a namespace value other than “tns:” named 2306TstData1b5Bwsdl. 
+A WSDL document containing an input element with a message reference to a message missing from the message element named 2306TstData1b5C.wsdl. 
+A WSDL document containing an output element with a reference to a message missing from the message element named 2306TstData1b5D.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1b6-SHSP-BindingInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Binding element requirements specified by NTCIP 2306 for a SOAP over HTTP Subscription-Publication operation.
+</testCaseDescription>
+		<testCaseItems>
+1.b.6
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the binding section named 2306TstData1b61.wsdl.
+A WSDL document missing the binding start tag named 2306TstData1b62.wsdl.
+A WSDL document missing the binding end tag named 2306TstData1b63.wsdl.
+A WSDL document without a soap:binding element immediately following the binding element named 2306TstData1b64.wsdl.
+A WSDL document with a soap:binding style attribute other than document named 2306TstData1b65.wsdl.
+A WSDL document with a soap:binding transport attribute different from http://schemas.xmlsoap.org/soap/http named 2306TstData1b66.wsdl.
+A WSDL document with a operation name attribute not matching the operation names specified in the portType section named 2306TstData1b67.wsdl.
+A WSDL document with the &lt;operation&gt; tag followed by an &lt;input&gt; tag (i.e. soap:operation tag missing) named 2306TstData1b68.wsdl.
+A WSDL document with the soap:operation element’s soapAction attribute missing named 2306TstData1b69.wsdl.
+A WSDL document with the &lt;soap:operation&gt; tag followed by an &lt;output&gt; &lt;/output&gt; section (i.e. missing the input element) named 2306TstData1b6A.wsdl.
+A WSDL document with the &lt;input&gt; tag followed by a &lt;output&gt; tag (i.e. missing the &lt;soap:body&gt; tag) named 2306TstData1b6B.wsdl.
+A WSDL document with the of the &lt;soap:body&gt; element’s use attribute set to “literall” named 2306TstData1b6C.wsdl.
+A WSDL document with the &lt;output&gt; tag set missing named 2306TstData1b6D.wsdl.
+A WSDL document with the &lt;output&gt; tag followed by a &lt;/output&gt; tag (i.e. missing the &lt;soap:body&gt; tag) named 2306TstData1b6E.wsdl.
+A WSDL document with the soap:body element’s use attribute set to “literall” named 2306TstData1b6F.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1b7-SHSP-ServiceInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Service element requirements specified by NTCIP 2306 for a SOAP over HTTP Subscription-Publication operation.
+</testCaseDescription>
+		<testCaseItems>
+1.b.7
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the service section named 2306TstData1b71.wsdl.
+A WSDL document missing the service start tag named 2306TstData1b72.wsdl.
+A WSDL document missing the service end tag named 2306TstData1b73.wsdl.
+A WSDL document with the service endpoint of “http :” named 2306TstData1b74.wsdl.
+A WSDL document with the &lt;service&gt; tag not containing a name attribute named 2306TstData1b75.wsdl.
+A WSDL document with the port element’s name attribute missing named 2306TstData1b76.wsdl.
+ A WSDL document with the port element’s binding attribute missing named 2306TstData1b77.wsdl.
+A WSDL document with the port element’s binding attribute referencing a binding not defined in the binding section named 2306TstData1b78.wsdl.
+A WSDL document without the soap:address element following the port element named 2306TstData1b79.wsdl. 
+A WSDL document with the soap:address element’s location attribute missing named 2306TstData1b7A.wsdl.
+A WSDL document with the soap:address element’s location attribute specifying an improperly formed URL named 2306TstData1b7B.wsdl.
+A WSDL document with the soap:address element’s location attribute specifying a fake URL named 2306TstData1b7C.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1d1-SHTr-HttpInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the HTTP transport requirements specified by NTCIP 2306 for a SOAP over HTTP operation.
+</testCaseDescription>
+		<testCaseItems>
+1.d.1
+</testCaseItems>
+		<testCaseInputs>A WSDL document with no soap:address location attribute set to an HTTP URL named 2306TstData1d11.wsdl.
+A WSDL document without a soap:address location attribute set to a FTP URL named 2306TstData1d12.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-1d2-SHTr-HttpsInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the HTTPS transport requirements specified by NTCIP 2306 for a SOAP over HTTP operation.
+</testCaseDescription>
+		<testCaseItems>
+1.d.2
+</testCaseItems>
+		<testCaseInputs>A WSDL document without a soap:address location attribute set to a HTTP URL named 2306TstData1d21.wsdl.
+A WSDL document without a soap:address location attribute set to a FTP URL named 2306TstData1d22.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix..
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2a1-GeneralValid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a1-GeneralValid description.
+</testCaseDescription>
+		<testCaseItems>
+2.a.1
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a1-GeneralValid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2a2-DefinitionsInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a2-DefinitionsInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+2.a.2
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a2-DefinitionsInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix..
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2a3-TypesInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a3-TypesInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+2.a.3
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a3-TypesInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2a4-MessagesInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a4-MessagesInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+2.a.4
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a4-MessagesInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2a5-XHRO-PortTypeInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the PortType element requirements specified by NTCIP 2306 for a XML over HTTP Request-Only operation.
+</testCaseDescription>
+		<testCaseItems>
+2.a.5
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the portType section named 2306TstData2a51.wsdl.
+A WSDL document missing the portType start tag named 2306TstData2a52.wsdl.
+A WSDL document missing the portType end tag named 2306TstData2a53.wsdl.
+A WSDL document missing a message referenced by the portType tag named 2306TstData2a54.wsdl.
+A WSDL document with an operation name starting with a value other than “OP” named 2306TstData2a55.wsdl.
+A WSDL document with an operation element containing two or more input messages named 2306TstData2a56.wsdl.
+A WSDL document containing an input element with a message attribute that starts with a value other than “tns:” named 2306TstData2a57.wsdl. 
+A WSDL document containing an input element with a message reference to a message missing from the message element named 2306TstData2a58.wsdl. 
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2a6-XHRO-BindingInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Binding element requirements specified by NTCIP 2306 for a XML over HTTP Request-Only operation.
+</testCaseDescription>
+		<testCaseItems>
+2.a.6
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the binding section named 2306TstData2a61.wsdl.
+A WSDL document missing the binding start tag named 2306TstData2a62.wsdl.
+A WSDL document missing the binding end tag named 2306TstData2a63.wsdl.
+A WSDL document without a http:binding element immediately following the binding element named 2306TstData2a64.wsdl.
+A WSDL document with no instance of http:binding verb attribute  set to “get” named 2306TstData2a65.wsdl.
+A WSDL document with a operation name attribute not matching the operation names specified in the portType section named 2306TstData2a66.wsdl.
+A WSDL document with the &lt;operation&gt; tag followed by an &lt;input&gt; tag (i.e.http:operation tag missing) named 2306TstData2a67.wsdl.
+A WSDL document with the http:operation element’s location  attribute missing named 2306TstData2a68.wsdl.
+A WSDL document with the http:operation element’s location attribute set to “  “ (i.e. two blank characters) named 2306TstData2a69.wsdl.
+A WSDL document with the &lt;http:operation&gt; tag followed by an &lt;output&gt; &lt;/output&gt; section (i.e. missing the input element) named 2306TstData2a6A.wsdl.
+A WSDL document with the &lt;input&gt; tag followed by a &lt;output&gt; tag (i.e. missing the &lt;http:urlEncoded&gt; tag) named 2306TstData2a6B.wsdl.
+A WSDL document with the &lt;output&gt; tag set missing named 2306TstData2a6C.wsdl.
+A WSDL document with the &lt;output&gt; tag followed by a &lt;/output&gt; tag (i.e. missing the &lt;mime:content&gt; tag) named 2306TstData2a6D.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2a7-XHRO-ServiceInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Service element requirements specified by NTCIP 2306 for a XML over HTTP Request-Only operation.
+</testCaseDescription>
+		<testCaseItems>
+2.a.7
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the service section named 2306TstData2a71.wsdl.
+A WSDL document missing the service start tag named 2306TstData2a72.wsdl.
+A WSDL document missing the service end tag named 2306TstData2a73.wsdl.
+A WSDL document with the &lt;service&gt; tag not containing a name attribute named 2306TstData2a74.wsdl.
+A WSDL document. missing the port element named 2306TstData2a75.wsdl.
+A WSDL document with the port element’s name attribute missing named 2306TstData2a76.wsdl.
+ A WSDL document with the port element’s binding attribute missing named 2306TstData2a77.wsdl.
+A WSDL document with the port element’s binding attribute referencing a binding not defined in the binding section named 2306TstData2a78.wsdl.
+A WSDL document without the http:address element following the port element named 2306TstData2a79.wsdl. 
+A WSDL document with the http:address element’s location attribute missing named 2306TstData2a7A.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2b1-GeneralValid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a1-GeneralValid description.
+</testCaseDescription>
+		<testCaseItems>
+2.b.1
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a1-GeneralValid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2b2-DefinitionsInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a2-DefinitionsInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+2.b.2
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a2-DefinitionsInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2b3-TypesInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a3-TypesInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+2.b.3
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a3-TypesInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2b4-MessagesInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a4-MessagesInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+2.b.4
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a4-MessagesInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2b5-XHRR-PortTypeInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the PortType element requirements specified by NTCIP 2306 for a XML over HTTP Request-Response operation.
+</testCaseDescription>
+		<testCaseItems>
+2.b.5
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the portType section named 2306TstData2b51.wsdl.
+A WSDL document missing the portType start tag named 2306TstData2b52.wsdl.
+A WSDL document missing the portType end tag named 2306TstData2b53.wsdl.
+A WSDL document missing a message referenced by the portType tag named 2306TstData2b54.wsdl.
+A WSDL document with a message unreferenced by the portType tag named 2306TstData2b55.wsdl.
+A WSDL document with an operation name starting with a value other than “OP” named 2306TstData2b56.wsdl.
+A WSDL document with an operation element containing two or more input messages named 2306TstData2b57.wsdl.
+A WSDL document with an operation element containing two or more output messages named 2306TstData2b58.wsdl.
+A WSDL document with the input message following the output message named 2306TstData2b59.wsdl.
+A WSDL document containing an input element with a message attribute that starts with a value other than “tns:” named 2306TstData2b5A.wsdl. 
+A WSDL document containing an output element with a message attribute that starts with a value other than “tns:” named 2306TstData2b5B.wsdl. 
+A WSDL document containing an input element with a message reference to a message missing from the message element named 2306TstData2b5C.wsdl. 
+A WSDL document containing an output element with a reference to a message missing from the message element named 2306TstData2b5D.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2b6-XHRR-BindingInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Binding element requirements specified by NTCIP 2306 for a XML over HTTP Request-Response operation.
+</testCaseDescription>
+		<testCaseItems>
+2.b.6
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the binding section named 2306TstData2b61.wsdl.
+A WSDL document missing the binding start tag named 2306TstData2b62.wsdl.
+A WSDL document missing the binding end tag named 2306TstData2b63.wsdl.
+A WSDL document with a http:binding verb attribute value other than POST named 2306TstData2b64.wsdl.
+A WSDL document with a operation name attribute not matching the operation names specified in the portType section named 2306TstData2b65.wsdl.
+A WSDL document with the &lt;operation&gt; tag followed by an &lt;input&gt; tag (i.e. http:operation tag missing) named 2306TstData2b66.wsdl.
+A WSDL document with the http:operation element’s location attribute missing named 2306TstData2b67.wsdl.
+A WSDL document with the http:operation element’s location attribute set to “  “ (i.e. two blank characters) named 2306TstData2b68.wsdl.
+A WSDL document with the &lt;http:operation&gt; tag followed by an &lt;output&gt; &lt;/output&gt; section (i.e. missing the input element) named 2306TstData2b69.wsdl.
+A WSDL document with the &lt;input&gt; tag followed by a &lt;/input&gt; tag (i.e. missing the &lt;mime:content&gt; tag) named 2306TstData2b6A.wsdl.
+A WSDL document with the &lt;output&gt; tag set missing named 2306TstData2b6B.wsdl.
+A WSDL document with the &lt;output&gt; tag followed by a &lt;/output&gt; tag (i.e. missing the &lt;mime:content&gt; tag) named 2306TstData2b6C.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2b7-XHRR-ServiceInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Service element requirements specified by NTCIP 2306 for a XML over HTTP Request-Response operation.
+</testCaseDescription>
+		<testCaseItems>
+2.b.7
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the service section named 2306TstData2b71.wsdl.
+A WSDL document missing the service start tag named 2306TstData2b72.wsdl.
+A WSDL document missing the service end tag named 2306TstData2b73.wsdl.
+A WSDL document with the service endpoint of “http :” named 2306TstData2b74.wsdl.
+A WSDL document with the &lt;service&gt; tag not containing a name attribute named 2306TstData2b75.wsdl.
+A WSDL document. missing  the port element named 2306TstData2b76.wsdl.
+A WSDL document with the port element’s name attribute missing named 2306TstData2b77.wsdl.
+ A WSDL document with the port element’s binding attribute missing named 2306TstData2b78.wsdl.
+A WSDL document with the port element’s binding attribute referencing a binding not defined in the binding section named 2306TstData2b79.wsdl.
+A WSDL document without the http:address element following the port element named 2306TstData2b7A.wsdl. 
+A WSDL document with the http:address element’s location attribute missing named 2306TstData2b7B.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-2e1-XHTr-HttpInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the HTTP transport requirements specified by NTCIP 2306 for a XML over HTTP operation.
+</testCaseDescription>
+		<testCaseItems>
+2.e.1
+</testCaseItems>
+		<testCaseInputs>A WSDL document without the http:address location attribute set to a HTTP URL named 2306TstData2e11.wsdl.
+A WSDL document without the http:address location attribute set to a FTP URL named 2306TstData2e12.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-3a1-GeneralValid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a1-GeneralValid description.
+</testCaseDescription>
+		<testCaseItems>
+3.a.1
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a1-GeneralValid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-3a2-DefinitionsInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a2-DefinitionsInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+3.a.2
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a2-DefinitionsInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-3a3-TypesInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a3-TypesInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+3.a.3
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a3-TypesInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-3a4-MessagesInvalid</testCaseId>
+		<testCaseDescription>See 2306-WSDL-1a4-MessagesInvalid description.
+</testCaseDescription>
+		<testCaseItems>
+3.a.4
+</testCaseItems>
+		<testCaseInputs>See inputs to test case TCS-C2CRI-NTCIP2306-WSDL-1a4-MessagesInvalid
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-3a5-XFDr-PortTypeInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the PortType element requirements specified by NTCIP 2306 for a XML over FTP Request-Only operation.
+</testCaseDescription>
+		<testCaseItems>
+3.a.5
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the portType section named 2306TstData3a51.wsdl.
+A WSDL document missing the portType start tag named 2306TstData3a52.wsdl.
+A WSDL document missing the portType end tag named 2306TstData3a53.wsdl.
+A WSDL document missing a message referenced by the portType tag named 2306TstData3a54.wsdl.
+A WSDL document with an operation name starting with a value other than “OP” named 2306TstData3a55.wsdl.
+
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-3a6-XFDr-BindingInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Binding element requirements specified by NTCIP 2306 for a XML over FTP Request-Only operation.
+</testCaseDescription>
+		<testCaseItems>
+3.a.6
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the binding section named 2306TstData3a61.wsdl.
+A WSDL document missing the binding start tag named 2306TstData3a62.wsdl.
+A WSDL document missing the binding end tag named 2306TstData3a63.wsdl.
+A WSDL document without a ftp:binding element immediately following the binding element named 2306TstData3a64.wsdl.
+A WSDL document with a operation name attribute not matching the operation names specified in the portType section named 2306TstData3a65.wsdl.
+A WSDL document with the &lt; operation&gt; tag followed by an &lt;input&gt; tag (i.e. ftp:operation tag missing) named 2306TstData3a66.wsdl.
+A WSDL document with the ftp:operation element’s location attribute missing named 2306TstData3a67.wsdl.
+A WSDL document with the ftp:operation element’s location attribute set to ““ (i.e. a blank file name) named 2306TstData3a68.wsdl.
+A WSDL document with the &lt;ftp:operation&gt; tag followed by an &lt;output&gt; &lt;/output&gt; section (i.e. missing the input element) named 2306TstData3a69.wsdl.
+A WSDL document with the &lt;input&gt; tag followed by a &lt;output&gt; tag (i.e. missing the &lt;ftp:urlEncoded&gt; tag) named 2306TstData3a6A.wsdl.
+A WSDL document with the &lt;output&gt; tag set missing named 2306TstData3a6B.wsdl.
+A WSDL document with the &lt;output&gt; tag followed by a &lt;/output&gt; tag (i.e. missing the &lt;mime:content&gt; tag) named 2306TstData3a6C.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-3a7-XFDr-ServiceInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the Service element requirements specified by NTCIP 2306 for a XML over FTP Request-Only operation.
+</testCaseDescription>
+		<testCaseItems>
+3.a.7
+</testCaseItems>
+		<testCaseInputs>A WSDL document missing the service section named 2306TstData3a71.wsdl.
+A WSDL document missing the service start tag named 2306TstData3a72.wsdl.
+A WSDL document missing the service end tag named 2306TstData3a73.wsdl.
+A WSDL document with the &lt;service&gt; tag not containing a name attribute named 2306TstData3a74.wsdl.
+A WSDL document with the port element’s name attribute missing named 2306TstData3a75.wsdl.
+ A WSDL document with the port element’s binding attribute missing named 2306TstData3a76.wsdl.
+A WSDL document with the port element’s binding attribute referencing a binding not defined in the binding section named 2306TstData3a77.wsdl.
+A WSDL document without the ftp:address element following the port element named 2306TstData3a78.wsdl. 
+A WSDL document with the ftp:address element’s location attribute missing named 2306TstData3a79.wsdl.
+
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-3c1-XFTr-FtpInvalid</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the FTP transport requirements specified by NTCIP 2306 for a XML over FTP operation.
+</testCaseDescription>
+		<testCaseItems>
+3.c.1
+</testCaseItems>
+		<testCaseInputs>A WSDL document with the ftp:address location attribute set to a HTTP URL named 2306TstData3c11.wsdl.
+A WSDL document with the ftp:address location attribute set to a HTTPS URL named 2306TstData3c12.wsdl.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-1Sa-SHRR-RHConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for SOAP over HTTP with Request-Response encoding and HTTP transport defined in a predefined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.a.1
+1.a.2
+1.a.3
+1.a.4
+1.a.5
+1.a.6
+1.a.7
+1.c.1
+1.d.1
+</testCaseItems>
+		<testCaseInputs> Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-RR-OC  
+
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-1Sa-SHRR-RHConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for SOAP over HTTP with Request-Response encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.a.1
+1.a.2
+1.a.3
+1.a.4
+1.a.5
+1.a.6
+1.a.7
+1.c.1
+1.d.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-RR-EC  
+
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-1Sb-SHSP-SHConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for SOAP over HTTP with Subscription-Publication encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.b.1
+1.b.2
+1.b.3
+1.b.4
+1.b.5
+1.b.6
+1.b.7
+1.c.2
+1.d.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-Subscription-Publication-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-1Sb-SHSP-SHConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for SOAP over HTTP with Subscription-Publication encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.b.1
+1.b.2
+1.b.3
+1.b.4
+1.b.5
+1.b.6
+1.b.7
+1.c.2
+1.d.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-Subscription-Publication-EC  
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-1Sc-SHRR-RSConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for SOAP over HTTP with Request-Response encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.a.1
+1.a.2
+1.a.3
+1.a.4
+1.a.5
+1.a.6
+1.a.7
+1.c.1
+1.d.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-RR-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-1Sc-SHRR-RSConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for SOAP over HTTP with Request-Response encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.a.1
+1.a.2
+1.a.3
+1.a.4
+1.a.5
+1.a.6
+1.a.7
+1.c.1
+1.d.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-RR-EC 
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-1Sd-SHSP-SSConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for SOAP over HTTP with Subscription-Publication encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.b.1
+1.b.2
+1.b.3
+1.b.4
+1.b.5
+1.b.6
+1.b.7
+1.c.2
+1.d.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-Subscription-Publication-OC
+
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-1Sd-SHSP-SSConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for SOAP over HTTP with Subscription-Publication encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.b.1
+1.b.2
+1.b.3
+1.b.4
+1.b.5
+1.b.6
+1.b.7
+1.c.2
+1.d.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-Subscription-Publication-EC 
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sa-XHRO-THConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Only with XML text encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.a.1
+2.a.2
+2.a.3
+2.a.4
+2.a.5
+2.a.6
+2.a.7
+2.d.1
+2.e.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-GET-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sa-XHRO-THConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Only with XML text encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.a.1
+2.a.2
+2.a.3
+2.a.4
+2.a.5
+2.a.6
+2.a.7
+2.d.1
+2.e.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-GET-EC
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sb-XHRO-GHConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Only with Gzip encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.a.1
+2.a.2
+2.a.3
+2.a.4
+2.a.5
+2.a.6
+2.a.7
+2.d.2
+2.e.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-GET-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sb-XHRO-GHConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Only with Gzip encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.a.1
+2.a.2
+2.a.3
+2.a.4
+2.a.5
+2.a.6
+2.a.7
+2.d.2
+2.e.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-GET-EC
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sc-XHRR-THConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Response with XML text encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.b.1
+2.b.2
+2.b.3
+2.b.4
+2.b.5
+2.b.6
+2.b.7
+2.d.1
+2.e.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-POST-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sc-XHRR-THConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Response with XML text encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.b.1
+2.b.2
+2.b.3
+2.b.4
+2.b.5
+2.b.6
+2.b.7
+2.d.1
+2.e.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-POST-EC 
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sd-XHRR-GHConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Response with Gzip encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.b.1
+2.b.2
+2.b.3
+2.b.4
+2.b.5
+2.b.6
+2.b.7
+2.d.2
+2.e.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-POST-OC 
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sd-XHRR-GHConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Response with Gzip encoding and HTTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.b.1
+2.b.2
+2.b.3
+2.b.4
+2.b.5
+2.b.6
+2.b.7
+2.d.2
+2.e.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-POST-EC 
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Se-XHRO-TSConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Only with XML text encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.a.1
+2.a.2
+2.a.3
+2.a.4
+2.a.5
+2.a.6
+2.a.7
+2.d.1
+2.e.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-GET-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Se-XHRO-TSConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Only with XML text encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.a.1
+2.a.2
+2.a.3
+2.a.4
+2.a.5
+2.a.6
+2.a.7
+2.d.1
+2.e.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-GET-EC 
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sf-XHRO-GSConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Only with Gzip encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.a.1
+2.a.2
+2.a.3
+2.a.4
+2.a.5
+2.a.6
+2.a.7
+2.d.2
+2.e.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-GET-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sf-XHRO-GSConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Only with Gzip encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.a.1
+2.a.2
+2.a.3
+2.a.4
+2.a.5
+2.a.6
+2.a.7
+2.d.2
+2.e.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-GET-EC
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sg-XHRR-TSConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Response with XML text encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.b.1
+2.b.2
+2.b.3
+2.b.4
+2.b.5
+2.b.6
+2.b.7
+2.d.1
+2.e.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-POST-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sg-XHRR-TSConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Response with XML text encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.b.1
+2.b.2
+2.b.3
+2.b.4
+2.b.5
+2.b.6
+2.b.7
+2.d.1
+2.e.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-POST-EC
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sh-XHRR-GSConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Response with Gzip encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.b.1
+2.b.2
+2.b.3
+2.b.4
+2.b.5
+2.b.6
+2.b.7
+2.d.2
+2.e.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-POST-OC 
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-2Sh-XHRR-GSConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over HTTP Request-Response with Gzip encoding and HTTPS transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.b.1
+2.b.2
+2.b.3
+2.b.4
+2.b.5
+2.b.6
+2.b.7
+2.d.2
+2.e.2
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-POST-EC
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-3Sa-XFRO-TFConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over FTP Request-Only with XML text encoding and FTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+3.a.1
+3.a.2
+3.a.3
+3.a.4
+3.a.5
+3.a.6
+3.a.7
+3.b.1
+3.c.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-FTP-GET-OC
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-3Sa-XFRO-TFConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over FTP Request-Only with XML text encoding and FTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+3.a.1
+3.a.2
+3.a.3
+3.a.4
+3.a.5
+3.a.6
+3.a.7
+3.b.1
+3.c.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-FTP-GET-EC
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-3Sb-XFRO-GFConnect-OC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over FTP Request-Only with Gzip encoding and FTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+3.a.1
+3.a.2
+3.a.3
+3.a.4
+3.a.5
+3.a.6
+3.a.7
+3.b.2
+3.c.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-FTP-GET-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-3Sb-XFRO-GFConnect-EC</testCaseId>
+		<testCaseDescription>To verify that the RI can communicate with a SUT using the protocol stack for XML over FTP Request-Only with Gzip encoding and FTP transport defined in a pre-defined test WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+3.a.1
+3.a.2
+3.a.3
+3.a.4
+3.a.5
+3.a.6
+3.a.7
+3.b.2
+3.c.1
+</testCaseItems>
+		<testCaseInputs>Refer to the Test Case Data Variable Table in the appendix for the test case input paramaters for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-FTP-GET-EC
+</testCaseInputProcedures>
+		<testCaseOutputs>Each input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSDL-SUT</testCaseId>
+		<testCaseDescription>To verify that the RI NTCIP 2306 Conformance Test Suite identifies WSDL documents that conform to the requirements specified by NTCIP 2306.
+</testCaseDescription>
+		<testCaseItems>
+NTCIP 2306 PRL 1.0
+NTCIP 2306 PRL 2.0
+NTCIP 2306 PRL 3.0
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-WSDL  
+
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-SUT-SHRR-OC</testCaseId>
+		<testCaseDescription>To verify that the SUT can communicate with the RI using the protocol stack for SOAP over HTTP with Request-Response defined in the SUT’s WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.a
+1.c
+1.d
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-RR-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-SUT-SHRR-EC</testCaseId>
+		<testCaseDescription>To verify that the SUT can communicate with the RI using the protocol stack for SOAP over HTTP with Request-Response defined in the SUT’s WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.a
+1.c
+1.d
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-RR-EC 
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-SUT-SHSP-OC</testCaseId>
+		<testCaseDescription>To verify that the SUT can communicate with  the RI using the protocol stack for SOAP over HTTP with Subscription-Publication defined in the SUT’s WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.b
+1.c
+1.d
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-Subscription-Publication-OC
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-SUT-SHSP-EC</testCaseId>
+		<testCaseDescription>To verify that the SUT can communicate with  the RI using the protocol stack for SOAP over HTTP with Subscription-Publication defined in the SUT’s WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+1.b
+1.c
+1.d
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-SOAP-Subscription-Publication-EC
+
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-SUT-XHRO-OC</testCaseId>
+		<testCaseDescription>To verify that the SUT can communicate with the RI using the protocol stack for XML over HTTP Request-Only defined in the SUT’s WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.d
+2.e
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-GET-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-SUT-XHRO-EC</testCaseId>
+		<testCaseDescription>To verify that the SUT can communicate with the RI using the protocol stack for XML over HTTP Request-Only defined in the SUT’s WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.d
+2.e
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-GET-EC 
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-SUT-XHRR-OC</testCaseId>
+		<testCaseDescription>To verify that the SUT can communicate with the RI using the protocol stack for XML over HTTP Request-Response defined in the SUT’s WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.b
+2.d
+2.e
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-POST-OC
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-SUT-XHRR-EC</testCaseId>
+		<testCaseDescription>To verify that the SUT can communicate with the RI using the protocol stack for XML over HTTP Request-Response defined in the SUT’s WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+2.b
+2.d
+2.e
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined for the external center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-HTTP-POST-EC
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-SUT-XFRO-OC</testCaseId>
+		<testCaseDescription>To verify that the SUT can communicate with the RI using the protocol stack for XML over FTP Request-Only FTP transport defined in the SUT’s WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+3.b
+3.c
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-FTP-GET-OC  
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+	<TestCaseDescription>
+		<testCaseId>TCS-C2CRI-NTCIP2306-WSME-SUT-XFRO-EC</testCaseId>
+		<testCaseDescription>To verify that the SUT can communicate with the RI using the protocol stack for XML over FTP Request-Only FTP transport defined in the SUT’s WSDL document.
+</testCaseDescription>
+		<testCaseItems>
+3.b
+3.c
+</testCaseItems>
+		<testCaseInputs>The WSDL input file will be user defined for the owner center.
+</testCaseInputs>
+		<testCaseInputProcedures>TPS-NTCIP2306-FTP-GET-EC  
+</testCaseInputProcedures>
+		<testCaseOutputs>The input execution shall generate an RI Test Result Status of Passed or Failed associated with the matching expected result shown in the Test Case Data Variable Table in the appendix.
+</testCaseOutputs>
+		<testCaseOutputProcedures>
+</testCaseOutputProcedures>
+		<testCaseHardware>
+See C2C RI SRS
+</testCaseHardware>
+		<testCaseSoftware>
+See C2C RI SRS
+</testCaseSoftware>
+		<testCaseOther>
+None
+</testCaseOther>
+		<testCaseSpecial>
+None
+</testCaseSpecial>
+		<testCaseIntercase>None</testCaseIntercase>
+	</TestCaseDescription>
+</TestCaseDescriptions>

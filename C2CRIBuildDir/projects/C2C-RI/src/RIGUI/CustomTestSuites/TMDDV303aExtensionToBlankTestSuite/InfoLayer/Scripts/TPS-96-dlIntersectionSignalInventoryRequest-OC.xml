@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-96-dlIntersectionSignalInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlIntersectionSignalInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.10.11 [Need to Share Time Synchronization Information] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:49:50-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlIntersectionSignalInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.10.11 [Need to Share Time Synchronization Information] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.1).  RECORD this information as: TMDD_N96R376_Restrictions___Device_Inventory_Supported = ${TMDD_N96R376_Restrictions___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Device Description is required by the specification. (NRTM 3.3.5.1.2.1.2.2).  RECORD this information as: TMDD_N96R377_Device_Description_Supported = ${TMDD_N96R377_Device_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Device Control Type is required by the specification. (NRTM 3.3.5.1.2.1.2.3).  RECORD this information as: TMDD_N96R378_Device_Control_Type_Supported = ${TMDD_N96R378_Device_Control_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Roadway Network Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.5).  RECORD this information as: TMDD_N96R380_Roadway_Network_Identifier___Device_Inventory_Supported = ${TMDD_N96R380_Roadway_Network_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Link Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.8).  RECORD this information as: TMDD_N96R383_Link_Identifier___Device_Inventory_Supported = ${TMDD_N96R383_Link_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Linear Reference - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.11).  RECORD this information as: TMDD_N96R386_Linear_Reference___Device_Inventory_Supported = ${TMDD_N96R386_Linear_Reference___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Route Designator - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.13).  RECORD this information as: TMDD_N96R388_Route_Designator___Device_Inventory_Supported = ${TMDD_N96R388_Route_Designator___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Device Uniform Resource Locator (URL) (DeviceURL) is required by the specification. (NRTM 3.3.5.1.2.1.2.14).  RECORD this information as: TMDD_N96R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported = ${TMDD_N96R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Device URL Reference Medium is required by the specification. (NRTM 3.3.5.1.2.1.2.15).  RECORD this information as: TMDD_N96R390_Device_URL_Reference_Medium_Supported = ${TMDD_N96R390_Device_URL_Reference_Medium_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Device Inventory Date and Time Change Information is required by the specification. (NRTM 3.3.5.1.2.1.2.16).  RECORD this information as: TMDD_N96R391_Device_Inventory_Date_and_Time_Change_Information_Supported = ${TMDD_N96R391_Device_Inventory_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 12 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 14 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 15 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlIntersectionSignalInventoryRequest RESPONSETIMEREQUIRED=TMDD_N96R935_Send_Signal_Inventory_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlIntersectionSignalInventoryRequest" functionId="dlIntersectionSignalInventoryRequest" RESPONSETIMEREQUIRED="${TMDD_N96R935_Send_Signal_Inventory_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 16 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 16.1 VERIFY that element device-inventory-header exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 16.2 VERIFY that element device-inventory-header exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 16.3 VERIFY that element device-inventory-header exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 16.4 VERIFY that element device-inventory-header exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 16.5 VERIFY that element device-inventory-header exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 16.6 VERIFY that element device-inventory-header exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 16.7 VERIFY that element organization-information exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 16.8 VERIFY that element device-id exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 16.9 VERIFY that element device-location exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-location" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 16.10 VERIFY that element device-name exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-name" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 16.11 VERIFY that element intersectionSignalInventoryMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="intersectionSignalInventoryMsg" instanceName="tmdd:intersectionSignalInventoryMsg" elementType="message" functionId="Looking for intersectionSignalInventoryMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.12 VERIFY that element device-inventory-header exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 16.13 VERIFY that element intersection-name exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="intersection-name" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 16.14 VERIFY that element time-reference-code exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-reference-code" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 16.15 IF TMDD_N96R376_Restrictions___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N96R376_Restrictions___Device_Inventory_Supported}">
+                    <testStep functionId="Step 16.15.1 VERIFY that element restrictions exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.16 IF TMDD_N96R377_Device_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N96R377_Device_Description_Supported}">
+                    <testStep functionId="Step 16.16.1 VERIFY that element device-description exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-description" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.17 IF TMDD_N96R378_Device_Control_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N96R378_Device_Control_Type_Supported}">
+                    <testStep functionId="Step 16.17.1 VERIFY that element device-control-type exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-control-type" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.18 IF TMDD_N96R380_Roadway_Network_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N96R380_Roadway_Network_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 16.18.1 VERIFY that element network-id exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="network-id" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.19 IF TMDD_N96R383_Link_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N96R383_Link_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 16.19.1 VERIFY that element link-id exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-id" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.20 IF TMDD_N96R386_Linear_Reference___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N96R386_Linear_Reference___Device_Inventory_Supported}">
+                    <testStep functionId="Step 16.20.1 VERIFY that element linear-reference exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.21 IF TMDD_N96R388_Route_Designator___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N96R388_Route_Designator___Device_Inventory_Supported}">
+                    <testStep functionId="Step 16.21.1 VERIFY that element route-designator exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="route-designator" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.22 IF TMDD_N96R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N96R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}">
+                    <testStep functionId="Step 16.22.1 VERIFY that element device-url exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-url" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.23 IF TMDD_N96R390_Device_URL_Reference_Medium_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N96R390_Device_URL_Reference_Medium_Supported}">
+                    <testStep functionId="Step 16.23.1 VERIFY that element url-reference-medium exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header.device-url" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="url-reference-medium" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header.device-url" elementType="data-element" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header.device-url"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.24 IF TMDD_N96R391_Device_Inventory_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N96R391_Device_Inventory_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 16.24.1 VERIFY that element last-update-time exists within each instance of intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.25 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N96R376_Restrictions___Device_Inventory_Supported,restrictions,tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header;TMDD_N96R377_Device_Description_Supported,device-description,tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header;TMDD_N96R378_Device_Control_Type_Supported,device-control-type,tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header;TMDD_N96R380_Roadway_Network_Identifier___Device_Inventory_Supported,network-id,tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header;TMDD_N96R383_Link_Identifier___Device_Inventory_Supported,link-id,tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header;TMDD_N96R386_Linear_Reference___Device_Inventory_Supported,linear-reference,tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header;TMDD_N96R388_Route_Designator___Device_Inventory_Supported,route-designator,tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header;TMDD_N96R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported,device-url,tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header;TMDD_N96R390_Device_URL_Reference_Medium_Supported,url-reference-medium,tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header.device-url;TMDD_N96R391_Device_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:intersectionSignalInventoryMsg.intersection-signal-inventory-item.device-inventory-header;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

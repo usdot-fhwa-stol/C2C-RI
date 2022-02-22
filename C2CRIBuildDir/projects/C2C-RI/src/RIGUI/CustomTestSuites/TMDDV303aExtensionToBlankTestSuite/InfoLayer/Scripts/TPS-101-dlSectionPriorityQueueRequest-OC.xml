@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-101-dlSectionPriorityQueueRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlSectionPriorityQueueRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.10.16 [Need to View Section Plan Queue] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:52:22-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlSectionPriorityQueueRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.10.16 [Need to View Section Plan Queue] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Device Queue is required by the specification. (NRTM 3.3.5.1.7.2.2.1).  RECORD this information as: TMDD_N101R432_Restrictions___Device_Queue_Supported = ${TMDD_N101R432_Restrictions___Device_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Operator Identifier - Device Queue Acknowledge is required by the specification. (NRTM 3.3.5.1.7.2.2.2).  RECORD this information as: TMDD_N101R433_Operator_Identifier___Device_Queue_Acknowledge_Supported = ${TMDD_N101R433_Operator_Identifier___Device_Queue_Acknowledge_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Unique Sequence Number is required by the specification. (NRTM 3.3.5.1.7.2.2.3).  RECORD this information as: TMDD_N101R434_Unique_Sequence_Number_Supported = ${TMDD_N101R434_Unique_Sequence_Number_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Event Identifier - Device Queue is required by the specification. (NRTM 3.3.5.1.7.2.2.4).  RECORD this information as: TMDD_N101R435_Event_Identifier___Device_Queue_Supported = ${TMDD_N101R435_Event_Identifier___Device_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Event Response Plan - Device Queue is required by the specification. (NRTM 3.3.5.1.7.2.2.5).  RECORD this information as: TMDD_N101R436_Event_Response_Plan___Device_Queue_Supported = ${TMDD_N101R436_Event_Response_Plan___Device_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Request Start Date and Time - Device Queue is required by the specification. (NRTM 3.3.5.1.7.2.2.6).  RECORD this information as: TMDD_N101R437_Request_Start_Date_and_Time___Device_Queue_Supported = ${TMDD_N101R437_Request_Start_Date_and_Time___Device_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Request Expiration Date and Time - Device Queue is required by the specification. (NRTM 3.3.5.1.7.2.2.7).  RECORD this information as: TMDD_N101R438_Request_Expiration_Date_and_Time___Device_Queue_Supported = ${TMDD_N101R438_Request_Expiration_Date_and_Time___Device_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Signal Timing Mode - Section Queue is required by the specification. (NRTM 3.3.5.11.14.3.2.1).  RECORD this information as: TMDD_N101R1106_Signal_Timing_Mode___Section_Queue_Supported = ${TMDD_N101R1106_Signal_Timing_Mode___Section_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Timing Pattern Identifier - Section Queue is required by the specification. (NRTM 3.3.5.11.14.3.2.2).  RECORD this information as: TMDD_N101R1107_Timing_Pattern_Identifier___Section_Queue_Supported = ${TMDD_N101R1107_Timing_Pattern_Identifier___Section_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Offset Adjustment - Section Queue is required by the specification. (NRTM 3.3.5.11.14.3.2.3).  RECORD this information as: TMDD_N101R1108_Offset_Adjustment___Section_Queue_Supported = ${TMDD_N101R1108_Offset_Adjustment___Section_Queue_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 12 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 14 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 15 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlSectionPriorityQueueRequest RESPONSETIMEREQUIRED=TMDD_N101R1102_Send_Section_Control_Priority_Queue_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlSectionPriorityQueueRequest" functionId="dlSectionPriorityQueueRequest" RESPONSETIMEREQUIRED="${TMDD_N101R1102_Send_Section_Control_Priority_Queue_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 16 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 16.1 VERIFY that element device-priority-queue-header exists within sectionPriorityQueueMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-priority-queue-header" instanceName="tmdd:sectionPriorityQueueMsg" elementType="data-frame" functionId="Looking for sectionPriorityQueueMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.2 VERIFY that element device-priority-queue-header exists within sectionPriorityQueueMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-priority-queue-header" instanceName="tmdd:sectionPriorityQueueMsg" elementType="data-frame" functionId="Looking for sectionPriorityQueueMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.3 VERIFY that element device-id exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header"/>
+               </testStep>
+               <testStep functionId="Step 16.4 VERIFY that element device-type exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-type" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header"/>
+               </testStep>
+               <testStep functionId="Step 16.5 VERIFY that element current-device-priority exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="current-device-priority" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header"/>
+               </testStep>
+               <testStep functionId="Step 16.6 VERIFY that element organization-requesting exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-frame" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+               </testStep>
+               <testStep functionId="Step 16.7 VERIFY that element command-request-priority exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="command-request-priority" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+               </testStep>
+               <testStep functionId="Step 16.8 VERIFY that element sectionPriorityQueueMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="sectionPriorityQueueMsg" instanceName="tmdd:sectionPriorityQueueMsg" elementType="message" functionId="Looking for sectionPriorityQueueMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.9 VERIFY that element device-priority-queue-header exists within sectionPriorityQueueMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-priority-queue-header" instanceName="tmdd:sectionPriorityQueueMsg" elementType="data-frame" functionId="Looking for sectionPriorityQueueMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.10 VERIFY that element section-request-command exists within sectionPriorityQueueMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="section-request-command" instanceName="tmdd:sectionPriorityQueueMsg" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg"/>
+               </testStep>
+               <testStep functionId="Step 16.11 IF TMDD_N101R432_Restrictions___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N101R432_Restrictions___Device_Queue_Supported}">
+                    <testStep functionId="Step 16.11.1 VERIFY that element restrictions exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header" elementType="data-frame" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.12 IF TMDD_N101R433_Operator_Identifier___Device_Queue_Acknowledge_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N101R433_Operator_Identifier___Device_Queue_Acknowledge_Supported}">
+                    <testStep functionId="Step 16.12.1 VERIFY that element operator-id exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operator-id" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.13 IF TMDD_N101R434_Unique_Sequence_Number_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N101R434_Unique_Sequence_Number_Supported}">
+                    <testStep functionId="Step 16.13.1 VERIFY that element request-id exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="request-id" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.14 IF TMDD_N101R435_Event_Identifier___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N101R435_Event_Identifier___Device_Queue_Supported}">
+                    <testStep functionId="Step 16.14.1 VERIFY that element event-id exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="event-id" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.15 IF TMDD_N101R436_Event_Response_Plan___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N101R436_Event_Response_Plan___Device_Queue_Supported}">
+                    <testStep functionId="Step 16.15.1 VERIFY that element response-plan-id exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="response-plan-id" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.16 IF TMDD_N101R437_Request_Start_Date_and_Time___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N101R437_Request_Start_Date_and_Time___Device_Queue_Supported}">
+                    <testStep functionId="Step 16.16.1 VERIFY that element command-start-time exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="command-start-time" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-frame" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.17 IF TMDD_N101R438_Request_Expiration_Date_and_Time___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N101R438_Request_Expiration_Date_and_Time___Device_Queue_Supported}">
+                    <testStep functionId="Step 16.17.1 VERIFY that element command-end-time exists within each instance of sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="command-end-time" instanceName="tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-frame" functionId="Looking for sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.18 IF TMDD_N101R1106_Signal_Timing_Mode___Section_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N101R1106_Signal_Timing_Mode___Section_Queue_Supported}">
+                    <testStep functionId="Step 16.18.1 VERIFY that element request-control-mode exists within each instance of sectionPriorityQueueMsg.section-queue-parameters" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="request-control-mode" instanceName="tmdd:sectionPriorityQueueMsg.section-queue-parameters" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.section-queue-parameters"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.19 IF TMDD_N101R1107_Timing_Pattern_Identifier___Section_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N101R1107_Timing_Pattern_Identifier___Section_Queue_Supported}">
+                    <testStep functionId="Step 16.19.1 VERIFY that element timing-pattern-id exists within each instance of sectionPriorityQueueMsg.section-queue-parameters" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="timing-pattern-id" instanceName="tmdd:sectionPriorityQueueMsg.section-queue-parameters" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.section-queue-parameters"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.20 IF TMDD_N101R1108_Offset_Adjustment___Section_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N101R1108_Offset_Adjustment___Section_Queue_Supported}">
+                    <testStep functionId="Step 16.20.1 VERIFY that element section-offset-adjustment exists within each instance of sectionPriorityQueueMsg.section-queue-parameters" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="section-offset-adjustment" instanceName="tmdd:sectionPriorityQueueMsg.section-queue-parameters" elementType="data-element" functionId="Looking for sectionPriorityQueueMsg.section-queue-parameters"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.21 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N101R432_Restrictions___Device_Queue_Supported,restrictions,tmdd:sectionPriorityQueueMsg.device-priority-queue-header;TMDD_N101R433_Operator_Identifier___Device_Queue_Acknowledge_Supported,operator-id,tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N101R434_Unique_Sequence_Number_Supported,request-id,tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N101R435_Event_Identifier___Device_Queue_Supported,event-id,tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N101R436_Event_Response_Plan___Device_Queue_Supported,response-plan-id,tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N101R437_Request_Start_Date_and_Time___Device_Queue_Supported,command-start-time,tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N101R438_Request_Expiration_Date_and_Time___Device_Queue_Supported,command-end-time,tmdd:sectionPriorityQueueMsg.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N101R1106_Signal_Timing_Mode___Section_Queue_Supported,request-control-mode,tmdd:sectionPriorityQueueMsg.section-queue-parameters;TMDD_N101R1107_Timing_Pattern_Identifier___Section_Queue_Supported,timing-pattern-id,tmdd:sectionPriorityQueueMsg.section-queue-parameters;TMDD_N101R1108_Offset_Adjustment___Section_Queue_Supported,section-offset-adjustment,tmdd:sectionPriorityQueueMsg.section-queue-parameters;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

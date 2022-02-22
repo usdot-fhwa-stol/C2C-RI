@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-11-dlLinkInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlLinkInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.4.1.2 [Need for Link Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:13:55-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlLinkInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.4.1.2 [Need for Link Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Link Inventory is required by the specification. (NRTM 3.3.4.3.1.5.2.1).  RECORD this information as: TMDD_N11R257_Restrictions___Link_Inventory_Supported = ${TMDD_N11R257_Restrictions___Link_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Roadway Network Name - Link Inventory is required by the specification. (NRTM 3.3.4.3.1.5.2.2).  RECORD this information as: TMDD_N11R258_Roadway_Network_Name___Link_Inventory_Supported = ${TMDD_N11R258_Roadway_Network_Name___Link_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Link Name - Link Inventory is required by the specification. (NRTM 3.3.4.3.1.5.2.3).  RECORD this information as: TMDD_N11R259_Link_Name___Link_Inventory_Supported = ${TMDD_N11R259_Link_Name___Link_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Alternate Names - Link Inventory is required by the specification. (NRTM 3.3.4.3.1.5.2.4).  RECORD this information as: TMDD_N11R260_Alternate_Names___Link_Inventory_Supported = ${TMDD_N11R260_Alternate_Names___Link_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Route Designator - Link Inventory is required by the specification. (NRTM 3.3.4.3.1.5.2.5).  RECORD this information as: TMDD_N11R261_Route_Designator___Link_Inventory_Supported = ${TMDD_N11R261_Route_Designator___Link_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Secondary Route Designator is required by the specification. (NRTM 3.3.4.3.1.5.2.6).  RECORD this information as: TMDD_N11R262_Secondary_Route_Designator_Supported = ${TMDD_N11R262_Secondary_Route_Designator_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Linear Reference - Link Inventory is required by the specification. (NRTM 3.3.4.3.1.5.2.7).  RECORD this information as: TMDD_N11R263_Linear_Reference___Link_Inventory_Supported = ${TMDD_N11R263_Linear_Reference___Link_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Link Length is required by the specification. (NRTM 3.3.4.3.1.5.2.8).  RECORD this information as: TMDD_N11R264_Link_Length_Supported = ${TMDD_N11R264_Link_Length_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Link Capacity is required by the specification. (NRTM 3.3.4.3.1.5.2.9).  RECORD this information as: TMDD_N11R265_Link_Capacity_Supported = ${TMDD_N11R265_Link_Capacity_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Link Speed Limit - Link Inventory is required by the specification. (NRTM 3.3.4.3.1.5.2.10).  RECORD this information as: TMDD_N11R266_Link_Speed_Limit___Link_Inventory_Supported = ${TMDD_N11R266_Link_Speed_Limit___Link_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Link Truck Speed Limit - Link Inventory is required by the specification. (NRTM 3.3.4.3.1.5.2.11).  RECORD this information as: TMDD_N11R267_Link_Truck_Speed_Limit___Link_Inventory_Supported = ${TMDD_N11R267_Link_Truck_Speed_Limit___Link_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Speed Limit Units - Link Inventory is required by the specification. (NRTM 3.3.4.3.1.5.2.12).  RECORD this information as: TMDD_N11R268_Speed_Limit_Units___Link_Inventory_Supported = ${TMDD_N11R268_Speed_Limit_Units___Link_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Link Law Enforcement Jurisdiction is required by the specification. (NRTM 3.3.4.3.1.5.2.13).  RECORD this information as: TMDD_N11R269_Link_Law_Enforcement_Jurisdiction_Supported = ${TMDD_N11R269_Link_Law_Enforcement_Jurisdiction_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Designated Owner is required by the specification. (NRTM 3.3.4.3.1.5.2.14).  RECORD this information as: TMDD_N11R270_Designated_Owner_Supported = ${TMDD_N11R270_Designated_Owner_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Left Shoulder Width is required by the specification. (NRTM 3.3.4.3.1.5.2.15).  RECORD this information as: TMDD_N11R271_Left_Shoulder_Width_Supported = ${TMDD_N11R271_Left_Shoulder_Width_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Right Shoulder Width is required by the specification. (NRTM 3.3.4.3.1.5.2.16).  RECORD this information as: TMDD_N11R272_Right_Shoulder_Width_Supported = ${TMDD_N11R272_Right_Shoulder_Width_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Median Type is required by the specification. (NRTM 3.3.4.3.1.5.2.17).  RECORD this information as: TMDD_N11R273_Median_Type_Supported = ${TMDD_N11R273_Median_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Link Inventory Date and Time Change Information is required by the specification. (NRTM 3.3.4.3.1.5.2.18).  RECORD this information as: TMDD_N11R274_Link_Inventory_Date_and_Time_Change_Information_Supported = ${TMDD_N11R274_Link_Inventory_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 20 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 21 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 22 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 23 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlLinkInventoryRequest RESPONSETIMEREQUIRED=TMDD_N11R251_Send_Link_Inventory_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlLinkInventoryRequest" functionId="dlLinkInventoryRequest" RESPONSETIMEREQUIRED="${TMDD_N11R251_Send_Link_Inventory_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 24 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 24.1 VERIFY that element linkInventoryMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="linkInventoryMsg" instanceName="tmdd:linkInventoryMsg" elementType="message" functionId="Looking for linkInventoryMsg"/>
+               </testStep>
+               <testStep functionId="Step 24.2 VERIFY that element organization-information exists within each instance of linkInventoryMsg.link-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:linkInventoryMsg.link-inventory-item" elementType="data-frame" functionId="Looking for linkInventoryMsg.link-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 24.3 VERIFY that element network-id exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="network-id" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+               </testStep>
+               <testStep functionId="Step 24.4 VERIFY that element link-id exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="link-id" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+               </testStep>
+               <testStep functionId="Step 24.5 VERIFY that element link-type exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="link-type" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+               </testStep>
+               <testStep functionId="Step 24.6 VERIFY that element link-begin-node-id exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="link-begin-node-id" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+               </testStep>
+               <testStep functionId="Step 24.7 VERIFY that element link-begin-node-location exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="link-begin-node-location" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-frame" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+               </testStep>
+               <testStep functionId="Step 24.8 VERIFY that element link-end-node-id exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="link-end-node-id" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+               </testStep>
+               <testStep functionId="Step 24.9 VERIFY that element link-end-node-location exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="link-end-node-location" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-frame" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+               </testStep>
+               <testStep functionId="Step 24.10 IF TMDD_N11R257_Restrictions___Link_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R257_Restrictions___Link_Inventory_Supported}">
+                    <testStep functionId="Step 24.10.1 VERIFY that element restrictions exists within each instance of linkInventoryMsg.link-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:linkInventoryMsg.link-inventory-item" elementType="data-frame" functionId="Looking for linkInventoryMsg.link-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.11 IF TMDD_N11R258_Roadway_Network_Name___Link_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R258_Roadway_Network_Name___Link_Inventory_Supported}">
+                    <testStep functionId="Step 24.11.1 VERIFY that element network-name exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="network-name" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.12 IF TMDD_N11R259_Link_Name___Link_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R259_Link_Name___Link_Inventory_Supported}">
+                    <testStep functionId="Step 24.12.1 VERIFY that element link-name exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-name" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.13 IF TMDD_N11R260_Alternate_Names___Link_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R260_Alternate_Names___Link_Inventory_Supported}">
+                    <testStep functionId="Step 24.13.1 VERIFY that element alternate-link-name exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="alternate-link-name" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.14 IF TMDD_N11R261_Route_Designator___Link_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R261_Route_Designator___Link_Inventory_Supported}">
+                    <testStep functionId="Step 24.14.1 VERIFY that element link-route-designator exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-route-designator" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.15 IF TMDD_N11R262_Secondary_Route_Designator_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R262_Secondary_Route_Designator_Supported}">
+                    <testStep functionId="Step 24.15.1 VERIFY that element secondary-link-route-designator exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="secondary-link-route-designator" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.16 IF TMDD_N11R263_Linear_Reference___Link_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R263_Linear_Reference___Link_Inventory_Supported}">
+                    <testStep functionId="Step 24.16.1 VERIFY that element linear-reference exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+                    <testStep functionId="Step 24.16.2 VERIFY that element linear-reference-version exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference-version" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.17 IF TMDD_N11R264_Link_Length_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R264_Link_Length_Supported}">
+                    <testStep functionId="Step 24.17.1 VERIFY that element link-length exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-length" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.18 IF TMDD_N11R265_Link_Capacity_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R265_Link_Capacity_Supported}">
+                    <testStep functionId="Step 24.18.1 VERIFY that element link-capacity exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-capacity" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.19 IF TMDD_N11R266_Link_Speed_Limit___Link_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R266_Link_Speed_Limit___Link_Inventory_Supported}">
+                    <testStep functionId="Step 24.19.1 VERIFY that element link-speed-limit exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-speed-limit" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.20 IF TMDD_N11R267_Link_Truck_Speed_Limit___Link_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R267_Link_Truck_Speed_Limit___Link_Inventory_Supported}">
+                    <testStep functionId="Step 24.20.1 VERIFY that element link-speed-limit-truck exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-speed-limit-truck" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.21 IF TMDD_N11R268_Speed_Limit_Units___Link_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R268_Speed_Limit_Units___Link_Inventory_Supported}">
+                    <testStep functionId="Step 24.21.1 VERIFY that element link-speed-limit-units exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-speed-limit-units" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.22 IF TMDD_N11R269_Link_Law_Enforcement_Jurisdiction_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R269_Link_Law_Enforcement_Jurisdiction_Supported}">
+                    <testStep functionId="Step 24.22.1 VERIFY that element link-jurisdiction exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-jurisdiction" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.23 IF TMDD_N11R270_Designated_Owner_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R270_Designated_Owner_Supported}">
+                    <testStep functionId="Step 24.23.1 VERIFY that element link-owner exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-owner" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.24 IF TMDD_N11R271_Left_Shoulder_Width_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R271_Left_Shoulder_Width_Supported}">
+                    <testStep functionId="Step 24.24.1 VERIFY that element left-shoulder-width exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="left-shoulder-width" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.25 IF TMDD_N11R272_Right_Shoulder_Width_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R272_Right_Shoulder_Width_Supported}">
+                    <testStep functionId="Step 24.25.1 VERIFY that element right-shoulder-width exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="right-shoulder-width" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.26 IF TMDD_N11R273_Median_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R273_Median_Type_Supported}">
+                    <testStep functionId="Step 24.26.1 VERIFY that element lane-separator exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="lane-separator" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-element" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.27 IF TMDD_N11R274_Link_Inventory_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R274_Link_Inventory_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 24.27.1 VERIFY that element last-update-time exists within each instance of linkInventoryMsg.link-inventory-item.link-inventory-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link" elementType="data-frame" functionId="Looking for linkInventoryMsg.link-inventory-item.link-inventory-list.link"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.28 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N11R257_Restrictions___Link_Inventory_Supported,restrictions,tmdd:linkInventoryMsg.link-inventory-item;TMDD_N11R258_Roadway_Network_Name___Link_Inventory_Supported,network-name,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R259_Link_Name___Link_Inventory_Supported,link-name,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R260_Alternate_Names___Link_Inventory_Supported,alternate-link-name,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R261_Route_Designator___Link_Inventory_Supported,link-route-designator,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R262_Secondary_Route_Designator_Supported,secondary-link-route-designator,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R263_Linear_Reference___Link_Inventory_Supported,linear-reference,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R263_Linear_Reference___Link_Inventory_Supported,linear-reference-version,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R264_Link_Length_Supported,link-length,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R265_Link_Capacity_Supported,link-capacity,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R266_Link_Speed_Limit___Link_Inventory_Supported,link-speed-limit,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R267_Link_Truck_Speed_Limit___Link_Inventory_Supported,link-speed-limit-truck,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R268_Speed_Limit_Units___Link_Inventory_Supported,link-speed-limit-units,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R269_Link_Law_Enforcement_Jurisdiction_Supported,link-jurisdiction,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R270_Designated_Owner_Supported,link-owner,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R271_Left_Shoulder_Width_Supported,left-shoulder-width,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R272_Right_Shoulder_Width_Supported,right-shoulder-width,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R273_Median_Type_Supported,lane-separator,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;TMDD_N11R274_Link_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:linkInventoryMsg.link-inventory-item.link-inventory-list.link;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

@@ -1,0 +1,4 @@
+Predicate,Section
+SOAPMessageTransport,1.d
+XMLTransport,2.e
+XMLoverFTPEncoding,3.b

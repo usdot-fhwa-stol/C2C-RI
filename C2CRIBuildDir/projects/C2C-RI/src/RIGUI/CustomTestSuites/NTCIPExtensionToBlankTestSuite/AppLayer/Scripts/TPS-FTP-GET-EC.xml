@@ -1,0 +1,51 @@
+<?xml version="1.0" ?> 
+<!--   
+       Title:  TPS-FTP-GET-EC
+       Description:  This test procedure is called by a test case and is used to verify a SUTs conformance to the FTP encoding and 
+                     transport subprofiles of NTCIP 2306 when acting as an EC. This procedure supports verification of requirements related to 
+                     user needs 3 (FTP Profile) and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/03 12:44 (Manual)
+-->
+
+<testprocedure xmlns="jelly:jameleon"  xmlns:jl="jelly:core" >
+<test-case-id>${C2CRITestCaseID}</test-case-id>
+<test-case-summary>This test procedure is called by a test case and is used to verify a SUTs conformance to the FTP encoding and transport subprofiles of NTCIP 2306 when acting as an EC. 
+This procedure supports verification of requirements related to user needs 3 (FTP Profile) and is used for both valid and invalid test cases.</test-case-summary>
+
+
+<NTCIP2306-session testCaseIdentifier="${C2CRITestCaseID}" riMode="OC" wsdlURL="${WSDLFile}">
+
+<testStep functionId = "Step 1 CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.  RECORD the WSDL File Name value as: ${WSDLFile}"  passfailResult="False"/>
+<testStep functionId = "Step 2 CONFIGURE: Identify the FTP related Service defined in the WSDL that will be used for the one-way Get operation during the test.  RECORD the Service name value as: ${ServiceName}"  passfailResult="False"/>
+<testStep functionId = "Step 3 CONFIGURE: Identify the port related to the FTP Get service that will used during the test.  RECORD this value as: ${PortName} "  passfailResult="False"/>
+<testStep functionId = "Step 4 CONFIGURE: Select a Get operation related to the FTP Service selected to be used for the test.  RECORD this value as: ${OperationName}"  passfailResult="False"/>
+<testStep functionId = "Step 5 CONFIGURE: Determine whether an FTP transport error is expected during this test.  RECORD this value as: ${TransportErrorExpected}"  passfailResult="False"/>
+<testStep functionId = "Step 6 CONFIGURE: IF TransPortErrorExpected =True THEN RECORD the expected type of FTP transport  error as: ${TransportErrorTypeExpected}"  passfailResult="False"/>
+<testStep functionId = "Step 7 CONFIGURE: Determine the XML message to be returned during this test.  RECORD this value as: ${ResponseMessage}"  passfailResult="False"/>
+
+<precondition>
+<testStep functionId = "Step X "  passfailResult="True">
+
+</testStep>
+<precondition>
+
+<testStep functionId = "Step 8 FTP-GET-OC with the following parameter(s): WSDL File = ${WSDLFile}, Service Name = ${ServiceName}, Response Message = ${ResponseMessage}, Port Name = ${PortName}, Operation Name = ${OperationName} "  passfailResult="False">
+	<FTP-GET-OC functionId="FTP-GET-OC" WSDLFILE="${WSDLFile}" SERVICENAME="${ServiceName}" PORTNAME="${PortName}" OPERATIONNAME="${OperationName}" RESPONSEMESSAGE="${ResponseMessage}"/>
+</testStep>
+
+<testStep functionId = "Step 9 IF TransportErrorExpected =False THEN CONTINUE; OTHERWISE skip the following sub steps."  passfailResult="False"/>
+<jl:if test="${!TransportErrorExpected}" >
+	<testStep functionId = "Step 9.1 VERIFY that TRANSPORTERRORRESULT = False" >
+           <ju-assert-true functionId="Verify the TRANSPORTERRORRESULT" msg="Error: TRANSPORTERRORRESULT was ${TRANSPORTERRORRESULT} with type ${TRANSPORTERRORTYPE}." test="${!TRANSPORTERRORRESULT}"/>
+	</testStep>
+</jl:if>
+
+<testStep functionId = "Step 10 IF TransportErrorExpected =True THEN CONTINUE; OTHERWISE skip the following sub steps."  passfailResult="False"/>
+<jl:if test="${TransportErrorExpected}" >
+	<testStep functionId = "Step 10.1 VERIFY that TRANSPORTERRORTYPE = TransportErrorTypeExpected" >
+            <ju-assert-equals functionId="Verify the TRANSPORTERRORTYPE" msg="Error: TransportErrorTypeExpected was ${TransportErrorTypeExpected} while TRANSPORTERRORTYPE was ${TRANSPORTERRORTYPE}." actual="${TRANSPORTERRORTYPE}" expected="${TransportErrorTypeExpected}"/>
+	</testStep>
+</jl:if>
+
+</NTCIP2306-session>
+</testprocedure>

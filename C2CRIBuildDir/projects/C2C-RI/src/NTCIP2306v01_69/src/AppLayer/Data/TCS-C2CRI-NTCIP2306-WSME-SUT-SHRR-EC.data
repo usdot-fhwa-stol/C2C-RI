@@ -1,0 +1,70 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSME-SUT-SOAP-RR-EC
+#       Description:  TCS-C2CRI-NTCIP2306-WSME-SUT-SOAP-RR-EC
+#       Related Procedure:  TPS-NTCIP2306-SOAP-RR-EC.xml
+#       Version/Date: 2011/11/15 22:59:44
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents the WSDL File to be verified.� It is specified in the Configuration File.
+WSDLFile=#CONTEXTVARIABLE#RI_WEBSERVICEURL#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Service defined in the WSDL that will be used during the test.
+ServiceName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Port defined in the WSDL that is related to the selected Service Name and will be used during the test.
+PortName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Operation defined in the WSDL that is related to the selected Service Name and will be used during the test.
+OperationName = #USERDEFINED#
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = Enter (True or False) whether an erroneous transport exchange is expected during this test. 
+TransportErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the type of Transport Error (if applicable) that is expected during this test. 
+TransportErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = Enter (True or False) whether an erroneous message request is expected during this test. 
+MessageErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the XML message to be sent as a request during this test. 
+ResponseMessage = #USERDEFINED#
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = Enter (True or False) whether an encoding error is expected during this test. 
+EncodingErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the type of Encoding Error that is expected during this test. 
+EncodingErrorTypeExpected = NONE
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = Enter the type of message error (if applicable) is expected during this test. 
+MessageErrorTypeExpected = NONE
+

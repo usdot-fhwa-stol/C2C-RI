@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!--
+    Jameleon - An automation testing tool..
+    Copyright (C) 2003-2006 Christian W. Hargraves (engrean@hotmail.com)
+    
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+<testcase xmlns="jelly:jameleon">
+    <test-case-summary>Tests the sql tag without countRow setting</test-case-summary>
+    <test-case-author>Christian Hargraves</test-case-author>
+    <test-case-level>ACCEPTANCE</test-case-level>
+    <functional-point-tested>sql</functional-point-tested>
+    <application-tested>framework</application-tested>
+
+
+    <junit-session application="sql">
+        <sql-update 
+            functionId="Create a TEST table" 
+            sqlUpdateSql="Create Table TEST (ID int, col1 varchar(15), col2 varchar(25), col3 varchar(15))"/>
+        <sql-update 
+            functionId="Insert a row into TEST" 
+            sqlUpdateSql="Insert INTO TEST values (1, 'Foo', '1', 'Foo')"/>
+        <sql-update 
+            functionId="Insert another row into TEST" 
+            sqlUpdateSql="Insert INTO TEST values (2, 'Bar', '2', 'Bar')"/>
+    </junit-session>
+    <sql query="SELECT ID as VAR1, col1 as VAR2, col2 as VAR3, col3 as VAR4 FROM TEST"
+         id="sqlTagTest"
+         jdbcUsername="${sql.jdbc.username}"
+         jdbcPassword="${sql.jdbc.password}"
+         jdbcUrl="${sql.jdbc.url}"
+         jdbcDriver="${sql.jdbc.driver}"
+         countRow="true">
+
+        <junit-session>
+            <junit-simple-compare-2-vars 
+                functionId="compare two variables of different column types from a sql tag query"
+                simpleFunctionCompVar1="${VAR1}"
+                simpleFunctionCompVar2="${VAR3}"/>
+            <junit-simple-compare-2-vars 
+                functionId="compare two variables of different columns from a sql tag query"
+                simpleFunctionCompVar1="${VAR2}"
+                simpleFunctionCompVar2="${VAR4}"/>
+        </junit-session>
+    </sql>
+    <junit-session application="sql">
+        <sql-update 
+            functionId="Drop the TEST table" 
+            sqlUpdateSql="Drop Table TEST"/>
+    </junit-session>
+
+</testcase>

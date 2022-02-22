@@ -1,159 +1,116 @@
-# codehub-readme-template
+# Summary:
 
-## Summary of what a README file is:
+This repository contains the source code of the Center-To-Center Reference Implementation (C2C RI) Tool.  The C2C RI supports efficient deployment of systems using C2C communications by providing a standardized way to verify conformance to C2C standards. The C2C interface may be between two traffic management centers or any two centers that need to coordinate (regionally or locally) the management of a corridor, arterial, incident, event, or more. Currently the C2C RI supports conformance testing for the Institute of Transportation Engineers (ITE) Traffic Management Data Dictionary (TMDD) v3.03c, TMDD v3.03d and TMDD v3.1 standards, and National Transportation Communications for ITS Protocol (NTCIP) 2306 v1.69 Web Services Description Language (WSDL)/Simple Object Access Protocol (SOAP) protocol.
 
-A README file contains important information about the associated source code, files, dependencies and related details that make up an application. In order to leverage applications and their associated source code, members of the open source community rely on clear and concise READMEs.
+The source code generates jar files associated with each of the following source projects:
+* RI_Properties - Includes the classes related to the C2C RI configuration settings.
+* RITestCaseData - Includes the classes necessary to provide Test Case data file parameters as content for test cases executed by the C2C RI.
+* RITestCaseDefinitions - Includes classes that are only used by various developer testing programs that are included in various other projects.
+* RI_Utilities - Includes various utility classes that are used by other C2C RI projects.
+* RI_Connections - Includes java extension classes necessary for logging over the wire data.
+* RI_Logging - Includes classes responsible for creating, reading and signing test log files.
+* C2CRIReportsDBLibrary - Includes classes necessary for creating and populating a reports database which is used in the generation of C2C RI Reports.
+* RICenterServices - Contains classes which are used to define the Application Layer Standards, Information Layer Standards and the data that is passed between these layers.
+* RI_Jameleon - Contains the data driven test scripting engine used by the C2C RI along with some additional custom tags.
+* NTCIP2306v01_69 - Contains the NTCIP 2306 test specifications, WSDL processing code, HTTP and FTP Client and Server code, along with custom NTCIP 2306 related test script tags.
+* TMDDCommon - Contains the base TMDD standard dialog, message and emulation handling code.  It also includes TMDD related test script tags.
+* TMDDv303 - Extends the base TMDD standard to meet TMDD v3.03c definitions and includes TMDD v3.03c test specifications.
+* TMDDv303d - Extends the base TMDD standard to meet TMDD v3.03d definitions and includes TMDD v3.03d test specifications.
+* TMDDv31 - Extends the base TMDD standard to meet TMDD v3.1 definitions and includes TMDD v3.1 test specifications.
+* RIGUI - Includes the main C2C RI GUI and Wizard related classes.  Additionally it contains the classes responsible for the Test Configuration and Test Results.
 
-## Purpose of this template
+The source code was programmed in Apache Netbeans with Java.  
 
-The purpose of this README template is to provide project teams an easy template to copy-paste into their own README file for source code funded, either fully or partially, by the United States Department of Transportation (U.S. DOT) Intelligent Transportation Systems Joint Program Office (ITS JPO). This template contains elements for following the [ITS JPO Source Code Guidelines](https://its.dot.gov/code/#/source-code-guidelines) and README best practices.
+**** Test Suites and Test Log files created by the Open Source version of the C2C RI will not be recognized by the official release version of the C2C RI which is available at https://www.standards.its.dot.gov/DeploymentResources/Tools.  ****
 
-The goal is for project READMEs to be compliant, clear, concise, and informative for source code users. Please note that examples of the [CONTRIBUTING.md](https://github.com/usdot-jpo-codehub/codehub-readme-template/blob/master/Contributing.MD) and [LICENSE.md](https://github.com/usdot-jpo-codehub/codehub-readme-template/blob/master/LICENSE) files required by the ITS JPO Source Code Guidelines are nested within this template. See the License and Contributions sections of this template for more details. **Please feel free to copy and paste this template into your own repository's README space.**
-
-For a real-world example of an ITS JPO-funded project using this template, see the [STOL-AMS/TO-22-Improved-CACC](https://github.com/STOL-AMS/TO-22-Improved-CACC) repository.
-
-# README Outline:
-* Project Description
+# Organizational Outline:
+* Project Title
+* Release Notes
+* Getting Started
 * Prerequisites
-* Usage
-	* Building
-	* Testing
-	* Execution
-* Additional Notes
-* Version History and Retention
+* Installing
+* Testing
 * License
-* Contributions
 * Contact Information
-* Acknowledgements
 
-# Project Description
+# Project Title
 
-*Insert a description of your project, including the project's title, purpose and goals of the project, purpose of the source code, how the source code relates to the overall goals of the project, whether this source code relates to other source code in the project, and length of the project.*
+*Center-to-Center Reference Implementation (C2C RI)*
 
-Example:
+The C2C RI, is intended to fill existing gaps in ITS standards consistency, interoperability, and conformance. The USDOT developed this tool in response to existing gaps as identified through surveys of public and private entities that implement ITS standards.
 
-README Template
+## Release Notes
 
-This project is a README template for users to copy-paste into their project's README file and fill out with their project's information in order to provide useful and relevant information to users of a repository. It is accompanied by a LICENSE and CONTRIBUTING file, linked to in the License and Contributions sections below. This project will continue indefinitely as long as the ITS JPO Source Code Guidelines are in effect.
+#### Release 1.0.0 (February 21, 2022)
+- Initial release
 
-# Prerequisites
+## Getting Started
 
-*Detail what actions users need to take before they can stand up the project, including instructions for different environments users might have. This might include instructions and examples for installing additional software.*
+*Download the source code files. The source code is ready to build if the build environment is ready (see Prerequisites).*
 
-Example:
 
+### Prerequisites
+
+### Setup Build Environment
 Requires:
-- Java 8 (or higher)
-- Maven 3.5.4
-- Docker
+- Windows 8 (or higher)
 
-# Usage
-*Provide users with detailed instructions for how to use your software. The specifics of this section will vary between projects, but should adhere to the following minimum outline:*
+Download Apache Ant 1.10.5 (http://mirror.metrocast.net/apache//ant/binaries/apache-ant-1.10.5-bin.zip)
+Extract to a folder on the build computer (e.g. C:\Libraries\ant) and add to system path.
 
-## Building
-*Specifics for how to build/compile this code should be outlined here. If your code does not require any type of build/compilation, specify that here.*
+Download Java OpenJDK 11.0.2_9 (https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.2%2B9/OpenJDK11U-jdk_x64_windows_hotspot_11.0.2_9.zip)
+Extract to folder on the build computer (e.g. C:\Libraries\jdk-11) and add to system path
+Define a JAVA_HOME System Environment Variable for the directory where the file is unzipped.
 
-Example: 
+Download the launch4j 3.12 Win32 installation program (https://sourceforge.net/p/launch4j/git/ci/Release_launch4j-3_12/tree/bin/bin-win32)
+Run the installer keeping the default settings.
 
-Step 1: Build Docker image:
-```
-docker build myproject
-```
+Download the NSIS 3.04  installation program (https://sourceforge.net/projects/nsis/files/NSIS%203/3.04/nsis-3.04-setup.exe/download)
+Run the installer keeping the default settings.
 
-Step 2: Run Docker image:
-```
-docker run myproject
-```
-## Testing
-*Specifics for how to run any test cases your project may have. If your test cases are automatically run as part of the build process, or you don't include any testing, specify that here.*
+Download the C2C RI source code repository to the build computer.
 
-Example:
+#### Build the source code
+Open a new windows command prompt.
+Change the directory path to the C2CRIBuildDir\buildfiles path of the source code repository.
 
-Run unit tests:
-```
-/test/runUnitTests.sh
-```
+type buildRICode and press enter
 
-## Execution
-*Explain how to use the final product of your code. If your code is meant to be run as is (ex: scripts), specify how to run those scripts. If your code is meant to be deployed (ex: AWS Lambda), specify how to do that.*
 
-Example:
+#### Create the installer
 
-Run the script:
-```
-python /scripts/myScript.py
-```
+Open a windows command prompt.
+Change the directory path to the C2CRIBuildDir\buildfiles path of the source code repository.
 
-Deploy to Lambda:
-```
-aws lambda create-function --function-name my-function ... 
-```
+type build "path where installation files should be placed"
+Note: If the directory path does not currently exist the user will be asked whether the directory should be created by the script.
 
-# Additional Notes
-*Optional - Any additional information that would be useful to someone wanting to use this code. If there are datasets and associated Data Management Plans that interact with this source code, please provide them here*
 
-Example:
+### Installing
+Step 1. Uninstall any earlier versions of the C2C RI application.
+Step 2. Copy the c2cri_Release 2 _Installer.exe to your Double click on the file to launch the install program.
+Step 3. The Main Install ation screen displays.
+Step 4. You are prompted to choose a directory in which to install the application. You may accept the default directory or create your own directory path. Click Next when done.
+Step 5. The Choose Start Menu Folder window displays a dialog.  This window allows you to choose where to install the shortcut in your Start Menu. Choose a folder and click the Install button to install the software.
+Step 6. An installation window displays, showing the status of the installation.
+Step 7. Once the installation is complete the Completing the C2C RI Setup Wizard window displays. Click the Finish button to complete the installation.
 
-**Known Issues:**
-* Script fails when run on Tuesdays
+### Testing
+Step 1. Navigate to the directory where the C2C RI Application was installed.
+Step 2. Double-click the C2CRI.exe file to launch the C2C RI Application.
+Step 3. SELECT ‘File->New’ command from the C2C RI MENU BAR.  Verify that the New Test Configuration Dialog is displayed.  The Test Suite drop down menu for the Information Layer Standard should include standards TMDD v303c, TMDD v303d and TMDD v3.1 at a minimum.  The test suite drop down menu for the Application Layer Standard should include NTCIP 2306 v1.69 at a minimum.
+Step 4. Click the Cancel button and the New Test Configuration Dialog should close.
+Step 5. SELECT ‘File->Reports’ command from the C2C RI MENU BAR.  Verify that the Windows displays the Configuration and Log Report Tabs.  
+Step 6. Enter "SampleReport" in the Name field at the top of the Configuration Tab in the Report File Selection Frame.  The Configuration tab should include a list of test configuration files (with a .ricfg extension).  Select one of the configuration files.  Click the Configuration File Details Radio button in the Report Details Tab.  Click the Create Button at the bottom of the window.
+Step 7. A dialog will initially appear indicating the the the report is being created.  Once complete, a Report Status dialog will be presented indicating that the Report Creation has completed.  Click the OK button.
+Step 8. Click the View button at the bottom of the window.  The C2C RI Report Viewer should open and present the created report.  
+Step 9. Select File -> Exit from the C2C RI Report Viewer.  The PDF Viewer should close.
+Step 10. Click the Cancel button at the bottom of the C2C RI Main Window.  The main C2C RI User Interface screen should be showing.
+Step 11. Select 'File->Exit' command from the C2C RI MENU BAR.  The C2C RI Application should close.
 
-**Associated datasets:**
-* [Associated Dataset](https://its.dot.gov/data/)
+### License
 
-# Version History and Retention
-*A statement of the status of the source code (prototype, alpha, beta, release, etc.), how often users can expect activity on this repository, and a version/release history in the form of a CHANGELOG file. Additionally, include a retention statement that specifies how long this repository will remain publicly accessible*
+This project is licensed under the apache-2.0 License.
 
-Example:
-
-**Status:** This project is in the release phase.
-
-**Release Frequency:** This project is updated approximately once every 2-3 weeks
-
-**Release History: See [CHANGELOG.md](CHANGELOG.md)**
-
-**Retention:** This project will remain publicly accessible for a minimum of five years (until at least 06/15/2025).
-
-# License
-*Create a file named "LICENSE.md" that contains at least the licensing status of the code and the full text of the open source license or a link to where the license is officially maintained. If for some reason the source code does not use an open license, explain why. See [LICENSE.md](https://github.com/usdot-jpo-codehub/codehub-readme-template/blob/master/LICENSE) for an example of this file.*
-
-Example:
-
-This project is licensed under the Creative Commons 1.0 Universal (CC0 1.0) License - see the [License.MD](https://github.com/usdot-jpo-codehub/codehub-readme-template/blob/master/LICENSE) for more details. 
-
-# Contributions
-*Create a file named "CONTRIBUTING.md" explaining how users can interact with this project's repository, your expectations for their conduct, and how contributions by users will be released (e.g. whether they will be released under the same license and whether those contributors waive their rights accordingly). See [CONTRIBUTING.md](https://github.com/usdot-jpo-codehub/codehub-readme-template/blob/master/Contributing.MD) for an example of this file.*
-
-Example:
-
-Please read [CONTRIBUTING.md](https://github.com/usdot-jpo-codehub/codehub-readme-template/blob/master/Contributing.MD) for details on our Code of Conduct, the process for submitting pull requests to us, and how contributions will be released.
-
-# Contact Information
-*Provide a primary contact and associated contact information (e.g. email and phone number) for users to contact with questions about this repository.*
-
-Example:
-
-Contact Name: ITS JPO
-Contact Information: data.itsjpo@dot.gov, (888)-888-8888
-
-# Acknowledgements
-*Describe how users should reference your code if they use it to build additional software, list the Digital Object Identifier for this project, list the sample citations for associated report/paper and for this source code, and (optional) list if you have a 3rd party or any specific contributor to give credit.*
-
-*Sample citation should be in the below format, with the `formatted fields` replaced with details of your source code*
-
-_`author_surname_or_organization`, `first_initial`. (`year`)._ `program_or_source_code_title` _(`code_version`) [Source code]. Provided by ITS CodeHub through GitHub.com. Accessed YYYY-MM-DD from `doi_url`._
-
-Example:
-
-## Citing this code
-To track how this government-funded code is used, we request that if you decide to build additional software using this code please acknowledge its Digital Object Identifier in your software's README/documentation.
-
-> Digital Object Identifier: https://doi.org/xxx.xxx/xxxx
-
-To cite this code in a publication or report, please cite our associated report/paper and/or our source code. Below is a sample citation for this code:
-
-> ITS CodeHub Team. (2021). _ITS CodeHub README Template_ (0.1) [Source code]. Provided by ITS CodeHub through GitHub.com. Accessed 2021-01-27 from https://doi.org/xxx.xxx/xxxx.
-
-When you copy or adapt from this code, please include the original URL you copied the source code from and date of retrieval as a comment in your code. Additional information on how to cite can be found in the [ITS CodeHub FAQ](https://its.dot.gov/code/#/faqs).
-
-## Contributors
-Shout out to [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2) for their README template.
+### Contact Information
+To initiate technical support, contact c2crisupport@transcore.com. Provide contact information and the C2C RI technical support team will contact you so they can understand the issue(s) you are facing. 

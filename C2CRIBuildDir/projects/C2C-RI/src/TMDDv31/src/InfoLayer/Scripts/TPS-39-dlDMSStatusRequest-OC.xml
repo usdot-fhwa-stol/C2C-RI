@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-39-dlDMSStatusRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDMSStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.4.3 [Need to Share DMS Status] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/18 00:09:47-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDMSStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.4.3 [Need to Share DMS Status] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Send DMS Status Information Upon Request (NTRM 3.3.5.5.2.1}.  RECORD this value as: TMDD_N39R622_Send_DMS_Status_Information_Upon_Request_Parameter = ${TMDD_N39R622_Send_DMS_Status_Information_Upon_Request_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Restrictions - Device Status is required by the specification. (NRTM 3.3.5.1.3.1.2.1).  RECORD this information as: TMDD_N39R399_Restrictions___Device_Status_Supported = ${TMDD_N39R399_Restrictions___Device_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Unique Identifier of the Controlling Center is required by the specification. (NRTM 3.3.5.1.3.1.2.2).  RECORD this information as: TMDD_N39R400_Unique_Identifier_of_the_Controlling_Center_Supported = ${TMDD_N39R400_Unique_Identifier_of_the_Controlling_Center_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Device Communications Status is required by the specification. (NRTM 3.3.5.1.3.1.2.3).  RECORD this information as: TMDD_N39R401_Device_Communications_Status_Supported = ${TMDD_N39R401_Device_Communications_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Operator Identifier - Device Status is required by the specification. (NRTM 3.3.5.1.3.1.2.4).  RECORD this information as: TMDD_N39R402_Operator_Identifier___Device_Status_Supported = ${TMDD_N39R402_Operator_Identifier___Device_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Event Identifier - Device Status is required by the specification. (NRTM 3.3.5.1.3.1.2.5).  RECORD this information as: TMDD_N39R403_Event_Identifier___Device_Status_Supported = ${TMDD_N39R403_Event_Identifier___Device_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Event Response Plan - Device Status is required by the specification. (NRTM 3.3.5.1.3.1.2.6).  RECORD this information as: TMDD_N39R404_Event_Response_Plan___Device_Status_Supported = ${TMDD_N39R404_Event_Response_Plan___Device_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Device Status Date and Time Change Information is required by the specification. (NRTM 3.3.5.1.3.1.2.7).  RECORD this information as: TMDD_N39R405_Device_Status_Date_and_Time_Change_Information_Supported = ${TMDD_N39R405_Device_Status_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Current Message Number - DMS is required by the specification. (NRTM 3.3.5.5.2.5.2.1).  RECORD this information as: TMDD_N39R628_Current_Message_Number___DMS_Supported = ${TMDD_N39R628_Current_Message_Number___DMS_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Time Remaining is required by the specification. (NRTM 3.3.5.5.2.5.2.2).  RECORD this information as: TMDD_N39R629_Time_Remaining_Supported = ${TMDD_N39R629_Time_Remaining_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Message Source is required by the specification. (NRTM 3.3.5.5.2.5.2.3).  RECORD this information as: TMDD_N39R630_Message_Source_Supported = ${TMDD_N39R630_Message_Source_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Message Beacon is required by the specification. (NRTM 3.3.5.5.2.5.2.4).  RECORD this information as: TMDD_N39R631_Message_Beacon_Supported = ${TMDD_N39R631_Message_Beacon_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N39R15_Restrictions___Error_Report_Supported = ${TMDD_N39R15_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.1" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 15 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 16 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 17 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 18 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlDMSStatusRequest RESPONSETIMEREQUIRED=TMDD_N39R622_Send_DMS_Status_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlDMSStatusRequest" functionId="dlDMSStatusRequest" RESPONSETIMEREQUIRED="${TMDD_N39R622_Send_DMS_Status_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 19 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 19.1 VERIFY that a device-status-header data frame exists within each instance of data frame dMSStatusMsg.dms-status-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-status-header" instanceName="tmdd:dMSStatusMsg.dms-status-item" elementType="data-frame" functionId="Looking for dMSStatusMsg.dms-status-item"/>
+               </testStep>
+               <testStep functionId="Step 19.2 VERIFY that an organization-information data frame exists within each instance of data frame dMSStatusMsg.dms-status-item.device-status-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:dMSStatusMsg.dms-status-item.device-status-header" elementType="data-frame" functionId="Looking for dMSStatusMsg.dms-status-item.device-status-header"/>
+               </testStep>
+               <testStep functionId="Step 19.3 VERIFY that a device-id data element exists within each instance of data frame dMSStatusMsg.dms-status-item.device-status-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:dMSStatusMsg.dms-status-item.device-status-header" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item.device-status-header"/>
+               </testStep>
+               <testStep functionId="Step 19.4 VERIFY that a dMSStatusMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="dMSStatusMsg" instanceName="tmdd:dMSStatusMsg" elementType="message" functionId="Looking for dMSStatusMsg"/>
+               </testStep>
+               <testStep functionId="Step 19.5 VERIFY that a device-status-header data frame exists within each instance of data frame dMSStatusMsg.dms-status-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-status-header" instanceName="tmdd:dMSStatusMsg.dms-status-item" elementType="data-frame" functionId="Looking for dMSStatusMsg.dms-status-item"/>
+               </testStep>
+               <testStep functionId="Step 19.6 VERIFY that a current-message data element exists within each instance of data frame dMSStatusMsg.dms-status-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="current-message" instanceName="tmdd:dMSStatusMsg.dms-status-item" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item"/>
+               </testStep>
+               <testStep functionId="Step 19.7 IF TMDD_N39R399_Restrictions___Device_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R399_Restrictions___Device_Status_Supported}">
+                    <testStep functionId="Step 19.7.1 VERIFY that a restrictions data frame exists within each instance of data frame dMSStatusMsg.dms-status-item.device-status-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:dMSStatusMsg.dms-status-item.device-status-header" elementType="data-frame" functionId="Looking for dMSStatusMsg.dms-status-item.device-status-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.8 IF TMDD_N39R400_Unique_Identifier_of_the_Controlling_Center_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R400_Unique_Identifier_of_the_Controlling_Center_Supported}">
+                    <testStep functionId="Step 19.8.1 VERIFY that a center-id data element exists within each instance of data frame dMSStatusMsg.dms-status-item.device-status-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="center-id" instanceName="tmdd:dMSStatusMsg.dms-status-item.device-status-header" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item.device-status-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.9 IF TMDD_N39R401_Device_Communications_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R401_Device_Communications_Status_Supported}">
+                    <testStep functionId="Step 19.9.1 VERIFY that a device-comm-status data element exists within each instance of data frame dMSStatusMsg.dms-status-item.device-status-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-comm-status" instanceName="tmdd:dMSStatusMsg.dms-status-item.device-status-header" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item.device-status-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.10 IF TMDD_N39R402_Operator_Identifier___Device_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R402_Operator_Identifier___Device_Status_Supported}">
+                    <testStep functionId="Step 19.10.1 VERIFY that an operator-id data element exists within each instance of data frame dMSStatusMsg.dms-status-item.device-status-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operator-id" instanceName="tmdd:dMSStatusMsg.dms-status-item.device-status-header" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item.device-status-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.11 IF TMDD_N39R403_Event_Identifier___Device_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R403_Event_Identifier___Device_Status_Supported}">
+                    <testStep functionId="Step 19.11.1 VERIFY that an event-id data element exists within each instance of data frame dMSStatusMsg.dms-status-item.device-status-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="event-id" instanceName="tmdd:dMSStatusMsg.dms-status-item.device-status-header" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item.device-status-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.12 IF TMDD_N39R404_Event_Response_Plan___Device_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R404_Event_Response_Plan___Device_Status_Supported}">
+                    <testStep functionId="Step 19.12.1 VERIFY that a response-plan-id data element exists within each instance of data frame dMSStatusMsg.dms-status-item.device-status-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="response-plan-id" instanceName="tmdd:dMSStatusMsg.dms-status-item.device-status-header" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item.device-status-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.13 IF TMDD_N39R405_Device_Status_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R405_Device_Status_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 19.13.1 VERIFY that a last-comm-time data frame exists within each instance of data frame dMSStatusMsg.dms-status-item.device-status-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-comm-time" instanceName="tmdd:dMSStatusMsg.dms-status-item.device-status-header" elementType="data-frame" functionId="Looking for dMSStatusMsg.dms-status-item.device-status-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.14 IF TMDD_N39R628_Current_Message_Number___DMS_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R628_Current_Message_Number___DMS_Supported}">
+                    <testStep functionId="Step 19.14.1 VERIFY that a message-number data element exists within each instance of data frame dMSStatusMsg.dms-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="message-number" instanceName="tmdd:dMSStatusMsg.dms-status-item" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.15 IF TMDD_N39R629_Time_Remaining_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R629_Time_Remaining_Supported}">
+                    <testStep functionId="Step 19.15.1 VERIFY that a message-time-remaining data element exists within each instance of data frame dMSStatusMsg.dms-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="message-time-remaining" instanceName="tmdd:dMSStatusMsg.dms-status-item" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.16 IF TMDD_N39R630_Message_Source_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R630_Message_Source_Supported}">
+                    <testStep functionId="Step 19.16.1 VERIFY that a message-source-mode data element exists within each instance of data frame dMSStatusMsg.dms-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="message-source-mode" instanceName="tmdd:dMSStatusMsg.dms-status-item" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.17 IF TMDD_N39R631_Message_Beacon_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R631_Message_Beacon_Supported}">
+                    <testStep functionId="Step 19.17.1 VERIFY that a message-beacon data element exists within each instance of data frame dMSStatusMsg.dms-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="message-beacon" instanceName="tmdd:dMSStatusMsg.dms-status-item" elementType="data-element" functionId="Looking for dMSStatusMsg.dms-status-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.18 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N39R399_Restrictions___Device_Status_Supported,restrictions,tmdd:dMSStatusMsg.dms-status-item.device-status-header;TMDD_N39R400_Unique_Identifier_of_the_Controlling_Center_Supported,center-id,tmdd:dMSStatusMsg.dms-status-item.device-status-header;TMDD_N39R401_Device_Communications_Status_Supported,device-comm-status,tmdd:dMSStatusMsg.dms-status-item.device-status-header;TMDD_N39R402_Operator_Identifier___Device_Status_Supported,operator-id,tmdd:dMSStatusMsg.dms-status-item.device-status-header;TMDD_N39R403_Event_Identifier___Device_Status_Supported,event-id,tmdd:dMSStatusMsg.dms-status-item.device-status-header;TMDD_N39R404_Event_Response_Plan___Device_Status_Supported,response-plan-id,tmdd:dMSStatusMsg.dms-status-item.device-status-header;TMDD_N39R405_Device_Status_Date_and_Time_Change_Information_Supported,last-comm-time,tmdd:dMSStatusMsg.dms-status-item.device-status-header;TMDD_N39R628_Current_Message_Number___DMS_Supported,message-number,tmdd:dMSStatusMsg.dms-status-item;TMDD_N39R629_Time_Remaining_Supported,message-time-remaining,tmdd:dMSStatusMsg.dms-status-item;TMDD_N39R630_Message_Source_Supported,message-source-mode,tmdd:dMSStatusMsg.dms-status-item;TMDD_N39R631_Message_Beacon_Supported,message-beacon,tmdd:dMSStatusMsg.dms-status-item;TMDD_N39R15_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+          <testStep functionId="Step 20 IF ErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 20.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 20.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 20.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 20.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 20.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 20.6 VERIFY that data element error-code is set to ErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${ErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 20.7 IF TMDD_N39R15_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R15_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 20.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 21 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

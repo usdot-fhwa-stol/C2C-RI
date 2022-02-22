@@ -1,0 +1,88 @@
+ 
+#<!--   
+#       Title:  TCS-10-dlActionLogSubscription-EC-InValid-4
+#       Description:  This test case is used to verify the SUTs support of the dlActionLogSubscription dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.4.5 [Need to Share the Log of a Current Event]. This Test Case tests for a InValid (4) response result.
+#       Related Procedure:  TPS-10-dlActionLogSubscription-EC
+#       Version/Date: 2012/02/14 22:42:39
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Publication Message to be sent to the SUT.
+PublicationMessage = <soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:mes="http://www.tmdd.org/302/messages"><soapenv:Header/><soapenv:Body><c2c:c2cMessagePublication xmlns:c2c="http://www.ntcip.org/c2c-message-administration"><informationalText>string</informationalText><subscriptionID>string</subscriptionID><subscriptionName>string</subscriptionName><subscriptionFrequency>7</subscriptionFrequency><subscriptionCount>7</subscriptionCount></c2c:c2cMessagePublication><mes:actionLogMsg><log-entry><restrictions><organization-information-forwarding-restrictions>4</organization-information-forwarding-restrictions></restrictions><event-id>string</event-id><action-log-element-id>5</action-log-element-id><action-time><date>stringst</date><time>string</time><offset>strin</offset></action-time><action-description>string</action-description><action-type>system ended</action-type></log-entry></mes:actionLogMsg></soapenv:Body></soapenv:Envelope>
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates number of publication message transmissions expected as part of this test.
+PublicationCount = 0
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a Publication  error response is expected from the SUT.
+PublicationErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of Publication response error that is expected from the SUT.
+PublicationErrorTypeExpected = 4
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected user name.
+Username = defaultUser
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected password.
+Password = defaultPassword
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Organization Identifier.
+OrganizationID = defaultOrgID
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the priviledge to access the information requested.
+AllowAccess = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a subscription request error is expected from the SUT.
+SubscriptionErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of subscription request error that is expected from the SUT.
+SubscriptionErrorTypeExpected = 4
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Subscription Response Message to be sent to the SUT.
+SubscriptionResponseMessage = #MESSAGESPEC#SubResponseMessage#MESSAGESPEC#
+
+
+#GROUP NAME = Values
+

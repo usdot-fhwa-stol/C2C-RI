@@ -1,0 +1,14 @@
+ID,UN ID,User Need,NeedConformance,NeedSupport,Requirement ID,Requirement,Conformance,Support,Other Requirements,ReqFlag,ReqFlagValue,OtherReqParameter,OtherRequirementValues,NeedFlag,NeedFlagValue
+1,1,SOAP over HTTP,Optional,Yes/No/NA,1.a,WSDL Request-Response (SOAPWSDL),O,Yes/No,,NTCIP2306_N1R1_WSDL_Request_Response_Flag,False,NTCIP2306_N1_R1_Parameter,,NTCIP2306_N1_Flag,False
+2,1,SOAP over HTTP,Optional,Yes/No/NA,1.b,WSDL Subscription-Publication (SOAPWSDL),O,Yes/No,,NTCIP2306_N1R2_WSDL_Subscription_Publication_Flag,False,NTCIP2306_N1_R2_Parameter,,NTCIP2306_N1_Flag,False
+3,1,SOAP over HTTP,Optional,Yes/No/NA,1.c,Message Encoding,SOAPWSDL:O.1(2),Yes/No,,NTCIP2306_N1R3_Message_Encoding_Flag,False,NTCIP2306_N1_R3_Parameter,,NTCIP2306_N1_Flag,False
+4,1,SOAP over HTTP,Optional,Yes/No/NA,1.d,Message Transport (SOAPMessageTransport),SOAPWSDL:O.1(2),Yes/No,,NTCIP2306_N1R4_Message_Transport_Flag,False,NTCIP2306_N1_R4_Parameter,,NTCIP2306_N1_Flag,False
+5,1,SOAP over HTTP,Optional,Yes/No/NA,1.d.2,Message Transport (HTTPS),SOAPMessageTransport:O,Yes/No,,NTCIP2306_N1R5_Message_Transport_HTTPS_Flag,False,NTCIP2306_N1_R5_Parameter,,NTCIP2306_N1_Flag,False
+6,2,XML over HTTP,Optional,Yes/No/NA,2.a,WSDL Request Only (HTTP GET) (XMLHTTPWSDL),O,Yes/No,,NTCIP2306_N2R6_WSDL_Request_Only_HTTP_GET_Flag,False,NTCIP2306_N2_R6_Parameter,,NTCIP2306_N2_Flag,False
+7,2,XML over HTTP,Optional,Yes/No/NA,2.b,WSDL Request-Response (HTTP POST) (XMLHTTPWSDL),O,Yes/No,,NTCIP2306_N2R7_WSDL_Request_Response_HTTP_POST_Flag,False,NTCIP2306_N2_R7_Parameter,,NTCIP2306_N2_Flag,False
+8,2,XML over HTTP,Optional,Yes/No/NA,2.d,Message Encoding,XMLHTTPWSDL:O.2(2),Yes/No,,NTCIP2306_N2R8_Message_Encoding_Flag,False,NTCIP2306_N2_R8_Parameter,,NTCIP2306_N2_Flag,False
+9,2,XML over HTTP,Optional,Yes/No/NA,2.e,Message Transport (XMLTransport),XMLHTTPWSDL:O.2(2),Yes/No,,NTCIP2306_N2R9_Message_Transport_Flag,False,NTCIP2306_N2_R9_Parameter,,NTCIP2306_N2_Flag,False
+10,2,XML over HTTP,Optional,Yes/No/NA,2.e.2,Message Transport (HTTPS),XMLTransport:O,Yes/No,,NTCIP2306_N2R10_Message_Transport_HTTPS_Flag,False,NTCIP2306_N2_R10_Parameter,,NTCIP2306_N2_Flag,False
+11,3,XML over FTP,Optional,Yes/No/NA,3.a,WSDL Request Only (FTP GET) (XMLFTPWSDL),O,Yes/No,,NTCIP2306_N3R11_WSDL_Request_Only_FTP_GET_Flag,False,NTCIP2306_N3_R11_Parameter,,NTCIP2306_N3_Flag,False
+13,3,XML over FTP,Optional,Yes/No/NA,3.b,Message Encoding,XMLFTPWSDL:O.3(2),Yes/No,,NTCIP2306_N3R12_Message_Encoding_Flag,False,NTCIP2306_N3_R12_Parameter,,NTCIP2306_N3_Flag,False
+14,3,XML over FTP,Optional,Yes/No/NA,3.c,Message Transport,XMLFTPWSDL:O.3(2),Yes/No,,NTCIP2306_N3R13_Message_Transport_Flag,False,NTCIP2306_N3_R13_Parameter,,NTCIP2306_N3_Flag,False

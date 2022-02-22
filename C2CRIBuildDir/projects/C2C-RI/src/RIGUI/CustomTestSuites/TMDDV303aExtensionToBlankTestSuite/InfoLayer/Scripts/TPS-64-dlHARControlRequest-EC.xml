@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-64-dlHARControlRequest-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlHARControlRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.4 [Need to Control a Remote HAR Device] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:36:56-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlHARControlRequest dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.4 [Need to Control a Remote HAR Device] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Operator Identifier - Device Control is required by the specification. (NRTM 3.3.5.1.4.1.2.1).  RECORD this information as: TMDD_N64R403_Operator_Identifier___Device_Control_Supported = ${TMDD_N64R403_Operator_Identifier___Device_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Event Identifier - Device Control is required by the specification. (NRTM 3.3.5.1.4.1.2.2).  RECORD this information as: TMDD_N64R404_Event_Identifier___Device_Control_Supported = ${TMDD_N64R404_Event_Identifier___Device_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Event Response Plan - Device Control is required by the specification. (NRTM 3.3.5.1.4.1.2.3).  RECORD this information as: TMDD_N64R405_Event_Response_Plan___Device_Control_Supported = ${TMDD_N64R405_Event_Response_Plan___Device_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Request Priority - Device Control is required by the specification. (NRTM 3.3.5.1.4.1.2.4).  RECORD this information as: TMDD_N64R406_Request_Priority___Device_Control_Supported = ${TMDD_N64R406_Request_Priority___Device_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Control Request Start Date and Time is required by the specification. (NRTM 3.3.5.1.4.1.2.5).  RECORD this information as: TMDD_N64R407_Control_Request_Start_Date_and_Time_Supported = ${TMDD_N64R407_Control_Request_Start_Date_and_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Control Request Expiration Date and Time is required by the specification. (NRTM 3.3.5.1.4.1.2.6).  RECORD this information as: TMDD_N64R408_Control_Request_Expiration_Date_and_Time_Supported = ${TMDD_N64R408_Control_Request_Expiration_Date_and_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Control Request Date and Time Information is required by the specification. (NRTM 3.3.5.1.4.1.2.7).  RECORD this information as: TMDD_N64R409_Control_Request_Date_and_Time_Information_Supported = ${TMDD_N64R409_Control_Request_Date_and_Time_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="OC">
+          <testStep functionId="Step 9 CONFIGURE: Define the response message that will be sent to the SUT.  RECORD this information as: ResponseMessage:  ${ResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 11 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 12 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Identify the Organization Identifier expected for authentication during this test.  RECORD this information as: OrganizationID:  ${OrganizationID}" passfailResult="False"/>
+          <testStep functionId="Step 14 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 15 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 16 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 17 CONFIGURE: Determine whether the SUT is expected to have valid data available for a response message in this test.  RECORD this information as: DataValid:  ${DataValid}" passfailResult="False"/>
+          <testStep functionId="Step 18 REQUEST-RESPONSE-OC-RECEIVE with the following parameters:   DIALOG=dlHARControlRequest RESPONSETIMEREQUIRED=TMDD_N64R803_Send_HAR_Control_Response_Upon_Request_Parameter AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password ORGANIZATIONID = OrganizationID ALLOWACCESS = AllowAccess ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected DATAVALID = DataValid ">
+               <REQUEST-RESPONSE-OC-RECEIVE Dialog="dlHARControlRequest" functionId="dlHARControlRequest" RESPONSETIMEREQUIRED="${TMDD_N64R803_Send_HAR_Control_Response_Upon_Request_Parameter}" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" ORGANIZATIONID="${OrganizationID}" ALLOWACCESS="${AllowAccess}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}" DATAVALID="${DataValid}"/>
+          </testStep>
+          <testStep functionId="Step 19 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 19.1 VERIFY that element device-control-request-header exists within hARControlRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="device-control-request-header" instanceName="tmdd:hARControlRequestMsg" elementType="data-frame" functionId="Looking for hARControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 19.2 VERIFY that element device-control-request-header exists within hARControlRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="device-control-request-header" instanceName="tmdd:hARControlRequestMsg" elementType="data-frame" functionId="Looking for hARControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 19.3 VERIFY that element authentication exists within each instance of hARControlRequestMsg.device-control-request-header" passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="authentication" instanceName="tmdd:hARControlRequestMsg.device-control-request-header" elementType="data-frame" functionId="Looking for hARControlRequestMsg.device-control-request-header"/>
+               </testStep>
+               <testStep functionId="Step 19.4 VERIFY that element organization-requesting exists within each instance of hARControlRequestMsg.device-control-request-header" passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="organization-requesting" instanceName="tmdd:hARControlRequestMsg.device-control-request-header" elementType="data-frame" functionId="Looking for hARControlRequestMsg.device-control-request-header"/>
+               </testStep>
+               <testStep functionId="Step 19.5 VERIFY that element device-id exists within each instance of hARControlRequestMsg.device-control-request-header" passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="device-id" instanceName="tmdd:hARControlRequestMsg.device-control-request-header" elementType="data-element" functionId="Looking for hARControlRequestMsg.device-control-request-header"/>
+               </testStep>
+               <testStep functionId="Step 19.6 VERIFY that element request-id exists within each instance of hARControlRequestMsg.device-control-request-header" passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="request-id" instanceName="tmdd:hARControlRequestMsg.device-control-request-header" elementType="data-element" functionId="Looking for hARControlRequestMsg.device-control-request-header"/>
+               </testStep>
+               <testStep functionId="Step 19.7 VERIFY that element hARControlRequestMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="hARControlRequestMsg" instanceName="tmdd:hARControlRequestMsg" elementType="message" functionId="Looking for hARControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 19.8 VERIFY that element device-control-request-header exists within hARControlRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="device-control-request-header" instanceName="tmdd:hARControlRequestMsg" elementType="data-frame" functionId="Looking for hARControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 19.9 VERIFY that element har-request-command exists within hARControlRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="har-request-command" instanceName="tmdd:hARControlRequestMsg" elementType="data-element" functionId="Looking for hARControlRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 19.10 VERIFY that element har-message exists within each instance of hARControlRequestMsg.har-command-parameters" passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="har-message" instanceName="tmdd:hARControlRequestMsg.har-command-parameters" elementType="data-element" functionId="Looking for hARControlRequestMsg.har-command-parameters"/>
+               </testStep>
+               <testStep functionId="Step 19.11 VERIFY that element har-message-number exists within each instance of hARControlRequestMsg.har-command-parameters" passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="har-message-number" instanceName="tmdd:hARControlRequestMsg.har-command-parameters" elementType="data-element" functionId="Looking for hARControlRequestMsg.har-command-parameters"/>
+               </testStep>
+               <testStep functionId="Step 19.12 IF TMDD_N64R403_Operator_Identifier___Device_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N64R403_Operator_Identifier___Device_Control_Supported}">
+                    <testStep functionId="Step 19.12.1 VERIFY that element operator-id exists within each instance of hARControlRequestMsg.device-control-request-header.authentication" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="operator-id" instanceName="tmdd:hARControlRequestMsg.device-control-request-header.authentication" elementType="data-element" functionId="Looking for hARControlRequestMsg.device-control-request-header.authentication"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.13 IF TMDD_N64R404_Event_Identifier___Device_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N64R404_Event_Identifier___Device_Control_Supported}">
+                    <testStep functionId="Step 19.13.1 VERIFY that element event-id exists within each instance of hARControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="event-id" instanceName="tmdd:hARControlRequestMsg.device-control-request-header" elementType="data-element" functionId="Looking for hARControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.14 IF TMDD_N64R405_Event_Response_Plan___Device_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N64R405_Event_Response_Plan___Device_Control_Supported}">
+                    <testStep functionId="Step 19.14.1 VERIFY that element response-plan-id exists within each instance of hARControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="response-plan-id" instanceName="tmdd:hARControlRequestMsg.device-control-request-header" elementType="data-element" functionId="Looking for hARControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.15 IF TMDD_N64R406_Request_Priority___Device_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N64R406_Request_Priority___Device_Control_Supported}">
+                    <testStep functionId="Step 19.15.1 VERIFY that element command-request-priority exists within each instance of hARControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="command-request-priority" instanceName="tmdd:hARControlRequestMsg.device-control-request-header" elementType="data-element" functionId="Looking for hARControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.16 IF TMDD_N64R407_Control_Request_Start_Date_and_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N64R407_Control_Request_Start_Date_and_Time_Supported}">
+                    <testStep functionId="Step 19.16.1 VERIFY that element command-start-time exists within each instance of hARControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="command-start-time" instanceName="tmdd:hARControlRequestMsg.device-control-request-header" elementType="data-frame" functionId="Looking for hARControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.17 IF TMDD_N64R408_Control_Request_Expiration_Date_and_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N64R408_Control_Request_Expiration_Date_and_Time_Supported}">
+                    <testStep functionId="Step 19.17.1 VERIFY that element command-end-time exists within each instance of hARControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="command-end-time" instanceName="tmdd:hARControlRequestMsg.device-control-request-header" elementType="data-frame" functionId="Looking for hARControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.18 IF TMDD_N64R409_Control_Request_Date_and_Time_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N64R409_Control_Request_Date_and_Time_Information_Supported}">
+                    <testStep functionId="Step 19.18.1 VERIFY that element command-request-time exists within each instance of hARControlRequestMsg.device-control-request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="command-request-time" instanceName="tmdd:hARControlRequestMsg.device-control-request-header" elementType="data-frame" functionId="Looking for hARControlRequestMsg.device-control-request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 19.19 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N64R403_Operator_Identifier___Device_Control_Supported,operator-id,tmdd:hARControlRequestMsg.device-control-request-header.authentication;TMDD_N64R404_Event_Identifier___Device_Control_Supported,event-id,tmdd:hARControlRequestMsg.device-control-request-header;TMDD_N64R405_Event_Response_Plan___Device_Control_Supported,response-plan-id,tmdd:hARControlRequestMsg.device-control-request-header;TMDD_N64R406_Request_Priority___Device_Control_Supported,command-request-priority,tmdd:hARControlRequestMsg.device-control-request-header;TMDD_N64R407_Control_Request_Start_Date_and_Time_Supported,command-start-time,tmdd:hARControlRequestMsg.device-control-request-header;TMDD_N64R408_Control_Request_Expiration_Date_and_Time_Supported,command-end-time,tmdd:hARControlRequestMsg.device-control-request-header;TMDD_N64R409_Control_Request_Date_and_Time_Information_Supported,command-request-time,tmdd:hARControlRequestMsg.device-control-request-header;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 19.20 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                    <jl:set var="OptionalContentVerified" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 19.21 POSTCONDITION: REQUEST-RESPONSE-OC-REPLY with the following parameters:   DIALOG=dlHARControlRequest RESPONSETIMEREQUIRED=TMDD_N64R803_Send_HAR_Control_Response_Upon_Request_Parameter OPTIONALCONTENTVERIFIED = OptionalContentVerified RESPONSEMESSAGE = ResponseMessage ">
+                         <REQUEST-RESPONSE-OC-REPLY Dialog="dlHARControlRequest" functionId="dlHARControlRequest" RESPONSETIMEREQUIRED="${TMDD_N64R803_Send_HAR_Control_Response_Upon_Request_Parameter}" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" RESPONSEMESSAGE="${ResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

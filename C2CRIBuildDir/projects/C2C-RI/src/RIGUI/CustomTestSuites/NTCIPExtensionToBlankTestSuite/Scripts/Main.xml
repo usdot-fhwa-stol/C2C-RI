@@ -1,0 +1,36 @@
+<?xml version="1.0" ?> 
+<testcase xmlns="jelly:jameleon"  xmlns:jl="jelly:core" >
+
+
+<map-variable toVariable="resultsText" variableType="list">
+<variable-value>value 1</variable-value>
+<variable-value>value 2</variable-value>
+<variable-value>value 3</variable-value>
+<variable-value>value 4</variable-value>
+</map-variable>
+
+     <function-doc functionId="After the Map-Variable statement resultsText value = ${resultsText}" />
+
+<iterate varName="someVar" items="${resultsText}">
+     <function-doc functionId="During the Map-Variable iteration resultsText value = ${someVar}" />
+</iterate>
+
+
+<jl:set var="lcl.receivedDeviceInformationResponse">example1</jl:set>
+<jl:set var="lcl.tmddMessages_10">example1</jl:set>
+
+  <jl:if test="${lcl.tmddMessages_10 == lcl.receivedDeviceInformationResponse}">
+     <ri-if expected="${lcl.receivedDeviceInformationResponse}" actual="${lcl.tmddMessages_10}">
+	<function-doc functionId="key = ${iter.key} value = ${iter.value}" />
+	<jl:forEach var="iter" items="${systemScope}">
+		<jl:set var="name" value="${iter.key}"/>
+	        <function-doc functionId="key = ${iter.key} value = ${iter.value}" />
+	</jl:forEach>
+     </ri-if>
+  </jl:if>
+
+     <function-doc functionId="After the if Statement key = ${iter.key} value = ${iter.value}" />
+
+
+
+</testcase>

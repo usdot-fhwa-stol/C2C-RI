@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-61-dlHARInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlHARInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.7.1 [Need to Share HAR Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:06:19-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlHARInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.7.1 [Need to Share HAR Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether HAR Characteristics is required by the specification. (NRTM 3.3.6.8.1.5.2.1).  RECORD this information as: TMDD_N61R768_HAR_Characteristics_Supported = ${TMDD_N61R768_HAR_Characteristics_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Transmission Frequency Description is required by the specification. (NRTM 3.3.6.8.1.5.2.2).  RECORD this information as: TMDD_N61R769_Transmission_Frequency_Description_Supported = ${TMDD_N61R769_Transmission_Frequency_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Call Sign is required by the specification. (NRTM 3.3.6.8.1.5.2.3).  RECORD this information as: TMDD_N61R770_Call_Sign_Supported = ${TMDD_N61R770_Call_Sign_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlHARInventoryRequest" riMode="EC">
+          <testStep functionId="Step 5 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 6 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 7 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 8 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlHARInventoryRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlHARInventoryRequest" functionId="dlHARInventoryRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 9 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 9.1 IF TMDD_N61R768_HAR_Characteristics_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N61R768_HAR_Characteristics_Supported}">
+                    <testStep functionId="Step 9.1.1 VERIFY that element har-characteristics exists within each instance of hARInventoryMsg.har-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="har-characteristics" instanceName="tmdd:hARInventoryMsg.har-inventory-item" functionId="Looking for hARInventoryMsg.har-inventory-item.har-characteristics"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 9.2 IF TMDD_N61R769_Transmission_Frequency_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N61R769_Transmission_Frequency_Description_Supported}">
+                    <testStep functionId="Step 9.2.1 VERIFY that element har-frequency-description exists within each instance of hARInventoryMsg.har-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="har-frequency-description" instanceName="tmdd:hARInventoryMsg.har-inventory-item" functionId="Looking for hARInventoryMsg.har-inventory-item.har-frequency-description"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 9.3 IF TMDD_N61R770_Call_Sign_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N61R770_Call_Sign_Supported}">
+                    <testStep functionId="Step 9.3.1 VERIFY that element har-call-sign exists within each instance of hARInventoryMsg.har-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="har-call-sign" instanceName="tmdd:hARInventoryMsg.har-inventory-item" functionId="Looking for hARInventoryMsg.har-inventory-item.har-call-sign"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 9.4 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N61R768_HAR_Characteristics_Supported,har-characteristics,tmdd:hARInventoryMsg.har-inventory-item;TMDD_N61R769_Transmission_Frequency_Description_Supported,har-frequency-description,tmdd:hARInventoryMsg.har-inventory-item;TMDD_N61R770_Call_Sign_Supported,har-call-sign,tmdd:hARInventoryMsg.har-inventory-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

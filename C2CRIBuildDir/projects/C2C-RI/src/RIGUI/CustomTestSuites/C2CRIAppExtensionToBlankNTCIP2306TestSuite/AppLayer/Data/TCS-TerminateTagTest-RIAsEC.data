@@ -1,0 +1,15 @@
+ 
+#<!--   
+#       Title:  TCS-TerminateTagTest-RIAsEC
+#       Description:  This test case is used to verify the RIs Terminate Tag
+#       Related Procedure:  TPS-TerminateTagTest
+#       Version/Date: 2012/02/25 22:33:21
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+

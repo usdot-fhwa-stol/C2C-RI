@@ -1,0 +1,307 @@
+<?xml version="1.0" ?> 
+<!--   
+       Title:  TPS-WSDL
+       Description:  This test procedure is called by a test case and is used to verify a WSDL files conformance to NTCIP 2306.This procedure supports verification of requirements related to user needs 1, 2 and 3 (SOAP, XML Direct and FTP Profiles) and is used for both valid and invalid test cases.
+       Version/Date: 2011/12/29 14:10:20
+-->
+
+<testprocedure xmlns="jelly:jameleon"  xmlns:jl="jelly:core" >
+<test-case-id>${C2CRITestCaseID}</test-case-id>
+
+<WSDL-session beginSession="True" wsdlFile="${WSDLFile}">
+<testStep functionId="Step 1 VERIFY that the specified WSDL file exists." >
+<ri-verify-WSDL testName="6.1.1.2" functionId="A center that provides a service to one or more external centers, and/or expects the external center to implement a service (e.g., a subscriber callback listener) shall document the services using WSDL. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 2 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema" >
+<ri-verify-WSDL testName="6.1.1.1" functionId="The version of WSDL shall conform with W3C WSDL 1.1. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 3 VERIFY that the WSDL file consists of 5 child sections: types/schema, message, portType, binding, service." >
+<ri-verify-WSDL testName="6.1.2" functionId="The WSDL definitions shall consists of 5 child sections as follows: LFa) types/schema LFb) message LFc) portType LFd) binding LFe) service " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 4 VERIFY that the definitions tag includes a name attribute." >
+<ri-verify-WSDL testName="6.2.1" functionId="The definitions tag shall include a name attribute. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 5 VERIFY that the type section begins with the types tag." >
+<ri-verify-WSDL testName="6.3.1" functionId="The type section shall begin with the types tag " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 6 VERIFY that the schema tag immediately follows the types tag." >
+<ri-verify-WSDL testName="6.3.2" functionId="The schema tag shall immediately follow the types tag. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 7 VERIFY that the import tag follows the types tag and specifies any namespace being imported and the schemaLocation." >
+<ri-verify-WSDL testName="6.3.3" functionId="The import tag shall follow and specify the namespace being imported and the schemaLocation, i.e., the name (or URL) of the XML Schema file. LFLFLFLF" testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 8 VERIFY that message section includes all top-level messages defined in the XML Schema that apply to the project implementation for Request-Response transmission pattern." >
+<ri-verify-WSDL testName="6.4.1.1" functionId="The message section shall specify all top-level messages defined in the XML Schema that apply to LFthe project implementation and used a request-response transmission pattern. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 9 VERIFY that each message type begins with [MSG_]." >
+<ri-verify-WSDL testName="6.4.1.2" functionId="The message name shall be defined by the name of the message type, as defined in the schema, LFwith the prefix ?MSG_? at the front part of the name. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 10 VERIFY that the name attribute of each message part is ?message?." >
+<ri-verify-WSDL testName="6.4.1.3" functionId="The name attribute of the message part shall always ?message?. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 11 VERIFY that the element attribute of the message part name starts with [tmdd:]." >
+<ri-verify-WSDL testName="6.4.1.4" functionId="The element attribute of the message part name shall use the form ?tmdd:? followed by the name of LFthe XML Schema element being imported into the WSDL. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 12 VERIFY that message section contains subscription messages." >
+<ri-verify-WSDL testName="6.4.2.1" functionId="The message section shall specify all top-level messages defined in the XML Schema that apply to LFthe project implementation and used as a subscription message. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 13 VERIFY that each message name each message name begins with the prefix [MSG_].  Also, confirm that the remainder of the message exists within the schema." >
+<ri-verify-WSDL testName="6.4.2.2" functionId="The message name shall be defined by the name of the message type, as defined in the schema, LFwith the prefix ?MSG_? at the front part of the name. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 14 VERIFY that the message has 2 parts.  The name attribute of the first part shall always be [c2cMsgAdmin], and the element attribute is [c2c:c2cMessageSubscription]" >
+<ri-verify-WSDL testName="6.4.2.3" functionId="The message shall have 2 parts. The name attribute of the first message part shall always be LF?c2cMsgAdmin?, and the elemen attribute ?c2c:c2cMessageSubscription?. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 15 VERIFY that the element attribute of the second message part name starts with [tmdd:]." >
+<ri-verify-WSDL testName="6.4.2.4" functionId="The name attribute of the second message part shall be ?message? and the element attribute use the LFform ?tmdd:? followed by the name of the XML Schema element being imported into the WSDL. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 16 VERIFY that the message section contains subscription messages." >
+<ri-verify-WSDL testName="6.4.3.1" functionId="The message section shall specify all top-level messages defined in the XML Schema that apply to LFthe project implementation and used as a publication message. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 17 VERIFY that each message name each message name begins with the prefix [MSG_].  Also, confirm that the remainder of the message exists within the schema." >
+<ri-verify-WSDL testName="6.4.3.2" functionId="The message name shall be defined by the name of the message type, as defined in the schema, LFwith the prefix ?MSG_? at the front part of the name. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 18 VERIFY that the message has 2 parts.  The name attribute of the first part shall always be [c2cMsgAdmin], and the element attribute is [c2c:c2cMessageSubscription]" >
+<ri-verify-WSDL testName="6.4.3.3" functionId="The message shall have 2 parts. The name attribute of the first message part shall always be LF?c2cMsgAdmin?, and the element attribute ?c2c:c2cMessagePublication?. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 19 VERIFY that the element attribute of the second message part name starts with [tmdd:]." >
+<ri-verify-WSDL testName="6.4.3.4" functionId="The name attribute of the second message part shall be ?message? and the element attribute use the LFform ?tmdd:? followed by the name of the XML Schema element being imported into the WSDL. " testResultExpected="Passed" />
+</testStep>
+
+<testStep functionId="Step 20 VERIFY that one (or more) service endpoints of the WSDL file use [https:] ." >
+<ri-verify-WSDL testName="6.5.1" functionId="A HTTPS service endpoint shall be specified by using ?https:? instead of ?http:? as the transport LFprotocol. " testResultExpected="Passed" />
+</testStep>
+
+
+<testStep functionId="Step 21 If NTCIP2306_N1R1_WSDL_Request_Response_Flag is equal to True CONTINUE; Otherwise skip the following substeps." />
+<jl:if test="${NTCIP2306_N1R1_WSDL_Request_Response_Flag}" >
+<testStep functionId="Step 21.1 VERIFY that at least one binding tag is followed by a soap:binding tag." >
+<ri-verify-WSDL testName="7.1.2.1" functionId="The binding tag shall be followed by a soap:binding tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.2 VERIFY that portType tag (or multiple) exists and contains a list of SOAP ?operation? tags.  There must be at least one operation for each portType element." >
+<ri-verify-WSDL testName="7.1.1.1" functionId="The portType tag shall be the parent tag for a list of operations supported by the SOAP Service for LFthe specific project implementation. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.3 VERIFY that each operation name begins with the ?OP_? prefix." >
+<ri-verify-WSDL testName="7.1.1.2" functionId="The operation name shall begin with the prefix ?OP_? followed by a descriptive name for the LFoperation. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.4 VERIFY that each operation has one input tag followed by one output tag." >
+<ri-verify-WSDL testName="7.1.1.3" functionId="Each operation shall have one input and one output tag. The input tag is specified first LFfollowed by the output tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.5 VERIFY that the input message references a message defined in the Message section of the WSDL.  The prefix for the message part of the operation must be [tns:]." >
+<ri-verify-WSDL testName="7.1.1.4" functionId="The input message shall reference a message defined in the Message section of the WSDL. To LFreference a message inside the WSDL, the message part of the operation shall begin with the prefix LF?tns:? followed by the name of the message specified in the Message section of the WSDL. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.6 VERIFY that the style attribute of all soap:binding tags is [document]" >
+<ri-verify-WSDL testName="7.1.2.2" functionId="The style attribute of the soap:binding tag shall be ?document? " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.7 VERIFY that the transport attribute of all soap:binding tags is [http://schemas.xmloap.org/soap/http]" >
+<ri-verify-WSDL testName="7.1.2.3" functionId="The transport attribute of the soap:binding tag shall be ?http://schemas.xmlsoap.org/soap/http? " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.8 VERIFY that each the operation name matches at least one operation specified in the portType section(s) of the WSDL." >
+<ri-verify-WSDL testName="7.1.2.4" functionId="The operation name must match the operation as specified in the portType section of the WSDL for LFeach operation supported by the center. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.9 VERIFY that the operation tag following a soap:binding tag  is followed by the soap:operation tag." >
+<ri-verify-WSDL testName="7.1.2.5" functionId="The operation tag shall be followed by the soap:operation tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.10 VERIFY that the soapAction attribute exists within each soap:operation tag. Confirm that the soapAction attribute is either blank or contains characters." >
+<ri-verify-WSDL testName="7.1.2.6" functionId="The soapAction attribute specifies the soapAction which the external center requester must included LFwithin an HTTP header. There is no requirement for a soapAction, only that the attribute be present. LFHowever, if no soapAction is specified, the soapAction attribute must by written as a double quote LFfollowed by two consecutive single quote characters followed by a double quote (????). The soapAction LFshall be a URL that indicates the message handler for the endpoint. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.11 VERIFY that the soap:operation tag is followed by an input tag set." >
+<ri-verify-WSDL testName="7.1.2.7" functionId="The soap:operation tag shall be followed by a input /input tag set. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.12 VERIFY that the input tag is followed by a soap:body tag with a use attribute set to [literal].  (**Note this requirement appears in error.  Shouldn?t the XML message appear within the soap:body tag specifically.)" >
+<ri-verify-WSDL testName="7.1.2.8" functionId="The input tag shall be followed by a soap:body tag. The use attribute of the soap:body tag LFshall be ?literal?. This specifies that the message content of the SOAP message is an XML message LFthat conforms with the XML Schema referenced in the schema section of the WSDL, which in turn is LFenclosed between a soap:envelope and soap:body tags. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.13 VERIFY that the input tag within the soap:operation tag is followed by an output tag set." >
+<ri-verify-WSDL testName="7.1.2.9" functionId="The input tag set shall be followed by an output tag set " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.14 VERIFY that the output tag is followed by a soap:body tag with a use attribute set to [literal]." >
+<ri-verify-WSDL testName="7.1.2.10" functionId="The output tag shall be followed by a soap:body tag. The use attribute of the soap:body tag LFshall be ?literal?. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.15 VERIFY that each service tag contains a name attribute." >
+<ri-verify-WSDL testName="7.1.3.1" functionId="The service tag shall contain a name attribute of the service. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.16 **Error in requirement:  Even if no documentation tag is included, a port tag is still required. VERIFY that the service tag is followed by a port tag." >
+<ri-verify-WSDL testName="7.1.3.3" functionId="The port tag shall follow the documentation tag, if one is present. The name attribute of the port LFtag will reflect the name of a SOAP port followed by the binding attribute indicating the name of the LFbinding identified in the bindings section which applies. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.17 VERIFY that a soap:addres tag follows a port tag.  There should be at least one present in the WSDL.  Verify that the port tag contains a location attribute.  Does the location attribute specify the service endpoint of the SOAP se" >
+<ri-verify-WSDL testName="7.1.3.4" functionId="Following the port tag, a soap:address tag shall be placed. The location attribute of the LFsoap:address tag shall specify the service endpoint of the SOAP service. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 21.18 VERIFY that the location attribute of the soap:address tag specifies a valid URL." >
+<ri-verify-WSDL testName="7.1.3.5" functionId="The service endpoint must specify a valid URL. " testResultExpected="Passed" />
+</testStep>
+</jl:if>
+
+
+
+<testStep functionId="Step 22 If NTCIP2306_N1R2_WSDL_Subscription_Publication_Flag is equal to True CONTINUE; Otherwise skip the following substeps."   passfailResult="False" />
+<jl:if test="${NTCIP2306_N1R2_WSDL_Subscription_Publication_Flag}" >
+<testStep functionId="Step 22.1 VERIFY that the WSDL file contains a specification(s) for a subscriber callback listener." >
+<ri-verify-WSDL testName="7.2.1.2.3" functionId="The publication center shall specify the WSDL for the subscriber callback listener. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 22.2 VERIFY that the subscription and publication operations use the same XML encoding and transmission message patterns." >
+<ri-verify-WSDL testName="7.2.1.2.4" functionId="The WSDL (created by the publication center) shall show that subscription and publication use the LFsame XML encoding and transmission message patterns (SOAP over HTTP or XML over HTTP).  " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 22.3 VERIFY that the portType tag is followed by a list of operations supported by the subscriber for listening for asynchronous SOAP message delivery." >
+<ri-verify-WSDL testName="7.2.2.1" functionId="The portType tag shall be followed by a list of operations supported by the subscriber for listening LFfor asynchronous SOAP message delivery. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 22.4 VERIFY that the list of operations a subscriber listener must support are defined in the WSDL." >
+<ri-verify-WSDL testName="7.2.2.2" functionId="The list of operations a subscriber listener must support shall be defined by the publishing center and LFdocumented in the publication center?s WSDL " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 22.5 VERIFY that the operation name input message and output message follow the same rules as those defined for a SOAP Request-Response portType defined in Section 7.1.3." >
+<ri-verify-WSDL testName="7.2.2.3" functionId="The operation name, input message, and output message follow the same rules as those defined for LFa SOAP Request-Response portType defined in Section 7.1.3. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 22.6 VERIFY that each callback message is defined as an input message." >
+<ri-verify-WSDL testName="7.2.2.4" functionId="The callback message (sent from the publisher to subscriber) shall be defined as an ?input message? LF(from the subscriber?s perspective). " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 22.7 VERIFY that the subscriber response is defined in the output message." >
+<ri-verify-WSDL testName="7.2.2.5" functionId="The subscriber shall respond with an acknowledge message (if defined) or an HTTP error code, LFwhich shall be defined in the ?output message?. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 22.8 VERIFY that the normative rules from the SOAP Request-Response Binding defined in Section 7.1.3 apply with the exception that the soapAction attribute will be left blank." >
+<ri-verify-WSDL testName="7.2.3.1" functionId="The normative rules from the SOAP Request-Response Binding defined in Section 7.1.3 shall apply with LFthe following exception?the ?soapAction? attribute shall be left blank, to be specified during subscription. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 22.9 VERIFY that the service tag contains a name attribute of the service." >
+<ri-verify-WSDL testName="7.2.4.1" functionId="The service tag shall contain a name attribute of the service. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 22.10 VERIFY that the port tag follows the documentation tag, if one is present.  The name attribute of the port tag reflects the name of a SOAP port followed by the binding attribute indicating the binding attribute indicating the name" >
+<ri-verify-WSDL testName="7.2.4.3" functionId="The port tag shall follow the documentation tag, if one is present. The name attribute of the port LFtag will reflect the name of a SOAP port followed by the binding attribute indicating the name of the LFbinding identified in the bindings section which applies. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 22.11 VERIFY that following the port tag, a soap:address tags is present." >
+<ri-verify-WSDL testName="7.2.4.4" functionId="Following the port tag, a soap:address tag shall be placed. The location attribute of the LFsoap:address tag shall specify a fake (place holder ) service endpoint of the SOAP service, which LFcontains the subscriber callback listener. However, to support valid WSDL, the soap:address tag LFmust be included. The subscriber shall provide an end point at run-time as described in Section 7.1.2 LFcovering Subscription. " testResultExpected="Passed" />
+</testStep>
+</jl:if>
+
+
+
+<testStep functionId="Step 23 If NTCIP2306_N2R7_WSDL_Request_Response_HTTP_POST_Flag is equal to True CONTINUE; Otherwise skip the following substeps."   passfailResult="False" />
+<jl:if test="${NTCIP2306_N2R7_WSDL_Request_Response_HTTP_POST_Flag}" >
+<testStep functionId="Step 23.1 VERIFY that the portType section for XML over HTTP follows the same rules as those in Section 7.1.1." >
+<ri-verify-WSDL testName="8.2.1" functionId="The portType section for XML over HTTP follows the same rules as those in Section 7.1.1. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 23.2 VERIFY that the requirement of the Request Only Binding is applied." >
+<ri-verify-WSDL testName="8.2.2.1" functionId="The same requirement of the Request Only Binding shall apply. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 23.3 VERIFY that the content of the input tag contains at least one form parameter, which contains an XML message." >
+<ri-verify-WSDL testName="8.2.2.2" functionId="The content of the input tag shall contain at least one form parameter, which shall contain an XML LFmessage. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 23.4 VERIFY that the rules for a SOAP service are applied except for exceptions listed in this section." >
+<ri-verify-WSDL testName="8.3.1" functionId="The rules that apply are the same as those specified for a SOAP Service with the following exception: " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 23.5 VERIFY that the XML HTTP endpoint uses the http:address tag to specify an endpoint rather than the soap:address tag." >
+<ri-verify-WSDL testName="8.3.1.1" functionId="The XML HTTP endpoint uses the http:address tag to specify an endpoint rather than the LFsoap:address tag. " testResultExpected="Passed" />
+</testStep>
+</jl:if>
+
+
+
+<testStep functionId="Step 24 If NTCIP2306_N2R6_WSDL_Request_Only_HTTP_GET_Flag is equal to True CONTINUE; Otherwise skip the following substeps."   passfailResult="False" />
+<jl:if test="${NTCIP2306_N2R6_WSDL_Request_Only_HTTP_GET_Flag}" >
+<testStep functionId="Step 24.1 VERIFY that the WSDL to describe the simple retrieval of a file is described as a one-way operation." >
+<ri-verify-WSDL testName="8.1.1.1" functionId="The WSDL to describe the simple retrieval of a file shall be described as a one-way operation. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.2 VERIFY that the portType tag is followed by a single operation which maps to a specific file." >
+<ri-verify-WSDL testName="8.1.1.2" functionId="The portType tag shall be followed by a single operation that maps to a specific file. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.3 VERIFY that the operation is defined as a one way operation." >
+<ri-verify-WSDL testName="8.1.1.3" functionId="The operation shall be a one-way operation between the data provider center and the external center LF(data consumer). " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.4 VERIFY that the operation name begins with the prefix [OP_] followed by a name for the operation." >
+<ri-verify-WSDL testName="8.1.1.4" functionId="The operation name shall begin with the prefix ?OP_? followed by a descriptive name for the LFoperation. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.5 VERIFY that each operation has one input tag." >
+<ri-verify-WSDL testName="8.1.1.5" functionId="Each operation shall have one input tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.6 VERIFY that the binding tag is followed by a http:binding tag." >
+<ri-verify-WSDL testName="8.1.2.1" functionId="The binding tag shall be followed by a http:binding tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.7 VERIFY that at least one section contains a http:binding verb attribute set to [GET]." >
+<ri-verify-WSDL testName="8.1.2.2" functionId="The http:binding verb attribute shall be ?GET?. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.8 VERIFY that the operation name matches the operation as specified in the portType section of the WSDL for each operation (file) supported by the center." >
+<ri-verify-WSDL testName="8.1.2.3" functionId="The operation name shall match the operation as specified in the portType section of the WSDL for LFeach operation (file) supported by the center. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.9 VERIFY that the operation tag is followed by the http:operation tag." >
+<ri-verify-WSDL testName="8.1.2.4" functionId="The operation tag shall be followed by the http:operation tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.10 VERIFY that the location attribute shall be the name of the file. The name of the file is to be defined by each LFcenter. However, it is recommended that the file name reflect the name of the message or messages LFcontained. Documentation" >
+<ri-verify-WSDL testName="8.1.2.5" functionId="The location attribute shall be the name of the file. The name of the file is to be defined by each LFcenter. However, it is recommended that the file name reflect the name of the message or messages LFcontained. Documentation outlining these naming rules should be established and a link provided to it LFin the meta-data of the documentation section. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.11 VERIFY that the http:operation tag is followed by the input ,/input tag set." >
+<ri-verify-WSDL testName="8.1.2.6" functionId="The http:operation tag shall be followed by the input /input tag set. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.12 VERIFY that the input tag is followed by a http:urlEncoded tag." >
+<ri-verify-WSDL testName="8.1.2.7" functionId="The input tag shall be followed by a http:urlEncoded tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.13 VERIFY that the input tag set is followed by an output, /output tag set." >
+<ri-verify-WSDL testName="8.1.2.8" functionId="The input tag set shall be followed by an output /output tag set. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.14 VERIFY that the output tag is followed by a mime:content tag." >
+<ri-verify-WSDL testName="8.1.2.9" functionId="The output tag shall be followed by a mime:content tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.15 VERIFY that the valid type attribute of the mime:content tag is any MIME type." >
+<ri-verify-WSDL testName="8.1.2.10" functionId="The valid type attribute of the mime:content tag shall be any MIME type. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.16 VERIFY that the rules for a SOAP service are applied except for exceptions listed in this section." >
+<ri-verify-WSDL testName="8.3.1" functionId="The rules that apply are the same as those specified for a SOAP Service with the following exception: " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 24.17 VERIFY that the XML HTTP endpoint uses the http:address tag to specify an endpoint rather than the soap:address tag." >
+<ri-verify-WSDL testName="8.3.1.1" functionId="The XML HTTP endpoint uses the http:address tag to specify an endpoint rather than the LFsoap:address tag. " testResultExpected="Passed" />
+</testStep>
+</jl:if>
+
+
+
+<testStep functionId="Step 25 If NTCIP2306_N3R11_WSDL_Request_Only_FTP_GET_Flag is equal to True CONTINUE; Otherwise skip the following substeps."    passfailResult="False" />
+<jl:if test="${NTCIP2306_N3R11_WSDL_Request_Only_FTP_GET_Flag}" >
+<testStep functionId="Step 25.1 VERIFY that the operation name and output message follow the same rules as those defined for a SOAP Service portType." >
+<ri-verify-WSDL testName="9.1.2.1" functionId="The operation name and output message follow the same rules as those defined for a SOAP Service LFportType. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 25.2 VERIFY that the operation name matches the operation as specified in the portType section of the WSDL for each operation (file) supported by the center." >
+<ri-verify-WSDL testName="9.1.3.1" functionId="The operation name shall match the operation as specified in the portType section of the WSDL for LFeach operation (file) supported by the center. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 25.3 VERIFY that the operation tag is followed by the ftp:operation tag." >
+<ri-verify-WSDL testName="9.1.3.2" functionId="The operation tag shall be followed by the ftp:operation tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 25.4 VERIFY that the location attribute is the name of the file. The name of the file is to be defined by each center." >
+<ri-verify-WSDL testName="9.1.3.3" functionId="The location attribute shall be the name of the file. The name of the file is to be defined by each LFcenter. However, it is recommended that the file name reflect the name of the message or messages LFcontained. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 25.5 VERIFY that the ftp:operation tag is followed by the input ,/input tag set." >
+<ri-verify-WSDL testName="9.1.3.4" functionId="The ftp:operation tag shall be followed by the input /input tag set. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 25.6 VERIFY that the input tag is followed by a ftp:urlEncoded tag." >
+<ri-verify-WSDL testName="9.1.3.5" functionId="The input tag shall be followed by a ftp:urlEncoded tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 25.7 VERIFY that the input tag set is followed by an output, /output tag set." >
+<ri-verify-WSDL testName="9.1.3.6" functionId="The input tag set shall be followed by an output /output tag set. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 25.8 VERIFY that the output tag is followed by a mime:content tag. The valid type attribute of the mime:content tag is MIME type supported by the center server (assuming that the center MIME types are also valid per the FTP specificatio" >
+<ri-verify-WSDL testName="9.1.3.7" functionId="The output tag shall be followed by a mime:content tag. The valid type attribute of the LFmime:content tag shall be MIME type supported by the center server (assuming that the center LFMIME types are also valid per the FTP specification). Example MIME types include:  ?gzip? for zip-LFencoded compressed data, ?text/xml? for an XML Document, and ?image/jpeg? or ?image/gif? for LFimage data. If the ?gzip? MIME type is included, the compressed information must be XML. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 25.9 VERIFY that the XML FTP endpoint uses the ftp:address tag to specify an endpoint rather than the soap:address tag." >
+<ri-verify-WSDL testName="9.1.4.1" functionId="The XML FTP endpoint uses the ftp:address tag to specify an endpoint rather than the LFsoap:address tag. " testResultExpected="Passed" />
+</testStep>
+<testStep functionId="Step 25.10 VERIFY that the address is a valid URL." >
+<ri-verify-WSDL testName="9.1.4.4" functionId="The address shall be a valid URL. " testResultExpected="Passed" />
+</testStep>
+</jl:if>
+
+
+
+</WSDL-session>
+</testprocedure>

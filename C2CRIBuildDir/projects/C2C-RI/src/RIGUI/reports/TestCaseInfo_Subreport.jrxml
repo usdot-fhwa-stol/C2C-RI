@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TestCaseFriday" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="0" rightMargin="20" topMargin="0" bottomMargin="20">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="C2CRI_Report_DATAADAPTER.xml"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="110"/>
+	<parameter name="ReportParameterCount" class="java.lang.Integer" isForPrompting="false">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+C2CRI_InfoLayerTestCaseDescriptions.TestCaseName,
+C2CRI_InfoLayerTestCaseDescriptions.TestCaseDescription,
+C2CRI_InfoLayerTestCaseDescriptions.ItemList,
+C2CRI_InfoLayerTestCaseDescriptions.SpecialProcedureRequirements,
+C2CRI_InfoLayerTestCaseDescriptions.DependencyDescription,
+C2CRI_InfoLayerTestCaseDescriptions.HardwareEnvironmental,
+C2CRI_InfoLayerTestCaseDescriptions.SoftwareEnvironmental,
+C2CRI_InfoLayerTestCaseDescriptions.OtherEnvironmental,
+C2CRI_InfoLayerTestCaseDescriptions.Inputs,
+C2CRI_InfoLayerTestCaseDescriptions.InputProcedures,
+C2CRI_InfoLayerTestCaseDescriptions.Outputs,
+C2CRI_InfoLayerTestCaseDescriptions.OutputProcedures
+FROM
+     C2CRI_InfoLayerTestCaseDescriptions]]>
+	</queryString>
+	<field name="TestCaseName" class="java.lang.Object"/>
+	<field name="TestCaseDescription" class="java.lang.Object"/>
+	<field name="ItemList" class="java.lang.Object"/>
+	<field name="SpecialProcedureRequirements" class="java.lang.Object"/>
+	<field name="DependencyDescription" class="java.lang.Object"/>
+	<field name="HardwareEnvironmental" class="java.lang.Object"/>
+	<field name="SoftwareEnvironmental" class="java.lang.Object"/>
+	<field name="OtherEnvironmental" class="java.lang.Object"/>
+	<field name="Inputs" class="java.lang.Object"/>
+	<field name="InputProcedures" class="java.lang.Object"/>
+	<field name="Outputs" class="java.lang.Object"/>
+	<field name="OutputProcedures" class="java.lang.Object"/>
+	<variable name="Report_CountInfo" class="java.lang.Integer" incrementType="Group" incrementGroup="IdentifierGroup" calculation="Count">
+		<variableExpression><![CDATA[$F{TestCaseName}]]></variableExpression>
+	</variable>
+	<group name="IdentifierGroup" isStartNewPage="true" minHeightToStartNewPage="10">
+		<groupExpression><![CDATA[$F{TestCaseName}]]></groupExpression>
+		<groupHeader>
+			<band height="107" splitType="Immediate">
+				<staticText>
+					<reportElement x="0" y="50" width="230" height="20" isRemoveLineWhenBlank="true">
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Identifier]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="230" y="50" width="320" height="20">
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Description]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="70" width="230" height="30">
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}>=0]]></printWhenExpression>
+					</reportElement>
+					<box padding="4">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{TestCaseName}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+					<reportElement stretchType="RelativeToTallestObject" x="230" y="70" width="320" height="30">
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+						<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}>=0]]></printWhenExpression>
+					</reportElement>
+					<box padding="4">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{TestCaseDescription}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="30" width="500" height="20" isPrintWhenDetailOverflows="true" printWhenGroupChanges="IdentifierGroup"/>
+					<textElement lineSpacing="Single"/>
+					<text><![CDATA[Test Case Specification identifier]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="false">
+					<reportElement x="0" y="30" width="50" height="20"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="10" isBold="false" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".1"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="60" height="30" printWhenGroupChanges="IdentifierGroup"/>
+					<box padding="2">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="14" isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + "."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement x="60" y="0" width="490" height="30" printWhenGroupChanges="DependenciesGroup"/>
+					<box padding="2"/>
+					<textElement lineSpacing="Single">
+						<font size="14" isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{TestCaseName}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="TestItemsGroup">
+		<groupExpression><![CDATA[$F{ItemList}]]></groupExpression>
+		<groupHeader>
+			<band height="47">
+				<printWhenExpression><![CDATA[$V{PAGE_NUMBER} >=0]]></printWhenExpression>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="0" width="180" height="20">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}>=0]]></printWhenExpression>
+					</reportElement>
+					<textElement lineSpacing="Single"/>
+					<text><![CDATA[Test Items]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="20" width="90" height="20">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}>=0]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{ItemList}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="50" height="20">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}>=0]]></printWhenExpression>
+					</reportElement>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="10" isBold="false" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".2"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="SpecificationsGroup">
+		<groupHeader>
+			<band height="72">
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="0" width="180" height="20" isPrintWhenDetailOverflows="true">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}>=0]]></printWhenExpression>
+					</reportElement>
+					<textElement lineSpacing="Single"/>
+					<text><![CDATA[Input Specifications]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="20" width="230" height="20">
+						<printWhenExpression><![CDATA[$V{PAGE_NUMBER}>=0]]></printWhenExpression>
+					</reportElement>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Inputs]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="40" width="230" height="30"/>
+					<box padding="4">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{Inputs}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="230" y="20" width="320" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Procedures]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="230" y="40" width="320" height="30"/>
+					<box padding="4">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{InputProcedures}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="50" height="20"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="10" isBold="false" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".3"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="OutputSpecificationsGroup">
+		<groupHeader>
+			<band height="90">
+				<printWhenExpression><![CDATA[$V{PAGE_NUMBER} >=0]]></printWhenExpression>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="0" width="180" height="20"/>
+					<textElement lineSpacing="Single"/>
+					<text><![CDATA[Output Specifications]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="30" width="230" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Outputs]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="50" width="230" height="30"/>
+					<box padding="4">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{Outputs}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="230" y="30" width="320" height="20"/>
+					<box>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[  Procedures]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="230" y="50" width="320" height="30"/>
+					<box padding="4">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{OutputProcedures}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="50" height="20"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="10" isBold="false" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".4"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="HardwareGroup">
+		<groupHeader>
+			<band height="64">
+				<printWhenExpression><![CDATA[$V{PAGE_NUMBER} >=0]]></printWhenExpression>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="0" width="180" height="20"/>
+					<textElement lineSpacing="Single"/>
+					<text><![CDATA[Environmental Needs]]></text>
+				</staticText>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="20" width="180" height="20"/>
+					<textElement lineSpacing="Single"/>
+					<text><![CDATA[Hardware]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="40" width="550" height="20"/>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{HardwareEnvironmental}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="50" height="20"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="10" isBold="false" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".5"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="true">
+					<reportElement x="0" y="20" width="50" height="20"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="10" isBold="false" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".5.1"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="SoftwareGroup">
+		<groupHeader>
+			<band height="46">
+				<printWhenExpression><![CDATA[$V{PAGE_NUMBER} >=0]]></printWhenExpression>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="0" width="180" height="20"/>
+					<textElement lineSpacing="Single"/>
+					<text><![CDATA[Software]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="550" height="20"/>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{SoftwareEnvironmental}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="50" height="20"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="10" isBold="false" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".5.2"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="OtherGroup">
+		<groupHeader>
+			<band height="56">
+				<printWhenExpression><![CDATA[$V{PAGE_NUMBER} >=0]]></printWhenExpression>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="10" width="180" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement lineSpacing="Single"/>
+					<text><![CDATA[Other]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="30" width="550" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{OtherEnvironmental}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="true">
+					<reportElement x="0" y="10" width="50" height="20" isRemoveLineWhenBlank="true"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="10" isBold="false" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".5.3"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="SpecialProceduralGroup">
+		<groupHeader>
+			<band height="42">
+				<printWhenExpression><![CDATA[$V{PAGE_NUMBER} >=0]]></printWhenExpression>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="0" width="180" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement lineSpacing="Single"/>
+					<text><![CDATA[Special Procedural Requirements]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="550" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{SpecialProcedureRequirements}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="50" height="20" isRemoveLineWhenBlank="true"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="10" isBold="false" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".6"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="DependenciesGroup">
+		<groupHeader>
+			<band height="44">
+				<printWhenExpression><![CDATA[$V{PAGE_NUMBER} >=0]]></printWhenExpression>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="0" width="180" height="20" isRemoveLineWhenBlank="true"/>
+					<textElement lineSpacing="Single"/>
+					<text><![CDATA[Intercase Dependencies]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="20" width="550" height="23" isRemoveLineWhenBlank="true"/>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{DependencyDescription}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="IdentifierGroup" isBlankWhenNull="true">
+					<reportElement x="0" y="0" width="50" height="20" isRemoveLineWhenBlank="true"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+						<topPen lineWidth="0.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Left" lineSpacing="Single">
+						<font size="10" isBold="false" isUnderline="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".7"]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="AppOutputSpecificationsGroup"/>
+	<group name="AppDependenciesGroup"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="8" splitType="Stretch"/>
+	</title>
+	<detail>
+		<band/>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="4" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

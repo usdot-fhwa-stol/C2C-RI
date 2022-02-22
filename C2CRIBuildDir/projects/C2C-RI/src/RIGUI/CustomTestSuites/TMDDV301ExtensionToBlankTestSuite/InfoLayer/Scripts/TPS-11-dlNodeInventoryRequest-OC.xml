@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-11-dlNodeInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlNodeInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.1.1 [Need for Node Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 22:42:41-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlNodeInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.1.1 [Need for Node Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions is required by the specification. (NRTM 3.3.5.2.1.5.2.1).  RECORD this information as: TMDD_N11R234_Restrictions_Supported = ${TMDD_N11R234_Restrictions_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Roadway Network Name is required by the specification. (NRTM 3.3.5.2.1.5.2.2).  RECORD this information as: TMDD_N11R235_Roadway_Network_Name_Supported = ${TMDD_N11R235_Roadway_Network_Name_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Node Name is required by the specification. (NRTM 3.3.5.2.1.5.2.3).  RECORD this information as: TMDD_N11R236_Node_Name_Supported = ${TMDD_N11R236_Node_Name_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Node Description is required by the specification. (NRTM 3.3.5.2.1.5.2.4).  RECORD this information as: TMDD_N11R237_Node_Description_Supported = ${TMDD_N11R237_Node_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Route Designator is required by the specification. (NRTM 3.3.5.2.1.5.2.5).  RECORD this information as: TMDD_N11R238_Route_Designator_Supported = ${TMDD_N11R238_Route_Designator_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Node Direction is required by the specification. (NRTM 3.3.5.2.1.5.2.6).  RECORD this information as: TMDD_N11R239_Node_Direction_Supported = ${TMDD_N11R239_Node_Direction_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Linear Reference is required by the specification. (NRTM 3.3.5.2.1.5.2.7).  RECORD this information as: TMDD_N11R240_Linear_Reference_Supported = ${TMDD_N11R240_Linear_Reference_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Node Type is required by the specification. (NRTM 3.3.5.2.1.5.2.8).  RECORD this information as: TMDD_N11R241_Node_Type_Supported = ${TMDD_N11R241_Node_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Number of Links is required by the specification. (NRTM 3.3.5.2.1.5.2.9).  RECORD this information as: TMDD_N11R242_Number_of_Links_Supported = ${TMDD_N11R242_Number_of_Links_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Inventory Date and Time Change Information is required by the specification. (NRTM 3.3.5.2.1.5.2.10).  RECORD this information as: TMDD_N11R243_Inventory_Date_and_Time_Change_Information_Supported = ${TMDD_N11R243_Inventory_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlNodeInventoryRequest" riMode="EC">
+          <testStep functionId="Step 12 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 14 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 15 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlNodeInventoryRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlNodeInventoryRequest" functionId="dlNodeInventoryRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 16 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 16.1 IF TMDD_N11R234_Restrictions_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R234_Restrictions_Supported}">
+                    <testStep functionId="Step 16.1.1 VERIFY that element restrictions exists within each instance of nodeInventoryMsg.node-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:nodeInventoryMsg.node-inventory-item" functionId="Looking for nodeInventoryMsg.node-inventory-item.restrictions"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.2 IF TMDD_N11R235_Roadway_Network_Name_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R235_Roadway_Network_Name_Supported}">
+                    <testStep functionId="Step 16.2.1 VERIFY that element network-name exists within each instance of nodeInventoryMsg.node-inventory-item.node-list.node" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="network-name" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.node-list.node" functionId="Looking for nodeInventoryMsg.node-inventory-item.node-list.node.network-name"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.3 IF TMDD_N11R236_Node_Name_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R236_Node_Name_Supported}">
+                    <testStep functionId="Step 16.3.1 VERIFY that element node-name exists within each instance of nodeInventoryMsg.node-inventory-item.node-list.node" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-name" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.node-list.node" functionId="Looking for nodeInventoryMsg.node-inventory-item.node-list.node.node-name"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.4 IF TMDD_N11R237_Node_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R237_Node_Description_Supported}">
+                    <testStep functionId="Step 16.4.1 VERIFY that element node-description exists within each instance of nodeInventoryMsg.node-inventory-item.node-list.node" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-description" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.node-list.node" functionId="Looking for nodeInventoryMsg.node-inventory-item.node-list.node.node-description"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.5 IF TMDD_N11R238_Route_Designator_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R238_Route_Designator_Supported}">
+                    <testStep functionId="Step 16.5.1 VERIFY that element node-route-designator exists within each instance of nodeInventoryMsg.node-inventory-item.node-list.node" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-route-designator" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.node-list.node" functionId="Looking for nodeInventoryMsg.node-inventory-item.node-list.node.node-route-designator"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.6 IF TMDD_N11R239_Node_Direction_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R239_Node_Direction_Supported}">
+                    <testStep functionId="Step 16.6.1 VERIFY that element node-direction exists within each instance of nodeInventoryMsg.node-inventory-item.node-list.node" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-direction" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.node-list.node" functionId="Looking for nodeInventoryMsg.node-inventory-item.node-list.node.node-direction"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.7 IF TMDD_N11R240_Linear_Reference_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R240_Linear_Reference_Supported}">
+                    <testStep functionId="Step 16.7.1 VERIFY that element linear-reference exists within each instance of nodeInventoryMsg.node-inventory-item.node-list.node" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.node-list.node" functionId="Looking for nodeInventoryMsg.node-inventory-item.node-list.node.linear-reference"/>
+                    </testStep>
+                    <testStep functionId="Step 16.7.2 VERIFY that element linear-reference-version exists within each instance of nodeInventoryMsg.node-inventory-item.node-list.node" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference-version" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.node-list.node" functionId="Looking for nodeInventoryMsg.node-inventory-item.node-list.node.linear-reference-version"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.8 IF TMDD_N11R241_Node_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R241_Node_Type_Supported}">
+                    <testStep functionId="Step 16.8.1 VERIFY that element node-type exists within each instance of nodeInventoryMsg.node-inventory-item.node-list.node" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-type" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.node-list.node" functionId="Looking for nodeInventoryMsg.node-inventory-item.node-list.node.node-type"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.9 IF TMDD_N11R242_Number_of_Links_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R242_Number_of_Links_Supported}">
+                    <testStep functionId="Step 16.9.1 VERIFY that element node-links-number exists within each instance of nodeInventoryMsg.node-inventory-item.node-list.node" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-links-number" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.node-list.node" functionId="Looking for nodeInventoryMsg.node-inventory-item.node-list.node.node-links-number"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.10 IF TMDD_N11R243_Inventory_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N11R243_Inventory_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 16.10.1 VERIFY that element last-update-time exists within each instance of nodeInventoryMsg.node-inventory-item.organization-information" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.organization-information" functionId="Looking for nodeInventoryMsg.node-inventory-item.organization-information.last-update-time"/>
+                    </testStep>
+                    <testStep functionId="Step 16.10.2 VERIFY that element last-update-time exists within each instance of nodeInventoryMsg.node-inventory-item.node-list.node" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:nodeInventoryMsg.node-inventory-item.node-list.node" functionId="Looking for nodeInventoryMsg.node-inventory-item.node-list.node.last-update-time"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 16.11 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N11R234_Restrictions_Supported,restrictions,tmdd:nodeInventoryMsg.node-inventory-item;TMDD_N11R235_Roadway_Network_Name_Supported,network-name,tmdd:nodeInventoryMsg.node-inventory-item.node-list.node;TMDD_N11R236_Node_Name_Supported,node-name,tmdd:nodeInventoryMsg.node-inventory-item.node-list.node;TMDD_N11R237_Node_Description_Supported,node-description,tmdd:nodeInventoryMsg.node-inventory-item.node-list.node;TMDD_N11R238_Route_Designator_Supported,node-route-designator,tmdd:nodeInventoryMsg.node-inventory-item.node-list.node;TMDD_N11R239_Node_Direction_Supported,node-direction,tmdd:nodeInventoryMsg.node-inventory-item.node-list.node;TMDD_N11R240_Linear_Reference_Supported,linear-reference,tmdd:nodeInventoryMsg.node-inventory-item.node-list.node;TMDD_N11R240_Linear_Reference_Supported,linear-reference-version,tmdd:nodeInventoryMsg.node-inventory-item.node-list.node;TMDD_N11R241_Node_Type_Supported,node-type,tmdd:nodeInventoryMsg.node-inventory-item.node-list.node;TMDD_N11R242_Number_of_Links_Supported,node-links-number,tmdd:nodeInventoryMsg.node-inventory-item.node-list.node;TMDD_N11R243_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:nodeInventoryMsg.node-inventory-item.organization-information;TMDD_N11R243_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:nodeInventoryMsg.node-inventory-item.node-list.node;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

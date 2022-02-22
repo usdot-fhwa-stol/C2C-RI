@@ -1,0 +1,634 @@
+ 
+#<!--   
+#       Title:  TCS-104-dlSectionSignalTimingPatternInventoryRequest-OC-InValid-8
+#       Description:  This test case is used to verify the SUTs support of the dlSectionSignalTimingPatternInventoryRequest dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.10.19 [Need to Share Section Timing Patterns]. This Test Case tests for a InValid (8) response result.
+#       Related Procedure:  TPS-104-dlSectionSignalTimingPatternInventoryRequest-OC
+#       Version/Date: 2013/09/25 10:55:58
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Request Message to be sent to the SUT.
+RequestMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether an error response is expected from the SUT.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of error response that is expected from the SUT.
+ErrorTypeExpected = 8
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.user-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.user-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.password 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.password = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.operator-id  BaseType=string  ParentType= Authentication
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.authentication.operator-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-id = transcore.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-name 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-location 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-location = stringstri
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-function 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-function = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.contact-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.person-name 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.person-title 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.phone-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.phone-alternate 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.fax-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.pager-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.pager-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.email-address 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.radio-unit 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.address-line1 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.address-line2 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.city 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.state 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.zip-code 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.country 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.organization-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-id = tcore_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = wgs-84
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec = 1000.00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.date 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.time 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.offset 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-information.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-id = transcore.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-name 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-location 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-location = stringstri
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-function 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-function = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.contact-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.person-name 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.person-title 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.phone-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.phone-alternate 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.mobile-phone-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.mobile-phone-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.fax-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.pager-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.pager-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.email-address 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.radio-unit 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.address-line1 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.address-line2 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.city 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.state 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.zip-code 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.country 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.organization-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-id = tcore_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-name 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalLevel 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-description 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-type 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-type = mobile
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.date 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.time 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.offset 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.organization-requesting.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-type  BaseType=anySimpleType  ParentType= DeviceInformationRequest
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-type = signal section
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-information-type  BaseType=anySimpleType  ParentType= DeviceInformationRequest
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-information-type = device plan
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.device-id-list.device-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.device-id-list.device-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.network-id-list.network-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.network-id-list.network-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.link-id-list.link 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.link-id-list.link = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.link-designator-list.link-designator 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.link-designator-list.link-designator = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.linear-reference.linear-reference-start 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.linear-reference.linear-reference-start = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.linear-reference.linear-reference-end 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.linear-reference.linear-reference-end = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.section-id-list.section-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.section-id-list.section-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.pattern-id-list.pattern-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.pattern-id-list.pattern-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.center-id-list.center-id 
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.device-information-request-header.device-filter.center-id-list.center-id = tcore_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:sectionSignalTimingPatternInventoryRequestMsg.section-timing-pattern-id  BaseType=string  ParentType= SectionSignalTimingPatternInventoryRequest
+tmdd:sectionSignalTimingPatternInventoryRequestMsg.section-timing-pattern-id = string
+

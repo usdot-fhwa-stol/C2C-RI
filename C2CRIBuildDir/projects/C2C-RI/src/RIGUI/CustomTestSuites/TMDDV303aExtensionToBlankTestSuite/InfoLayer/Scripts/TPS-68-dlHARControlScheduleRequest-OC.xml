@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-68-dlHARControlScheduleRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlHARControlScheduleRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.8 [Need to Share HAR Schedule] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:37:33-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlHARControlScheduleRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.8 [Need to Share HAR Schedule] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Device Schedule is required by the specification. (NRTM 3.3.5.1.8.1.2.1).  RECORD this information as: TMDD_N68R440_Restrictions___Device_Schedule_Supported = ${TMDD_N68R440_Restrictions___Device_Schedule_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 3 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 4 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 5 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 6 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlHARControlScheduleRequest RESPONSETIMEREQUIRED=TMDD_N68R813_Send_HAR_Schedule_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlHARControlScheduleRequest" functionId="dlHARControlScheduleRequest" RESPONSETIMEREQUIRED="${TMDD_N68R813_Send_HAR_Schedule_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 7 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 7.1 VERIFY that element organization-information exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-frame" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 7.2 VERIFY that element device-id exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 7.3 VERIFY that element time-base-schedule-number exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-base-schedule-number" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 7.4 VERIFY that element time-base-schedule-month exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-base-schedule-month" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 7.5 VERIFY that element time-base-schedule-day exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-base-schedule-day" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 7.6 VERIFY that element time-base-schedule-date exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-base-schedule-date" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 7.7 VERIFY that element time-base-schedule-day-plan exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-base-schedule-day-plan" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 7.8 VERIFY that element day-plan-hour exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="day-plan-hour" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 7.9 VERIFY that element day-plan-minute exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="day-plan-minute" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 7.10 VERIFY that element last-update-time exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-frame" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 7.11 VERIFY that element hARControlScheduleMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="hARControlScheduleMsg" instanceName="tmdd:hARControlScheduleMsg" elementType="message" functionId="Looking for hARControlScheduleMsg"/>
+               </testStep>
+               <testStep functionId="Step 7.12 IF TMDD_N68R440_Restrictions___Device_Schedule_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N68R440_Restrictions___Device_Schedule_Supported}">
+                    <testStep functionId="Step 7.12.1 VERIFY that element restrictions exists within each instance of hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header" elementType="data-frame" functionId="Looking for hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 7.13 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N68R440_Restrictions___Device_Schedule_Supported,restrictions,tmdd:hARControlScheduleMsg.har-control-schedule-item.device-control-schedule-header;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

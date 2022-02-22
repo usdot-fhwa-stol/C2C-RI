@@ -1,0 +1,44 @@
+ 
+#<!--   
+#       Title:  TCS-21-dlArchivedDataProcessingDocumentationMetadataRequest-OC-InValid-8
+#       Description:  This test case is used to verify the SUTs support of the dlArchivedDataProcessingDocumentationMetadataRequest dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.1.4 [Need for Detector Metadata]. This Test Case tests for an invalid response result. An error response message is expected be returned with an error-code set to 8 (no valid data available).
+#       Related Procedure:  TPS-21-dlArchivedDataProcessingDocumentationMetadataRequest-OC
+#       Version/Date: 2014/01/16 02:23:52
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Request Message to be sent to the SUT.
+RequestMessage = #MESSAGESPEC#EmulationMessage#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether an error response is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of error response that is expected from the SUT.
+ErrorTypeExpected = 8
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = EmulationMessage

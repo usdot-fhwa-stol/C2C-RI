@@ -1,0 +1,24 @@
+<testcase xmlns="jelly:jameleon" needsVerified="2.3.1.2" requirementsVerified="3.3.1.1.1;3.3.1.1.2">
+  <testStep functionId="Step 1.  This step will always Fail.">	
+ 	   <ju-assert-equals functionId = "Check whether true is equal to false" 
+	      expected="true"
+	      actual = "false"/>
+  </testStep>
+
+  <testStep functionId="Step 2.  This step is only executed if Step 1 passed.">	
+  </testStep>
+
+  <postcondition>	
+     <testStep functionId="Step 3.  PostCondition: This step is always executed as part of a PostCondition Tag."
+     needsVerified = "2.3.4.5; 2.3.4.5.1" requirementsVerified="3.3.1.1.2.1">
+ 	   <ju-assert-equals functionId = "Check whether true is equal to true" 
+	      expected="true"
+	      actual = "true"/>
+ 	   <ju-assert-equals functionId = "Check whether true is equal to false" 
+	      expected="true"
+	      actual = "false"/>
+     </testStep>
+  </postcondition>
+
+</testcase>
+

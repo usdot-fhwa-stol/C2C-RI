@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-108-dlArchivedDataProcessingDocumentationMetadataRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlArchivedDataProcessingDocumentationMetadataRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.7.1.5 [Need for Processing Documentation Metadata] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:26:43-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlArchivedDataProcessingDocumentationMetadataRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.7.1.5 [Need for Processing Documentation Metadata] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions is required by the specification. (NRTM 3.3.7.2.3.2.1).  RECORD this information as: TMDD_N108R1083_Restrictions_Supported = ${TMDD_N108R1083_Restrictions_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Publication Date and Time is required by the specification. (NRTM 3.3.7.2.3.2.2).  RECORD this information as: TMDD_N108R1084_Publication_Date_and_Time_Supported = ${TMDD_N108R1084_Publication_Date_and_Time_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Processing Method is required by the specification. (NRTM 3.3.7.2.3.2.3).  RECORD this information as: TMDD_N108R1085_Processing_Method_Supported = ${TMDD_N108R1085_Processing_Method_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Processing Method Description is required by the specification. (NRTM 3.3.7.2.3.2.4).  RECORD this information as: TMDD_N108R1086_Processing_Method_Description_Supported = ${TMDD_N108R1086_Processing_Method_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Application Rules is required by the specification. (NRTM 3.3.7.2.3.2.5).  RECORD this information as: TMDD_N108R1087_Application_Rules_Supported = ${TMDD_N108R1087_Application_Rules_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Enumeration is required by the specification. (NRTM 3.3.7.2.3.2.6).  RECORD this information as: TMDD_N108R1088_Enumeration_Supported = ${TMDD_N108R1088_Enumeration_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlArchivedDataProcessingDocumentationMetadataRequest" riMode="EC">
+          <testStep functionId="Step 8 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 9 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 10 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 11 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlArchivedDataProcessingDocumentationMetadataRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlArchivedDataProcessingDocumentationMetadataRequest" functionId="dlArchivedDataProcessingDocumentationMetadataRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 12 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 12.1 IF TMDD_N108R1083_Restrictions_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N108R1083_Restrictions_Supported}">
+                    <testStep functionId="Step 12.1.1 VERIFY that element restrictions exists within each instance of archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" functionId="Looking for archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item.restrictions"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.2 IF TMDD_N108R1084_Publication_Date_and_Time_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N108R1084_Publication_Date_and_Time_Supported}">
+                    <testStep functionId="Step 12.2.1 VERIFY that element publication-date-time exists within each instance of archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="publication-date-time" instanceName="tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" functionId="Looking for archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item.publication-date-time"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.3 IF TMDD_N108R1085_Processing_Method_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N108R1085_Processing_Method_Supported}">
+                    <testStep functionId="Step 12.3.1 VERIFY that element processing-method-name exists within each instance of archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="processing-method-name" instanceName="tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" functionId="Looking for archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item.processing-method-name"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.4 IF TMDD_N108R1086_Processing_Method_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N108R1086_Processing_Method_Description_Supported}">
+                    <testStep functionId="Step 12.4.1 VERIFY that element processing-method-description exists within each instance of archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="processing-method-description" instanceName="tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" functionId="Looking for archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item.processing-method-description"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.5 IF TMDD_N108R1087_Application_Rules_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N108R1087_Application_Rules_Supported}">
+                    <testStep functionId="Step 12.5.1 VERIFY that element processing-method-application-rules exists within each instance of archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="processing-method-application-rules" instanceName="tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" functionId="Looking for archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item.processing-method-application-rules"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.6 IF TMDD_N108R1088_Enumeration_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N108R1088_Enumeration_Supported}">
+                    <testStep functionId="Step 12.6.1 VERIFY that element processing-method-results exists within each instance of archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="processing-method-results" instanceName="tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item" functionId="Looking for archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item.processing-method-results"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 12.7 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N108R1083_Restrictions_Supported,restrictions,tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item;TMDD_N108R1084_Publication_Date_and_Time_Supported,publication-date-time,tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item;TMDD_N108R1085_Processing_Method_Supported,processing-method-name,tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item;TMDD_N108R1086_Processing_Method_Description_Supported,processing-method-description,tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item;TMDD_N108R1087_Application_Rules_Supported,processing-method-application-rules,tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item;TMDD_N108R1088_Enumeration_Supported,processing-method-results,tmdd:archivedDataProcessingDocumentationMetadataMsg.archived-data-processing-documentation-metadata-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

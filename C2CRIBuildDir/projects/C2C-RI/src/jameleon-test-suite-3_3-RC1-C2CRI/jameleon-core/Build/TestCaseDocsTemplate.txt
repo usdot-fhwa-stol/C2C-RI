@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>$!tc.name Documentation</title>
+        
+        <style type="text/css">
+        table.fields {border: 1px solid #000000;}
+        tr.alt {background: #C0C0C0;}
+        td.header {font-weight: bold; white-space: nowrap;}
+        </style>
+    </head>
+    <body bgcolor="#FFFFFF">
+        <table width="100%" cellspacing="0" class="fields">
+            <tr class="alt">
+                <td class="header" width="22%">Test Case</td>
+                <td colspan="3">
+                    $!tc.name
+                </td>
+            </tr>
+            <tr>
+                <td class="header">Summary</td>
+                <td colspan="3">$!tc.summary</td>
+            </tr>
+            <tr><td colspan="4"></td></tr>
+            <tr class="alt">
+                <td class="header">Author</td>
+                <td>$!tc.author</td>
+                <td class="header">Feature Tested</td>
+                <td>$!tc.functionalPointTested</td>
+            </tr>
+            <tr>
+                <td class="header">Application Tested</td>
+                <td>$!tc.application</td>
+                <td class="header">Test Level(s)</td>
+                <td>#foreach ( $level in $tc.testLevels ) $level #end</td>
+            </tr>
+            <tr class="alt">
+                <td class="header">Bug(s)</td>
+                <td>#foreach ( $bug in $tc.bugs ) <a href="${bugTrackerUrl}${bug}">$bug</a> #end</td>
+                <td class="header">Test Case ID</td>
+                <td>$!tc.testCaseId</td>
+            </tr>
+            <tr>
+                <td class="header">Test Environment</td>
+                <td>$!tc.testEnvironment</td>
+                <td class="header">Organization</td>
+                <td>$!tc.organization</td>
+            </tr>
+            <tr class="alt">
+                <td class="header">Requirement ID</td>
+                <td colspan="3">$!tc.testCaseRequirement</td>
+            </tr>
+        </table>
+        <br>
+        <hr>
+        <br>
+        #foreach ( $session in $tc.sessions )
+        <table width="100%">
+            <tr class="alt">
+                <td><b>Execution Steps</b> 
+                #if ( $session.application && $session.application.length() > 0 )
+                for the <b>$session.application</b> 
+                #end
+                #if ( $session.organization && $session.organization.length() > 0 ) 
+                    of the <b>$session.organization</b> organization
+                #end</td>
+            </tr>
+            #foreach ( $fp in $session.functionalPoints )
+            <tr>
+                <td><b>$velocityCount</b>. $fp.functionId
+                #if ( $fp.steps.size() > 0 )
+                <table>
+                    #foreach ( $step in $fp.steps )
+                    <tr><td>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<b>&middot;</b> $step
+                    </td></tr>
+                    #end
+                </table>
+                #end
+                </td>
+            </tr>
+            #end
+        </table>
+        #end
+    </body>
+</html>

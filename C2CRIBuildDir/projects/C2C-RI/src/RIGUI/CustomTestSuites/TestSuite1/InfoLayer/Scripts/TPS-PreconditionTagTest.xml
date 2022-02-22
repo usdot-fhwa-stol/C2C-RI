@@ -1,0 +1,23 @@
+<testcase xmlns="jelly:jameleon" needsVerified = "2.3.1.1" requirementsVerified = "3.3.2.3;3.3.2.3.1;3.3.2.3.2">
+  <precondition>	
+     <testStep functionId="Step 1. Precondition: Ensure that the required need (2.3.1.3) and requirements (3.3.1.3.1) were selected in the NRTM.">
+ 	   <ju-assert-equals functionId = "Confirm Need 2.3.1.3 Setting is true" 
+	      expected="true"
+	      actual = "${TMDD_Need_2_3_1_3}"/>
+
+ 	   <ju-assert-equals functionId = "Check for Dialog Requirement 3.3.1.3.1 Setting is true" 
+	      expected="true"
+	      actual = "${TMDD_3_3_1_3_1}"/>
+
+     </testStep>
+  </precondition>
+
+  <testStep functionId="Step 2.  This step is only executed if the Precondition Step 1 was true.">	
+  </testStep>
+
+  <testStep functionId="Step 3.  This step is only executed if the Precondition Step 1 was true and Step 2 passed."
+      needsVerified = "2.3.1.3" requirementsVerified = "3.3.1.3;3.3.1.3.1;3.3.1.3.2">
+  </testStep>
+
+</testcase>
+

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-23-dlDetectorDataRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDetectorDataRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.1.6 [Need for Detector Data Sharing] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 22:50:24-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDetectorDataRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.1.6 [Need for Detector Data Sharing] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions is required by the specification. (NRTM 3.3.6.2.3.5.2.1).  RECORD this information as: TMDD_N23R473_Restrictions_Supported = ${TMDD_N23R473_Restrictions_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Owner Organization is required by the specification. (NRTM 3.3.6.2.3.5.2.2).  RECORD this information as: TMDD_N23R474_Owner_Organization_Supported = ${TMDD_N23R474_Owner_Organization_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Detector Station is required by the specification. (NRTM 3.3.6.2.3.5.2.3).  RECORD this information as: TMDD_N23R475_Detector_Station_Supported = ${TMDD_N23R475_Detector_Station_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Data Collection Start is required by the specification. (NRTM 3.3.6.2.3.5.2.4).  RECORD this information as: TMDD_N23R476_Data_Collection_Start_Supported = ${TMDD_N23R476_Data_Collection_Start_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Data Collection End is required by the specification. (NRTM 3.3.6.2.3.5.2.5).  RECORD this information as: TMDD_N23R477_Data_Collection_End_Supported = ${TMDD_N23R477_Data_Collection_End_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Data Type is required by the specification. (NRTM 3.3.6.2.3.5.2.6).  RECORD this information as: TMDD_N23R478_Data_Type_Supported = ${TMDD_N23R478_Data_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Average Vehicle Speed is required by the specification. (NRTM 3.3.6.2.3.5.2.7).  RECORD this information as: TMDD_N23R479_Average_Vehicle_Speed_Supported = ${TMDD_N23R479_Average_Vehicle_Speed_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Average Vehicle Queue is required by the specification. (NRTM 3.3.6.2.3.5.2.8).  RECORD this information as: TMDD_N23R480_Average_Vehicle_Queue_Supported = ${TMDD_N23R480_Average_Vehicle_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Vehicle Stops is required by the specification. (NRTM 3.3.6.2.3.5.2.9).  RECORD this information as: TMDD_N23R481_Vehicle_Stops_Supported = ${TMDD_N23R481_Vehicle_Stops_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Vehicle Count - Bin 1 is required by the specification. (NRTM 3.3.6.2.3.5.2.10).  RECORD this information as: TMDD_N23R482_Vehicle_Count_-_Bin_1_Supported = ${TMDD_N23R482_Vehicle_Count_-_Bin_1_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Vehicle Count - Bin 2 is required by the specification. (NRTM 3.3.6.2.3.5.2.11).  RECORD this information as: TMDD_N23R483_Vehicle_Count_-_Bin_2_Supported = ${TMDD_N23R483_Vehicle_Count_-_Bin_2_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Vehicle Count - Bin 3 is required by the specification. (NRTM 3.3.6.2.3.5.2.12).  RECORD this information as: TMDD_N23R484_Vehicle_Count_-_Bin_3_Supported = ${TMDD_N23R484_Vehicle_Count_-_Bin_3_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Vehicle Count - Bin 4 is required by the specification. (NRTM 3.3.6.2.3.5.2.13).  RECORD this information as: TMDD_N23R485_Vehicle_Count_-_Bin_4_Supported = ${TMDD_N23R485_Vehicle_Count_-_Bin_4_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Vehicle Count - Bin 5 is required by the specification. (NRTM 3.3.6.2.3.5.2.14).  RECORD this information as: TMDD_N23R486_Vehicle_Count_-_Bin_5_Supported = ${TMDD_N23R486_Vehicle_Count_-_Bin_5_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlDetectorDataRequest" riMode="EC">
+          <testStep functionId="Step 16 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 17 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 18 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 19 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlDetectorDataRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlDetectorDataRequest" functionId="dlDetectorDataRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 20 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 20.1 IF TMDD_N23R473_Restrictions_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R473_Restrictions_Supported}">
+                    <testStep functionId="Step 20.1.1 VERIFY that element restrictions exists within each instance of detectorDataMsg.detector-data-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:detectorDataMsg.detector-data-item" functionId="Looking for detectorDataMsg.detector-data-item.restrictions"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.2 IF TMDD_N23R474_Owner_Organization_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R474_Owner_Organization_Supported}">
+                    <testStep functionId="Step 20.2.1 VERIFY that element station-id exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="station-id" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.station-id"/>
+                    </testStep>
+                    <testStep functionId="Step 20.2.2 VERIFY that element station-id exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="station-id" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.station-id"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.3 IF TMDD_N23R475_Detector_Station_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R475_Detector_Station_Supported}">
+                    <testStep functionId="Step 20.3.1 VERIFY that element vehicle-count exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-count" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.vehicle-count"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.4 IF TMDD_N23R476_Data_Collection_Start_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R476_Data_Collection_Start_Supported}">
+                    <testStep functionId="Step 20.4.1 VERIFY that element vehicle-occupancy exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-occupancy" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.vehicle-occupancy"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.5 IF TMDD_N23R477_Data_Collection_End_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R477_Data_Collection_End_Supported}">
+                    <testStep functionId="Step 20.5.1 VERIFY that element start-time exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="start-time" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.start-time"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.6 IF TMDD_N23R478_Data_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R478_Data_Type_Supported}">
+                    <testStep functionId="Step 20.6.1 VERIFY that element end-time exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="end-time" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.end-time"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.7 IF TMDD_N23R479_Average_Vehicle_Speed_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R479_Average_Vehicle_Speed_Supported}">
+                    <testStep functionId="Step 20.7.1 VERIFY that element detector-data-type exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="detector-data-type" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.detector-data-type"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.8 IF TMDD_N23R480_Average_Vehicle_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R480_Average_Vehicle_Queue_Supported}">
+                    <testStep functionId="Step 20.8.1 VERIFY that element vehicle-speed exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-speed" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.vehicle-speed"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.9 IF TMDD_N23R481_Vehicle_Stops_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R481_Vehicle_Stops_Supported}">
+                    <testStep functionId="Step 20.9.1 VERIFY that element queue-length exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="queue-length" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.queue-length"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.10 IF TMDD_N23R482_Vehicle_Count_-_Bin_1_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R482_Vehicle_Count_-_Bin_1_Supported}">
+                    <testStep functionId="Step 20.10.1 VERIFY that element vehicle-stops exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-stops" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.vehicle-stops"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.11 IF TMDD_N23R483_Vehicle_Count_-_Bin_2_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R483_Vehicle_Count_-_Bin_2_Supported}">
+                    <testStep functionId="Step 20.11.1 VERIFY that element vehicle-count-bin1 exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-count-bin1" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.vehicle-count-bin1"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.12 IF TMDD_N23R484_Vehicle_Count_-_Bin_3_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R484_Vehicle_Count_-_Bin_3_Supported}">
+                    <testStep functionId="Step 20.12.1 VERIFY that element vehicle-count-bin2 exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-count-bin2" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.vehicle-count-bin2"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.13 IF TMDD_N23R485_Vehicle_Count_-_Bin_4_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R485_Vehicle_Count_-_Bin_4_Supported}">
+                    <testStep functionId="Step 20.13.1 VERIFY that element vehicle-count-bin3 exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-count-bin3" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.vehicle-count-bin3"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.14 IF TMDD_N23R486_Vehicle_Count_-_Bin_5_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N23R486_Vehicle_Count_-_Bin_5_Supported}">
+                    <testStep functionId="Step 20.14.1 VERIFY that element vehicle-count-bin4 exists within each instance of detectorDataMsg.detector-data-item.detector-list.detector-data-detail" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-count-bin4" instanceName="tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail" functionId="Looking for detectorDataMsg.detector-data-item.detector-list.detector-data-detail.vehicle-count-bin4"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 20.15 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N23R473_Restrictions_Supported,restrictions,tmdd:detectorDataMsg.detector-data-item;TMDD_N23R474_Owner_Organization_Supported,station-id,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R474_Owner_Organization_Supported,station-id,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R475_Detector_Station_Supported,vehicle-count,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R476_Data_Collection_Start_Supported,vehicle-occupancy,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R477_Data_Collection_End_Supported,start-time,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R478_Data_Type_Supported,end-time,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R479_Average_Vehicle_Speed_Supported,detector-data-type,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R480_Average_Vehicle_Queue_Supported,vehicle-speed,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R481_Vehicle_Stops_Supported,queue-length,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R482_Vehicle_Count_-_Bin_1_Supported,vehicle-stops,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R483_Vehicle_Count_-_Bin_2_Supported,vehicle-count-bin1,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R484_Vehicle_Count_-_Bin_3_Supported,vehicle-count-bin2,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R485_Vehicle_Count_-_Bin_4_Supported,vehicle-count-bin3,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;TMDD_N23R486_Vehicle_Count_-_Bin_5_Supported,vehicle-count-bin4,tmdd:detectorDataMsg.detector-data-item.detector-list.detector-data-detail;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

@@ -1,0 +1,1 @@
+The users manual for the C2CRI application can be found in this directory in the file UsersManual.pdf.  This file includes the installation and usage instructions for the application.

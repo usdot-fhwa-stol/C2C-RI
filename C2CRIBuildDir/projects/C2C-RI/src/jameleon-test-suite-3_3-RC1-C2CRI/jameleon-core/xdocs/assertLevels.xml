@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - AssertLevels</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, Assert, Assert Level, AssertLevel, Unit Testing, Test"/>
+
+    <body>
+        <section name="What is an Assert Level?">
+            <p>
+                An assert level is the idea to group certain asserts or tests that happen in the functional point into 
+                categories like <b>SMOKE</b>, <b>FUNCTIONAL</b>, <b>REGRESSION</b>, and <b>ACCEPTANCE</b>. Then when a test 
+                case is executed a property can be set that will only run certain types of tests.
+            </p>
+            <p>
+                The idea behind this came when we had a bug in an application being tested that caused tests that weren't really
+                testing that bug to fail. So everytime we ran the suite of tests, the test cases with this functional point failed. 
+                This bug was considered a low priority bug and was not scheduled to be fixed soon.
+            </p>
+            <p>
+                After more thought, we decided it would be nice to be able to set assert levels on asserts in our functional 
+                points. Then, when we found a bug that our automation missed, we could simply set the new assert or check as
+                a <b>REGRESSION</b> level assert. Then when that test failed we would know it was a regression test that
+                failed.
+            </p>
+            <p>
+                Test Levels can also be set at the test case level as discussed in the <a href="antTasks.html#contains">Ant 
+                Tasks</a> documentation, giving even more flexibility to execute test suites that match certain criteria.
+            </p>
+        </section>
+        <section name="Using Assert Levels?">
+            <p>
+                Every assert method in the <a href="apidocs/net/sf/jameleon/function/FunctionTag.html">FunctionTag</a> and most
+                plug-ins have an optional assertLevel that may be passed in.
+            </p>
+            <p>
+                See the <a href="apidocs/net/sf/jameleon/util/AssertLevel.html">AssertLevel javadocs</a> for information on
+                these levels. All that is required to implement Assert Levels into a Functional Point is to use the appropriate
+                assert method. For example, when a functional tests for the title of a page, that test might be considered a 
+                <b>SMOKE</b> test. So to do this, would require the following line of code:
+            </p>
+            <p>
+                <source><![CDATA[
+assertTitleEquals("Jameleon - Assert Levels", net.sf.jameleon.util.AssertLevel.SMOKE);]]></source>
+                That's all there is to it!
+            </p>
+        </section>
+    </body>
+</document>

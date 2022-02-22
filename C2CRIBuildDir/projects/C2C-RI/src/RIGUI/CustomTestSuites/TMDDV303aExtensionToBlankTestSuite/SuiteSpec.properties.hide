@@ -1,0 +1,8 @@
+SuiteName=TMDD v3.03a Extension
+SuiteVersion=0.1
+InfoLayerStandard=TMDDv303a
+AppLayerStandard=NTCIP 2306
+SuiteDescription=This Test Suite is used for testing TMDD v3.03a of the RI during development.
+BaselineTestSuiteName=TMDDv303a
+BaselineTestSuiteVersion=0.1
+TestSuiteType=Information

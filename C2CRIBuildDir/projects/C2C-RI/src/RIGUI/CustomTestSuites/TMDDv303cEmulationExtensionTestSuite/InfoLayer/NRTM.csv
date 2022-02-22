@@ -1,0 +1,2 @@
+ID,UN ID,User Need,NeedConformance,NeedSupport,Requirement ID,Requirement,Conformance,Support,Other Requirements,ReqFlag,ReqFlagValue,OtherReqParameter,OtherRequirementValues,NeedFlag,NeedFlagValue
+1,EntityEmulation,Verify Connection Active,Optional,Yes,SRS40,EntityEmulation,O,Yes/No,,EntityEmulation_Flag,False,EntityEmulation_Parameter,,EntityEmulationNeed_Flag,False

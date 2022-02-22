@@ -1,0 +1,976 @@
+ 
+#<!--   
+#       Title:  TCS-47-dlDeviceInformationSubscription-EC-Valid
+#       Description:  This test case is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.5.1 [Need to Share ESS Inventory]. This Test Case tests for a valid response result.
+#       Related Procedure:  TPS-47-dlDeviceInformationSubscription-EC
+#       Version/Date: 2014/01/16 02:44:52
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Publication Message to be sent to the SUT.
+PublicationMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = LongInteger
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates number of publication message transmissions expected as part of this test.  Valid values are 1 to 4,294,967,295.
+PublicationCount = 1
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether a Publication  error response is expected from the SUT.  Valid values are True or False.
+PublicationErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of Publication response error that is expected from the SUT.
+PublicationErrorTypeExpected = None
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication.  Valid values are True or False.
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid user name.
+Username = #CONTEXTVARIABLE#RI_USERNAME#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid password.
+Password = #CONTEXTVARIABLE#RI_PASSWORD#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid Operator Identifier.
+OperatorID = defaultOperatorID
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the privilege to access the information requested.  Valid values are True or False.
+AllowAccess = True
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether a subscription request error is expected from the SUT.  Valid values are True or False.
+SubscriptionErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of subscription request error that is expected from the SUT.
+SubscriptionErrorTypeExpected = None
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Subscription Response Message to be sent to the SUT.
+SubscriptionResponseMessage = #MESSAGESPEC#SubResponseMessage#MESSAGESPEC#
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.informationalText 
+c2c:c2cMessagePublication.informationalText = State DOT C2C Message Publication Information
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionID 
+c2c:c2cMessagePublication.subscriptionID = StateDOTSubscriptionRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionName 
+c2c:c2cMessagePublication.subscriptionName = StateDOTSubscriptionTitle
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionFrequency 
+c2c:c2cMessagePublication.subscriptionFrequency = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionCount 
+c2c:c2cMessagePublication.subscriptionCount = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.restrictions.organization-information-forwarding-restrictions 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.restrictions.organization-information-forwarding-restrictions = not to public
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-name 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-location 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-function 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.contact-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.person-name 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.person-title 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.phone-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.phone-alternate 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.fax-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.pager-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.pager-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.email-address 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.radio-unit 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.address-line1 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.address-line1 = 229 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.address-line2 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.city 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.state 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.zip-code 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.country 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.ft 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.ft = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = 230 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.last-update-time.date 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.last-update-time.time 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.last-update-time.offset 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.organization-information.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-id  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-id = StateDOTEquipmentRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-location.latitude 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-location.longitude 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-location.horizontalDatum 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-location.horizontalDatum = nad27
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-location.height.verticalLevel 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-name  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-name = State DOT Equipment
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-description  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-description = State DOT Device Description
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-control-type  BaseType=anySimpleType  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-control-type = 4
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.controller-description  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.controller-description = State DOT Primary Device Controller
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.network-id  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.network-id = StateDOTNetworkRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.node-id  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.node-id = StateDOTNodeRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.node-name  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.node-name = StateDOTNode
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.link-id  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.link-id = StateDOTNetworkProviderRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.link-name  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.link-name = state-highway-32-2561
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.link-direction  BaseType=anySimpleType  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.link-direction = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.linear-reference  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.linear-reference = Mile 99
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.linear-reference-version  BaseType=unsignedByte  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.linear-reference-version = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.route-designator  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.route-designator = StateRouteAssignment
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-url.url-reference 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-url.url-reference = http://State.dot.gov/
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-url.url-reference-medium  BaseType=string  ParentType= UrlReference
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.device-url.url-reference-medium = rt:medium=referral
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.last-update-time.date 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.last-update-time.time 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.last-update-time.offset 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url2.url-reference 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url2.url-reference = http://State.dot.gov/
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url2.url-reference-medium 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url2.url-reference-medium = rt:medium=referral
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url3.url-reference 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url3.url-reference = http://State.dot.gov/
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url3.url-reference-medium 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url3.url-reference-medium = rt:medium=referral
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url4.url-reference 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url4.url-reference = http://State.dot.gov/
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url4.url-reference-medium 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.device-url4.url-reference-medium = rt:medium=referral
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.extension 
+tmdd:eSSInventoryMsg.ess-inventory-item.device-inventory-header.tmddX:deviceInventoryHeaderExt.extension =
+
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.restrictions.organization-information-forwarding-restrictions 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.restrictions.organization-information-forwarding-restrictions = not to public
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-name 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-location 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-function 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.contact-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.person-name 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.person-title 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.phone-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.phone-alternate 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.fax-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.pager-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.pager-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.email-address 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.radio-unit 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.address-line1 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.address-line1 = 231 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.address-line2 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.city 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.state 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.zip-code 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.country 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = nad83
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalLevel 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-type = mobile
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = 232 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.last-update-time.date 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.last-update-time.time 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.last-update-time.offset 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.organization-information.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-id  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-id = StateDOTEquipmentRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-location.latitude 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-location.longitude 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-location.horizontalDatum 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-location.height.altitude.ft 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-location.height.altitude.ft = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-location.height.verticalDatum 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-name  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-name = State DOT Equipment
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-description  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-description = State DOT Device Description
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-control-type  BaseType=anySimpleType  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-control-type = 4
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.controller-description  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.controller-description = State DOT Primary Device Controller
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.network-id  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.network-id = StateDOTNetworkRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.node-id  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.node-id = StateDOTNodeRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.node-name  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.node-name = StateDOTNode
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.link-id  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.link-id = StateDOTNetworkProviderRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.link-name  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.link-name = state-highway-32-2562
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.link-direction  BaseType=anySimpleType  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.link-direction = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.linear-reference  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.linear-reference = Mile 100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.linear-reference-version  BaseType=unsignedByte  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.linear-reference-version = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.route-designator  BaseType=string  ParentType= DeviceInventoryHeader
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.route-designator = StateRouteAssignment
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-url.url-reference 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-url.url-reference = http://State.dot.gov/
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-url.url-reference-medium  BaseType=string  ParentType= UrlReference
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.device-url.url-reference-medium = rt:medium=referral
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.last-update-time.date 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.last-update-time.time 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.last-update-time.offset 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url2.url-reference 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url2.url-reference = http://State.dot.gov/
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url2.url-reference-medium 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url2.url-reference-medium = rt:medium=referral
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url3.url-reference 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url3.url-reference = http://State.dot.gov/
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url3.url-reference-medium 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url3.url-reference-medium = rt:medium=referral
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url4.url-reference 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url4.url-reference = http://State.dot.gov/
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url4.url-reference-medium 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.device-url4.url-reference-medium = rt:medium=referral
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.extension 
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.ess-sensor-inventory-header.tmddX:deviceInventoryHeaderExt.extension =
+
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.lane-number  BaseType=unsignedByte  ParentType= ESSInventoryDetails
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.lane-number = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.sensor-location-elevation  BaseType=int  ParentType= ESSInventoryDetails
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.sensor-location-elevation = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.sensor-location-height  BaseType=short  ParentType= ESSInventoryDetails
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.sensor-location-height = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.sensor-type  BaseType=anySimpleType  ParentType= ESSInventoryDetails
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.sensor-type = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.sensor-operation-type  BaseType=anySimpleType  ParentType= ESSInventoryDetails
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.sensor-operation-type = other
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.sensor-mobility-type  BaseType=anySimpleType  ParentType= ESSInventoryDetails
+tmdd:eSSInventoryMsg.ess-inventory-item.ess-inventory-list.ess-sensor.sensor-mobility-type = 4
+

@@ -1,0 +1,14 @@
+Name,ScriptFile,DataFile,Description,Type
+EXT-TC-TMDDv3-EC-001,EXT-TC-TMDDv3-EC-001.xml,EXT-TC-TMDDv3-EC-001.dat,EC Mode - Device X Inventory Request Extended,EC
+EXT-TC-TMDDv3-OC-001,EXT-TC-TMDDv3-OC-001.xml,EXT-TC-TMDDv3-OC-001.dat,OC Mode - Device X Status Request Extended,OC
+TPS-CenterActiveVerificationRequest-EC-Valid,TPS-CenterActiveVerificationRequest-EC-Valid.xml,TPS-CenterActiveVerificationRequest-EC-Valid.dat,EC Mode - VerificationRequest,EC
+TPS-CenterActiveVerificationRequest-OC-Valid,TPS-CenterActiveVerificationRequest-OC-Valid.xml,TPS-CenterActiveVerificationRequest-OC-Valid.dat,OC Mode - VerificationResponse,OC
+TPS-CenterActiveVerificationRequest-OC-InValid-001,TPS-CenterActiveVerificationRequest-OC-InValid-001.xml,TPS-CenterActiveVerificationRequest-OC-InValid-001.dat,OC Mode - VerificationResponse Invalid,OC
+TPS-PreconditionTagTest,TPS-PreconditionTagTest.xml,TPS-PreconditionTagTest.dat,Verifies the Precondition Tag (Need 2.3.1.3 and Requirement 3.3.1.3.1),EC
+TPS-PostConditionTagTest,TPS-PostConditionTagTest.xml,TPS-PostConditionTagTest.dat,Verifies the PostCondition Tag,EC
+TPS-PreconditionAndPostConditionTagTest,TPS-PreconditionAndPostConditionTagTest.xml,TPS-PreconditionAndPostConditionTagTest.dat,Verifies the operation of the PreCondition and PostCondition tags within the same script. (Need 2.3.1.3 and Requirement 3.3.1.3.1),EC
+TPS-CallSubscriptTagTest,TPS-CallSubscriptTagTest.xml,TPS-CallSubscriptTagTest.dat,Verifies the operation of a subscript with Precondition and Postcondition Tags. (Req 3.3.1.3.2 used in subscript),EC
+TPS-PreconditionTagTest,TPS-PreconditionTagTest.xml,TPS-PreconditionTagTest.dat,Verifies the Precondition Tag (Need 2.3.1.3 and Requirement 3.3.1.3.1),OC
+TPS-PostConditionTagTest,TPS-PostConditionTagTest.xml,TPS-PostConditionTagTest.dat,Verifies the PostCondition Tag,OC
+TPS-PreconditionAndPostConditionTagTest,TPS-PreconditionAndPostConditionTagTest.xml,TPS-PreconditionAndPostConditionTagTest.dat,Verifies the operation of the PreCondition and PostCondition tags within the same script. (Need 2.3.1.3 and Requirement 3.3.1.3.1),OC
+TPS-CallSubscriptTagTest,TPS-CallSubscriptTagTest.xml,TPS-CallSubscriptTagTest.dat,Verifies the operation of a subscript with Precondition and Postcondition Tags. (Req 3.3.1.3.2 used in subscript),OC

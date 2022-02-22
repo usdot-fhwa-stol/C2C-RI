@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  -->
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.tmdd.org/3/dialogs" xmlns:tmdd="http://www.tmdd.org/3/messages" xmlns:c2c="http://www.ntcip.org/c2c-message-administration" xmlns:ftp="http://schemas.ntcip.org/wsdl/ftp/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns2="http://www.ITIS-Adopted-03-00-02" xmlns:ns3="http://www.LRMS-Adopted-02-00-00" xmlns:ns4="http://www.LRMS-Local-02-00-00" xmlns:ns5="http://www.ntcip.org/c2f-objects" xmlns:ns6="http://www.ITIS-Local-03-00-02" xmlns:ns7="http://www.ntcip.org/c2f-object-references" name="TMDDCenterServices" targetNamespace="http://www.tmdd.org/3/dialogs">
+	<documentation>
+			TMDD V3.0 v9.0 Balloted Standard
+			Last Updated: November 18, 2008 - Manny Insignares, ConSysTec
+
+			The location attributes of the service descriptions are used to supply the 
+			actual URL that needs to be contacted to use the service.  In actual practice, 
+			each center would customize this file to include the correct URLs for 
+			the services it provides.  Therefore, the location URLs given in this file are 
+			dummy values, used for illustrative purposes only.	
+	</documentation>
+	<types>
+		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+			<xs:import namespace="http://www.tmdd.org/3/messages" schemaLocation="tmdd.xsd"/>
+			<xs:import namespace="http://www.ntcip.org/c2c-message-administration" schemaLocation="C2C.xsd"/>
+		</xs:schema>
+	</types>
+	<message name="MSG_ArchivedDataTrafficMonitoringMetadataRequest">
+		<!-- ARCHIVED DATA Messages-->
+		<part name="message" element="tmdd:archivedDataTrafficMonitoringMetadataRequestMsg"/>
+	</message>
+	<message name="MSG_ArchivedDataTrafficMonitoringMetadata">
+		<part name="message" element="tmdd:archivedDataTrafficMonitoringMetadataMsg"/>
+	</message>
+	<message name="MSG_ArchivedDataProcessingDocumentationMetadataRequest">
+		<part name="message" element="tmdd:archivedDataProcessingDocumentationMetadataRequestMsg"/>
+	</message>
+	<message name="MSG_ArchivedDataProcessingDocumentationMetadata">
+		<part name="message" element="tmdd:archivedDataProcessingDocumentationMetadataMsg"/>
+	</message>
+	<message name="MSG_CCTVInventory">
+		<!-- CCTV - Closed Circuit Television Camera Messages -->
+		<part name="message" element="tmdd:cCTVInventoryMsg"/>
+	</message>
+	<message name="MSG_CCTVInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:cCTVInventoryMsg"/>
+	</message>
+	<message name="MSG_CCTVStatus">
+		<part name="message" element="tmdd:cCTVStatusMsg"/>
+	</message>
+	<message name="MSG_CCTVStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:cCTVStatusMsg"/>
+	</message>
+	<message name="MSG_CCTVControlRequest">
+		<part name="message" element="tmdd:cCTVControlRequestMsg"/>
+	</message>
+	<message name="MSG_ConfirmationReceipt">
+		<!-- CONNECTION MANAGEMENT Messages -->
+		<part name="message" element="c2c:c2cMessageReceipt"/>
+	</message>
+	<message name="MSG_ErrorReport">
+		<part name="message" element="tmdd:errorReportMsg"/>
+	</message>
+	<message name="MSG_CenterActiveVerificationRequest">
+		<part name="message" element="tmdd:centerActiveVerificationRequestMsg"/>
+	</message>
+	<message name="MSG_CenterActiveVerificationSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:centerActiveVerificationRequestMsg"/>
+	</message>
+	<message name="MSG_CenterActiveVerificationResponse">
+		<part name="message" element="tmdd:centerActiveVerificationResponseMsg"/>
+	</message>
+	<message name="MSG_CenterActiveVerificationUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:centerActiveVerificationResponseMsg"/>
+	</message>
+	<message name="MSG_DetectorInventory">
+		<!-- DETECTOR Messages -->
+		<part name="message" element="tmdd:detectorInventoryMsg"/>
+	</message>
+	<message name="MSG_DetectorInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:detectorInventoryMsg"/>
+	</message>
+	<message name="MSG_DetectorStatus">
+		<part name="message" element="tmdd:detectorStatusMsg"/>
+	</message>
+	<message name="MSG_DetectorStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:detectorStatusMsg"/>
+	</message>
+	<message name="MSG_DetectorDataRequest">
+		<part name="message" element="tmdd:detectorDataRequestMsg"/>
+	</message>
+	<message name="MSG_DetectorDataSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:detectorDataRequestMsg"/>
+	</message>
+	<message name="MSG_DetectorData">
+		<part name="message" element="tmdd:detectorDataMsg"/>
+	</message>
+	<message name="MSG_DetectorDataUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:detectorDataMsg"/>
+	</message>
+	<message name="MSG_DetectorMaintenanceHistoryRequest">
+		<part name="message" element="tmdd:detectorMaintenanceHistoryRequestMsg"/>
+	</message>
+	<message name="MSG_DetectorMaintenanceHistory">
+		<part name="message" element="tmdd:detectorMaintenanceHistoryMsg"/>
+	</message>
+	<message name="MSG_DeviceCancelControlRequest">
+		<!-- DEVICE Messages -->
+		<part name="message" element="tmdd:deviceCancelControlRequestMsg"/>
+	</message>
+	<message name="MSG_DeviceControlStatusRequest">
+		<part name="message" element="tmdd:deviceControlStatusRequestMsg"/>
+	</message>
+	<message name="MSG_DeviceControlResponse">
+		<part name="message" element="tmdd:deviceControlResponseMsg"/>
+	</message>
+	<message name="MSG_DevicePriorityQueueRequest">
+		<part name="message" element="tmdd:devicePriorityQueueRequestMsg"/>
+	</message>
+	<message name="MSG_DeviceInformationRequest">
+		<part name="message" element="tmdd:deviceInformationRequestMsg"/>
+	</message>
+	<message name="MSG_DeviceInformationSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:deviceInformationRequestMsg"/>
+	</message>
+	<message name="MSG_DMSInventory">
+		<!-- DMS - Dynamic Message Sign Messages -->
+		<part name="message" element="tmdd:dMSInventoryMsg"/>
+	</message>
+	<message name="MSG_DMSInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:dMSInventoryMsg"/>
+	</message>
+	<message name="MSG_DMSStatus">
+		<part name="message" element="tmdd:dMSStatusMsg"/>
+	</message>
+	<message name="MSG_DMSStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:dMSStatusMsg"/>
+	</message>
+	<message name="MSG_DMSMessageInventoryRequest">
+		<part name="message" element="tmdd:dMSMessageInventoryRequestMsg"/>
+	</message>
+	<message name="MSG_DMSMessageInventorySubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:dMSMessageInventoryRequestMsg"/>
+	</message>
+	<message name="MSG_DMSMessageInventory">
+		<part name="message" element="tmdd:dMSMessageInventoryMsg"/>
+	</message>
+	<message name="MSG_DMSMessageInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:dMSMessageInventoryMsg"/>
+	</message>
+	<message name="MSG_DMSMessageAppearanceRequest">
+		<part name="message" element="tmdd:dMSMessageAppearanceRequestMsg"/>
+	</message>
+	<message name="MSG_DMSMessageAppearance">
+		<part name="message" element="tmdd:dMSMessageAppearanceMsg"/>
+	</message>
+	<message name="MSG_DMSFontTableRequest">
+		<part name="message" element="tmdd:dMSFontTableRequestMsg"/>
+	</message>
+	<message name="MSG_DMSFontTable">
+		<part name="message" element="tmdd:dMSFontTableMsg"/>
+	</message>
+	<message name="MSG_DMSControlRequest">
+		<part name="message" element="tmdd:dMSControlRequestMsg"/>
+	</message>
+	<message name="MSG_DMSPriorityQueue">
+		<part name="message" element="tmdd:dMSPriorityQueueMsg"/>
+	</message>
+	<message name="MSG_ESSInventory">
+		<!-- ESS - Environmental Senso Station Messages -->
+		<part name="message" element="tmdd:eSSInventoryMsg"/>
+	</message>
+	<message name="MSG_ESSInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:eSSInventoryMsg"/>
+	</message>
+	<message name="MSG_ESSStatus">
+		<part name="message" element="tmdd:eSSStatusMsg"/>
+	</message>
+	<message name="MSG_ESSStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:eSSStatusMsg"/>
+	</message>
+	<message name="MSG_ESSObservationMetadata">
+		<part name="message" element="tmdd:eSSObservationMetadataMsg"/>
+	</message>
+	<message name="MSG_ESSObservationReport">
+		<part name="message" element="tmdd:eSSObservationReportMsg"/>
+	</message>
+	<message name="MSG_EventRequest">
+		<!-- EVENT Messages -->
+		<part name="message" element="tmdd:eventRequestMsg"/>
+	</message>
+	<message name="MSG_FullEventUpdate">
+		<part name="message" element="tmdd:fEUMsg"/>
+	</message>
+	<message name="MSG_EventIndex">
+		<part name="message" element="tmdd:eventIndexMsg"/>
+	</message>
+	<message name="MSG_ActionLog">
+		<part name="message" element="tmdd:actionLogMsg"/>
+	</message>
+	<message name="MSG_EventSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:eventRequestMsg"/>
+	</message>
+	<message name="MSG_EventIndexSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:eventIndexMsg"/>
+	</message>
+	<message name="MSG_ActionLogSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:actionLogMsg"/>
+	</message>
+	<message name="MSG_FullEventUpdateUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:fEUMsg"/>
+	</message>
+	<message name="MSG_EventIndexUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:eventIndexMsg"/>
+	</message>
+	<message name="MSG_ActionLogUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:actionLogMsg"/>
+	</message>
+	<message name="MSG_GateInventory">
+		<!-- GATE - Lane Closure Gate Messages -->
+		<part name="message" element="tmdd:gateInventoryMsg"/>
+	</message>
+	<message name="MSG_GateInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:gateInventoryMsg"/>
+	</message>
+	<message name="MSG_GateStatus">
+		<part name="message" element="tmdd:gateStatusMsg"/>
+	</message>
+	<message name="MSG_GateStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:gateStatusMsg"/>
+	</message>
+	<message name="MSG_GateControlRequest">
+		<part name="message" element="tmdd:gateControlRequestMsg"/>
+	</message>
+	<message name="MSG_GateControlSchedule">
+		<part name="message" element="tmdd:gateControlScheduleMsg"/>
+	</message>
+	<message name="MSG_GateControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:gateControlScheduleMsg"/>
+	</message>
+	<message name="MSG_HARInventory">
+		<!-- HAR - Highway Advisory Radio Messages -->
+		<part name="message" element="tmdd:gateInventoryMsg"/>
+	</message>
+	<message name="MSG_HARMessageInventory">
+		<part name="message" element="tmdd:gateInventoryMsg"/>
+	</message>
+	<message name="MSG_HARInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:hARInventoryMsg"/>
+	</message>
+	<message name="MSG_HARStatus">
+		<part name="message" element="tmdd:hARStatusMsg"/>
+	</message>
+	<message name="MSG_HARStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:hARStatusMsg"/>
+	</message>
+	<message name="MSG_HARControlRequest">
+		<part name="message" element="tmdd:hARControlRequestMsg"/>
+	</message>
+	<message name="MSG_HARControlSchedule">
+		<part name="message" element="tmdd:hARControlScheduleMsg"/>
+	</message>
+	<message name="MSG_HARControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:hARControlScheduleMsg"/>
+	</message>
+	<message name="MSG_HARPriorityQueue">
+		<part name="message" element="tmdd:hARPriorityQueueMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalInventory">
+		<!-- INTERSECTIONSIGNAL Messages -->
+		<part name="message" element="tmdd:intersectionSignalInventoryMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:intersectionSignalInventoryMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalStatus">
+		<part name="message" element="tmdd:intersectionSignalStatusMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:intersectionSignalStatusMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalTimingPatternInventoryRequest">
+		<part name="message" element="tmdd:intersectionSignalTimingPatternInventoryRequestMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalTimingPatternInventorySubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:intersectionSignalTimingPatternInventoryRequestMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalTimingPatternInventory">
+		<part name="message" element="tmdd:intersectionSignalTimingPatternInventoryMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalTimingPatternInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:intersectionSignalTimingPatternInventoryMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalControlRequest">
+		<part name="message" element="tmdd:intersectionSignalControlRequestMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalControlResponse">
+		<part name="message" element="tmdd:intersectionSignalControlResponseMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalControlSchedule">
+		<part name="message" element="tmdd:intersectionSignalControlScheduleMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:intersectionSignalControlScheduleMsg"/>
+	</message>
+	<message name="MSG_IntersectionSignalPriorityQueue">
+		<part name="message" element="tmdd:intersectionSignalPriorityQueueMsg"/>
+	</message>
+	<message name="MSG_LCSInventory">
+		<!-- LCS - Lane Control Signal Messages -->
+		<part name="message" element="tmdd:lCSInventoryMsg"/>
+	</message>
+	<message name="MSG_LCSInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:lCSInventoryMsg"/>
+	</message>
+	<message name="MSG_LCSStatus">
+		<part name="message" element="tmdd:lCSStatusMsg"/>
+	</message>
+	<message name="MSG_LCSStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:lCSStatusMsg"/>
+	</message>
+	<message name="MSG_LCSControlRequest">
+		<part name="message" element="tmdd:lCSControlRequestMsg"/>
+	</message>
+	<message name="MSG_LCSControlSchedule">
+		<part name="message" element="tmdd:lCSControlScheduleMsg"/>
+	</message>
+	<message name="MSG_LCSControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:lCSControlScheduleMsg"/>
+	</message>
+	<message name="MSG_LinkInventory">
+		<!-- LINK Messages-->
+		<part name="message" element="tmdd:linkInventoryMsg"/>
+	</message>
+	<message name="MSG_LinkInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:linkInventoryMsg"/>
+	</message>
+	<message name="MSG_LinkStatus">
+		<part name="message" element="tmdd:linkStatusMsg"/>
+	</message>
+	<message name="MSG_LinkStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:linkStatusMsg"/>
+	</message>
+	<message name="MSG_NodeInventory">
+		<!-- NODE Messages-->
+		<part name="message" element="tmdd:nodeInventoryMsg"/>
+	</message>
+	<message name="MSG_NodeInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:nodeInventoryMsg"/>
+	</message>
+	<message name="MSG_NodeStatus">
+		<part name="message" element="tmdd:nodeStatusMsg"/>
+	</message>
+	<message name="MSG_NodeStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:nodeStatusMsg"/>
+	</message>
+	<message name="MSG_OrganizationInformationRequest">
+		<!-- ORGANIZATION Messages -->
+		<part name="message" element="tmdd:organizationInformationRequestMsg"/>
+	</message>
+	<message name="MSG_OrganizationInformationSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:organizationInformationRequestMsg"/>
+	</message>
+	<message name="MSG_OrganizationInformation">
+		<part name="message" element="tmdd:organizationInformationMsg"/>
+	</message>
+	<message name="MSG_OrganizationInformationUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:organizationInformationMsg"/>
+	</message>
+	<message name="MSG_RampMeterInventory">
+		<!-- RAMPMETER Messages -->
+		<part name="message" element="tmdd:rampMeterInventoryMsg"/>
+	</message>
+	<message name="MSG_RampMeterInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:rampMeterInventoryMsg"/>
+	</message>
+	<message name="MSG_RampMeterStatus">
+		<part name="message" element="tmdd:rampMeterStatusMsg"/>
+	</message>
+	<message name="MSG_RampMeterStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:rampMeterStatusMsg"/>
+	</message>
+	<message name="MSG_RampMeterControlRequest">
+		<part name="message" element="tmdd:rampMeterControlRequestMsg"/>
+	</message>
+	<message name="MSG_RampMeterControlSchedule">
+		<part name="message" element="tmdd:rampMeterControlScheduleMsg"/>
+	</message>
+	<message name="MSG_RampMeterControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:rampMeterControlScheduleMsg"/>
+	</message>
+	<message name="MSG_RampMeterPriorityQueue">
+		<part name="message" element="tmdd:rampMeterPriorityQueueMsg"/>
+	</message>
+	<message name="MSG_RampMeterPlanInventoryRequest">
+		<part name="message" element="tmdd:deviceInformationRequestMsg"/>
+	</message>
+	<message name="MSG_RampMeterPlanInventory">
+		<part name="message" element="tmdd:rampMeterPlanInventoryMsg"/>
+	</message>
+	<message name="MSG_RampMeterPlanInventorySubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:deviceInformationRequestMsg"/>
+	</message>
+	<message name="MSG_RampMeterPlanInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:rampMeterPlanInventoryMsg"/>
+	</message>
+	<message name="MSG_RouteInventory">
+		<!-- ROUTE Messages-->
+		<part name="message" element="tmdd:routeInventoryMsg"/>
+	</message>
+	<message name="MSG_RouteInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:routeInventoryMsg"/>
+	</message>
+	<message name="MSG_RouteStatus">
+		<part name="message" element="tmdd:routeStatusMsg"/>
+	</message>
+	<message name="MSG_RouteStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:routeStatusMsg"/>
+	</message>
+	<message name="MSG_SectionControlRequest">
+		<!-- SECTION Messages -->
+		<part name="message" element="tmdd:sectionControlRequestMsg"/>
+	</message>
+	<message name="MSG_SectionControlStatusRequest">
+		<part name="message" element="tmdd:sectionControlStatusRequestMsg"/>
+	</message>
+	<message name="MSG_SectionControlResponse">
+		<part name="message" element="tmdd:sectionControlResponseMsg"/>
+	</message>
+	<message name="MSG_SectionPriorityQueue">
+		<part name="message" element="tmdd:sectionPriorityQueueMsg"/>
+	</message>
+	<message name="MSG_SectionStatus">
+		<part name="message" element="tmdd:sectionStatusMsg"/>
+	</message>
+	<message name="MSG_SectionStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:sectionStatusMsg"/>
+	</message>
+	<message name="MSG_SectionControlScheduleResponse">
+		<part name="message" element="tmdd:sectionControlScheduleMsg"/>
+	</message>
+	<message name="MSG_SectionControlScheduleUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:sectionControlScheduleMsg"/>
+	</message>
+	<message name="MSG_TrafficNetworkInformationRequest">
+		<!-- TRANSPORTATIONNETWORK Messages-->
+		<part name="message" element="tmdd:trafficNetworkInformationRequestMsg"/>
+	</message>
+	<message name="MSG_TrafficNetworkStatusSubscription">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessageSubscription"/>
+		<part name="message" element="tmdd:trafficNetworkInformationRequestMsg"/>
+	</message>
+	<message name="MSG_VideoSwitchInventory">
+		<!-- VIDEOSWITCH Messages -->
+		<part name="message" element="tmdd:videoSwitchInventoryMsg"/>
+	</message>
+	<message name="MSG_VideoSwitchInventoryUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:videoSwitchInventoryMsg"/>
+	</message>
+	<message name="MSG_VideoSwitchStatus">
+		<part name="message" element="tmdd:videoSwitchStatusMsg"/>
+	</message>
+	<message name="MSG_VideoSwitchStatusUpdate">
+		<part name="c2cMsgAdmin" element="c2c:c2cMessagePublication"/>
+		<part name="message" element="tmdd:videoSwitchStatusMsg"/>
+	</message>
+	<message name="MSG_VideoSwitchControlRequest">
+		<part name="message" element="tmdd:videoSwitchControlRequestMsg"/>
+	</message>
+	<portType name="tmddOCSoapHttpServicePortType">
+		<!-- ********************************************* -->
+		<!-- OWNER CENTER Operation PortType -->
+		<!-- ********************************************* -->
+		<operation name="DlDeviceInformationSubscription">
+			<documentation><objectClass>Device</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1269<!-- Detector Inventory -->
+</requirement><requirement>REQ1270<!-- Detector Status -->
+</requirement><requirement>REQ1296<!-- Intersection Inventory -->
+</requirement><requirement>REQ1297<!-- Intersection Status -->
+</requirement><requirement>REQ1298<!-- Intersection Control Schedule -->
+</requirement><requirement>REQ1300<!-- Section Status -->
+</requirement><requirement>REQ1344<!-- Section Timing Pattern Schedule -->
+</requirement><requirement>REQ1292<!-- RampMeter Inventory -->
+</requirement><requirement>REQ1293<!-- RampMeter Status -->
+</requirement><requirement>REQ1294<!-- RampMeter Control Schedule -->
+</requirement><requirement>REQ1272<!-- CCTV Inventory -->
+</requirement><requirement>REQ1273<!-- CCTV Status -->
+</requirement><requirement>REQ1274<!-- VideoSwitch Inventory -->
+</requirement><requirement>REQ1275<!-- VideoSwitch Status -->
+</requirement><requirement>REQ1276<!-- DMS Inventory -->
+</requirement><requirement>REQ1277<!-- DMS Status -->
+</requirement><requirement>REQ1279<!-- ESS Inventory -->
+</requirement><requirement>REQ1280<!-- ESS Status -->
+</requirement><requirement>REQ1281<!-- ESS Observation Report -->
+</requirement><requirement>REQ1282<!-- Gate Inventory -->
+</requirement><requirement>REQ1283<!-- Gate Status -->
+</requirement><requirement>REQ1284<!-- Gate Control Schedule -->
+</requirement><requirement>REQ1285<!-- HAR Inventory -->
+</requirement><requirement>REQ1286<!-- HAR Status -->
+</requirement><requirement>REQ1287<!-- HAR Control Schedule -->
+</requirement><requirement>REQ1288<!-- HAR Message Inventory -->
+</requirement><requirement>REQ1289<!-- LCS Inventory -->
+</requirement><requirement>REQ1290<!-- LCS Status -->
+</requirement><requirement>REQ1291<!-- LCS Control Schedule -->
+</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationSubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- DMS -->
+		<operation name="DlDMSInventoryRequest">
+			<documentation><objectClass>DMS</objectClass><msgPattern>R-R</msgPattern><requirement>REQ2</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_DMSInventory"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+
+		<!-- ConnectionManagement -->
+		<operation name="OP_DlCenterActiveVerificationRequest">
+			<documentation><objectClass>ConnectionManagement</objectClass><msgPattern>R-R</msgPattern><requirement>REQ199</requirement></documentation>
+			<input message="tns:MSG_CenterActiveVerificationRequest"/>
+			<output message="tns:MSG_CenterActiveVerificationResponse"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<operation name="OP_DlCenterActiveVerificationSubscription">
+			<documentation><objectClass>ConnectionManagement</objectClass><msgPattern>Sub</msgPattern><requirement>REQ1259</requirement></documentation>
+			<input message="tns:MSG_CenterActiveVerificationSubscription"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+	</portType>
+	<portType name="tmddOCFtpServicePortType">
+		<!-- ********************************************* -->
+		<!-- OWNER CENTER Operation PortType -->
+		<!-- ********************************************* -->
+
+		<!-- DMS -->
+		<operation name="OP_RIXMLFtpDMSInventory">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Get</msgPattern><requirement>REQ2</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+		</operation>
+	</portType>
+
+
+	<portType name="tmddOCHttpPostServicePortType">
+		<!-- ********************************************* -->
+		<!-- OWNER CENTER Operation PortType -->
+		<!-- ********************************************* -->
+
+		<!-- DMS -->
+		<operation name="OP_RIXMLHttpPostDMSInventory">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Post</msgPattern><requirement>REQ2</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+			<output message="tns:MSG_DMSInventory"/>
+		</operation>
+	</portType>
+
+	<portType name="tmddOCHttpGetServicePortType">
+		<!-- ********************************************* -->
+		<!-- OWNER CENTER Operation PortType -->
+		<!-- ********************************************* -->
+
+		<!-- DMS -->
+		<operation name="OP_RIXMLHttpGetDMSInventory">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Get</msgPattern><requirement>REQ2</requirement></documentation>
+			<input message="tns:MSG_DeviceInformationRequest"/>
+		</operation>
+	</portType>
+
+	<portType name="tmddECSoapHttpServicePortType">
+		<!-- ************************************************ -->
+		<!-- EXTERNAL CENTER Operation PortType -->
+		<!-- ************************************************ -->
+		<!-- CONNECTIONMANAGEMENT -->
+		<operation name="DlCenterActiveVerificationUpdate">
+			<documentation><objectClass>ConnectionManagement</objectClass><msgPattern>Pub</msgPattern><requirement>REQ200</requirement></documentation>
+			<input message="tns:MSG_CenterActiveVerificationUpdate"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+		<!-- DMS -->
+		<operation name="DlDMSInventoryUpdate">
+			<documentation><objectClass>DMS</objectClass><msgPattern>Pub</msgPattern><requirement>REQ1</requirement></documentation>
+			<input message="tns:MSG_DMSInventory"/>
+			<output message="tns:MSG_ConfirmationReceipt"/>
+			<fault name="errorReport" message="tns:MSG_ErrorReport"/>
+		</operation>
+	</portType>
+
+
+
+
+	<binding name="tmddOCSoapHttpServiceBinding" type="tns:tmddOCSoapHttpServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!-- ******************************** -->
+		<!-- OWNER CENTER Bindings -->
+		<!-- ******************************** -->
+		<operation name="DlDeviceInformationSubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- DMS -->
+		<operation name="DlDMSInventoryRequest">
+			<soap:operation soapAction="/DlDMSInventoryRequestSOAPAction" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- CONNECTIONMANAGEMENT -->
+		<operation name="OP_DlCenterActiveVerificationRequest">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<operation name="OP_DlCenterActiveVerificationSubscription">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+
+	</binding>
+	<binding name="tmddOCHttpGetServiceBinding" type="tns:tmddOCHttpGetServicePortType">
+		<http:binding verb="GET"/>
+		<!-- ******************************** -->
+		<!-- OWNER CENTER Bindings -->
+		<!-- ******************************** -->
+		<!-- DMS -->
+		<operation name="OP_RIXMLHttpGetDMSInventory">
+			<http:operation location="RIDMSInventory.xml"/>
+			<input>
+				<http:urlEncoded/>
+			</input>
+			<output>
+				<mime:content type="gzip"/>
+			</output>
+		</operation>
+
+	</binding>
+	<binding name="tmddOCHttpPostServiceBinding" type="tns:tmddOCHttpPostServicePortType">
+		<http:binding verb="POST"/>
+		<!-- ******************************** -->
+		<!-- OWNER CENTER Bindings -->
+		<!-- ******************************** -->
+		<!-- DMS -->
+		<operation name="OP_RIXMLHttpPostDMSInventory">
+			<http:operation location="RIDMSInventory.xml"/>
+			<input>
+				<mime:content type="application/x-www-form-urlencoded"/>
+			</input>
+			<output>
+				<mime:content type="text/xml"/>
+			</output>
+		</operation>
+	</binding>
+	<binding name="tmddOCFtpGetServiceBinding" type="tns:tmddOCFtpServicePortType">
+		<ftp:binding verb="GET"/>
+		<!-- ******************************** -->
+		<!-- OWNER CENTER Bindings -->
+		<!-- ******************************** -->
+		<!-- DMS -->
+		<operation name="OP_RIXMLFtpDMSInventory">
+			<ftp:operation location="RIDMSInventory.zip"/>
+			<input>
+				<ftp:urlEncoded/>
+			</input>
+			<output>
+				<mime:content type="gzip"/>
+			</output>
+		</operation>
+	</binding>
+
+
+
+
+	<binding name="tmddECSoapHttpServiceBinding" type="tns:tmddECSoapHttpServicePortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<!-- *********************************** -->
+		<!-- EXTERNAL CENTER Bindings -->
+		<!-- *********************************** -->
+		<!-- CONNECTIONMANAGEMENT -->
+		<operation name="DlCenterActiveVerificationUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+		<!-- DMS -->
+		<operation name="DlDMSInventoryUpdate">
+			<soap:operation soapAction="' '" style="document"/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="errorReport">
+				<soap:body use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="tmddOCSoapHttpService">
+		<!-- ************************ -->
+		<!-- OWNER CENTER Services -->
+		<!-- ************************ -->
+		<port name="tmddOCSoapHttpServicePort" binding="tns:tmddOCSoapHttpServiceBinding">
+			<soap:address location="http://127.0.0.1:8088/SoapTry"/>
+		</port>
+		<port name="tmddOCHttpGetServicePort" binding="tns:tmddOCHttpGetServiceBinding">
+			<http:address location="http://localhost:8084/HttpGetService"/>
+		</port>
+		<port name="tmddOCHttpPostServicePort" binding="tns:tmddOCHttpPostServiceBinding">
+			<http:address location="http://127.0.0.1:8088/HTTPPostService"/>
+		</port>
+		<port name="tmddOCFtpGetServicePort" binding="tns:tmddOCFtpGetServiceBinding">
+			<ftp:address location="ftp://127.0.0.1:2221"/>
+		</port>
+	</service>
+	<service name="tmddECSoapHttpService">
+		<!-- ************************ -->
+		<!-- EXTERNAL CENTER Services -->
+		<!-- ************************ -->
+		<port name="tmddECSoapHttpServicePort" binding="tns:tmddECSoapHttpServiceBinding">
+			<soap:address location="http://127.0.0.1:8080/SoapTry2"/>
+		</port>
+	</service>
+</definitions>

@@ -1,0 +1,14 @@
+<testprocedure xmlns="jelly:jameleon">
+
+  <testStep functionId="Step 1.  This step is always executed.">	
+  </testStep>
+
+  <testStep functionId="Step 2.  This step terminates the script.">	
+	<ri-terminate functionId="Terminate the test"/>
+  </testStep>
+
+  <testStep functionId="Step 3.  This step should never be performed due to the terminate tag in step 2." passFailResult = "false">	
+  </testStep>
+
+</testprocedure>
+

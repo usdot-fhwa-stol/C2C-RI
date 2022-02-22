@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-70-dlLCSInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlLCSInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.8.1 [Need to Share Controllable Lanes Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/18 00:31:33-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlLCSInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.8.1 [Need to Share Controllable Lanes Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Send LCS Inventory Information Upon Request (NTRM 3.3.5.9.1.1}.  RECORD this value as: TMDD_N70R829_Send_LCS_Inventory_Information_Upon_Request_Parameter = ${TMDD_N70R829_Send_LCS_Inventory_Information_Upon_Request_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Restrictions - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.1).  RECORD this information as: TMDD_N70R376_Restrictions___Device_Inventory_Supported = ${TMDD_N70R376_Restrictions___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Device Description is required by the specification. (NRTM 3.3.5.1.2.1.2.2).  RECORD this information as: TMDD_N70R377_Device_Description_Supported = ${TMDD_N70R377_Device_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Device Control Type is required by the specification. (NRTM 3.3.5.1.2.1.2.3).  RECORD this information as: TMDD_N70R378_Device_Control_Type_Supported = ${TMDD_N70R378_Device_Control_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Controller Description is required by the specification. (NRTM 3.3.5.1.2.1.2.4).  RECORD this information as: TMDD_N70R379_Controller_Description_Supported = ${TMDD_N70R379_Controller_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Roadway Network Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.5).  RECORD this information as: TMDD_N70R380_Roadway_Network_Identifier___Device_Inventory_Supported = ${TMDD_N70R380_Roadway_Network_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Node Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.6).  RECORD this information as: TMDD_N70R381_Node_Identifier___Device_Inventory_Supported = ${TMDD_N70R381_Node_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Node Name - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.7).  RECORD this information as: TMDD_N70R382_Node_Name___Device_Inventory_Supported = ${TMDD_N70R382_Node_Name___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Link Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.8).  RECORD this information as: TMDD_N70R383_Link_Identifier___Device_Inventory_Supported = ${TMDD_N70R383_Link_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Link Name - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.9).  RECORD this information as: TMDD_N70R384_Link_Name___Device_Inventory_Supported = ${TMDD_N70R384_Link_Name___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Link Direction - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.10).  RECORD this information as: TMDD_N70R385_Link_Direction___Device_Inventory_Supported = ${TMDD_N70R385_Link_Direction___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Linear Reference - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.11).  RECORD this information as: TMDD_N70R386_Linear_Reference___Device_Inventory_Supported = ${TMDD_N70R386_Linear_Reference___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Linear Reference Version is required by the specification. (NRTM 3.3.5.1.2.1.2.12).  RECORD this information as: TMDD_N70R387_Linear_Reference_Version_Supported = ${TMDD_N70R387_Linear_Reference_Version_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Route Designator - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.13).  RECORD this information as: TMDD_N70R388_Route_Designator___Device_Inventory_Supported = ${TMDD_N70R388_Route_Designator___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Device Uniform Resource Locator (URL) (DeviceURL) is required by the specification. (NRTM 3.3.5.1.2.1.2.14).  RECORD this information as: TMDD_N70R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported = ${TMDD_N70R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Device URL Reference Medium is required by the specification. (NRTM 3.3.5.1.2.1.2.15).  RECORD this information as: TMDD_N70R390_Device_URL_Reference_Medium_Supported = ${TMDD_N70R390_Device_URL_Reference_Medium_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Device Inventory Date and Time Change Information is required by the specification. (NRTM 3.3.5.1.2.1.2.16).  RECORD this information as: TMDD_N70R391_Device_Inventory_Date_and_Time_Change_Information_Supported = ${TMDD_N70R391_Device_Inventory_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Number of Lanes - LCS Inventory is required by the specification. (NRTM 3.3.5.9.1.5.2.1).  RECORD this information as: TMDD_N70R835_Number_of_Lanes___LCS_Inventory_Supported = ${TMDD_N70R835_Number_of_Lanes___LCS_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N70R14_Restrictions___Error_Report_Supported = ${TMDD_N70R14_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03c" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 21 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 22 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 23 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 24 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlLCSInventoryRequest RESPONSETIMEREQUIRED=TMDD_N70R829_Send_LCS_Inventory_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlLCSInventoryRequest" functionId="dlLCSInventoryRequest" RESPONSETIMEREQUIRED="${TMDD_N70R829_Send_LCS_Inventory_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 25 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 25.1 VERIFY that a device-inventory-header data frame exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item" elementType="data-frame" functionId="Looking for lCSInventoryMsg.lcs-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 25.2 VERIFY that an organization-information data frame exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 25.3 VERIFY that a device-id data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 25.4 VERIFY that a device-location data frame exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-location" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 25.5 VERIFY that a device-name data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-name" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 25.6 VERIFY that a lCSInventoryMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="lCSInventoryMsg" instanceName="tmdd:lCSInventoryMsg" elementType="message" functionId="Looking for lCSInventoryMsg"/>
+               </testStep>
+               <testStep functionId="Step 25.7 VERIFY that a device-inventory-header data frame exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item" elementType="data-frame" functionId="Looking for lCSInventoryMsg.lcs-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 25.8 VERIFY that a controlled-lane-number data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="controlled-lane-number" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 25.9 IF TMDD_N70R376_Restrictions___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R376_Restrictions___Device_Inventory_Supported}">
+                    <testStep functionId="Step 25.9.1 VERIFY that a restrictions data frame exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.10 IF TMDD_N70R377_Device_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R377_Device_Description_Supported}">
+                    <testStep functionId="Step 25.10.1 VERIFY that a device-description data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-description" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.11 IF TMDD_N70R378_Device_Control_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R378_Device_Control_Type_Supported}">
+                    <testStep functionId="Step 25.11.1 VERIFY that a device-control-type data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-control-type" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.12 IF TMDD_N70R379_Controller_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R379_Controller_Description_Supported}">
+                    <testStep functionId="Step 25.12.1 VERIFY that a controller-description data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="controller-description" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.13 IF TMDD_N70R380_Roadway_Network_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R380_Roadway_Network_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 25.13.1 VERIFY that a network-id data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="network-id" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.14 IF TMDD_N70R381_Node_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R381_Node_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 25.14.1 VERIFY that a node-id data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-id" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.15 IF TMDD_N70R382_Node_Name___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R382_Node_Name___Device_Inventory_Supported}">
+                    <testStep functionId="Step 25.15.1 VERIFY that a node-name data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-name" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.16 IF TMDD_N70R383_Link_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R383_Link_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 25.16.1 VERIFY that a link-id data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-id" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.17 IF TMDD_N70R384_Link_Name___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R384_Link_Name___Device_Inventory_Supported}">
+                    <testStep functionId="Step 25.17.1 VERIFY that a link-name data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-name" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.18 IF TMDD_N70R385_Link_Direction___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R385_Link_Direction___Device_Inventory_Supported}">
+                    <testStep functionId="Step 25.18.1 VERIFY that a link-direction data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-direction" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.19 IF TMDD_N70R386_Linear_Reference___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R386_Linear_Reference___Device_Inventory_Supported}">
+                    <testStep functionId="Step 25.19.1 VERIFY that a linear-reference data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.20 IF TMDD_N70R387_Linear_Reference_Version_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R387_Linear_Reference_Version_Supported}">
+                    <testStep functionId="Step 25.20.1 VERIFY that a linear-reference-version data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference-version" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.21 IF TMDD_N70R388_Route_Designator___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R388_Route_Designator___Device_Inventory_Supported}">
+                    <testStep functionId="Step 25.21.1 VERIFY that a route-designator data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="route-designator" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.22 IF TMDD_N70R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}">
+                    <testStep functionId="Step 25.22.1 VERIFY that a device-url data frame exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-url" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.23 IF TMDD_N70R390_Device_URL_Reference_Medium_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R390_Device_URL_Reference_Medium_Supported}">
+                    <testStep functionId="Step 25.23.1 VERIFY that an url-reference-medium data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header.device-url" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="url-reference-medium" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header.device-url" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header.device-url"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.24 IF TMDD_N70R391_Device_Inventory_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R391_Device_Inventory_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 25.24.1 VERIFY that a last-update-time data frame exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for lCSInventoryMsg.lcs-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.25 IF TMDD_N70R835_Number_of_Lanes___LCS_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R835_Number_of_Lanes___LCS_Inventory_Supported}">
+                    <testStep functionId="Step 25.25.1 VERIFY that a link-lane-count data element exists within each instance of data frame lCSInventoryMsg.lcs-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-lane-count" instanceName="tmdd:lCSInventoryMsg.lcs-inventory-item" elementType="data-element" functionId="Looking for lCSInventoryMsg.lcs-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 25.26 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N70R376_Restrictions___Device_Inventory_Supported,restrictions,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R377_Device_Description_Supported,device-description,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R378_Device_Control_Type_Supported,device-control-type,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R379_Controller_Description_Supported,controller-description,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R380_Roadway_Network_Identifier___Device_Inventory_Supported,network-id,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R381_Node_Identifier___Device_Inventory_Supported,node-id,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R382_Node_Name___Device_Inventory_Supported,node-name,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R383_Link_Identifier___Device_Inventory_Supported,link-id,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R384_Link_Name___Device_Inventory_Supported,link-name,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R385_Link_Direction___Device_Inventory_Supported,link-direction,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R386_Linear_Reference___Device_Inventory_Supported,linear-reference,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R387_Linear_Reference_Version_Supported,linear-reference-version,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R388_Route_Designator___Device_Inventory_Supported,route-designator,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R389_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported,device-url,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R390_Device_URL_Reference_Medium_Supported,url-reference-medium,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header.device-url;TMDD_N70R391_Device_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:lCSInventoryMsg.lcs-inventory-item.device-inventory-header;TMDD_N70R835_Number_of_Lanes___LCS_Inventory_Supported,link-lane-count,tmdd:lCSInventoryMsg.lcs-inventory-item;TMDD_N70R14_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+          <testStep functionId="Step 26 IF ErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 26.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 26.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 26.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 26.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 26.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 26.6 VERIFY that data element error-code is set to ErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${ErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 26.7 IF TMDD_N70R14_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N70R14_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 26.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 27 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

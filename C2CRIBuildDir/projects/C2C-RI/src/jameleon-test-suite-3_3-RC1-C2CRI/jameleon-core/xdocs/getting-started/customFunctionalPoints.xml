@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Getting Started - Custom Functional Points</title>
+    </properties>
+
+    <meta name="keyword" content="functional, functional point, develop functional point, jameleon, automated, testing, automated testing, started, getting started, tutorial, howto"/>
+
+    <body>
+        <section name="Introduction">
+            <p>
+                This section discusses ways to write custom functional points in a generic way. These basic concepts and practices should be applicable to all 
+                plug-ins.
+            </p>
+            <p>
+                Jameleon does not require you to write your own functional points. However, there are many benefits to writing a functional point 
+                for each screen or feature in your application. Having a function tag that represents a feature of the application helps make the script
+                more readable and also helps when creating new scripts. With a pre-defined set of application-specific tags, one can quickly create a test
+                without having to understand the low-level specifics of what it took to automate that specific feature. It turns several steps required to
+                actually automate the feature into one simple step. 
+            </p>
+            <p>
+                Using application-specific tags to test functional areas can save time when a feature in the application changes. If you have several test scripts
+                that test this feature using generic tags, you would need to update each script that tests the modified feature. With custom tags, one can simply
+                change the behavior of the tag to match the changes in the application. Now all the test scripts that use the custom tag will function properly again.
+            </p>
+        </section>
+        <section name="How to Write a Custom Functional Point">
+            <p>
+                Writing a custom tag is simple and powerful. Please see the <a target="_new" href="../functionPoints.html"><b><i>Function Points</i></b></a> section for detailed instructions
+                on writing custom function tags. 
+            </p>
+            <p>
+                If you are using the <a target="_new" href="http://sourceforge.net/project/showfiles.php?group_id=84246&amp;package_id=157342">jameleon-test-suite-x.x.x.zip</a> 
+                distribution, then place your custom tags in the <i><b>jameleon-test-suite/src/java</b></i> directory. To build custom tags, simply open a command prompt to the 
+                jameleon-test-suite folder and type <b><i>build</i></b> under windows or <b><i>./build.sh</i></b> under *nix.
+            </p>
+        </section>
+        <section name="Example Function Tags">
+            <p>
+                <subsection name="Simple Tag">
+                    <p>
+                        Our first example is the source to the ju-assert-equals tag. Notice how <i>msg</i> isn't required. If it is set, then we
+                        call the assertEquals method that will print out the provided error message or <i>msg</i> if a failure occurs. Otherwise,
+                        it will call the assertEquals method without a failure message.
+                        <source>
+package net.sf.jameleon.plugin.junit.tags;
+
+import net.sf.jameleon.plugin.junit.JUnitFunctionTag;
+
+/**
+ * Performs an assertEquals on two strings.
+ * @jameleon.function name="ju-assert-equals" type="action"
+ * @jameleon.step Compare the expected value against the actual value.
+ */
+public class AssertEqualsTag extends JUnitFunctionTag{
+
+    /**
+     * The expected value
+     * @jameleon.attribute
+     */
+    protected Object expected;
+    /**
+     * The actual value
+     * @jameleon.attribute
+     */
+    protected Object actual;
+    /**
+     * The error message to display if the test fails
+     * @jameleon.attribute
+     */
+    protected String msg;
+
+    public void testBlock(){
+        if (msg != null) {
+            assertEquals(msg, expected, actual);
+        }else{
+            assertEquals(expected, actual);
+        }
+    }
+
+}
+                        </source>
+                    </p>
+                </subsection>
+                <subsection name="Making an Attribute Required">
+                     <p>
+                         Let's say you didn't want to the do the logic yourself and you wanted the function tag
+                         to fail if the user didn't provide the <i>msg</i> attribute. We would change the above example
+                         to the code below.
+                         <source>
+package net.sf.jameleon.plugin.junit.tags;
+
+import net.sf.jameleon.plugin.junit.JUnitFunctionTag;
+
+/**
+ * Performs an assertEquals on two strings.
+ * @jameleon.function name="ju-assert-equals" type="action"
+ * @jameleon.step Compare the expected value against the actual value.
+ */
+public class AssertEqualsTag extends JUnitFunctionTag{
+
+    /**
+     * The expected value
+     * @jameleon.attribute
+     */
+    protected Object expected;
+    /**
+     * The actual value
+     * @jameleon.attribute
+     */
+    protected Object actual;
+    /**
+     * The error message to display if the test fails
+     * @jameleon.attribute required="true"
+     */
+    protected String msg;
+
+    public void testBlock(){
+        assertEquals(msg, expected, actual);
+    }
+
+}
+                         </source>
+                         Now you know that msg will be set so there is no need to validate that it has been set.
+                     </p>
+                </subsection>
+            </p>
+        </section>
+    </body>
+</document>

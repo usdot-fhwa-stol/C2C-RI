@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-4-dlOrganizationInformationSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlOrganizationInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.2 [Need to Provide Information on Organizations, Centers, and Contacts] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/17 23:31:36-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlOrganizationInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.2 [Need to Provide Information on Organizations, Centers, and Contacts] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Publish Organization Information (NTRM 3.3.2.2}.  RECORD this value as: TMDD_N4R16_Publish_Organization_Information_Parameter = ${TMDD_N4R16_Publish_Organization_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine the dialog performance requirement for Subscribe to Organization Information (NTRM 3.3.2.3}.  RECORD this value as: TMDD_N4R17_Subscribe_to_Organization_Information_Parameter = ${TMDD_N4R17_Subscribe_to_Organization_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N4R14_Restrictions___Error_Report_Supported = ${TMDD_N4R14_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Organization Name is required by the specification. (NRTM 3.3.2.5.2.1).  RECORD this information as: TMDD_N4R26_Organization_Name_Supported = ${TMDD_N4R26_Organization_Name_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Organization Location is required by the specification. (NRTM 3.3.2.5.2.2).  RECORD this information as: TMDD_N4R27_Organization_Location_Supported = ${TMDD_N4R27_Organization_Location_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Organization Function Description is required by the specification. (NRTM 3.3.2.5.2.3).  RECORD this information as: TMDD_N4R28_Organization_Function_Description_Supported = ${TMDD_N4R28_Organization_Function_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Organization Contact Information (ContactInformation) is required by the specification. (NRTM 3.3.2.5.2.4).  RECORD this information as: TMDD_N4R29_Organization_Contact_Information__ContactInformation__Supported = ${TMDD_N4R29_Organization_Contact_Information__ContactInformation__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Required Organization Contact Information is required by the specification. (NRTM 3.3.2.5.2.4.1).  RECORD this information as: TMDD_N4R30_Required_Organization_Contact_Information_Supported = ${TMDD_N4R30_Required_Organization_Contact_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Contact Person Name is required by the specification. (NRTM 3.3.2.5.2.4.2.1).  RECORD this information as: TMDD_N4R31_Contact_Person_Name_Supported = ${TMDD_N4R31_Contact_Person_Name_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Contact Person Role is required by the specification. (NRTM 3.3.2.5.2.4.2.2).  RECORD this information as: TMDD_N4R32_Contact_Person_Role_Supported = ${TMDD_N4R32_Contact_Person_Role_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Work Phone Number is required by the specification. (NRTM 3.3.2.5.2.4.2.3).  RECORD this information as: TMDD_N4R33_Work_Phone_Number_Supported = ${TMDD_N4R33_Work_Phone_Number_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Alternate Phone Number is required by the specification. (NRTM 3.3.2.5.2.4.2.4).  RECORD this information as: TMDD_N4R34_Alternate_Phone_Number_Supported = ${TMDD_N4R34_Alternate_Phone_Number_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Cellular Phone Number is required by the specification. (NRTM 3.3.2.5.2.4.2.5).  RECORD this information as: TMDD_N4R35_Cellular_Phone_Number_Supported = ${TMDD_N4R35_Cellular_Phone_Number_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Cellular Phone Identifier is required by the specification. (NRTM 3.3.2.5.2.4.2.6).  RECORD this information as: TMDD_N4R36_Cellular_Phone_Identifier_Supported = ${TMDD_N4R36_Cellular_Phone_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Fax Number is required by the specification. (NRTM 3.3.2.5.2.4.2.7).  RECORD this information as: TMDD_N4R37_Fax_Number_Supported = ${TMDD_N4R37_Fax_Number_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Pager Number is required by the specification. (NRTM 3.3.2.5.2.4.2.8).  RECORD this information as: TMDD_N4R38_Pager_Number_Supported = ${TMDD_N4R38_Pager_Number_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Pager Identifier is required by the specification. (NRTM 3.3.2.5.2.4.2.9).  RECORD this information as: TMDD_N4R39_Pager_Identifier_Supported = ${TMDD_N4R39_Pager_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Internet E-Mail Address is required by the specification. (NRTM 3.3.2.5.2.4.2.10).  RECORD this information as: TMDD_N4R40_Internet_E_Mail_Address_Supported = ${TMDD_N4R40_Internet_E_Mail_Address_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Radio Unit Identifier is required by the specification. (NRTM 3.3.2.5.2.4.2.11).  RECORD this information as: TMDD_N4R41_Radio_Unit_Identifier_Supported = ${TMDD_N4R41_Radio_Unit_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 21 CONFIGURE: Determine whether Mailing Address Line 1 is required by the specification. (NRTM 3.3.2.5.2.4.2.12).  RECORD this information as: TMDD_N4R42_Mailing_Address_Line_1_Supported = ${TMDD_N4R42_Mailing_Address_Line_1_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 22 CONFIGURE: Determine whether Mailing Address Line 2 is required by the specification. (NRTM 3.3.2.5.2.4.2.13).  RECORD this information as: TMDD_N4R43_Mailing_Address_Line_2_Supported = ${TMDD_N4R43_Mailing_Address_Line_2_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 23 CONFIGURE: Determine whether Mailing Address City is required by the specification. (NRTM 3.3.2.5.2.4.2.14).  RECORD this information as: TMDD_N4R44_Mailing_Address_City_Supported = ${TMDD_N4R44_Mailing_Address_City_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 24 CONFIGURE: Determine whether Mailing Address State is required by the specification. (NRTM 3.3.2.5.2.4.2.15).  RECORD this information as: TMDD_N4R45_Mailing_Address_State_Supported = ${TMDD_N4R45_Mailing_Address_State_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 25 CONFIGURE: Determine whether Mailing Address Zip Code is required by the specification. (NRTM 3.3.2.5.2.4.2.16).  RECORD this information as: TMDD_N4R46_Mailing_Address_Zip_Code_Supported = ${TMDD_N4R46_Mailing_Address_Zip_Code_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 26 CONFIGURE: Determine whether Mailing Address Country is required by the specification. (NRTM 3.3.2.5.2.4.2.17).  RECORD this information as: TMDD_N4R47_Mailing_Address_Country_Supported = ${TMDD_N4R47_Mailing_Address_Country_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 27 CONFIGURE: Determine whether Organization Center Information (CenterInformation) is required by the specification. (NRTM 3.3.2.5.2.5).  RECORD this information as: TMDD_N4R48_Organization_Center_Information__CenterInformation__Supported = ${TMDD_N4R48_Organization_Center_Information__CenterInformation__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 28 CONFIGURE: Determine whether Required Organization Center Information is required by the specification. (NRTM 3.3.2.5.2.5.1).  RECORD this information as: TMDD_N4R49_Required_Organization_Center_Information_Supported = ${TMDD_N4R49_Required_Organization_Center_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 29 CONFIGURE: Determine whether Organization Center Name is required by the specification. (NRTM 3.3.2.5.2.5.2.1).  RECORD this information as: TMDD_N4R50_Organization_Center_Name_Supported = ${TMDD_N4R50_Organization_Center_Name_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 30 CONFIGURE: Determine whether Organization Center Location is required by the specification. (NRTM 3.3.2.5.2.5.2.2).  RECORD this information as: TMDD_N4R51_Organization_Center_Location_Supported = ${TMDD_N4R51_Organization_Center_Location_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 31 CONFIGURE: Determine whether Organization Center Description is required by the specification. (NRTM 3.3.2.5.2.5.2.3).  RECORD this information as: TMDD_N4R52_Organization_Center_Description_Supported = ${TMDD_N4R52_Organization_Center_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 32 CONFIGURE: Determine whether Organization Center Type is required by the specification. (NRTM 3.3.2.5.2.5.2.4).  RECORD this information as: TMDD_N4R53_Organization_Center_Type_Supported = ${TMDD_N4R53_Organization_Center_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 33 CONFIGURE: Determine whether Organization Center Contact Information is required by the specification. (NRTM 3.3.2.5.2.5.2.5).  RECORD this information as: TMDD_N4R54_Organization_Center_Contact_Information_Supported = ${TMDD_N4R54_Organization_Center_Contact_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 34 CONFIGURE: Determine whether Date and Time Change Information - Organization Information is required by the specification. (NRTM 3.3.2.5.2.6).  RECORD this information as: TMDD_N4R55_Date_and_Time_Change_Information___Organization_Information_Supported = ${TMDD_N4R55_Date_and_Time_Change_Information___Organization_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03c" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 35 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 36 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 37 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 38 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 39 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 40 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 41 CONFIGURE: Define the subscription message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 42 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 43 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 44 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlOrganizationInformationSubscription RESPONSETIMEREQUIRED= SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlOrganizationInformationSubscription" functionId="dlOrganizationInformationSubscription" RESPONSETIMEREQUIRED="60000" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 45 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 45.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps.  Note:If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 45.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlOrganizationInformationUpdate RESPONSETIMEREQUIRED=TMDD_N4R16_Publish_Organization_Information_Parameter PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlOrganizationInformationUpdate" functionId="dlOrganizationInformationUpdate" RESPONSETIMEREQUIRED="${TMDD_N4R16_Publish_Organization_Information_Parameter}" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 45.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 45.1.2.1 VERIFY that an organizationInformationMsg message was received." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organizationInformationMsg" instanceName="tmdd:organizationInformationMsg" elementType="message" functionId="Looking for organizationInformationMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 45.1.2.2 VERIFY that an organization-id data element exists within each instance of data frame organizationInformationMsg.organization-information-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-id" instanceName="tmdd:organizationInformationMsg.organization-information-item" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item"/>
+                         </testStep>
+                         <testStep functionId="Step 45.1.2.3 IF TMDD_N4R26_Organization_Name_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R26_Organization_Name_Supported}">
+                              <testStep functionId="Step 45.1.2.3.1 VERIFY that an organization-name data element exists within each instance of data frame organizationInformationMsg.organization-information-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="organization-name" instanceName="tmdd:organizationInformationMsg.organization-information-item" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.4 IF TMDD_N4R27_Organization_Location_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R27_Organization_Location_Supported}">
+                              <testStep functionId="Step 45.1.2.4.1 VERIFY that an organization-location data element exists within each instance of data frame organizationInformationMsg.organization-information-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="organization-location" instanceName="tmdd:organizationInformationMsg.organization-information-item" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.5 IF TMDD_N4R28_Organization_Function_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R28_Organization_Function_Description_Supported}">
+                              <testStep functionId="Step 45.1.2.5.1 VERIFY that an organization-function data element exists within each instance of data frame organizationInformationMsg.organization-information-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="organization-function" instanceName="tmdd:organizationInformationMsg.organization-information-item" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.6 IF TMDD_N4R29_Organization_Contact_Information__ContactInformation__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R29_Organization_Contact_Information__ContactInformation__Supported}">
+                              <testStep functionId="Step 45.1.2.6.1 VERIFY that an organization-contact-details data frame exists within each instance of data frame organizationInformationMsg.organization-information-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="organization-contact-details" instanceName="tmdd:organizationInformationMsg.organization-information-item" elementType="data-frame" functionId="Looking for organizationInformationMsg.organization-information-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.7 IF TMDD_N4R30_Required_Organization_Contact_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R30_Required_Organization_Contact_Information_Supported}">
+                              <testStep functionId="Step 45.1.2.7.1 VERIFY that a contact-id data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="contact-id" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.8 IF TMDD_N4R31_Contact_Person_Name_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R31_Contact_Person_Name_Supported}">
+                              <testStep functionId="Step 45.1.2.8.1 VERIFY that a person-name data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="person-name" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.9 IF TMDD_N4R32_Contact_Person_Role_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R32_Contact_Person_Role_Supported}">
+                              <testStep functionId="Step 45.1.2.9.1 VERIFY that a person-title data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="person-title" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.10 IF TMDD_N4R33_Work_Phone_Number_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R33_Work_Phone_Number_Supported}">
+                              <testStep functionId="Step 45.1.2.10.1 VERIFY that a phone-number data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="phone-number" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.11 IF TMDD_N4R34_Alternate_Phone_Number_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R34_Alternate_Phone_Number_Supported}">
+                              <testStep functionId="Step 45.1.2.11.1 VERIFY that a phone-alternate data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="phone-alternate" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.12 IF TMDD_N4R35_Cellular_Phone_Number_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R35_Cellular_Phone_Number_Supported}">
+                              <testStep functionId="Step 45.1.2.12.1 VERIFY that a mobile-phone-number data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="mobile-phone-number" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.13 IF TMDD_N4R36_Cellular_Phone_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R36_Cellular_Phone_Identifier_Supported}">
+                              <testStep functionId="Step 45.1.2.13.1 VERIFY that a mobile-phone-id data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="mobile-phone-id" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.14 IF TMDD_N4R37_Fax_Number_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R37_Fax_Number_Supported}">
+                              <testStep functionId="Step 45.1.2.14.1 VERIFY that a fax-number data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="fax-number" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.15 IF TMDD_N4R38_Pager_Number_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R38_Pager_Number_Supported}">
+                              <testStep functionId="Step 45.1.2.15.1 VERIFY that a pager-number data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="pager-number" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.16 IF TMDD_N4R39_Pager_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R39_Pager_Identifier_Supported}">
+                              <testStep functionId="Step 45.1.2.16.1 VERIFY that a pager-id data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="pager-id" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.17 IF TMDD_N4R40_Internet_E_Mail_Address_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R40_Internet_E_Mail_Address_Supported}">
+                              <testStep functionId="Step 45.1.2.17.1 VERIFY that an email-address data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="email-address" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.18 IF TMDD_N4R41_Radio_Unit_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R41_Radio_Unit_Identifier_Supported}">
+                              <testStep functionId="Step 45.1.2.18.1 VERIFY that a radio-unit data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="radio-unit" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.19 IF TMDD_N4R42_Mailing_Address_Line_1_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R42_Mailing_Address_Line_1_Supported}">
+                              <testStep functionId="Step 45.1.2.19.1 VERIFY that an address-line1 data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="address-line1" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.20 IF TMDD_N4R43_Mailing_Address_Line_2_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R43_Mailing_Address_Line_2_Supported}">
+                              <testStep functionId="Step 45.1.2.20.1 VERIFY that an address-line2 data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="address-line2" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.21 IF TMDD_N4R44_Mailing_Address_City_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R44_Mailing_Address_City_Supported}">
+                              <testStep functionId="Step 45.1.2.21.1 VERIFY that a city data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="city" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.22 IF TMDD_N4R45_Mailing_Address_State_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R45_Mailing_Address_State_Supported}">
+                              <testStep functionId="Step 45.1.2.22.1 VERIFY that a state data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="state" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.23 IF TMDD_N4R46_Mailing_Address_Zip_Code_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R46_Mailing_Address_Zip_Code_Supported}">
+                              <testStep functionId="Step 45.1.2.23.1 VERIFY that a zip-code data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="zip-code" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.24 IF TMDD_N4R47_Mailing_Address_Country_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R47_Mailing_Address_Country_Supported}">
+                              <testStep functionId="Step 45.1.2.24.1 VERIFY that a country data element exists within each instance of data frame organizationInformationMsg.organization-information-item.organization-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="country" instanceName="tmdd:organizationInformationMsg.organization-information-item.organization-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.organization-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.25 IF TMDD_N4R48_Organization_Center_Information__CenterInformation__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R48_Organization_Center_Information__CenterInformation__Supported}">
+                              <testStep functionId="Step 45.1.2.25.1 VERIFY that a center-contact-list data frame exists within each instance of data frame organizationInformationMsg.organization-information-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="center-contact-list" instanceName="tmdd:organizationInformationMsg.organization-information-item" elementType="data-frame" functionId="Looking for organizationInformationMsg.organization-information-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.26 IF TMDD_N4R49_Required_Organization_Center_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R49_Required_Organization_Center_Information_Supported}">
+                              <testStep functionId="Step 45.1.2.26.1 VERIFY that a center-id data element exists within each instance of data frame organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="center-id" instanceName="tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.27 IF TMDD_N4R50_Organization_Center_Name_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R50_Organization_Center_Name_Supported}">
+                              <testStep functionId="Step 45.1.2.27.1 VERIFY that a center-name data element exists within each instance of data frame organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="center-name" instanceName="tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.28 IF TMDD_N4R51_Organization_Center_Location_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R51_Organization_Center_Location_Supported}">
+                              <testStep functionId="Step 45.1.2.28.1 VERIFY that a center-location data frame exists within each instance of data frame organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="center-location" instanceName="tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" elementType="data-frame" functionId="Looking for organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.29 IF TMDD_N4R52_Organization_Center_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R52_Organization_Center_Description_Supported}">
+                              <testStep functionId="Step 45.1.2.29.1 VERIFY that a center-description data element exists within each instance of data frame organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="center-description" instanceName="tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.30 IF TMDD_N4R53_Organization_Center_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R53_Organization_Center_Type_Supported}">
+                              <testStep functionId="Step 45.1.2.30.1 VERIFY that a center-type data element exists within each instance of data frame organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="center-type" instanceName="tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" elementType="data-element" functionId="Looking for organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.31 IF TMDD_N4R54_Organization_Center_Contact_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R54_Organization_Center_Contact_Information_Supported}">
+                              <testStep functionId="Step 45.1.2.31.1 VERIFY that a center-contact-details data frame exists within each instance of data frame organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="center-contact-details" instanceName="tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details" elementType="data-frame" functionId="Looking for organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.32 IF TMDD_N4R55_Date_and_Time_Change_Information___Organization_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N4R55_Date_and_Time_Change_Information___Organization_Information_Supported}">
+                              <testStep functionId="Step 45.1.2.32.1 VERIFY that a last-update-time data frame exists within each instance of data frame organizationInformationMsg.organization-information-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="last-update-time" instanceName="tmdd:organizationInformationMsg.organization-information-item" elementType="data-frame" functionId="Looking for organizationInformationMsg.organization-information-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 45.1.2.33 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N4R26_Organization_Name_Supported,organization-name,tmdd:organizationInformationMsg.organization-information-item;TMDD_N4R27_Organization_Location_Supported,organization-location,tmdd:organizationInformationMsg.organization-information-item;TMDD_N4R28_Organization_Function_Description_Supported,organization-function,tmdd:organizationInformationMsg.organization-information-item;TMDD_N4R29_Organization_Contact_Information__ContactInformation__Supported,organization-contact-details,tmdd:organizationInformationMsg.organization-information-item;TMDD_N4R30_Required_Organization_Contact_Information_Supported,contact-id,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R31_Contact_Person_Name_Supported,person-name,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R32_Contact_Person_Role_Supported,person-title,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R33_Work_Phone_Number_Supported,phone-number,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R34_Alternate_Phone_Number_Supported,phone-alternate,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R35_Cellular_Phone_Number_Supported,mobile-phone-number,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R36_Cellular_Phone_Identifier_Supported,mobile-phone-id,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R37_Fax_Number_Supported,fax-number,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R38_Pager_Number_Supported,pager-number,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R39_Pager_Identifier_Supported,pager-id,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R40_Internet_E_Mail_Address_Supported,email-address,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R41_Radio_Unit_Identifier_Supported,radio-unit,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R42_Mailing_Address_Line_1_Supported,address-line1,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R43_Mailing_Address_Line_2_Supported,address-line2,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R44_Mailing_Address_City_Supported,city,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R45_Mailing_Address_State_Supported,state,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R46_Mailing_Address_Zip_Code_Supported,zip-code,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R47_Mailing_Address_Country_Supported,country,tmdd:organizationInformationMsg.organization-information-item.organization-contact-details;TMDD_N4R48_Organization_Center_Information__CenterInformation__Supported,center-contact-list,tmdd:organizationInformationMsg.organization-information-item;TMDD_N4R49_Required_Organization_Center_Information_Supported,center-id,tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details;TMDD_N4R50_Organization_Center_Name_Supported,center-name,tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details;TMDD_N4R51_Organization_Center_Location_Supported,center-location,tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details;TMDD_N4R52_Organization_Center_Description_Supported,center-description,tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details;TMDD_N4R53_Organization_Center_Type_Supported,center-type,tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details;TMDD_N4R54_Organization_Center_Contact_Information_Supported,center-contact-details,tmdd:organizationInformationMsg.organization-information-item.center-contact-list.center-contact-details;TMDD_N4R55_Date_and_Time_Change_Information___Organization_Information_Supported,last-update-time,tmdd:organizationInformationMsg.organization-information-item;TMDD_N4R14_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 45.1.2.34 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                              <jl:set var="CONTENTVERIFIED" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 45.1.2.35 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlOrganizationInformationUpdate RESPONSETIMEREQUIRED=TMDD_N4R16_Publish_Organization_Information_Parameter CONTENTVERIFIED = CONTENTVERIFIED PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlOrganizationInformationUpdate" functionId="dlOrganizationInformationUpdate" RESPONSETIMEREQUIRED="${TMDD_N4R16_Publish_Organization_Information_Parameter}" CONTENTVERIFIED="${CONTENTVERIFIED}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+          <testStep functionId="Step 46 IF SubscriptionErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 46.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 46.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 46.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 46.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 46.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 46.6 VERIFY that data element error-code is set to SubscriptionErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${SubscriptionErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 46.7 IF TMDD_N4R14_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N4R14_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 46.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 47 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

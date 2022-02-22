@@ -1,0 +1,31 @@
+ID,Predicate,Section
+1,Subscription,3.3.1.1.2 OR 3.3.1.1.3
+2,Contact Information,3.3.3.5.2.4
+3,Center Information,3.3.3.5.2.5
+4,Event Comments,3.3.4.7.5
+5,Event Reports,3.3.4.7.6
+6,Event Valid Period,3.3.4.6.4.1.2.1
+7,EventLocation,3.3.4.6.4.7
+8,Area Location,3.3.4.6.4.7.1
+9,Link Location,3.3.4.6.4.7.2
+10,PointOnALink,3.3.4.6.4.7.4
+11,Landmark,3.3.4.6.4.7.6
+12,Detour,3.3.4.6.4.6.2
+13,Event Lane,3.3.4.6.4.9
+14,Event Source,3.3.4.6.4.5
+15,Event Transit,3.3.4.6.4.10
+16,Event HazMat ,3.3.4.6.4.13
+17,HazMat Code,3.3.4.6.4.13.1
+18,HazMat Placard,3.3.4.6.4.13.2
+19,Event Indicator,3.3.4.7.3
+20,Event References,3.3.4.7.4
+21,Project Reference,3.3.4.7.2
+22,WYSIWYG,3.3.6.5.6
+23,Matrix Signs,3.3.6.5.6.3.2
+24,Collector Config,3.3.6.6.4.3.3
+25,Sensor Metadata,3.3.6.6.4.3.6
+26,Site Metadata,3.3.6.6.4.3.7
+27,Station Metadata,3.3.6.6.4.3.8
+28,Movement Identifier,3.3.6.11.1.5.2.9
+29,Phase Identifier,3.3.6.11.1.5.2.13
+30,URL Reference,3.3.8

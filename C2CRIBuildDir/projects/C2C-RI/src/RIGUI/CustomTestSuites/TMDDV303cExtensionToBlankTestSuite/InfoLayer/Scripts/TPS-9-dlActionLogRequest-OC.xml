@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-9-dlActionLogRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlActionLogRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.3.5 [Need to Share the Log of a Current Event] and is used for both valid and invalid test cases.
+       Version/Date: 2013/11/28 11:32:15-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlActionLogRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.3.5 [Need to Share the Log of a Current Event] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Send Action Logs Upon Request (NTRM 3.3.3.8.1}.  RECORD this value as: TMDD_N9R201_Send_Action_Logs_Upon_Request_Parameter = ${TMDD_N9R201_Send_Action_Logs_Upon_Request_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Restrictions - Action Logs is required by the specification. (NRTM 3.3.3.8.4.2.1).  RECORD this information as: TMDD_N9R206_Restrictions___Action_Logs_Supported = ${TMDD_N9R206_Restrictions___Action_Logs_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N9R14_Restrictions___Error_Report_Supported = ${TMDD_N9R14_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 5 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 6 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 7 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 8 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlActionLogRequest RESPONSETIMEREQUIRED=TMDD_N9R201_Send_Action_Logs_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlActionLogRequest" functionId="dlActionLogRequest" RESPONSETIMEREQUIRED="${TMDD_N9R201_Send_Action_Logs_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 9 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 9.1 VERIFY that an actionLogMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="actionLogMsg" instanceName="tmdd:actionLogMsg" elementType="message" functionId="Looking for actionLogMsg"/>
+               </testStep>
+               <testStep functionId="Step 9.2 VERIFY that an event-id data element exists within each instance of data frame actionLogMsg.log-entry" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="event-id" instanceName="tmdd:actionLogMsg.log-entry" elementType="data-element" functionId="Looking for actionLogMsg.log-entry"/>
+               </testStep>
+               <testStep functionId="Step 9.3 VERIFY that an action-log-element-id data element exists within each instance of data frame actionLogMsg.log-entry" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="action-log-element-id" instanceName="tmdd:actionLogMsg.log-entry" elementType="data-element" functionId="Looking for actionLogMsg.log-entry"/>
+               </testStep>
+               <testStep functionId="Step 9.4 VERIFY that an action-time data frame exists within each instance of data frame actionLogMsg.log-entry" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="action-time" instanceName="tmdd:actionLogMsg.log-entry" elementType="data-frame" functionId="Looking for actionLogMsg.log-entry"/>
+               </testStep>
+               <testStep functionId="Step 9.5 VERIFY that an action-description data element exists within each instance of data frame actionLogMsg.log-entry" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="action-description" instanceName="tmdd:actionLogMsg.log-entry" elementType="data-element" functionId="Looking for actionLogMsg.log-entry"/>
+               </testStep>
+               <testStep functionId="Step 9.6 VERIFY that an action-type data element exists within each instance of data frame actionLogMsg.log-entry" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="action-type" instanceName="tmdd:actionLogMsg.log-entry" elementType="data-element" functionId="Looking for actionLogMsg.log-entry"/>
+               </testStep>
+               <testStep functionId="Step 9.7 IF TMDD_N9R206_Restrictions___Action_Logs_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N9R206_Restrictions___Action_Logs_Supported}">
+                    <testStep functionId="Step 9.7.1 VERIFY that a restrictions data frame exists within each instance of data frame actionLogMsg.log-entry" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:actionLogMsg.log-entry" elementType="data-frame" functionId="Looking for actionLogMsg.log-entry"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 9.8 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N9R206_Restrictions___Action_Logs_Supported,restrictions,tmdd:actionLogMsg.log-entry;TMDD_N9R14_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+          <testStep functionId="Step 10 IF ErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 10.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 10.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 10.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 10.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 10.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 10.6 VERIFY that data element error-code is set to ErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${ErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 10.7 IF TMDD_N9R14_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N9R14_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 10.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <testStep functionId=" Step 11 EXIT" passfailResult="False"/>
+     </C2CRI-session>
+</testprocedure>

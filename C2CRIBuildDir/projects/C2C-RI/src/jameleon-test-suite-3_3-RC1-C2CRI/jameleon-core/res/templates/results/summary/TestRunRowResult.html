@@ -1,0 +1,65 @@
+#if ($result.failed())
+    #set( $txtClass = 'txtFailed')
+    #set( $image = 'stop')
+#else
+    #set( $txtClass = 'txtPassed')
+    #set( $image = 'check')
+#end
+
+<tr>
+  <td colspan="2" >
+    <div style="width:100%">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #CCCCCC;">
+            <tr style="border:1px solid #CCCCCC;">
+                <td nowrap="nowrap" width="375px" style="padding-left:10px"><span class="${txtClass}" title="Test Case Name">
+                    <a class="${txtClass}" href="${resultsFile}">
+                    <img src="../images/${image}.png" align="absmiddle" style="padding-right:5px" border="0"/>$result.testName</a></span>
+                </td>
+                <td nowrap="nowrap" width="275px" style="border-left:2px dashed #CCCCCC; padding-left:5px;border-right:2px dashed #CCCCCC; padding-right:5px;" valign="top">
+                    <table width="100%" cellpadding="3" cellspacing="0">
+                        <tr>
+                            <td align="left"><b>Time:</b></td><td align="right">$result.executionTimeToDisplay</td>
+                             <td align="left"><b>Run:</b></td><td align="right">$result.countableResults.size()</td>
+                        </tr>
+                        <tr>
+                            <td align="left"><b>Failed:</b></td><td align="right">$result.failedCountableResults.size()</td>
+                            <td align="left"><b>% Passed:</b></td><td align="right">$result.percentagePassed</td>
+                        </tr>
+                    </table>
+                </td>
+                <td style="padding-left: 5px;">
+                    #if ( $result.failedResults.size() >= 1)
+                    #set( $failedResult = $result.failedResults.get(0) )                    
+                    <table width="100%" cellspacing="0" title="failed info">
+                        <tr width="200px">
+                            <td bgcolor="#CCCCCC">Point of Failure</td>
+                            <td bgcolor="#CCCCCC">Error Message</td>
+                        </tr>
+                        <tr style="border: 1px;">
+                            <td title="FunctionId of Point of Failure" style="width: 150px;">$!failedResult.identifier</td>
+                            <td title="Error Message">
+                              <div style="overflow:auto;">
+                            #if($failedResult.errorFile)
+                              <a href="${results_res_dir}/${failedResult.errorFile.path}">
+                            #end
+                              <pre>$!{failedResult.htmlFormattedErrorMsg}</pre>
+                            #if($failedResult.errorFile.path)
+                              </a>
+                            #end
+                            #if ($result.failedResults.size() > 1)
+                                #set( $errorsLeft = $result.failedResults.size() - 1 )
+                                <br/> <pre>... ($errorsLeft more error messages)</pre>
+                            #end
+                              </div>
+                            </td>
+                        </tr>
+                    </table>
+                    #else
+                    -
+                    #end
+                </td>
+            </tr>
+        </table>
+      </div>
+    </td>
+</tr>

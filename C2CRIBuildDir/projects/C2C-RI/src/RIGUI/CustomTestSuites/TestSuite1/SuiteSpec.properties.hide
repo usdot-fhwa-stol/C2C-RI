@@ -1,0 +1,8 @@
+SuiteName=ITE TMDDv3 Extended for Release 1.5
+SuiteVersion=0.1
+InfoLayerStandard=TMDDv3
+AppLayerStandard=NTCIP 2306
+SuiteDescription=TBD - This Test Suite was Extended to show Extension in Release 1.5
+BaselineTestSuiteName=ITE TMDDv3 NRTM Fixed
+BaselineTestSuiteVersion=0.1
+TestSuiteType=Information

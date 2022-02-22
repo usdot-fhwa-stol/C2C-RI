@@ -1,0 +1,1862 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Syntax Reference</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, RI Plug-in, syntax reference, automated testing framework"/>
+    <link href="default.css" rel="stylesheet" type="text/css"/>
+
+    <body>
+        <section name="Available Tags">
+            <p>
+                 This is a list of available tags for RI Plug-in. This list of tags is also available in
+                 the Jameleon GUI. You can get there by selecting the "Functional Points" tab on the lower-left. All
+                  tags, including custom tags and other enabled plug-ins' tags, show up in the GUI.
+            </p>
+        </section>
+        <section name="RI Plug-in Tags">
+            <p>
+                <table>
+                        <tr>
+                           <th>Tag</th>
+                           <th>Short Description</th>
+                        </tr>
+                                                <tr>
+                            <td><a href="#RI-session">&lt;RI-session/&gt;</a></td>
+                            <td>A Session tag for the C2CRI plug-in.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#ri-execute-script">&lt;ri-execute-script/&gt;</a></td>
+                            <td>Used to acceptance test Jameleon tags.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#ri-get-random-var">&lt;ri-get-random-var/&gt;</a></td>
+                            <td>Gets the matching text against the currently active IE and sets it in the context.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#ri-pause">&lt;ri-pause/&gt;</a></td>
+                            <td>Pause the RI Script.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#ri-terminate">&lt;ri-terminate/&gt;</a></td>
+                            <td>Terminate the RI Script.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#sample">&lt;sample/&gt;</a></td>
+                            <td>Prompt the user for string input.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#subscript">&lt;subscript/&gt;</a></td>
+                            <td>Extends the jameleon TestCase Tag for RI usage.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#tcData">&lt;tcData/&gt;</a></td>
+                            <td>Iterates over all nested tags one time per "row" of test case properties file.</td>
+                        </tr>
+                                        </table>
+            </p>
+                        <subsection name="RI-session">
+                <p>
+                    <a name="RI-session">A Session tag for the C2CRI plug-in.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/org/fhwa/c2cri/plugin/c2cri/RISessionTag.html">API docs</a> and <a href="xref/org/fhwa/c2cri/plugin/c2cri/RISessionTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>infoStd</td>
+                          <td>infoStd</td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>appStd</td>
+                          <td>appStd</td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>requestDialog</td>
+                          <td>requestDialog</td>
+                          <td>
+                              <p>
+                                  If provided, the name of the request dialog that will implemented by this session.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>subscriptionDialog</td>
+                          <td>subscriptionDialog</td>
+                          <td>
+                              <p>
+                                  If provided, the name of the subscription dialog that will implemented by this session.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>publicationDialog</td>
+                          <td>publicationDialog</td>
+                          <td>
+                              <p>
+                                  If provided, the name of the publication dialog that will implemented by this session.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>lclPort</td>
+                          <td>lclPort</td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>lclAddress</td>
+                          <td>lclAddress</td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>sutPort</td>
+                          <td>SUTPort</td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>sutAddress</td>
+                          <td>SUTAddress</td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>riMode</td>
+                          <td>RIMode</td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>wsdlURL</td>
+                          <td>RI_WEBSERVICEURL</td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>infoStdSuiteURL</td>
+                          <td>INFOSTD_SUITEURL</td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>appStdSuiteURL</td>
+                          <td>APPSTD_SUITEURL</td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>useWSDL</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Flag indicating whether the service will be defined from a WSDL file.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>serviceName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The service name to be tested. Must match the WSDL definition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>portName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The port name of the service to be tested. Must match the WSDL definition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>operationName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The operation name of the portType name of the service to be tested. Must match the WSDL definition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>isPublicationOperation</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Flag indicating whether the operation specified is a publication.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>transportType</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The transport type that will be used for this service. Only applied when WSDL not used.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>encodingType</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The encoding type that will be used for this service. Only applied when WSDL not used.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseIdentifier</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  A unique identifier for this test case.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>userName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  A user name to be applied.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>password</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  A password to be applied.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>application</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The name of the application being run according to the *-TestCaseTag.properties file
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>organization</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The organization (affiliate or company name) this application will be tested against.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>sessionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the tag to delay x milliseconds before anything else is executed.
+                              </p>
+                          </td>
+                          <td>0</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                       <tr>
+                          <td>beginSession</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Starts the applicattion and gets it to the state defined in the $testEnviroment-Applications.properties.
+DEFAULTS to <code>false</code>
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="ri-execute-script">
+                <p>
+                    <a name="ri-execute-script">Used to acceptance test Jameleon tags. Executes a Jameleon script and checks various outputs.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/org/fhwa/c2cri/plugin/c2cri/tags/RIExecuteScriptTag.html">API docs</a> and <a href="xref/org/fhwa/c2cri/plugin/c2cri/tags/RIExecuteScriptTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>script</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The script to execute
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>checkOutcomePassed</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Pass only if the script passed
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>checkOutcomeFailed</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Pass only if the script failed
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>failOnFunctionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  A functionId where no failure should occur
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>executionTimeGreaterThan</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The execution time should be greater than this number if set
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>executionTimeLessThan</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The execution time should be greater than this number if set
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>errorMsgContains</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  A snippet of the error message or reason for that is expected in stdout.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="ri-get-random-var">
+                <p>
+                    <a name="ri-get-random-var">Gets the matching text against the currently active IE and sets it in the context.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/org/fhwa/c2cri/plugin/c2cri/tags/RIGetRandomVarTag.html">API docs</a> and <a href="xref/org/fhwa/c2cri/plugin/c2cri/tags/RIGetRandomVarTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>varName</td>
+                          <td>RIGetRandomVarName</td>
+                          <td>
+                              <p>
+                                  The name by which a random context variable will be created
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>varType</td>
+                          <td>RIGetRandomVarType</td>
+                          <td>
+                              <p>
+                                  The type of value to return
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>varLength</td>
+                          <td>RIGetRandomVarLength</td>
+                          <td>
+                              <p>
+                                  The length of the variable to return (if string)
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>highVal</td>
+                          <td>RIGetRandomVarHigh</td>
+                          <td>
+                              <p>
+                                  The length of the variable to return (if string)
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>lowVal</td>
+                          <td>RIGetRandomVarLow</td>
+                          <td>
+                              <p>
+                                  The length of the variable to return (if string)
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>returnVal</td>
+                          <td>RIGetRandomVarReturn</td>
+                          <td>
+                              <p>
+                                  The variable returned
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="ri-pause">
+                <p>
+                    <a name="ri-pause">Pause the RI Script.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/org/fhwa/c2cri/plugin/c2cri/tags/RIPauseTag.html">API docs</a> and <a href="xref/org/fhwa/c2cri/plugin/c2cri/tags/RIPauseTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="ri-terminate">
+                <p>
+                    <a name="ri-terminate">Terminate the RI Script.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/org/fhwa/c2cri/plugin/c2cri/tags/RITerminateTag.html">API docs</a> and <a href="xref/org/fhwa/c2cri/plugin/c2cri/tags/RITerminateTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>Message</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The message associated with this script termination.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="sample">
+                <p>
+                    <a name="sample">Prompt the user for string input.
+This tag may be used anywhere inside the testcase tag.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/org/fhwa/c2cri/plugin/c2cri/tags/RIUserPromptTag.html">API docs</a> and <a href="xref/org/fhwa/c2cri/plugin/c2cri/tags/RIUserPromptTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>sampleString</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  the input text.
+                              </p>
+                          </td>
+                          <td>RIUserPromptTag</td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>returnVal</td>
+                          <td>RIUserInputReturn</td>
+                          <td>
+                              <p>
+                                  the user provided input.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>skipConfirmation</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  the flag indicating whether to skip the confirmation or not..
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="subscript">
+                <p>
+                    <a name="subscript">Extends the jameleon TestCase Tag for RI usage.
+Every test case script must have at least one testcase tag containing all other Jameleon tags.
+<p>
+Some of this tags attribute may affect every nested Jameleon tag.
+Many of the attributes in this tag can be set globally via a jameleon.conf file.
+</p>
+<p>
+The order of setting variables in the context follows:
+<ol>
+<li> Load the CSV file variables and put them in the context.</li>
+<li> Load the $testEnvironment-Applications.properties and then Applications.properties and
+only set the variables that aren't set in the previous files. In other words, if there
+are variables that are going to be the same ( like the page title ) across multiple test
+cases, then first variable set wins.</li>
+<li> Execute the function tag and set the attributes in the context. If you want key/values in
+the CSV and properties files to override the script attribute, then the function point
+author uses the setDefaultVariableValue() method in the set method for that attribute.</li>
+<li> If the function point is using a map-variable, then override all settings to set the
+variable to the mapFrom variable name.</li>
+</ol>
+</p></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/org/fhwa/c2cri/plugin/c2cri/tags/RISubscriptTag.html">API docs</a> and <a href="xref/org/fhwa/c2cri/plugin/c2cri/tags/RISubscriptTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>needsVerified</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The needs verified by the successful completion of this test case (separated by semi-colon).
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>requirementsVerified</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The requirements verified by the successful completion of this test case (separated by semi-colon).
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseResultSessionTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the session template to be used to generate the session result.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseResultDataRowTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the data row template to be used to generate the data drivable result.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseResultFunctionTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the function result template to be used to generate the test case result.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseMainPageTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the template to be used to generate the main page of the results..
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseSummaryTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the template to be used to generate the test case summary page of the results.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseResultTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the template to be used to generate the test case result summary page.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseResultSummaryTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the template to be used to generate the test case result summary page.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>resultsDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the directory where the results will be written to.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>storeStateEvent</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to record the state of the application at a defined <code>event</code>
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>storeStateOnChange</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to record the state of the application whenever the application's state changes.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>storeStateOnError</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to record the state of the application on errors.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>storeStateNever</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to never record the state of the application.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>maxExecutionTime</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the maximum execution time before the test case fails
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                       <tr>
+                          <td>failedOnDataDriver</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Used internally to mark whether the DataDrivable had a problem. This is used for the failOnCSVFileNotFound option only
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>failOnCSVFileNotFound</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the failOnCSVFileNotFound property
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>organization</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the organziation or company that this test will be run against.
+This is used the same as the testEnvironment to find the CSV file or use values
+from a properties file specific to an organization.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testEnvironment</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the environment to which testing system the testcase will be run in.
+Information like the starting url, can be based on this. This is
+also used to find the CSV file if one is used for the test case.
+This can be set as a global variable.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>useCSV</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets whether a CSV file should be used for this testcase or not.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>trace</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets whether a std out message should be sent before and after the execution of a functional point.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>baseDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the base directory of the project
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>assertGreaterThanLevel</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>assertLessThanLevel</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>assertLevel</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>assertLevels</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the level of the asserts to run that are equal to this list of numbers.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>genTestCaseDocs</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to generate the test case docs based on the javadocs of the functional points
+and the functionId's of the functional points in the test case.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>executeTestCase</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to be executed or not.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>bugTrackerUrl</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the url of the bugtracking tool used so the bug's listed for the test case are linked.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>genTestCaseDocsEncoding</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the charset encoding.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>propsName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the name of the properties file (minus the .properties) to read in into the context
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>jameleonConfigName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the configuration file Jameleon uses to configure itself.
+(default is defined in {@link net.sf.jameleon.util.Configurator})
+Do not use. This is used for internal testing purposes only.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>enableSslCertCheck</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Enable or disable validity checking of SSL certificates.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>csvFileName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the relative path to the name of the csv file. This does
+not use any logic in considering testEnvironment nor organization.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>name</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the name of the csv file to read in.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>csvDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the directory of the csv file to read in (relative to baseDir).
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>csvValueSeparator</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the separator used to separate CSV files.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>char</td>
+                      </tr>
+                       <tr>
+                          <td>csvCharset</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the character set to use when reading in the CSV file
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>charset</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the character set to use to read the data file in.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>dataDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the directory of where the data will be looked for.
+The baseDir is then prepended on this
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>file</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the name of the file to use as a data source.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>countRow</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the DataDrivable tag to increment the number of times the test case was executed
+for each row executed.
+                              </p>
+                          </td>
+                          <td>false</td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>stopTestExecutionOnFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  To continue on a normal execution path even though an error occurs, set this to false
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets a pause point to this class.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="tcData">
+                <p>
+                    <a name="tcData">Iterates over all nested tags one time per "row" of test case properties file.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/org/fhwa/c2cri/plugin/c2cri/tags/TestCaseDataTag.html">API docs</a> and <a href="xref/org/fhwa/c2cri/plugin/c2cri/tags/TestCaseDataTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>userTestCaseDataFileName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the relative path to the name of the test case properties file. This does
+not use any logic in considering testEnvironment nor organization.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>name</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the name of the test case properties file to read in.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>charset</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the character set to use to read the data file in.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>dataDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the directory of where the data will be looked for.
+The baseDir is then prepended on this
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>file</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the name of the file to use as a data source.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>countRow</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the DataDrivable tag to increment the number of times the test case was executed
+for each row executed.
+                              </p>
+                          </td>
+                          <td>false</td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>stopTestExecutionOnFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  To continue on a normal execution path even though an error occurs, set this to false
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets a pause point to this class.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                    </section>
+    </body>
+</document>

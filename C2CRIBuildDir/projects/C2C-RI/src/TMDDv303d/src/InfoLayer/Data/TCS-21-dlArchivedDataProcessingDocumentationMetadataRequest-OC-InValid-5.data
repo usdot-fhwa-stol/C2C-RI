@@ -1,0 +1,319 @@
+ 
+#<!--   
+#       Title:  TCS-21-dlArchivedDataProcessingDocumentationMetadataRequest-OC-InValid-5
+#       Description:  This test case is used to verify the SUTs support of the dlArchivedDataProcessingDocumentationMetadataRequest dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.1.4 [Need for Detector Metadata]. This Test Case tests for an invalid response result. An error response message is expected be returned with an error-code set to 5 (out of range values).
+#       Related Procedure:  TPS-21-dlArchivedDataProcessingDocumentationMetadataRequest-OC
+#       Version/Date: 2014/01/16 02:23:52
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Request Message to be sent to the SUT.  The element values within this message have all be set to &#%& in order to trigger an out of range value response.
+RequestMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether an error response is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of error response that is expected from the SUT.
+ErrorTypeExpected = 5
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.authentication.user-id 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.authentication.user-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.authentication.password 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.authentication.password = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.authentication.operator-id 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.authentication.operator-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-id 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-name 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-location 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-location = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-function 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-function = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.contact-id 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.contact-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.person-name 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.person-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.person-title 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.person-title = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.phone-number 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.phone-alternate 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.phone-alternate = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.mobile-phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.mobile-phone-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.fax-number 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.fax-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.pager-number 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.pager-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.pager-id 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.pager-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.email-address 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.email-address = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.radio-unit 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.radio-unit = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.address-line1 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.address-line1 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.address-line2 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.address-line2 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.city 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.city = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.state 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.zip-code 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.zip-code = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.country 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.organization-contact-details.country = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-id 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.latitude = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.longitude = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-description = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-type = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.city = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.country = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.last-update-time.date 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.last-update-time.date = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.last-update-time.time 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.last-update-time.time = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.last-update-time.offset 
+tmdd:archivedDataProcessingDocumentationMetadataRequestMsg.organization-information.last-update-time.offset = &#%&
+

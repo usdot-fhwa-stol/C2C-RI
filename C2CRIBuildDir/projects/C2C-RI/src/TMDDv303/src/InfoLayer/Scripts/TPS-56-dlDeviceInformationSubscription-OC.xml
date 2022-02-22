@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-56-dlDeviceInformationSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.6.3 [Need to Share Gate Status] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/18 00:22:54-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.6.3 [Need to Share Gate Status] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Publish Gate Status Information (NTRM 3.3.5.7.2.2}.  RECORD this value as: TMDD_N56R768_Publish_Gate_Status_Information_Parameter = ${TMDD_N56R768_Publish_Gate_Status_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine the dialog performance requirement for Subscribe to Gate Status Information (NTRM 3.3.5.7.2.3}.  RECORD this value as: TMDD_N56R769_Subscribe_to_Gate_Status_Information_Parameter = ${TMDD_N56R769_Subscribe_to_Gate_Status_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N56R14_Restrictions___Error_Report_Supported = ${TMDD_N56R14_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Restrictions - Device Status is required by the specification. (NRTM 3.3.5.1.3.1.2.1).  RECORD this information as: TMDD_N56R394_Restrictions___Device_Status_Supported = ${TMDD_N56R394_Restrictions___Device_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Unique Identifier of the Controlling Center is required by the specification. (NRTM 3.3.5.1.3.1.2.2).  RECORD this information as: TMDD_N56R395_Unique_Identifier_of_the_Controlling_Center_Supported = ${TMDD_N56R395_Unique_Identifier_of_the_Controlling_Center_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Device Communications Status is required by the specification. (NRTM 3.3.5.1.3.1.2.3).  RECORD this information as: TMDD_N56R396_Device_Communications_Status_Supported = ${TMDD_N56R396_Device_Communications_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Operator Identifier - Device Status is required by the specification. (NRTM 3.3.5.1.3.1.2.4).  RECORD this information as: TMDD_N56R397_Operator_Identifier___Device_Status_Supported = ${TMDD_N56R397_Operator_Identifier___Device_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Event Identifier - Device Status is required by the specification. (NRTM 3.3.5.1.3.1.2.5).  RECORD this information as: TMDD_N56R398_Event_Identifier___Device_Status_Supported = ${TMDD_N56R398_Event_Identifier___Device_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Event Response Plan - Device Status is required by the specification. (NRTM 3.3.5.1.3.1.2.6).  RECORD this information as: TMDD_N56R399_Event_Response_Plan___Device_Status_Supported = ${TMDD_N56R399_Event_Response_Plan___Device_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Device Status Date and Time Change Information is required by the specification. (NRTM 3.3.5.1.3.1.2.7).  RECORD this information as: TMDD_N56R400_Device_Status_Date_and_Time_Change_Information_Supported = ${TMDD_N56R400_Device_Status_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03c" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 12 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 14 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 15 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 16 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 17 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 18 CONFIGURE: Define the subscription message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 19 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 20 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 21 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlDeviceInformationSubscription RESPONSETIMEREQUIRED= SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlDeviceInformationSubscription" functionId="dlDeviceInformationSubscription" RESPONSETIMEREQUIRED="60000" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 22 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 22.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps.  Note:If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 22.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlGateStatusUpdate RESPONSETIMEREQUIRED=TMDD_N56R768_Publish_Gate_Status_Information_Parameter PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlGateStatusUpdate" functionId="dlGateStatusUpdate" RESPONSETIMEREQUIRED="${TMDD_N56R768_Publish_Gate_Status_Information_Parameter}" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 22.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 22.1.2.1 VERIFY that a device-status-header data frame exists within each instance of data frame gateStatusMsg.gate-status-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="device-status-header" instanceName="tmdd:gateStatusMsg.gate-status-item" elementType="data-frame" functionId="Looking for gateStatusMsg.gate-status-item"/>
+                         </testStep>
+                         <testStep functionId="Step 22.1.2.2 VERIFY that an organization-information data frame exists within each instance of data frame gateStatusMsg.gate-status-item.device-status-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-information" instanceName="tmdd:gateStatusMsg.gate-status-item.device-status-header" elementType="data-frame" functionId="Looking for gateStatusMsg.gate-status-item.device-status-header"/>
+                         </testStep>
+                         <testStep functionId="Step 22.1.2.3 VERIFY that a device-id data element exists within each instance of data frame gateStatusMsg.gate-status-item.device-status-header" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="device-id" instanceName="tmdd:gateStatusMsg.gate-status-item.device-status-header" elementType="data-element" functionId="Looking for gateStatusMsg.gate-status-item.device-status-header"/>
+                         </testStep>
+                         <testStep functionId="Step 22.1.2.4 VERIFY that a gateStatusMsg message was received." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="gateStatusMsg" instanceName="tmdd:gateStatusMsg" elementType="message" functionId="Looking for gateStatusMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 22.1.2.5 IF TMDD_N56R394_Restrictions___Device_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N56R394_Restrictions___Device_Status_Supported}">
+                              <testStep functionId="Step 22.1.2.5.1 VERIFY that a restrictions data frame exists within each instance of data frame gateStatusMsg.gate-status-item.device-status-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="restrictions" instanceName="tmdd:gateStatusMsg.gate-status-item.device-status-header" elementType="data-frame" functionId="Looking for gateStatusMsg.gate-status-item.device-status-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 22.1.2.6 IF TMDD_N56R395_Unique_Identifier_of_the_Controlling_Center_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N56R395_Unique_Identifier_of_the_Controlling_Center_Supported}">
+                              <testStep functionId="Step 22.1.2.6.1 VERIFY that a center-id data element exists within each instance of data frame gateStatusMsg.gate-status-item.device-status-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="center-id" instanceName="tmdd:gateStatusMsg.gate-status-item.device-status-header" elementType="data-element" functionId="Looking for gateStatusMsg.gate-status-item.device-status-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 22.1.2.7 IF TMDD_N56R396_Device_Communications_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N56R396_Device_Communications_Status_Supported}">
+                              <testStep functionId="Step 22.1.2.7.1 VERIFY that a device-comm-status data element exists within each instance of data frame gateStatusMsg.gate-status-item.device-status-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="device-comm-status" instanceName="tmdd:gateStatusMsg.gate-status-item.device-status-header" elementType="data-element" functionId="Looking for gateStatusMsg.gate-status-item.device-status-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 22.1.2.8 IF TMDD_N56R397_Operator_Identifier___Device_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N56R397_Operator_Identifier___Device_Status_Supported}">
+                              <testStep functionId="Step 22.1.2.8.1 VERIFY that an operator-id data element exists within each instance of data frame gateStatusMsg.gate-status-item.device-status-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="operator-id" instanceName="tmdd:gateStatusMsg.gate-status-item.device-status-header" elementType="data-element" functionId="Looking for gateStatusMsg.gate-status-item.device-status-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 22.1.2.9 IF TMDD_N56R398_Event_Identifier___Device_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N56R398_Event_Identifier___Device_Status_Supported}">
+                              <testStep functionId="Step 22.1.2.9.1 VERIFY that an event-id data element exists within each instance of data frame gateStatusMsg.gate-status-item.device-status-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-id" instanceName="tmdd:gateStatusMsg.gate-status-item.device-status-header" elementType="data-element" functionId="Looking for gateStatusMsg.gate-status-item.device-status-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 22.1.2.10 IF TMDD_N56R399_Event_Response_Plan___Device_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N56R399_Event_Response_Plan___Device_Status_Supported}">
+                              <testStep functionId="Step 22.1.2.10.1 VERIFY that a response-plan-id data element exists within each instance of data frame gateStatusMsg.gate-status-item.device-status-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="response-plan-id" instanceName="tmdd:gateStatusMsg.gate-status-item.device-status-header" elementType="data-element" functionId="Looking for gateStatusMsg.gate-status-item.device-status-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 22.1.2.11 IF TMDD_N56R400_Device_Status_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N56R400_Device_Status_Date_and_Time_Change_Information_Supported}">
+                              <testStep functionId="Step 22.1.2.11.1 VERIFY that a last-comm-time data frame exists within each instance of data frame gateStatusMsg.gate-status-item.device-status-header" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="last-comm-time" instanceName="tmdd:gateStatusMsg.gate-status-item.device-status-header" elementType="data-frame" functionId="Looking for gateStatusMsg.gate-status-item.device-status-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 22.1.2.12 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N56R394_Restrictions___Device_Status_Supported,restrictions,tmdd:gateStatusMsg.gate-status-item.device-status-header;TMDD_N56R395_Unique_Identifier_of_the_Controlling_Center_Supported,center-id,tmdd:gateStatusMsg.gate-status-item.device-status-header;TMDD_N56R396_Device_Communications_Status_Supported,device-comm-status,tmdd:gateStatusMsg.gate-status-item.device-status-header;TMDD_N56R397_Operator_Identifier___Device_Status_Supported,operator-id,tmdd:gateStatusMsg.gate-status-item.device-status-header;TMDD_N56R398_Event_Identifier___Device_Status_Supported,event-id,tmdd:gateStatusMsg.gate-status-item.device-status-header;TMDD_N56R399_Event_Response_Plan___Device_Status_Supported,response-plan-id,tmdd:gateStatusMsg.gate-status-item.device-status-header;TMDD_N56R400_Device_Status_Date_and_Time_Change_Information_Supported,last-comm-time,tmdd:gateStatusMsg.gate-status-item.device-status-header;TMDD_N56R14_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 22.1.2.13 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                              <jl:set var="CONTENTVERIFIED" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 22.1.2.14 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlGateStatusUpdate RESPONSETIMEREQUIRED=TMDD_N56R768_Publish_Gate_Status_Information_Parameter CONTENTVERIFIED = CONTENTVERIFIED PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlGateStatusUpdate" functionId="dlGateStatusUpdate" RESPONSETIMEREQUIRED="${TMDD_N56R768_Publish_Gate_Status_Information_Parameter}" CONTENTVERIFIED="${CONTENTVERIFIED}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+          <testStep functionId="Step 23 IF SubscriptionErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 23.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 23.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 23.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 23.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 23.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 23.6 VERIFY that data element error-code is set to SubscriptionErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${SubscriptionErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 23.7 IF TMDD_N56R14_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N56R14_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 23.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 24 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

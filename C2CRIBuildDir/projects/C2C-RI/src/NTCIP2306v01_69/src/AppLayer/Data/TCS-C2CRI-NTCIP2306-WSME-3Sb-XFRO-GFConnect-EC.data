@@ -1,0 +1,50 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSME-3Sb-XFRO-GFConnect-EC
+#       Description:  TCS-C2CRI-NTCIP2306-WSME-3Sb-XFRO-GFConnect-EC
+#       Related Procedure:  null
+#       Version/Date: 2011/11/15 22:59:44
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData3Sb0.wsdl
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Service defined in the WSDL that will be used during the test.
+ServiceName = tmddOCSoapHttpService
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Port defined in the WSDL that is related to the selected Service Name and will be used during the test.
+PortName = tmddOCFtpGetServicePort
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Operation defined in the WSDL that is related to the selected Service Name and will be used during the test.
+OperationName = OP_RIXMLFtpDMSInventory
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The response message that will be used during the test.
+ResponseMessage = <mes:deviceInformationRequestMsg xmlns:mes="http://www.tmdd.org/3/messages"><authentication><user-id>string</user-id><password>string</password><operator-id>string</operator-id></authentication><organization-information><organization-id>string</organization-id><organization-name>string</organization-name><organization-location>stringstri</organization-location><organization-function>string</organization-function><organization-contact-details><contact-id>string</contact-id><person-name>string</person-name><person-title>string</person-title><phone-number>string</phone-number><phone-alternate>string</phone-alternate><mobile-phone-number>string</mobile-phone-number><mobile-phone-id>string</mobile-phone-id><fax-number>string</fax-number><pager-number>string</pager-number><pager-id>string</pager-id><email-address>string</email-address><radio-unit>string</radio-unit><address-line1>string</address-line1><address-line2>string</address-line2><city>string</city><state>st</state><zip-code>string</zip-code><country>string</country></organization-contact-details><center-contact-list><center-contact-details><center-id>string</center-id><center-name>string</center-name><center-location xmlns:lrms="http://www.LRMS-Adopted-02-00-00"><latitude>3</latitude><longitude>3</longitude><horizontalDatum>3</horizontalDatum><height><verticalLevel>2</verticalLevel></height></center-location><center-description>string</center-description><center-type>2</center-type><center-contact-details><contact-id>string</contact-id><person-name>string</person-name><person-title>string</person-title><phone-number>string</phone-number><phone-alternate>string</phone-alternate><mobile-phone-number>string</mobile-phone-number><mobile-phone-id>string</mobile-phone-id><fax-number>string</fax-number><pager-number>string</pager-number><pager-id>string</pager-id><email-address>string</email-address><radio-unit>string</radio-unit><address-line1>string</address-line1><address-line2>string</address-line2><city>string</city><state>st</state><zip-code>string</zip-code><country>string</country></center-contact-details></center-contact-details></center-contact-list><last-update-time><date>stringst</date><time>string</time><offset>strin</offset></last-update-time></organization-information><organization-requesting><organization-id>string</organization-id><organization-name>string</organization-name><organization-location>stringstri</organization-location><organization-function>string</organization-function><organization-contact-details><contact-id>string</contact-id><person-name>string</person-name><person-title>string</person-title><phone-number>string</phone-number><phone-alternate>string</phone-alternate><mobile-phone-number>string</mobile-phone-number><mobile-phone-id>string</mobile-phone-id><fax-number>string</fax-number><pager-number>string</pager-number><pager-id>string</pager-id><email-address>string</email-address><radio-unit>string</radio-unit><address-line1>string</address-line1><address-line2>string</address-line2><city>string</city><state>st</state><zip-code>string</zip-code><country>string</country></organization-contact-details><center-contact-list><center-contact-details><center-id>string</center-id><center-name>string</center-name><center-location xmlns:lrms="http://www.LRMS-Adopted-02-00-00"><latitude>3</latitude><longitude>3</longitude><horizontalDatum>nad83</horizontalDatum><height><verticalLevel>2</verticalLevel></height></center-location><center-description>string</center-description><center-type>2</center-type><center-contact-details><contact-id>string</contact-id><person-name>string</person-name><person-title>string</person-title><phone-number>string</phone-number><phone-alternate>string</phone-alternate><mobile-phone-number>string</mobile-phone-number><mobile-phone-id>string</mobile-phone-id><fax-number>string</fax-number><pager-number>string</pager-number><pager-id>string</pager-id><email-address>string</email-address><radio-unit>string</radio-unit><address-line1>string</address-line1><address-line2>string</address-line2><city>string</city><state>st</state><zip-code>string</zip-code><country>string</country></center-contact-details></center-contact-details></center-contact-list><last-update-time><date>stringst</date><time>string</time><offset>strin</offset></last-update-time></organization-requesting><device-type>7</device-type><device-information-type>insert-extension-values-here</device-information-type><device-filter><device-id-list><device-id>string</device-id></device-id-list><network-id-list><network-id>string</network-id></network-id-list><link-id-list><link>string</link></link-id-list><link-designator-list><link-designator>string</link-designator></link-designator-list><linear-reference>string</linear-reference><section-id-list><section-id>string</section-id></section-id-list><pattern-id-list><pattern-id>string</pattern-id></pattern-id-list></device-filter></mes:deviceInformationRequestMsg>
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a transport error is expected.
+TransportErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the type of transport error expected.
+TransportErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+

@@ -1,0 +1,12 @@
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+  <testStep functionId="Step 1.  This step does nothing.">	
+  </testStep>
+
+  <testStep functionId="Step 2.  This pauses the test and waits for user confirmation.">
+	<ri-pause functionId="This is the pause message text." />	
+  </testStep>
+
+  <testStep functionId="Step 3.  This step resumes the test after the pause.">	
+  </testStep>
+</testprocedure>
+

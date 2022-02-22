@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - JUnit Plug-in</title>
+    </properties>
+
+    <meta name="keyword" content="JUnit, jameleon, JUnit Custom Tags, Jameleon JUnit Tag, JUnit Sessioni Tag, Test, Testing"/>
+
+    <body>
+        <section name="What is the JUnit Plug-in">
+            <p>
+                The JUnit plug-in is meant for those tests that are interface-independent. It is also a plug-in in it's simplest
+                form. Some examples of using the JUnit plug-in might include:
+                <ul>
+                    <li>Create a tag to manipulate or compare files.</li>
+                    <li>Compare two variables.</li>
+                    <li>Create an object that can be used in the context instead of using individual values from
+                        and external data source</li>
+                    <li>Connect to a remote sever and start up a service.</li>
+                    <li>Connect to a remote sever and search for a resource.</li>
+                </ul>
+            </p>
+        </section>
+        <section name="JUnit Tags Syntax Reference">
+            <p>
+                <font size="-2">
+                <table>
+                    <tr>
+                        <td><a href="#ju-session tag">&lt;ju-session/&gt;</a></td>
+                        <td>The JUnit plug-in provided session tag</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ju-assert-equals tag">&lt;ju-assert-equals/&gt;</a></td>
+                        <td>checks the equality of two values.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ju-assert-true tag">&lt;ju-assert-true/&gt;</a></td>
+                        <td>Checks that provided Expression is true.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ju-assert-not-null tag">&lt;ju-assert-not-null/&gt;</a></td>
+                        <td>Checks that the given value is not null.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#ju-assert-null tag">&lt;ju-assert-null/&gt;</a></td>
+                        <td>Checks that the given value is null.</td>
+                    </tr>
+                </table>
+                </font>
+            </p>
+        </section>
+        <section name="JUnit Tags">
+            <subsection name="ju-session tag">
+                <p>
+                    This is the JUnit Session Tag. It has attributes outside from the 
+                    <a href="sessionTag.html#Session Tag Common Attributes">Session Tag Common Attributes</a>
+                </p>
+            </subsection>
+            <subsection name="ju-assert-equals tag">
+                <p>
+                    This tag is used to compare two values:
+                    <table>
+                        <tr>
+                            <th>Attribuate Name</th>
+                            <th>Attribuate Description</th>
+                        </tr>
+                        <tr>
+                            <td>expected</td>
+                            <td>The expected value</td>
+                        </tr>
+                        <tr>
+                            <td>actual</td>
+                            <td>The actual value</td>
+                        </tr>
+                        <tr>
+                            <td>msg</td>
+                            <td>The message to be printed out if the test fails</td>
+                        </tr>
+                    </table>
+                </p>
+                <p>
+                    Some examples:
+                    <source>                                                                                                    
+&lt;ju-assert-equals functionId="Compare 1 against 1"
+    expected="1"
+    actual="1"/&gt;
+&lt;ju-assert-equals functionId="Compare one against two"
+    expected="one"
+    actual="two"
+    msg="Numbers as Words"/&gt;
+                    </source>
+                </p>
+            </subsection>
+            <subsection name="ju-assert-true tag">
+                <p>
+                    This tag is used to do a boolean compare:
+                    <table>
+                        <tr>
+                            <th>Attribuate Name</th>
+                            <th>Attribuate Description</th>
+                        </tr>
+                        <tr>
+                            <td>test</td>
+                            <td>An expression with a boolean results.</td>
+                        </tr>
+                        <tr>
+                            <td>msg</td>
+                            <td>The message to be printed out if the test fails</td>
+                        </tr>
+                    </table>
+                </p>
+                <p>
+                    Some examples:
+                    <source>                                                                                                    
+&lt;ju-assert-true functionId="Compare 1 against 1"
+    test="${1 == 1}"/&gt;
+&lt;jelly:set var="counter" value="4"/&gt;
+&lt;ju-assert-true functionId="Compare a context variable with 4"
+    test="${counter == 4}"/&gt;
+                    </source>
+                </p>
+            </subsection>
+            <subsection name="ju-assert-not-null tag">
+                <p>
+                    This tag is used to check that a provided value is not null.
+                    <table>
+                        <tr>
+                            <th>Attribuate Name</th>
+                            <th>Attribuate Description</th>
+                        </tr>
+                        <tr>
+                            <td>value</td>
+                            <td>The value to check for null</td>
+                        </tr>
+                        <tr>
+                            <td>msg</td>
+                            <td>The message to be printed out if the test fails</td>
+                        </tr>
+                    </table>
+                </p>
+                <p>
+                    Example:
+                    <source>                                                                                                    
+&lt;ju-assert-not-null functionId="Check that a non-existent context variable is not null"
+    value="${nonExistentVariable}"
+    msg="value was null!"/&gt;
+                    </source>
+                </p>
+            </subsection>
+            <subsection name="ju-assert-null tag">
+                <p>
+                    This tag is used to check that a provided value is null.
+                    <table>
+                        <tr>
+                            <th>Attribuate Name</th>
+                            <th>Attribuate Description</th>
+                        </tr>
+                        <tr>
+                            <td>value</td>
+                            <td>The value to check for null</td>
+                        </tr>
+                        <tr>
+                            <td>msg</td>
+                            <td>The message to be printed out if the test fails</td>
+                        </tr>
+                    </table>
+                </p>
+                <p>
+                    Example:
+                    <source>                                                                                                    
+&lt;ju-assert-null functionId="Check that a context variable is null"
+    value="${someVariable}"
+    msg="value was null!"/&gt;
+                    </source>
+                </p>
+            </subsection>
+        </section>
+    </body>
+</document>

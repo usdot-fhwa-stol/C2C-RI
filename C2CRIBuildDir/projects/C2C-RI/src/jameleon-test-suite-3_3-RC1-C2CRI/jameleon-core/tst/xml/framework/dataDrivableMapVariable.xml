@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<!--
+    Jameleon - An automation testing tool..
+    Copyright (C) 2003-2006 Christian W. Hargraves (engrean@hotmail.com)
+    
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+<testcase xmlns="jelly:jameleon">
+  <test-case-summary>
+    Tests that subclasses of AbstractDataDrivableTag can map their own variables via the getKeyMapping() method
+  </test-case-summary>
+  <test-case-author>Christian Hargraves</test-case-author>
+  <test-case-level>FUNCTIONAL</test-case-level>
+  <functional-point-tested>data</functional-point-tested>
+  <application-tested>framework</application-tested>
+
+   <precondition>
+    <ju-session application="sql3">
+      <sql-update 
+          functionId="Create a TEST table" 
+          sqlUpdateSql="Create Table DATA (var1 varchar(5), var2 varchar(5))"/>
+      <sql-update 
+          functionId="Insert a row into TEST" 
+          sqlUpdateSql="Insert INTO DATA values ('true', 'true')"/>
+      <sql-update 
+          functionId="Insert a row into TEST" 
+          sqlUpdateSql="Insert INTO DATA values ('true', 'true')"/>
+    </ju-session>
+  </precondition>
+
+  <ju-session application="sql3">
+      <sql-test
+         var1ContextName="firstVar"
+         var2ContextName="secondVar"
+         jdbcUsername="${jdbc.username}"
+         jdbcPassword="${jdbc.password}"
+         jdbcUrl="${jdbc.url}"
+         jdbcDriver="${jdbc.driver}"
+         countRow="true">
+        <ju-assert-not-null 
+            functionId="check that ${firstVar} isn't null"
+            value="${firstVar}"/>
+        <ju-assert-not-null 
+            functionId="check that ${secondVar} isn't null"
+            value="${secondVar}"/>
+        <ju-assert-equals 
+            functionId="compare ${firstVar} with ${secondVar}"
+            expected="${firstVar}"
+            actual="${secondVar}"/>
+      </sql-test>
+  </ju-session>
+
+  <postcondition>
+    <ju-session application="sql3">
+      <sql-update 
+          functionId="Drop the DATA table" 
+          sqlUpdateSql="Drop Table DATA"/>
+    </ju-session>
+  </postcondition>
+
+</testcase>

@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<!--
+    Jameleon - An automation testing tool..
+    Copyright (C) 2003-2006 Christian W. Hargraves (engrean@hotmail.com)     
+
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+<project name="jameleon-core" default="main" basedir=".">
+  <property name="projectTag" value="${ant.project.name}" />
+  <property name="htdocs.baseDir" value="htdocs" />
+  <property name="jameleon.core" value="true"/>
+  <import file="./src/xml/standard-build.xml"/>
+
+  <target name="acceptance" depends="init.taskdefs, copyJameleonConf">
+    <delete dir="tst/_tmp"/>
+    <jmln-test debug="true" printTestSuiteSummary="false" throwExceptionOnFailure="false">
+      <fileset dir="tst/xml/acceptance">
+        <include name="*.xml"/>
+      </fileset>
+    </jmln-test>
+    <jmln-test debug="true" printTestSuiteSummary="false" throwExceptionOnFailure="false">
+      <fileset dir="tst/xml/framework">
+        <include name="passVar.xml"/>
+      </fileset>
+      <variable name="message" value="hello"/>
+    </jmln-test>
+    <jmln-test debug="true">
+      <fileset dir="tst/xml/">
+        <include name="antTestScript.xml"/>
+      </fileset>
+      <config name="testEnvironment" value="dev"/>
+      <config name="organization" value="sf"/>
+    </jmln-test>
+  </target>
+
+  <target name="test.ant.task" depends="init.taskdefs" description="Executes a script using the testEnvironment and organization">
+  </target>
+  
+  <!--     PACKAGING TARGETS        -->
+  <target name="package.releases" description="creates a src, bin and tutorial zip file"
+              depends="package.release.src, package.release.bin, package.test-suite, package.htdocs">
+    <antcall target="copy.zip.files">
+        <param name="plugin" value="jameleon-core"/>
+    </antcall>
+  </target>
+
+  <target name="copy.zip.files">
+      <copy todir="target">
+          <fileset dir="../${plugin}">
+              <include name="*.zip"/>
+          </fileset>
+      </copy>
+  </target>
+
+  <target name="build.plugin">
+      <ant dir="../${plugin}" antfile="../${plugin}/build.xml" target="package.release.src" inheritAll="false"/>
+      <ant dir="../${plugin}" antfile="../${plugin}/build.xml" inheritAll="false"/>
+      <ant dir="../${plugin}" antfile="../${plugin}/build.xml" target="package.release.bin" inheritAll="false"/>
+      <antcall target="copy.zip.files">
+          <param name="plugin" value="${plugin}"/>
+      </antcall>
+  </target>
+
+  <target name="build.htmlunit" description="builds the htmlunit-plugin">
+    <antcall target="build.plugin">
+        <param name="plugin" value="htmlunit-plugin"/>
+    </antcall>
+  </target>
+
+  <target name="build.httpunit" description="builds the httpunit-plugin">
+      <antcall target="build.plugin">
+          <param name="plugin" value="httpunit-plugin"/>
+      </antcall>
+  </target>
+
+  <target name="build.jagacy" description="builds the jagacy-plugin">
+      <antcall target="build.plugin">
+          <param name="plugin" value="jagacy-plugin"/>
+      </antcall>
+  </target>
+
+  <target name="build.jiffie" description="builds the jiffie-plugin">
+      <antcall target="build.plugin">
+          <param name="plugin" value="jiffie-plugin"/>
+      </antcall>
+  </target>
+
+  <target name="build.jwebunit" description="builds the jwebunit-plugin">
+      <antcall target="build.plugin">
+          <param name="plugin" value="jwebunit-plugin"/>
+      </antcall>
+  </target>
+
+  <target name="build.selenium" description="builds the selenium-plugin">
+      <antcall target="build.plugin">
+          <param name="plugin" value="selenium-plugin"/>
+      </antcall>
+  </target>
+
+  <target name="build.watij" description="builds the watij-plugin">
+      <antcall target="build.plugin">
+          <param name="plugin" value="watij-plugin"/>
+      </antcall>
+  </target>
+
+  <target name="build.plugins" depends="build.htmlunit, build.httpunit, build.jagacy, build.jiffie, build.jwebunit, build.selenium, build.watij"/>
+
+  <target name="clean.htmlunit" description="cleans the htmlunit-plugin">
+    <ant antfile="../htmlunit-plugin/build.xml" target="clean" inheritAll="false"/>
+  </target>
+
+  <target name="clean.httpunit" description="cleans the httpunit-plugin">
+    <ant antfile="../httpunit-plugin/build.xml" target="clean" inheritAll="false"/>
+  </target>
+
+  <target name="clean.jagacy" description="cleans the jagacy-plugin">
+    <ant antfile="../jagacy-plugin/build.xml" target="clean" inheritAll="false"/>
+  </target>
+
+  <target name="clean.jiffie" description="cleans the jiffe-plugin">
+    <ant antfile="../jiffie-plugin/build.xml" target="clean" inheritAll="false"/>
+  </target>
+
+  <target name="clean.jwebunit" description="cleans the jwebunit-plugin">
+    <ant antfile="../jwebunit-plugin/build.xml" target="clean" inheritAll="false"/>
+  </target>
+
+  <target name="clean.selenium" description="cleans the selenium-plugin">
+    <ant antfile="../selenium-plugin/build.xml" target="clean" inheritAll="false"/>
+  </target>
+
+  <target name="clean.watij" description="cleans the watij-plugin">
+    <ant antfile="../watij-plugin/build.xml" target="clean" inheritAll="false"/>
+  </target>
+
+  <target name="clean.plugins" depends="clean.htmlunit, clean.httpunit, clean.jagacy, clean.jiffie, clean.jwebunit, clean.selenium, clean.watij"/>
+
+  <target name="maven.site" depends="package.test-suite" description="builds site docs">
+      <maven-site dir="."/>
+      <maven-site dir="../htmlunit-plugin"/>
+      <maven-site dir="../httpunit-plugin"/>
+      <maven-site dir="../jagacy-plugin"/>
+      <maven-site dir="../jiffie-plugin"/>
+      <maven-site dir="../jwebunit-plugin"/>
+      <maven-site dir="../selenium-plugin"/>
+      <maven-site dir="../watij-plugin"/>
+  </target>
+
+  <target name="package.htdocs" depends="maven.site" description="creates a src release">
+    <property name="docs" value="target/docs"/>
+    <zip destfile="htdocs.zip">
+      <zipfileset dir="${docs}" prefix="htdocs"/>
+      <zipfileset dir="../htmlunit-plugin/${docs}" prefix="htdocs/htmlunit-plugin"/>
+      <zipfileset dir="../httpunit-plugin/${docs}" prefix="htdocs/httpunit-plugin"/>
+      <zipfileset dir="../jagacy-plugin/${docs}" prefix="htdocs/jagacy-plugin"/>
+      <zipfileset dir="../jiffie-plugin/${docs}" prefix="htdocs/jiffie-plugin"/>
+      <zipfileset dir="../jwebunit-plugin/${docs}" prefix="htdocs/jwebunit-plugin"/>
+      <zipfileset dir="../selenium-plugin/${docs}" prefix="htdocs/selenium-plugin"/>
+      <zipfileset dir="../watij-plugin/${docs}" prefix="htdocs/watij-plugin"/>
+    </zip>
+  </target>
+
+  <target name="package.test-suite" description="creates a test-suite release" depends="main">
+    <antcall target="build.plugins"/>
+    <antcall target="cleanTest"/>
+    <antcall target="cleanLogs"/>
+    <fixcrlf srcdir="src/test-suite"
+             eol="lf"
+             eof="remove"
+             includes="*.sh"
+            />
+    <zip destfile="jameleon-test-suite-${test.suite.version}.zip">
+      <zipfileset dir="${dist.dir}" prefix="jameleon-test-suite/lib">
+        <include name="jameleon-core.jar"/>
+        <include name="jameleon-launcher.jar"/>
+      </zipfileset>
+      <zipfileset dir="lib" prefix="jameleon-test-suite/lib" filemode="755">
+        <include name="**"/>
+      </zipfileset>
+      <zipfileset dir="../htmlunit-plugin/${dist.dir}" prefix="jameleon-test-suite/lib">
+        <include name="htmlunit-plugin.jar"/>
+      </zipfileset>
+      <zipfileset dir="../htmlunit-plugin/lib" prefix="jameleon-test-suite/lib">
+        <include name="*.jar"/>
+      </zipfileset>
+      <zipfileset dir="../httpunit-plugin/${dist.dir}" prefix="jameleon-test-suite/lib">
+        <include name="httpunit-plugin.jar"/>
+      </zipfileset>
+      <zipfileset dir="../httpunit-plugin/lib" prefix="jameleon-test-suite/lib">
+        <exclude name="js.jar"/>
+        <exclude name="nekohtml.jar"/>
+        <include name="*.jar"/>
+      </zipfileset>
+      <zipfileset dir="../jagacy-plugin/${dist.dir}" prefix="jameleon-test-suite/lib">
+        <include name="jagacy-plugin.jar"/>
+      </zipfileset>
+      <zipfileset dir="../jagacy-plugin/lib" prefix="jameleon-test-suite/lib">
+        <include name="*.jar"/>
+      </zipfileset>
+      <zipfileset dir="../jiffie-plugin/${dist.dir}" prefix="jameleon-test-suite/lib">
+        <include name="jiffie-plugin.jar"/>
+      </zipfileset>
+      <zipfileset dir="../jiffie-plugin/lib" prefix="jameleon-test-suite/lib">
+        <exclude name="jaxen*.jar"/>
+        <include name="*.jar"/>
+      </zipfileset>
+      <zipfileset dir="../jiffie-plugin/lib" prefix="jameleon-test-suite/lib" filemode="755">
+        <include name="*.dll"/>
+      </zipfileset>
+      <zipfileset dir="../jwebunit-plugin/${dist.dir}" prefix="jameleon-test-suite/lib">
+        <include name="jwebunit-plugin.jar"/>
+      </zipfileset>
+      <zipfileset dir="../jwebunit-plugin/lib" prefix="jameleon-test-suite/lib">
+        <include name="jwebunit*.jar"/>
+      </zipfileset>
+      <zipfileset dir="../selenium-plugin/${dist.dir}" prefix="jameleon-test-suite/lib">
+        <include name="selenium-plugin*.jar"/>
+      </zipfileset>
+      <zipfileset dir="../selenium-plugin/lib" prefix="jameleon-test-suite/lib">
+        <include name="*.jar"/>
+      </zipfileset>
+      <zipfileset dir="../watij-plugin/${dist.dir}" prefix="jameleon-test-suite/lib">
+        <include name="watij-plugin.jar"/>
+      </zipfileset>
+      <zipfileset dir="../watij-plugin/lib" prefix="jameleon-test-suite/lib">
+        <include name="*.jar"/>
+      </zipfileset>
+      <zipfileset dir="../watij-plugin/lib" prefix="jameleon-test-suite/lib" filemode="755">
+        <include name="*.dll"/>
+      </zipfileset>
+      <zipfileset dir="src/test-suite" prefix="jameleon-test-suite">
+        <include name="build.xml"/>
+        <include name="upgrade.xml"/>
+        <include name="build.properties"/>
+        <include name="jameleon.conf"/>
+      </zipfileset>
+      <zipfileset dir="src/test-suite" prefix="jameleon-test-suite" filemode="755">
+        <include name="build.sh"/>
+        <include name="build.bat"/>
+        <include name="jameleon.sh"/>
+        <include name="jameleon.bat"/>
+      </zipfileset>
+      <zipfileset dir="src/test-suite" prefix="jameleon-test-suite">
+        <include name="README.txt"/>
+      </zipfileset>
+      <zipfileset dir="src/test-suite" prefix="jameleon-test-suite/scripts">
+        <include name="*-sourceforge.xml"/>
+      </zipfileset>
+
+      <zipfileset dir="" prefix="jameleon-test-suite/data">
+        <exclude name="**/*"/>
+      </zipfileset>
+      <zipfileset dir="" prefix="jameleon-test-suite/res">
+        <exclude name="**/*"/>
+      </zipfileset>
+      <zipfileset dir="" prefix="jameleon-test-suite/src/java">
+        <exclude name="**/*"/>
+      </zipfileset>
+    </zip>
+  </target>
+
+  <!--
+     Test targets
+  -->
+
+  <target name="test.mapvariables">
+    <jmln-test printTestSuiteSummary="false" >
+      <fileset dir="tst/xml/acceptance">
+        <include name="mapVariable*.xml"/>
+      </fileset>
+    </jmln-test>
+  </target>
+
+  <target name="test.prop">
+    <jmln-test printTestSuiteSummary="false" >
+      <fileset dir="tst/xml/acceptance">
+        <include name="properties*.xml"/>
+        <include name="propsName.xml"/>
+        <include name="appNamePropertiesNoApplicationsProperties.xml"/>
+      </fileset>
+    </jmln-test>
+  </target>
+
+  <target name="test.csv">
+    <jmln-test printTestSuiteSummary="false" >
+      <fileset dir="tst/xml/acceptance">
+        <include name="csv*.xml"/>
+      </fileset>
+    </jmln-test>
+  </target>
+
+  <target name="print.test.summary">
+    <jmln-test printTestSuiteSummary="true" >
+      <fileset dir="tst/xml/acceptance">
+        <exclude name="*.xml"/>
+      </fileset>
+    </jmln-test>
+  </target>
+
+  <target name="test.suites" depends="init.taskdefs, test.mapvariables, test.prop, test.csv, print.test.summary"/>
+
+  <target name="test.threaded" depends="init.taskdefs">
+    <parallel>
+      <antcall target="test.mapvariables"/>
+      <sequential>
+        <antcall target="test.prop"/>
+      </sequential>
+      <sequential>
+        <antcall target="test.csv"/>
+      </sequential>
+    </parallel>
+    <antcall target="print.test.summary"/>
+  </target>
+
+  <macrodef name="maven-site">
+    <attribute name="dir"/>
+    <sequential>
+     <exec dir="@{dir}" executable="${ENV.MAVEN_HOME}/bin/maven.bat">
+          <arg line="site"/>
+      </exec>
+    </sequential>
+  </macrodef>
+
+</project>

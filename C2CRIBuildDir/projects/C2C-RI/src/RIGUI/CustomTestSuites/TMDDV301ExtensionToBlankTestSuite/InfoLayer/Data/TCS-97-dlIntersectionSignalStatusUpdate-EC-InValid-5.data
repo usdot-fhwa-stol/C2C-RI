@@ -1,0 +1,624 @@
+ 
+#<!--   
+#       Title:  TCS-97-dlIntersectionSignalStatusUpdate-EC-InValid-5
+#       Description:  This test case is used to verify the SUTs support of the dlIntersectionSignalStatusUpdate dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.6.10.12 [Need to Monitor Signal Operation]. This Test Case tests for a InValid (5) response result.
+#       Related Procedure:  TPS-97-dlIntersectionSignalStatusUpdate-EC
+#       Version/Date: 2012/02/14 23:23:20
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Publication Message to be sent to the SUT.
+PublicationMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates number of publication message transmissions expected as part of this test.
+PublicationCount = 0
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a Publication  error response is expected from the SUT.
+PublicationErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of Publication response error that is expected from the SUT.
+PublicationErrorTypeExpected = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected user name.
+Username = defaultUser
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected password.
+Password = defaultPassword
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Organization Identifier.
+OrganizationID = defaultOrgID
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the priviledge to access the information requested.
+AllowAccess = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a subscription request error is expected from the SUT.
+SubscriptionErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of subscription request error that is expected from the SUT.
+SubscriptionErrorTypeExpected = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Subscription Response Message to be sent to the SUT.
+SubscriptionResponseMessage = #MESSAGESPEC#SubResponseMessage#MESSAGESPEC#
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.informationalText  BaseType=string  ParentType= c2cMessagePublication
+c2c:c2cMessagePublication.informationalText = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionID  BaseType=string  ParentType= c2cMessagePublication
+c2c:c2cMessagePublication.subscriptionID = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionName  BaseType=string  ParentType= c2cMessagePublication
+c2c:c2cMessagePublication.subscriptionName = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionFrequency  BaseType=unsignedInt  ParentType= c2cMessagePublication
+c2c:c2cMessagePublication.subscriptionFrequency = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionCount  BaseType=unsignedInt  ParentType= c2cMessagePublication
+c2c:c2cMessagePublication.subscriptionCount = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.restrictions.organization-information-forwarding-restrictions  BaseType=anySimpleType  ParentType= Restrictions
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.restrictions.organization-information-forwarding-restrictions = 4
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-id  BaseType=string  ParentType= OrganizationInformation
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-name  BaseType=string  ParentType= OrganizationInformation
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-location  BaseType=string  ParentType= OrganizationInformation
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-location = stringstri
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-function  BaseType=string  ParentType= OrganizationInformation
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-function = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.contact-id  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.person-name  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.person-title  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.phone-number  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.phone-alternate  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-number  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-id  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.fax-number  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.pager-number  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.pager-id  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.email-address  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.radio-unit  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.address-line1  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.address-line2  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.city  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.state  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.zip-code  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.country  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.organization-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-id  BaseType=string  ParentType= OrganizationCenterInformation
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-name  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.latitude  BaseType=Int-latitude32  ParentType= GeoLocation
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.latitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.longitude  BaseType=Int-longitude32  ParentType= Latitude
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.longitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum  BaseType=anySimpleType  ParentType= Longitude
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec  BaseType=decimal  ParentType= ***UnresolvableType****
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec = 1000.00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-description  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-type  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-type = fixed
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country  BaseType=string  ParentType= ContactDetails
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.center-contact-list.center-contact-details.center-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.last-update-time.date  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.last-update-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.last-update-time.time  BaseType=string  ParentType= Date
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.last-update-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.last-update-time.offset  BaseType=string  ParentType= Time
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.organization-information.last-update-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.device-id  BaseType=string  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.device-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.device-status  BaseType=anySimpleType  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.device-status = unavailable
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.center-id  BaseType=string  ParentType= OrganizationCenterInformation
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.center-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.device-comm-status  BaseType=anySimpleType  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.device-comm-status = operational
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.operator-id  BaseType=string  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.operator-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.event-id  BaseType=string  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.event-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.response-plan-id  BaseType=string  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.response-plan-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.last-comm-time.date  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.last-comm-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.last-comm-time.time  BaseType=string  ParentType= Date
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.last-comm-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.last-comm-time.offset  BaseType=string  ParentType= Time
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.device-status-header.last-comm-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.signal-control-source  BaseType=anySimpleType  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.signal-control-source = local time base coordination
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.planned-signal-timing-mode  BaseType=anySimpleType  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.planned-signal-timing-mode = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.current-signal-timing-mode  BaseType=anySimpleType  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.current-signal-timing-mode = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.section-id  BaseType=string  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.section-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.planned-signal-timing-mode-description  BaseType=string  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.planned-signal-timing-mode-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.timing-pattern-id-current  BaseType=string  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.timing-pattern-id-current = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.timing-pattern-description  BaseType=string  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.timing-pattern-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.actuation-mode  BaseType=anySimpleType  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.actuation-mode = fixed-time
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.timing-phase-plan-mode  BaseType=anySimpleType  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.timing-phase-plan-mode = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-planned  BaseType=unsignedByte  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-planned = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-current  BaseType=unsignedByte  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-current = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-previous  BaseType=unsignedByte  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-previous = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-master  BaseType=unsignedByte  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-length-master = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-counter  BaseType=unsignedShort  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-counter = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-counter-master  BaseType=unsignedShort  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.cycle-counter-master = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.offset-reference  BaseType=anySimpleType  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.offset-reference = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.offset-time-planned  BaseType=unsignedByte  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.offset-time-planned = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.offset-time-current  BaseType=unsignedByte  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.offset-time-current = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.offset-time-previous  BaseType=unsignedByte  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.offset-time-previous = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.controller-timestamp.date  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.controller-timestamp.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.controller-timestamp.time  BaseType=string  ParentType= Date
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.controller-timestamp.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.controller-timestamp.offset  BaseType=string  ParentType= Time
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.controller-timestamp.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-split-list.phase-split.phase-identifier  BaseType=unsignedByte  ParentType= Time-offset-utc
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-split-list.phase-split.phase-identifier = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-split-list.phase-split.phase-duration  BaseType=unsignedInt  ParentType= PhaseNumber
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-split-list.phase-split.phase-duration = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.ring-status-list.ring-status.ring-identifier  BaseType=string  ParentType= Intersection-timing-duration
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.ring-status-list.ring-status.ring-identifier = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.ring-status-list.ring-status.ring-status  BaseType=anyType  ParentType= Intersection-timing-duration
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.ring-status-list.ring-status.ring-status = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-number  BaseType=unsignedByte  ParentType= RingStatus
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-number = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-greens  BaseType=unsignedByte  ParentType= PhaseStatusGroupNumber
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-greens = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-yellows  BaseType=unsignedByte  ParentType= PhaseStatusGroupGreens
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-yellows = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-reds  BaseType=unsignedByte  ParentType= PhaseStatusGroupYellows
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-reds = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-walks  BaseType=unsignedByte  ParentType= PhaseStatusGroupReds
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-walks = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-pedclears  BaseType=unsignedByte  ParentType= PhaseStatusGroupWalks
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-pedclears = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-dontwalks  BaseType=unsignedByte  ParentType= PhaseStatusGroupPedClears
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.phase-status.phase-status-group.phase-status-group-dontwalks = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-number  BaseType=unsignedByte  ParentType= PhaseStatusGroupDontWalks
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-number = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-greens  BaseType=unsignedByte  ParentType= OverlapStatusGroupNumber
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-greens = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-yellows  BaseType=unsignedByte  ParentType= OverlapStatusGroupGreens
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-yellows = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-reds  BaseType=unsignedByte  ParentType= OverlapStatusGroupYellows
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.overlap-status.overlap-status-group.overlap-status-group-reds = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.active-special-functions-list.special-functions  BaseType=string  ParentType= OverlapStatusGroupReds
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.active-special-functions-list.special-functions = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.preempt-description  BaseType=string  ParentType= OverlapStatusGroupReds
+tmdd:intersectionSignalStatusMsg.intersection-signal-status-item.preempt-description = string
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-66-dlHARPriorityQueueRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlHARPriorityQueueRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.6 [Need to View HAR Message Queue] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:37:12-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlHARPriorityQueueRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.6 [Need to View HAR Message Queue] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Device Queue is required by the specification. (NRTM 3.3.5.1.7.2.2.1).  RECORD this information as: TMDD_N66R432_Restrictions___Device_Queue_Supported = ${TMDD_N66R432_Restrictions___Device_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Operator Identifier - Device Queue Acknowledge is required by the specification. (NRTM 3.3.5.1.7.2.2.2).  RECORD this information as: TMDD_N66R433_Operator_Identifier___Device_Queue_Acknowledge_Supported = ${TMDD_N66R433_Operator_Identifier___Device_Queue_Acknowledge_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Unique Sequence Number is required by the specification. (NRTM 3.3.5.1.7.2.2.3).  RECORD this information as: TMDD_N66R434_Unique_Sequence_Number_Supported = ${TMDD_N66R434_Unique_Sequence_Number_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Event Identifier - Device Queue is required by the specification. (NRTM 3.3.5.1.7.2.2.4).  RECORD this information as: TMDD_N66R435_Event_Identifier___Device_Queue_Supported = ${TMDD_N66R435_Event_Identifier___Device_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Event Response Plan - Device Queue is required by the specification. (NRTM 3.3.5.1.7.2.2.5).  RECORD this information as: TMDD_N66R436_Event_Response_Plan___Device_Queue_Supported = ${TMDD_N66R436_Event_Response_Plan___Device_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Request Start Date and Time - Device Queue is required by the specification. (NRTM 3.3.5.1.7.2.2.6).  RECORD this information as: TMDD_N66R437_Request_Start_Date_and_Time___Device_Queue_Supported = ${TMDD_N66R437_Request_Start_Date_and_Time___Device_Queue_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Request Expiration Date and Time - Device Queue is required by the specification. (NRTM 3.3.5.1.7.2.2.7).  RECORD this information as: TMDD_N66R438_Request_Expiration_Date_and_Time___Device_Queue_Supported = ${TMDD_N66R438_Request_Expiration_Date_and_Time___Device_Queue_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 9 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 11 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 12 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlHARPriorityQueueRequest RESPONSETIMEREQUIRED=TMDD_N66R826_Send_HAR_Priority_Queue_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlHARPriorityQueueRequest" functionId="dlHARPriorityQueueRequest" RESPONSETIMEREQUIRED="${TMDD_N66R826_Send_HAR_Priority_Queue_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 13 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 13.1 VERIFY that element device-priority-queue-header exists within each instance of hARPriorityQueueMsg.har-priority-queue-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-priority-queue-header" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item" elementType="data-frame" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item"/>
+               </testStep>
+               <testStep functionId="Step 13.2 VERIFY that element device-id exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header" elementType="data-element" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header"/>
+               </testStep>
+               <testStep functionId="Step 13.3 VERIFY that element device-type exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-type" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header" elementType="data-element" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header"/>
+               </testStep>
+               <testStep functionId="Step 13.4 VERIFY that element current-device-priority exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="current-device-priority" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header" elementType="data-element" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header"/>
+               </testStep>
+               <testStep functionId="Step 13.5 VERIFY that element organization-requesting exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-frame" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+               </testStep>
+               <testStep functionId="Step 13.6 VERIFY that element command-request-priority exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="command-request-priority" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-element" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+               </testStep>
+               <testStep functionId="Step 13.7 VERIFY that element hARPriorityQueueMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="hARPriorityQueueMsg" instanceName="tmdd:hARPriorityQueueMsg" elementType="message" functionId="Looking for hARPriorityQueueMsg"/>
+               </testStep>
+               <testStep functionId="Step 13.8 IF TMDD_N66R432_Restrictions___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N66R432_Restrictions___Device_Queue_Supported}">
+                    <testStep functionId="Step 13.8.1 VERIFY that element restrictions exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header" elementType="data-frame" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.9 IF TMDD_N66R433_Operator_Identifier___Device_Queue_Acknowledge_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N66R433_Operator_Identifier___Device_Queue_Acknowledge_Supported}">
+                    <testStep functionId="Step 13.9.1 VERIFY that element operator-id exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operator-id" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-element" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.10 IF TMDD_N66R434_Unique_Sequence_Number_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N66R434_Unique_Sequence_Number_Supported}">
+                    <testStep functionId="Step 13.10.1 VERIFY that element request-id exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="request-id" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-element" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.11 IF TMDD_N66R435_Event_Identifier___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N66R435_Event_Identifier___Device_Queue_Supported}">
+                    <testStep functionId="Step 13.11.1 VERIFY that element event-id exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="event-id" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-element" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.12 IF TMDD_N66R436_Event_Response_Plan___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N66R436_Event_Response_Plan___Device_Queue_Supported}">
+                    <testStep functionId="Step 13.12.1 VERIFY that element response-plan-id exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="response-plan-id" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-element" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.13 IF TMDD_N66R437_Request_Start_Date_and_Time___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N66R437_Request_Start_Date_and_Time___Device_Queue_Supported}">
+                    <testStep functionId="Step 13.13.1 VERIFY that element command-start-time exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="command-start-time" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-frame" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.14 IF TMDD_N66R438_Request_Expiration_Date_and_Time___Device_Queue_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N66R438_Request_Expiration_Date_and_Time___Device_Queue_Supported}">
+                    <testStep functionId="Step 13.14.1 VERIFY that element command-end-time exists within each instance of hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="command-end-time" instanceName="tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item" elementType="data-frame" functionId="Looking for hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.15 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N66R432_Restrictions___Device_Queue_Supported,restrictions,tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header;TMDD_N66R433_Operator_Identifier___Device_Queue_Acknowledge_Supported,operator-id,tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N66R434_Unique_Sequence_Number_Supported,request-id,tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N66R435_Event_Identifier___Device_Queue_Supported,event-id,tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N66R436_Event_Response_Plan___Device_Queue_Supported,response-plan-id,tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N66R437_Request_Start_Date_and_Time___Device_Queue_Supported,command-start-time,tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;TMDD_N66R438_Request_Expiration_Date_and_Time___Device_Queue_Supported,command-end-time,tmdd:hARPriorityQueueMsg.har-priority-queue-item.device-priority-queue-header.device-priority-queue-list.device-priority-queue-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

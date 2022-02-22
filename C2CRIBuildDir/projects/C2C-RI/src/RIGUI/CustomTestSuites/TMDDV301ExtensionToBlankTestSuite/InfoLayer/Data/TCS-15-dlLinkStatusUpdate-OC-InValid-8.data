@@ -1,0 +1,73 @@
+ 
+#<!--   
+#       Title:  TCS-15-dlLinkStatusUpdate-OC-InValid-8
+#       Description:  This test case is used to verify the SUTs support of the dlLinkStatusUpdate dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.2.2 [Need to Share Link State]. This Test Case tests for a InValid (8) response result.
+#       Related Procedure:  TPS-15-dlLinkStatusUpdate-OC
+#       Version/Date: 2012/02/14 22:45:01
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable inicates the number of publication message transmissions the test application is expected to receive as part of this test.
+PublicationsToReceive = 0
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a Publication update error response is expected from the SUT.
+PublicationErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of Publication update error is expected from the SUT.
+PublicationErrorTypeExpected = 8
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Publication Response Message to be sent to the SUT.
+PublicationResponseMessage = #MESSAGESPEC#PubResponseMessage#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication
+AuthenticationCheck =  False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the priviledge to send the information requested.
+AllowAccess = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Subscription Message to be sent to the SUT.
+SubscriptionMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a subscription error response is expected from the SUT.
+SubscriptionErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of subscription error response that is expected from the SUT.
+SubscriptionErrorTypeExpected = 8
+
+
+#GROUP NAME = Values
+

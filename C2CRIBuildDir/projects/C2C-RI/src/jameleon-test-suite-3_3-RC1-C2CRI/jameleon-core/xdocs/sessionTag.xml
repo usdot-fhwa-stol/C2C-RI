@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Session Tags</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, Application, Session, Application Session, Sessioni Tag, Test, Testing, javadocs"/>
+
+    <body>
+        <section name="What is a Session?">
+            <p>
+                A session represents actions on a single Application. A TestCaseTag can contain multiple sessions or SessionTags.
+                SessionTag is abstract since the state it keeps across a single application will depend on the type of application 
+                (web application, GUI application, console application). A web application keeps the state of the application via 
+                cookies or url rewriting. This requires some sort of interface that mimics the behavior of a browser. However, a 
+                GUI application's state or session is kept track of via the application itself which would need a different 
+                interface to connect directly to the applications functionality.
+            </p>
+        </section>
+        <section name="Session Tag Common Attributes">
+            <p>
+                All SessionTags have the same basic properties available to them:
+            </p>
+            <p>
+                <table border="1" cellpadding="1">
+                    <tr>
+                        <th>Property Name:</th>
+                        <th>Description</th>
+                        <th>Required</th>
+                    </tr>
+                    <tr>
+                        <td>application</td>
+                        <td><p>This is set to the name of the application this session will be executed 
+                            against. Values from the <a href="dataDriving.html#Applications properties">
+                            testEnvironment-Applications.properties</a>
+                            file are extracted based on keys that start with the name of this application.
+                            </p>
+                            <p>
+                            For example, if the application name is &quot;google&quot; and the 
+                            testEnvironment is set to &quot;alpha&quot; then the session will look for the 
+                            file alpha-Applications.properties in the CLASSPATH. The file is in the normal 
+                            properties file format (key=value), one <b>key=value</b> per line in the file.</p>
+                            <p>
+                            If the organization is set, then the organization goes before the application 
+                            name when defining the variable. In other words, if test case &quot;SubmitSearch&quot; 
+                            needed to set a variable &quot;searchTerm&quot; to &quot;Jameleon&quot; for 
+                            organization &quot;sourceforge&quot;, and application &quot;search&quot;, then 
+                            the variable name or key would be &quot;sourceforge.search.searchTerm=Jameleon&quot;. 
+                            If organization is not set, then the definition would look like: &quot;search.searchTerm=Jameleon&quot;</p>
+                            <p>
+                            If the testEnvironment was set to alpha, then this variable would need to be 
+                            defined in alpha-Applications.properties. Any variable can be set this same way. 
+                            If a variable is set in the testEnvironment-Applications.properties file, then 
+                            that variable will be available for all test cases that test the corresponding 
+                            application.</p>
+                            Both the HttpUnit plug-in and the JWebUnit plug-in look for two variables to be
+                            set:
+                            <ul>
+                                <li>
+                                    baseUrl - The full hostname ( http://www.google.com/ ) - HttpUnit plug-in
+                                    only requires this to be set.
+                                </li>
+                                <li>
+                                    beginAt - The url that proceeds the baseUrl for this application. This is
+                                    only required by jWebUnit.
+                                </li>
+                            </ul>
+                        </td>
+                        <td>No - however, if planning on using Applications.properties, an application MUST be
+                            set.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a name="organization">organization</a></td>
+                        <td><p>The name of the organization the test case is to be executed against. Only
+                        use this if the test case involves testing different applications ( therefore 
+                        sessions ) where one or more of the applications requires execution in an 
+                        organization different from the one set in the <i>test-case</i> element.</p>
+                        <p>
+                            This might be used for a test case that has multiple sessions and applications
+                            that it is testing. Most of the applications are run against organization &quot;sourceforge&quot;, 
+                            but one of the applications only exists against &quot;freshmeat&quot;. Under 
+                            this scenerio, <i>organization</i> would set to &quot;sourceforge&quot; in the 
+                            test case element, and all of the applications that were to be tested against 
+                            that organization would not define <i>organization</i> at the session level. 
+                            Only the application that was to be tested against &quot;freshmeat&quot; needs 
+                            to define the new organization in the session element. The value of organization 
+                            also influences the location of the data file. </p>
+                            <p>
+                            If the organization is set, the test case will look for a CSV file in the etc/testEnvironment/organization 
+                            directory. For example, when a test case with <i>name</i> set to &quot;ExampleTestCase&quot;, 
+                            <i>testEnvironment</i> set to &quot;stg&quot;, and <i>organization</i> set to &quot;ACME&quot; 
+                            is executed, it will look for a file &quot;etc/stc/ACME/ExampleTestCase.csv.</p></td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><a name="beginSession">beginSession</a></td>
+                        <td><p>This is used to tell the session tag to start the application in the
+                        state provided.</p></td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td><a name="sessionDelay">sessionDelay</a></td>
+                        <td><p>This is used to tell the session tag to wait x milliseconds before any other child tags are executed.
+					 This is useful for when a task to validate takes some time before completion.</p></td>
+                        <td>No</td>
+                    </tr>
+                </table>
+            </p>
+        </section>
+        <section name="Session Plug-in Implementations">
+            <p>
+                Each plug-in must implement their own session tag. The current plug-ins are listed to the left. Please click on the appropriate
+                plug-in for specifics as to how to write tags for that particular plug-in.
+            </p>
+            <p>
+                Please refer to the section on the attributes supported by the base SessionTag <a href="syntax-reference.html#session tags">here.</a>
+            </p>
+        </section>
+        <section name="Writing a Session Tag">
+            <p>
+                Developing a plug-in requires implementing a session tag. Users of plug-ins may skip this section.
+                For the most part, the steps to develop a session tag are documented in the javadocs for 
+                <a href="/apidocs/net/sf/jameleon/SessionTag.html">SessionTag</a>. Please refer there for now.
+            </p>
+            <p>
+                <subsection name="Developing Session Tag Tips">
+                    <p>
+                        Some things to keep in mind when developing a session tag.
+                        <ul>
+                            <li>The plug-in's session tag should not require an extension to use.</li>
+                            <li>Everything it needs should be configurable via the script itself.</li>
+                            <li>If the application type being tested requires some sort of handle,
+                                then create an instance variable which represents this handle and create
+                                corresponding public set and get methods for it.</li>
+                        </ul>
+                    </p>
+                </subsection>
+            </p>
+        </section>
+    </body>
+</document>

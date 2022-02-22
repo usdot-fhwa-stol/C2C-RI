@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-14-dlTrafficNetworkInformationSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlTrafficNetworkInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.4.2.2 [Need to Share Link State] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:15:44-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlTrafficNetworkInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.4.2.2 [Need to Share Link State] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Link Status is required by the specification. (NRTM 3.3.4.3.2.5.2.1).  RECORD this information as: TMDD_N14R281_Restrictions___Link_Status_Supported = ${TMDD_N14R281_Restrictions___Link_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Link Name - Link Status is required by the specification. (NRTM 3.3.4.3.2.5.2.2).  RECORD this information as: TMDD_N14R282_Link_Name___Link_Status_Supported = ${TMDD_N14R282_Link_Name___Link_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Link Direction - Link Status is required by the specification. (NRTM 3.3.4.3.2.5.2.3).  RECORD this information as: TMDD_N14R283_Link_Direction___Link_Status_Supported = ${TMDD_N14R283_Link_Direction___Link_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Lanes Open is required by the specification. (NRTM 3.3.4.3.2.5.2.4).  RECORD this information as: TMDD_N14R284_Lanes_Open_Supported = ${TMDD_N14R284_Lanes_Open_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Roadway Event Source is required by the specification. (NRTM 3.3.4.3.2.5.2.19).  RECORD this information as: TMDD_N14R299_Roadway_Event_Source_Supported = ${TMDD_N14R299_Roadway_Event_Source_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Event Description Time - Link Status is required by the specification. (NRTM 3.3.4.3.2.5.2.37).  RECORD this information as: TMDD_N14R317_Event_Description_Time___Link_Status_Supported = ${TMDD_N14R317_Event_Description_Time___Link_Status_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Link Status Date and Time Change Information is required by the specification. (NRTM 3.3.4.3.2.5.2.38).  RECORD this information as: TMDD_N14R318_Link_Status_Date_and_Time_Change_Information_Supported = ${TMDD_N14R318_Link_Status_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 9 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 11 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 12 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 14 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 15 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 16 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 17 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 18 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlTrafficNetworkInformationSubscription SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlTrafficNetworkInformationSubscription" functionId="dlTrafficNetworkInformationSubscription" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 19 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 19.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 19.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlLinkStatusUpdate RESPONSETIMEREQUIRED=TMDD_N14R276_Publish_Link_Status_Information_Parameter PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlLinkStatusUpdate" functionId="dlLinkStatusUpdate" RESPONSETIMEREQUIRED="${TMDD_N14R276_Publish_Link_Status_Information_Parameter}" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 19.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 19.1.2.1 VERIFY that element linkStatusMsg exists." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="linkStatusMsg" instanceName="tmdd:linkStatusMsg" elementType="message" functionId="Looking for linkStatusMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 19.1.2.2 VERIFY that element organization-information exists within each instance of linkStatusMsg.link-status-item" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-information" instanceName="tmdd:linkStatusMsg.link-status-item" elementType="data-frame" functionId="Looking for linkStatusMsg.link-status-item"/>
+                         </testStep>
+                         <testStep functionId="Step 19.1.2.3 VERIFY that element network-id exists within each instance of linkStatusMsg.link-status-item.link-status-list.link" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="network-id" instanceName="tmdd:linkStatusMsg.link-status-item.link-status-list.link" elementType="data-element" functionId="Looking for linkStatusMsg.link-status-item.link-status-list.link"/>
+                         </testStep>
+                         <testStep functionId="Step 19.1.2.4 VERIFY that element link-id exists within each instance of linkStatusMsg.link-status-item.link-status-list.link" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="link-id" instanceName="tmdd:linkStatusMsg.link-status-item.link-status-list.link" elementType="data-element" functionId="Looking for linkStatusMsg.link-status-item.link-status-list.link"/>
+                         </testStep>
+                         <testStep functionId="Step 19.1.2.5 VERIFY that element link-status exists within each instance of linkStatusMsg.link-status-item.link-status-list.link" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="link-status" instanceName="tmdd:linkStatusMsg.link-status-item.link-status-list.link" elementType="data-element" functionId="Looking for linkStatusMsg.link-status-item.link-status-list.link"/>
+                         </testStep>
+                         <testStep functionId="Step 19.1.2.6 IF TMDD_N14R281_Restrictions___Link_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N14R281_Restrictions___Link_Status_Supported}">
+                              <testStep functionId="Step 19.1.2.6.1 VERIFY that element restrictions exists within each instance of linkStatusMsg.link-status-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="restrictions" instanceName="tmdd:linkStatusMsg.link-status-item" elementType="data-frame" functionId="Looking for linkStatusMsg.link-status-item"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.7 IF TMDD_N14R282_Link_Name___Link_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N14R282_Link_Name___Link_Status_Supported}">
+                              <testStep functionId="Step 19.1.2.7.1 VERIFY that element link-name exists within each instance of linkStatusMsg.link-status-item.link-status-list.link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-name" instanceName="tmdd:linkStatusMsg.link-status-item.link-status-list.link" elementType="data-element" functionId="Looking for linkStatusMsg.link-status-item.link-status-list.link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.8 IF TMDD_N14R283_Link_Direction___Link_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N14R283_Link_Direction___Link_Status_Supported}">
+                              <testStep functionId="Step 19.1.2.8.1 VERIFY that element link-direction exists within each instance of linkStatusMsg.link-status-item.link-status-list.link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="link-direction" instanceName="tmdd:linkStatusMsg.link-status-item.link-status-list.link" elementType="data-element" functionId="Looking for linkStatusMsg.link-status-item.link-status-list.link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.9 IF TMDD_N14R284_Lanes_Open_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N14R284_Lanes_Open_Supported}">
+                              <testStep functionId="Step 19.1.2.9.1 VERIFY that element lanes-number-open exists within each instance of linkStatusMsg.link-status-item.link-status-list.link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="lanes-number-open" instanceName="tmdd:linkStatusMsg.link-status-item.link-status-list.link" elementType="data-element" functionId="Looking for linkStatusMsg.link-status-item.link-status-list.link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.10 IF TMDD_N14R299_Roadway_Event_Source_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N14R299_Roadway_Event_Source_Supported}">
+                              <testStep functionId="Step 19.1.2.10.1 VERIFY that element detection-method exists within each instance of linkStatusMsg.link-status-item.link-status-list.link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="detection-method" instanceName="tmdd:linkStatusMsg.link-status-item.link-status-list.link" elementType="data-element" functionId="Looking for linkStatusMsg.link-status-item.link-status-list.link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.11 IF TMDD_N14R317_Event_Description_Time___Link_Status_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N14R317_Event_Description_Time___Link_Status_Supported}">
+                              <testStep functionId="Step 19.1.2.11.1 VERIFY that element event-description-time exists within each instance of linkStatusMsg.link-status-item.link-status-list.link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="event-description-time" instanceName="tmdd:linkStatusMsg.link-status-item.link-status-list.link" elementType="data-element" functionId="Looking for linkStatusMsg.link-status-item.link-status-list.link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.12 IF TMDD_N14R318_Link_Status_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N14R318_Link_Status_Date_and_Time_Change_Information_Supported}">
+                              <testStep functionId="Step 19.1.2.12.1 VERIFY that element last-update-time exists within each instance of linkStatusMsg.link-status-item.link-status-list.link" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="last-update-time" instanceName="tmdd:linkStatusMsg.link-status-item.link-status-list.link" elementType="data-frame" functionId="Looking for linkStatusMsg.link-status-item.link-status-list.link"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.13 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N14R281_Restrictions___Link_Status_Supported,restrictions,tmdd:linkStatusMsg.link-status-item;TMDD_N14R282_Link_Name___Link_Status_Supported,link-name,tmdd:linkStatusMsg.link-status-item.link-status-list.link;TMDD_N14R283_Link_Direction___Link_Status_Supported,link-direction,tmdd:linkStatusMsg.link-status-item.link-status-list.link;TMDD_N14R284_Lanes_Open_Supported,lanes-number-open,tmdd:linkStatusMsg.link-status-item.link-status-list.link;TMDD_N14R299_Roadway_Event_Source_Supported,detection-method,tmdd:linkStatusMsg.link-status-item.link-status-list.link;TMDD_N14R317_Event_Description_Time___Link_Status_Supported,event-description-time,tmdd:linkStatusMsg.link-status-item.link-status-list.link;TMDD_N14R318_Link_Status_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:linkStatusMsg.link-status-item.link-status-list.link;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 19.1.2.14 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                              <jl:set var="OptionalContentVerified" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 19.1.2.15 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlLinkStatusUpdate RESPONSETIMEREQUIRED=TMDD_N14R276_Publish_Link_Status_Information_Parameter OPTIONALCONTENTVERIFIED = OptionalContentVerified PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlLinkStatusUpdate" functionId="dlLinkStatusUpdate" RESPONSETIMEREQUIRED="${TMDD_N14R276_Publish_Link_Status_Information_Parameter}" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

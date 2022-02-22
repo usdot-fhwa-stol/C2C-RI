@@ -1,0 +1,497 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Ant Tasks</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, Ant, task, Ant tasks, register, tags, register tag, execute, execute scripts"/>
+
+    <body>
+        <section name="What is Ant and How Does Jameleon Use Ant?">
+            <p>
+                <a href="http://ant.apache.org">Ant</a> is a tool that makes compiling, packaging and even running
+                Java applications easier. 
+            </p>
+            <p>
+                Jameleon uses Ant to help make building custom tags, registering them and executing Jameleon test cases
+                easier. Currently the GUI cannot be used to register nor build custom tags.
+            </p>
+            <p>
+                Add the following line to the build.xml which needs access any of the Jameleon Ant Tasks
+                <source><![CDATA[<taskdef resource="ant/JameleonAntTasks.properties" format="properties" classpathref="base.classpath"/>]]></source>
+            </p>
+        </section>
+        <section name="Jameleon Ant Tasks?">
+            <p>
+                Jameleon provides the following Ant tasks.
+                <font size="-2">
+                <table>
+                    <tr>
+                        <th>Task Function</th>
+                        <th>Short Description</th>
+                    </tr>
+                    <tr>
+                        <td><a href="#Upgrade Jameleon Task">Upgrade Jameleon Task</a></td>
+                        <td>Applies any needed configuration changes between releases. This is new as of jameleon-core-3.3-M3</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Tag Registration Task">Tag Registration Task</a></td>
+                        <td>Registers Java files matching a given criteria in Jameleon.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Test Case Execution Task">Test Case Execution Task</a></td>
+                        <td>Executes Jameleon test case scripts in the same JVM as Ant is running in.</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#Test Case Execution Separate VM Task">Test Case Execution Separate VM Task</a></td>
+                        <td>Executes Jameleon test case scripts in a separate JVM from the one Ant is running in.</td>
+                    </tr>
+                </table>
+                </font>
+            </p>
+            <p>
+                <subsection name="Upgrade Jameleon Task">
+                    <p>
+                        This tag is used to make any required changes to your configuration and or directory structure that may occur between version releases.
+                        This tag is new as of Jameleon-core-3.3-M3 and may or may not need to be executed in future releases.
+                    </p>
+                    <p>
+                        The UpgradeTask has the following attributes:
+                        <font size="-2">
+                        <table border="1">
+                            <tr>
+                                <th>attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                                <th>Default</th>
+                            </tr>
+                            <tr>
+                                <td>environmentProperties</td>
+                                <td>The location of the Environment.properties file to be affected.</td>
+                                <td>YES</td>
+                                <td>res/Environment.properties</td>
+                            </tr>
+    
+                            <tr>
+                                <td>jameleonGUIProperties</td>
+                                <td>The location of the jameleon-gui.properties file to be affected.</td>
+                                <td>NO</td>
+                                <td>lib/jameleon-gui.properties</td>
+                            </tr>
+                        </table>
+                        </font>
+                    </p>
+                </subsection>
+                <subsection name="Tag Registration Task">
+                    <p>
+                        The Tag Registration Task auto registers any Jameleon tags into the Jameleon 
+                        Scripting Engine ( Jelly ). Simply by adding the appropriate javadoc tag, this task
+                        will know the required information about the tags to be registered.
+                    </p>
+                    <p>
+                        The JameleonXDoclet task has the following attributes:
+                        <font size="-2">
+                        <table border="1">
+                            <tr>
+                                <th>attribute</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                                <th>Default</th>
+                            </tr>
+                            <tr>
+                                <td>outputdir</td>
+                                <td>The directory to save the file(s) to. This directory should be included
+                                    in the jar file that is created from all of the custom tags. It is recommended
+                                    to use the same location the compiled java files are compiled to.</td>
+                                <td>YES</td>
+                                <td>N/A</td>
+                            </tr>
+    
+                            <tr>
+                                <td>outputfilename</td>
+                                <td>The name of the file to save. Unless being used by a plug-in developer, this
+                                    setting should not be changed. For plug-in developers, this file name should be 
+                                    the name of your plug-in and all plugins should end in -plugin. So for a jRex plug-in, 
+                                    the outputfilename would be jrex-plugin.properties</td>
+                                <td>NO</td>
+                                <td>TestCaseTagDefs.properties</td>
+                            </tr>
+                            <tr>
+                                <td>quiet</td>
+                                <td>Don't print warnings for files that don't have the appropriate tags.</td>
+                                <td>NO</td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>isA</td>
+                                <td>
+                                    The class types to include in the registration. In other words, all classes 
+                                    that extend or implement the value of isA will be parsed for information. If you're
+                                    tag isn't getting registered, it could be that you aren't extending FunctionTag. In
+                                    that case, just change the isA to the class your tag is extending.
+                                </td>
+                                <td>NO</td>
+                                <td>net.sf.jameleon.function.FunctionTag.</td>
+                            </tr>
+                        </table>
+                        </font>
+                    </p>
+                    <p>
+                        This task also accepts an <a href="http://ant.apache.org/manual/CoreTypes/fileset.html">Ant fileset</a> to
+                        define where the source files that need registering are. For example, to register source files that
+                        exist in <b><i>src/java</i></b> where the registered files would be placed in <b><i>build</i></b>, the
+                        following would work:</p>
+                    <p>
+                        <source><![CDATA[
+<target name="register.tags" description="Registers Custom Tags">
+    <taskdef resource="ant/JameleonAntTasks.properties" 
+             format="properties" 
+             classpathref="classpath"/>
+    <jmln-register outputdir="build">
+        <fileset dir="src/java">
+            <include name="**/*.java"/>
+        </fileset>
+    </jmln-register>
+</target>]]></source>
+                    </p>
+                </subsection>
+                </p>
+                <p>
+                  <subsection name="Syntax Reference Docs Generator">
+                      <p>
+                        Once all of the tags are registered, you can generate a file that describes the details of each tag.
+                        TODO: add examples. There is currently an example in the jameleon-core/src/xml/standard-build.xml file.
+                      </p>
+                      <p>
+                          The the following attributes are supported
+                          <font size="-2">
+                          <table border="1">
+                              <tr>
+                                  <th>attribute</th>
+                                  <th>Description</th>
+                                  <th>Required</th>
+                                  <th>Default</th>
+                              </tr>
+                              <tr>
+                                  <td>outputFile</td>
+                                  <td>The file to generate</td>
+                                  <td>YES</td>
+                                  <td>xdocs/syntax-reference.xml</td>
+                              </tr>
+                              <tr>
+                                  <td>plugin</td>
+                                  <td>The begining of the .properties file to generate from. For the selenium plug-in, this would be selenium-plugin.</td>
+                                  <td>YES</td>
+                                  <td>TestCaseTagDefs - or the file that is generated for custom tags</td>
+                              </tr>
+                              <tr>
+                                  <td>templateName</td>
+                                  <td>The template to use for file generation. Not that the file is loaded through the CLASSPATH.</td>
+                                  <td>YES</td>
+                                  <td>syntaxReference.txt - This file is bundled with jameleon-core.jar</td>
+                              </tr>
+                              <tr>
+                                  <td>templateParam</td>
+                                  <td>This is a nested tag set. &lt;templateParam name="templateVarName" value="var value"/&gt;.
+                                      The existing template expects a variable called "pluginName" which is really the library name (i.e. HtmlUnit).</td>
+                                  <td>NO</td> 
+                                  <td>N/A</td>
+                              </tr>
+                          </table>
+                         </font>
+                      </p>
+                  </subsection>
+                  <subsection name="Test Case Execution Task">
+                    <p>
+                        This tasks is used to execute test cases that match a certain pattern. If any of the test 
+                        cases fail, the build fails with a list of files, line numbers and short descriptions why 
+                        they failed. 
+                    </p>
+                    <p>
+                        All of the jar files that come with Jameleon and any plug-ins must be in the CLASSPATH. 
+                        The ExecuteTestCaseTask task has the following attributes and it supports the 
+                        <a href="http://ant.apache.org/manual/CoreTypes/fileset.html">Ant fileset</a> data type as well 
+                        as the <a href="http://ant.apache.org/manual/CoreTypes/selectors.html">selector</a>type.
+                    </p>
+                    <p>
+                        <font size="-2">
+                        <table>
+                            <tr>
+                                <th>Atribute Name</th>
+                                <th>Description</th>
+                                <th>Default</th>
+                            </tr>
+                            <tr>
+                                <td>debug</td>
+                                <td>
+                                    Prints all stack traces to std out. This is very useful when the test case won't 
+                                    execute for some reason of if you aren't sure whey something is happening.
+                                </td>
+                                <td>false</td>
+                            </tr>
+                            <tr>
+                                <td>throwExceptionOnFailure</td>
+                                <td>
+                                    Throws a build exception when a test fails if set to true.
+                                </td>
+                                <td>true</td>
+                            </tr>
+                            <tr>
+                                <td>waitTimeBetweenScripts</td>
+                                <td>
+                                    Waits <b><i>n</i></b> milliseconds between each script being executed.
+                                </td>
+                                <td>0</td>
+                            </tr>
+                            <tr>
+                                <td>printTestSuiteSummary</td>
+                                <td>
+                                    This is used when want to break up your tests into several test suites and run any number
+                                    of test suites, but only include the test suite summary at the bottom once. Set this to false
+                                    when you don't want to print out the summary.
+                                </td>
+                                <td>true</td>
+                            </tr>
+                        </table>
+                        </font>
+                    </p>
+                    <p>
+                        The fileset data type allows test cases to be executed based on the filename and/or directory structure. 
+                        The selector option (which is encapsulated in a fileset) is used to scan for text in the matching files.
+                    </p>
+                    <p><a name="contains"></a>
+                        The <b><i>selector</i></b> Ant tag can be used to execute all test cases that have a keyword or that 
+                        contain a certain functional point. Because of the nature of the scripting engine, <u>unknown tags are 
+                        ignored</u>. This is another good reason to use <a href="syntax-reference.html#Test_Case_Documentation_Tags">
+                        test case doc tags</a> and set a selector to execute all files that contain the tag and value in them. For example,
+                        to execute all test cases with a test-case-level of SMOKE:
+                    </p>
+                    <p>
+                        <source><![CDATA[
+<target name="run.tests" description="Execute Smoke tests">                        
+    <taskdef resource="ant/JameleonAntTasks.properties" 
+             format="properties" 
+             classpathref="classpath"/>
+
+    <jmln-test debug="true">
+        <fileset dir="scripts">
+            <include name="**/*.xml"/>
+            <exlcude name="**/*.fragment"/>
+            <contains text="test-case-level>SMOKE" casesensitive="no"/>
+        </fileset>
+    </jmln-test>
+</target>]]></source>
+                    </p>
+                    <p>
+                        This would execute all test cases in the <b>scripts</b> directory, containing 
+                        the word test-case-level&gt;SMOKE, except for files that end in <b>.fragment</b>. 
+                    </p>
+                    <p><a name="variable"></a>
+                        Sometimes you may want to pass in a variable that can be used in a Jameleon script. This can be accomplished
+                        via the &lt;variable/&gt; tag. It has <b>name</b> and <b>value</b> attributes that can be set. The following
+                        is an example of how to use it:
+                        <source><![CDATA[
+<target name="run.variable.test" description="Runs a script, passing in a variable on the fly">                        
+    <taskdef resource="ant/JameleonAntTasks.properties"
+             format="properties" 
+             classpathref="classpath"/>
+
+    <jmln-test debug="true">
+        <fileset dir="scripts">
+            <include name="somescript.xml"/>
+        </fileset>
+        <variable name="varName" value="varValue"/>
+    </jmln-test>
+</target>]]></source>
+                        The variable ${varName} can now be used inside any scripts that match the fileset; in this case, just somescript.xml.
+                    </p>
+                    <p><a name="config"></a>
+                        Sometimes you may want to pass in jameleon.conf settings via Ant. This can be accomplished
+                        via the &lt;config/&gt; tag. It has <b>name</b> and <b>value</b> attributes that can be set. The following
+                        is an example of how to use it:
+                        <source><![CDATA[
+<target name="run.alpha.tests" description="Runs all scripts under the alpha testEnvironment and sf organization">                        
+    <taskdef resource="ant/JameleonAntTasks.properties"
+             format="properties" 
+             classpathref="classpath"/>
+
+    <jmln-test debug="true">
+        <fileset dir="scripts">
+            <include name="somescript.xml"/>
+        </fileset>
+        <config name="testEnvironment" value="alpah"/>
+        <config name="organization" value="sf"/>
+    </jmln-test>
+</target>]]></source>
+                        These settings override the settings in jameleon.conf.
+                    </p>
+                    <p><a name="threaded"></a>
+                        While executing several tests simultaneously is not officially supported, it could drastically reduce test
+                        execution time. 
+                        To execute several scripts at the same time, the &lt;parallel/&gt; Ant task can be used. A possible strategy to 
+                        do this might be to create several "run" targets, representing different groups of test suites. These suites can
+                        then be executed in threads. The only caveat to this is that the first suite of tests being executed must run
+                        at least 1500 milliseconds before the other ones are. The following is an example:
+                        <source><![CDATA[
+
+<taskdef resource="ant/JameleonAntTasks.properties" 
+         format="properties" 
+         classpathref="classpath"/>
+
+<target name="test.admin" description="Run all scripts for the foo admin application">
+    <jmln-test printTestSuiteSummary="false" >
+        <fileset dir="scripts/admin">
+            <include name="**.xml"/>
+        </fileset>
+    </jmln-test>
+</target>
+
+<target name="test.userprefs" description="Run all scripts for the user prefs application">
+    <jmln-test printTestSuiteSummary="false" >
+        <fileset dir="scripts/userprefs">
+            <include name="**.xml"/>
+        </fileset>
+    </jmln-test>
+</target>
+
+<target name="test.crm" description="Run all scripts for the crm application">
+    <jmln-test printTestSuiteSummary="false" >
+        <fileset dir="scripts/crm">
+            <include name="**.xml"/>
+        </fileset>
+    </jmln-test>
+</target>
+
+<target name="test.sales" description="Run all scripts for the sales lead application">
+    <jmln-test printTestSuiteSummary="false" >
+        <fileset dir="scripts/sales">
+            <include name="**.xml"/>
+        </fileset>
+    </jmln-test>
+</target>
+
+<target name="print.test.summary" description="Prints the test case execution summary at the end of the HTML results">
+    <jmln-test printTestSuiteSummary="true" >
+        <fileset dir="tst/xml/acceptance">
+            <exclude name="*.*"/>
+        </fileset>
+    </jmln-test>
+</target>
+
+<target name="test.suites" description="Runs all test suites in order"
+        depends="test.mapvariables, test.prop, test.csv, print.test.summary"/>
+
+<target name="test.threaded">
+    <parallel>
+        <antcall target="test.admin"/>
+        <antcall target="test.userprefs"/>
+        <antcall target="test.crm"/>
+        <antcall target="test.sales"/>
+    </parallel>
+    <!-- Run this one last so the correct summary is printed -->
+    <antcall target="print.test.summary"/>
+</target>]]></source>
+                    </p>
+                </subsection>
+                <subsection name="Test Case Execution Separate VM Task">
+                    <p>
+                        The ExecuteTestCaseSeparateVMTask acts mostly the same as the ExecuteTestCaseTask,except it executes
+                        under a different VM. This makes it easier to run tests under IDEs like Eclipse or even plug-ins that 
+                        JNI like the jiffie-plugin.
+                    </p>
+                    <p>
+                        The following attributes are supported by this tag:
+                        <br/>
+                        <font size="-2">
+                        <table>
+                            <tr>
+                                <th>Attribute Name</th>
+                                <th>Description</th>
+                                <th>Required</th>
+                            </tr>
+                            <tr>
+                                <td>classpathref</td>
+                                <td>A reference to the classpath used when running this tag</td>
+                                <td>true if the nested classpath tag is not used</td>
+                            </tr>
+                            <tr>
+                                <td>fork</td>
+                                <td>Execute in a separate VM</td>
+                                <td>true - Default is true</td>
+                            </tr>
+                            <tr>
+                                <td>newenvironment</td>
+                                <td>
+                                    Do not propagate old environment when new environment variables are 
+                                    specified. Default is "false" (ignored if fork is disabled).
+                                </td>
+                                <td>false - Default is false</td>
+                            </tr>
+                            <tr>
+                                <td>baseDir</td>
+                                <td>
+                                    The directory to start the JVM in. 
+                                </td>
+                                <td>false - Defaults to the Ant project baseDir attribute</td>
+                            </tr>
+                            <tr>
+                                <td>failOnError</td>
+                                <td>
+                                    Fails the build when an error occurs. 
+                                </td>
+                                <td>false - Defaults to false</td>
+                            </tr>
+                            <tr>
+                                <td>timeout</td>
+                                <td>
+                                    Time in milliseconds to wait until the execution halts
+                                </td>
+                                <td>false - Defaults to 0</td>
+                            </tr>
+                            <tr>
+                                <td>separateVmPerScript</td>
+                                <td>
+                                    Execute each script in a separate JVM. This is helpful for code that
+                                    doesn't clean up memory very well. The side effect of using this feature
+                                    is that the HTML logs (TestResults.html) file counts each test script
+                                    as a suite of test scripts. In other words, percentages and total numbers
+                                    will only represent the single script executed.
+                                </td>
+                                <td>false - Defaults to false</td>
+                            </tr>
+                            <tr>
+                                <td>printFooter</td>
+                                <td>
+                                    When separateVmPerScript is set to true, the test results are not calculated correctly
+                                    because the logging system is started and stopped between each test case execution. The result
+                                    of this is TestResults.xml file with a summary for each script. To get rid of this,
+                                    set printFooter to false and the footer or summary will no longer be logged.
+                                </td>
+                                <td>false - Defaults to true</td>
+                            </tr>
+                        </table>
+                        </font>
+                    </p>
+                    <p>
+                        An example might look like:
+                    
+                        <source><![CDATA[
+<target name="run.tests.vm" description="Execute Smoke Tests in a separate VM">                        
+    <taskdef resource="ant/JameleonAntTasks.properties" 
+             format="properties" 
+             classpathref="classpath"/>
+    <jmln-test classpathref="classpath">
+        <fileset dir="scripts">
+            <include name="**/*.xml"/>
+            <exlcude name="**/*.fragment"/>
+            <contains text="test-case-level>SMOKE" casesensitive="no"/>
+        </fileset>
+    </jmln-test>
+</target>]]></source>
+                    </p>
+                </subsection>
+            </p>
+        </section>
+    </body>
+</document>

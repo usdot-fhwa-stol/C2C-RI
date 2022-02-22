@@ -1,0 +1,2813 @@
+<TestProcedureSteps>
+	<TestProcedure>
+		<procedureNumber>1</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-WSDL</testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1
+</testStepNumber>
+			<testProcedure>VERIFY that the specified WSDL file exists.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.1.1.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2
+</testStepNumber>
+			<testProcedure>VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.1.1.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3
+</testStepNumber>
+			<testProcedure>VERIFY that the WSDL file consists of 5 child sections: types/schema, message, portType, binding, service.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.1.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4
+</testStepNumber>
+			<testProcedure>VERIFY that the definitions tag includes a name attribute.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.2.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5
+</testStepNumber>
+			<testProcedure>VERIFY that the type section begins with the types tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.3.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6
+</testStepNumber>
+			<testProcedure>VERIFY that the schema tag immediately follows the types tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.3.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7
+</testStepNumber>
+			<testProcedure>VERIFY that the import tag follows the types tag and specifies any namespace being imported and the schemaLocation.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.3.3)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8
+</testStepNumber>
+			<testProcedure>VERIFY that message section includes all top-level messages defined in the XML Schema that apply to the project implementation for Request-Response transmission pattern.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.1.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>9
+</testStepNumber>
+			<testProcedure>VERIFY that each message type begins with [MSG_].
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.1.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>10
+</testStepNumber>
+			<testProcedure>VERIFY that the name attribute of each message part is ‘message’.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.1.3)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>11
+</testStepNumber>
+			<testProcedure>VERIFY that the element attribute of the message part name starts with [tmdd:].
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.1.4)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>12
+</testStepNumber>
+			<testProcedure>VERIFY that message section contains subscription messages.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.2.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>13</stepCount>
+			<testStepNumber>13
+</testStepNumber>
+			<testProcedure>VERIFY that each message name each message name begins with the prefix [MSG_].  Also, confirm that the remainder of the message exists within the schema.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.2.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>14</stepCount>
+			<testStepNumber>14
+</testStepNumber>
+			<testProcedure>VERIFY that the message has 2 parts.  The name attribute of the first part shall always be [c2cMsgAdmin], and the element attribute is [c2c:c2cMessageSubscription]
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.2.3)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>15</stepCount>
+			<testStepNumber>15
+</testStepNumber>
+			<testProcedure>VERIFY that the element attribute of the second message part name starts with [tmdd:].
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.2.4)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>16</stepCount>
+			<testStepNumber>16
+</testStepNumber>
+			<testProcedure>VERIFY that the message section contains subscription messages.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.3.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>17</stepCount>
+			<testStepNumber>17
+</testStepNumber>
+			<testProcedure>VERIFY that each message name  begins with the prefix [MSG_].  Also, confirm that the remainder of the message exists within the schema.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.3.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>18</stepCount>
+			<testStepNumber>18
+</testStepNumber>
+			<testProcedure>VERIFY that the message has 2 parts.  The name attribute of the first part shall always be [c2cMsgAdmin], and the element attribute is [c2c:c2cMessageSubscription]
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.3.3)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>19</stepCount>
+			<testStepNumber>19
+</testStepNumber>
+			<testProcedure>VERIFY that the element attribute of the second message part name starts with [tmdd:].
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.4.3.4)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>20</stepCount>
+			<testStepNumber>20
+</testStepNumber>
+			<testProcedure>VERIFY that one (or more) service endpoints of the WSDL file use [https:] .
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (6.5.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>21</stepCount>
+			<testStepNumber>21
+</testStepNumber>
+			<testProcedure>IF NTCIP2306_N1R1_WSDL_Request_Response_Flag is equal to True CONTINUE; OTHERWISE skip the following substeps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>22</stepCount>
+			<testStepNumber>21.1
+</testStepNumber>
+			<testProcedure>VERIFY that at least one binding tag is followed by a soap:binding tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.2.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>23</stepCount>
+			<testStepNumber>21.2
+</testStepNumber>
+			<testProcedure>VERIFY that portType tag (or multiple) exists and contains a list of SOAP ‘operation’ tags.  There must be at least one operation for each portType element.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.1.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>24</stepCount>
+			<testStepNumber>21.3
+</testStepNumber>
+			<testProcedure>VERIFY that each operation name begins with the ‘OP_’ prefix.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.1.2
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>25</stepCount>
+			<testStepNumber>21.4
+</testStepNumber>
+			<testProcedure>VERIFY that each operation has one input tag followed by one output tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.1.3
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>26</stepCount>
+			<testStepNumber>21.5
+</testStepNumber>
+			<testProcedure>VERIFY that the input message references a message defined in the Message section of the WSDL.  The prefix for the message part of the operation must be [tns:].
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.1.4
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>27</stepCount>
+			<testStepNumber>21.6
+</testStepNumber>
+			<testProcedure>VERIFY that the style attribute of all soap:binding tags is [document]
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.2.2
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>28</stepCount>
+			<testStepNumber>21.7
+</testStepNumber>
+			<testProcedure>VERIFY that the transport attribute of all soap:binding tags is [http://schemas.xmloap.org/soap/http]
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.2.3
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>29</stepCount>
+			<testStepNumber>21.8
+</testStepNumber>
+			<testProcedure>VERIFY that each the operation name matches at least one operation specified in the portType section(s) of the WSDL.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.2.4
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>30</stepCount>
+			<testStepNumber>21.9
+</testStepNumber>
+			<testProcedure>VERIFY that the operation tag following a soap:binding tag  is followed by the soap:operation tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.2.5
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>31</stepCount>
+			<testStepNumber>21.10
+</testStepNumber>
+			<testProcedure>VERIFY that the soapAction attribute exists within each soap:operation tag. Confirm that the soapAction attribute is either blank or contains characters.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.2.6
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>32</stepCount>
+			<testStepNumber>21.11
+</testStepNumber>
+			<testProcedure>VERIFY that the soap:operation tag is followed by an input tag set.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.2.7
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>33</stepCount>
+			<testStepNumber>21.12
+</testStepNumber>
+			<testProcedure>VERIFY that the input tag is followed by a soap:body tag with a use attribute set to [literal].  (**Note this requirement appears in error.  Shouldn’t the XML message appear within the soap:body tag specifically.)
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.2.8
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>34</stepCount>
+			<testStepNumber>21.13
+</testStepNumber>
+			<testProcedure>VERIFY that the input tag within the soap:operation tag is followed by an output tag set.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.2.9
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>35</stepCount>
+			<testStepNumber>21.14
+</testStepNumber>
+			<testProcedure>VERIFY that the output tag is followed by a soap:body tag with a use attribute set to [literal].
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.2.10
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>36</stepCount>
+			<testStepNumber>21.15
+</testStepNumber>
+			<testProcedure>VERIFY that each service tag contains a name attribute.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.3.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>37</stepCount>
+			<testStepNumber>21.16
+</testStepNumber>
+			<testProcedure>**Error in requirement:  Even if no documentation tag is included, a port tag is still required. VERIFY that the service tag is followed by a port tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.3.3
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>38</stepCount>
+			<testStepNumber>21.17
+</testStepNumber>
+			<testProcedure>VERIFY that a soap:address tag follows a port tag.  There should be at least one present in the WSDL.  Verify that the port tag contains a location attribute.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.1.3.4
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>39</stepCount>
+			<testStepNumber>21.18
+</testStepNumber>
+			<testProcedure>VERIFY that the location attribute of the soap:address tag specifies a valid URL.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1a) 7.1.3.5
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>40</stepCount>
+			<testStepNumber>22
+</testStepNumber>
+			<testProcedure>IF NTCIP2306_N1R2_WSDL_Subscription_Publication_Flag is equal to True CONTINUE; OTHERWISE skip the following substeps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>41</stepCount>
+			<testStepNumber>22.1
+</testStepNumber>
+			<testProcedure>VERIFY that the WSDL file contains a specification(s) for a subscriber callback listener.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.2.1.2.3
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>42</stepCount>
+			<testStepNumber>22.2
+</testStepNumber>
+			<testProcedure>VERIFY that the subscription and publication operations use the same XML encoding and transmission message patterns.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.2.1.2.4
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>43</stepCount>
+			<testStepNumber>22.3
+</testStepNumber>
+			<testProcedure>VERIFY that the portType tag is followed by a list of operations supported by the subscriber for listening for asynchronous SOAP message delivery.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.2.2.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>44</stepCount>
+			<testStepNumber>22.4
+</testStepNumber>
+			<testProcedure>VERIFY that the list of operations a subscriber listener must support are defined in the WSDL.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.2.2.2
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>45</stepCount>
+			<testStepNumber>22.5
+</testStepNumber>
+			<testProcedure>VERIFY that the operation name input message and output message follow the same rules as those defined for a SOAP Request-Response portType defined in Section 7.1.3.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.2.2.3
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>46</stepCount>
+			<testStepNumber>22.6
+</testStepNumber>
+			<testProcedure>VERIFY that each callback message is defined as an input message.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.2.2.4
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>47</stepCount>
+			<testStepNumber>22.7
+</testStepNumber>
+			<testProcedure>VERIFY that the subscriber response is defined in the output message.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.2.2.5
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>48</stepCount>
+			<testStepNumber>22.8
+</testStepNumber>
+			<testProcedure>VERIFY that the normative rules from the SOAP Request-Response Binding defined in Section 7.1.3 apply with the exception that the soapAction attribute will be left blank.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.2.3.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>49</stepCount>
+			<testStepNumber>22.9
+</testStepNumber>
+			<testProcedure>VERIFY that the service tag contains a name attribute of the service.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.2.4.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>50</stepCount>
+			<testStepNumber>22.10
+</testStepNumber>
+			<testProcedure>VERIFY that the port tag follows the documentation tag, if one is present.  The name attribute of the port tag reflects the name of a SOAP port followed by the binding attribute indicating the binding attribute indicating the name
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 7.2.4.3
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>51</stepCount>
+			<testStepNumber>22.11
+</testStepNumber>
+			<testProcedure>VERIFY that following the port tag, a soap:address tags is present.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1b) 7.2.4.4
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>52</stepCount>
+			<testStepNumber>23
+</testStepNumber>
+			<testProcedure>IF NTCIP2306_N2R7_WSDL_Request_Response_HTTP_POST_Flag is equal to True CONTINUE; OTHERWISE skip the following substeps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>53</stepCount>
+			<testStepNumber>23.1
+</testStepNumber>
+			<testProcedure>VERIFY that the portType section for XML over HTTP follows the same rules as those in Section 7.1.1.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.2.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>54</stepCount>
+			<testStepNumber>23.2
+</testStepNumber>
+			<testProcedure>VERIFY that the requirement of the Request Only Binding is applied.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.2.2.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>55</stepCount>
+			<testStepNumber>23.3
+</testStepNumber>
+			<testProcedure>VERIFY that the content of the input tag contains at least one form parameter, which contains an XML message.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.2.2.2
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>56</stepCount>
+			<testStepNumber>23.4
+</testStepNumber>
+			<testProcedure>VERIFY that the rules for a SOAP service are applied except for exceptions listed in this section.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.3.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>57</stepCount>
+			<testStepNumber>23.5
+</testStepNumber>
+			<testProcedure>VERIFY that the XML HTTP endpoint uses the http:address tag to specify an endpoint rather than the soap:address tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2b) 8.3.1.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>58</stepCount>
+			<testStepNumber>24
+</testStepNumber>
+			<testProcedure>IF NTCIP2306_N2R6_WSDL_Request_Only_HTTP_GET_Flag is equal to True CONTINUE; OTHERWISE skip the following substeps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>59</stepCount>
+			<testStepNumber>24.1
+</testStepNumber>
+			<testProcedure>VERIFY that the WSDL to describe the simple retrieval of a file is described as a one-way operation.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.1.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>60</stepCount>
+			<testStepNumber>24.2
+</testStepNumber>
+			<testProcedure>VERIFY that the portType tag is followed by a single operation which maps to a specific file.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.1.2
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>61</stepCount>
+			<testStepNumber>24.3
+</testStepNumber>
+			<testProcedure>VERIFY that the operation is defined as a one way operation.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.1.3
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>62</stepCount>
+			<testStepNumber>24.4
+</testStepNumber>
+			<testProcedure>VERIFY that the operation name begins with the prefix [OP_] followed by a name for the operation.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.1.4
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>63</stepCount>
+			<testStepNumber>24.5
+</testStepNumber>
+			<testProcedure>VERIFY that each operation has one input tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.1.5
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>64</stepCount>
+			<testStepNumber>24.6
+</testStepNumber>
+			<testProcedure>VERIFY that the binding tag is followed by a http:binding tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.2.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>65</stepCount>
+			<testStepNumber>24.7
+</testStepNumber>
+			<testProcedure>VERIFY that at least one section contains a http:binding verb attribute set to [GET].
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.2.2
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>66</stepCount>
+			<testStepNumber>24.8
+</testStepNumber>
+			<testProcedure>VERIFY that the operation name matches the operation as specified in the portType section of the WSDL for each operation (file) supported by the center.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.2.3
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>67</stepCount>
+			<testStepNumber>24.9
+</testStepNumber>
+			<testProcedure>VERIFY that the operation tag is followed by the http:operation tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.2.4
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>68</stepCount>
+			<testStepNumber>24.10
+</testStepNumber>
+			<testProcedure>VERIFY that the location attribute shall be the name of the file. The name of the file is to be defined by each &lt;LF&gt;center. However, it is recommended that the file name reflect the name of the message or messages &lt;LF&gt;contained. Documentation
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.2.5
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>69</stepCount>
+			<testStepNumber>24.11
+</testStepNumber>
+			<testProcedure>VERIFY that the http:operation tag is followed by the input ,/input tag set.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.2.6
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>70</stepCount>
+			<testStepNumber>24.12
+</testStepNumber>
+			<testProcedure>VERIFY that the input tag is followed by a http:urlEncoded tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.2.7
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>71</stepCount>
+			<testStepNumber>24.13
+</testStepNumber>
+			<testProcedure>VERIFY that the input tag set is followed by an output, /output tag set.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.2.8
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>72</stepCount>
+			<testStepNumber>24.14
+</testStepNumber>
+			<testProcedure>VERIFY that the output tag is followed by a mime:content tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.2.9
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>73</stepCount>
+			<testStepNumber>24.15
+</testStepNumber>
+			<testProcedure>VERIFY that the valid type attribute of the mime:content tag is any MIME type.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.1.2.10
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>74</stepCount>
+			<testStepNumber>24.16
+</testStepNumber>
+			<testProcedure>VERIFY that the rules for a SOAP service are applied except for exceptions listed in this section.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 8.3.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>75</stepCount>
+			<testStepNumber>24.17
+</testStepNumber>
+			<testProcedure>VERIFY that the XML HTTP endpoint uses the http:address tag to specify an endpoint rather than the soap:address tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2a) 8.3.1.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>76</stepCount>
+			<testStepNumber>25
+</testStepNumber>
+			<testProcedure>IF NTCIP2306_N3R11_WSDL_Request_Only_FTP_GET_Flag is equal to True CONTINUE; OTHERWISE skip the following substeps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>77</stepCount>
+			<testStepNumber>25.1
+</testStepNumber>
+			<testProcedure>VERIFY that the operation name and output message follow the same rules as those defined for a SOAP Service portType.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 9.1.2.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>78</stepCount>
+			<testStepNumber>25.2
+</testStepNumber>
+			<testProcedure>VERIFY that the operation name matches the operation as specified in the portType section of the WSDL for each operation (file) supported by the center.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 9.1.3.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>79</stepCount>
+			<testStepNumber>25.3
+</testStepNumber>
+			<testProcedure>VERIFY that the operation tag is followed by the ftp:operation tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 9.1.3.2
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>80</stepCount>
+			<testStepNumber>25.4
+</testStepNumber>
+			<testProcedure>VERIFY that the location attribute is the name of the file. The name of the file is to be defined by each center.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 9.1.3.3
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>81</stepCount>
+			<testStepNumber>25.5
+</testStepNumber>
+			<testProcedure>VERIFY that the ftp:operation tag is followed by the input ,/input tag set.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 9.1.3.4
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>82</stepCount>
+			<testStepNumber>25.6
+</testStepNumber>
+			<testProcedure>VERIFY that the input tag is followed by a ftp:urlEncoded tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 9.1.3.5
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>83</stepCount>
+			<testStepNumber>25.7
+</testStepNumber>
+			<testProcedure>VERIFY that the input tag set is followed by an output, /output tag set.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 9.1.3.6
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>84</stepCount>
+			<testStepNumber>25.8
+</testStepNumber>
+			<testProcedure>VERIFY that the output tag is followed by a mime:content tag. The valid type attribute of the mime:content tag is MIME type supported by the center server (assuming that the center MIME types are also valid per the FTP specification).
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 9.1.3.7
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>85</stepCount>
+			<testStepNumber>25.9
+</testStepNumber>
+			<testProcedure>VERIFY that the XML FTP endpoint uses the ftp:address tag to specify an endpoint rather than the soap:address tag.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL 9.1.4.1
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>86</stepCount>
+			<testStepNumber>25.10
+</testStepNumber>
+			<testProcedure>VERIFY that the address is a valid URL.
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (3a) 9.1.4.4
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+	<TestProcedure>
+		<procedureNumber>2</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-FTP-GET-OC </testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.  RECORD the WSDL File Name value as: WSDLFile
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the FTP related Service defined in the WSDL that will be used for the one-way Get operation during the test.  RECORD the Service name value as: ServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the FTP Get service that will used during the test.  RECORD this value as: PortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a Get operation related to the FTP Service selected to be used for the test.  RECORD this value as: OperationName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Specify the path name that will be used in the Get operation related to the FTP Service selected to be used for the test.  RECORD this value as: PathName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an FTP transport error is expected during this test.  RECORD this value as: TransportErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF TransPortErrorExpected =True THEN RECORD the expected FTP transport  error code as: TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an encoding error is expected during this test.  RECORD this value as EncodingErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>9.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an XML message error is expected during this test.  RECORD this value as MessageErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>10.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF MessageErrorExpected =True THEN RECORD the expected type of message error as: MessageErrorTypeExpected
+
+Valid values are – InvalidXMLVersion, InvalidCharacterSet  and  IncorrectFileType
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>11.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Prepare the SUT to provide the specified FTP service. 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>12.
+</testStepNumber>
+			<testProcedure>FTP-GET-EC with the following parameter(s):
+WSDLFILE = WSDLFile
+SERVICENAME = ServiceName
+PORTNAME = PortName
+OPERATIONNAME = OperationName
+
+Returns:
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGFAILURERESULT
+ENCODINGFAILURETYPE
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>13</stepCount>
+			<testStepNumber>13.
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>14</stepCount>
+			<testStepNumber>13.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (3.c)(5.2.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>15</stepCount>
+			<testStepNumber>13.2
+</testStepNumber>
+			<testProcedure>IF ENCODINGFAILURERESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>16</stepCount>
+			<testStepNumber>13.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that EncodingErrorExpected = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (3.b)(4.1.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>17</stepCount>
+			<testStepNumber>13.2.2
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>18</stepCount>
+			<testStepNumber>13.2.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (3.b)(4.1.1.a, 4.1.1.b)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>19</stepCount>
+			<testStepNumber>13.2.2.2
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>20</stepCount>
+			<testStepNumber>13.2.2.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORTYPE = MessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (3.b)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>21</stepCount>
+			<testStepNumber>14.
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>22</stepCount>
+			<testStepNumber>14.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORTYPE = TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (3.c)
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+	<TestProcedure>
+		<procedureNumber>3</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-FTP-GET-EC</testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.  RECORD the WSDL File Name value as: WSDLFile
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the FTP related Service defined in the WSDL that will be used for the one-way Get operation during the test.  RECORD the Service name value as: ServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the FTP Get service that will used during the test.  RECORD this value as: PortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a Get operation related to the FTP Service selected to be used for the test.  RECORD this value as: OperationName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an FTP transport error is expected during this test.  RECORD this value as: TransportErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF TransPortErrorExpected =True THEN RECORD the expected type of FTP transport  error as: TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine the XML message to be returned during this test.  RECORD this value as ResponseMessage
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8.
+</testStepNumber>
+			<testProcedure>FTP-GET-OC with the following parameter(s):
+WSDLFILE = WSDLFile
+SERVICENAME = ServiceName
+RESPONSE MESSAGE = ResponseMessage
+PORTNAME = PortName
+OPERATIONNAME = OperationName
+
+Returns:
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (3.b)(4.1.1.a, 4.1.1.b)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>9.
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>9.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (3.c)(5.2.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>10.
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>10.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORTYPE = TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (3.c)
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+	<TestProcedure>
+		<procedureNumber>4</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-HTTP-GET-OC </testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.   RECORD the WSDL File Name value as: WSDLFile
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the HTTP related Service defined in the WSDL that will be used for the one-way Get operation during the test.   RECORD the Service name value as: ServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the HTTP Get service that will used during the test.  If NTCIP2306_N2R9_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP2306_N2R10_Message_Transport_HTTPS_Flag is true then any port utilizing the https protocol may be selected.   RECORD this value as: PortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a Get operation related to the HTTP Service selected to be used for the test.   RECORD this value as: OperationName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an HTTP transport error is expected during this test.   RECORD this value as: TransportErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF TransportErrorExpected =True THEN RECORD the expected type of HTTP transport  error as: TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an encoding error is expected during this test.   RECORD this value as EncodingErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an XML message error is expected during this test.   RECORD this value as MessageErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>9.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF MessageErrorExpected =True THEN RECORD the expected type of message error as: MessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>10.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Prepare the SUT server to operate the HTTP service specified by ServiceName.  
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>11.
+</testStepNumber>
+			<testProcedure>HTTP-GET-EC with the following parameter(s):
+WSDLFILE= WSDLFile
+SERVICENAME = ServiceName
+PORTNAME = PortName
+OPERATIONNAME = OperationName
+
+Returns:
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGFAILURERESULT
+ENCODINGFAILURETYPE
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>12.
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>13</stepCount>
+			<testStepNumber>12.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.e, 2.e.2)(5.1.1, 5.1.3, 6.5.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>14</stepCount>
+			<testStepNumber>12.2
+</testStepNumber>
+			<testProcedure>IF ENCODINGFAILURERESULT = False CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>15</stepCount>
+			<testStepNumber>12.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that EncodingErrorExpected = ENCODINGFAILURERESULT
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (2.d)(4.1.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>16</stepCount>
+			<testStepNumber>12.2.2
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>17</stepCount>
+			<testStepNumber>12.2.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEFAILURERESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (2.d)(4.1.1.a, 4.1.1.b)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>18</stepCount>
+			<testStepNumber>12.2.2.2
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = True CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>19</stepCount>
+			<testStepNumber>12.2.2.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORTYPE = MessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.d)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>20</stepCount>
+			<testStepNumber>13
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>21</stepCount>
+			<testStepNumber>13.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORTYPE = TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.e, 2.e.2)
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+	<TestProcedure>
+		<procedureNumber>5</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-HTTP-GET-EC</testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.   RECORD the WSDL File Name value as: WSDLFile
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the HTTP related Service defined in the WSDL that will be used for the one-way Get operation during the test.  RECORD the Service name value as: ServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the HTTP Get service that will used during the test.  If NTCIP2306_N2R9_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP2306_N2R10_Message_Transport_HTTPS_Flag is true then any port utilizing the https protocol may be selected.   RECORD this value as: PortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a Get operation related to the HTTP Service selected to be used for the test.   RECORD this value as: OperationName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an HTTP transport error is expected during this test.   RECORD this value as: TransportErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF TransPortErrorExpected =True THEN RECORD the expected type of HTTP transport  error as: TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine the XML message to be returned during this test.   RECORD this value as ResponseMessage
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Prepare the SUT to act as an HTTP Client connection to a server with the parameters defined by the selected service. 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>9.
+</testStepNumber>
+			<testProcedure>HTTP-GET-OC with the following parameter(s):
+WSDLFILE = WSDLFile
+SERVICENAME = ServiceName
+PORTNAME = PortName
+RESPONSEMESSAGE = ResponseMessage
+OPERATIONNAME = OperationName
+
+Returns:
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.d)(4.1.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>10.
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>10.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.e, 2.e.2)(5.1.1, 5.1.3, 6.5.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>11
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>13</stepCount>
+			<testStepNumber>11.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORTYPE = TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.e, 2.e.2)
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+	<TestProcedure>
+		<procedureNumber>6</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-HTTP-POST-OC </testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.   RECORD the WSDL File Name value as: WSDLFile
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the HTTP related Service defined in the WSDL that will be used for the two-way POST operation during the test.   RECORD the Service name value as: ServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the HTTP POST service that will used during the test.  If NTCIP2306_N2R9_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP2306_N2R10_Message_Transport_HTTPS_Flag is true then any port utilizing the https protocol may be selected.   RECORD this value as: PortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a POST operation related to the HTTP Service selected to be used for the test.   RECORD this value as: OperationName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an HTTP transport error is expected during this test.   RECORD this value as: TransportErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF TransPortErrorExpected =True THEN RECORD the expected type of HTTP transport  error as: TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine the XML message to be returned during this test.   RECORD this value as RequestMessage
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an encoding error is expected during this test.   RECORD this value as EncodingErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>9.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an XML message error is expected during this test.   RECORD this value as MessageErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>10.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF MessageErrorExpected =True THEN RECORD the expected type of message error as: MessageErrorTypeExpected
+
+Valid values are – InvalidXMLVersion, InvalidCharacterSet and IncorrectFileType
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>11.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Prepare the SUT to support HTTP POST Service specified by ServiceName.  
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>12.
+</testStepNumber>
+			<testProcedure>HTTP-POST-EC with the following parameter(s):
+WSDLFILE = WSDLFile
+SERVICENAME = ServiceName
+REQUESTURI = RequestURI
+PORTNAME = PortName
+REQUESTMESSAGE = RequestMessage
+OPERATIONNAME = OperationName
+
+Returns:
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGERRORRESULT
+ENCODINGERRORDESCRIPTION
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>13</stepCount>
+			<testStepNumber>13.
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>14</stepCount>
+			<testStepNumber>13.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.e, 2.e.2)(5.1.1, 5.1.3, 6.5.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>15</stepCount>
+			<testStepNumber>13.2
+</testStepNumber>
+			<testProcedure>IF ENCODINGERRORRESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>16</stepCount>
+			<testStepNumber>13.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that EncodingErrorExpected = ENCODINGFAILURERESULT
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (2d)(4.1.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>17</stepCount>
+			<testStepNumber>13.2.2
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>18</stepCount>
+			<testStepNumber>13.2.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (2.d)(4.1.1.a, 4.1.1.b)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>19</stepCount>
+			<testStepNumber>13.2.2.2
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>20</stepCount>
+			<testStepNumber>13.2.2.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORTYPE = MessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.d)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>21</stepCount>
+			<testStepNumber>14
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>22</stepCount>
+			<testStepNumber>14.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORTYPE = TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.e, 2.e.2)
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+	<TestProcedure>
+		<procedureNumber>7</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-HTTP-POST-EC</testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.  RECORD the WSDL File Name value as: WSDLFile
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the HTTP related Service defined in the WSDL that will be used for the two-way POST operation during the test.  RECORD the Service name value as: ServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the HTTP POST service that will used during the test.  If NTCIP2306_N2R9_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP_N2R10_HTTPS is true then any port utilizing the https protocol may be selected.  RECORD this value as: PortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a POST operation related to the HTTP Service selected to be used for the test.  RECORD this value as: OperationName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine the XML message to be returned during this test.  RECORD this value as ResponseMessage
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine the reply code that should be returned during this test.  RECORD this value as ResponseCode
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Prepare the HTTP Client connection with the server as follows: connect to the server operate at the address specified within HTTPPOSTAddressLocation.  
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8.
+</testStepNumber>
+			<testProcedure>HTTP-POST-OC-REQUEST with the following parameter(s):
+WSDLFILE = WSDLFile
+SERVICENAME = ServiceName
+PORTNAME = PortName
+OPERATIONNAME = OperationName
+
+Returns:
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGERRORRESULT
+ENCODINGERRORDESCRIPTION
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+MESSAGEVALIDATIONERRORRESULT
+MESSAGEVALIDATIONERRORTYPE
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>9
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>N/A
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>9.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.e, 2.e.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>9.
+</testStepNumber>
+			<testProcedure>IF ENCODINGFAILURERESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>9.1
+</testStepNumber>
+			<testProcedure>VERIFY that EncodingErrorExpected = ENCODINGFAILURERESULT
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (2.d)(4.1.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>13</stepCount>
+			<testStepNumber>9.2
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>14</stepCount>
+			<testStepNumber>9.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (2.d)(4.1.1.a, 4.1.1.b)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>15</stepCount>
+			<testStepNumber>9.3
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>16</stepCount>
+			<testStepNumber>9.3.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORTYPE = MessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.d)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>17</stepCount>
+			<testStepNumber>10.
+</testStepNumber>
+			<testProcedure>HTTP-POST-OC-REPLY with the following parameter(s):
+WSDLFILE = WSDLFile
+SERVICENAME = ServiceName
+PORTNAME = PortName
+RESPONSEMESSAGE = ResponseMessage
+RESPONSECODE = ResponseCode
+OPERATIONNAME = OperationName
+
+Returns:
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGERRORRESULT
+ENCODINGERRORDESCRIPTION
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+MESSAGEVALIDATIONERRORRESULT
+MESSAGEVALIDATIONERRORTYPE
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (2.d)(5.1.1, 5.1.2, 5.1.3, 6.5.1)
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+	<TestProcedure>
+		<procedureNumber>8</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-SOAP-RR-OC </testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the WSDL file that will define the two-way SOAP operation used during the test.  RECORD the WSDL File Name value as: WSDLFile
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the HTTP related Service defined in the WSDL that will be used for the two-way POST operation during the test.  RECORD the Service name value as: ServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the HTTP POST service that will used during the test.  If NTCIP2306_N1R4_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP2306_N1R5_Message_Transport_HTTPS_Flag is true then any port utilizing the https protocol may be selected.  RECORD this value as: PortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a POST operation related to the HTTP Service selected to be used for the test.  RECORD this value as: OperationName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an HTTP transport error is expected during this test.  RECORD this value as: TransportErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF TransPortErrorExpected =True THEN RECORD the expected type of HTTP transport  error as: TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine the XML message to be returned during this test.  RECORD this value as RequestMessage
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an encoding error is expected during this test.  RECORD this value as EncodingErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>9.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an XML message error is expected during this test.  RECORD this value as MessageErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>10.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF MessageErrorExpected =True THEN RECORD the expected type of message error as: MessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>11.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Prepare the SUT to support HTTP POST Service specified by ServiceName.  
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>12.
+</testStepNumber>
+			<testProcedure>SOAP-RR-EC with the following parameter(s):
+WSDLFILE = WSDLFile
+SERVICENAME = ServiceName
+PORTNAME = PortName
+REQUESTMESSAGE = RequestMessage
+OPERATIONNAME = OperationName
+
+Returns:
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGERRORRESULT
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+MESSAGEVALIDATIONERRORRESULT
+MESSAGEVALIDATIONERRORTYPE
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>13</stepCount>
+			<testStepNumber>13.
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>14</stepCount>
+			<testStepNumber>13.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.d, 1.d.2)(5.1.2, 5.1.3, 6.5.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>15</stepCount>
+			<testStepNumber>13.2
+</testStepNumber>
+			<testProcedure>IF ENCODINGERRORRESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>16</stepCount>
+			<testStepNumber>13.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that EncodingErrorExpected = ENCODINGERRORRESULT
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c)(4.2.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>17</stepCount>
+			<testStepNumber>13.2.2
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>18</stepCount>
+			<testStepNumber>13.2.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c)(4.1.1.1, 4.1.1.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>19</stepCount>
+			<testStepNumber>13.2.2.2
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>20</stepCount>
+			<testStepNumber>13.2.2.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORTYPE = MessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.c)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>21</stepCount>
+			<testStepNumber>14
+</testStepNumber>
+			<testProcedure>IF TransportErrorExpected =True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>22</stepCount>
+			<testStepNumber>14.1
+</testStepNumber>
+			<testProcedure>VERIFY that TRANSPORTERRORTYPE = TransportErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.d, 1.d.2)
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+	<TestProcedure>
+		<procedureNumber>9</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-SOAP-RR-EC</testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the WSDL file that will define the two-way SOAP operation used during the test.  RECORD the WSDL File Name value as: WSDLFile
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the HTTP related Service defined in the WSDL that will be used for the two-way POST operation during the test.  RECORD the Service name value as: ServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the HTTP POST service that will used during the test.  If NTCIP2306_N1R4_Message_Transport_Flag is true then any port utilizing the http protocol may be selected.  If NTCIP_N1R5_HTTPS is true then any port utilizing the https protocol may be selected.  RECORD this value as: PortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a POST operation related to the HTTP Service selected to be used for the test.  RECORD this value as: OperationName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine the XML message to be returned during this test.  RECORD this value as ResponseMessage
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Prepare the HTTP Client connection with the server as follows: connect to the server operating at the address specified within HTTPPOSTAddressLocation.  
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7.
+</testStepNumber>
+			<testProcedure>SOAP-RR-OC-REQUEST with the following parameter(s):
+WSDLFILE = WSDLFile
+SERVICENAME = ServiceName
+PORTNAME = PortName
+OPERATIONNAME = OperationName
+
+Returns:
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGERRORRESULT
+ENCODINGERRORDESCRIPTION
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+MESSAGEVALIDATIONERRORRESULT
+MESSAGEVALIDATIONERRORTYPE
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.d, 1.d.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8.
+</testStepNumber>
+			<testProcedure>IF ENCODINGERRORRESULT = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>8.1
+</testStepNumber>
+			<testProcedure>VERIFY that EncodingErrorExpected = ENCODINGERRORRESULT
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c)(4.2.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>8.2
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>8.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c)(4.1.1.1, 4.1.1.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>8.3
+</testStepNumber>
+			<testProcedure>IF MessageErrorExpected = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>13</stepCount>
+			<testStepNumber>8.3.1
+</testStepNumber>
+			<testProcedure>VERIFY that MessageErrorType = MESSAGEERRORTYPEEXPECTED
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.c)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>14</stepCount>
+			<testStepNumber>9.
+</testStepNumber>
+			<testProcedure>SOAP-RR-OC-REPLY with the following parameter(s):
+WSDLFILE = WSDLFile
+SERVICENAME = ServiceName
+PORTNAME = PortName
+RESPONSEMESSAGE = ResponseMessage
+RESPONSECODE = ResponseCode
+OPERATIONNAME = OperationName
+
+Returns:
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.c)(5.1.2, 5.1.3, 6.5.1)
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+	<TestProcedure>
+		<procedureNumber>10</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-SOAP-Subscription-Publication-EC</testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.  RECORD the WSDL File Name value as: WSDLFile
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the SOAP related Service defined in the WSDL that will be used for the Subscriptions during the test.  The service must contain a port that matches the selected Transport option(s).  RECORD the Service name value as: SubscriptionServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the SOAP Subscription service that will used during the test.  If NTCIP2306_N1R4_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP2306_N1R5_Message_Transport_HTTPS_Flag is true then any port utilizing the https protocol may be selected.  RECORD this value as: SubscriptionPortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a Subscription operation related to the SOAP Service selected to be used for the test.  RECORD this value as: SubscriptionOperation
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an encoding error is expected during this test.  RECORD this value as SubscriptionEncodingErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an XML message error is expected during this test.  RECORD this value as SubscriptionMessageErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF SubscriptionMessageErrorExpected =True THEN RECORD the expected type of message error as: SubscriptionMessageErrorTypeExpected
+
+Valid values are – InvalidXMLVersion, InvalidCharacterSet and IncorrectMessageType
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the SOAP related Service defined in the WSDL that will be used for the Publications during the test.  The service must contain a port that matches the selected Transport option(s).  RECORD the Service name value as: PublicationServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>9.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the SOAP Publication service that will used during the test.  RECORD this value as: PublicationPortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>10.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a Publication operation related to the SOAP Service selected to be used for the test.  RECORD this value as: PublicationOperation
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>11.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine the XML message(s) to be returned during this test.  RECORD this value as PublicationMessage
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>12.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an encoding error is expected during this test.  RECORD this value as PublicationEncodingErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>13</stepCount>
+			<testStepNumber>13.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an XML message error is expected during the publication portion of this test.  RECORD this value as PublicationMessageErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>14</stepCount>
+			<testStepNumber>14.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF PublicationMessageErrorExpected =True THEN RECORD the expected type of message error as: PublicationMessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>15</stepCount>
+			<testStepNumber>15.
+</testStepNumber>
+			<testProcedure>SOAP-SUB-OC with the following parameter(s):
+WSDLFILE = WSDLFile
+SUBSCRIPTIONSERVICENAME = SubscriptionServiceName
+SUBSCRIPTIONPORTNAME = SubscriptionPortName
+SUBSCRIPTIONOPERATIONNAME = SubscriptionOperationName
+
+Returns:
+CONTINUEPUBLICATION
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGERRORRESULT
+ENCODINGERRORDESCRIPTION
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.d, 1.d.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>16</stepCount>
+			<testStepNumber>16.
+</testStepNumber>
+			<testProcedure>IF ENCODINGERRORRESULT = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>17</stepCount>
+			<testStepNumber>16.1
+</testStepNumber>
+			<testProcedure>VERIFY that SubscriptionEncodingErrorExpected = ENCODINGERRORRESULT
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c)(4.2.2.1, 7.2.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>18</stepCount>
+			<testStepNumber>16.2
+</testStepNumber>
+			<testProcedure>IF SubscriptionMessageErrorExpected = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>19</stepCount>
+			<testStepNumber>16.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c) (4.1.1.1, 4.1.1.2, 4.2.2.3)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>20</stepCount>
+			<testStepNumber>16.3
+</testStepNumber>
+			<testProcedure>IF SubscriptionMessageErrorExpected = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>21</stepCount>
+			<testStepNumber>16.3.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORTYPE = SubscriptionMessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.c)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>22</stepCount>
+			<testStepNumber>17.
+</testStepNumber>
+			<testProcedure>WHILE CONTINUEPUBLICATION is not True perform the following sub steps
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>23</stepCount>
+			<testStepNumber>17.1
+</testStepNumber>
+			<testProcedure>SOAP-PUB-OC with the following parameter(s):
+PUBLICATIONSERVICENAME = PublicationOperationName
+PUBLICATIONPORTNAME = PublicationPortName
+PUBLICATIONOPERATIONNAME = PublicationOperationName
+PUBLICATIONMESSAGE = PublicationMessage
+
+Returns:
+CONTINUEPUBLICATION
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGERRORRESULT
+ENCODINGERRORDESCRIPTION
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.d, 1.d.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>24</stepCount>
+			<testStepNumber>17.2
+</testStepNumber>
+			<testProcedure>IF TRANSPORTERRORRESULT = False and ENCODINGERRORRESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>25</stepCount>
+			<testStepNumber>17.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that PublicationEncodingErrorExpected = ENCODINGERRORRESULT
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c) (4.2.2.2,  7.2.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>26</stepCount>
+			<testStepNumber>17.2.2
+</testStepNumber>
+			<testProcedure>IF PublicationMessageErrorExpected = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>27</stepCount>
+			<testStepNumber>17.2.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c) (4.1.1.1, 4.1.1.2, 4.2.2.3)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>28</stepCount>
+			<testStepNumber>17.2.3
+</testStepNumber>
+			<testProcedure>IF PublicationMessageErrorExpected = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>29</stepCount>
+			<testStepNumber>17.2.3.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORTYPE = PublicationMessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.c)
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+	<TestProcedure>
+		<procedureNumber>11</procedureNumber>
+		<testProcedureName>TPS-NTCIP2306-SOAP-Subscription-Publication-OC</testProcedureName>
+		<step>
+			<stepCount>1</stepCount>
+			<testStepNumber>1.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.  RECORD the WSDL File Name value as: WSDLFile
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>2</stepCount>
+			<testStepNumber>2.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the SOAP related Service defined in the WSDL that will be used for the Subscriptions during the test.  The service must contain a port that matches the selected Transport option(s).  RECORD the Service name value as: SubscriptionServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>3</stepCount>
+			<testStepNumber>3.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the SOAP Subscription service that will used during the test.  If NTCIP2306_N1R4_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP2306_N1R5_Message_Transport_HTTPS_Flag is true then any port utilizing the https protocol may be selected.  RECORD this value as: SubscriptionPortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>4</stepCount>
+			<testStepNumber>4.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a Subscription operation related to the SOAP Service selected to be used for the test.  RECORD this value as: SubscriptionOperation
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>5</stepCount>
+			<testStepNumber>5.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an encoding error is expected during this test.  RECORD this value as SubscriptionEncodingErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>6</stepCount>
+			<testStepNumber>6.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an XML message error is expected during this test.  RECORD this value as SubscriptionMessageErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>7</stepCount>
+			<testStepNumber>7.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF SubscriptionMessageErrorExpected =[True] then RECORD the expected type of message error as: SubscriptionMessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>8</stepCount>
+			<testStepNumber>8.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine the Subscription XML message(s) to be sent during this test.  RECORD this value as SubscriptionMessage
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>9</stepCount>
+			<testStepNumber>9.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the SOAP related Service defined in the WSDL that will be used for the Publications during the test.  The service must contain a port that matches the selected Transport option(s).  RECORD the Service name value as: PublicationServiceName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>10</stepCount>
+			<testStepNumber>10.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Identify the port related to the SOAP Publication service that will used during the test.  RECORD this value as: PublicationPortName 
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>11</stepCount>
+			<testStepNumber>11.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Select a Publication operation related to the SOAP Service selected to be used for the test.  RECORD this value as: PublicationOperationName
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>12</stepCount>
+			<testStepNumber>12.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an encoding error is expected during this test.  RECORD this value as PublicationEncodingErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>13</stepCount>
+			<testStepNumber>13.
+</testStepNumber>
+			<testProcedure>CONFIGURE: Determine whether an XML message error is expected during the publication portion of this test.  RECORD this value as PublicationMessageErrorExpected
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>14</stepCount>
+			<testStepNumber>14.
+</testStepNumber>
+			<testProcedure>CONFIGURE: IF PublicationMessageErrorExpected =[True] then RECORD the expected type of message error as: PublicationMessageErrorTypeExpected
+
+Valid values are – InvalidXMLVersion, InvalidCharacterSet and IncorrectMessageType
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>15</stepCount>
+			<testStepNumber>15.
+</testStepNumber>
+			<testProcedure>SOAP-SUB-EC with the following parameter(s):
+WSDLFILE = WSDLFile
+SUBSCRIPTIONSERVICENAME = SubscriptionServiceName
+SUBSCRIPTIONPORTNAME = SubscriptionPortName
+SUBSCRIPTIONOPERATIONNAME = SubscriptionOperationName
+SUBSCRIPTIONMESSAGE = SubscriptionMessage
+
+Returns:
+CONTINUEPUBLICATION
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGERRORRESULT
+ENCODINGERRORDESCRIPTION
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.d,1.d.2)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>16</stepCount>
+			<testStepNumber>16.
+</testStepNumber>
+			<testProcedure>IF EncodingFailureResult = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>17</stepCount>
+			<testStepNumber>16.1
+</testStepNumber>
+			<testProcedure>VERIFY that SubscriptionEncodingErrorExpected = EncodingFailureResult
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c)(4.2.2.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>18</stepCount>
+			<testStepNumber>16.2
+</testStepNumber>
+			<testProcedure>IF SubscriptionMessageErrorExpected = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>19</stepCount>
+			<testStepNumber>16.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MessageFailureResult = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c) (4.1.1.1, 4.1.1.2, 4.2.2.3)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>20</stepCount>
+			<testStepNumber>16.3
+</testStepNumber>
+			<testProcedure>IF SubscriptionMessageErrorExpected = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>21</stepCount>
+			<testStepNumber>16.3.1
+</testStepNumber>
+			<testProcedure>VERIFY that MessageErrorType = SubscriptionMessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.c)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>22</stepCount>
+			<testStepNumber>17.
+</testStepNumber>
+			<testProcedure>While CONTINUEPUBLICATION is True perform the following sub steps
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>23</stepCount>
+			<testStepNumber>17.1
+</testStepNumber>
+			<testProcedure>SOAP-PUB-EC with the following parameter(s):
+PUBLICATIONSERVICENAME = PublicationServiceName
+PUBLICATIONPORTNAME = PublicationPortName
+PUBLICATIONOPERATIONNAME = PublicationOperationName
+
+Returns:
+CONTINUEPUBLICATION
+TRANSPORTERRORRESULT
+TRANSPORTERRORTYPE
+ENCODINGERRORRESULT
+ENCODINGERRORDESCRIPTION
+MESSAGEERRORRESULT
+MESSAGEERRORTYPE
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>24</stepCount>
+			<testStepNumber>17.2
+</testStepNumber>
+			<testProcedure>IF TRANSPORTERRORRESULT = False and ENCODINGERRORRESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>25</stepCount>
+			<testStepNumber>17.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that PublicationEncodingErrorExpected = ENCODINGERRORRESULT
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c)(4.2.2.2, 7.2.1)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>26</stepCount>
+			<testStepNumber>17.2.2
+</testStepNumber>
+			<testProcedure>IF PublicationMessageErrorExpected = False THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>27</stepCount>
+			<testStepNumber>17.2.2.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORRESULT = False
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL  (1.c)(4.1.1.1, 4.1.1.2, 4.2.2.3)
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>28</stepCount>
+			<testStepNumber>17.2.3
+</testStepNumber>
+			<testProcedure>IF PublicationMessageErrorExpected = True THEN CONTINUE; OTHERWISE skip the following sub steps.
+</testProcedure>
+			<TestProcedureResults>NA
+</TestProcedureResults>
+		</step>
+		<step>
+			<stepCount>29</stepCount>
+			<testStepNumber>17.2.3.1
+</testStepNumber>
+			<testProcedure>VERIFY that MESSAGEERRORTYPE = PublicationMessageErrorTypeExpected
+</testProcedure>
+			<TestProcedureResults>PASS/FAIL (1.c)
+</TestProcedureResults>
+		</step>
+	</TestProcedure>
+</TestProcedureSteps>

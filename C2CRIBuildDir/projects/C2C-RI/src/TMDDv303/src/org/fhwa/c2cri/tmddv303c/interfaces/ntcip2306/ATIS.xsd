@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by Patrick Chan (Consensus Systems Technologies) -->
+<xs:schema xmlns="http://www.ATIS-DateTimePair" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ATIS-DateTimePair" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="DRAFT">
+	<xs:annotation>
+		<xs:documentation>
+			TMDD V3.03c Standard - Recommended Standard
+			Last Updated: December 3, 2013 - Patrick Chan, ConSysTec
+	   </xs:documentation>
+	</xs:annotation>
+	<!-- Time -->
+	<xs:simpleType name="Time">
+		<xs:annotation>
+			<xs:documentation>       
+            Definition: Time for which a directory entry is being requested by a Traveler or used in a returned message.
+            Format:  HHMMSSssss
+            Valid times using 24 hour notation.
+            HH=00 through 23; MM=00 through 59;
+            SS=00 through 59; 00 if NA
+            ssss=0000 through 9999.
+            Use SS= 60 for leap seconds
+            HH represents hours,  MM minutes,  SS seconds,
+            and ssss decimal seconds to whatever number
+            of significant digits is required  (up to four)
+         </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="6"/>
+			<xs:maxLength value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Date -->
+	<xs:simpleType name="Date">
+		<xs:annotation>
+			<xs:documentation>       
+            Definition: Date for which a directory entry, or other use, is being requested by a Traveler or used in a returned message.   The precise time at which this date starts may vary with the time zone of the service.  For example: Saturday stay over rates for an airline begin at the point of departure.
+            format as: YYYYMMDD where
+            YYYY  the year,  in common era units
+            MM  the month,  range 01 to 12
+            DD the day,  range 01 to 31
+            use zero for MM and DD when not applicable
+         </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- TimeOffset -->
+	<xs:simpleType name="TimeOffset">
+		<xs:annotation>
+			<xs:documentation>       
+            Definition: Time zone, or offset, for a local time from GMT.  Note that not all time offsets are in units of even hours.
+            Valid time offset using 24 hour notation.
+            HH=00 through 23; MM=00 through 59;
+         </xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:length value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- DateTimePair -->
+	<xs:complexType name="DateTimePair">
+		<xs:annotation>
+			<xs:documentation>       
+            Definition: A data and time value.  In addition, the timeoffset element can be used to convey the local time zone.  This is required when merging data sources over multiple time zones.
+            Remarks: This structure has been changed to add an optional time zone (offset from GMT) as well.
+         </xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="date" type="Date"/>
+			<xs:element name="time" type="Time"/>
+			<xs:element name="offset" type="TimeOffset" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

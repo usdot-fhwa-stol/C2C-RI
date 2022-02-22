@@ -1,0 +1,487 @@
+Buildfile: build.xml
+
+init:
+
+build:
+    [javac] Compiling 128 source files to C:\Inout\jameleon\JAMELE~1\JAMELE~1\Build
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\AbstractCsvTag.java:23: cannot find symbol
+    [javac] symbol  : class AbstractFileDrivableTag
+    [javac] location: package net.sf.jameleon.data
+    [javac] import net.sf.jameleon.data.AbstractFileDrivableTag;
+    [javac]                            ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\AbstractCsvTag.java:31: cannot find symbol
+    [javac] symbol: class AbstractFileDrivableTag
+    [javac] public abstract class AbstractCsvTag extends AbstractFileDrivableTag {
+    [javac]                                              ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\ApplicationTestedTag.java:42: cannot find symbol
+    [javac] symbol: class AbstractTestCaseDocAttribute
+    [javac] public class ApplicationTestedTag extends AbstractTestCaseDocAttribute {
+    [javac]                                           ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTagLibrary.java:25: cannot find symbol
+    [javac] symbol  : class JameleonTagException
+    [javac] location: package net.sf.jameleon.exception
+    [javac] import net.sf.jameleon.exception.JameleonTagException;
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\reporting\ResultsReporter.java:44: cannot find symbol
+    [javac] symbol  : class TestRunSummaryReporter
+    [javac] location: class net.sf.jameleon.reporting.ResultsReporter
+    [javac]     private TestRunSummaryReporter htmlTestRunSummaryReporter;
+    [javac]             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:24: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: package net.sf.jameleon.exception
+    [javac] import net.sf.jameleon.exception.JameleonScriptException;
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\reporting\ResultsReporter.java:175: cannot find symbol
+    [javac] symbol  : class TestRunSummaryReporter
+    [javac] location: class net.sf.jameleon.reporting.ResultsReporter
+    [javac]     public TestRunSummaryReporter getHtmlTestRunSummaryReporter() {
+    [javac]            ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\reporting\ResultsReporter.java:179: cannot find symbol
+    [javac] symbol  : class TestRunSummaryReporter
+    [javac] location: class net.sf.jameleon.reporting.ResultsReporter
+    [javac]     public void setHtmlTestRunSummaryReporter(TestRunSummaryReporter htmlTestRunSummaryReporter) {
+    [javac]                                               ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:93: cannot find symbol
+    [javac] symbol  : class CountableDataDrivableResultContainer
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]     protected CountableDataDrivableResultContainer rowResultContainer;
+    [javac]               ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\result\TestCaseResult.java:31: cannot find symbol
+    [javac] symbol: class TestResultWithChildren
+    [javac]     extends TestResultWithChildren
+    [javac]             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:110: cannot find symbol
+    [javac] symbol  : class DataDrivableRowResult
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]     protected DataDrivableRowResult ddRowResult;
+    [javac]               ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:113: cannot find symbol
+    [javac] symbol  : class DataDrivableRowResult
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]     public DataDrivableRowResult getDdResult() {
+    [javac]            ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\bean\TestCase.java:27: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: package net.sf.jameleon.exception
+    [javac] import net.sf.jameleon.exception.JameleonScriptException;
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\FunctionalPointTestedTag.java:26: cannot find symbol
+    [javac] symbol: class AbstractTestCaseDocAttribute
+    [javac] public class FunctionalPointTestedTag extends AbstractTestCaseDocAttribute {
+    [javac]                                               ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\JameleonTagSupport.java:33: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: package net.sf.jameleon.exception
+    [javac] import net.sf.jameleon.exception.JameleonScriptException;
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\SessionTag.java:21: cannot find symbol
+    [javac] symbol  : class AbstractDataDrivableTag
+    [javac] location: package net.sf.jameleon.data
+    [javac] import net.sf.jameleon.data.AbstractDataDrivableTag;
+    [javac]                            ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\SessionTag.java:22: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: package net.sf.jameleon.exception
+    [javac] import net.sf.jameleon.exception.JameleonScriptException;
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\SessionTag.java:84: cannot find symbol
+    [javac] symbol: class FunctionResultRecordable
+    [javac]                                                                        FunctionResultRecordable,
+    [javac]                                                                        ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\SessionTag.java:85: cannot find symbol
+    [javac] symbol: class DataDrivableResultRecordable
+    [javac]                                                                        DataDrivableResultRecordable{
+    [javac]                                                                        ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\result\SessionResult.java:29: cannot find symbol
+    [javac] symbol: class TestResultWithChildren
+    [javac] public class SessionResult extends TestResultWithChildren {
+    [javac]                                    ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\SessionTag.java:110: cannot find symbol
+    [javac] symbol  : class AbstractDataDrivableTag
+    [javac] location: class net.sf.jameleon.SessionTag
+    [javac]     protected AbstractDataDrivableTag addt;
+    [javac]               ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\SessionTag.java:399: cannot find symbol
+    [javac] symbol  : class DataDrivableResultContainer
+    [javac] location: class net.sf.jameleon.SessionTag
+    [javac]     public void recordDataDrivableResult(DataDrivableResultContainer result){
+    [javac]                                          ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseAuthorTag.java:42: cannot find symbol
+    [javac] symbol: class AbstractTestCaseDocAttribute
+    [javac] public class TestCaseAuthorTag extends AbstractTestCaseDocAttribute {
+    [javac]                                        ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseBugTag.java:44: cannot find symbol
+    [javac] symbol: class AbstractTestCaseDocAttribute
+    [javac] public class TestCaseBugTag extends AbstractTestCaseDocAttribute {
+    [javac]                                     ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseIdTag.java:43: cannot find symbol
+    [javac] symbol: class AbstractTestCaseDocAttribute
+    [javac] public class TestCaseIdTag extends AbstractTestCaseDocAttribute {
+    [javac]                                    ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseLevelTag.java:42: cannot find symbol
+    [javac] symbol: class AbstractTestCaseDocAttribute
+    [javac] public class TestCaseLevelTag extends AbstractTestCaseDocAttribute {
+    [javac]                                       ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseRequirementTag.java:42: cannot find symbol
+    [javac] symbol: class AbstractTestCaseDocAttribute
+    [javac] public class TestCaseRequirementTag extends AbstractTestCaseDocAttribute {
+    [javac]                                             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseSummaryTag.java:42: cannot find symbol
+    [javac] symbol: class AbstractTestCaseDocAttribute
+    [javac] public class TestCaseSummaryTag extends AbstractTestCaseDocAttribute {
+    [javac]                                         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestSuiteTag.java:23: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: package net.sf.jameleon.exception
+    [javac] import net.sf.jameleon.exception.JameleonScriptException;
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\function\FunctionTag.java:25: cannot find symbol
+    [javac] symbol  : class AbstractDataDrivableTag
+    [javac] location: package net.sf.jameleon.data
+    [javac] import net.sf.jameleon.data.AbstractDataDrivableTag;
+    [javac]                            ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\function\FunctionTag.java:28: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: package net.sf.jameleon.exception
+    [javac] import net.sf.jameleon.exception.JameleonScriptException;
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\function\FunctionTag.java:30: cannot find symbol
+    [javac] symbol  : class FunctionResultRecordable
+    [javac] location: package net.sf.jameleon.result
+    [javac] import net.sf.jameleon.result.FunctionResultRecordable;
+    [javac]                              ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\function\FunctionTag.java:153: cannot find symbol
+    [javac] symbol  : class ParamTypeValidatable
+    [javac] location: class net.sf.jameleon.function.FunctionTag
+    [javac]     protected ParamTypeValidatable vpt = new DefaultValidParamType();
+    [javac]               ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\function\FunctionTag.java:161: cannot find symbol
+    [javac] symbol  : class AbstractDataDrivableTag
+    [javac] location: class net.sf.jameleon.function.FunctionTag
+    [javac]     protected AbstractDataDrivableTag addt;
+    [javac]               ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\data\DataExecuter.java:21: cannot find symbol
+    [javac] symbol  : class DataDrivableEventHandler
+    [javac] location: package net.sf.jameleon.event
+    [javac] import net.sf.jameleon.event.DataDrivableEventHandler;
+    [javac]                             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\data\IterateTag.java:51: cannot find symbol
+    [javac] symbol: class AbstractDataDrivableTag
+    [javac] public class IterateTag extends AbstractDataDrivableTag {
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\data\SqlTag.java:52: cannot find symbol
+    [javac] symbol: class AbstractDataDrivableTag
+    [javac] public class SqlTag extends AbstractDataDrivableTag {
+    [javac]                             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\launch\JameleonLauncher.java:58: cannot find symbol
+    [javac] symbol  : class JameleonLaunchException
+    [javac] location: class net.sf.jameleon.launch.JameleonLauncher
+    [javac]     public void launch() throws JameleonLaunchException, MalformedURLException{
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\launch\JameleonLauncher.java:122: cannot find symbol
+    [javac] symbol  : class JameleonLaunchException
+    [javac] location: class net.sf.jameleon.launch.JameleonLauncher
+    [javac]     public File calculateJameleonHome() throws JameleonLaunchException{
+    [javac]                                                ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\sql\AbstractSqlTag.java:25: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: package net.sf.jameleon.exception
+    [javac] import net.sf.jameleon.exception.JameleonScriptException;
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\taglet\JameleonStepTaglet.java:7: cannot find symbol
+    [javac] symbol: class AbstractJameleonTaglet
+    [javac] public class JameleonStepTaglet extends AbstractJameleonTaglet {
+    [javac]                                         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\ui\DataDrivableDebugDialog.java:25: cannot find symbol
+    [javac] symbol  : class AbstractDataDrivableTag
+    [javac] location: package net.sf.jameleon.data
+    [javac] import net.sf.jameleon.data.AbstractDataDrivableTag;
+    [javac]                            ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\ui\TestCaseResultsPane.java:26: cannot find symbol
+    [javac] symbol  : class DataDrivableRowResult
+    [javac] location: package net.sf.jameleon.result
+    [javac] import net.sf.jameleon.result.DataDrivableRowResult;
+    [javac]                              ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\ui\TestCasePane.java:23: cannot find symbol
+    [javac] symbol  : class DataDrivableEventHandler
+    [javac] location: package net.sf.jameleon.event
+    [javac] import net.sf.jameleon.event.DataDrivableEventHandler;
+    [javac]                             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\util\JameleonUtility.java:22: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: package net.sf.jameleon.exception
+    [javac] import net.sf.jameleon.exception.JameleonScriptException;
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\util\XMLHelper.java:29: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: package net.sf.jameleon.exception
+    [javac] import net.sf.jameleon.exception.JameleonScriptException;
+    [javac]                                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\AbstractCsvTag.java:72: cannot find symbol
+    [javac] symbol  : variable tct
+    [javac] location: class net.sf.jameleon.AbstractCsvTag
+    [javac]             config.setConfigName(tct.getJameleonConfigName());
+    [javac]                                  ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\AbstractCsvTag.java:87: cannot find symbol
+    [javac] symbol  : variable tct
+    [javac] location: class net.sf.jameleon.AbstractCsvTag
+    [javac]             csvFile = new File(tct.getCsvDir(false), csvFileName);
+    [javac]                                ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\AbstractCsvTag.java:89: cannot find symbol
+    [javac] symbol  : variable tct
+    [javac] location: class net.sf.jameleon.AbstractCsvTag
+    [javac]             csvFile = new File(tct.getCsvDir(true), name+".csv");
+    [javac]                                ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\AbstractCsvTag.java:139: cannot find symbol
+    [javac] symbol  : method getDataDir()
+    [javac] location: class net.sf.jameleon.AbstractCsvTag
+    [javac]         return getDataDir();
+    [javac]                ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\AbstractCsvTag.java:148: cannot find symbol
+    [javac] symbol  : method setDataDir(java.io.File)
+    [javac] location: class net.sf.jameleon.AbstractCsvTag
+    [javac]         setDataDir(csvDir);
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\AbstractCsvTag.java:173: cannot find symbol
+    [javac] symbol  : method setCharset(java.lang.String)
+    [javac] location: class net.sf.jameleon.AbstractCsvTag
+    [javac]         setCharset(charset);
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\AbstractCsvTag.java:177: cannot find symbol
+    [javac] symbol  : variable charset
+    [javac] location: class net.sf.jameleon.AbstractCsvTag
+    [javac]         return charset;
+    [javac]                ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\ApplicationTestedTag.java:45: cannot find symbol
+    [javac] symbol  : variable tct
+    [javac] location: class net.sf.jameleon.ApplicationTestedTag
+    [javac]         tct.getTestCase().setApplication(text);
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\reporting\ResultsReporter.java:49: cannot find symbol
+    [javac] symbol  : class HtmlTestRunReporter
+    [javac] location: class net.sf.jameleon.reporting.ResultsReporter
+    [javac]         htmlTestRunReporter = new HtmlTestRunReporter();
+    [javac]                                   ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\reporting\ResultsReporter.java:50: cannot find symbol
+    [javac] symbol  : class HtmlTestRunSummaryReporter
+    [javac] location: class net.sf.jameleon.reporting.ResultsReporter
+    [javac]         htmlTestRunSummaryReporter = new HtmlTestRunSummaryReporter();
+    [javac]                                          ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\reporting\ResultsReporter.java:51: cannot find symbol
+    [javac] symbol  : class SimpleTestRunReporter
+    [javac] location: class net.sf.jameleon.reporting.ResultsReporter
+    [javac]         simpleTestRunReporter = new SimpleTestRunReporter();
+    [javac]                                     ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\reporting\ResultsReporter.java:87: cannot find symbol
+    [javac] symbol  : class HtmlTestCaseResultGenerator
+    [javac] location: class net.sf.jameleon.reporting.ResultsReporter
+    [javac]             HtmlTestCaseResultGenerator tcResultGen = new HtmlTestCaseResultGenerator(tct);
+    [javac]             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\reporting\ResultsReporter.java:87: cannot find symbol
+    [javac] symbol  : class HtmlTestCaseResultGenerator
+    [javac] location: class net.sf.jameleon.reporting.ResultsReporter
+    [javac]             HtmlTestCaseResultGenerator tcResultGen = new HtmlTestCaseResultGenerator(tct);
+    [javac]                                                           ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\reporting\ResultsReporter.java:111: inconvertible types
+    [javac] found   : java.lang.Object
+    [javac] required: net.sf.jameleon.TestCaseTag
+    [javac]         TestCaseTag tct = (TestCaseTag)event.getSource();
+    [javac]                                                       ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\reporting\ResultsReporter.java:117: inconvertible types
+    [javac] found   : java.lang.Object
+    [javac] required: net.sf.jameleon.TestCaseTag
+    [javac]             TestCaseTag tct = (TestCaseTag)event.getSource();
+    [javac]                                                           ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTagLibrary.java:118: cannot find symbol
+    [javac] symbol  : class JameleonTagException
+    [javac] location: class net.sf.jameleon.TestCaseTagLibrary
+    [javac]             throw new JameleonTagException(name, "is not a recognized Jameleon tag. Please check the spelling and try again.");
+    [javac]                       ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:191: cannot find symbol
+    [javac] symbol  : variable rowData
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         rowData.putAll(vars);
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:193: cannot find symbol
+    [javac] symbol  : variable context
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         traceMsg(getTraceKeyValuePairs(vars.keySet(), context.getVariables()));
+    [javac]                                                       ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:374: cannot find symbol
+    [javac] symbol  : variable log
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             log.warn(event +" not recognized as a valid option for storeStateEvent! Valid options are: storeStateOnError, storeStateOnChange, storeStateNever.");
+    [javac]             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:385: cannot find symbol
+    [javac] symbol  : variable stateStorer
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             stateStorer.setStorableEvent(StateStorer.ON_STATE_CHANGE_EVENT);
+    [javac]             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:396: cannot find symbol
+    [javac] symbol  : variable stateStorer
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             stateStorer.setStorableEvent(StateStorer.ON_ERROR_EVENT);
+    [javac]             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:407: cannot find symbol
+    [javac] symbol  : variable stateStorer
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             stateStorer.setStorableEvent(StateStorer.ON_NO_EVENT);
+    [javac]             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:469: cannot find symbol
+    [javac] symbol  : variable stateStorer
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         return stateStorer;
+    [javac]                ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:601: cannot find symbol
+    [javac] symbol  : variable dataDir
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             String filename = baseDir.getPath() + File.separator + dataDir.getPath() + File.separator;
+    [javac]                                                                    ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:799: cannot find symbol
+    [javac] symbol  : method getColumnNumber()
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             la.setColumnNumber(getColumnNumber());
+    [javac]                                ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:800: cannot find symbol
+    [javac] symbol  : method getLineNumber()
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             la.setLineNumber(getLineNumber());
+    [javac]                              ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:803: cannot find symbol
+    [javac] symbol  : method getFileName()
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             la.setFileName(getFileName());
+    [javac]                            ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:816: cannot find symbol
+    [javac] symbol  : variable xmlOut
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             invokeBody(xmlOut);
+    [javac]                        ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:825: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             JameleonScriptException jse = new JameleonScriptException(err.getMessage(), la);
+    [javac]             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:825: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             JameleonScriptException jse = new JameleonScriptException(err.getMessage(), la);
+    [javac]                                               ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:832: cannot find symbol
+    [javac] symbol  : variable log
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]                 log.info(JameleonUtility.getStack(t));
+    [javac]                 ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:843: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             JameleonScriptException jse = null;
+    [javac]             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:846: cannot find symbol
+    [javac] symbol  : class JameleonScriptException
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]                 jse = new JameleonScriptException(err.getMessage(), la);
+    [javac]                           ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:856: cannot find symbol
+    [javac] symbol  : variable failedOnCurrentRow
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         failedOnCurrentRow = false;
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:864: cannot find symbol
+    [javac] symbol  : method traceMsg(java.lang.String)
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         traceMsg("BEGIN executing row number "+rowNum);
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:865: cannot find symbol
+    [javac] symbol  : class TestResultWithChildren
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         TestResultWithChildren res = results;
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:869: cannot find symbol
+    [javac] symbol  : class CountableDataDrivableRowResult
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         ddRowResult = new CountableDataDrivableRowResult(fp, res);
+    [javac]                           ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:869: cannot find symbol
+    [javac] symbol  : variable fp
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         ddRowResult = new CountableDataDrivableRowResult(fp, res);
+    [javac]                                                          ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:871: cannot find symbol
+    [javac] symbol  : variable rowData
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         ddRowResult.setRowData(new HashMap(rowData));
+    [javac]                                            ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:871: internal error; cannot instantiate HashMap(int) at java.util.HashMap to ()
+    [javac]         ddRowResult.setRowData(new HashMap(rowData));
+    [javac]                                ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:873: cannot find symbol
+    [javac] symbol  : variable stateStorer
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         stateStorer.setStoreDir(getResultsDir(rowNum));
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:875: cannot find symbol
+    [javac] symbol  : method traceMsg(java.lang.String)
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         traceMsg("END executing row number "+rowNum);
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:879: cannot find symbol
+    [javac] symbol  : method getFunctionalPoint()
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         results = new TestCaseResult(getFunctionalPoint());
+    [javac]                                      ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:880: cannot find symbol
+    [javac] symbol  : method copyLocationAwareProperties(net.sf.jameleon.TestCaseTag)
+    [javac] location: class net.sf.jameleon.result.TestCaseResult
+    [javac]         results.copyLocationAwareProperties(this);
+    [javac]                ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:882: cannot find symbol
+    [javac] symbol  : class CountableDataDrivableResultContainer
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             rowResultContainer = new CountableDataDrivableResultContainer(getFunctionalPoint(), results);
+    [javac]                                      ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:882: cannot find symbol
+    [javac] symbol  : method getFunctionalPoint()
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             rowResultContainer = new CountableDataDrivableResultContainer(getFunctionalPoint(), results);
+    [javac]                                                                           ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:894: cannot find symbol
+    [javac] symbol  : method getFileName()
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         String script = getFileName();
+    [javac]                         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:919: cannot find symbol
+    [javac] symbol  : variable context
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]             context.setVariable("organization", organization);
+    [javac]             ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:921: cannot find symbol
+    [javac] symbol  : method setUpDataDrivable()
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         setUpDataDrivable();
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:933: operator != cannot be applied to net.sf.jameleon.result.TestCaseResult,<nulltype>
+    [javac]         }else if (results != null) {
+    [javac]                           ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:934: cannot find symbol
+    [javac] symbol  : method addChildResult(net.sf.jameleon.result.JameleonTestResult)
+    [javac] location: class net.sf.jameleon.result.TestCaseResult
+    [javac]             results.addChildResult(result);
+    [javac]                    ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:935: setParentResults(net.sf.jameleon.result.HasChildResults) in net.sf.jameleon.result.JameleonTestResult cannot be applied to (net.sf.jameleon.result.TestCaseResult)
+    [javac]             result.setParentResults(results);
+    [javac]                   ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:946: cannot find symbol
+    [javac] symbol  : variable xmlOut
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         xmlOut = out;
+    [javac]         ^
+    [javac] C:\Inout\jameleon\JAMELE~1\JAMELE~1\src\java\net\sf\jameleon\TestCaseTag.java:947: cannot find symbol
+    [javac] symbol  : method init()
+    [javac] location: class net.sf.jameleon.TestCaseTag
+    [javac]         init();
+    [javac]         ^
+    [javac] Note: Some input files use or override a deprecated API.
+    [javac] Note: Recompile with -Xlint:deprecation for details.
+    [javac] 100 errors

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-77-dlRampMeterInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.9.1 [Need to Share Ramp Meter Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:12:38-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.9.1 [Need to Share Ramp Meter Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Lane Number is required by the specification. (NRTM 3.3.6.10.1.5.2.1).  RECORD this information as: TMDD_N77R831_Lane_Number_Supported = ${TMDD_N77R831_Lane_Number_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Lane Type is required by the specification. (NRTM 3.3.6.10.1.5.2.2).  RECORD this information as: TMDD_N77R832_Lane_Type_Supported = ${TMDD_N77R832_Lane_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Associated Detectors Identifiers is required by the specification. (NRTM 3.3.6.10.1.5.2.3).  RECORD this information as: TMDD_N77R833_Associated_Detectors_Identifiers_Supported = ${TMDD_N77R833_Associated_Detectors_Identifiers_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Absolute Minimum Metering Rate is required by the specification. (NRTM 3.3.6.10.1.5.2.4).  RECORD this information as: TMDD_N77R834_Absolute_Minimum_Metering_Rate_Supported = ${TMDD_N77R834_Absolute_Minimum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Absolute Maximum Metering Rate is required by the specification. (NRTM 3.3.6.10.1.5.2.5).  RECORD this information as: TMDD_N77R835_Absolute_Maximum_Metering_Rate_Supported = ${TMDD_N77R835_Absolute_Maximum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether System Minimum Metering Rate is required by the specification. (NRTM 3.3.6.10.1.5.2.6).  RECORD this information as: TMDD_N77R836_System_Minimum_Metering_Rate_Supported = ${TMDD_N77R836_System_Minimum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether System Maximum Metering Rate is required by the specification. (NRTM 3.3.6.10.1.5.2.7).  RECORD this information as: TMDD_N77R837_System_Maximum_Metering_Rate_Supported = ${TMDD_N77R837_System_Maximum_Metering_Rate_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlRampMeterInventoryRequest" riMode="EC">
+          <testStep functionId="Step 9 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 11 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 12 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlRampMeterInventoryRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlRampMeterInventoryRequest" functionId="dlRampMeterInventoryRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 13 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 13.1 IF TMDD_N77R831_Lane_Number_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R831_Lane_Number_Supported}">
+                    <testStep functionId="Step 13.1.1 VERIFY that element lane-number exists within each instance of rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="lane-number" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane.lane-number"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.2 IF TMDD_N77R832_Lane_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R832_Lane_Type_Supported}">
+                    <testStep functionId="Step 13.2.1 VERIFY that element lane-type exists within each instance of rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="lane-type" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane.lane-type"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.3 IF TMDD_N77R833_Associated_Detectors_Identifiers_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R833_Associated_Detectors_Identifiers_Supported}">
+                    <testStep functionId="Step 13.3.1 VERIFY that element associated-detectors exists within each instance of rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="associated-detectors" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane.associated-detectors"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.4 IF TMDD_N77R834_Absolute_Minimum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R834_Absolute_Minimum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 13.4.1 VERIFY that element absolute-minimum-metering-rate exists within each instance of rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="absolute-minimum-metering-rate" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane.absolute-minimum-metering-rate"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.5 IF TMDD_N77R835_Absolute_Maximum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R835_Absolute_Maximum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 13.5.1 VERIFY that element absolute-maximum-metering-rate exists within each instance of rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="absolute-maximum-metering-rate" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane.absolute-maximum-metering-rate"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.6 IF TMDD_N77R836_System_Minimum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R836_System_Minimum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 13.6.1 VERIFY that element system-minimum-metering-rate exists within each instance of rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="system-minimum-metering-rate" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane.system-minimum-metering-rate"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.7 IF TMDD_N77R837_System_Maximum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R837_System_Maximum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 13.7.1 VERIFY that element system-maximum-metering-rate exists within each instance of rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="system-maximum-metering-rate" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane.system-maximum-metering-rate"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 13.8 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N77R831_Lane_Number_Supported,lane-number,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane;TMDD_N77R832_Lane_Type_Supported,lane-type,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane;TMDD_N77R833_Associated_Detectors_Identifiers_Supported,associated-detectors,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane;TMDD_N77R834_Absolute_Minimum_Metering_Rate_Supported,absolute-minimum-metering-rate,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane;TMDD_N77R835_Absolute_Maximum_Metering_Rate_Supported,absolute-maximum-metering-rate,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane;TMDD_N77R836_System_Minimum_Metering_Rate_Supported,system-minimum-metering-rate,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane;TMDD_N77R837_System_Maximum_Metering_Rate_Supported,system-maximum-metering-rate,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-lane-list.metered-lane;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

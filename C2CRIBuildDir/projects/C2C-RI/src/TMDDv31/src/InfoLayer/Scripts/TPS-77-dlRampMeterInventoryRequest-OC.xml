@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-77-dlRampMeterInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.9.1 [Need to Share Ramp Meter Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/18 00:36:21-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.9.1 [Need to Share Ramp Meter Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Send Ramp Meter Inventory Information Upon Request (NTRM 3.3.5.10.1.1}.  RECORD this value as: TMDD_N77R887_Send_Ramp_Meter_Inventory_Information_Upon_Request_Parameter = ${TMDD_N77R887_Send_Ramp_Meter_Inventory_Information_Upon_Request_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Restrictions - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.1).  RECORD this information as: TMDD_N77R380_Restrictions___Device_Inventory_Supported = ${TMDD_N77R380_Restrictions___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Device Description is required by the specification. (NRTM 3.3.5.1.2.1.2.2).  RECORD this information as: TMDD_N77R381_Device_Description_Supported = ${TMDD_N77R381_Device_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Device Control Type is required by the specification. (NRTM 3.3.5.1.2.1.2.3).  RECORD this information as: TMDD_N77R382_Device_Control_Type_Supported = ${TMDD_N77R382_Device_Control_Type_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Controller Description is required by the specification. (NRTM 3.3.5.1.2.1.2.4).  RECORD this information as: TMDD_N77R383_Controller_Description_Supported = ${TMDD_N77R383_Controller_Description_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Roadway Network Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.5).  RECORD this information as: TMDD_N77R384_Roadway_Network_Identifier___Device_Inventory_Supported = ${TMDD_N77R384_Roadway_Network_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Node Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.6).  RECORD this information as: TMDD_N77R385_Node_Identifier___Device_Inventory_Supported = ${TMDD_N77R385_Node_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Node Name - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.7).  RECORD this information as: TMDD_N77R386_Node_Name___Device_Inventory_Supported = ${TMDD_N77R386_Node_Name___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Link Identifier - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.8).  RECORD this information as: TMDD_N77R387_Link_Identifier___Device_Inventory_Supported = ${TMDD_N77R387_Link_Identifier___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Link Name - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.9).  RECORD this information as: TMDD_N77R388_Link_Name___Device_Inventory_Supported = ${TMDD_N77R388_Link_Name___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Link Direction - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.10).  RECORD this information as: TMDD_N77R389_Link_Direction___Device_Inventory_Supported = ${TMDD_N77R389_Link_Direction___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Linear Reference - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.11).  RECORD this information as: TMDD_N77R390_Linear_Reference___Device_Inventory_Supported = ${TMDD_N77R390_Linear_Reference___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Linear Reference Version is required by the specification. (NRTM 3.3.5.1.2.1.2.12).  RECORD this information as: TMDD_N77R391_Linear_Reference_Version_Supported = ${TMDD_N77R391_Linear_Reference_Version_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether Route Designator - Device Inventory is required by the specification. (NRTM 3.3.5.1.2.1.2.13).  RECORD this information as: TMDD_N77R392_Route_Designator___Device_Inventory_Supported = ${TMDD_N77R392_Route_Designator___Device_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Device Uniform Resource Locator (URL) (DeviceURL) is required by the specification. (NRTM 3.3.5.1.2.1.2.14).  RECORD this information as: TMDD_N77R393_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported = ${TMDD_N77R393_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Device URL Reference Medium is required by the specification. (NRTM 3.3.5.1.2.1.2.15).  RECORD this information as: TMDD_N77R394_Device_URL_Reference_Medium_Supported = ${TMDD_N77R394_Device_URL_Reference_Medium_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Device Inventory Date and Time Change Information is required by the specification. (NRTM 3.3.5.1.2.1.2.16).  RECORD this information as: TMDD_N77R395_Device_Inventory_Date_and_Time_Change_Information_Supported = ${TMDD_N77R395_Device_Inventory_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Lane Number - Ramp Meters is required by the specification. (NRTM 3.3.5.10.1.5.2.1).  RECORD this information as: TMDD_N77R893_Lane_Number___Ramp_Meters_Supported = ${TMDD_N77R893_Lane_Number___Ramp_Meters_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Lane Type - Ramp Meters is required by the specification. (NRTM 3.3.5.10.1.5.2.2).  RECORD this information as: TMDD_N77R894_Lane_Type___Ramp_Meters_Supported = ${TMDD_N77R894_Lane_Type___Ramp_Meters_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 21 CONFIGURE: Determine whether Associated Detectors Identifiers is required by the specification. (NRTM 3.3.5.10.1.5.2.3).  RECORD this information as: TMDD_N77R895_Associated_Detectors_Identifiers_Supported = ${TMDD_N77R895_Associated_Detectors_Identifiers_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 22 CONFIGURE: Determine whether Absolute Minimum Metering Rate is required by the specification. (NRTM 3.3.5.10.1.5.2.4).  RECORD this information as: TMDD_N77R896_Absolute_Minimum_Metering_Rate_Supported = ${TMDD_N77R896_Absolute_Minimum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 23 CONFIGURE: Determine whether Absolute Maximum Metering Rate is required by the specification. (NRTM 3.3.5.10.1.5.2.5).  RECORD this information as: TMDD_N77R897_Absolute_Maximum_Metering_Rate_Supported = ${TMDD_N77R897_Absolute_Maximum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 24 CONFIGURE: Determine whether System Minimum Metering Rate is required by the specification. (NRTM 3.3.5.10.1.5.2.6).  RECORD this information as: TMDD_N77R898_System_Minimum_Metering_Rate_Supported = ${TMDD_N77R898_System_Minimum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 25 CONFIGURE: Determine whether System Maximum Metering Rate is required by the specification. (NRTM 3.3.5.10.1.5.2.7).  RECORD this information as: TMDD_N77R899_System_Maximum_Metering_Rate_Supported = ${TMDD_N77R899_System_Maximum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 26 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N77R15_Restrictions___Error_Report_Supported = ${TMDD_N77R15_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.1" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 27 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 28 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 29 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 30 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlRampMeterInventoryRequest RESPONSETIMEREQUIRED=TMDD_N77R887_Send_Ramp_Meter_Inventory_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlRampMeterInventoryRequest" functionId="dlRampMeterInventoryRequest" RESPONSETIMEREQUIRED="${TMDD_N77R887_Send_Ramp_Meter_Inventory_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 31 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 31.1 VERIFY that a device-inventory-header data frame exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item" elementType="data-frame" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 31.2 VERIFY that a metered-lane-inventory-header data frame exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="metered-lane-inventory-header" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" elementType="data-frame" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane"/>
+               </testStep>
+               <testStep functionId="Step 31.3 VERIFY that an organization-information data frame exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 31.4 VERIFY that a device-id data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 31.5 VERIFY that a device-location data frame exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-location" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 31.6 VERIFY that a device-name data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-name" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+               </testStep>
+               <testStep functionId="Step 31.7 VERIFY that a rampMeterInventoryMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="rampMeterInventoryMsg" instanceName="tmdd:rampMeterInventoryMsg" elementType="message" functionId="Looking for rampMeterInventoryMsg"/>
+               </testStep>
+               <testStep functionId="Step 31.8 VERIFY that a device-inventory-header data frame exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-inventory-header" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item" elementType="data-frame" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 31.9 VERIFY that a metered-lane-inventory-header data frame exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="metered-lane-inventory-header" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" elementType="data-frame" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane"/>
+               </testStep>
+               <testStep functionId="Step 31.10 VERIFY that a ramp-exit-roadway-name data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="ramp-exit-roadway-name" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane"/>
+               </testStep>
+               <testStep functionId="Step 31.11 IF TMDD_N77R380_Restrictions___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R380_Restrictions___Device_Inventory_Supported}">
+                    <testStep functionId="Step 31.11.1 VERIFY that a restrictions data frame exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.12 IF TMDD_N77R381_Device_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R381_Device_Description_Supported}">
+                    <testStep functionId="Step 31.12.1 VERIFY that a device-description data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-description" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.13 IF TMDD_N77R382_Device_Control_Type_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R382_Device_Control_Type_Supported}">
+                    <testStep functionId="Step 31.13.1 VERIFY that a device-control-type data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-control-type" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.14 IF TMDD_N77R383_Controller_Description_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R383_Controller_Description_Supported}">
+                    <testStep functionId="Step 31.14.1 VERIFY that a controller-description data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="controller-description" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.15 IF TMDD_N77R384_Roadway_Network_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R384_Roadway_Network_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 31.15.1 VERIFY that a network-id data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="network-id" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.16 IF TMDD_N77R385_Node_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R385_Node_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 31.16.1 VERIFY that a node-id data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-id" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.17 IF TMDD_N77R386_Node_Name___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R386_Node_Name___Device_Inventory_Supported}">
+                    <testStep functionId="Step 31.17.1 VERIFY that a node-name data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="node-name" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.18 IF TMDD_N77R387_Link_Identifier___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R387_Link_Identifier___Device_Inventory_Supported}">
+                    <testStep functionId="Step 31.18.1 VERIFY that a link-id data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-id" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.19 IF TMDD_N77R388_Link_Name___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R388_Link_Name___Device_Inventory_Supported}">
+                    <testStep functionId="Step 31.19.1 VERIFY that a link-name data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-name" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.20 IF TMDD_N77R389_Link_Direction___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R389_Link_Direction___Device_Inventory_Supported}">
+                    <testStep functionId="Step 31.20.1 VERIFY that a link-direction data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-direction" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.21 IF TMDD_N77R390_Linear_Reference___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R390_Linear_Reference___Device_Inventory_Supported}">
+                    <testStep functionId="Step 31.21.1 VERIFY that a linear-reference data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.22 IF TMDD_N77R391_Linear_Reference_Version_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R391_Linear_Reference_Version_Supported}">
+                    <testStep functionId="Step 31.22.1 VERIFY that a linear-reference-version data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="linear-reference-version" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.23 IF TMDD_N77R392_Route_Designator___Device_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R392_Route_Designator___Device_Inventory_Supported}">
+                    <testStep functionId="Step 31.23.1 VERIFY that a route-designator data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="route-designator" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.24 IF TMDD_N77R393_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R393_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported}">
+                    <testStep functionId="Step 31.24.1 VERIFY that a device-url data frame exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="device-url" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.25 IF TMDD_N77R394_Device_URL_Reference_Medium_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R394_Device_URL_Reference_Medium_Supported}">
+                    <testStep functionId="Step 31.25.1 VERIFY that an url-reference-medium data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header.device-url" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="url-reference-medium" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header.device-url" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header.device-url"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.26 IF TMDD_N77R395_Device_Inventory_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R395_Device_Inventory_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 31.26.1 VERIFY that a last-update-time data frame exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header" elementType="data-frame" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.27 IF TMDD_N77R893_Lane_Number___Ramp_Meters_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R893_Lane_Number___Ramp_Meters_Supported}">
+                    <testStep functionId="Step 31.27.1 VERIFY that a lane-number data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="lane-number" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.28 IF TMDD_N77R894_Lane_Type___Ramp_Meters_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R894_Lane_Type___Ramp_Meters_Supported}">
+                    <testStep functionId="Step 31.28.1 VERIFY that a lane-type data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="lane-type" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.29 IF TMDD_N77R895_Associated_Detectors_Identifiers_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R895_Associated_Detectors_Identifiers_Supported}">
+                    <testStep functionId="Step 31.29.1 VERIFY that an associated-detectors data frame exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="associated-detectors" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.30 IF TMDD_N77R896_Absolute_Minimum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R896_Absolute_Minimum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 31.30.1 VERIFY that an absolute-minimum-metering-rate data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="absolute-minimum-metering-rate" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.31 IF TMDD_N77R897_Absolute_Maximum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R897_Absolute_Maximum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 31.31.1 VERIFY that an absolute-maximum-metering-rate data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="absolute-maximum-metering-rate" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.32 IF TMDD_N77R898_System_Minimum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R898_System_Minimum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 31.32.1 VERIFY that a system-minimum-metering-rate data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="system-minimum-metering-rate" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.33 IF TMDD_N77R899_System_Maximum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R899_System_Maximum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 31.33.1 VERIFY that a system-maximum-metering-rate data element exists within each instance of data frame rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="system-maximum-metering-rate" instanceName="tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane" elementType="data-element" functionId="Looking for rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 31.34 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N77R380_Restrictions___Device_Inventory_Supported,restrictions,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R381_Device_Description_Supported,device-description,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R382_Device_Control_Type_Supported,device-control-type,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R383_Controller_Description_Supported,controller-description,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R384_Roadway_Network_Identifier___Device_Inventory_Supported,network-id,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R385_Node_Identifier___Device_Inventory_Supported,node-id,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R386_Node_Name___Device_Inventory_Supported,node-name,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R387_Link_Identifier___Device_Inventory_Supported,link-id,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R388_Link_Name___Device_Inventory_Supported,link-name,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R389_Link_Direction___Device_Inventory_Supported,link-direction,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R390_Linear_Reference___Device_Inventory_Supported,linear-reference,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R391_Linear_Reference_Version_Supported,linear-reference-version,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R392_Route_Designator___Device_Inventory_Supported,route-designator,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R393_Device_Uniform_Resource_Locator__URL___DeviceURL__Supported,device-url,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R394_Device_URL_Reference_Medium_Supported,url-reference-medium,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header.device-url;TMDD_N77R395_Device_Inventory_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.device-inventory-header;TMDD_N77R870_Lane_Number___Ramp_Meters_Supported,lane-number,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane;TMDD_N77R868_Lane_Type___Ramp_Meters_Supported,lane-type,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane;TMDD_N77R869_Associated_Detectors_Identifiers_Supported,associated-detectors,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane;TMDD_N77R870_Absolute_Minimum_Metering_Rate_Supported,absolute-minimum-metering-rate,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane;TMDD_N77R897_Absolute_Maximum_Metering_Rate_Supported,absolute-maximum-metering-rate,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane;TMDD_N77R898_System_Minimum_Metering_Rate_Supported,system-minimum-metering-rate,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane;TMDD_N77R899_System_Maximum_Metering_Rate_Supported,system-maximum-metering-rate,tmdd:rampMeterInventoryMsg.ramp-meter-inventory-item.metered-inventory-list.metered-lane;TMDD_N77R15_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+          <testStep functionId="Step 32 IF ErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 32.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 32.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 32.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 32.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 32.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 32.6 VERIFY that data element error-code is set to ErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${ErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 32.7 IF TMDD_N77R15_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N77R15_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 32.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 33 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

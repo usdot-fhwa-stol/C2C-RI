@@ -1,0 +1,1794 @@
+ 
+#<!--   
+#       Title:  TCS-6-dlFullEventUpdateRequest-EC-Valid
+#       Description:  This test case is used to verify the SUTs support of the dlFullEventUpdateRequest dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.3.2 [Need for Current Event Information]. This Test Case tests for a valid response result.
+#       Related Procedure:  TPS-6-dlFullEventUpdateRequest-EC
+#       Version/Date: 2014/01/16 02:01:58
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Response Message to be sent to the SUT.
+ResponseMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication.  Valid values are True or False.
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid user name.
+Username = #CONTEXTVARIABLE#RI_USERNAME#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid password.
+Password = #CONTEXTVARIABLE#RI_PASSWORD#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid Operator Identifier.
+OperatorID = defaultOperatorID
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the privilege to access the information requested.  Valid values are True or False.
+AllowAccess = True
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether a request error is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of request error that is expected from the SUT.
+ErrorTypeExpected = None
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT is expected to have valid data for a response.  Valid values are True or False.
+DataValid = True
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.restrictions.organization-information-forwarding-restrictions 
+tmdd:fEUMsg.FEU.restrictions.organization-information-forwarding-restrictions = not to public
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-id 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-name 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-location 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-function 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.contact-id 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.person-name 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.person-title 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.phone-number 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.phone-alternate 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.mobile-phone-number 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.mobile-phone-id 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.fax-number 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.pager-number 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.pager-id 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.email-address 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.radio-unit 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.address-line1 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.address-line1 = 248 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.address-line2 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.city 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.state 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.zip-code 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.country 
+tmdd:fEUMsg.FEU.message-header.organization-sending.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-id 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-name 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-location.height.altitude.ft 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-location.height.altitude.ft = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-description 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-type 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.address-line1 = 249 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:fEUMsg.FEU.message-header.organization-sending.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.last-update-time.date 
+tmdd:fEUMsg.FEU.message-header.organization-sending.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.last-update-time.time 
+tmdd:fEUMsg.FEU.message-header.organization-sending.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organization-sending.last-update-time.offset 
+tmdd:fEUMsg.FEU.message-header.organization-sending.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-id 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-name 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-location 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-function 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.contact-id 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.person-name 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.person-title 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.phone-number 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.phone-alternate 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.mobile-phone-number 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.mobile-phone-id 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.fax-number 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.pager-number 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.pager-id 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.email-address 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.radio-unit 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.address-line1 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.address-line1 = 250 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.address-line2 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.city 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.state 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.zip-code 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.country 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-id 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-name 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-location.horizontalDatum = nad27
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-location.height.verticalLevel 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-description 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-type 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.address-line1 = 251 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.last-update-time.date 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.last-update-time.time 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.last-update-time.offset 
+tmdd:fEUMsg.FEU.message-header.organizations-receiving.organizations-receiving-item.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-id 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-name 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-location 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-function 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.contact-id 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.person-name 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.person-title 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.phone-number 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.phone-alternate 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.mobile-phone-number 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.mobile-phone-id 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.fax-number 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.pager-number 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.pager-id 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.email-address 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.radio-unit 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.address-line1 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.address-line1 = 252 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.address-line2 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.city 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.state 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.zip-code 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.country 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-id 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-name 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-location.height.verticalLevel 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-description 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-type 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.address-line1 = 253 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.last-update-time.date 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.last-update-time.time 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.last-update-time.offset 
+tmdd:fEUMsg.FEU.message-header.organizations-responding.organizations-responding-item.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.message-type-version  BaseType=unsignedByte  ParentType= MessageHeader
+tmdd:fEUMsg.FEU.message-header.message-type-version = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.message-number  BaseType=unsignedInt  ParentType= MessageHeader
+tmdd:fEUMsg.FEU.message-header.message-number = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.message-time-stamp.date 
+tmdd:fEUMsg.FEU.message-header.message-time-stamp.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.message-time-stamp.time 
+tmdd:fEUMsg.FEU.message-header.message-time-stamp.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.message-time-stamp.offset 
+tmdd:fEUMsg.FEU.message-header.message-time-stamp.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.message-expiry-time.date 
+tmdd:fEUMsg.FEU.message-header.message-expiry-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.message-expiry-time.time 
+tmdd:fEUMsg.FEU.message-header.message-expiry-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.message-header.message-expiry-time.offset 
+tmdd:fEUMsg.FEU.message-header.message-expiry-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-reference.event-id  BaseType=string  ParentType= EventReference
+tmdd:fEUMsg.FEU.event-reference.event-id = StateDOTEventRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-reference.event-update  BaseType=unsignedShort  ParentType= EventReference
+tmdd:fEUMsg.FEU.event-reference.event-update = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-reference.response-plan-id  BaseType=string  ParentType= EventReference
+tmdd:fEUMsg.FEU.event-reference.response-plan-id = StateResponseModel
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-reference.update-time.date 
+tmdd:fEUMsg.FEU.event-reference.update-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-reference.update-time.time 
+tmdd:fEUMsg.FEU.event-reference.update-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-reference.update-time.offset 
+tmdd:fEUMsg.FEU.event-reference.update-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-id 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-name 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-location 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-function 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.contact-id 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.person-name 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.person-title 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.phone-number 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.phone-alternate 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.mobile-phone-number 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.mobile-phone-id 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.fax-number 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.pager-number 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.pager-id 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.email-address 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.radio-unit 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.address-line1 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.address-line1 = 254 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.address-line2 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.city 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.state 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.zip-code 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.country 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-id 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-name 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-location.horizontalDatum = nad27
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-location.height.verticalLevel 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-description 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-type 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-type = fixed
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.address-line1 = 255 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.last-update-time.date 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.last-update-time.time 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.last-update-time.offset 
+tmdd:fEUMsg.FEU.project-references.project-reference.project-contacts.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-indicators.event-indicator.severity  BaseType=anySimpleType  ParentType= EventIndicator
+tmdd:fEUMsg.FEU.event-indicators.event-indicator.severity = none
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-headline.headline.responderGroupAffected 
+tmdd:fEUMsg.FEU.event-headline.headline.responderGroupAffected = transportation response units
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-headline.headline-element  BaseType=unsignedByte  ParentType= EventHeadline
+tmdd:fEUMsg.FEU.event-headline.headline-element = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.element-id  BaseType=unsignedShort  ParentType= EventElementDetail
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.element-id = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.schedule-element-id 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.schedule-element-id = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-category  BaseType=anySimpleType  ParentType= EventElementDetail
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-category = planned
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-id 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-name 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-location 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-function 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.contact-id 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.person-name 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.person-title 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.phone-number 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.phone-alternate 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.mobile-phone-number 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.mobile-phone-id 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.fax-number 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.pager-number 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.pager-id 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.email-address 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.radio-unit 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.address-line1 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.address-line1 = 256 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.address-line2 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.city 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.state 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.zip-code 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.country 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-id 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-name 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-location.horizontalDatum = nad27
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-location.height.verticalLevel 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-description 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-type 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-type = fixed
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.address-line1 = 257 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.last-update-time.date 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.last-update-time.time 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.last-update-time.offset 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.information-source.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.event-detection-method  BaseType=anySimpleType  ParentType= EventSource
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-source.event-detection-method = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.landmark-type  BaseType=anySimpleType  ParentType= PointOnLink
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.landmark-type = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.landmark-name  BaseType=string  ParentType= LandmarkLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.landmark-name = State Highway District
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.landmark-point-name  BaseType=string  ParentType= LandmarkLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.landmark-point-name = State Highway District
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.location-rank  BaseType=unsignedByte  ParentType= AreaLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.location-rank = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.geo-location.latitude 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.geo-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.geo-location.longitude 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.geo-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.geo-location.horizontalDatum 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.geo-location.horizontalDatum = wgs-84
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.geo-location.height.verticalLevel 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.geo-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.upward-area-reference.area-id  BaseType=string  ParentType= AreaLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.upward-area-reference.area-id = STDOTAreas
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.upward-area-reference.area-name  BaseType=string  ParentType= AreaLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.upward-area-reference.area-name = Broad Boulevard NW
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.upward-area-reference.location-rank  BaseType=unsignedByte  ParentType= AreaLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-descriptions.event-description.related-landmark.upward-area-reference.location-rank = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location.area-id  BaseType=string  ParentType= AreaLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location.area-id = STDOTAreas
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location.area-name  BaseType=string  ParentType= AreaLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location.area-name = State DOT Valley
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location.location-rank  BaseType=unsignedByte  ParentType= AreaLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-locations.event-location.area-location.location-rank = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.update-time.date 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.update-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.update-time.time 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.update-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.update-time.offset 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.update-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.estimated-duration 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.valid-period.estimated-duration = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.schedule-element-ids.event-schedule-element-identifier 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.schedule-element-ids.event-schedule-element-identifier = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.sequence-time.date 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.sequence-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.sequence-time.time 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.sequence-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.sequence-time.offset 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.sequence-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.start-time.date 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.start-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.start-time.time 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.start-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.start-time.offset 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.start-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-start-time.date 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-start-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-start-time.time 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-start-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-start-time.offset 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-start-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-end-time.date 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-end-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-end-time.time 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-end-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-end-time.offset 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.alternate-end-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-start-time.date 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-start-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-start-time.time 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-start-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-start-time.offset 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-start-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-end-time.date 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-end-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-end-time.time 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-end-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-end-time.offset 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.expected-end-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.recurrent-times.recurrent-time.recurrent-period.days-of-the-week  BaseType=anySimpleType  ParentType= EventPeriod
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.recurrent-times.recurrent-time.recurrent-period.days-of-the-week = friday
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.recurrent-times.recurrent-time.recurrent-period.effective-period-qualifier  BaseType=anySimpleType  ParentType= EventPeriod
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.recurrent-times.recurrent-time.recurrent-period.effective-period-qualifier = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.recurrent-times.recurrent-time.recurrent-period.holiday-day  BaseType=unsignedByte  ParentType= EventPeriod
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.recurrent-times.recurrent-time.recurrent-period.holiday-day = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.recurrent-times.recurrent-time.schedule-times.time 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.recurrent-times.recurrent-time.schedule-times.time = 12:14 PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.recurrent-times.recurrent-time.utc-offset 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.recurrent-times.recurrent-time.utc-offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.planned-event-continuous-flag 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-times.planned-event-continuous-flag = no
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-name  BaseType=string  ParentType= EventElementDetail
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-name = State Highway Bridge Construction
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.lanes-type  BaseType=anySimpleType  ParentType= EventLane
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.lanes-type = 8192
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.link-direction  BaseType=anySimpleType  ParentType= LinkLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.link-direction = s
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.lanes-total-original  BaseType=unsignedByte  ParentType= EventLane
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.lanes-total-original = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.lanes-total-affected  BaseType=unsignedByte  ParentType= EventLane
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.lanes-total-affected = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.event-lanes-affected.lanes 
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.event-lanes-affected.lanes = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.lanes-status  BaseType=anySimpleType  ParentType= EventLane
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-lanes.event-lane.lanes-status = 768
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item.transit-route-id  BaseType=string  ParentType= EventTransitLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item.transit-route-id = State DOT Route 
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item.transit-direction  BaseType=anySimpleType  ParentType= EventTransitLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item.transit-direction = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item.transit-stop-detail  BaseType=string  ParentType= EventTransitLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item.transit-stop-detail = State DOT Last Stop On Route
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item.transit-location-text  BaseType=string  ParentType= EventTransitLocation
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-transit-locations.event-transit-location-item.transit-location-text = State DOT Scheduled Event Description and Notes
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-hazmat-details.event-hazmat-details-item.hazmat-code  BaseType=unsignedInt  ParentType= Hazmat
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-hazmat-details.event-hazmat-details-item.hazmat-code = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-hazmat-details.event-hazmat-details-item.placard-code  BaseType=unsignedInt  ParentType= Hazmat
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-hazmat-details.event-hazmat-details-item.placard-code = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-hazmat-details.event-hazmat-details-item.placard-displayed-accuracy  BaseType=anySimpleType  ParentType= Hazmat
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.event-hazmat-details.event-hazmat-details-item.placard-displayed-accuracy = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.confidence-level  BaseType=anySimpleType  ParentType= EventElementDetail
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.confidence-level = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-element-details.event-element-detail.access-level  BaseType=anySimpleType  ParentType= EventElementDetail
+tmdd:fEUMsg.FEU.event-element-details.event-element-detail.access-level = public domain
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-comments.event-comment  BaseType=string  ParentType= EventComments
+tmdd:fEUMsg.FEU.event-comments.event-comment = The construction around the State Highway Bridge was part of the 2016 State Highway Development Plan by the State.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-comments.operator-id  BaseType=string  ParentType= EventComments
+tmdd:fEUMsg.FEU.event-comments.operator-id = StateDOT_OPRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-comments.operator-comment  BaseType=string  ParentType= EventComments
+tmdd:fEUMsg.FEU.event-comments.operator-comment = StateDOT_OPRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.event-comments.language  BaseType=string  ParentType= AdditionalText
+tmdd:fEUMsg.FEU.event-comments.language = English
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.full-report-texts.full-report-text.report-medium  BaseType=anySimpleType  ParentType= AdditionalText
+tmdd:fEUMsg.FEU.full-report-texts.full-report-text.report-medium = other
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.full-report-texts.full-report-text.description  BaseType=string  ParentType= FullReportText
+tmdd:fEUMsg.FEU.full-report-texts.full-report-text.description = On I-156 (Main Rd) in the County of Broad motorists can expect potential delays due to an incident.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:fEUMsg.FEU.full-report-texts.full-report-text.language  BaseType=string  ParentType= AdditionalText
+tmdd:fEUMsg.FEU.full-report-texts.full-report-text.language = English
+

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+    Jameleon - An automation testing tool..
+    Copyright (C) 2003-2006 Christian W. Hargraves (engrean@hotmail.com)
+    
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+-->
+<testcase xmlns="jelly:jameleon" useCSV="true">
+  <test-case-summary>Tests that leading and trailing spaces are removed from CSV variables names</test-case-summary>
+  <test-case-author>Stephane Elie</test-case-author>
+  <test-case-level>ACCEPTANCE</test-case-level>
+  <test-case-level>REGRESSION</test-case-level>
+  <test-case-bug>1676944</test-case-bug>
+  <functional-point-tested>csv</functional-point-tested>
+  <application-tested>framework</application-tested>
+
+  <junit-session application="junit">
+    <junit-simple-compare-2-vars functionId="Verify that the name var1 is OK" var1="${varname1}" var2="value1"/>
+    <junit-simple-compare-2-vars functionId="Verify that the name var2 is OK" var1="${varname2}" var2="value2"/>
+    <junit-simple-compare-2-vars functionId="Verify that the name var3 is OK" var1="${varname3}" var2="value3"/>
+    <junit-simple-compare-2-vars functionId="Verify that the name var4 is OK" var1="${varname4}" var2="value4"/>
+    <junit-simple-compare-2-vars functionId="Verify that the name var5 is OK" var1="${varname5}" var2="value5"/>
+  </junit-session>
+</testcase>

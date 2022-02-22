@@ -1,0 +1,3429 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Syntax Reference</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, Jameleon Core, syntax reference, automated testing framework"/>
+    <link href="default.css" rel="stylesheet" type="text/css"/>
+
+    <body>
+        <section name="Available Tags">
+            <p>
+                 This is a list of available tags for Jameleon Core. This list of tags is also available in
+                 the Jameleon GUI. You can get there by selecting the "Functional Points" tab on the lower-left. All
+                  tags, including custom tags and other enabled plug-ins' tags, show up in the GUI.
+            </p>
+        </section>
+        <section name="Jameleon Core Tags">
+            <p>
+                <table>
+                        <tr>
+                           <th>Tag</th>
+                           <th>Short Description</th>
+                        </tr>
+                                                <tr>
+                            <td><a href="#application-tested">&lt;application-tested/&gt;</a></td>
+                            <td>Documents the application tested.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#csv">&lt;csv/&gt;</a></td>
+                            <td>Iterates over all nested tags one time per row of a CSV file.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#execute-jameleon-script">&lt;execute-jameleon-script/&gt;</a></td>
+                            <td>Used to acceptance test Jameleon tags.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#function-doc">&lt;function-doc/&gt;</a></td>
+                            <td>Documents a single step of a test case.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#functional-point-tested">&lt;functional-point-tested/&gt;</a></td>
+                            <td>Documents which feature of the application the test case is testing.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#iterate">&lt;iterate/&gt;</a></td>
+                            <td>Iterates over all nested tags one time per object in a Collection.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#ju-assert-equals">&lt;ju-assert-equals/&gt;</a></td>
+                            <td>Performs an assertEquals on two variables.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#ju-assert-not-null">&lt;ju-assert-not-null/&gt;</a></td>
+                            <td>Performs an assertNotNull on a given variable.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#ju-assert-null">&lt;ju-assert-null/&gt;</a></td>
+                            <td>Performs an assertNull on a given variable.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#ju-assert-true">&lt;ju-assert-true/&gt;</a></td>
+                            <td>Performs an assertTrue on a given expression.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#ju-session">&lt;ju-session/&gt;</a></td>
+                            <td>A Session for the JUnit plug-in.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#map-variable">&lt;map-variable/&gt;</a></td>
+                            <td>Used to map the value in one variable over to the value of another variable.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#param">&lt;param/&gt;</a></td>
+                            <td>Used to give a function tag a parameter or a list of parameters.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#param-name">&lt;param-name/&gt;</a></td>
+                            <td>Gives the parameter a name.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#param-type">&lt;param-type/&gt;</a></td>
+                            <td>Gives the parameter a variable type.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#param-value">&lt;param-value/&gt;</a></td>
+                            <td>Gives the parameter a value.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#postcondition">&lt;postcondition/&gt;</a></td>
+                            <td>This tag is used to mark a group of tags as postconditions.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#precondition">&lt;precondition/&gt;</a></td>
+                            <td>This tag is used to mark a group of tags as preconditions.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#ri-test-script">&lt;ri-test-script/&gt;</a></td>
+                            <td>This is currently a tag meant to be nested inside the test-suite tag.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#sql">&lt;sql/&gt;</a></td>
+                            <td>Used to iterate over all tags it is surrounding one time per row in a SQL ResultSet.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#sql-param">&lt;sql-param/&gt;</a></td>
+                            <td>Used to set binding parameter to the parent sql-update tag.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#sql-param-value">&lt;sql-param-value/&gt;</a></td>
+                            <td>Used for set value of a sql-param.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#sql-update">&lt;sql-update/&gt;</a></td>
+                            <td>Runs a delete or update SQL statement against the database.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#test-case-author">&lt;test-case-author/&gt;</a></td>
+                            <td>Documents the test case's author.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#test-case-bug">&lt;test-case-bug/&gt;</a></td>
+                            <td>Describes a bug for a test case.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#test-case-id">&lt;test-case-id/&gt;</a></td>
+                            <td>Describes a unique id of the test case.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#test-case-level">&lt;test-case-level/&gt;</a></td>
+                            <td>Describes which test case level the test case should be executed under.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#test-case-requirement">&lt;test-case-requirement/&gt;</a></td>
+                            <td>Describes which requirement number the test case was written against.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#test-case-summary">&lt;test-case-summary/&gt;</a></td>
+                            <td>Documents the summary of what the test case does.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#test-suite">&lt;test-suite/&gt;</a></td>
+                            <td>This is currently a tag meant to group several test case scripts.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#testStep">&lt;testStep/&gt;</a></td>
+                            <td>Used to consilidate a set of test actions into a single logical test step.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#testcase">&lt;testcase/&gt;</a></td>
+                            <td>Every test case script must have at least one testcase tag containing all other Jameleon tags.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#variable-value">&lt;variable-value/&gt;</a></td>
+                            <td>used only as a child of &lt;map-variable/&gt;, it allows the ability to map one or more.</td>
+                        </tr>
+                                                <tr>
+                            <td><a href="#wait">&lt;wait/&gt;</a></td>
+                            <td>Wait for the given number of milliseconds.</td>
+                        </tr>
+                                        </table>
+            </p>
+                        <subsection name="application-tested">
+                <p>
+                    <a name="application-tested">Documents the application tested.
+This tag is used directly inside the &lt;testcase/&gt; tag.
+
+A example might be:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;test-case-summary&gt;Tests some feature&lt;/test-case-summary&gt;
+&lt;test-case-bug&gt;3423&lt;/test-case-bug&gt;
+&lt;test-case-author&gt;Christian Hargraves&lt;/test-case-author&gt;
+&lt;test-case-level&gt;ACCEPTANCE&lt;/test-case-level&gt;
+&lt;test-case-level&gt;REGRESSION&lt;/test-case-level&gt;
+&lt;functional-point-tested&gt;csv&lt;/functional-point-tested&gt;
+&lt;application-tested&gt;framework&lt;/application-tested&gt;
+&lt;test-case-requirement&gt;AP-123&lt;/test-case-requirement&gt;
+&lt;test-case-id&gt;TC-123&lt;/test-case-id&gt;
+&lt;/testcase"&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/ApplicationTestedTag.html">API docs</a> and <a href="xref/net/sf/jameleon/ApplicationTestedTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="csv">
+                <p>
+                    <a name="csv">Iterates over all nested tags one time per row of a CSV file.
+The name of the CSV file is based on the <code>testEnvironment</code>, <code>organization</code>, and the
+<code>name</code> attributes. The directory structure, then follows the <code>testEnvironment</code>
+then inside that directory the <code>organization</code> if set. The file name matches the name set in
+the csv attribute.
+
+For example, to execute the opening of an application and doing something <b>n</b> number of times:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;csv name="some_file_name_without_extension"&gt;
+&lt;some-session application="someApp" beginSession="true"&gt;
+&lt;some-tag-that-uses-context-variables
+functionId="Verify successful navigation, using a different variable."/&gt;
+&lt;/some-session&gt;
+&lt;/csv&gt;
+&lt;/testcase&gt;
+</source></pre>
+
+Maybe opening the application <b>n</b> number of times takes too long, but
+each of the scenarios still need to be executed. Try putting the csv tag inside
+the session tag:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;some-session application="someApp" beginSession="true"&gt;
+&lt;csv name="some_file_name_without_extension"&gt;
+&lt;some-tag-that-uses-context-variables
+functionId="Verify successful navigation, using a different variable."/&gt;
+&lt;/csv&gt;
+&lt;/some-session&gt;
+&lt;/testcase&gt;
+</source></pre>
+
+
+All values that are not defined in a CSV file will be considered 'null'. To define an empty String,
+simply define the value as <b>&quot;&quot;</b>.
+For example:
+<pre><source>
+var1,var2,var3
+one,"",</source></pre>
+In the above example, var2 will be an empty string and var3 will be null.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/CsvTag.html">API docs</a> and <a href="xref/net/sf/jameleon/CsvTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>csvFileName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the relative path to the name of the csv file. This does
+not use any logic in considering testEnvironment nor organization.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>name</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the name of the csv file to read in.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>csvDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the directory of the csv file to read in (relative to baseDir).
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>csvValueSeparator</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the separator used to separate CSV files.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>char</td>
+                      </tr>
+                       <tr>
+                          <td>csvCharset</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the character set to use when reading in the CSV file
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>charset</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the character set to use to read the data file in.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>dataDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the directory of where the data will be looked for.
+The baseDir is then prepended on this
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>file</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the name of the file to use as a data source.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>countRow</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the DataDrivable tag to increment the number of times the test case was executed
+for each row executed.
+                              </p>
+                          </td>
+                          <td>false</td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>stopTestExecutionOnFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  To continue on a normal execution path even though an error occurs, set this to false
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets a pause point to this class.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="execute-jameleon-script">
+                <p>
+                    <a name="execute-jameleon-script">Used to acceptance test Jameleon tags. Executes a Jameleon script and checks various outputs.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/plugin/junit/ExecuteJameleonScriptTag.html">API docs</a> and <a href="xref/net/sf/jameleon/plugin/junit/ExecuteJameleonScriptTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>script</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The script to execute
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>checkOutcomePassed</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Pass only if the script passed
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>checkOutcomeFailed</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Pass only if the script failed
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>noTestCaseResults</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>numOfFunctionsRun</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The number of functional points that should be run from the script being executed
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>numOfFailures</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The number of failures that should fail from the script being executed
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>noFailOnFunctionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  A functionId where no failure should occur
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>numOfTestCasesRun</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The number of test cases that should run from the script being executed (for when useCSV is set to true in the testcase tag)
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>numOfTestCasesFailed</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The number of test cases that should fail from the script being executed (for when useCSV is set to true in the testcase tag)
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseDocsFile</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The name of the generated test case doc file.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>executionTimeGreaterThan</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The execution time should be greater than this number if set
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>executionTimeLessThan</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The execution time should be greater than this number if set
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>lineNumFailed</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The line # of the script that is stated as failing in the HTML . This requires the testCaseName attribute be set
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>int</td>
+                      </tr>
+                       <tr>
+                          <td>lineFailedReason</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The given error message for failure in the HTML results
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>lineFailedFunctionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The functionId of the row that failed
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>errorMsgContains</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  A snippet of the error message or reason for that is expected in stdout.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  A snippet of the error message or reason for that is expected in stdout.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="function-doc">
+                <p>
+                    <a name="function-doc">Documents a single step of a test case.
+This tag can be used to document manual test cases.
+Also, sometimes it is too difficult to fit everything
+in the functionId attribute of a tag because there is more
+than one thing happening.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/function/FunctionDocTag.html">API docs</a> and <a href="xref/net/sf/jameleon/function/FunctionDocTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="functional-point-tested">
+                <p>
+                    <a name="functional-point-tested">Documents which feature of the application the test case is testing.
+This can be used to execute test cases that test only a certain feature set.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/FunctionalPointTestedTag.html">API docs</a> and <a href="xref/net/sf/jameleon/FunctionalPointTestedTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="iterate">
+                <p>
+                    <a name="iterate">Iterates over all nested tags one time per object in a Collection.
+Sometimes you want to data-drive your test, but based on data that is defined
+in the application itself. This is a more generic way to data-drive your tags,
+based on a Collection of Objects that may be populated into the context via some
+other tag.
+
+For example:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;get-data-from-somewhere toVar="listOfAccounts"/&gt;
+&lt;iterate varName="someVar" items="${listOfAccounts}"&gt;
+&lt;some-session application="someApp" beginSession="true"&gt;
+&lt;some-tag-that-uses-context-variables
+functionId="Verify successful navigation, using a different variable."
+attribute="${someVar}"/&gt;
+&lt;/some-session&gt;
+&lt;/iterate&gt;
+&lt;/testcase&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/data/IterateTag.html">API docs</a> and <a href="xref/net/sf/jameleon/data/IterateTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>items</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.util.Collection</td>
+                      </tr>
+                       <tr>
+                          <td>varName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>id</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  This is primarily used for debugging.
+It also provides a means to distinguish between nested <code>IterateTag</code> tags.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>countRow</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the DataDrivable tag to increment the number of times the test case was executed
+for each row executed.
+                              </p>
+                          </td>
+                          <td>false</td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>stopTestExecutionOnFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  To continue on a normal execution path even though an error occurs, set this to false
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets a pause point to this class.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="ju-assert-equals">
+                <p>
+                    <a name="ju-assert-equals">Performs an assertEquals on two variables. This tag, along with all JUnit tags
+can be used inside any other plug-in's session tag
+
+To compare two variables with a default JUnit error message on a failure:
+
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;ju-session application="someApp"&gt;
+&lt;ju-assert-equals
+functionId="Check that var1 equals var2."
+expected="${var1}"
+actual="${var2}"/&gt;
+&lt;/ju-session&gt;
+&lt;/testcase&gt;
+</source></pre>
+
+To compare two variables that gives "First Name" at the beginning of the failure message:
+
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;jiffie-session application="someApp"&gt;
+&lt;ju-assert-equals
+functionId="Check that var1 equals var2."
+expected="${var1}"
+actual="${var2}"
+msg="First Name"/&gt;
+&lt;/jiffie-session&gt;
+&lt;/testcase&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/plugin/junit/tags/AssertEqualsTag.html">API docs</a> and <a href="xref/net/sf/jameleon/plugin/junit/tags/AssertEqualsTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>expected</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The expected value
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.Object</td>
+                      </tr>
+                       <tr>
+                          <td>actual</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The actual value
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.Object</td>
+                      </tr>
+                       <tr>
+                          <td>valuesAreStrings</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Forces the values to be compared as Strings by calling the toString() method.
+                              </p>
+                          </td>
+                          <td>false</td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>msg</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The error message to display if the test fails
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="ju-assert-not-null">
+                <p>
+                    <a name="ju-assert-not-null">Performs an assertNotNull on a given variable. This tag, along with all JUnit tags
+can be used inside any other plug-in's session tag
+
+An example use might be:
+
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon" xmlns:j="jelly:core"&gt;
+&lt;j:set-var var="someVar" value="some value"/&gt;
+&lt;ju-session application="someApp"&gt;
+&lt;ju-assert-not-null
+functionId="Check that var1 equals var2."
+value="${someVar}"/&gt;
+&lt;/ju-session&gt;
+&lt;/testcase&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/plugin/junit/tags/AssertNotNullTag.html">API docs</a> and <a href="xref/net/sf/jameleon/plugin/junit/tags/AssertNotNullTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>value</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The value to be checked for null
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.Object</td>
+                      </tr>
+                       <tr>
+                          <td>msg</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The error message to display if the test fails
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="ju-assert-null">
+                <p>
+                    <a name="ju-assert-null">Performs an assertNull on a given variable. This tag, along with all JUnit tags
+can be used inside any other plug-in's session tag
+
+An example use might be:
+
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;ju-session application="someApp"&gt;
+&lt;ju-assert-null
+functionId="Check that var1 equals var2."
+value="${someNonExistentVar}"/&gt;
+&lt;/ju-session&gt;
+&lt;/testcase&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/plugin/junit/tags/AssertNullTag.html">API docs</a> and <a href="xref/net/sf/jameleon/plugin/junit/tags/AssertNullTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>value</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The value to be checked for null
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.Object</td>
+                      </tr>
+                       <tr>
+                          <td>msg</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The error message to display if the test fails
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="ju-assert-true">
+                <p>
+                    <a name="ju-assert-true">Performs an assertTrue on a given expression. This tag, along with all JUnit tags
+can be used inside any other plug-in's session tag
+
+The following is an example:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon" xmlns:j="jelly:core"&gt;
+&lt;j:set var="greeting" value="Hello World!"/&gt;
+&lt;ju-session&gt;
+&lt;ju-assert-true
+functionId="check that 'greeting' has at least one character in it"
+test="${greeting.length() >= 1"/&gt;
+&lt;/ju-session&gt;
+&lt;/testcase&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/plugin/junit/tags/AssertTrueTag.html">API docs</a> and <a href="xref/net/sf/jameleon/plugin/junit/tags/AssertTrueTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>test</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The test to be executed
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>org.apache.commons.jelly.expression.Expression</td>
+                      </tr>
+                       <tr>
+                          <td>msg</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The error message to display if the test fails
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="ju-session">
+                <p>
+                    <a name="ju-session">A Session for the JUnit plug-in.
+
+An example of its use might:
+
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;ju-session application="someApp"&gt;
+&lt;ju-assert-equals
+functionId="Check that var1 equals var2."
+expected="${var1}"
+actual="${var2}"/&gt;
+&lt;/ju-session&gt;
+&lt;/testcase&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/plugin/junit/JUnitSessionTag.html">API docs</a> and <a href="xref/net/sf/jameleon/plugin/junit/JUnitSessionTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>application</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The name of the application being run according to the *-TestCaseTag.properties file
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>organization</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The organization (affiliate or company name) this application will be tested against.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>sessionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the tag to delay x milliseconds before anything else is executed.
+                              </p>
+                          </td>
+                          <td>0</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                       <tr>
+                          <td>beginSession</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Starts the applicattion and gets it to the state defined in the $testEnviroment-Applications.properties.
+DEFAULTS to <code>false</code>
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="map-variable">
+                <p>
+                    <a name="map-variable">Used to map the value in one variable over to the value of another variable.
+
+sThis is useful when the same functional point is being used more than once or
+when the same variable name is used between different functional points that are
+in the same test-case.
+
+The following is an example of creating a list and using it in a tag.
+
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;map-variable toVariable="resultsText" variableType="list"&gt;
+&lt;variable-value&gt;value 1&lt;/variable-value&gt;
+&lt;variable-value&gt;value 2&lt;/variable-value&gt;
+&lt;variable-value&gt;value 3&lt;/variable-value&gt;
+&lt;variable-value&gt;value 4&lt;/variable-value&gt;
+&lt;/map-variable/&gt;
+
+&lt;some-session application="someApp" beginSession="true"&gt;
+&lt;some-tag-that-uses-context-variables
+functionId="Verify successful navigation, using a different variable."
+someVariable="${resultsText}/&gt;
+&lt;/some-session&gt;
+&lt;/testcase&gt;
+</source></pre>
+
+The following is an example of mapping one value of a variable to another variable (pretty much useless).
+
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+&lt;some-session application="someApp" beginSession="true"&gt;
+&lt;some-tag-that-uses-context-variables
+functionId="Verify successful navigation, using a different variable."&gt;
+&lt;map-variable
+fromVariable="resultsText1"
+toVariable="resultsText"/&gt;
+&lt;/some-tag-that-uses-context-variables&gt;
+&lt;/some-session&gt;
+&lt;/testcase&gt;
+</source></pre>
+
+The following is an example of using the ${varName} notation (recommended)
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+&lt;some-session application="someApp" beginSession="true"&gt;
+&lt;some-tag-that-uses-context-variables
+functionId="Verify successful navigation, using a different variable."
+resultsText="${resultsText1"/&gt;
+&lt;/some-session&gt;
+&lt;/testcase&gt;
+</source></pre>
+
+The following is an example of mapping multiple variable values to a single variable.
+Notice it's variableType is set to "list":
+
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+&lt;some-session application="someApp" beginSession="true"&gt;
+&lt;some-tag-that-uses-context-variables
+functionId="Verify successful navigation, using a different variable."&gt;
+&lt;map-variable
+fromVariable="resultsText1"
+toVariable="resultsText"
+variableType="list"/&gt;
+&lt;map-variable
+fromVariable="resultsText2"
+toVariable="resultsText"
+variableType="list"/&gt;
+&lt;map-variable
+fromVariable="resultsText3"
+toVariable="resultsText"
+variableType="list"/&gt;
+&lt;/some-tag-that-uses-context-variables&gt;
+&lt;/some-session&gt;
+&lt;/testcase&gt;
+</source></pre>
+
+The value(s) can be entered directly like so:
+
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+&lt;some-session application="someApp" beginSession="true"&gt;
+&lt;some-tag-that-uses-context-variables
+functionId="Verify successful navigation, using a different variable."&gt;
+&lt;map-variable toVariable="resultsText" variableType="list"&gt;
+&lt;variable-value&gt;value 1&lt;/variable-value&gt;
+&lt;variable-value&gt;value 2&lt;/variable-value&gt;
+&lt;variable-value&gt;value 3&lt;/variable-value&gt;
+&lt;variable-value&gt;value 4&lt;/variable-value&gt;
+&lt;/map-variable/&gt;
+&lt;/some-tag-that-uses-context-variables&gt;
+&lt;/some-session&gt;
+&lt;/testcase&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/VariableMappingTag.html">API docs</a> and <a href="xref/net/sf/jameleon/VariableMappingTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="param">
+                <p>
+                    <a name="param">Used to give a function tag a parameter or a list of parameters.
+
+For example:
+<pre>
+&lt;param&gt;
+&lt;param-name&gt;someName&lt;/param-name&gt;
+&lt;param-value&gt;foo&lt;/param-value&gt;
+&lt;param-type&gt;text&lt;/param-type&gt;
+&lt;/param&gt;
+</pre>
+This tag adds itself to a list of param tags to the parent FunctionTag.
+It's up to the FunctionTag to use the parameters. They can be accessed via
+the {@link net.sf.jameleon.function.FunctionTag#getParams()} method.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/ParamTag.html">API docs</a> and <a href="xref/net/sf/jameleon/ParamTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="param-name">
+                <p>
+                    <a name="param-name">Gives the parameter a name.
+For example:
+<pre>
+&lt;param&gt;
+&lt;param-name&gt;someName&lt;/param-name&gt;
+&lt;/param&gt;
+</pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/ParamNameTag.html">API docs</a> and <a href="xref/net/sf/jameleon/ParamNameTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="param-type">
+                <p>
+                    <a name="param-type">Gives the parameter a variable type.
+For example:
+<pre>
+&lt;param&gt;
+&lt;param-name&gt;someName&lt;/param-name&gt;
+&lt;param-value&gt;foo&lt;/param-value&gt;
+&lt;param-type&gt;text&lt;/param-type&gt;
+&lt;/param&gt;
+</pre>
+It's up to the function tag to interpret the param-type. For example, in
+an HTTP plug-in some types might be: checkbox, select, textarea, and etc ...</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/ParamTypeTag.html">API docs</a> and <a href="xref/net/sf/jameleon/ParamTypeTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="param-value">
+                <p>
+                    <a name="param-value">Gives the parameter a value.
+For example:
+<pre>
+&lt;param&gt;
+&lt;param-name&gt;someName&lt;/param-name&gt;
+&lt;param-value&gt;foo&lt;/param-value&gt;
+&lt;/param&gt;
+</pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/ParamValueTag.html">API docs</a> and <a href="xref/net/sf/jameleon/ParamValueTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="postcondition">
+                <p>
+                    <a name="postcondition">This tag is used to mark a group of tags as postconditions. Marking a tag
+as a postcondition tag guarantees the execution of the tag.
+If the test case fails at a tag marked as a postcondition, then the results
+are marked as a postcondition failure.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/PostconditionTag.html">API docs</a> and <a href="xref/net/sf/jameleon/PostconditionTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="precondition">
+                <p>
+                    <a name="precondition">This tag is used to mark a group of tags as preconditions. Marking a tag
+as a precondition tag doesn't change the functionality of the test case.
+If the test case fails at a tag marked as a precondition, then the results
+are marked as a precondition failure.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/PreconditionTag.html">API docs</a> and <a href="xref/net/sf/jameleon/PreconditionTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="ri-test-script">
+                <p>
+                    <a name="ri-test-script">This is currently a tag meant to be nested inside the test-suite tag.
+It represents one of the scripts to be included and executed in the test-suite.
+If a test-script nested inside a <code>precondition</code> tag fails, then
+none of the following scripts will be executed even if they are nested inside
+a postcondition tag.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/TestScriptTag.html">API docs</a> and <a href="xref/net/sf/jameleon/TestScriptTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>script</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The script to execute.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Do not continue executing any following scripts if a script
+marked as a precondition fails.
+                              </p>
+                          </td>
+                          <td>false</td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="sql">
+                <p>
+                    <a name="sql">Used to iterate over all tags it is surrounding one time per row in a SQL ResultSet.
+This tag should work with any RDBMS that provides a JDBC driver.
+One thing to remember is each JDBC driver seems to act a bit differently when returning
+the column names returned. Some JDBC drivers will returned the column names in all caps
+some will return them as undercase, while others may return them as defined when the table
+was created.
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;sql query="SELECT ID, col1 as NAME, col2 as GENDER FROM TEST"
+jdbcUsername="sa"
+jdbcPassword=""
+jdbcUrl="jdbc:hsqldb:hsqldb_sample"
+jdbcDriver="org.hsqldb.jdbcDriver"
+countRow="true">
+
+&lt;some-session application="someApp" beginSession="true"&gt;
+&lt;some-tag-that-uses-context-variables
+functionId="Verify successful navigation, using a different variable."
+id="${ID}"
+name="${NAME}"
+gender="${GENDER}"/&gt;
+&lt;/some-session&gt;
+&lt;/sql&gt;
+&lt;/testcase&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/data/SqlTag.html">API docs</a> and <a href="xref/net/sf/jameleon/data/SqlTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>jdbcDriver</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Set the JDBC Driver needed for the Database Connection
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>jdbcUrl</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Set the JDBC URL for the Database Connection
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>jdbcUsername</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Set the JDBC UserName for the Database Connection
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>jdbcPassword</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Set the JDBC Password for the Database Connection
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>query</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Set the SQL Query for the Database Connection
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>id</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Set the SQL ID number
+This is primarily used for debugging.
+It also provides a means to distinguish between nested <code>SqlTag</code> tags.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>countRow</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the DataDrivable tag to increment the number of times the test case was executed
+for each row executed.
+                              </p>
+                          </td>
+                          <td>false</td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>stopTestExecutionOnFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  To continue on a normal execution path even though an error occurs, set this to false
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets a pause point to this class.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="sql-param">
+                <p>
+                    <a name="sql-param">Used to set binding parameter to the parent sql-update tag.
+
+An example might be:
+<pre><source>
+&lt;sql-update
+functionId="Insert a row into test table via a prepared statement with multiple param values"
+sqlUpdateSql="insert into test(test_str, test_str2) values(?,?)"/&gt;
+&lt;sql-param&gt;
+&lt;sql-param-value&gt;text2&gt;/sql-param-value&gt;
+&lt;sql-param-value&gt;text3&gt;/sql-param-value&gt;
+&lt;/sql-param&gt;
+&lt;/sql-update&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/sql/SqlParamTag.html">API docs</a> and <a href="xref/net/sf/jameleon/sql/SqlParamTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="sql-param-value">
+                <p>
+                    <a name="sql-param-value">Used for set value of a sql-param.
+
+An example might be:
+<pre><source>
+&lt;sql-update
+functionId="Insert a row into test table via a prepared statement with multiple param values"
+sqlUpdateSql="insert into test(test_str, test_str2) values(?,?)"/&gt;
+&lt;sql-param&gt;
+&lt;sql-param-value&gt;text2&gt;/sql-param-value&gt;
+&lt;sql-param-value&gt;text3&gt;/sql-param-value&gt;
+&lt;/sql-param&gt;
+&lt;/sql-update&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/sql/SqlParamValueTag.html">API docs</a> and <a href="xref/net/sf/jameleon/sql/SqlParamValueTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="sql-update">
+                <p>
+                    <a name="sql-update">Runs a delete or update SQL statement against the database.
+
+Sometimes putting an application into a required state means connecting
+to a database and executing a SQL statment. This can be done with this tag.
+The SQL can be an insert, delete or update command. The body of this element
+should contain the SQL statement used. See the function tag docs for information
+on other attributes supported and/or required by this tag.
+
+An example might be:
+<pre><source>
+&lt;junit-session xmlns:j="jelly:core"&gt;
+&lt;sql-update
+functionId="Insert another row into test table"
+jdbcDriver="org.hsqldb.jdbcDriver"
+jdbcUrl="jdbc:hsqldb:tst/_tmp/jameleon_test2"
+jdbcUsername="sa"
+jdbcPassword=""&gt;
+create cached table test2(
+test_str varchar,
+test_str2 varchar
+);
+&lt;/sql-update&gt;
+&lt;sql-update
+functionId="Delete row from test table"
+jdbcDriver="org.hsqldb.jdbcDriver"
+jdbcUrl="jdbc:hsqldb:tst/_tmp/jameleon_test2"
+jdbcUsername="sa"
+jdbcPassword="">
+delete from test2 where test_str='some text';
+-- some SQL comment
+-- Another SQL comment
+&lt;/sql-update&gt;
+&lt;/junit-session&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/sql/SqlUpdateTag.html">API docs</a> and <a href="xref/net/sf/jameleon/sql/SqlUpdateTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>jdbcDriver</td>
+                          <td>jdbc.driver</td>
+                          <td>
+                              <p>
+                                  The jdbc driver
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>jdbcUrl</td>
+                          <td>jdbc.url</td>
+                          <td>
+                              <p>
+                                  The jdbc url
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>jdbcUsername</td>
+                          <td>jdbc.username</td>
+                          <td>
+                              <p>
+                                  The jdbc username
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>jdbcPassword</td>
+                          <td>jdbc.password</td>
+                          <td>
+                              <p>
+                                  The jdbc password
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                       <tr>
+                          <td>sqlUpdateSql</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="test-case-author">
+                <p>
+                    <a name="test-case-author">Documents the test case's author.
+This tag is used directly inside the &lt;testcase/&gt; tag.
+
+A example might be:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;test-case-summary&gt;Tests some feature&lt;/test-case-summary&gt;
+&lt;test-case-bug&gt;3423&lt;/test-case-bug&gt;
+&lt;test-case-author&gt;Christian Hargraves&lt;/test-case-author&gt;
+&lt;test-case-level&gt;ACCEPTANCE&lt;/test-case-level&gt;
+&lt;test-case-level&gt;REGRESSION&lt;/test-case-level&gt;
+&lt;functional-point-tested&gt;csv&lt;/functional-point-tested&gt;
+&lt;application-tested&gt;framework&lt;/application-tested&gt;
+&lt;test-case-requirement&gt;AP-123&lt;/test-case-requirement&gt;
+&lt;test-case-id&gt;TC-123&lt;/test-case-id&gt;
+&lt;/testcase"&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/TestCaseAuthorTag.html">API docs</a> and <a href="xref/net/sf/jameleon/TestCaseAuthorTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="test-case-bug">
+                <p>
+                    <a name="test-case-bug">Describes a bug for a test case. To provide a link in the test
+case documentation for the both GUI and the HTML results simply
+set the bugTrackerUrl parameter the Jameleon configuration.
+This tag is used directly inside the &lt;testcase/&gt; tag.
+
+A example might be:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;test-case-summary&gt;Tests some feature&lt;/test-case-summary&gt;
+&lt;test-case-bug&gt;3423&lt;/test-case-bug&gt;
+&lt;test-case-author&gt;Christian Hargraves&lt;/test-case-author&gt;
+&lt;test-case-level&gt;ACCEPTANCE&lt;/test-case-level&gt;
+&lt;test-case-level&gt;REGRESSION&lt;/test-case-level&gt;
+&lt;functional-point-tested&gt;csv&lt;/functional-point-tested&gt;
+&lt;application-tested&gt;framework&lt;/application-tested&gt;
+&lt;test-case-requirement&gt;AP-123&lt;/test-case-requirement&gt;
+&lt;test-case-id&gt;TC-123&lt;/test-case-id&gt;
+&lt;/testcase"&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/TestCaseBugTag.html">API docs</a> and <a href="xref/net/sf/jameleon/TestCaseBugTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="test-case-id">
+                <p>
+                    <a name="test-case-id">Describes a unique id of the test case. Can be used to link
+to an independent system like TestLink.
+This tag is used directly inside the &lt;testcase/&gt; tag.
+
+A example might be:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;test-case-summary&gt;Tests some feature&lt;/test-case-summary&gt;
+&lt;test-case-bug&gt;3423&lt;/test-case-bug&gt;
+&lt;test-case-author&gt;Christian Hargraves&lt;/test-case-author&gt;
+&lt;test-case-level&gt;ACCEPTANCE&lt;/test-case-level&gt;
+&lt;test-case-level&gt;REGRESSION&lt;/test-case-level&gt;
+&lt;functional-point-tested&gt;csv&lt;/functional-point-tested&gt;
+&lt;application-tested&gt;framework&lt;/application-tested&gt;
+&lt;test-case-requirement&gt;AP-123&lt;/test-case-requirement&gt;
+&lt;test-case-id&gt;TC-123&lt;/test-case-id&gt;
+&lt;/testcase"&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/TestCaseIdTag.html">API docs</a> and <a href="xref/net/sf/jameleon/TestCaseIdTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="test-case-level">
+                <p>
+                    <a name="test-case-level">Describes which test case level the test case should be executed under.
+This tag is used directly inside the &lt;testcase/&gt; tag.
+
+A example might be:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;test-case-summary&gt;Tests some feature&lt;/test-case-summary&gt;
+&lt;test-case-bug&gt;3423&lt;/test-case-bug&gt;
+&lt;test-case-author&gt;Christian Hargraves&lt;/test-case-author&gt;
+&lt;test-case-level&gt;ACCEPTANCE&lt;/test-case-level&gt;
+&lt;test-case-level&gt;REGRESSION&lt;/test-case-level&gt;
+&lt;functional-point-tested&gt;csv&lt;/functional-point-tested&gt;
+&lt;application-tested&gt;framework&lt;/application-tested&gt;
+&lt;test-case-requirement&gt;AP-123&lt;/test-case-requirement&gt;
+&lt;test-case-id&gt;TC-123&lt;/test-case-id&gt;
+&lt;/testcase"&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/TestCaseLevelTag.html">API docs</a> and <a href="xref/net/sf/jameleon/TestCaseLevelTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="test-case-requirement">
+                <p>
+                    <a name="test-case-requirement">Describes which requirement number the test case was written against.
+This tag is used directly inside the &lt;testcase/&gt; tag.
+
+A example might be:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;test-case-summary&gt;Tests some feature&lt;/test-case-summary&gt;
+&lt;test-case-bug&gt;3423&lt;/test-case-bug&gt;
+&lt;test-case-author&gt;Christian Hargraves&lt;/test-case-author&gt;
+&lt;test-case-level&gt;ACCEPTANCE&lt;/test-case-level&gt;
+&lt;test-case-level&gt;REGRESSION&lt;/test-case-level&gt;
+&lt;functional-point-tested&gt;csv&lt;/functional-point-tested&gt;
+&lt;application-tested&gt;framework&lt;/application-tested&gt;
+&lt;test-case-requirement&gt;AP-123&lt;/test-case-requirement&gt;
+&lt;test-case-id&gt;TC-123&lt;/test-case-id&gt;
+&lt;/testcase"&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/TestCaseRequirementTag.html">API docs</a> and <a href="xref/net/sf/jameleon/TestCaseRequirementTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="test-case-summary">
+                <p>
+                    <a name="test-case-summary">Documents the summary of what the test case does.
+This tag is used directly inside the &lt;testcase/&gt; tag.
+
+A example might be:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+&lt;test-case-summary&gt;Tests some feature&lt;/test-case-summary&gt;
+&lt;test-case-bug&gt;3423&lt;/test-case-bug&gt;
+&lt;test-case-author&gt;Christian Hargraves&lt;/test-case-author&gt;
+&lt;test-case-level&gt;ACCEPTANCE&lt;/test-case-level&gt;
+&lt;test-case-level&gt;REGRESSION&lt;/test-case-level&gt;
+&lt;functional-point-tested&gt;csv&lt;/functional-point-tested&gt;
+&lt;application-tested&gt;framework&lt;/application-tested&gt;
+&lt;test-case-requirement&gt;AP-123&lt;/test-case-requirement&gt;
+&lt;test-case-id&gt;TC-123&lt;/test-case-id&gt;
+&lt;/testcase"&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/TestCaseSummaryTag.html">API docs</a> and <a href="xref/net/sf/jameleon/TestCaseSummaryTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="test-suite">
+                <p>
+                    <a name="test-suite">This is currently a tag meant to group several test case scripts
+together into a test suite.
+An example use might be:
+<pre>
+&lt;test-suite name="some test suite name"&gt;
+&lt;precondition&gt;
+&lt;test-script script="scripts/setup.xml"/&gt;
+&lt;/precondition&gt;
+&lt;test-script script="scripts/foo/0002.xml"/&gt;
+&lt;test-script script="scripts/foo/0003.xml"/&gt;
+&lt;/test-suite&gt;
+</pre>
+NOTE: There is currently no support for a postcondition tag yet.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/TestSuiteTag.html">API docs</a> and <a href="xref/net/sf/jameleon/TestSuiteTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>testSuiteListener</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  A fully qualified class name that implements TestSuiteListener.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>name</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The name of the test suite.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="testStep">
+                <p>
+                    <a name="testStep">Used to consilidate a set of test actions into a single logical test step.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/function/TestStepTag.html">API docs</a> and <a href="xref/net/sf/jameleon/function/TestStepTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>expectedResult</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The result expected from this test step.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>stepNumber</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The number associated with this test step.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>needsVerified</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The needs verified by the successful completion of this test step (separated by semi-colon).
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>requirementsVerified</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The requirements verified by the successful completion of this test step (separated by semi-colon).
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>passfailResult</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The requirements verified by the successful completion of this test step (separated by semi-colon).
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="testcase">
+                <p>
+                    <a name="testcase">Every test case script must have at least one testcase tag containing all other Jameleon tags.
+<p>
+Some of this tags attribute may affect every nested Jameleon tag.
+Many of the attributes in this tag can be set globally via a jameleon.conf file.
+</p>
+<p>
+The order of setting variables in the context follows:
+<ol>
+<li> Load the CSV file variables and put them in the context.</li>
+<li> Load the $testEnvironment-Applications.properties and then Applications.properties and
+only set the variables that aren't set in the previous files. In other words, if there
+are variables that are going to be the same ( like the page title ) across multiple test
+cases, then first variable set wins.</li>
+<li> Execute the function tag and set the attributes in the context. If you want key/values in
+the CSV and properties files to override the script attribute, then the function point
+author uses the setDefaultVariableValue() method in the set method for that attribute.</li>
+<li> If the function point is using a map-variable, then override all settings to set the
+variable to the mapFrom variable name.</li>
+</ol>
+</p></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/TestCaseTag.html">API docs</a> and <a href="xref/net/sf/jameleon/TestCaseTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>needsVerified</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The needs verified by the successful completion of this test case (separated by semi-colon).
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>requirementsVerified</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The requirements verified by the successful completion of this test case (separated by semi-colon).
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseResultSessionTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the session template to be used to generate the session result.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseResultDataRowTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the data row template to be used to generate the data drivable result.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseResultFunctionTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the function result template to be used to generate the test case result.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseMainPageTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the template to be used to generate the main page of the results..
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseSummaryTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the template to be used to generate the test case summary page of the results.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseResultTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the template to be used to generate the test case result summary page.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testCaseResultSummaryTemplate</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the template to be used to generate the test case result summary page.
+This is searched for in the classpath.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>resultsDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the directory where the results will be written to.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>storeStateEvent</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to record the state of the application at a defined <code>event</code>
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>storeStateOnChange</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to record the state of the application whenever the application's state changes.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>storeStateOnError</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to record the state of the application on errors.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>storeStateNever</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to never record the state of the application.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>maxExecutionTime</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the maximum execution time before the test case fails
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                       <tr>
+                          <td>failedOnDataDriver</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Used internally to mark whether the DataDrivable had a problem. This is used for the failOnCSVFileNotFound option only
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>failOnCSVFileNotFound</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the failOnCSVFileNotFound property
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>organization</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the organziation or company that this test will be run against.
+This is used the same as the testEnvironment to find the CSV file or use values
+from a properties file specific to an organization.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>testEnvironment</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the environment to which testing system the testcase will be run in.
+Information like the starting url, can be based on this. This is
+also used to find the CSV file if one is used for the test case.
+This can be set as a global variable.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>useCSV</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets whether a CSV file should be used for this testcase or not.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>trace</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets whether a std out message should be sent before and after the execution of a functional point.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>baseDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the base directory of the project
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>assertGreaterThanLevel</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>assertLessThanLevel</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>assertLevel</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>assertLevels</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the level of the asserts to run that are equal to this list of numbers.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>genTestCaseDocs</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to generate the test case docs based on the javadocs of the functional points
+and the functionId's of the functional points in the test case.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>executeTestCase</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the test case to be executed or not.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>bugTrackerUrl</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the url of the bugtracking tool used so the bug's listed for the test case are linked.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>genTestCaseDocsEncoding</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the charset encoding.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>propsName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the name of the properties file (minus the .properties) to read in into the context
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>jameleonConfigName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the configuration file Jameleon uses to configure itself.
+(default is defined in {@link net.sf.jameleon.util.Configurator})
+Do not use. This is used for internal testing purposes only.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>enableSslCertCheck</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Enable or disable validity checking of SSL certificates.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>csvFileName</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the relative path to the name of the csv file. This does
+not use any logic in considering testEnvironment nor organization.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>name</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the name of the csv file to read in.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>csvDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the directory of the csv file to read in (relative to baseDir).
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>csvValueSeparator</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the separator used to separate CSV files.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>char</td>
+                      </tr>
+                       <tr>
+                          <td>csvCharset</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the character set to use when reading in the CSV file
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>charset</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the character set to use to read the data file in.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>dataDir</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the directory of where the data will be looked for.
+The baseDir is then prepended on this
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.io.File</td>
+                      </tr>
+                       <tr>
+                          <td>file</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the name of the file to use as a data source.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>countRow</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets the DataDrivable tag to increment the number of times the test case was executed
+for each row executed.
+                              </p>
+                          </td>
+                          <td>false</td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>stopTestExecutionOnFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  To continue on a normal execution path even though an error occurs, set this to false
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Sets a pause point to this class.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                        <subsection name="variable-value">
+                <p>
+                    <a name="variable-value">used only as a child of &lt;map-variable/&gt;, it allows the ability to map one or more
+text values to a variable. The variableType of &lt;map-variable/&gt; can be used to when defining
+multiple values.
+
+For example:
+<pre><source>
+&lt;testcase xmlns="jelly:jameleon"&gt;
+
+&lt;some-session application="someApp" beginSession="true"&gt;
+&lt;some-tag-that-uses-context-variables
+functionId="Verify successful navigation, using a different variable."&gt;
+&lt;map-variable toVariable="resultsText" variableType="list"&gt;
+&lt;variable-value&gt;value 1&lt;/variable-value&gt;
+&lt;variable-value&gt;value 2&lt;/variable-value&gt;
+&lt;variable-value&gt;value 3&lt;/variable-value&gt;
+&lt;variable-value&gt;value 4&lt;/variable-value&gt;
+&lt;/map-variable/&gt;
+&lt;/some-tag-that-uses-context-variables&gt;
+&lt;/some-session&gt;
+&lt;/testcase&gt;
+</source></pre></a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/VariableValueTag.html">API docs</a> and <a href="xref/net/sf/jameleon/VariableValueTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                   </p>
+            </subsection>
+                        <subsection name="wait">
+                <p>
+                    <a name="wait">Wait for the given number of milliseconds.
+This tag may be used anywhere inside the testcase tag.</a>
+                </p>
+                <p>
+                                        Take a look at this tag's <a href="apidocs/net/sf/jameleon/WaitTag.html">API docs</a> and <a href="xref/net/sf/jameleon/WaitTag.html">source code</a> 
+                    for more information.<br/>
+                </p>
+                <p>
+                                      <table>
+                      <tr>
+                          <th>Attribute Name</th>
+                          <th>Context Name</th>
+                          <th>Description</th>
+                          <th>Default</th>
+                          <th>Required</th>
+                          <th>Type</th>
+                      </tr>
+                       <tr>
+                          <td>delayTime</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The number of milliseconds to wait for
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>long</td>
+                      </tr>
+                       <tr>
+                          <td>functionId</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The id of this function. This is used in the macro as a short description of the function
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>true</td>
+                          <td>java.lang.String</td>
+                      </tr>
+                       <tr>
+                          <td>breakPoint</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Tells the GUI to stop at this functional point
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>precondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a precondition
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>postcondition</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies this is a postcondition and will therefore get executed even
+if a previous functional point or session tag failed.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectFailure</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies a failure is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>expectException</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  Specifies an exception is expected.
+                              </p>
+                          </td>
+                          <td></td>
+                          <td>false</td>
+                          <td>boolean</td>
+                      </tr>
+                       <tr>
+                          <td>functionDelay</td>
+                          <td></td>
+                          <td>
+                              <p>
+                                  The delay time to use at the end of each functional point
+                              </p>
+                          </td>
+                          <td>-1</td>
+                          <td>false</td>
+                          <td>long</td>
+                      </tr>
+                                         </table>
+                                   </p>
+            </subsection>
+                    </section>
+    </body>
+</document>

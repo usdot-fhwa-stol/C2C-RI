@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TestProcedureInfo_subreport.jrxml" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="C2CRI_Report_DATAADAPTER.xml"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="AppProcedureSteps2" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[$F{InfoProcedure}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="AppSteps2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="AppAction2" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="AppPassFail2" class="java.lang.String" isForPrompting="false"/>
+	<parameter name="AppProcedures" class="java.lang.String" isForPrompting="false">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+		<defaultValueExpression><![CDATA[$F{Procedure}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Documents and Settings\\crearw\\Desktop\\Reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT DISTINCT C2CRI_InfoLayerTestProcedures.Procedure AS InfoProcedure, C2CRI_InfoLayerTestProcedures.Procedure, C2CRI_InfoLayerTestProcedures.ProcedureId, C2CRI_InfoLayerTestProcedures.Description,	C2CRI_InfoLayerTestProcedures.Variables,	C2CRI_InfoLayerTestProcedures.Requirements,	C2CRI_InfoLayerTestProcedures.Procedure as "ProcedureTitle", C2CRI_InfoLayerTestProcedures.PassFailCriteria FROM C2CRI_InfoLayerTestProcedures]]>
+	</queryString>
+	<field name="InfoProcedure" class="java.lang.Object"/>
+	<field name="Procedure" class="java.lang.Object"/>
+	<field name="ProcedureId" class="java.lang.Object"/>
+	<field name="Description" class="java.lang.Object"/>
+	<field name="Variables" class="java.lang.Object"/>
+	<field name="Requirements" class="java.lang.Object"/>
+	<field name="ProcedureTitle" class="java.lang.Object"/>
+	<field name="PassFailCriteria" class="java.lang.Object"/>
+	<variable name="Report_CountInfo" class="java.lang.Integer" incrementType="Group" incrementGroup="TestProcedureGroup" calculation="Count">
+		<variableExpression><![CDATA[$F{InfoProcedure}]]></variableExpression>
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<variable name="AppProcedureSteps" class="java.lang.String">
+		<initialValueExpression><![CDATA[$F{InfoProcedure}]]></initialValueExpression>
+	</variable>
+	<group name="Procedure">
+		<groupExpression><![CDATA[$F{Procedure}]]></groupExpression>
+	</group>
+	<group name="ProcedureId">
+		<groupExpression><![CDATA[$F{ProcedureId}]]></groupExpression>
+	</group>
+	<group name="Description">
+		<groupExpression><![CDATA[$F{Description}]]></groupExpression>
+	</group>
+	<group name="Requirements">
+		<groupExpression><![CDATA[$F{Requirements}]]></groupExpression>
+	</group>
+	<group name="ProcedureTitle">
+		<groupExpression><![CDATA[$F{ProcedureTitle}]]></groupExpression>
+	</group>
+	<group name="TestProcedureGroup" isStartNewPage="true" minHeightToStartNewPage="10">
+		<groupHeader>
+			<band height="110">
+				<textField evaluationTime="Group" evaluationGroup="TestProcedureGroup">
+					<reportElement x="-1" y="30" width="50" height="30"/>
+					<box padding="3"/>
+					<textElement lineSpacing="Single">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + ".1"]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="79" y="60" width="121" height="50"/>
+					<box padding="3">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single"/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{InfoProcedure}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="200" y="60" width="315" height="50">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box padding="3">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{ProcedureTitle}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="49" y="30" width="497" height="30"/>
+					<box padding="3"/>
+					<textElement lineSpacing="Single">
+						<font size="12"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{Procedure}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="60" width="79" height="50"/>
+					<box padding="3">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Test Procedure:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" evaluationTime="Group" evaluationGroup="TestProcedureGroup">
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="50" height="30"/>
+					<box padding="3"/>
+					<textElement lineSpacing="Single">
+						<font size="14" isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$V{Report_CountInfo} + "."]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement stretchType="RelativeToTallestObject" x="50" y="0" width="496" height="30"/>
+					<textElement lineSpacing="Single">
+						<font size="14" isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Test Procedures for " + $F{InfoProcedure}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="DescriptionGroup">
+		<groupHeader>
+			<band height="51">
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="180" height="50"/>
+					<box padding="4">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" lineSpacing="Single">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[      Description:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="180" y="0" width="335" height="50"/>
+					<box padding="3">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{Description}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="RequirementsGroup">
+		<groupHeader>
+			<band height="50">
+				<staticText>
+					<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="180" height="50"/>
+					<box padding="4">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" lineSpacing="Double">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[      Requirement(s):]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="180" y="0" width="335" height="50"/>
+					<box padding="3">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{Requirements}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="VariablesGroup">
+		<groupHeader>
+			<band height="51" splitType="Prevent">
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="1" width="180" height="50"/>
+					<box padding="4">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" lineSpacing="Double">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[      Variable(s):]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement stretchType="RelativeToTallestObject" x="180" y="1" width="335" height="50">
+						<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+					</reportElement>
+					<box padding="3">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{Variables}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="ProcedureStepsGroup" minHeightToStartNewPage="50">
+		<groupHeader>
+			<band height="72">
+				<staticText>
+					<reportElement stretchType="RelativeToTallestObject" x="0" y="0" width="180" height="70"/>
+					<box padding="4">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Middle" lineSpacing="Double">
+						<font size="12" isBold="true"/>
+					</textElement>
+					<text><![CDATA[      Pass/Fail Criteria:]]></text>
+				</staticText>
+				<textField>
+					<reportElement stretchType="RelativeToTallestObject" x="180" y="0" width="335" height="70"/>
+					<box padding="2">
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement lineSpacing="Single">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{PassFailCriteria}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="DetailGroup" keepTogether="true">
+		<groupHeader>
+			<band height="43">
+				<subreport>
+					<reportElement stretchType="RelativeToTallestObject" x="-1" y="2" width="544" height="30" isPrintInFirstWholeBand="true" isPrintWhenDetailOverflows="true">
+						<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+					</reportElement>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="AppProcedures">
+						<subreportParameterExpression><![CDATA[$F{Procedure}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="AppProcedureSteps2">
+						<subreportParameterExpression><![CDATA[$F{InfoProcedure}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "TestProcInfo_subsub.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="DetailGroup1"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="9" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="9" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="6" splitType="Stretch"/>
+	</columnHeader>
+</jasperReport>

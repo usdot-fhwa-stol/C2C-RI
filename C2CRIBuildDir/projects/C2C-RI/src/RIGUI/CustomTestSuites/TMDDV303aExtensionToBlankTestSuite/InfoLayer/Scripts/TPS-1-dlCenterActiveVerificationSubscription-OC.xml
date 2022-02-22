@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-1-dlCenterActiveVerificationSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlCenterActiveVerificationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.1.1 [Verify Connection Active] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:04:37-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlCenterActiveVerificationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.1.1 [Verify Connection Active] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Center Active is required by the specification. (NRTM 3.3.1.1.5.2.1).  RECORD this information as: TMDD_N1R8_Restrictions___Center_Active_Supported = ${TMDD_N1R8_Restrictions___Center_Active_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 3 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 4 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 5 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 6 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 7 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 8 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 9 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 11 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 12 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlCenterActiveVerificationSubscription SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlCenterActiveVerificationSubscription" functionId="dlCenterActiveVerificationSubscription" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 13 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 13.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 13.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlCenterActiveVerificationUpdate RESPONSETIMEREQUIRED=TMDD_N1R2_Publish_Center_Active_Verification_Information_Parameter PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlCenterActiveVerificationUpdate" functionId="dlCenterActiveVerificationUpdate" RESPONSETIMEREQUIRED="${TMDD_N1R2_Publish_Center_Active_Verification_Information_Parameter}" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 13.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 13.1.2.1 VERIFY that element centerActiveVerificationResponseMsg exists." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="centerActiveVerificationResponseMsg" instanceName="tmdd:centerActiveVerificationResponseMsg" elementType="message" functionId="Looking for centerActiveVerificationResponseMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 13.1.2.2 VERIFY that element organization-information exists within centerActiveVerificationResponseMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-information" instanceName="tmdd:centerActiveVerificationResponseMsg" elementType="data-frame" functionId="Looking for centerActiveVerificationResponseMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 13.1.2.3 VERIFY that element center-id exists within centerActiveVerificationResponseMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="center-id" instanceName="tmdd:centerActiveVerificationResponseMsg" elementType="data-element" functionId="Looking for centerActiveVerificationResponseMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 13.1.2.4 VERIFY that element center-name exists within centerActiveVerificationResponseMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="center-name" instanceName="tmdd:centerActiveVerificationResponseMsg" elementType="data-element" functionId="Looking for centerActiveVerificationResponseMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 13.1.2.5 IF TMDD_N1R8_Restrictions___Center_Active_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N1R8_Restrictions___Center_Active_Supported}">
+                              <testStep functionId="Step 13.1.2.5.1 VERIFY that element restrictions exists within centerActiveVerificationResponseMsg." passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="restrictions" instanceName="tmdd:centerActiveVerificationResponseMsg" elementType="data-frame" functionId="Looking for centerActiveVerificationResponseMsg"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 13.1.2.6 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N1R8_Restrictions___Center_Active_Supported,restrictions,tmdd:centerActiveVerificationResponseMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 13.1.2.7 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                              <jl:set var="OptionalContentVerified" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 13.1.2.8 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlCenterActiveVerificationUpdate RESPONSETIMEREQUIRED=TMDD_N1R2_Publish_Center_Active_Verification_Information_Parameter OPTIONALCONTENTVERIFIED = OptionalContentVerified PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlCenterActiveVerificationUpdate" functionId="dlCenterActiveVerificationUpdate" RESPONSETIMEREQUIRED="${TMDD_N1R2_Publish_Center_Active_Verification_Information_Parameter}" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

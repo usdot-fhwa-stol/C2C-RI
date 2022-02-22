@@ -1,0 +1,629 @@
+ 
+#<!--   
+#       Title:  TCS-37-dlDMSInventoryRequest-OC-InValid-5
+#       Description:  This test case is used to verify the SUTs support of the dlDMSInventoryRequest dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.4.1 [Need to Share DMS Inventory]. This Test Case tests for an invalid response result. An error response message is expected be returned with an error-code set to 5 (out of range values).
+#       Related Procedure:  TPS-37-dlDMSInventoryRequest-OC
+#       Version/Date: 2014/01/16 02:36:35
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Request Message to be sent to the SUT.  The element values within this message have all be set to &#%& in order to trigger an out of range value response.
+RequestMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether an error response is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of error response that is expected from the SUT.
+ErrorTypeExpected = 5
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.authentication.user-id 
+tmdd:deviceInformationRequestMsg.authentication.user-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.authentication.password 
+tmdd:deviceInformationRequestMsg.authentication.password = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.authentication.operator-id  BaseType=string  ParentType= Authentication
+tmdd:deviceInformationRequestMsg.authentication.operator-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-id 
+tmdd:deviceInformationRequestMsg.organization-information.organization-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-name 
+tmdd:deviceInformationRequestMsg.organization-information.organization-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-location 
+tmdd:deviceInformationRequestMsg.organization-information.organization-location = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-function 
+tmdd:deviceInformationRequestMsg.organization-information.organization-function = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.contact-id 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.contact-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.person-name 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.person-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.person-title 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.person-title = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.phone-number 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.phone-alternate 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.phone-alternate = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.mobile-phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.mobile-phone-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.fax-number 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.fax-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.pager-number 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.pager-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.pager-id 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.pager-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.email-address 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.email-address = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.radio-unit 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.radio-unit = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.address-line1 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.address-line1 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.address-line2 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.address-line2 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.city 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.city = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.state 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.zip-code 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.zip-code = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.country 
+tmdd:deviceInformationRequestMsg.organization-information.organization-contact-details.country = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-id 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.latitude = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.longitude = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-description = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-type = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.city = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:deviceInformationRequestMsg.organization-information.center-contact-list.center-contact-details.center-contact-details.country = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.last-update-time.date 
+tmdd:deviceInformationRequestMsg.organization-information.last-update-time.date = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.last-update-time.time 
+tmdd:deviceInformationRequestMsg.organization-information.last-update-time.time = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-information.last-update-time.offset 
+tmdd:deviceInformationRequestMsg.organization-information.last-update-time.offset = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-name 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-location 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-location = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-function 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-function = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.contact-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.contact-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.person-name 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.person-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.person-title 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.person-title = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.phone-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.phone-alternate 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.phone-alternate = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.mobile-phone-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.mobile-phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.mobile-phone-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.mobile-phone-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.fax-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.fax-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.pager-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.pager-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.pager-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.pager-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.email-address 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.email-address = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.radio-unit 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.radio-unit = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.address-line1 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.address-line1 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.address-line2 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.address-line2 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.city 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.city = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.state 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.zip-code 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.zip-code = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.country 
+tmdd:deviceInformationRequestMsg.organization-requesting.organization-contact-details.country = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-name 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.latitude = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.longitude = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalLevel 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalLevel = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-description 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-description = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-type 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-type = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:deviceInformationRequestMsg.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.date 
+tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.date = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.time 
+tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.time = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.offset 
+tmdd:deviceInformationRequestMsg.organization-requesting.last-update-time.offset = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-type  BaseType=anySimpleType  ParentType= DeviceInformationRequest
+tmdd:deviceInformationRequestMsg.device-type = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-information-type  BaseType=anySimpleType  ParentType= DeviceInformationRequest
+tmdd:deviceInformationRequestMsg.device-information-type = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.device-id-list.device-id 
+tmdd:deviceInformationRequestMsg.device-filter.device-id-list.device-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.network-id-list.network-id 
+tmdd:deviceInformationRequestMsg.device-filter.network-id-list.network-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.link-id-list.link 
+tmdd:deviceInformationRequestMsg.device-filter.link-id-list.link = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.link-designator-list.link-designator 
+tmdd:deviceInformationRequestMsg.device-filter.link-designator-list.link-designator = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.linear-reference.linear-reference-start 
+tmdd:deviceInformationRequestMsg.device-filter.linear-reference.linear-reference-start = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.linear-reference.linear-reference-end 
+tmdd:deviceInformationRequestMsg.device-filter.linear-reference.linear-reference-end = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.section-id-list.section-id 
+tmdd:deviceInformationRequestMsg.device-filter.section-id-list.section-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.pattern-id-list.pattern-id 
+tmdd:deviceInformationRequestMsg.device-filter.pattern-id-list.pattern-id = &#%&
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:deviceInformationRequestMsg.device-filter.center-id-list.center-id 
+tmdd:deviceInformationRequestMsg.device-filter.center-id-list.center-id = &#%&
+

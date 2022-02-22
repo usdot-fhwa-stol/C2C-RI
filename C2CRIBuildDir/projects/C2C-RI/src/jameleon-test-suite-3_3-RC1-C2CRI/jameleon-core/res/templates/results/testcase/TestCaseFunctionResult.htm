@@ -1,0 +1,90 @@
+#if($result.failed())
+    #set( $icon = "${results_res_dir}/images/doc-errored.gif" )
+    #set( $functionClass = "txtFailed" )
+#else
+    #set( $icon = "${results_res_dir}/images/doc-passed.gif" )
+    #set( $functionClass = "txtPassed" )
+#end
+
+<div class="txtHeader full_width" title="Action Information">
+    <table width="100%" cellpadding="3" cellspacing="0">
+        <tr>
+            <td width="95%"><img alt="function" src="${icon}" align="absmiddle"/>
+                <span class="$functionClass" title="Action Description">$!result.tag.functionId</span>
+
+                <div class="steps" title="Action Steps">
+                    <table class="txtAttributes">
+                        #foreach ( $step in $result.tag.steps )
+                        <tr>
+                            <td>${velocityCount}- ${step}</td>
+                        </tr>
+                        #end
+                    </table>
+                </div>
+            </td>
+            <td width="5%">
+                <div align="right" title="Attributes">
+                    <a class="tooltip" href="#">
+                        <img alt="info" src="${results_res_dir}/images/info_white_blue_bkg.gif" class="button"/>
+                      <span>
+                      <table cellpadding="2">
+                          <tr>
+                              <td class="txtLabel">tag</td>
+                              <td class="txtLabelVal" nowrap="nowrap">$result.tag.defaultTagName</td>
+                          </tr>
+                          #if ($result.Error)
+                          <tr>
+                              <td class="txtLabel">Failed line #</td>
+                              <td class="txtLabelVal" nowrap="nowrap">$!result.LineNumber</td>
+                          </tr>
+                          #end
+                          <tr>
+                              <td class="txtLabel">exec time</td>
+                              <td class="txtLabelVal" nowrap="nowrap">$result.executionTimeToDisplay</td>
+                          </tr>
+                          <tr>
+                              <td class="txtLabel">date time</td>
+                              <td class="txtLabelVal" nowrap="nowrap">$result.dateTimeExecuted.Time</td>
+                          </tr>
+                          #foreach ( $name in $result.tag.attributes )
+                            #set( $attr = $result.Tag.getAttribute("$name") )
+                            #if ( $attr.value && !$attr.name.equals('functionId') )
+                          <tr>
+                              <td class="txtLabel">$name</td>
+                              <td class="txtLabelVal" nowrap="nowrap">$attr.DisplayedValue</td>
+                          </tr>
+                            #end
+                          #end
+                      </table></span>
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </table>
+    #if($result.Error)
+    <div class="txtHeader" title="Error Information">
+        <div class="indent full_width">
+            <table width="100%" cellpadding="3" cellspacing="0">
+                <tr>
+                    <td><img alt="error message" src="${results_res_dir}/images/error_msg.jpg" align="left"/>
+                        <span class="txtFailed" title="Error Message">$result.htmlFormattedErrorMsg</span>
+                    </td>
+                    <td>
+                        <div class="full_width">
+                            <a class="tooltip" href="#">
+                                <img alt="stack" src="${results_res_dir}/images/viewstack_btn.gif"/>
+                                <span title="Stack Trace">
+<pre>$result.HtmlFormattedStackTrace</pre>
+                                </span>
+                            </a>
+                            #if ($result.errorFile)
+                            <a href="../${results_res_dir}/$result.errorFile" target="_new"><img alt="snapshot" src="${results_res_dir}/images/snapshot_btn.gif" class="button"/></a>
+                            #end
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    #end
+</div>

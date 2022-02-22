@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-39-dlDMSStatusRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDMSStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.4.3 [Need to Share DMS Status] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 22:57:49-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDMSStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.4.3 [Need to Share DMS Status] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Current Message Number is required by the specification. (NRTM 3.3.6.5.2.5.2.1).  RECORD this information as: TMDD_N39R593_Current_Message_Number_Supported = ${TMDD_N39R593_Current_Message_Number_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Time Remaining is required by the specification. (NRTM 3.3.6.5.2.5.2.2).  RECORD this information as: TMDD_N39R594_Time_Remaining_Supported = ${TMDD_N39R594_Time_Remaining_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Message Source is required by the specification. (NRTM 3.3.6.5.2.5.2.3).  RECORD this information as: TMDD_N39R595_Message_Source_Supported = ${TMDD_N39R595_Message_Source_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlDMSStatusRequest" riMode="EC">
+          <testStep functionId="Step 5 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 6 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 7 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 8 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlDMSStatusRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlDMSStatusRequest" functionId="dlDMSStatusRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 9 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 9.1 IF TMDD_N39R593_Current_Message_Number_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R593_Current_Message_Number_Supported}">
+                    <testStep functionId="Step 9.1.1 VERIFY that element message-number exists within each instance of dMSStatusMsg.dms-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="message-number" instanceName="tmdd:dMSStatusMsg.dms-status-item" functionId="Looking for dMSStatusMsg.dms-status-item.message-number"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 9.2 IF TMDD_N39R594_Time_Remaining_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R594_Time_Remaining_Supported}">
+                    <testStep functionId="Step 9.2.1 VERIFY that element message-time-remaining exists within each instance of dMSStatusMsg.dms-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="message-time-remaining" instanceName="tmdd:dMSStatusMsg.dms-status-item" functionId="Looking for dMSStatusMsg.dms-status-item.message-time-remaining"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 9.3 IF TMDD_N39R595_Message_Source_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N39R595_Message_Source_Supported}">
+                    <testStep functionId="Step 9.3.1 VERIFY that element message-source-mode exists within each instance of dMSStatusMsg.dms-status-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="message-source-mode" instanceName="tmdd:dMSStatusMsg.dms-status-item" functionId="Looking for dMSStatusMsg.dms-status-item.message-source-mode"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 9.4 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N39R593_Current_Message_Number_Supported,message-number,tmdd:dMSStatusMsg.dms-status-item;TMDD_N39R594_Time_Remaining_Supported,message-time-remaining,tmdd:dMSStatusMsg.dms-status-item;TMDD_N39R595_Message_Source_Supported,message-source-mode,tmdd:dMSStatusMsg.dms-status-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

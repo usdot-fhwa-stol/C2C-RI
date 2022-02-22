@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-5-dlEventIndexSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlEventIndexSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.3.1 [Need For An Index of Events] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:05:54-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlEventIndexSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.3.1 [Need For An Index of Events] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Event URL File Update Date and Time Information is required by the specification. (NRTM 3.3.3.9.5.2.1).  RECORD this information as: TMDD_N5R217_Event_URL_File_Update_Date_and_Time_Information_Supported = ${TMDD_N5R217_Event_URL_File_Update_Date_and_Time_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Event URL Reference Medium is required by the specification. (NRTM 3.3.3.9.5.2.2).  RECORD this information as: TMDD_N5R218_Event_URL_Reference_Medium_Supported = ${TMDD_N5R218_Event_URL_Reference_Medium_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 4 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 5 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 6 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 7 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 8 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 9 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 11 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 12 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 13 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlEventIndexSubscription SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlEventIndexSubscription" functionId="dlEventIndexSubscription" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 14 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 14.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 14.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlEventIndexUpdate RESPONSETIMEREQUIRED=TMDD_N5R208_Publish_Event_Index_Information_Parameter PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlEventIndexUpdate" functionId="dlEventIndexUpdate" RESPONSETIMEREQUIRED="${TMDD_N5R208_Publish_Event_Index_Information_Parameter}" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 14.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 14.1.2.1 VERIFY that element eventIndexMsg exists." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="eventIndexMsg" instanceName="tmdd:eventIndexMsg" elementType="message" functionId="Looking for eventIndexMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 14.1.2.2 VERIFY that element feu-url exists within each instance of eventIndexMsg.eventIndex" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="feu-url" instanceName="tmdd:eventIndexMsg.eventIndex" elementType="data-frame" functionId="Looking for eventIndexMsg.eventIndex"/>
+                         </testStep>
+                         <testStep functionId="Step 14.1.2.3 VERIFY that element event-update-time exists within each instance of eventIndexMsg.eventIndex" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="event-update-time" instanceName="tmdd:eventIndexMsg.eventIndex" elementType="data-frame" functionId="Looking for eventIndexMsg.eventIndex"/>
+                         </testStep>
+                         <testStep functionId="Step 14.1.2.4 VERIFY that element event-id exists within each instance of eventIndexMsg.eventIndex" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="event-id" instanceName="tmdd:eventIndexMsg.eventIndex" elementType="data-element" functionId="Looking for eventIndexMsg.eventIndex"/>
+                         </testStep>
+                         <testStep functionId="Step 14.1.2.5 VERIFY that element event-update exists within each instance of eventIndexMsg.eventIndex" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="event-update" instanceName="tmdd:eventIndexMsg.eventIndex" elementType="data-element" functionId="Looking for eventIndexMsg.eventIndex"/>
+                         </testStep>
+                         <testStep functionId="Step 14.1.2.6 VERIFY that element status exists within each instance of eventIndexMsg.eventIndex" passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="status" instanceName="tmdd:eventIndexMsg.eventIndex" elementType="data-element" functionId="Looking for eventIndexMsg.eventIndex"/>
+                         </testStep>
+                         <testStep functionId="Step 14.1.2.7 IF TMDD_N5R217_Event_URL_File_Update_Date_and_Time_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N5R217_Event_URL_File_Update_Date_and_Time_Information_Supported}">
+                              <testStep functionId="Step 14.1.2.7.1 VERIFY that element file-update-time exists within each instance of eventIndexMsg.eventIndex" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="file-update-time" instanceName="tmdd:eventIndexMsg.eventIndex" elementType="data-frame" functionId="Looking for eventIndexMsg.eventIndex"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 14.1.2.8 IF TMDD_N5R218_Event_URL_Reference_Medium_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N5R218_Event_URL_Reference_Medium_Supported}">
+                              <testStep functionId="Step 14.1.2.8.1 VERIFY that element url-reference-medium exists within each instance of eventIndexMsg.eventIndex.feu-url" passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="url-reference-medium" instanceName="tmdd:eventIndexMsg.eventIndex.feu-url" elementType="data-element" functionId="Looking for eventIndexMsg.eventIndex.feu-url"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 14.1.2.9 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N5R217_Event_URL_File_Update_Date_and_Time_Information_Supported,file-update-time,tmdd:eventIndexMsg.eventIndex;TMDD_N5R218_Event_URL_Reference_Medium_Supported,url-reference-medium,tmdd:eventIndexMsg.eventIndex.feu-url;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 14.1.2.10 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                              <jl:set var="OptionalContentVerified" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 14.1.2.11 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlEventIndexUpdate RESPONSETIMEREQUIRED=TMDD_N5R208_Publish_Event_Index_Information_Parameter OPTIONALCONTENTVERIFIED = OptionalContentVerified PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlEventIndexUpdate" functionId="dlEventIndexUpdate" RESPONSETIMEREQUIRED="${TMDD_N5R208_Publish_Event_Index_Information_Parameter}" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

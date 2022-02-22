@@ -1,0 +1,22 @@
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+  <precondition>	
+     <testStep functionId="Step 1. Precondition: Ensure that the preconditionFailureFlag variable is set to false. The test case set the value to ${PreconditionFailureFlag}.">
+ 	   <ju-assert-equals functionId = "Confirm preconditionFailureFlag" 
+	      expected="false"
+	      actual = "${PreconditionFailureFlag}"/>
+     </testStep>
+  </precondition>
+
+  <testStep functionId="Step 2.  This step is only executed if the Precondition Step 1 passed.">	
+  </testStep>
+
+  <testStep functionId="Step 3.  This step is only executed if the Precondition Step 1 was true and Step 2 passed.">
+  </testStep>
+
+  <testStep functionId="Step 4.  Run the TPS-PreconditionSubscriptTest subscript.">	
+      <jl:set var="MasterStep" value="TPS-PreconditionSubScriptTest"/>
+      <ri-execute-script functionId="This is the ri-execute-script-tag" script="TPS-PreconditionSubScriptTest.xml" checkOutcomePassed="!${SubscriptPreconditionFailureFlag}"/>
+   </testStep>
+
+</testprocedure>
+

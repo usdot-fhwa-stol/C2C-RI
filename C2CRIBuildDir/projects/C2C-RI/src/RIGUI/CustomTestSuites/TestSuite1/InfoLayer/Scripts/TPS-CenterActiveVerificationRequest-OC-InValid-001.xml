@@ -1,0 +1,43 @@
+<testcase xmlns="jelly:jameleon">
+  <precondition>	
+     <testStep functionId="Step 1. Ensure that the required needs (2.3.1.1) and requirements (3.3.1.1.1, 3.3.1.1.4 and 3.3.1.1.4.1) were selected in the NRTM.">
+ 	   <ju-assert-equals functionId = "Confirm Need 2.3.1.1 Setting is true" 
+	      expected="true"
+	      actual = "${TMDD_Need_2_3_1_1}"/>
+
+ 	   <ju-assert-equals functionId = "Check for Dialog Requirement 3.3.1.1.1 Setting is true" 
+	      expected="true"
+	      actual = "${TMDD_3_3_1_1_1}"/>
+
+ 	   <ju-assert-equals functionId = "Check for Message Requirement 3.3.1.1.5 Setting is true" 
+	      expected="true"
+	      actual = "${TMDD_3_3_1_1_4}"/>
+
+ 	   <ju-assert-equals functionId = "Check for Message Content Requirement 3.3.1.1.5.1 Setting is true" 
+	      expected="true"
+	      actual = "${TMDD_3_3_1_1_4_1}"/>
+
+     </testStep>
+  </precondition>
+
+  <C2CRI-session appStd = "NTCIP2306" infoStd = "TMDDV3" beginSession="true" riMode="OC" serviceName="tmddOCSoapHttpService"
+    portName = "tmddOCSoapHttpServicePort" operationName="DlCenterActiveVerificationRequest" useWSDL="true" 
+    isPublicationOperation="false" testCaseIdentifier="TPS-CenterActiveVerificationRequest-OC-Valid" userName="anonymous" password="Anything">
+
+     <testStep functionId="Step 1. Receive the SOAP Request from the External Center associated with operation ${operationName}.">
+        <ri-receive messageName="SampleReceipt" functionId="See what happens with the receive." />
+     </testStep>
+
+     <testStep functionId="Step 2. Create the Response Message to be sent to the Owner Center related to operation ${operationName}.">
+        <ri-create-message msgName="SampleResponse" msgType="Response" testCaseID="TPS-CenterActiveVerificationRequest-OC-Valid" 
+                        operationName="DlCenterActiveVerificationRequest"  operationMessageType="Output" overwrite="true" autoGenerate="true" 
+                        functionId="Create the response Message" />
+     </testStep>
+
+     <testStep functionId="Step 3. Send the SOAP Response to the External Center.">
+        <ri-respond messageName="SampleResponse" messageContent="" functionId="See what happens with the response." />
+     </testStep>	
+
+  </C2CRI-session>
+</testcase>
+

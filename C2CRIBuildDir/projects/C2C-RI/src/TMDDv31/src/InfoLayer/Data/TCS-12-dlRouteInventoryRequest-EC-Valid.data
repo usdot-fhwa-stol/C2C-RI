@@ -1,0 +1,414 @@
+ 
+#<!--   
+#       Title:  TCS-12-dlRouteInventoryRequest-EC-Valid
+#       Description:  This test case is used to verify the SUTs support of the dlRouteInventoryRequest dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.4.1.3 [Need for Route Inventory]. This Test Case tests for a valid response result.
+#       Related Procedure:  TPS-12-dlRouteInventoryRequest-EC
+#       Version/Date: 2014/01/16 02:14:02
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Response Message to be sent to the SUT.
+ResponseMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication.  Valid values are True or False.
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid user name.
+Username = #CONTEXTVARIABLE#RI_USERNAME#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid password.
+Password = #CONTEXTVARIABLE#RI_PASSWORD#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected valid Operator Identifier.
+OperatorID = defaultOperatorID
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the privilege to access the information requested.  Valid values are True or False.
+AllowAccess = True
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether a request error is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of request error that is expected from the SUT.
+ErrorTypeExpected = None
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT is expected to have valid data for a response.  Valid values are True or False.
+DataValid = True
+
+
+#GROUP NAME = Values
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = Testing for Requirement 3.3.4.4.1.4 in message trafficNetworkInformationRequestMsg
+tmdd:trafficNetworkInformationRequestMsg.network-information-type = 1,1,route inventory
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.restrictions.organization-information-forwarding-restrictions 
+tmdd:routeInventoryMsg.route-inventory-item.restrictions.organization-information-forwarding-restrictions = not to public
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-id 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-name 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-location 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-function 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.contact-id 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.person-name 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.person-title 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.phone-number 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.phone-alternate 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.mobile-phone-number 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.mobile-phone-id 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.fax-number 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.pager-number 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.pager-id 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.email-address 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.radio-unit 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.address-line1 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.address-line1 = 332 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.address-line2 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.city 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.state 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.zip-code 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.country 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-id 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-name 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.ft 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.ft = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-description 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-type 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = 333 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.state = NM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.last-update-time.date 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.last-update-time.time 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.organization-information.last-update-time.offset 
+tmdd:routeInventoryMsg.route-inventory-item.organization-information.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.network-id  BaseType=string  ParentType= RouteInventoryList
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.network-id = StateDOTNetworkRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.network-name  BaseType=string  ParentType= RouteInventoryList
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.network-name = StateDOTNetwork
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-id  BaseType=string  ParentType= RouteInventoryList
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-id = StateDOTRouteRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-link-id-list.link 
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-link-id-list.link = StateDOTLink
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-type  BaseType=anySimpleType  ParentType= RouteInventoryList
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-type = walking
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-name  BaseType=string  ParentType= RouteInventoryList
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-name = StateDOTRouteIdentity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.alternate-route-name-list.route-name  BaseType=string  ParentType= RouteInventoryList
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.alternate-route-name-list.route-name = StateDOTRouteIdentity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-length  BaseType=unsignedInt  ParentType= RouteInventoryList
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-length = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-node-id-list.node-id 
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-node-id-list.node-id = StateDOTNodeRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-url.url-reference 
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-url.url-reference = http://State.dot.gov/
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-url.url-reference-medium  BaseType=string  ParentType= UrlReference
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.route-url.url-reference-medium = rt:medium=referral
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.last-update-time.date 
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.last-update-time.time 
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.last-update-time.offset 
+tmdd:routeInventoryMsg.route-inventory-item.route-inventory-list.route.last-update-time.offset = 01:00
+

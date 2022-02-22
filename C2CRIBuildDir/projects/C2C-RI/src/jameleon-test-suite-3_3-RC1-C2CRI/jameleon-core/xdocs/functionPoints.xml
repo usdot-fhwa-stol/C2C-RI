@@ -1,0 +1,446 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Functional Points</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, Functional, Function, Functional Points, Function Points, Test, Testing, javadocs"/>
+
+    <body>
+        <section name="What is a Functional Point?">
+            <p>
+                Every application has features. These features can be anything from the open 
+                file dialog in a GUI application to logging onto a web application. These features 
+                are referred to as &quot;Functional Points&quot; in Jameleon. Jameleon requires the tester 
+                to define the features of an application before or during the automation process. The best case
+                scenerio would be to write your functional points before the application was actually written.
+                As discussed in the <a href="overview.html">overview document</a>, there are three types of 
+                <a href="overview.html#functionalPoints">functional points</a>:
+                <ul>
+                    <li>
+                        <a href="overview.html#actionPoint">Action Points</a>
+                    </li>
+                    <li>
+                        <a href="overview.html#validationPoint">Validation Points</a>
+                    </li>
+                    <li>
+                        <a href="overview.html#actionPoint">Navigation Points</a>
+                    </li>
+                </ul>
+                These functional points are then mapped to the Jameleon Scripting Engine (<a href="http://jakarta.apache.org/commons/jelly">Jelly</a>). 
+                It is then, that through the scripting language that these functional points are grouped in the 
+                required order to execute, beginning where the other functional point left off.
+            </p>
+        </section>
+        <section name="Function Point Common Attributes">
+            <p>
+		    The following is a list of attributes supported by all function points, regardless of plug-in implementation.
+            </p>
+            <p>
+                <font size="-2">
+                <table>
+                    <tr>
+                        <th>Attribute Name</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                        <th>Required</th>
+                    </tr>
+                    <tr>
+                        <td>functionId</td>
+                        <td>
+                            <p>
+                                A brief sentence explaining how the function tag is being used. For example, if using
+                                a &lt;logon/&gt; action function tag to logon with invalid accounts, a possible functionId
+                                might be <i>Attempt logon with invalid accounts</i>. This sentence is then used to generate
+                                the test case documentation.
+                            </p>
+                        </td>
+                        <td>N/A</td>
+                        <td>true</td>
+                    </tr>
+                    <tr>
+                        <td><a name="functionDelay">functionDelay</a></td>
+                        <td>This is a numerical setting in milliseconds. Whatever this is set to,
+                            the functional point will wait that period after execution.</td>
+                        <td>Defaults to &quot;0&quot;</td>
+                        <td>No</td>
+                    </tr>
+                    <tr>
+                        <td>precondition</td>
+                        <td>
+                            <p>
+                                Sometimes a test case needs to be set up before it can run. For example, maybe a test case
+                                tests the user delete function. To test the delete user function, a user must first be created.
+                                However, if the test fails because a user couldn't be created, the test case that tests the
+                                delete user function shouldn't fail normally because the add user function failed. It should
+                                fail, but with an appropriate message. Setting a function tag as a precondition simply prepends
+                                the error message with an precondition message, 
+                            </p>
+                            <p>
+                                Please see the <a href="syntax-reference.html#precondition_tag">precondition tag</a> to group several function tags as
+                                preconditions.
+                            </p>
+                        </td>
+                        <td>false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>postcondition</td>
+                        <td>
+                            <p>
+                                Sometimes a test case needs to be end in a state every time no matter what the outcome was. 
+                                When writing automated tests, it is best practice to make sure the test case leaves the 
+                                application being tested in the state it was in before the test was run. This can be accomplished 
+                                by usually just adding a function tag to this at the end of the test case. However, when a test
+                                fails, no other function tags are executed. Now the function tag that is supposed to put the application
+                                in the correct state doesn't get executed.
+                            </p>
+                            <p>
+                                For example, maybe a test case tests the add user function. The test adds the user, just not as expected
+                                and one of the validation points fails. Normally, a function tag to delete the user would be executed, but
+                                now that a validation point failed, that clean up tag won't get executed.
+                            </p>
+                            <p>
+                                This is what the postcondition setting is for. Any tag marked as a postcondition, will get executed no matter
+                                what. If you have several tags that are postconditions, then all of them will get executed, whether one of the
+                                postconditions fails or not. Please keep this in mind.
+                            </p>
+                            <p>
+                                Please see the <a href="#postcondition">postcondition tag</a> to group several function tags as
+                                postconditions.
+                            </p>
+                       </td>
+                       <td>false</td>
+                       <td>false</td>
+                    </tr>
+                    <tr>
+                       <td>expectFailure</td>
+                       <td>
+                           <p>
+                               Sometimes, it is desired to test that something wrong happened. In this case expectFailure can be used
+                               as a general way to make a function tag fail if it didn't fail due to a test (an assert method). 
+                           </p>
+                       </td>
+                       <td>false</td>
+                       <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>expectError</td>
+                        <td>
+                            <p>
+                                Sometimes, it is desired to test that an error happened. In this case expectError can be used
+                                as a general way to make a function tag fail if an exception wasn't thrown. 
+                            </p>
+                        </td>
+                        <td>false</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>breakPoint</td>
+                        <td>
+                            <p>
+                                This is mostly a GUI-specific feature for debugging scripts. If this is set to true and the script
+                                 is run with the Debug button, then the GUI will stop on this tag and wait.
+                            </p>
+                        </td>
+                        <td>false</td>
+                        <td>false</td>
+                    </tr>
+                </table>
+                </font>
+            </p>
+        </section>
+        <section name="Function Point Plug-in Implementations">
+            <p>
+                Each plug-in must implement their own functional point. The current plug-ins are listed to the left. While the steps below
+                describe the basic steps behind writing a function tag, be sure to click on the appropriate plug-in for specifics as to how 
+                to write tags for that particular plug-in.
+            </p>
+            <p>
+                Please refer to the section on the attributes supported by the base FunctionTag <a href="syntax-reference.html#function_tags">here.</a>
+            </p>
+        </section>
+        <section name="Writing a Functional Point">
+            <p>
+                Writing a functional point is quite easy. Simply follow the following guidelines.
+            </p>
+            <p>
+                <subsection name="Create a Java Class">
+                    <p>
+                        Each plug-in has a FunctionTag which was written to be extended by all function tags for that specific plug-in.
+                        This function tag should exist in the net.sf.jameleon.plugins.plugin-name package and usually ends in FunctionTag.
+                        For example, in the JUnit plug-in there is a class named net.sf.jameleon.plugin.junit.JUnitFunctionTag. 
+                    </p>
+                    <p>
+                        To write a function tag, you must create a java class that extends the plug-in's function tag. So to write a function 
+                        tag for the Jiffie plug-in, create a java class that extends net.sf.jameleon.plugin.jiffie.IEFunctionTag.
+                    </p>
+                    <p>
+                        If using the jameleon-test-suite-x.x.x.zip package the Ant task that registers all tags expects that all tags end in <b>Tag</b>.
+                        If the tag isn't recognized by Jameleon even after building and registering, then this is likely the problem. Some bad tag name examples
+                        would be: AssertNull.java, Login.java, or CreateUser.java. None of those classes will be recognized by Jameleon. For them to be recongized,
+                        simply change their names to: AssertNullTag.java, LoginTag.java and CreateUserTag.java. 
+                    </p>
+                    <p>
+                        Implement a method called testBlock The <b><i>public void testBlock()</i></b> method is where the code that drives 
+                        the tag must go. An example that checks whether the given value is contained with the provided text would look like:
+                        <source>
+public void testBlock(){
+    assertTextContains("some text that should contain some value", "some value");
+}
+                        </source>
+                    </p>
+                </subsection>
+                <subsection name="Java Packages">
+                    <p>
+                        It is best to come up with a good directory structure that represents the 
+                        flow or functional areas of the application to be tested. Then place the Java 
+                        implementation of that functional point in the corresponding directory and set 
+                        the package accordingly. This will be very important once more than twenty or 
+                        thirty functional points have been written. This helps make it easier to find functional
+                        points available for a certain application and/or functional area.
+                    </p>
+                    <p>
+                        If the package statement in the java file doesn't match the directory structure, then your
+                        tag will likely not get registered. Be sure to add the package statement at the top of your 
+                        tag. For example, if your java source files exist in the <i>src/java</i> directory and you
+                        want a certain tag to exist in the admin/logon directory (src/java/admin/logon), then add
+                        <code>package admin.logon;</code> to the top of the java file.
+                    </p>
+                </subsection>
+                <subsection name="Attributes or Variables">
+                    <p>
+                        Functional points will usually need to use variables that can be set via the test case script. To do this,
+                        simply ahere to the following guidelines:
+                        <ol>
+                            <li>
+                                Decide which type the variable should be (String, int, File, List ...). It is recommend to use
+                                Objects instead of primitives because it makes it easier to see if they have been set or not
+                                (simply check for null against Objects).
+                            </li>
+                            <li>
+                                Come up with a short, but descriptive variable name. This is important as these descriptions will show up
+                                in the GUI under available attributes for the tag.
+                            </li>
+                            <li>
+                                Declare the variable along with the following Javadocs. If you don't use the following Jameleon-provided
+                                javadocs taglets, Jameleon will not recognize the attributes and they won't be setable via the test case script.
+                                @jameleon.attribute must be the last javadoc comment for each attribute defined. That means that the javadocs
+                                actually affect the hehavior of your code. @jameleon.attribute supports the following attributes.
+                                <table>
+                                    <tr>
+                                        <th>Attribute Name</th>
+                                        <th>Description</th>
+                                    </tr>
+                                    <tr>
+                                        <td>required</td>
+                                        <td>
+                                            Set this to <b>true</b> or <b>false</b>. If set to true and if the attribute isn't set in the
+                                            script, then a failure will occur. Defaults to <b>false</b>. 
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>default</td>
+                                        <td>
+                                            Sets the default value of the attribute to the value provided. 
+                                            If there is no value provided in the script then the value will be set to the default value
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>contextName</td>
+                                        <td>
+                                            Binds the value to a context variable which is usually defined in a properties file. This is nice for 
+                                            custom tags that use static data like form field names or titles.<br/>
+                                            <b>WARNING:</b> This feature should not be used to communicate data between tags. This can make your scripts hard 
+                                            to read, difficult to debug and fragile. Thus it should be used sparingly.
+                                        </td>
+                                    </tr>
+                                </table>
+                                The followiing is an example:
+                                <source>
+/**
+ * The username of the logon
+ * @jameleon.attribute required="true"
+ */
+ protected String username;
+/**
+ * The password of the logon
+ * @jameleon.attribute default="foobar"
+ */
+ protected String password;
+/**
+ * The form name of the logon form
+ * @jameleon.attribute default="foobar" contextName="appNameLogonFormName"
+ */
+ protected String formName;
+                                </source>
+                                If username is not set, then a failure will occur, stating that the username field is required. If password is
+                                not provided in the script, then the value will be set to "foobar". If a contextVariable named
+                                <i>appNameLogonFormName</i> exists from a properties file or a data-drivable tag or was even just created in the context,
+                                then the value of formName will be set to the value of appNameLogonFormName.<br/>
+
+                                Be careful about making an attribute required since that means the value must be set. This will likely end up restricting
+                                how the tag can be used to test the feature. For example, the application may require the firstName field to be set. 
+                                How can this be tested other than by trying to update the information when leaving the field blank? If the attribute in the tag is
+                                required, that means the field can't be blank, making it impossible to test that business rule.
+                            </li>
+                        </ol>
+                    </p>
+                </subsection>
+                <subsection name="Class File Declarations">
+                    <p>
+                        In order for Jameleon to recognize your function tag, you must javadoc it with the Jaemeleon-provided tags. These
+                        tags are used for both documentation and execution:
+                        <table>
+                            <tr>
+                                <th>Tag Name</th>
+                                <th>Description</th>
+                                <th>Supported Attributes</th>
+                                <th>Required</th>
+                            </tr>
+                            <tr>
+                                <td>@jameleon.function</td>
+                                <td>
+                                    This tag is required for Jameleon to recognize your tag file. This tag tells Jameleon how to call
+                                    the tag file.
+                                </td>
+                                <td><ul>
+                                        <li>name - The name of the tag to call. VERY IMPORTANT</li>
+                                        <li>type - The type of the functional point (action, validation, navigation)</li>
+                                    </ul>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <td>@jameleon.step</td>
+                                <td>
+                                    For every step that would be required to execute this functional point manually, there 
+                                    should be one step. This is not a required javadoc. The test case docs will be generated
+                                    based on all of the information in the javadocs.
+                                </td>
+                                <td>No Attribute supported</td>
+
+                            </tr>
+                            <tr>
+                                <td>@jameleon.application</td>
+                                <td>
+                                    The application that this functional point is used to test. This taglet can be used multiple times.
+                                    The idea behind this is to help find which functional points can be used to test a given application.
+                                </td>
+                                <td>No Attribute supported</td>
+                            </tr>
+                        </table>
+                        An example usage of these tags is:
+                        <source>
+/**
+ * Logs onto admin applications
+ * @jameleon.function name="admin-logon" type="action"
+ * @jameleon.step enter username
+ * @jameleon.step enter password
+ * @jameleon.step click the logon button
+ * @jameleon.application userAdmin
+ * @jameleon.application customerAdmin
+ */
+public class SomeTag extends JUnitFunctionTag{
+}</source>
+                        This tag can be used in a test case script as &lt;admin-logon/&gt; tag. It is an <b>action point</b>. There are three steps
+                        that happen and it can be used for the <i>userAdmin</i> and <i>customerAdmin</i> applications.
+                    </p>
+            </subsection>
+            <subsection name="The Full Lifecycle">
+                <p>
+                    The following is an example tag taken from an acceptance test tag in the Jiffie-plugin.
+                    <source>
+package foo.bar;
+
+import com.tapsterrock.jiffie.IHTMLFormElement;
+import com.tapsterrock.jiffie.IHTMLInputElement;
+
+import net.sf.jameleon.plugin.jiffie.IEFunctionTag;
+
+/**
+ * Represents the customer information form on the blah application
+ * @jameleon.function name="submit-customer-form" type="action"
+ * @jameleon.step enter first name
+ * @jameleon.step enter last name
+ * @jameleon.step submit the form
+ */
+public class SubmitFormTag extends IEFunctionTag {
+
+    /**
+     * @jameleon.attribute required="true" default="formName"
+     */
+    protected String formNameOrId;
+    /**
+     * @jameleon.attribute contextName="ieSubmitFormFirstName"
+     */
+    protected String fName;
+    /**
+     * @jameleon.attribute contextName="ieSubmitFormLastName"
+     */
+    protected String lName;
+
+    public void testBlock(){
+        setWorkingForm(formNameOrId);
+        setTextFieldValue("fName", fName);
+        setTextFieldValue("lName", lName);
+        submitWorkingForm();
+    }
+
+}</source>
+
+                    This functional point is an implementation of the Jiffie plug-in because it 
+                    extends net.sf.jameleon.plugin.jiffie.IEFunctionTag. It is an Action Point, and 
+                    the script tag name used is submit-customer-form. It has three attributes it uses 
+                    and only formName is required. The testBlock() is implemented and this tag simply
+                    sets the <i>fName, lName</i> form fields and submits the form.
+                </p>
+                <p>
+                A use of this function point might look like:
+                <source><![CDATA[
+<jmln:submit-customer-form 
+    functionId="Enter valid parameters"
+    fName="Joe"
+    ieSubmitFormLastName="Smith"/>]]></source>
+                <p>
+                    The above example sets the fName attribute directly and the ieSubmitFormLastName via the
+                    context. The lName attribute will then get the value <b>Smith</b> from the context variable.
+                </p>
+                    Setting the values of the variables in the macro is as simple as defining 
+                    attributes for that functional point.
+                </p>
+            </subsection>
+            </p>
+        </section>
+        <section name="Jamaleon Provided Javadoc Taglets">
+            <p>
+                Jameleon provides a few custom <a href="http://java.sun.com/j2se/1.4.2/docs/tooldocs/javadoc/taglet/overview.html">
+                Taglets</a> to support the custom tags. An example of using these tags in an Ant task might look like:
+            </p>
+            <p>
+                <source><![CDATA[
+<target name="javadocs"
+        description="Creates JavaDocs for this project">
+    <delete dir="docs/javadocs"/>
+    <mkdir dir="docs/javadocs"/>
+    <javadoc packagenames="net.sf.jameleon.*"
+             sourcepath="src/java"
+             destdir="docs/javadocs"
+             author="true"
+             version="true"
+             use="true"
+             classpathref="classpath.with.ant">
+        <taglet name="net.sf.jameleon.taglet.JameleonFunctionTaglet" path="lib/jameleon.jar"/>
+        <taglet name="net.sf.jameleon.taglet.JameleonStepTaglet" path="lib/jameleon.jar"/>
+        <taglet name="net.sf.jameleon.taglet.JameleonAttributeTaglet" path="lib/jameleon.jar"/>
+    </javadoc>
+</target>]]></source>
+            </p>
+            <p>
+            This will generate javadocs for your custom functional points and include the tag name, steps and attributes
+            in the javadocs.
+            </p>
+        </section>
+    </body>
+</document>

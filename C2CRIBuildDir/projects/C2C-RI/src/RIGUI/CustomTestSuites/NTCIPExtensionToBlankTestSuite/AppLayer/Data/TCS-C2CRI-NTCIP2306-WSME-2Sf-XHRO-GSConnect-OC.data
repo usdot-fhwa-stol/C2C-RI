@@ -1,0 +1,64 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSME-2Sf-XHRO-GSConnect-OC
+#       Description:  TCS-C2CRI-NTCIP2306-WSME-2Sf-XHRO-GSConnect-OC
+#       Related Procedure:  null
+#       Version/Date: 2011/11/15 22:59:44
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData2Sf0.wsdl
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Service defined in the WSDL that will be used during the test.
+ServiceName = tmddOCSoapHttpService
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Port defined in the WSDL that is related to the selected Service Name and will be used during the test.
+PortName = tmddOCHttpGetServicePort
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Operation defined in the WSDL that is related to the selected Service Name and will be used during the test.
+OperationName = OP_RIXMLHttpGetDMSInventory
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a transport error is expected.
+TransportErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the type of transport error expected.
+TransportErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a encoding error is expected.
+EncodingErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a encoding error type that is expected.
+EncodingErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a message error is expected.
+MessageErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the type of message error expected.
+MessageErrorTypeExpected = NONE

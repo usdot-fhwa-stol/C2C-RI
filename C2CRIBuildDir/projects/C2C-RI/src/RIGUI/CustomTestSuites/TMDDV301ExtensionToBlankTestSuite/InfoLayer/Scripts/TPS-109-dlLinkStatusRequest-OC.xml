@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-109-dlLinkStatusRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlLinkStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.7.1.6 [Need for Roadway Characteristics Data] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:27:46-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlLinkStatusRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.7.1.6 [Need for Roadway Characteristics Data] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Link Name is required by the specification. (NRTM 3.3.5.3.2.5.2.2).  RECORD this information as: TMDD_N109R285_Link_Name_Supported = ${TMDD_N109R285_Link_Name_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Link Direction is required by the specification. (NRTM 3.3.5.3.2.5.2.3).  RECORD this information as: TMDD_N109R286_Link_Direction_Supported = ${TMDD_N109R286_Link_Direction_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Link Priority is required by the specification. (NRTM 3.3.5.3.2.5.2.5).  RECORD this information as: TMDD_N109R288_Link_Priority_Supported = ${TMDD_N109R288_Link_Priority_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Link Restrictions - Axles is required by the specification. (NRTM 3.3.5.3.2.5.2.6).  RECORD this information as: TMDD_N109R289_Link_Restrictions_-_Axles_Supported = ${TMDD_N109R289_Link_Restrictions_-_Axles_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Link Restrictions - Height is required by the specification. (NRTM 3.3.5.3.2.5.2.7).  RECORD this information as: TMDD_N109R290_Link_Restrictions_-_Height_Supported = ${TMDD_N109R290_Link_Restrictions_-_Height_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Link Restrictions - Length is required by the specification. (NRTM 3.3.5.3.2.5.2.8).  RECORD this information as: TMDD_N109R291_Link_Restrictions_-_Length_Supported = ${TMDD_N109R291_Link_Restrictions_-_Length_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Link Restrictions - Weight is required by the specification. (NRTM 3.3.5.3.2.5.2.9).  RECORD this information as: TMDD_N109R292_Link_Restrictions_-_Weight_Supported = ${TMDD_N109R292_Link_Restrictions_-_Weight_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Link Restrictions - Width is required by the specification. (NRTM 3.3.5.3.2.5.2.10).  RECORD this information as: TMDD_N109R293_Link_Restrictions_-_Width_Supported = ${TMDD_N109R293_Link_Restrictions_-_Width_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Link Restrictions - Axle Weight is required by the specification. (NRTM 3.3.5.3.2.5.2.11).  RECORD this information as: TMDD_N109R294_Link_Restrictions_-_Axle_Weight_Supported = ${TMDD_N109R294_Link_Restrictions_-_Axle_Weight_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Link Surface Conditions is required by the specification. (NRTM 3.3.5.3.2.5.2.13).  RECORD this information as: TMDD_N109R296_Link_Surface_Conditions_Supported = ${TMDD_N109R296_Link_Surface_Conditions_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Link Saturation is required by the specification. (NRTM 3.3.5.3.2.5.2.14).  RECORD this information as: TMDD_N109R297_Link_Saturation_Supported = ${TMDD_N109R297_Link_Saturation_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Link Saturation Threshold is required by the specification. (NRTM 3.3.5.3.2.5.2.15).  RECORD this information as: TMDD_N109R298_Link_Saturation_Threshold_Supported = ${TMDD_N109R298_Link_Saturation_Threshold_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" requestDialog="dlLinkStatusRequest" riMode="EC">
+          <testStep functionId="Step 14 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 15 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 16 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 17 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlLinkStatusRequest REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlLinkStatusRequest" functionId="dlLinkStatusRequest" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 18 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 18.1 IF TMDD_N109R285_Link_Name_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R285_Link_Name_Supported}">
+                    <testStep functionId="Step 18.1.1 VERIFY that element link-name exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-name" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.link-name"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.2 IF TMDD_N109R286_Link_Direction_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R286_Link_Direction_Supported}">
+                    <testStep functionId="Step 18.2.1 VERIFY that element link-direction exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="link-direction" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.link-direction"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.3 IF TMDD_N109R288_Link_Priority_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R288_Link_Priority_Supported}">
+                    <testStep functionId="Step 18.3.1 VERIFY that element priority-type exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="priority-type" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.priority-type"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.4 IF TMDD_N109R289_Link_Restrictions_-_Axles_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R289_Link_Restrictions_-_Axles_Supported}">
+                    <testStep functionId="Step 18.4.1 VERIFY that element restriction-axle-count exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restriction-axle-count" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.restriction-axle-count"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.5 IF TMDD_N109R290_Link_Restrictions_-_Height_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R290_Link_Restrictions_-_Height_Supported}">
+                    <testStep functionId="Step 18.5.1 VERIFY that element restriction-height exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restriction-height" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.restriction-height"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.6 IF TMDD_N109R291_Link_Restrictions_-_Length_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R291_Link_Restrictions_-_Length_Supported}">
+                    <testStep functionId="Step 18.6.1 VERIFY that element restriction-length exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restriction-length" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.restriction-length"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.7 IF TMDD_N109R292_Link_Restrictions_-_Weight_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R292_Link_Restrictions_-_Weight_Supported}">
+                    <testStep functionId="Step 18.7.1 VERIFY that element restriction-weight exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restriction-weight" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.restriction-weight"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.8 IF TMDD_N109R293_Link_Restrictions_-_Width_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R293_Link_Restrictions_-_Width_Supported}">
+                    <testStep functionId="Step 18.8.1 VERIFY that element restriction-width exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restriction-width" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.restriction-width"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.9 IF TMDD_N109R294_Link_Restrictions_-_Axle_Weight_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R294_Link_Restrictions_-_Axle_Weight_Supported}">
+                    <testStep functionId="Step 18.9.1 VERIFY that element restriction-weight-axle exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restriction-weight-axle" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.restriction-weight-axle"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.10 IF TMDD_N109R296_Link_Surface_Conditions_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R296_Link_Surface_Conditions_Supported}">
+                    <testStep functionId="Step 18.10.1 VERIFY that element surface-condition exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="surface-condition" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.surface-condition"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.11 IF TMDD_N109R297_Link_Saturation_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R297_Link_Saturation_Supported}">
+                    <testStep functionId="Step 18.11.1 VERIFY that element saturation-flag exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="saturation-flag" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.saturation-flag"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.12 IF TMDD_N109R298_Link_Saturation_Threshold_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N109R298_Link_Saturation_Threshold_Supported}">
+                    <testStep functionId="Step 18.12.1 VERIFY that element oversaturated-threshold exists within each instance of linkStatusMsg.link-status-item.link-list.link" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="oversaturated-threshold" instanceName="tmdd:linkStatusMsg.link-status-item.link-list.link" functionId="Looking for linkStatusMsg.link-status-item.link-list.link.oversaturated-threshold"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 18.13 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N109R285_Link_Name_Supported,link-name,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R286_Link_Direction_Supported,link-direction,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R288_Link_Priority_Supported,priority-type,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R289_Link_Restrictions_-_Axles_Supported,restriction-axle-count,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R290_Link_Restrictions_-_Height_Supported,restriction-height,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R291_Link_Restrictions_-_Length_Supported,restriction-length,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R292_Link_Restrictions_-_Weight_Supported,restriction-weight,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R293_Link_Restrictions_-_Width_Supported,restriction-width,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R294_Link_Restrictions_-_Axle_Weight_Supported,restriction-weight-axle,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R296_Link_Surface_Conditions_Supported,surface-condition,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R297_Link_Saturation_Supported,saturation-flag,tmdd:linkStatusMsg.link-status-item.link-list.link;TMDD_N109R298_Link_Saturation_Threshold_Supported,oversaturated-threshold,tmdd:linkStatusMsg.link-status-item.link-list.link;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

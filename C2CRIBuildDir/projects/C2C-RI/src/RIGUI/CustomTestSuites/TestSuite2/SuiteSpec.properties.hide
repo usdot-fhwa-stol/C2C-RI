@@ -1,0 +1,8 @@
+SuiteName=NTCIP 2306 Release 1.5 Extension
+SuiteVersion=0.1
+InfoLayerStandard=TMDDv3
+AppLayerStandard=NTCIP 2306v1
+SuiteDescription=TBD - Description for Test Suite -- Extension to NTCIP 2306
+BaselineTestSuiteName=NTCIP 2306 w/TC
+BaselineTestSuiteVersion=0.1
+TestSuiteType=Application

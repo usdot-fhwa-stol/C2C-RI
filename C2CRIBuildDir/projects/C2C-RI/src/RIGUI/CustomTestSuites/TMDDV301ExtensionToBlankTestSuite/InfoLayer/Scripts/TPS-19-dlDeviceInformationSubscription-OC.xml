@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-19-dlDeviceInformationSubscription-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.1.1 [Need to Share Detector Inventory] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 22:47:56-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlDeviceInformationSubscription dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.1.1 [Need to Share Detector Inventory] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Detector Station Inventory Information is required by the specification. (NRTM 3.3.6.2.1.5.2.1).  RECORD this information as: TMDD_N19R447_Detector_Station_Inventory_Information_Supported = ${TMDD_N19R447_Detector_Station_Inventory_Information_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Lane Number is required by the specification. (NRTM 3.3.6.2.1.5.2.2).  RECORD this information as: TMDD_N19R448_Lane_Number_Supported = ${TMDD_N19R448_Lane_Number_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Speed Trap Flag is required by the specification. (NRTM 3.3.6.2.1.5.2.3).  RECORD this information as: TMDD_N19R449_Speed_Trap_Flag_Supported = ${TMDD_N19R449_Speed_Trap_Flag_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Vehicle Bin 1 is required by the specification. (NRTM 3.3.6.2.1.5.2.4).  RECORD this information as: TMDD_N19R450_Vehicle_Bin_1_Supported = ${TMDD_N19R450_Vehicle_Bin_1_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Vehicle Bin 2 is required by the specification. (NRTM 3.3.6.2.1.5.2.5).  RECORD this information as: TMDD_N19R451_Vehicle_Bin_2_Supported = ${TMDD_N19R451_Vehicle_Bin_2_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Vehicle Bin 3 is required by the specification. (NRTM 3.3.6.2.1.5.2.6).  RECORD this information as: TMDD_N19R452_Vehicle_Bin_3_Supported = ${TMDD_N19R452_Vehicle_Bin_3_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Vehicle Bin 4 is required by the specification. (NRTM 3.3.6.2.1.5.2.7).  RECORD this information as: TMDD_N19R453_Vehicle_Bin_4_Supported = ${TMDD_N19R453_Vehicle_Bin_4_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" subscriptionDialog="dlDeviceInformationSubscription" publicationDialog="dlDetectorInventoryUpdate" riMode="EC">
+          <testStep functionId="Step 9 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 11 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 12 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 14 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 15 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 16 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 17 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 18 SUBSCRIPTION-EC with the following parameters:   DIALOG=dlDeviceInformationSubscription SUBSCRIPTIONMESSAGE = SubscriptionMessage SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-EC Dialog="dlDeviceInformationSubscription" functionId="dlDeviceInformationSubscription" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 19 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 19.1 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 19.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   DIALOG=dlDetectorInventoryUpdate PUBLICATIONSTORECEIVE = PublicationsToReceive PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected AUTHENTICATIONCHECK = AuthenticationCheck ALLOWACCESS = AllowAccess  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlDetectorInventoryUpdate" functionId="dlDetectorInventoryUpdate" PUBLICATIONSTORECEIVE="${PublicationsToReceive}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}" AUTHENTICATIONCHECK="${AuthenticationCheck}" ALLOWACCESS="${AllowAccess}"/>
+                    </testStep>
+                    <testStep functionId="Step 19.1.2 IF PublicationErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+                    <jl:if test="${!PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 19.1.2.1 IF TMDD_N19R447_Detector_Station_Inventory_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N19R447_Detector_Station_Inventory_Information_Supported}">
+                              <testStep functionId="Step 19.1.2.1.1 VERIFY that element detector-station-inventory-header exists within each instance of detectorInventoryMsg.detector-inventory-item" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="detector-station-inventory-header" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-station-inventory-header"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.2 IF TMDD_N19R448_Lane_Number_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N19R448_Lane_Number_Supported}">
+                              <testStep functionId="Step 19.1.2.2.1 VERIFY that element detection-lanes exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-list.detector" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="detection-lanes" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-list.detector.detection-lanes"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.3 IF TMDD_N19R449_Speed_Trap_Flag_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N19R449_Speed_Trap_Flag_Supported}">
+                              <testStep functionId="Step 19.1.2.3.1 VERIFY that element is-detector-speed-trap-flag exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-list.detector" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="is-detector-speed-trap-flag" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-list.detector.is-detector-speed-trap-flag"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.4 IF TMDD_N19R450_Vehicle_Bin_1_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N19R450_Vehicle_Bin_1_Supported}">
+                              <testStep functionId="Step 19.1.2.4.1 VERIFY that element vehicle-classification-bin1 exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-list.detector" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-classification-bin1" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-list.detector.vehicle-classification-bin1"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.5 IF TMDD_N19R451_Vehicle_Bin_2_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N19R451_Vehicle_Bin_2_Supported}">
+                              <testStep functionId="Step 19.1.2.5.1 VERIFY that element vehicle-classification-bin2 exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-list.detector" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-classification-bin2" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-list.detector.vehicle-classification-bin2"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.6 IF TMDD_N19R452_Vehicle_Bin_3_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N19R452_Vehicle_Bin_3_Supported}">
+                              <testStep functionId="Step 19.1.2.6.1 VERIFY that element vehicle-classification-bin3 exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-list.detector" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-classification-bin3" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-list.detector.vehicle-classification-bin3"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.7 IF TMDD_N19R453_Vehicle_Bin_4_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N19R453_Vehicle_Bin_4_Supported}">
+                              <testStep functionId="Step 19.1.2.7.1 VERIFY that element vehicle-classification-bin4 exists within each instance of detectorInventoryMsg.detector-inventory-item.detector-list.detector" passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="vehicle-classification-bin4" instanceName="tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector" functionId="Looking for detectorInventoryMsg.detector-inventory-item.detector-list.detector.vehicle-classification-bin4"/>
+                              </testStep>
+                         </jl:if>
+                         <testStep functionId="Step 19.1.2.8 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                              <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                              <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N19R447_Detector_Station_Inventory_Information_Supported,detector-station-inventory-header,tmdd:detectorInventoryMsg.detector-inventory-item;TMDD_N19R448_Lane_Number_Supported,detection-lanes,tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector;TMDD_N19R449_Speed_Trap_Flag_Supported,is-detector-speed-trap-flag,tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector;TMDD_N19R450_Vehicle_Bin_1_Supported,vehicle-classification-bin1,tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector;TMDD_N19R451_Vehicle_Bin_2_Supported,vehicle-classification-bin2,tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector;TMDD_N19R452_Vehicle_Bin_3_Supported,vehicle-classification-bin3,tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector;TMDD_N19R453_Vehicle_Bin_4_Supported,vehicle-classification-bin4,tmdd:detectorInventoryMsg.detector-inventory-item.detector-list.detector;" userDataFile="${RI_USERTCDATAFILE}"/>
+                         </testStep>
+                         <testStep functionId=" Step 19.1.2.9 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                              <jl:set var="OptionalContentVerified" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 19.1.2.10 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   DIALOG=dlDetectorInventoryUpdate OPTIONALCONTENTVERIFIED = OptionalContentVerified PUBLICATIONRESPONSEMESSAGE = PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlDetectorInventoryUpdate" functionId="dlDetectorInventoryUpdate" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" PUBLICATIONRESPONSEMESSAGE="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

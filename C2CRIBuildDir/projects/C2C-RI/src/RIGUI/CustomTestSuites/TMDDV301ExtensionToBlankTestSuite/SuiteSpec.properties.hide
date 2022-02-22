@@ -1,0 +1,8 @@
+SuiteName=ITE TMDDv301 Test
+SuiteVersion=0.1
+InfoLayerStandard=TMDDv3
+AppLayerStandard=NTCIP 2306
+SuiteDescription=This Test Suite is used for testing the RI during development.
+BaselineTestSuiteName=ITE TMDDv301 Blank
+BaselineTestSuiteVersion=0.1
+TestSuiteType=Information

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<document>
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon - Getting Started - Installing Plug-ins</title>
+    </properties>
+
+    <meta name="keyword" content="install, plug-in, plugin, installing plug-ins, jameleon, automated, testing, automated testing, started, getting started, tutorial, howto"/>
+
+    <body>
+        <section name="Installing Plug-ins">
+            <p>
+                Installing plug-ins in Jameleon should require the following steps:
+                <ol>
+                    <li>Copy all files in the plug-in's lib directory to your local directory that holds all libraries like jar, dll, or zip files</li>
+                    <li><a target="_new" href="../globalSettings.html#plugins">Set plugins entry in jameleon.conf</a></li>
+                </ol>
+                Be sure to see the install documentation on the plug-ins for more specifics.
+            </p>
+        </section>
+    </body>
+</document>

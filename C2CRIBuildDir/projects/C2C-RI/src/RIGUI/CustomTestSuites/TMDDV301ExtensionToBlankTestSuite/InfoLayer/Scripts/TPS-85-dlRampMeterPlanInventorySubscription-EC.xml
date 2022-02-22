@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-85-dlRampMeterPlanInventorySubscription-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterPlanInventorySubscription dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.9.9 [Need to Share Ramp Metering Plans] and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/14 23:16:56-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterPlanInventorySubscription dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.6.9.9 [Need to Share Ramp Metering Plans] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Authentication is required by the specification. (NRTM 3.3.6.1.1.1.2.1).  RECORD this information as: TMDD_N85R365_Authentication_Supported = ${TMDD_N85R365_Authentication_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether External Center Organization is required by the specification. (NRTM 3.3.6.1.1.1.2.2).  RECORD this information as: TMDD_N85R366_External_Center_Organization_Supported = ${TMDD_N85R366_External_Center_Organization_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Content of Device Information Request Filter is required by the specification. (NRTM 3.3.6.1.1.1.3).  RECORD this information as: TMDD_N85R367_Content_of_Device_Information_Request_Filter_Supported = ${TMDD_N85R367_Content_of_Device_Information_Request_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Device Identifier Filter is required by the specification. (NRTM 3.3.6.1.1.1.3.1).  RECORD this information as: TMDD_N85R368_Device_Identifier_Filter_Supported = ${TMDD_N85R368_Device_Identifier_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Roadway Network Identifier Filter is required by the specification. (NRTM 3.3.6.1.1.1.3.2).  RECORD this information as: TMDD_N85R369_Roadway_Network_Identifier_Filter_Supported = ${TMDD_N85R369_Roadway_Network_Identifier_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Link Identifier Filter is required by the specification. (NRTM 3.3.6.1.1.1.3.3).  RECORD this information as: TMDD_N85R370_Link_Identifier_Filter_Supported = ${TMDD_N85R370_Link_Identifier_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Route Designator Filter is required by the specification. (NRTM 3.3.6.1.1.1.3.4).  RECORD this information as: TMDD_N85R371_Route_Designator_Filter_Supported = ${TMDD_N85R371_Route_Designator_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Linear Reference Filter is required by the specification. (NRTM 3.3.6.1.1.1.3.5).  RECORD this information as: TMDD_N85R372_Linear_Reference_Filter_Supported = ${TMDD_N85R372_Linear_Reference_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Pattern Identifier Filter is required by the specification. (NRTM 3.3.6.1.1.1.3.7).  RECORD this information as: TMDD_N85R374_Pattern_Identifier_Filter_Supported = ${TMDD_N85R374_Pattern_Identifier_Filter_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" subscriptionDialog="dlRampMeterPlanInventorySubscription" publicationDialog="dlRampMeterPlanInventoryUpdate" riMode="OC">
+          <testStep functionId="Step 11 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: PublicationMessage:  ${PublicationMessage}" passfailResult="False"/>
+          <testStep functionId="Step 12 CONFIGURE: Determine the number of publication message transmissions that will be performed within this test.  RECORD this information as: PublicationCount:  ${PublicationCount}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 14 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 15 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 16 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 17 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 18 CONFIGURE: Identify the Organization Identifier expected for authentication during this test.  RECORD this information as: OrganizationID:  ${OrganizationID}" passfailResult="False"/>
+          <testStep functionId="Step 19 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 20 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 21 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 22 CONFIGURE: Define the subscription response message that will be sent to the SUT.  RECORD this information as: SubscriptionResponseMessage:  ${SubscriptionResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 23 SUBSCRIPTION-OC-RECEIVE with the following parameters:   DIALOG=dlRampMeterPlanInventorySubscription AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password ORGANIZATIONID = OrganizationID ALLOWACCESS = AllowAccess SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-OC-RECEIVE Dialog="dlRampMeterPlanInventorySubscription" functionId="dlRampMeterPlanInventorySubscription" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" ORGANIZATIONID="${OrganizationID}" ALLOWACCESS="${AllowAccess}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 24 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 24.1 IF TMDD_N85R365_Authentication_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N85R365_Authentication_Supported}">
+                    <testStep functionId="Step 24.1.1 VERIFY that element authentication exists within deviceInformationRequestMsg" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="authentication" instanceName="tmdd:deviceInformationRequestMsg" functionId="Looking for deviceInformationRequestMsg.authentication"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.2 IF TMDD_N85R366_External_Center_Organization_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N85R366_External_Center_Organization_Supported}">
+                    <testStep functionId="Step 24.2.1 VERIFY that element organization-requesting exists within deviceInformationRequestMsg" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="organization-requesting" instanceName="tmdd:deviceInformationRequestMsg" functionId="Looking for deviceInformationRequestMsg.organization-requesting"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.3 IF TMDD_N85R367_Content_of_Device_Information_Request_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N85R367_Content_of_Device_Information_Request_Filter_Supported}">
+                    <testStep functionId="Step 24.3.1 VERIFY that element device-filter exists within deviceInformationRequestMsg" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="device-filter" instanceName="tmdd:deviceInformationRequestMsg" functionId="Looking for deviceInformationRequestMsg.device-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.4 IF TMDD_N85R368_Device_Identifier_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N85R368_Device_Identifier_Filter_Supported}">
+                    <testStep functionId="Step 24.4.1 VERIFY that element device-id-list exists within each instance of deviceInformationRequestMsg.device-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="device-id-list" instanceName="tmdd:deviceInformationRequestMsg.device-filter" functionId="Looking for deviceInformationRequestMsg.device-filter.device-id-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.5 IF TMDD_N85R369_Roadway_Network_Identifier_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N85R369_Roadway_Network_Identifier_Filter_Supported}">
+                    <testStep functionId="Step 24.5.1 VERIFY that element network-id-list exists within each instance of deviceInformationRequestMsg.device-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="network-id-list" instanceName="tmdd:deviceInformationRequestMsg.device-filter" functionId="Looking for deviceInformationRequestMsg.device-filter.network-id-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.6 IF TMDD_N85R370_Link_Identifier_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N85R370_Link_Identifier_Filter_Supported}">
+                    <testStep functionId="Step 24.6.1 VERIFY that element link-id-list exists within each instance of deviceInformationRequestMsg.device-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="link-id-list" instanceName="tmdd:deviceInformationRequestMsg.device-filter" functionId="Looking for deviceInformationRequestMsg.device-filter.link-id-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.7 IF TMDD_N85R371_Route_Designator_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N85R371_Route_Designator_Filter_Supported}">
+                    <testStep functionId="Step 24.7.1 VERIFY that element link-designator-list exists within each instance of deviceInformationRequestMsg.device-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="link-designator-list" instanceName="tmdd:deviceInformationRequestMsg.device-filter" functionId="Looking for deviceInformationRequestMsg.device-filter.link-designator-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.8 IF TMDD_N85R372_Linear_Reference_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N85R372_Linear_Reference_Filter_Supported}">
+                    <testStep functionId="Step 24.8.1 VERIFY that element linear-reference exists within each instance of deviceInformationRequestMsg.device-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="linear-reference" instanceName="tmdd:deviceInformationRequestMsg.device-filter" functionId="Looking for deviceInformationRequestMsg.device-filter.linear-reference"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.9 IF TMDD_N85R374_Pattern_Identifier_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N85R374_Pattern_Identifier_Filter_Supported}">
+                    <testStep functionId="Step 24.9.1 VERIFY that element pattern-id-list exists within each instance of deviceInformationRequestMsg.device-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="pattern-id-list" instanceName="tmdd:deviceInformationRequestMsg.device-filter" functionId="Looking for deviceInformationRequestMsg.device-filter.pattern-id-list"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 24.10 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N85R365_Authentication_Supported,authentication,tmdd:deviceInformationRequestMsg;TMDD_N85R366_External_Center_Organization_Supported,organization-requesting,tmdd:deviceInformationRequestMsg;TMDD_N85R367_Content_of_Device_Information_Request_Filter_Supported,device-filter,tmdd:deviceInformationRequestMsg;TMDD_N85R368_Device_Identifier_Filter_Supported,device-id-list,tmdd:deviceInformationRequestMsg.device-filter;TMDD_N85R369_Roadway_Network_Identifier_Filter_Supported,network-id-list,tmdd:deviceInformationRequestMsg.device-filter;TMDD_N85R370_Link_Identifier_Filter_Supported,link-id-list,tmdd:deviceInformationRequestMsg.device-filter;TMDD_N85R371_Route_Designator_Filter_Supported,link-designator-list,tmdd:deviceInformationRequestMsg.device-filter;TMDD_N85R372_Linear_Reference_Filter_Supported,linear-reference,tmdd:deviceInformationRequestMsg.device-filter;TMDD_N85R374_Pattern_Identifier_Filter_Supported,pattern-id-list,tmdd:deviceInformationRequestMsg.device-filter;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 24.11 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                    <jl:set var="OptionalContentVerified" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 24.12 POSTCONDITION: SUBSCRIPTION-OC-REPLY with the following parameters:   DIALOG=dlRampMeterPlanInventorySubscription OPTIONALCONTENTVERIFIED = OptionalContentVerified SUBSCRIPTIONRESPONSEMESSAGE = SubscriptionResponseMessage ">
+                         <SUBSCRIPTION-OC-REPLY Dialog="dlRampMeterPlanInventorySubscription" functionId="dlRampMeterPlanInventorySubscription" OPTIONALCONTENTVERIFIED="${OptionalContentVerified}" SUBSCRIPTIONRESPONSEMESSAGE="${SubscriptionResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+               <testStep functionId="Step 24.13 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 24.13.1 PUBLICATION-OC with the following parameters:   DIALOG=dlRampMeterPlanInventoryUpdate PUBLICATIONMESSAGE = PublicationMessage PUBLICATIONCOUNT = PublicationCount PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-OC Dialog="dlRampMeterPlanInventoryUpdate" functionId="dlRampMeterPlanInventoryUpdate" PUBLICATIONMESSAGE="${PublicationMessage}" PUBLICATIONCOUNT="${PublicationCount}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}"/>
+                    </testStep>
+               </jl:while>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

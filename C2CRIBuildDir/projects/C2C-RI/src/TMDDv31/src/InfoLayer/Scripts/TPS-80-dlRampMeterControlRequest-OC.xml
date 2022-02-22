@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-80-dlRampMeterControlRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterControlRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.9.4 [Need to Control a Remote Ramp Meter Device] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/18 00:39:57-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterControlRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.9.4 [Need to Control a Remote Ramp Meter Device] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Send Ramp Meter Response Upon Request (NTRM 3.3.5.10.3.1}.  RECORD this value as: TMDD_N80R927_Send_Ramp_Meter_Response_Upon_Request_Parameter = ${TMDD_N80R927_Send_Ramp_Meter_Response_Upon_Request_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Operator Identifier - Device Control Acknowledge is required by the specification. (NRTM 3.3.5.1.4.2.2.1).  RECORD this information as: TMDD_N80R417_Operator_Identifier___Device_Control_Acknowledge_Supported = ${TMDD_N80R417_Operator_Identifier___Device_Control_Acknowledge_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Operator Lock Identifier is required by the specification. (NRTM 3.3.5.1.4.2.2.2).  RECORD this information as: TMDD_N80R418_Operator_Lock_Identifier_Supported = ${TMDD_N80R418_Operator_Lock_Identifier_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Operator Last Revised Date and Time - Device Control is required by the specification. (NRTM 3.3.5.1.4.2.2.3).  RECORD this information as: TMDD_N80R419_Operator_Last_Revised_Date_and_Time___Device_Control_Supported = ${TMDD_N80R419_Operator_Last_Revised_Date_and_Time___Device_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N80R15_Restrictions___Error_Report_Supported = ${TMDD_N80R15_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.1" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 7 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 8 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 9 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 10 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlRampMeterControlRequest RESPONSETIMEREQUIRED=TMDD_N80R927_Send_Ramp_Meter_Response_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlRampMeterControlRequest" functionId="dlRampMeterControlRequest" RESPONSETIMEREQUIRED="${TMDD_N80R927_Send_Ramp_Meter_Response_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 11 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 11.1 VERIFY that a deviceControlResponseMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="deviceControlResponseMsg" instanceName="tmdd:deviceControlResponseMsg" elementType="message" functionId="Looking for deviceControlResponseMsg"/>
+               </testStep>
+               <testStep functionId="Step 11.2 VERIFY that an organization-information data frame exists within message deviceControlResponseMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:deviceControlResponseMsg" elementType="data-frame" functionId="Looking for deviceControlResponseMsg"/>
+               </testStep>
+               <testStep functionId="Step 11.3 VERIFY that a device-id data element exists within message deviceControlResponseMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:deviceControlResponseMsg" elementType="data-element" functionId="Looking for deviceControlResponseMsg"/>
+               </testStep>
+               <testStep functionId="Step 11.4 VERIFY that a request-id data element exists within message deviceControlResponseMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="request-id" instanceName="tmdd:deviceControlResponseMsg" elementType="data-element" functionId="Looking for deviceControlResponseMsg"/>
+               </testStep>
+               <testStep functionId="Step 11.5 VERIFY that a request-status data element exists within message deviceControlResponseMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="request-status" instanceName="tmdd:deviceControlResponseMsg" elementType="data-element" functionId="Looking for deviceControlResponseMsg"/>
+               </testStep>
+               <testStep functionId="Step 11.6 VERIFY that a deviceControlResponseMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="deviceControlResponseMsg" instanceName="tmdd:deviceControlResponseMsg" elementType="message" functionId="Looking for deviceControlResponseMsg"/>
+               </testStep>
+               <testStep functionId="Step 11.7 IF TMDD_N80R417_Operator_Identifier___Device_Control_Acknowledge_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N80R417_Operator_Identifier___Device_Control_Acknowledge_Supported}">
+                    <testStep functionId="Step 11.7.1 VERIFY that an operator-id data element exists within message deviceControlResponseMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operator-id" instanceName="tmdd:deviceControlResponseMsg" elementType="data-element" functionId="Looking for deviceControlResponseMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 11.8 IF TMDD_N80R418_Operator_Lock_Identifier_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N80R418_Operator_Lock_Identifier_Supported}">
+                    <testStep functionId="Step 11.8.1 VERIFY that an operator-lock-id data element exists within message deviceControlResponseMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operator-lock-id" instanceName="tmdd:deviceControlResponseMsg" elementType="data-element" functionId="Looking for deviceControlResponseMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 11.9 IF TMDD_N80R419_Operator_Last_Revised_Date_and_Time___Device_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N80R419_Operator_Last_Revised_Date_and_Time___Device_Control_Supported}">
+                    <testStep functionId="Step 11.9.1 VERIFY that an operator-last-revised data frame exists within message deviceControlResponseMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="operator-last-revised" instanceName="tmdd:deviceControlResponseMsg" elementType="data-frame" functionId="Looking for deviceControlResponseMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 11.10 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N80R417_Operator_Identifier___Device_Control_Acknowledge_Supported,operator-id,tmdd:deviceControlResponseMsg;TMDD_N80R418_Operator_Lock_Identifier_Supported,operator-lock-id,tmdd:deviceControlResponseMsg;TMDD_N80R419_Operator_Last_Revised_Date_and_Time___Device_Control_Supported,operator-last-revised,tmdd:deviceControlResponseMsg;TMDD_N80R15_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+          <testStep functionId="Step 12 IF ErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 12.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 12.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 12.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 12.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 12.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 12.6 VERIFY that data element error-code is set to ErrorResponseTypeExpected." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${ErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+               </testStep>
+               <testStep functionId="Step 12.7 IF TMDD_N80R15_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N80R15_Restrictions___Error_Report_Supported}">
+                    <testStep functionId="Step 12.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                    </testStep>
+               </jl:if>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 13 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

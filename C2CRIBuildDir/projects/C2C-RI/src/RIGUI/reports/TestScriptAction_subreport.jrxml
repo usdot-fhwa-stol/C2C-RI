@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TestScriptAction_subreport" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="351"/>
+	<property name="ireport.y" value="11"/>
+	<queryString>
+		<![CDATA[SELECT
+     eventSet.level AS level,
+     eventSet.timestamp AS timestamp,
+     eventSet.eventType AS eventType,
+     eventSet.debugInfo AS debugInfo,
+     InitEvent.fileName AS fileName,
+     InitEvent.startTime AS startTime,
+     InitEvent.creator AS creator,
+     InitEvent.description AS description,
+     InitEvent.c2criVersion AS c2criVersion,
+     InitEvent.configFileName AS configFileName,
+     InitEvent.checksum AS checksum,
+     InitEvent.selectedAppLayerTestSuite AS selectedAppLayerTestSuite,
+     InitEvent.selectedInfoLayerTestSuite AS selectedInfoLayerTestSuite,
+     InitEvent.configVersion AS configVersion,
+     InitEvent.configurationAuthor AS configurationAuthor,
+     InitEvent.externalCenterOperation AS externalCenterOperation,
+     LoggedMessage.parentDialog AS parentDialog,
+     LoggedMessage.messageName AS messageName,
+     LoggedMessage.messageType AS messageType,
+     LoggedMessage.messageEncoding AS messageEncoding,
+     LoggedMessage.viaTransportProtocol AS viaTransportProtocol,
+     LoggedMessage.messageSourceAddress AS messageSourceAddress,
+     LoggedMessage.messageDestinationAddress AS messageDestinationAddress,
+     LoggedMessage.relatedCommand AS relatedCommand,
+     LoggedMessage.MessageBody AS MessageBody,
+     RawOTWMessage.testCase AS testCase,
+     RawOTWMessage.connectionName AS connectionName,
+     RawOTWMessage.ProcessType AS ProcessType,
+     RawOTWMessage.SourceAddress AS SourceAddress,
+     RawOTWMessage.DestinationAddress AS DestinationAddress,
+     RawOTWMessage.sequenceCount AS sequenceCount,
+     RawOTWMessage.timeStampInMillis AS TimeStampInMillis,
+     RawOTWMessage.message AS message,
+     ScriptEvent.src AS src,
+     ScriptEvent.tag AS tag,
+     ScriptEvent.type AS type,
+     ScriptEvent.line AS line,
+     ScriptEvent.column AS column,
+     ScriptEvent.file AS file,
+     ScriptEvent.functionId AS functionId,
+     ScriptEvent.[test-case-name] AS [test-case-name],
+     ScriptEvent.outcome AS outcome,
+     ScriptEvent.[execution-time] AS [execution-time],
+     ScriptEvent.[execution-time-millis] AS [execution-time-millis],
+     UserEvent.Description AS UserDescription,
+     ScriptEvent.EventID AS EventID
+FROM
+     eventSet eventSet LEFT OUTER JOIN ScriptEvent ScriptEvent ON eventSet.EventID = ScriptEvent.EventID
+     LEFT OUTER JOIN RawOTWMessage RawOTWMessage ON eventSet.EventID = RawOTWMessage.ID
+     LEFT OUTER JOIN LoggedMessage LoggedMessage ON eventSet.EventID = LoggedMessage.ID
+     LEFT OUTER JOIN UserEvent UserEvent ON eventSet.EventID = UserEvent.ID,
+     InitEvent InitEvent]]>
+	</queryString>
+	<field name="level" class="java.lang.Object"/>
+	<field name="timestamp" class="java.lang.String"/>
+	<field name="eventType" class="java.lang.String"/>
+	<field name="debugInfo" class="java.lang.Object"/>
+	<field name="fileName" class="java.lang.Object"/>
+	<field name="startTime" class="java.lang.Object"/>
+	<field name="creator" class="java.lang.Object"/>
+	<field name="description" class="java.lang.Object"/>
+	<field name="c2criVersion" class="java.lang.Object"/>
+	<field name="configFileName" class="java.lang.Object"/>
+	<field name="checksum" class="java.lang.Object"/>
+	<field name="selectedAppLayerTestSuite" class="java.lang.Object"/>
+	<field name="selectedInfoLayerTestSuite" class="java.lang.Object"/>
+	<field name="configVersion" class="java.lang.Object"/>
+	<field name="configurationAuthor" class="java.lang.Object"/>
+	<field name="externalCenterOperation" class="java.lang.Object"/>
+	<field name="parentDialog" class="java.lang.Object"/>
+	<field name="messageName" class="java.lang.Object"/>
+	<field name="messageType" class="java.lang.Object"/>
+	<field name="messageEncoding" class="java.lang.Object"/>
+	<field name="viaTransportProtocol" class="java.lang.Object"/>
+	<field name="messageSourceAddress" class="java.lang.Object"/>
+	<field name="messageDestinationAddress" class="java.lang.Object"/>
+	<field name="relatedCommand" class="java.lang.Object"/>
+	<field name="MessageBody" class="java.lang.Object"/>
+	<field name="testCase" class="java.lang.Object"/>
+	<field name="connectionName" class="java.lang.Object"/>
+	<field name="ProcessType" class="java.lang.Object"/>
+	<field name="SourceAddress" class="java.lang.Object"/>
+	<field name="DestinationAddress" class="java.lang.Object"/>
+	<field name="sequenceCount" class="java.lang.Object"/>
+	<field name="message" class="java.lang.Object"/>
+	<field name="src" class="java.lang.Object"/>
+	<field name="tag" class="java.lang.Object"/>
+	<field name="type" class="java.lang.Object"/>
+	<field name="line" class="java.lang.Object"/>
+	<field name="column" class="java.lang.Object"/>
+	<field name="file" class="java.lang.Object"/>
+	<field name="functionId" class="java.lang.Object"/>
+	<field name="test-case-name" class="java.lang.Object"/>
+	<field name="outcome" class="java.lang.Object"/>
+	<field name="execution-time" class="java.lang.Object"/>
+	<field name="execution-time-millis" class="java.lang.Object"/>
+	<field name="UserDescription" class="java.lang.String"/>
+	<field name="EventID" class="java.lang.Object"/>
+	<field name="TimeStampInMillis" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TimeStamp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="100" y="0" width="400" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Test Script Action]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="500" y="0" width="55" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Results]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH.mm.ss.SSS">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{src}.equals("function-point")]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date(new Long($F{timestamp}))]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="0" width="400" height="20" isRemoveLineWhenBlank="true">
+					<printWhenExpression><![CDATA[$F{src}.equals("function-point")]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{tag} + " - " + $F{type}+"\n"+
+"Script: " + $F{file}+"\n"+
+"line: " + $F{line}+ " column: "+$F{column}+"\n"+
+"functionId: " + $F{functionId}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="500" y="0" width="55" height="20" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{src}.equals("function-point")]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{type}.equals("End") ? $F{outcome}:""]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="22">
+			<printWhenExpression><![CDATA[$F{eventType}.equalsIgnoreCase("userEvent")]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH.mm.ss.SSS">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="22" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date(new Long($F{timestamp}))]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="0" width="400" height="22" isRemoveLineWhenBlank="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{UserDescription}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="500" y="0" width="55" height="22" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+		<band height="20">
+			<printWhenExpression><![CDATA[$F{src}.equals("test-case")]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH.mm.ss.SSS">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true">
+					<printWhenExpression><![CDATA[$F{src}.equals("test-case")]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date(new Long($F{timestamp}))]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="0" width="400" height="20" isRemoveLineWhenBlank="true"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA["testCase" + " - " + $F{type}+"\n"+
+"Script: " + $F{file}+"\n"+
+"line: " + $F{line}+ " column: "+$F{column}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="500" y="0" width="55" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{type}.equals("End") ? $F{outcome}:""]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="20">
+			<printWhenExpression><![CDATA[$F{eventType}.equals( "rawOTWMessage" )]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH.mm.ss.SSS">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date(new Long($F{timestamp}))]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="0" width="400" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="Courier New" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Over The Wire Message \n\n"+
+"TestCase: " + $F{testCase} +"\n"+
+"ConnectionName: "+$F{connectionName}+"\n"+
+"SourceAddress: " + $F{SourceAddress}+"\n"+
+"DestinationAddress: " + $F{DestinationAddress}+"\n"+
+"TimeStampInMilliseconds: " + $F{TimeStampInMillis} +"\n"+
+"SequenceCount: " + $F{sequenceCount} +"\n"+
+"Message: \n"+$F{message}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="500" y="0" width="55" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+		<band height="20">
+			<printWhenExpression><![CDATA[$F{eventType}.equals("loggedMessage" )]]></printWhenExpression>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy HH.mm.ss.SSS">
+				<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="100" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date(new Long($F{timestamp}))]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="100" y="0" width="400" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<box leftPadding="2">
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="Courier New" pdfFontName="Courier"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Logged Message \n\n"+
+"Dialog: " +$F{parentDialog}+"\n"+
+"Message Type: " + $F{messageType}+"\n"+
+"Message Transport Encoding: " + $F{messageEncoding}+"\n"+
+"Message Transport Protocol: " + $F{viaTransportProtocol}+"\n"+
+"Message Transport Source Address: " + $F{messageSourceAddress}+"\n"+
+"Message Transport Destination Address: " + $F{messageDestinationAddress}+"\n"+
+"Decoded Message: \n"+$F{MessageBody}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement stretchType="RelativeToBandHeight" x="500" y="0" width="55" height="20" isRemoveLineWhenBlank="true" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

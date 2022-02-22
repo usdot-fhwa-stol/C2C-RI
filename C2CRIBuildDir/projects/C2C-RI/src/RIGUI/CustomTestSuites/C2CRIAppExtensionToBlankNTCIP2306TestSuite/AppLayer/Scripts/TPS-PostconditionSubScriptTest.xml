@@ -1,0 +1,28 @@
+<subscript xmlns="jelly:jameleon">
+
+  <testStep functionId="Step ${MasterStep}.1  Ensure that the subscriptPostconditionFailureFlag variable is set to false.  The test case set the value to ${SubScriptTestStepFailure}.">	
+ 	   <ju-assert-equals functionId = "Check whether the flag is equal to false" 
+	      expected="false"
+	      actual = "${SubScriptTestStepFailure}"/>
+  </testStep>
+
+  <testStep functionId="Step ${MasterStep}.2  This step is only executed if the Step ${MasterStep}.1 was true.">	
+  </testStep>
+
+  <testStep functionId="Step ${MasterStep}.3  This step is only executed if the Precondition Step ${MasterStep}.1 was true and Step ${MasterStep}.2 passed.">	
+  </testStep>
+
+  <postcondition>
+          <testStep functionId="Step ${MasterStep}.4  Postcondition: This step is always executed.">	
+          </testStep>
+
+	  <testStep functionId="Step ${MasterStep}.5  PostCondition: Ensure that the subscriptPostconditionStepFailureFlag variable is set to false.  The test case set the value to ${SubScriptPostConditionFailure}.">	
+ 	   <ju-assert-equals functionId = "Check for false = false" 
+	      expected="false"
+	      actual = "${SubScriptPostConditionFailure}"/>
+	  </testStep>
+  </postcondition>
+
+
+</subscript>
+

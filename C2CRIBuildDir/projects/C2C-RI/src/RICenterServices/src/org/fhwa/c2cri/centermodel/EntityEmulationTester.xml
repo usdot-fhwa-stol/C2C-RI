@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-RIEmulation
+       Description:  This test procedure is called by a test case and is used to verify the RI's ability to create/read/update/delete entity emulation data.
+       Version/Date: 2016/03/7 12:33:20-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the RI's ability to create/read/update/delete entity emulation data.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${C2CRIEmulationApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the Information Layer Standard that will be used for this test.  RECORD this information as: InformationLayerStandard:  ${C2CRIEmulationInformationLayerStandard}" passfailResult="False "/>
+     <C2CRI-session beginSession="true" infoStd="${C2CRIEmulationInformationLayerStandard}" appStd="${C2CRIEmulationApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="OC">
+		   <testStep functionId="Step 3 WHILE CONTINUEEMULATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps."/>
+           <jl:set var="CONTINUEEMULATION" value="TRUE"/>
+           <jl:set var="returnVal" value="12"/>  
+		   <jl:while test="${CONTINUEEMULATION}">
+				<testStep functionId="Step 3.1 GET the User's selection.  Returns: returnString">
+					<sample functionId="Get the User Input" sampleString="Enter the value to perform the following: /n1) Initialize  /n2) Add Entity  /n3) Add Entity Element  /n4) Delete Entity  /n5) Delete Entity Element  /n6) Update Entity Element  /n7) Get Entity Element  /n10) Exit" returnVal="returnString"  skipConfirmation="true" />
+				</testStep>
+				<jl:choose>
+					<jl:when test="${returnString.equals('1')}">
+  					    <ri-EmulationInitialize functionId="Initialize the emulation." />
+					</jl:when> 
+					<jl:when test="${returnString.equals('2')}">
+  					    <ri-EmulationAddEntity functionId="Add an entity to the emulation." />
+					</jl:when> 
+					<jl:when test="${returnString.equals('3')}">
+  					    <ri-EmulationAddEntityElement functionId="Add an entity to the emulation." />
+					</jl:when> 
+					<jl:when test="${returnString.equals('4')}">
+  					    <ri-EmulationDeleteEntity functionId="Add an entity to the emulation." />
+					</jl:when> 
+					<jl:when test="${returnString.equals('5')}">
+  					    <ri-EmulationDeleteEntityElement functionId="Add an entity to the emulation." />
+					</jl:when> 
+					<jl:when test="${returnString.equals('6')}">
+  					    <ri-EmulationUpdateEntityElement functionId="Add an entity to the emulation." />
+					</jl:when> 
+					<jl:when test="${returnString.equals('7')}">
+  					    <ri-EmulationGetEntityElementValue functionId="Add an entity to the emulation." />
+					</jl:when> 
+				<jl:when test="${returnString.equals('10')}">
+						<jl:set var="CONTINUEEMULATION" value="FALSE"/>
+					</jl:when> 
+				</jl:choose> 
+		   </jl:while>
+          <testStep functionId=" Step 4 EXIT" passfailResult="False"/>
+     </C2CRI-session>
+</testprocedure>

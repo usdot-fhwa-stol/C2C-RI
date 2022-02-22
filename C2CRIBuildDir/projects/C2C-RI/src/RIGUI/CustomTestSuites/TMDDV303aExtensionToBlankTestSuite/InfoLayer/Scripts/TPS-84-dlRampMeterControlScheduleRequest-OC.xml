@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-84-dlRampMeterControlScheduleRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterControlScheduleRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.9.8 [Need to Share Ramp Metering Schedule] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:43:42-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlRampMeterControlScheduleRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.9.8 [Need to Share Ramp Metering Schedule] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - Device Schedule is required by the specification. (NRTM 3.3.5.1.8.1.2.1).  RECORD this information as: TMDD_N84R440_Restrictions___Device_Schedule_Supported = ${TMDD_N84R440_Restrictions___Device_Schedule_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether Metered Lane Action Control is required by the specification. (NRTM 3.3.5.10.6.5.2.1).  RECORD this information as: TMDD_N84R913_Metered_Lane_Action_Control_Supported = ${TMDD_N84R913_Metered_Lane_Action_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Timebase Plan Control is required by the specification. (NRTM 3.3.5.10.6.5.2.2).  RECORD this information as: TMDD_N84R914_Timebase_Plan_Control_Supported = ${TMDD_N84R914_Timebase_Plan_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Timebase Rate Control is required by the specification. (NRTM 3.3.5.10.6.5.2.3).  RECORD this information as: TMDD_N84R915_Timebase_Rate_Control_Supported = ${TMDD_N84R915_Timebase_Rate_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Timebase Vehicles Per Green Control is required by the specification. (NRTM 3.3.5.10.6.5.2.4).  RECORD this information as: TMDD_N84R916_Timebase_Vehicles_Per_Green_Control_Supported = ${TMDD_N84R916_Timebase_Vehicles_Per_Green_Control_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Timebase Control Minimum Metering Rate is required by the specification. (NRTM 3.3.5.10.6.5.2.5).  RECORD this information as: TMDD_N84R917_Timebase_Control_Minimum_Metering_Rate_Supported = ${TMDD_N84R917_Timebase_Control_Minimum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Timebase Control Maximum Metering Rate is required by the specification. (NRTM 3.3.5.10.6.5.2.6).  RECORD this information as: TMDD_N84R918_Timebase_Control_Maximum_Metering_Rate_Supported = ${TMDD_N84R918_Timebase_Control_Maximum_Metering_Rate_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Timebase Control Lane Usage Mode is required by the specification. (NRTM 3.3.5.10.6.5.2.7).  RECORD this information as: TMDD_N84R919_Timebase_Control_Lane_Usage_Mode_Supported = ${TMDD_N84R919_Timebase_Control_Lane_Usage_Mode_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 10 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 11 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 12 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 13 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlRampMeterControlScheduleRequest RESPONSETIMEREQUIRED=TMDD_N84R907_Send_Ramp_Meter_Schedule_Information_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlRampMeterControlScheduleRequest" functionId="dlRampMeterControlScheduleRequest" RESPONSETIMEREQUIRED="${TMDD_N84R907_Send_Ramp_Meter_Schedule_Information_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 14 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 14.1 VERIFY that element organization-information exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-frame" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 14.2 VERIFY that element device-id exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 14.3 VERIFY that element time-base-schedule-number exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-base-schedule-number" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 14.4 VERIFY that element time-base-schedule-month exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-base-schedule-month" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 14.5 VERIFY that element time-base-schedule-day exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-base-schedule-day" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 14.6 VERIFY that element time-base-schedule-date exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-base-schedule-date" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 14.7 VERIFY that element time-base-schedule-day-plan exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="time-base-schedule-day-plan" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 14.8 VERIFY that element day-plan-hour exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="day-plan-hour" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 14.9 VERIFY that element day-plan-minute exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="day-plan-minute" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 14.10 VERIFY that element last-update-time exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-frame" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+               </testStep>
+               <testStep functionId="Step 14.11 VERIFY that element rampMeterControlScheduleMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="rampMeterControlScheduleMsg" instanceName="tmdd:rampMeterControlScheduleMsg" elementType="message" functionId="Looking for rampMeterControlScheduleMsg"/>
+               </testStep>
+               <testStep functionId="Step 14.12 VERIFY that element device-control-schedule-header exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-control-schedule-header" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" elementType="data-frame" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item"/>
+               </testStep>
+               <testStep functionId="Step 14.13 VERIFY that element metered-lane-identifier exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="metered-lane-identifier" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item"/>
+               </testStep>
+               <testStep functionId="Step 14.14 VERIFY that element action-number exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="action-number" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item"/>
+               </testStep>
+               <testStep functionId="Step 14.15 IF TMDD_N84R440_Restrictions___Device_Schedule_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N84R440_Restrictions___Device_Schedule_Supported}">
+                    <testStep functionId="Step 14.15.1 VERIFY that element restrictions exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header" elementType="data-frame" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 14.16 IF TMDD_N84R913_Metered_Lane_Action_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N84R913_Metered_Lane_Action_Control_Supported}">
+                    <testStep functionId="Step 14.16.1 VERIFY that element meter-action-control exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-action-control" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 14.17 IF TMDD_N84R914_Timebase_Plan_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N84R914_Timebase_Plan_Control_Supported}">
+                    <testStep functionId="Step 14.17.1 VERIFY that element meter-requested-plan exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-requested-plan" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 14.18 IF TMDD_N84R915_Timebase_Rate_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N84R915_Timebase_Rate_Control_Supported}">
+                    <testStep functionId="Step 14.18.1 VERIFY that element meter-requested-rate exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-requested-rate" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 14.19 IF TMDD_N84R916_Timebase_Vehicles_Per_Green_Control_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N84R916_Timebase_Vehicles_Per_Green_Control_Supported}">
+                    <testStep functionId="Step 14.19.1 VERIFY that element meter-vehicles-per-green exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-vehicles-per-green" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 14.20 IF TMDD_N84R917_Timebase_Control_Minimum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N84R917_Timebase_Control_Minimum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 14.20.1 VERIFY that element min-meter-rate exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="min-meter-rate" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 14.21 IF TMDD_N84R918_Timebase_Control_Maximum_Metering_Rate_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N84R918_Timebase_Control_Maximum_Metering_Rate_Supported}">
+                    <testStep functionId="Step 14.21.1 VERIFY that element max-meter-rate exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="max-meter-rate" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 14.22 IF TMDD_N84R919_Timebase_Control_Lane_Usage_Mode_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N84R919_Timebase_Control_Lane_Usage_Mode_Supported}">
+                    <testStep functionId="Step 14.22.1 VERIFY that element meter-lane-usage-mode exists within each instance of rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="meter-lane-usage-mode" instanceName="tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item" elementType="data-element" functionId="Looking for rampMeterControlScheduleMsg.ramp-meter-control-schedule-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 14.23 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N84R440_Restrictions___Device_Schedule_Supported,restrictions,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item.device-control-schedule-header;TMDD_N84R913_Metered_Lane_Action_Control_Supported,meter-action-control,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R914_Timebase_Plan_Control_Supported,meter-requested-plan,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R915_Timebase_Rate_Control_Supported,meter-requested-rate,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R916_Timebase_Vehicles_Per_Green_Control_Supported,meter-vehicles-per-green,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R917_Timebase_Control_Minimum_Metering_Rate_Supported,min-meter-rate,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R918_Timebase_Control_Maximum_Metering_Rate_Supported,max-meter-rate,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;TMDD_N84R919_Timebase_Control_Lane_Usage_Mode_Supported,meter-lane-usage-mode,tmdd:rampMeterControlScheduleMsg.ramp-meter-control-schedule-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

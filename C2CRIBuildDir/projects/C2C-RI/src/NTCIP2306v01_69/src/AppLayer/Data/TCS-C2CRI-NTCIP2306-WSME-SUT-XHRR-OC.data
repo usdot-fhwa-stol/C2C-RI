@@ -1,0 +1,70 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSME-SUT-HTTP-POST-OC
+#       Description:  TCS-C2CRI-NTCIP2306-WSME-SUT-HTTP-POST-OC
+#       Related Procedure:  TPS-NTCIP2306-HTTP-POST-OC.xml
+#       Version/Date: 2011/11/15 22:59:44
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents the WSDL File to be verified.� It is specified in the Configuration File.
+WSDLFile=#CONTEXTVARIABLE#RI_WEBSERVICEURL#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Service defined in the WSDL that will be used during the test.
+ServiceName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Port defined in the WSDL that is related to the selected Service Name and will be used during the test.
+PortName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The Operation defined in the WSDL that is related to the selected Service Name and will be used during the test.
+OperationName = #USERDEFINED#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = The request message that will be sent to the SUT.
+RequestMessage = #USERDEFINED#
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a transport error is expected.
+TransportErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the type of transport error expected.
+TransportErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a encoding error is expected.
+EncodingErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a encoding error type that is expected.
+EncodingErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether a message error is expected.
+MessageErrorExpected = false
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the type of message error expected.
+MessageErrorTypeExpected = NONE
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+

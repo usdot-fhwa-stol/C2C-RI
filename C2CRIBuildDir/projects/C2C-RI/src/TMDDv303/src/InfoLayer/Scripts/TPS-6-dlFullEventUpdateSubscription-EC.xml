@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-6-dlFullEventUpdateSubscription-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlFullEventUpdateSubscription dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.3.2 [Need for Current Event Information] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/17 23:36:30-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlFullEventUpdateSubscription dialog as an EC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.3.2 [Need for Current Event Information] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Publish Event Information (NTRM 3.3.3.2}.  RECORD this value as: TMDD_N6R57_Publish_Event_Information_Parameter = ${TMDD_N6R57_Publish_Event_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine the dialog performance requirement for Subscribe to Event Information (NTRM 3.3.3.3}.  RECORD this value as: TMDD_N6R58_Subscribe_to_Event_Information_Parameter = ${TMDD_N6R58_Subscribe_to_Event_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Authentication - Events (AuthEvents) is required by the specification. (NRTM 3.3.3.4.2.1).  RECORD this information as: TMDD_N6R61_Authentication___Events__AuthEvents__Supported = ${TMDD_N6R61_Authentication___Events__AuthEvents__Supported}" passfailResult="False"/>
+     <testStep functionId="Step 5 CONFIGURE: Determine whether Operator Identifier - Events is required by the specification. (NRTM 3.3.3.4.2.1.1).  RECORD this information as: TMDD_N6R62_Operator_Identifier___Events_Supported = ${TMDD_N6R62_Operator_Identifier___Events_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 6 CONFIGURE: Determine whether Requesting Organization is required by the specification. (NRTM 3.3.3.4.2.2).  RECORD this information as: TMDD_N6R63_Requesting_Organization_Supported = ${TMDD_N6R63_Requesting_Organization_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 7 CONFIGURE: Determine whether Event Unique Identifier Filter is required by the specification. (NRTM 3.3.3.4.3.1).  RECORD this information as: TMDD_N6R64_Event_Unique_Identifier_Filter_Supported = ${TMDD_N6R64_Event_Unique_Identifier_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 8 CONFIGURE: Determine whether Event Response Plan Identifier Filter is required by the specification. (NRTM 3.3.3.4.3.2).  RECORD this information as: TMDD_N6R65_Event_Response_Plan_Identifier_Filter_Supported = ${TMDD_N6R65_Event_Response_Plan_Identifier_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 9 CONFIGURE: Determine whether Event Category Filter is required by the specification. (NRTM 3.3.3.4.3.3).  RECORD this information as: TMDD_N6R66_Event_Category_Filter_Supported = ${TMDD_N6R66_Event_Category_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 10 CONFIGURE: Determine whether Event Priority Filter is required by the specification. (NRTM 3.3.3.4.3.4).  RECORD this information as: TMDD_N6R67_Event_Priority_Filter_Supported = ${TMDD_N6R67_Event_Priority_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 11 CONFIGURE: Determine whether Event Description Confidence Level Filter is required by the specification. (NRTM 3.3.3.4.3.5).  RECORD this information as: TMDD_N6R68_Event_Description_Confidence_Level_Filter_Supported = ${TMDD_N6R68_Event_Description_Confidence_Level_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 12 CONFIGURE: Determine whether Event Access Level Filter is required by the specification. (NRTM 3.3.3.4.3.6).  RECORD this information as: TMDD_N6R69_Event_Access_Level_Filter_Supported = ${TMDD_N6R69_Event_Access_Level_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 13 CONFIGURE: Determine whether Event Action Flag Filter is required by the specification. (NRTM 3.3.3.4.3.7).  RECORD this information as: TMDD_N6R70_Event_Action_Flag_Filter_Supported = ${TMDD_N6R70_Event_Action_Flag_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 14 CONFIGURE: Determine whether Event Severity Filter is required by the specification. (NRTM 3.3.3.4.3.8).  RECORD this information as: TMDD_N6R71_Event_Severity_Filter_Supported = ${TMDD_N6R71_Event_Severity_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 15 CONFIGURE: Determine whether External Center Organization Filter is required by the specification. (NRTM 3.3.3.4.3.9).  RECORD this information as: TMDD_N6R72_External_Center_Organization_Filter_Supported = ${TMDD_N6R72_External_Center_Organization_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 16 CONFIGURE: Determine whether Event Location Filter is required by the specification. (NRTM 3.3.3.4.3.10).  RECORD this information as: TMDD_N6R73_Event_Location_Filter_Supported = ${TMDD_N6R73_Event_Location_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 17 CONFIGURE: Determine whether Request Start Time Filter is required by the specification. (NRTM 3.3.3.4.3.11).  RECORD this information as: TMDD_N6R74_Request_Start_Time_Filter_Supported = ${TMDD_N6R74_Request_Start_Time_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 18 CONFIGURE: Determine whether Request End Time Filter is required by the specification. (NRTM 3.3.3.4.3.12).  RECORD this information as: TMDD_N6R75_Request_End_Time_Filter_Supported = ${TMDD_N6R75_Request_End_Time_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 19 CONFIGURE: Determine whether Hazardous Material Codes Filter is required by the specification. (NRTM 3.3.3.4.3.13).  RECORD this information as: TMDD_N6R76_Hazardous_Material_Codes_Filter_Supported = ${TMDD_N6R76_Hazardous_Material_Codes_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 20 CONFIGURE: Determine whether Hazardous Material Placard Codes Filter is required by the specification. (NRTM 3.3.3.4.3.14).  RECORD this information as: TMDD_N6R77_Hazardous_Material_Placard_Codes_Filter_Supported = ${TMDD_N6R77_Hazardous_Material_Placard_Codes_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 21 CONFIGURE: Determine whether Event Headline Filter is required by the specification. (NRTM 3.3.3.4.3.15).  RECORD this information as: TMDD_N6R78_Event_Headline_Filter_Supported = ${TMDD_N6R78_Event_Headline_Filter_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 22 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N6R14_Restrictions___Error_Report_Supported = ${TMDD_N6R14_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03c" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="OC">
+          <testStep functionId="Step 23 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: PublicationMessage:  ${PublicationMessage}" passfailResult="False"/>
+          <testStep functionId="Step 24 CONFIGURE: Determine the number of publication message transmissions that will be performed within this test.  RECORD this information as: PublicationCount:  ${PublicationCount}" passfailResult="False"/>
+          <testStep functionId="Step 25 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 26 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 27 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 28 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 29 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 30 CONFIGURE: Identify the Operator Identifier expected for authentication during this test.  RECORD this information as: OperatorID:  ${OperatorID}" passfailResult="False"/>
+          <testStep functionId="Step 31 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 32 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 33 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 34 CONFIGURE: Define the subscription response message that will be sent to the SUT.  RECORD this information as: SubscriptionResponseMessage:  ${SubscriptionResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 35 SUBSCRIPTION-OC-RECEIVE with the following parameters:   DIALOG=dlFullEventUpdateSubscription RESPONSETIMEREQUIRED= AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password OPERATORID = OperatorID ALLOWACCESS = AllowAccess SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-OC-RECEIVE Dialog="dlFullEventUpdateSubscription" functionId="dlFullEventUpdateSubscription" RESPONSETIMEREQUIRED="60000" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" OPERATORID="${OperatorID}" ALLOWACCESS="${AllowAccess}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 36 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 36.1 VERIFY that an eventRequestMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="eventRequestMsg" instanceName="tmdd:eventRequestMsg" elementType="message" functionId="Looking for eventRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 36.2 VERIFY that a request-header data frame exists within message eventRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="request-header" instanceName="tmdd:eventRequestMsg" elementType="data-frame" functionId="Looking for eventRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 36.3 VERIFY that a request-type data frame exists within message eventRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="request-type" instanceName="tmdd:eventRequestMsg" elementType="data-frame" functionId="Looking for eventRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 36.4 IF TMDD_N6R61_Authentication___Events__AuthEvents__Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R61_Authentication___Events__AuthEvents__Supported}">
+                    <testStep functionId="Step 36.4.1 VERIFY that an authentication data frame exists within message eventRequestMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="authentication" instanceName="tmdd:eventRequestMsg" elementType="data-frame" functionId="Looking for eventRequestMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.5 IF TMDD_N6R62_Operator_Identifier___Events_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R62_Operator_Identifier___Events_Supported}">
+                    <testStep functionId="Step 36.5.1 VERIFY that an operator-id data element exists within each instance of data frame eventRequestMsg.authentication" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="operator-id" instanceName="tmdd:eventRequestMsg.authentication" elementType="data-element" functionId="Looking for eventRequestMsg.authentication"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.6 IF TMDD_N6R63_Requesting_Organization_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R63_Requesting_Organization_Supported}">
+                    <testStep functionId="Step 36.6.1 VERIFY that an organization-requesting data frame exists within each instance of data frame eventRequestMsg.request-header" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="organization-requesting" instanceName="tmdd:eventRequestMsg.request-header" elementType="data-frame" functionId="Looking for eventRequestMsg.request-header"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.7 IF TMDD_N6R64_Event_Unique_Identifier_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R64_Event_Unique_Identifier_Filter_Supported}">
+                    <testStep functionId="Step 36.7.1 VERIFY that a request-focus data element exists within each instance of data frame eventRequestMsg.request-type" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="request-focus" instanceName="tmdd:eventRequestMsg.request-type" elementType="data-element" functionId="Looking for eventRequestMsg.request-type"/>
+                    </testStep>
+                    <testStep functionId="Step 36.7.2 VERIFY that an event-ids data frame exists within each instance of data frame eventRequestMsg.request-type" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="event-ids" instanceName="tmdd:eventRequestMsg.request-type" elementType="data-element" functionId="Looking for eventRequestMsg.request-type"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.8 IF TMDD_N6R65_Event_Response_Plan_Identifier_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R65_Event_Response_Plan_Identifier_Filter_Supported}">
+                    <testStep functionId="Step 36.8.1 VERIFY that a response-plan-ids data frame exists within each instance of data frame eventRequestMsg.request-type" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="response-plan-ids" instanceName="tmdd:eventRequestMsg.request-type" elementType="data-element" functionId="Looking for eventRequestMsg.request-type"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.9 IF TMDD_N6R66_Event_Category_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R66_Event_Category_Filter_Supported}">
+                    <testStep functionId="Step 36.9.1 VERIFY that a category data element exists within each instance of data frame eventRequestMsg.request-filters.request-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="category" instanceName="tmdd:eventRequestMsg.request-filters.request-filter" elementType="data-element" functionId="Looking for eventRequestMsg.request-filters.request-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.10 IF TMDD_N6R67_Event_Priority_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R67_Event_Priority_Filter_Supported}">
+                    <testStep functionId="Step 36.10.1 VERIFY that a priority-level data element exists within each instance of data frame eventRequestMsg.request-filters.request-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="priority-level" instanceName="tmdd:eventRequestMsg.request-filters.request-filter" elementType="data-element" functionId="Looking for eventRequestMsg.request-filters.request-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.11 IF TMDD_N6R68_Event_Description_Confidence_Level_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R68_Event_Description_Confidence_Level_Filter_Supported}">
+                    <testStep functionId="Step 36.11.1 VERIFY that a confidence-level data element exists within each instance of data frame eventRequestMsg.request-filters.request-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="confidence-level" instanceName="tmdd:eventRequestMsg.request-filters.request-filter" elementType="data-element" functionId="Looking for eventRequestMsg.request-filters.request-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.12 IF TMDD_N6R69_Event_Access_Level_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R69_Event_Access_Level_Filter_Supported}">
+                    <testStep functionId="Step 36.12.1 VERIFY that an access-level data element exists within each instance of data frame eventRequestMsg.request-filters.request-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="access-level" instanceName="tmdd:eventRequestMsg.request-filters.request-filter" elementType="data-element" functionId="Looking for eventRequestMsg.request-filters.request-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.13 IF TMDD_N6R70_Event_Action_Flag_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R70_Event_Action_Flag_Filter_Supported}">
+                    <testStep functionId="Step 36.13.1 VERIFY that an action-request-flag data element exists within each instance of data frame eventRequestMsg.request-filters.request-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="action-request-flag" instanceName="tmdd:eventRequestMsg.request-filters.request-filter" elementType="data-element" functionId="Looking for eventRequestMsg.request-filters.request-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.14 IF TMDD_N6R71_Event_Severity_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R71_Event_Severity_Filter_Supported}">
+                    <testStep functionId="Step 36.14.1 VERIFY that a severity data element exists within each instance of data frame eventRequestMsg.request-filters.request-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="severity" instanceName="tmdd:eventRequestMsg.request-filters.request-filter" elementType="data-element" functionId="Looking for eventRequestMsg.request-filters.request-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.15 IF TMDD_N6R72_External_Center_Organization_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R72_External_Center_Organization_Filter_Supported}">
+                    <testStep functionId="Step 36.15.1 VERIFY that an organizations-requested data frame exists within each instance of data frame eventRequestMsg.request-filters.request-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="organizations-requested" instanceName="tmdd:eventRequestMsg.request-filters.request-filter" elementType="data-frame" functionId="Looking for eventRequestMsg.request-filters.request-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.16 IF TMDD_N6R73_Event_Location_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R73_Event_Location_Filter_Supported}">
+                    <testStep functionId="Step 36.16.1 VERIFY that a request-locations data frame exists within message eventRequestMsg." passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="request-locations" instanceName="tmdd:eventRequestMsg" elementType="data-frame" functionId="Looking for eventRequestMsg"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.17 IF TMDD_N6R74_Request_Start_Time_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R74_Request_Start_Time_Filter_Supported}">
+                    <testStep functionId="Step 36.17.1 VERIFY that a start-time data frame exists within each instance of data frame eventRequestMsg.request-times" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="start-time" instanceName="tmdd:eventRequestMsg.request-times" elementType="data-frame" functionId="Looking for eventRequestMsg.request-times"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.18 IF TMDD_N6R75_Request_End_Time_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R75_Request_End_Time_Filter_Supported}">
+                    <testStep functionId="Step 36.18.1 VERIFY that an end-time data frame exists within each instance of data frame eventRequestMsg.request-times" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="end-time" instanceName="tmdd:eventRequestMsg.request-times" elementType="data-frame" functionId="Looking for eventRequestMsg.request-times"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.19 IF TMDD_N6R76_Hazardous_Material_Codes_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R76_Hazardous_Material_Codes_Filter_Supported}">
+                    <testStep functionId="Step 36.19.1 VERIFY that a hazmat-code data frame exists within each instance of data frame eventRequestMsg.request-filters.request-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="hazmat-code" instanceName="tmdd:eventRequestMsg.request-filters.request-filter" elementType="data-element" functionId="Looking for eventRequestMsg.request-filters.request-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.20 IF TMDD_N6R77_Hazardous_Material_Placard_Codes_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R77_Hazardous_Material_Placard_Codes_Filter_Supported}">
+                    <testStep functionId="Step 36.20.1 VERIFY that a placard-code data frame exists within each instance of data frame eventRequestMsg.request-filters.request-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="placard-code" instanceName="tmdd:eventRequestMsg.request-filters.request-filter" elementType="data-element" functionId="Looking for eventRequestMsg.request-filters.request-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.21 IF TMDD_N6R78_Event_Headline_Filter_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N6R78_Event_Headline_Filter_Supported}">
+                    <testStep functionId="Step 36.21.1 VERIFY that a headline data frame exists within each instance of data frame eventRequestMsg.request-filters.request-filter" passfailResult="True">
+                         <ri-MessageVerify msgType="REQUEST" elementName="headline" instanceName="tmdd:eventRequestMsg.request-filters.request-filter" elementType="data-frame" functionId="Looking for eventRequestMsg.request-filters.request-filter"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 36.22 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N6R61_Authentication___Events__AuthEvents__Supported,authentication,tmdd:eventRequestMsg;TMDD_N6R62_Operator_Identifier___Events_Supported,operator-id,tmdd:eventRequestMsg.authentication;TMDD_N6R63_Requesting_Organization_Supported,organization-requesting,tmdd:eventRequestMsg.request-header;TMDD_N6R64_Event_Unique_Identifier_Filter_Supported,request-focus,tmdd:eventRequestMsg.request-type;TMDD_N6R64_Event_Unique_Identifier_Filter_Supported,event-ids,tmdd:eventRequestMsg.request-type;TMDD_N6R65_Event_Response_Plan_Identifier_Filter_Supported,response-plan-ids,tmdd:eventRequestMsg.request-type;TMDD_N6R66_Event_Category_Filter_Supported,category,tmdd:eventRequestMsg.request-filters.request-filter;TMDD_N6R67_Event_Priority_Filter_Supported,priority-level,tmdd:eventRequestMsg.request-filters.request-filter;TMDD_N6R68_Event_Description_Confidence_Level_Filter_Supported,confidence-level,tmdd:eventRequestMsg.request-filters.request-filter;TMDD_N6R69_Event_Access_Level_Filter_Supported,access-level,tmdd:eventRequestMsg.request-filters.request-filter;TMDD_N6R70_Event_Action_Flag_Filter_Supported,action-request-flag,tmdd:eventRequestMsg.request-filters.request-filter;TMDD_N6R71_Event_Severity_Filter_Supported,severity,tmdd:eventRequestMsg.request-filters.request-filter;TMDD_N6R72_External_Center_Organization_Filter_Supported,organizations-requested,tmdd:eventRequestMsg.request-filters.request-filter;TMDD_N6R73_Event_Location_Filter_Supported,request-locations,tmdd:eventRequestMsg;TMDD_N6R74_Request_Start_Time_Filter_Supported,start-time,tmdd:eventRequestMsg.request-times;TMDD_N6R75_Request_End_Time_Filter_Supported,end-time,tmdd:eventRequestMsg.request-times;TMDD_N6R76_Hazardous_Material_Codes_Filter_Supported,hazmat-code,tmdd:eventRequestMsg.request-filters.request-filter;TMDD_N6R77_Hazardous_Material_Placard_Codes_Filter_Supported,placard-code,tmdd:eventRequestMsg.request-filters.request-filter;TMDD_N6R78_Event_Headline_Filter_Supported,headline,tmdd:eventRequestMsg.request-filters.request-filter;TMDD_N6R14_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 36.23 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                    <jl:set var="CONTENTVERIFIED" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 36.24 POSTCONDITION: SUBSCRIPTION-OC-REPLY with the following parameters:   DIALOG=dlFullEventUpdateSubscription RESPONSETIMEREQUIRED= CONTENTVERIFIED = CONTENTVERIFIED SUBSCRIPTIONRESPONSEMESSAGE = SubscriptionResponseMessage ">
+                         <SUBSCRIPTION-OC-REPLY Dialog="dlFullEventUpdateSubscription" functionId="dlFullEventUpdateSubscription" RESPONSETIMEREQUIRED="60000" CONTENTVERIFIED="${CONTENTVERIFIED}" SUBSCRIPTIONRESPONSEMESSAGE="${SubscriptionResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+               <testStep functionId="Step 36.25 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps.  Note:If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 36.25.1 PUBLICATION-OC with the following parameters:   DIALOG=dlFullEventUpdateUpdate RESPONSETIMEREQUIRED=TMDD_N6R57_Publish_Event_Information_Parameter PUBLICATIONMESSAGE = PublicationMessage PUBLICATIONCOUNT = PublicationCount PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-OC Dialog="dlFullEventUpdateUpdate" functionId="dlFullEventUpdateUpdate" RESPONSETIMEREQUIRED="${TMDD_N6R57_Publish_Event_Information_Parameter}" PUBLICATIONMESSAGE="${PublicationMessage}" PUBLICATIONCOUNT="${PublicationCount}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}"/>
+                    </testStep>
+                    <testStep functionId="Step 36.25.2 IF PublicationErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+                    <jl:if test="${PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 36.25.2.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                              <ri-MessageVerify msgType="RESPONSE" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 36.25.2.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 36.25.2.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="RESPONSE" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 36.25.2.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 36.25.2.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="RESPONSE" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 36.25.2.6 VERIFY that data element error-code is set to PublicationErrorResponseTypeExpected." passfailResult="True">
+                              <ri-MessageVerify msgType="RESPONSE" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${PublicationErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 36.25.2.7 IF TMDD_N6R14_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N6R14_Restrictions___Error_Report_Supported}">
+                              <testStep functionId="Step 36.25.2.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                                   <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                              </testStep>
+                         </jl:if>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 37 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

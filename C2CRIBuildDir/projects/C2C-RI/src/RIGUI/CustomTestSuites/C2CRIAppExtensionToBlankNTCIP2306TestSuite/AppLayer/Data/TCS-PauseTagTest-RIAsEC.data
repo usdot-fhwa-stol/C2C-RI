@@ -1,0 +1,15 @@
+ 
+#<!--   
+#       Title:  TCS-PostConditionTagTest-RIAsEC
+#       Description:  This test case is used to verify the RIs Postcondition Tag
+#       Related Procedure:  TPS-PostConditionTagTest
+#       Version/Date: 2012/02/25 22:33:21
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+

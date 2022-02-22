@@ -1,0 +1,128 @@
+<?xml version="1.0" ?> 
+<!--   
+       Title:  TPS-NTCIP2306-SOAP-Subscription-Publication-OC
+       Description:  This test procedure is called by a test case and is used to verify a SUTs conformance to the SOAP Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an OC using the Subscription-Publication pattern. 
+                     This procedure supports verification of requirements related to user need 1 (SOAP) and is used for both valid and invalid test cases.
+       Version/Date: 2012/02/05 15:51 (Manual)
+-->
+
+<testprocedure xmlns="jelly:jameleon"  xmlns:jl="jelly:core" >
+<test-case-id>${C2CRITestCaseID}</test-case-id>
+<test-case-summary>This test procedure is called by a test case and is used to verify a SUTs conformance to the SOAP Profiles encoding and transport (HTTP and HTTPS) subprofiles of NTCIP 2306 when acting as an OC using the Subscription-Publication pattern. This procedure supports verification of requirements related to user need 1 (SOAP) and is used for both valid and invalid test cases.
+</test-case-summary>
+
+<NTCIP2306-session testCaseIdentifier="${C2CRITestCaseID}" riMode="EC" wsdlURL="${WSDLFile}" subPubMapping="${SubscriptionServiceName},${SubscriptionPortName},${SubscriptionOperationName}:${PublicationServiceName},${PublicationPortName},${PublicationOperationName};">
+
+<testStep functionId = "Step 1 CONFIGURE: Identify the WSDL file that will define the one-way Get operation used during the test.  RECORD the WSDL File Name value as: WSDLFile = ${WSDLFile}"   passfailResult="False"/>
+<testStep functionId = "Step 2 CONFIGURE: Identify the SOAP related Service defined in the WSDL that will be used for the Subscriptions during the test.  The service must contain a port that matches the selected Transport option(s).  RECORD the Service name value as: SubscriptionServiceName = ${SubscriptionServiceName}"   passfailResult="False"/>
+<testStep functionId = "Step 3 CONFIGURE: Identify the port related to the SOAP Subscription service that will used during the test.  If NTCIP2306_N1R4_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP2306_N1R5_Message_Transport_HTTPS_Flag is true then any port utilizing the https protocol may be selected.  RECORD this value as: SubscriptionPortName =${SubscriptionPortName}"   passfailResult="False"/>
+<testStep functionId = "Step 4 CONFIGURE: Select a Subscription operation related to the SOAP Service selected to be used for the test.  RECORD this value as: SubscriptionOperation = ${SubscriptionOperationName}"   passfailResult="False"/>
+<testStep functionId = "Step 5 CONFIGURE: Determine whether transport error is expected during the subscription portion of this test.  RECORD this value as SubscriptionTransportErrorExpected = ${SubscriptionTransportErrorExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 6 CONFIGURE: RECORD the type of transport error expected from the subscription dialog as SubscriptionTransportErrorTypeExpected = ${SubscriptionTransportErrorTypeExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 7 CONFIGURE: Determine whether an encoding error is expected during this test.  RECORD this value as SubscriptionEncodingErrorExpected = ${SubscriptionEncodingErrorExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 8 CONFIGURE: RECORD the type of encoding error expected from the subscription dialog as SubscriptionEncodingErrorTypeExpected = ${SubscriptionEncodingErrorTypeExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 9 CONFIGURE: Determine whether an XML message error is expected during this test.  RECORD this value as SubscriptionMessageErrorExpected = ${SubscriptionMessageErrorExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 10 CONFIGURE: RECORD the expected type of message error as: SubscriptionMessageErrorTypeExpected = ${SubscriptionMessageErrorTypeExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 11 CONFIGURE: Determine the Subscription XML message(s) to be sent during this test.  RECORD this value as SubscriptionMessage = ${SubscriptionMessage}"   passfailResult="False"/>
+<testStep functionId = "Step 12 CONFIGURE: Identify the SOAP related Service defined in the WSDL that will be used for the Publication during the test.  The service must contain a port that matches the selected Transport option(s).  RECORD the Service name value as: PublicationServiceName = ${PublicationServiceName}"   passfailResult="False"/>
+<testStep functionId = "Step 13 CONFIGURE: Identify the port related to the SOAP Publication service that will used during the test.  If NTCIP2306_N1R4_Message_Transport_Flag is true the any port utilizing the http protocol may be selected.  If NTCIP2306_N1R5_Message_Transport_HTTPS_Flag is true then any port utilizing the https protocol may be selected.  RECORD this value as: PublicationPortName =${PublicationPortName}"   passfailResult="False"/>
+<testStep functionId = "Step 14 CONFIGURE: Select a Publication operation related to the SOAP Service selected to be used for the test.  RECORD this value as: PublicationOperationName = ${PublicationOperationName}"   passfailResult="False"/>
+<testStep functionId = "Step 15 CONFIGURE: Determine whether transport error is expected during the publication portion of this test.  RECORD this value as PublicationTransportErrorExpected = ${PublicationTransportErrorExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 16 CONFIGURE: RECORD the type of transport error expected from the publication dialog as PublicationTransportErrorTypeExpected = ${PublicationTransportErrorTypeExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 17 CONFIGURE: Determine whether an encoding error is expected during this test.  RECORD this value as PublicationEncodingErrorExpected = ${PublicationEncodingErrorExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 18 CONFIGURE: RECORD the type of encoding error expected from the publication dialog as PublicationEncodingErrorTypeExpected = ${PublicationEncodingErrorTypeExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 19 CONFIGURE: Determine whether an XML message error is expected during the publication portion of this test.  RECORD this value as PublicationMessageErrorExpected = ${PublicationMessageErrorExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 20 CONFIGURE: RECORD the expected type of message error as: PublicationMessageErrorTypeExpected = ${PublicationMessageErrorTypeExpected}"   passfailResult="False"/>
+<testStep functionId = "Step 21 PERFORM TPS_NTCIP2306_WSDL."  passfailResult="True">
+		<ri-execute-script functionId="${C2CRITestCaseID}"
+                                   script="TPS-NTCIP2306-WSDL.xml"
+                                   checkOutcomePassed="true"/>
+ 								   
+</testStep>
+<testStep functionId = "Step 22 SOAP-SUB-EC with the following parameter(s): SUBSCRIPTIONSERVICENAME = SubscriptionServiceName, SUBSCRIPTIONPORTNAME = SubscriptionPortName, SUBSCRIPTIONOPERATIONNAME = SubscriptionOperationName, SUBSCRIPTIONMESSAGE = SubscriptionMessage   Returns:CONTINUEPUBLICATION, TRANSPORTERRORRESULT, TRANSPORTERRORTYPE, ENCODINGERRORRESULT, ENCODINGERRORTYPE, MESSAGEERRORRESULT, MESSAGEERRORTYPE"   passfailResult="False">
+	<SOAP-SUB-EC functionId="SOAP-SUB-EC" SUBSCRIPTIONSERVICENAME="${SubscriptionServiceName}" SUBSCRIPTIONPORTNAME="${SubscriptionPortName}" SUBSCRIPTIONOPERATIONNAME="${SubscriptionOperationName}" SUBSCRIPTIONMESSAGE="${SubscriptionMessage}"/>
+</testStep>
+	<testStep functionId = "Step 23 VERIFY that TRANSPORTERRORRESULT = SubscriptionTransportErrorExpected" >
+          <ju-assert-equals functionId="Verify the TRANSPORTERRORRESULT" msg="Error: SubscriptionTransportErrorExpected was ${SubscriptionTransportErrorExpected} while TRANSPORTERRORRESULT was ${TRANSPORTERRORRESULT} with TRANSPORTERRORTYPE was ${TRANSPORTERRORTYPE}."  actual="${TRANSPORTERRORRESULT}" expected="${SubscriptionTransportErrorExpected}"/>
+    </testStep>
+
+	<testStep functionId = "Step 24 VERIFY that TRANSPORTERRORTYPE = SubscriptionTransportErrorTypeExpected" >
+          <ju-assert-equals functionId="Verify the TRANSPORTERRORTYPE" msg="Error: SubscriptionTransportErrorTypeExpected was ${SubscriptionTransportErrorTypeExpected} while TRANSPORTERRORTYPE was ${TRANSPORTERRORTYPE}."  actual="${TRANSPORTERRORTYPE}" expected="${SubscriptionTransportErrorTypeExpected}"/>
+      </testStep>
+	  
+	<testStep functionId = "Step 25 IF TRANSPORTERRORRESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."  passfailResult="False"/>
+	<jl:if test="${!TRANSPORTERRORRESULT}">
+
+		<testStep functionId = "Step 25.1 VERIFY that ENCODINGERRORRESULT = SubscriptionEncodingErrorExpected" >
+			<ju-assert-equals functionId="Verify the ENCODINGERRORRESULT" msg="Error: SubscriptionEncodingErrorExpected was ${SubscriptionEncodingErrorExpected} while ENCODINGERRORRESULT was ${ENCODINGERRORRESULT} with ENCODINGERRORTYPE = ${ENCODINGERRORTYPE}."  actual="${ENCODINGERRORRESULT}" expected="${SubscriptionEncodingErrorExpected}"/>
+		</testStep>
+
+		<testStep functionId = "Step 25.2 VERIFY that ENCODINGERRORTYPE = SubscriptionEncodingErrorTypeExpected" >
+			<ju-assert-equals functionId="Verify the ENCODINGERRORTYPE" msg="Error: SubscriptionEncodingErrorTypeExpected was ${SubscriptionEncodingErrorTypeExpected} while ENCODINGERRORTYPE was ${ENCODINGERRORTYPE}."  actual="${ENCODINGERRORTYPE}" expected="${SubscriptionEncodingErrorTypeExpected}"/>
+		</testStep>
+	  
+		<testStep functionId = "Step 25.3 IF ENCODINGERRORRESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."  passfailResult="False"/>
+		<jl:if test="${!ENCODINGERRORRESULT}">
+
+			<testStep functionId = "Step 25.3.1 VERIFY that MESSAGEERRORRESULT = SubscriptionMessageErrorExpected" >
+				<ju-assert-equals functionId="Verify the MESSAGEERRORRESULT" msg="Error: SubscriptionMessageErrorExpected was ${SubscriptionMessageErrorExpected} while MESSAGEERRORRESULT was ${MESSAGEERRORRESULT} with MESSAGEERRORTYPE = ${MESSAGEERRORTYPE}."  actual="${MESSAGEERRORRESULT}" expected="${SubscriptionMessageErrorExpected}"/>
+			</testStep>
+
+			<testStep functionId = "Step 25.3.2 VERIFY that MESSAGEERRORTYPE = SubscriptionMessageErrorTypeExpected" >
+				<ju-assert-equals functionId="Verify the MESSAGEERRORTYPE" msg="Error: SubscriptionMessageErrorTypeExpected was ${SubscriptionMessageErrorTypeExpected} while MESSAGEERRORTYPE was ${MESSAGEERRORTYPE}."  actual="${MESSAGEERRORTYPE}" expected="${SubscriptionMessageErrorTypeExpected}"/>
+			</testStep>			
+	
+		</jl:if>
+
+	</jl:if>
+
+
+<testStep functionId = "Step 26 WHILE CONTINUEPUBLICATION is True perform the following sub steps"   passfailResult="False"/>
+<jl:while test="${CONTINUEPUBLICATION}" >
+
+	<testStep functionId = "Step 26.1 SOAP-PUB-EC with the following parameter(s): PUBLICATIONSERVICENAME = PublicationServiceName, PUBLICATIONPORTNAME = PublicationPortName, PUBLICATIONOPERATIONNAME = PublicationOperationName   Returns: CONTINUEPUBLICATION, TRANSPORTERRORRESULT, TRANSPORTERRORTYPE, ENCODINGERRORRESULT, ENCODINGERRORTYPE, MESSAGEERRORRESULT, MESSAGEERRORTYPE"   passfailResult="False">
+   	     <SOAP-PUB-EC functionId="SOAP-PUB-EC" PUBLICATIONSERVICENAME="${PublicationServiceName}" PUBLICATIONPORTNAME="${PublicationPortName}" PUBLICATIONOPERATIONNAME="${PublicationOperationName}" />
+        </testStep>
+
+	<testStep functionId = "Step 26.2 VERIFY that TRANSPORTERRORRESULT = PublicationTransportErrorExpected" >
+          <ju-assert-equals functionId="Verify the TRANSPORTERRORRESULT" msg="Error: PublicationTransportErrorExpected was ${PublicationTransportErrorExpected} while TRANSPORTERRORRESULT was ${TRANSPORTERRORRESULT} with TRANSPORTERRORTYPE was ${TRANSPORTERRORTYPE}."  actual="${TRANSPORTERRORRESULT}" expected="${PublicationTransportErrorExpected}"/>
+    </testStep>
+
+	<testStep functionId = "Step 26.3 VERIFY that TRANSPORTERRORTYPE = PublicationTransportErrorTypeExpected" >
+          <ju-assert-equals functionId="Verify the TRANSPORTERRORTYPE" msg="Error: PublicationTransportErrorTypeExpected was ${PublicationTransportErrorTypeExpected} while TRANSPORTERRORTYPE was ${TRANSPORTERRORTYPE}."  actual="${TRANSPORTERRORTYPE}" expected="${PublicationTransportErrorTypeExpected}"/>
+      </testStep>
+	  
+	<testStep functionId = "Step 26.4 IF TRANSPORTERRORRESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."  passfailResult="False"/>
+	<jl:if test="${!TRANSPORTERRORRESULT}">
+
+		<testStep functionId = "Step 26.4.1 VERIFY that ENCODINGERRORRESULT = PublicationEncodingErrorExpected" >
+			<ju-assert-equals functionId="Verify the ENCODINGERRORRESULT" msg="Error: PublicationEncodingErrorExpected was ${PublicationEncodingErrorExpected} while ENCODINGERRORRESULT was ${ENCODINGERRORRESULT} with ENCODINGERRORTYPE = ${ENCODINGERRORTYPE}."  actual="${ENCODINGERRORRESULT}" expected="${PublicationEncodingErrorExpected}"/>
+		</testStep>
+
+		<testStep functionId = "Step 26.4.2 VERIFY that ENCODINGERRORTYPE = PublicationEncodingErrorTypeExpected" >
+			<ju-assert-equals functionId="Verify the ENCODINGERRORTYPE" msg="Error: PublicationEncodingErrorTypeExpected was ${PublicationEncodingErrorTypeExpected} while ENCODINGERRORTYPE was ${ENCODINGERRORTYPE}."  actual="${ENCODINGERRORTYPE}" expected="${PublicationEncodingErrorTypeExpected}"/>
+		</testStep>
+	  
+		<testStep functionId = "Step 26.4.3 IF ENCODINGERRORRESULT = False THEN CONTINUE; OTHERWISE skip the following sub steps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."  passfailResult="False"/>
+		<jl:if test="${!ENCODINGERRORRESULT}">
+
+			<testStep functionId = "Step 26.4.3.1 VERIFY that MESSAGEERRORRESULT = PublicationMessageErrorExpected" >
+				<ju-assert-equals functionId="Verify the MESSAGEERRORRESULT" msg="Error: PublicationMessageErrorExpected was ${PublicationMessageErrorExpected} while MESSAGEERRORRESULT was ${MESSAGEERRORRESULT} with MESSAGEERRORTYPE = ${MESSAGEERRORTYPE}."  actual="${MESSAGEERRORRESULT}" expected="${PublicationMessageErrorExpected}"/>
+			</testStep>
+
+			<testStep functionId = "Step 26.4.3.2 VERIFY that MESSAGEERRORTYPE = PublicationMessageErrorTypeExpected" >
+				<ju-assert-equals functionId="Verify the MESSAGEERRORTYPE" msg="Error: PublicationMessageErrorTypeExpected was ${PublicationMessageErrorTypeExpected} while MESSAGEERRORTYPE was ${MESSAGEERRORTYPE}."  actual="${MESSAGEERRORTYPE}" expected="${PublicationMessageErrorTypeExpected}"/>
+			</testStep>			
+	
+		</jl:if>
+
+	</jl:if>
+		
+</jl:while>
+
+<postcondition>
+<testStep functionId=" Step 27 EXIT" passfailResult="False"/>
+</postcondition>
+
+</NTCIP2306-session>
+</testprocedure>

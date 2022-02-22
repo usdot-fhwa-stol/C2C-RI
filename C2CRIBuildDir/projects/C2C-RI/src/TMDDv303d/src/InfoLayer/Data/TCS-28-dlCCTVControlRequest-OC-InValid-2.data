@@ -1,0 +1,399 @@
+ 
+#<!--   
+#       Title:  TCS-28-dlCCTVControlRequest-OC-InValid-2
+#       Description:  This test case is used to verify the SUTs support of the dlCCTVControlRequest dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.2.4 [Need to Control a Remote CCTV Device]. This Test Case tests for an invalid response result. An error response message is expected be returned with an error-code set to 2 (center does not support this type message).
+#       Related Procedure:  TPS-28-dlCCTVControlRequest-OC
+#       Version/Date: 2014/01/16 02:30:54
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = Boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.  Valid values are True or False.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable contains a set of element values that are expected in the message to be verified.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.  NTCIP2306v01 is the only valid value at this time.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Request Message to be sent to the SUT.  The message name within this variable is set to an erroneous name.  The string ErrorAddOn has been appended to the correct message name.
+RequestMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = Boolean
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates whether an error response is expected from the SUT.  Valid values are True or False.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable indicates the type of error response that is expected from the SUT.
+ErrorTypeExpected = 2
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.authentication.user-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.authentication.user-id = UserId
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.authentication.password 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.authentication.password = P@ssW0rd
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.authentication.operator-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.authentication.operator-id = StateDOT_OPRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-id = agency.com
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-name 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-name = State DOT
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-location 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-location = 1234567890
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-function 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-function = State DOT Traffic Subsystems
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.contact-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.person-name 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.person-title 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.phone-number 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.phone-alternate 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.mobile-phone-number 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.mobile-phone-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.fax-number 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.pager-number 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.pager-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.email-address 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.radio-unit 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.address-line1 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.address-line1 = 155 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.address-line2 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.city 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.state 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.zip-code 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.country 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.organization-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-id = agency_test
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-name 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-name = State DOT Organized Center
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.latitude 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.latitude = 33964380
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.longitude 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.longitude = -84217945
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.horizontalDatum = wgs-84
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.altitude.kmDec 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.altitude.kmDec = 1000.00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalDatum 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-description 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-description = This traffic center manages traffic for the whole state.
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-type 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-type = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.contact-id = StateDOTContactRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-name = John Doe
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.person-title = Software Engineer
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-number = (123) 321 - 0987
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.phone-alternate = (123) 987 - 6543
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = (456) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = StateDOTMobilePhoneRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.fax-number = (123) 123 - 5467
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-number = (800) 123 - 4567
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.pager-id = StatePagerRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.email-address = state@dot.gov
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.radio-unit = StateRadioDevice
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line1 = 156 Main Street
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.address-line2 = Suite 200
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.city = StateCity
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.state = VA
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.zip-code = 12345
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.center-contact-list.center-contact-details.center-contact-details.country = United States Of America
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.last-update-time.date 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.last-update-time.date = 20130531
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.last-update-time.time 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.last-update-time.time = 105805
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.last-update-time.offset 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.organization-requesting.last-update-time.offset = 01:00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.device-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.device-id = StateDOTEquipmentRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.request-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.request-id = StateDOTRequestRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.event-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.event-id = StateDOTEventRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.response-plan-id 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.response-plan-id = StateDOTResponsePlanRef
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-request-priority 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-request-priority = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-start-time.date 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-start-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-start-time.time 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-start-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-start-time.offset 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-start-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-end-time.date 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-end-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-end-time.time 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-end-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-end-time.offset 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-end-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-request-time.date 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-request-time.date = 5/9/2016
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-request-time.time 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-request-time.time = 7:14PM
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-request-time.offset 
+tmdd:cCTVControlRequestMsgErrorAddOn.device-control-request-header.command-request-time.offset = -1100
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.cctv-request-command 
+tmdd:cCTVControlRequestMsgErrorAddOn.cctv-request-command = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:cCTVControlRequestMsgErrorAddOn.cctv-command-parameters.cctv-position-pan 
+tmdd:cCTVControlRequestMsgErrorAddOn.cctv-command-parameters.cctv-position-pan = left
+

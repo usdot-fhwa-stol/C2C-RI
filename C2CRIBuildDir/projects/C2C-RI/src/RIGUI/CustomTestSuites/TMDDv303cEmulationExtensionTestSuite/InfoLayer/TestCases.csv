@@ -1,0 +1,2 @@
+Name,ScriptFile,DataFile,Description,Type
+EntityEmulationTester,TPS-C2CRI-EntityEmulation.xml,EntityEmulationTester.data,To verify that the RI EntityEmulation feature works as required.,OC

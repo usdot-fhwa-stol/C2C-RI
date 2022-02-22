@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-3-PeriodicSubscription-EC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of Periodic Subscriptions (dlCenterActiveVerificationSubscription dialog) as an EC using variables provided by the calling test case.  
+This procedure supports verification of Periodic Subscription requirements related to user need 2.3.1.3 [Need to Support Subscriptions] and is used for both valid and invalid test cases.
+       Version/Date: 2014/01/08 19:38:00-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of Periodic Subscriptions (dlCenterActiveVerificationSubscription dialog) as an EC using variables provided by the calling test case.  
+This procedure supports verification of Periodic Subscription requirements related to user need 2.3.1.3 [Need to Support Subscriptions] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine the dialog performance requirement for Publish Center Active Verification Information (NTRM 3.3.1.1.2}.  RECORD this value as: TMDD_N1R2_Publish_Center_Active_Verification_Information_Parameter = ${TMDD_N1R2_Publish_Center_Active_Verification_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine the dialog performance requirement for Subscribe to Center Active Verification Information (NTRM 3.3.1.1.3}.  RECORD this value as: TMDD_N1R3_Subscribe_to_Center_Active_Verification_Information_Parameter = ${TMDD_N1R3_Subscribe_to_Center_Active_Verification_Information_Parameter}" passfailResult="False"/>
+     <testStep functionId="Step 4 CONFIGURE: Determine whether Restrictions - Error Report is required by the specification. (NRTM 3.3.1.4.1.2.1).  RECORD this information as: TMDD_N1R14_Restrictions___Error_Report_Supported = ${TMDD_N1R14_Restrictions___Error_Report_Supported}" passfailResult="False"/>
+	 <testStep functionId="Step 5 CONFIGURE: RECORD the Support Periodic Updates (Subscription) range required by the specification. (NRTM 3.3.1.3.1) as:  TMDD_N3R10_Support_Periodic_Updates__Subscription__Parameter = ${TMDD_N3R10_Support_Periodic_Updates__Subscription__Parameter}" passfailResult= "False"/>	 
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03c" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="OC">
+          <testStep functionId="Step 6 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: PublicationMessage:  ${PublicationMessage}" passfailResult="False"/>
+          <testStep functionId="Step 7 CONFIGURE: Determine the number of publication message transmissions that will be performed within this test.  RECORD this information as: PublicationCount:  ${PublicationCount}" passfailResult="False"/>
+          <testStep functionId="Step 8 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 9 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 10 CONFIGURE: Determine whether the Authentication parameters need to be verified within this test.  RECORD this information as: AuthenticationCheck:  ${AuthenticationCheck}" passfailResult="False"/>
+          <testStep functionId="Step 11 CONFIGURE: Identify the Username expected for authentication during this test.  RECORD this information as: Username:  ${Username}" passfailResult="False"/>
+          <testStep functionId="Step 12 CONFIGURE: Identify the Password expected for authentication during this test.  RECORD this information as: Password:  ${Password}" passfailResult="False"/>
+          <testStep functionId="Step 13 CONFIGURE: Identify the Operator Identifier expected for authentication during this test.  RECORD this information as: OperatorID:  ${OperatorID}" passfailResult="False"/>
+          <testStep functionId="Step 14 CONFIGURE: Determine whether the SUT will be allowed access to the information requested in this test.  RECORD this information as: AllowAccess:  ${AllowAccess}" passfailResult="False"/>
+          <testStep functionId="Step 15 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 16 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 17 CONFIGURE: Define the subscription response message that will be sent to the SUT.  RECORD this information as: SubscriptionResponseMessage:  ${SubscriptionResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 18 SUBSCRIPTION-OC-RECEIVE with the following parameters:   DIALOG=dlCenterActiveVerificationSubscription RESPONSETIMEREQUIRED=TMDD_N1R3_Subscribe_to_Center_Active_Verification_Information_Parameter AUTHENTICATIONCHECK = AuthenticationCheck USERNAME = Username PASSWORD = Password OPERATORID = OperatorID ALLOWACCESS = AllowAccess SUBSCRIPTIONERRORRESPONSEEXPECTED = SubscriptionErrorResponseExpected SUBSCRIPTIONERRORTYPEEXPECTED = SubscriptionErrorTypeExpected  PERIODICUPDATERANGE = TMDD_N3R10_Support_Periodic_Updates__Subscription__Parameter  Returns: CONTINUEPUBLICATION ">
+               <SUBSCRIPTION-OC-RECEIVE Dialog="dlCenterActiveVerificationSubscription" functionId="dlCenterActiveVerificationSubscription" RESPONSETIMEREQUIRED="${TMDD_N1R3_Subscribe_to_Center_Active_Verification_Information_Parameter}" AUTHENTICATIONCHECK="${AuthenticationCheck}" USERNAME="${Username}" PASSWORD="${Password}" OPERATORID="${OperatorID}" ALLOWACCESS="${AllowAccess}" SUBSCRIPTIONERRORRESPONSEEXPECTED="${SubscriptionErrorResponseExpected}" SUBSCRIPTIONERRORTYPEEXPECTED="${SubscriptionErrorTypeExpected}" PERIODICUPDATERANGE="${TMDD_N3R10_Support_Periodic_Updates__Subscription__Parameter}"/>
+          </testStep>
+          <testStep functionId="Step 19 IF SubscriptionErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  Note: If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+          <jl:if test="${!SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 19.1 VERIFY that a centerActiveVerificationRequestMsg message was received." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="centerActiveVerificationRequestMsg" instanceName="tmdd:centerActiveVerificationRequestMsg" elementType="message" functionId="Looking for centerActiveVerificationRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 19.2 VERIFY that an authentication data frame exists within message centerActiveVerificationRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="authentication" instanceName="tmdd:centerActiveVerificationRequestMsg" elementType="data-frame" functionId="Looking for centerActiveVerificationRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 19.3 VERIFY that an organization-requesting data frame exists within message centerActiveVerificationRequestMsg." passfailResult="True">
+                    <ri-MessageVerify msgType="REQUEST" elementName="organization-requesting" instanceName="tmdd:centerActiveVerificationRequestMsg" elementType="data-frame" functionId="Looking for centerActiveVerificationRequestMsg"/>
+               </testStep>
+               <testStep functionId="Step 19.4 VERIFY that the values within the REQUEST message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="REQUEST" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="REQUEST" optionList="TMDD_N1R14_Restrictions___Error_Report_Supported,restrictions,tmdd:errorReportMsg;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+               <testStep functionId=" Step 19.5 CONFIGURE: Set CONTENTVERIFIED to True" passfailResult="False">
+                    <jl:set var="CONTENTVERIFIED" value="true"/>
+               </testStep>
+               <postcondition>
+                    <testStep functionId="Step 19.6 POSTCONDITION: SUBSCRIPTION-OC-REPLY with the following parameters:   DIALOG=dlCenterActiveVerificationSubscription RESPONSETIMEREQUIRED=TMDD_N1R3_Subscribe_to_Center_Active_Verification_Information_Parameter CONTENTVERIFIED = CONTENTVERIFIED SUBSCRIPTIONRESPONSEMESSAGE = SubscriptionResponseMessage ">
+                         <SUBSCRIPTION-OC-REPLY Dialog="dlCenterActiveVerificationSubscription" functionId="dlCenterActiveVerificationSubscription" RESPONSETIMEREQUIRED="${TMDD_N1R3_Subscribe_to_Center_Active_Verification_Information_Parameter}" CONTENTVERIFIED="${CONTENTVERIFIED}" SUBSCRIPTIONRESPONSEMESSAGE="${SubscriptionResponseMessage}"/>
+                    </testStep>
+               </postcondition>
+               <testStep functionId="Step 19.7 WHILE CONTINUEPUBLICATION is equal to TRUE then CONTINUE, OTHERWISE skip the following substeps.  Note:If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step."/>
+               <jl:while test="${CONTINUEPUBLICATION}">
+                    <testStep functionId="Step 19.7.1 PUBLICATION-OC with the following parameters:   DIALOG=dlCenterActiveVerificationUpdate RESPONSETIMEREQUIRED=TMDD_N1R2_Publish_Center_Active_Verification_Information_Parameter PUBLICATIONMESSAGE = PublicationMessage PUBLICATIONCOUNT = PublicationCount PUBLICATIONERRORRESPONSEEXPECTED = PublicationErrorResponseExpected PUBLICATIONERRORTYPEEXPECTED = PublicationErrorTypeExpected  Returns: CONTINUEPUBLICATION ">
+                         <PUBLICATION-OC Dialog="dlCenterActiveVerificationUpdate" functionId="dlCenterActiveVerificationUpdate" RESPONSETIMEREQUIRED="${TMDD_N1R2_Publish_Center_Active_Verification_Information_Parameter}" PUBLICATIONMESSAGE="${PublicationMessage}" PUBLICATIONCOUNT="${PublicationCount}" PUBLICATIONERRORRESPONSEEXPECTED="${PublicationErrorResponseExpected}" PUBLICATIONERRORTYPEEXPECTED="${PublicationErrorTypeExpected}"/>
+                    </testStep>
+                    <testStep functionId="Step 19.7.2 IF PublicationErrorResponseExpected is equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps.  If a verification step fails, then test execution will proceed at the next subsequent Post Condition step, if present.  Otherwise, test execution will proceed to the final Exit step." passfailResult="False"/>
+                    <jl:if test="${PublicationErrorResponseExpected}">
+                         <testStep functionId="Step 19.7.2.1 VERIFY that an errorReportMsg message was received." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="errorReportMsg" instanceName="tmdd:errorReportMsg" elementType="message" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 19.7.2.2 VERIFY that an organization-information data frame exists within message errorReportMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-information" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 19.7.2.3 VERIFY that an organization-requesting data frame exists within message errorReportMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="organization-requesting" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 19.7.2.4 VERIFY that an error-code data element exists within message errorReportMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="error-code" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 19.7.2.5 VERIFY that an error-text data element exists within message errorReportMsg." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="error-text" instanceName="tmdd:errorReportMsg" elementType="data-element" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 19.7.2.6 VERIFY that data element error-code is set to PublicationErrorResponseTypeExpected." passfailResult="True">
+                              <ri-MessageVerify msgType="REQUEST" elementName="error-code" instanceName="tmdd:errorReportMsg" instanceValue="${PublicationErrorResponseTypeExpected}" elementType="data-element" functionId="Looking for errorReportMsg"/>
+                         </testStep>
+                         <testStep functionId="Step 19.7.2.7 IF TMDD_N1R14_Restrictions___Error_Report_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+                         <jl:if test="${TMDD_N1R14_Restrictions___Error_Report_Supported}">
+                              <testStep functionId="Step 19.7.2.7.1 VERIFY that a restrictions data frame exists within message errorReportMsg." passfailResult="True">
+                                   <ri-MessageVerify msgType="REQUEST" elementName="restrictions" instanceName="tmdd:errorReportMsg" elementType="data-frame" functionId="Looking for errorReportMsg"/>
+                              </testStep>
+                         </jl:if>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+          <postcondition>
+               <testStep functionId=" Step 20 EXIT" passfailResult="False"/>
+          </postcondition>
+     </C2CRI-session>
+</testprocedure>

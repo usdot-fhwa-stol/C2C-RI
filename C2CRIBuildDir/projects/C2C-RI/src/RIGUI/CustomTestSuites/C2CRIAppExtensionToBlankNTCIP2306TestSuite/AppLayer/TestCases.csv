@@ -1,0 +1,11 @@
+Name,ScriptFile,DataFile,Description,Type
+TCS-PauseTagTest-RIAsEC,TPS-PauseTagTest.xml,TCS-PauseTagTest-RIAsEC.data,This test case is used to verify the RIs Pause tag.,EC
+TCS-PauseTagTest-RIAsOC,TPS-PauseTagTest.xml,TCS-PauseTagTest-RIAsOC.data,This test case is used to verify the RIs Pause tag.,OC
+TCS-ValidateTagTest-RIAsEC,TPS-ValidateTagTest-OC.xml,TCS-ValidateTagTest-RIAsEC.data,This test case is used to verify the RIs Validate tag.,EC
+TCS-ValidateTagTest-RIAsOC,TPS-ValidateTagTest-EC.xml,TCS-ValidateTagTest-RIAsOC.data,This test case is used to verify the RIs Validate tag.,OC
+TCS-PostConditionTagTest-RIAsEC,TPS-PostConditionTagTest.xml,TCS-PostConditionTagTest-RIAsEC.data,This test case is used to verify the RIs postcondition tag.,EC
+TCS-PostConditionTagTest-RIAsOC,TPS-PostConditionTagTest.xml,TCS-PostConditionTagTest-RIAsOC.data,This test case is used to verify the RIs postcondition tag.,OC
+TCS-TerminateTagTest-RIAsEC,TPS-TerminateTagTest.xml,TCS-TerminateTagTest-RIAsEC.data,This test case is used to verify the RIs precondition and postcondition tags.,EC
+TCS-TerminateTagTest-RIAsOC,TPS-TerminateTagTest.xml,TCS-TerminateTagTest-RIAsOC.data,This test case is used to verify the RIs precondition and postcondition tags.,OC
+TCS-PreConditionTagTest-RIAsEC,TPS-PreConditionTagTest.xml,TCS-PreConditionTagTest-RIAsEC.data,This test case is used to verify the RIs precondition tag.,EC
+TCS-PreConditionTagTest-RIAsOC,TPS-PreConditionTagTest.xml,TCS-PreConditionTagTest-RIAsOC.data,This test case is used to verify the RIs precondition tag.,OC

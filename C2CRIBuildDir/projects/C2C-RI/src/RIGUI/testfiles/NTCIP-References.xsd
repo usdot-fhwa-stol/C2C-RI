@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2007 sp1 (http://www.altova.com) by Manny Insignares (ConSysTec Corp.) -->
+<!-- TMDD V3.0 References to NTCIP 1200 Series Standards -->
+<xs:schema xmlns="http://www.ntcip.org/c2f-object-references" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ntcip.org/c2f-object-references" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="DRAFT">
+	<xs:annotation>
+		<xs:documentation>
+		  Last updated:  Manny Insignares, ConSysTec, October 24, 2007] 
+   </xs:documentation>
+	</xs:annotation>
+	<!-- *******************-->
+	<!-- NTCIP 1201 -->
+	<xs:simpleType name="TimeBaseScheduleNumber">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="TimeBaseScheduleMonth">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="TimeBaseScheduleDay">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="TimeBaseScheduleDate">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="TimeBaseScheduleDayPlan">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DayPlanHour">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DayPlanMinute">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- *******************-->
+	<!-- NTCIP 1202 -->
+	<xs:simpleType name="CoordCycleStatus">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="CoordSyncStatus">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="OverlapNumber">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="OverlapIncludedPhases">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="OverlapStatusGroupNumber">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="OverlapStatusGroupGreens">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="OverlapStatusGroupReds">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="OverlapStatusGroupYellows">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="PatternCycleTime">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="PatternOffsetTime">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="PatternSplitNumber">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="PatternSequenceNumber">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhaseConcurrency">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhaseStatusGroupNumber">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhaseStatusGroupDontWalks">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhaseStatusGroupGreens">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhaseStatusGroupPedClears">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhaseStatusGroupReds">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhaseStatusGroupWalks">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhaseStatusGroupYellows">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhaseNumber">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="RingStatus">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="SequenceData">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="SequenceNumber">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="SequenceRingNumber">
+		<xs:restriction base="xs:int"/>
+	</xs:simpleType>
+	<xs:simpleType name="SplitPhase">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="SplitCoordPhase">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="SplitTime">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="SplitMode">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="SplitNumber">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="SpecialFunctionOutputNumber">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="TimebaseAscPatternSync">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="UnitControlStatus">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<!-- *******************-->
+	<!-- NTCIP 1203 -->
+	<xs:simpleType name="DefaultFont">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="FontNumber">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="FontHeight">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="FontCharSpacing">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="FontLineSpacing">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="FontVersionID">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="FontStatus">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="CharacterNumber">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="CharacterWidth">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="CharacterBitmap">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsMaxNumberPages">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsMaxMultiStringLength">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsColorScheme">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsMsgSourceMode">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsSupportedMultiTags">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsMessageMultiString">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsMessageBeacon">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsMessageNumber">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsMessageStatus">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsMessageMemoryType">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsSignTechnology">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsBeaconType">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsMessageRunTimePriority">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsMessageTimeRemaining">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="VmsSignHeightPixels">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="VmsSignWidthPixels">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsSignHeight">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsSignWidth">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="VmsCharacterHeightPixels">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="VmsCharacterWidthPixels">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsVerticalBorder">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="DmsHorizontalBorder">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="VmsHorizontalPitch">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="VmsVerticalPitch">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- *******************-->
+	<!-- NTCIP 1204 -->
+	<!-- EssNtcipIdentification  OBJECT IDENTIFIER ::= {essNtcip 1 } -->
+	<xs:simpleType name="EssNtcipCategory">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssTypeofStation">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssDoorStatus">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssBatteryStatus">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssLineVolts">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssWeatherBlock">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- EssNtcipLocation OBJECT IDENTIFIER ::= {essNtcip 2 } -->
+	<!-- EssNtcipHeight OBJECT IDENTIFIER ::= {essNtcip 3 } -->
+	<xs:simpleType name="EssReferenceHeight">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssAtmosphericPressure">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- EssNtcipWind OBJECT IDENTIFIER ::= {essNtcip 4 } -->
+	<xs:simpleType name="EssAvgWindDirection">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssAvgWindSpeed">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="WindSensorGustSpeed">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="WindSensorGustDirection">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- EssNtcipTemperature OBJECT IDENTIFIER ::= {essNtcip 5} -->
+	<xs:simpleType name="EssAirTemperature">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssDewpointTemp">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssMaxTemp">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssMinTemp">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- EssNtcipPrecip OBJECT IDENTIFIER ::= {essNtcip 6 } -->
+	<xs:simpleType name="EssRelativeHumidity">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssWaterDepth">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssAdjacentSnowDepth">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssRoadwaySnowDepth">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssRoadwaySnowPackDepth">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssPrecipRate">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssSnowfallAccumRate">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssIceThickness">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- EssNtcipRadiation  OBJECT IDENTIFIER ::= {essNtcip 7} -->
+	<!-- EssNtcipVisibility  OBJECT IDENTIFIER ::= {essNtcip 8 } -->
+	<xs:simpleType name="EssVisibility">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- EssNtcipPavement  OBJECT IDENTIFIER ::= {essNtcip 9} -->
+	<xs:simpleType name="EssSurfaceTemperature">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssPavementTemperature">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssSurfaceWaterDepth">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssSurfaceSalinity">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssSurfaceFreezePoint">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssPavementBlock">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="EssSubSurfaceData">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- EssNtcipMobile  OBJECT IDENTIFIER ::= {essNtcip 10} -->
+	<xs:simpleType name="EssMobileFriction">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- EssNtcipTreatment OBJECT IDENTIFIER ::= { essNtcip 11 } -->
+	<!-- EssNtcipAirQuality  OBJECT IDENTIFIER ::= { essNtcip 12 } -->
+	<!-- EssNtcipWaterQuality OBJECT IDENTIFIER ::= { essNtcip 13 } – reserved for future use -->
+	<!-- EssNtcipSnapshot  OBJECT IDENTIFIER ::= { essNtcip 14 } -->
+	<!-- NTCIP 1205 -->
+	<xs:simpleType name="RangePanLeftLimit">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="RangePanRightLimit">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="RangeTiltUpLimit">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="RangeTiltDownLimit">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="RangeZoomLimit">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="RangeFocusLimit">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="RangeIrisLimit">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="PresetGotoPosition">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="PositionFocusLens">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="PositionIrisLens">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="PositionTilt">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="PositionPan">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="PositionZoomLens">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<!-- NTCIP 1207 -->
+	<xs:simpleType name="RmcAbsoluteMinMeterRate">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcAbsoluteMaxMeterRate">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcSystemMinMeterRate">
+		<xs:restriction base="xs:byte"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcSystemMaxMeterRate">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcManualPlan">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcManualRate">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcAverageFlowRate">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcAverageOccupancy">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcAverageSpeed">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcDemandStatus">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcQueueStatus">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcPassageStatus">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcOperMaxMeterRateStatus">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcOperMinMeterRateStatus">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcRequestCommandSource">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcImplementCommandSource">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcRequestAction">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcRequestPlan">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcRequestRate">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcActiveMeterRate">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcRequestVehiclesPerGrn">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcImplementAction">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcImplementPlan">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcImplementRate">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcImplementVehiclesPerGrn">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcTBActionCtrl">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcTBPlanCtrl">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcTBRateCtrl">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcTBVehiclesPerGrnCtrl">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcTBCMinMeterRateCtrl">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcTBCMaxMeterRateCtrl">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcMeterActionMode">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcTBMLUsageMode">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcActionNum">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcMeteringLevel">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcMeteringRate">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcFlowRateThreshold">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcOccupancyThreshold">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<xs:simpleType name="RmcSpeedThreshold">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<!-- NTCIP 1209 -->
+	<xs:simpleType name="ZoneOutputMode">
+		<xs:restriction base="xs:integer"/>
+	</xs:simpleType>
+	<!-- END of the output -->
+</xs:schema>

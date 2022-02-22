@@ -1,0 +1,30 @@
+<?xml version="1.0" ?> 
+<testcase xmlns="jelly:jameleon"  xmlns:jl="jelly:core" >
+
+<jl:set var="lcl.preconditionpassed">false</jl:set>
+<precondition>
+	<ju-assert-equals functionId = "Check for Requirement 3.3.6.5.1.4" 
+	expected="true"
+	actual = "${TMDD_3_3_6_5_1_4}"/>
+	<jl:set var="lcl.preconditionpassed">true</jl:set>
+</precondition>
+
+<jl:if test="${lcl.preconditionpassed}">
+	<testStep functionId = "Step 1 Reading all system context variables.">
+		<ju-assert-true functionId = "Do a basic assertTrue with false" msg="pass here" test="true"/>
+	</testStep>
+
+	<testStep functionId = "Step 2 checking for context variables from Config File">
+	     <function-doc functionId="After the if Statement key = ${iter.key} value = ${iter.value}" />
+	     <function-doc functionId="After the if Statement key = {X_3_8} value = ${X_3_8}" />
+	     <function-doc functionId="After the if Statement key = {X_3_4_7_4_2_1} value = ${X_3_4_7_4_2_1}" />
+	</testStep>
+
+	<ju-session>
+		<testStep functionId = "Step 3 checking for valid and invalid assertions.">
+			<ju-assert-true functionId = "Do a basic assertTrue with false" msg="pass here" test="true"/>
+		</testStep>
+	</ju-session>
+
+</jl:if>
+</testcase>

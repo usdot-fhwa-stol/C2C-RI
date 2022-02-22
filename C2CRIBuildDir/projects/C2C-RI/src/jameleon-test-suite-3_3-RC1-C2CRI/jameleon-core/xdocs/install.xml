@@ -1,0 +1,318 @@
+<?xml version="1.0"?>
+<document>
+
+    <properties>
+        <author email="engrean.AT.users.DOT.sourceforge.DOT.net">Christian Hargraves</author>
+        <title>Jameleon Installation</title>
+    </properties>
+
+    <meta name="keyword" content="jameleon, automated, framework, automated testing framework"/>
+    <link href="default.css" rel="stylesheet" type="text/css"/>
+
+    <body>
+        <section name="Requirements">
+          <p>
+            JDK 1.5 or higher is needed in order to run and compile Jameleon. In order 
+            to run the tutorial or build from the source, the JAVA_HOME environment variable 
+            needs to be set to the jdk installation directory. This can be done in Windows 
+            by "set JAVA_HOME=C:\java_install_dir". It is assumed that for those wanting to install Jameleon on
+            a *nix type OS, the method to set environment variables through a particular shell is already known.
+          </p>
+        </section>
+        <section name="Using jameleon-x.x.x-test-suite.zip">
+            <p>
+                The easiest way to get up and running with Jameleon is by downloading jameleon-x.x.x-test-suite.zip
+                and extracting it where you like. It uses the directory structure and build below, but by default
+                all plug-ins are enabled and everything is preconfigured. This is the recommended way of using
+                Jameleon.
+            </p>
+        </section>
+        <section name="Upgrading jameleon-x.x.x-test-suite.zip">
+            <p>
+                To upgrade to a newer test-suite, simply delete all files in the current lib directory and replace them
+                with the new updated version to your current version's lib folder. Don't just copy the new libraries over
+                the top of the older ones. Many times, files are renamed to represent the newer versions. Unless all previous
+                jars are removed files before copying the newer files over, the older files will still be, possibly causing
+                unexpected behavior in Jameleon.
+            </p>
+            <p>
+                When upgrading from a release prior to jameleon-test-suite-3.3-M3:
+                <ul>
+                    <li>After copying all jar files from the newer lib directory, be sure to copy over upgrade.xml to the 
+                        jameleon-test-suite directory.</li>
+                    <li>Open a console window to the jameleon-test-suite directory and type <b>build -f upgrade.xml</b> or 
+                        <b>./build.sh -f upgrade.xml</b></li>
+                </ul>
+                For more information on jameleon.conf refer to the <a href="globalSettings.html">global settings</a> documentation.
+            </p>
+        </section>
+        <section name="Installation from a Binary Distribution">
+          <p>
+            The following steps are required to install Jameleon from a binary distribution, using Ant:
+            <ol>
+                <li>
+                    Create a directory somewhere with a good name.
+                </li>
+                <li>
+                    The following directory structure for the directory above has been found to work well:
+                    <ul>
+                        <li>data -  CSV files</li>
+                        <li>lib  -  Required libraries or jar files</li>
+                        <li>res  -  Resource files like properties files</li>
+                        <li>scripts  -  Test case scripts or Jameleon scripts</li>
+                        <li>src/java -  Custom Jameleon tags</li>
+                    </ul>
+                    The instructions below will use the above directory structure.
+                </li>
+                <li>
+                    Put all files from the jameleon-core-x.x.x-bin directory into <b>lib</b>.
+                </li>
+                <li>
+                    For each plug-in desired, copy the jar files to the <b>lib</b> directory
+                    of your new structure.
+                </li>
+                <li>
+                    Create a file in your base directory named <b><i>jameleon.conf</i></b> and add an entry
+                    for plugins with a space separate list of plug-ins to use. For example, to enable htmlunit and jiffie,
+                    you would add the following line to ./jameleon.conf:<br/>
+                    plugins=jwebunit-plugin httpunit-plugin<br/>
+                </li>
+                <li>
+                    Currently, the easiest way to use Jameleon is through <a href="http://ant.apache.org">Ant</a>. Ant 
+                    requires a file called <b>build.xml</b>. I recommend placing the build.xml file in the directory that
+                    contains the above structure. The following is an example build.xml file which match the 
+                    above directory structure:<br/>
+                   <source><![CDATA[
+<?xml version="1.0"?>
+
+<!-- 
+     Change the name attribute  (yourProjectNameGoesHere) to the directory name you chose. 
+     I recommend not having spaces in any of the directory names you choose.
+-->
+<project name="yourProjectNameGoesHere" default="main" basedir=".">
+
+    <!--  If you don't like the example directory structure, simply
+          change the values here.
+     -->
+    <property name="build.dir" value="Build"/><!--Compiled files and files in the res.dir folder get copied here-->
+    <property name="res.dir" value="res"/><!--This is where all resource files or basically, properties files go-->
+    <property name="lib.dir" value="lib"/><!--This is where all jar file go-->
+    <property name="src.dir" value="src/java"/><!--This is where custom tag java files go-->
+    <property name="scripts.dir" value="src/java"/><!--This is where Jameleon test case scripts go-->
+    <property name="javadocs.dir" value="docs"/><!--This is where the javadocs for custom tags will end up-->
+
+    <path id="base.classpath">
+        <fileset dir="lib">
+         <include name="*.jar"/>
+        </fileset>
+        <pathelement location="lib"/>
+    </path>
+
+    <path id="classpath">
+        <path refid="base.classpath"/>
+        <pathelement location="${build.dir}"/>
+        <pathelement location="${res.dir}"/>
+    </path>
+
+    <taskdef resource="ant/JameleonAntTasks.properties" 
+             format="properties" 
+             classpathref="classpath"/>
+
+    <target name="test.smoke" description="Tests all test cases with their test-case-level set to SMOKE">
+        <run-test contains="test-case-level>SMOKE" script="**/*.xml"/>
+    </target>
+
+    <target name="test.script" description="tests the file named ${script}. i.e. build test.script -Dscript=**/somescript.xml">
+        <run-test contains="" script="${script}"/>
+    </target>
+
+    <target name="test.all" description="tests all files in the script dir that end in xml!">
+        <run-test contains="" script="**/*.xml"/>
+    </target>
+
+    <target name="main" depends="clean, build, register.tags"/>
+
+    <target name="clean" depends="cleanJavadocs, cleanBuild"/>
+
+    <target name="cleanBuild">
+        <delete dir="${build.dir}" quiet="true"/>
+    </target>
+
+    <target name="cleanJavadocs">
+        <delete dir="${javadocs.dir}" quiet="true"/>
+    </target>
+
+    <target name="cleanLogs" description="cleans logs generated from the executions of test scripts">
+        <delete dir="${jameleon.results.dir}" quiet="true"/>
+        <delete quiet="true">
+            <fileset dir=".">
+                <include name="TestResults.*ml"/>
+                <include name="*.log"/>
+            </fileset>
+        </delete>
+    </target>
+
+    <target name="init" description="creates all required directories">
+        <mkdir dir="${build.dir}"/>
+    </target>
+
+    <target name="run.gui" description="Runs the GUI">
+        <java classname="net.sf.jameleon.ui.JameleonUI" classpathref="base.classpath" fork="true" spawn="false"/>
+    </target>
+
+    <target name="build" depends="init"
+        description="Compiles java src files">
+        <build source.dir="${src.dir}" dest.dir="${build.dir}" cpath="classpath"/>
+    </target>
+
+    <target name="register.tags" description="Registers all custom tags in Jameleon">
+        <register-tags/>
+    </target>
+
+    <target name="javadocs" depends="main"
+            description="Creates JavaDocs for this project">
+        <delete dir="${javadocs.dir}"/>
+        <mkdir dir="${javadocs.dir}"/>
+        <property name="jameleon-core" value="${lib.dir}/jameleon-core.jar"/>
+        <javadoc packagenames="*"
+                 sourcepath="${src.dir}"
+                 destdir="docs/javadocs"
+                 author="true"
+                 version="true"
+                 use="true"
+                 windowtitle="Jameleon Tag Documentation"
+                 doctitle="Jameleon Tag Documentation"
+                 access="protected"
+                 classpathref="classpath">
+            <taglet name="net.sf.jameleon.taglet.JameleonFunctionTaglet" path="${jameleon-core}"/>
+            <taglet name="net.sf.jameleon.taglet.JameleonStepTaglet" path="${jameleon-core}"/>
+            <taglet name="net.sf.jameleon.taglet.JameleonAttributeTaglet" path="${jameleon-core}"/>
+            <taglet name="net.sf.jameleon.taglet.JameleonApplicationTaglet" path="${jameleon-core}"/>
+        </javadoc>
+    </target>
+
+    <!--
+        These macros are to be reused in several targets
+    -->
+
+    <!--
+        This is used to compile java files existing in one directory (source.dir) into another (dest,dir)
+    -->
+    <macrodef name="build">
+        <attribute name="source.dir"/>
+        <attribute name="dest.dir"/>
+        <attribute name="cpath"/>
+        <sequential>
+            <javac srcdir="@{source.dir}"
+                   destdir="@{dest.dir}"
+                   debug="on"
+                   deprecation="on"
+                   optimize="on"
+                   classpathref="@{cpath}"/>
+
+        </sequential>
+    </macrodef>
+
+    <!--
+        This is used to execute jameleon test cases that exist in the script.dir defined in build.properties.
+        The parameters are:
+
+        cpath - the classpath to use when executing the tests
+        contains - The text that should exist in the test cases
+        script - a wild card or the script name itself
+    -->
+    <macrodef name="run-test">
+        <attribute name="contains"/>
+        <attribute name="script"/>
+
+        <sequential>
+            <echo>executing tests in ${scripts.dir}/@{script} with text @{contains}</echo>
+            <jmln-test classpathref="classpath" fork="true">
+                <fileset dir="${scripts.dir}">
+                    <include name="@{script}"/>
+                    <contains text="@{contains}"/>
+                </fileset>
+            </jmln-test>
+        </sequential>
+    </macrodef>
+
+    <!--
+        This is used to register all tags in the Jameleon engine.
+
+        cpath - the classpath to use when executing the tests
+        contains - The text that should exist in the test cases
+        script - a wild card or the script name itself
+    -->
+    <macrodef name="register-tags">
+        <sequential>
+            <jmln-register outputdir="${build.dir}" quiet="true" isA="org.apache.commons.jelly.TagSupport">
+                <fileset dir="${src.dir}">
+                    <include name="**/*Tag.java"/>
+                </fileset>
+            </jmln-register>
+        </sequential>
+    </macrodef>
+
+</project>]]></source>
+                </li>
+                <li>
+                    To build your custom tags, simply type <b>ant</b> on the command line when in the directory with build.xml in it.
+                    To run all scripts, type <b>ant test.all</b>. 
+                    <br/>
+                    Anything in the build.xml file with a &lt;target name=&quot;targetName&quot;/&gt; in it, can be called by typing 
+                    <b>ant targetName</b>.
+                </li>
+            </ol>
+          </p>
+        </section>
+        <section name="Upgrading from a Binary Distribution">
+            <p>
+                The following changes have occured in jameleon-core-3.3-M3
+                <ul>
+                    <li>res/Environment.properties was renamed to ./jameleon.conf.</li>
+                    <li>lib/jameleon-gui.properties was removed and its settings were consolidated into ./jameleon.conf</li>
+                    <li>jameleon.conf must exist in the base directory of where Java was kicked off from. From those using 
+                        jameleon-test-suite, this means jameleon-test-suite/jameleon.conf should exist.</li>
+                    <li>The classpath.dir(n) and claspath.file(n) settings in the old lib/jameleon-gui.properties were renamed to
+                        a single variable named classpath.entry(n). The (n) stands for a numeric value. This setting is only
+                        used in the GUI and can now be configured via the the GUI.</li>
+                </ul>
+                An <a href="antTasks.html#Upgrade_Jameleon_Task">Upgrade Ant Task</a> was created to help with this process. 
+            </p>
+        </section>
+        <section name="Building from the Source">
+          <p>
+            Be sure to build Jameleon with Java 5.0. A few of the plug-ins require at least Java 5.0 and if compiled with
+              Java 6.0, then it will be impossible to run the scripts from the gui under Java 5.0.
+              Installing from the source requires the following steps.
+            <ol>
+                <li>
+                    Check out the current versions of the modules you want to build from Subversion. Currently, the following
+                    modules are supported:
+                    <ol>
+                      <li>jameleon-core - This is the Jameleon engine and the main GUI</li>
+                      <li>jagacy-plugin - A 3270 emulator plug-in</li>
+                      <li>httpunit-plugin - An HttpUnit plug-in</li>
+                      <li>jiffie-plugin - An plug-in that controls Internet Explorer and only runs under Windows</li>
+                      <li>jwebunit-plugin - A jWebUnit plug-in</li>
+                      <li>selenium-plugin - A Selenium plug-in</li>
+                      <li>watij-plugin - A Watij plug-in</li>
+                    </ol>
+                </li>
+                <li>
+                    Open a command prompt or shell in the jameleon-core directory
+                    and type <b>build.bat package.test-suite</b> if under windows or <b>./build.sh package.test-suite</b> 
+                    if under *nix. This should create a <b>jameleon-test-suite-x.x.zip</b> file in jameleon-core.
+                </li>
+                <li>
+                    To build the site docs and the test-suite package, first install <b>maven 1.0.2</b> and make sure it is in the path.
+                    Next, type <b>build.bat package.releases</b> if under windows or <b>./build.sh package.test-suite</b> if under *nix.
+                    This will create several files in the <b>target</b> directory.
+                </li>
+            </ol>
+            To use Jameleon and it's plug-ins, go to the instructions matching 
+            <a href="#Installation from a Binary Distribution">Installation from a Binary Distribution</a>
+          </p>
+        </section>
+    </body>
+</document>

@@ -1,0 +1,43 @@
+ 
+#<!--   
+#       Title:  TCS-43-dlDeviceCancelControlRequest-OC-InValid-4
+#       Description:  This test case is used to verify the SUTs support of the dlDeviceCancelControlRequest dialog as an OC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.5.4.7 [Need to Cancel DMS Message Requests]. This Test Case tests for a InValid (4) response result.
+#       Related Procedure:  TPS-43-dlDeviceCancelControlRequest-OC
+#       Version/Date: 2013/09/25 10:32:46
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Request Message to be sent to the SUT.
+RequestMessage = <soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Header/><soapenv:Body><mes:deviceCancelControlRequestMsg xmlns:mes="http://www.tmdd.org/303/messages"><authentication><user-id>string</user-id><password>string</password><operator-id>string</operator-id></authentication><organization-requesting><organization-id>transcore.com</organization-id><organization-name>string</organization-name><organization-location>stringstri</organization-location><organization-function>string</organization-function><organization-contact-details><contact-id>string</contact-id><person-name>string</person-name><person-title>string</person-title><phone-number>string</phone-number><phone-alternate>string</phone-alternate><mobile-phone-number>string</mobile-phone-number><mobile-phone-id>string</mobile-phone-id><fax-number>string</fax-number><pager-number>string</pager-number><pager-id>string</pager-id><email-address>string</email-address><radio-unit>string</radio-unit><address-line1>string</address-line1><address-line2>string</address-line2><city>string</city><state>st</state><zip-code>string</zip-code><country>string</country></organization-contact-details><center-contact-list><center-contact-details><center-id>tcore_test</center-id><center-name>string</center-name><center-location xmlns:lrms="http://www.LRMS-Adopted-02-00-00"><latitude>33964380</latitude><longitude>-84217945</longitude><horizontalDatum>wgs-84</horizontalDatum><height><altitude><kmDec>1000.00</kmDec></altitude><verticalDatum>1</verticalDatum></height></center-location><center-description>string</center-description><center-type>2</center-type><center-contact-details><contact-id>string</contact-id><person-name>string</person-name><person-title>string</person-title><phone-number>string</phone-number><phone-alternate>string</phone-alternate><mobile-phone-number>string</mobile-phone-number><mobile-phone-id>string</mobile-phone-id><fax-number>string</fax-number><pager-number>string</pager-number><pager-id>string</pager-id><email-address>string</email-address><radio-unit>string</radio-unit><address-line1>string</address-line1><address-line2>string</address-line2><city>string</city><state>st</state><zip-code>string</zip-code><country>string</country></center-contact-details></center-contact-details></center-contact-list><last-update-time><date>20130531</date><time>105805</time><offset>01:00</offset></last-update-time></organization-requesting><device-id>string</device-id><request-id>string</request-id><mes:deviceCancelControlRequestMsg></soapenv:Body></soapenv:Envelope>
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether an error response is expected from the SUT.
+ErrorResponseExpected = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of error response that is expected from the SUT.
+ErrorTypeExpected = 4
+
+
+#GROUP NAME = Values
+

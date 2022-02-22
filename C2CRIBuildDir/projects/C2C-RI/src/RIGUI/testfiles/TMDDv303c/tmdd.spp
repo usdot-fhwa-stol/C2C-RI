@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+	<Folder FolderName="XML Files" ExtStr="xml;cml;math;mtx;rdf;smil;svg;wml"/>
+	<Folder FolderName="XSL Files" ExtStr="xsl;xslt"/>
+	<Folder FolderName="XQuery Files" ExtStr="xq;xql;xquery"/>
+	<Folder FolderName="HTML Files" ExtStr="html;htm;xhtml;asp"/>
+	<Folder FolderName="DTD/Schemas" ExtStr="dtd;dcd;xdr;biz;xsd">
+		<File FilePath=".\ATIS.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\C2C.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\ITIS-Adopted-03-00-02.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\ITIS-Local-03-00-02.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\LRMS-Adopted-02-00-00.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\LRMS-Local-02-00-00.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\NTCIP-References.xsd" HomeFolder="Yes"/>
+		<File FilePath=".\TMDD.xsd" HomeFolder="Yes"/>
+	</Folder>
+	<Folder FolderName="Entities" ExtStr="ent"/>
+	<File FilePath=".\tmdd.wsdl" HomeFolder="Yes"/>
+</Project>

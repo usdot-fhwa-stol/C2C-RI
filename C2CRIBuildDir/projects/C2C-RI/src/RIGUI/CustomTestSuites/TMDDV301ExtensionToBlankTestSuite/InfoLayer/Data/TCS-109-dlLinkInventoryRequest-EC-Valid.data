@@ -1,0 +1,514 @@
+ 
+#<!--   
+#       Title:  TCS-109-dlLinkInventoryRequest-EC-Valid
+#       Description:  This test case is used to verify the SUTs support of the dlLinkInventoryRequest dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.7.1.6 [Need for Roadway Characteristics Data]. This Test Case tests for a Valid response result.
+#       Related Procedure:  TPS-109-dlLinkInventoryRequest-EC
+#       Version/Date: 2012/02/14 23:27:32
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Response Message to be sent to the SUT.
+ResponseMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected user name.
+Username = defaultUser
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected password.
+Password = defaultPassword
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Organization Identifier.
+OrganizationID = defaultOrgID
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the priviledge to access the information requested.
+AllowAccess = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a request error is expected from the SUT.
+ErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of request error that is expected from the SUT.
+ErrorTypeExpected = None
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT is expected to have valid data for a respone.
+DataValid = True
+
+
+#GROUP NAME = Values
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = Testing for Requirement 3.3.5.2.1.4 in message trafficNetworkInformationRequestMsg
+tmdd:trafficNetworkInformationRequestMsg.network-information-type = 1,1,node inventory
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.restrictions.organization-information-forwarding-restrictions  BaseType=anySimpleType  ParentType= Restrictions
+tmdd:linkInventoryMsg.link-inventory-item.restrictions.organization-information-forwarding-restrictions = 4
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-id  BaseType=string  ParentType= OrganizationInformation
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-name  BaseType=string  ParentType= OrganizationInformation
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-location  BaseType=string  ParentType= OrganizationInformation
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-location = stringstri
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-function  BaseType=string  ParentType= OrganizationInformation
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-function = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.contact-id  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.person-name  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.person-title  BaseType=string  ParentType= Organization-resource-name
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.phone-number  BaseType=string  ParentType= Organization-resource-name
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.phone-alternate  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.mobile-phone-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.mobile-phone-id  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.fax-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.pager-number  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.pager-id  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.email-address  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.radio-unit  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.address-line1  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.address-line2  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.city  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.state  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.zip-code  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.country  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.organization-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-id  BaseType=string  ParentType= OrganizationCenterInformation
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-name  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.latitude  BaseType=Int-latitude32  ParentType= GeoLocation
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.latitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.longitude  BaseType=Int-longitude32  ParentType= Latitude
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.longitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum  BaseType=anySimpleType  ParentType= Longitude
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.horizontalDatum = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec  BaseType=decimal  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.height.altitude.kmDec = 1000.00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-description  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-description = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-type  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-type = fixed
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.contact-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title  BaseType=string  ParentType= Organization-resource-name
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.person-title = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number  BaseType=string  ParentType= Organization-resource-name
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.phone-alternate = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.mobile-phone-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number  BaseType=string  ParentType= Organization-resource-identifier
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.fax-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-number = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.pager-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.email-address = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.radio-unit = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line1 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.address-line2 = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.city  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.city = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.state  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.state = st
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.zip-code = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.country  BaseType=string  ParentType= ContactDetails
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.center-contact-list.center-contact-details.center-contact-details.country = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.last-update-time.date  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.last-update-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.last-update-time.time  BaseType=string  ParentType= Date
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.last-update-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.organization-information.last-update-time.offset  BaseType=string  ParentType= Time
+tmdd:linkInventoryMsg.link-inventory-item.organization-information.last-update-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.network-id  BaseType=string  ParentType= Time-offset-utc
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.network-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.network-name  BaseType=string  ParentType= Transportation-network-identifier
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.network-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-id  BaseType=string  ParentType= Transportation-network-name
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-name  BaseType=string  ParentType= Transportation-network-identifier
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.alternate-link-name  BaseType=string  ParentType= Transportation-network-name
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.alternate-link-name = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-route-designator  BaseType=string  ParentType= Transportation-network-name
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-route-designator = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.secondary-link-route-designator  BaseType=string  ParentType= Link-route-designator
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.secondary-link-route-designator = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-type  BaseType=anySimpleType  ParentType= Link-route-designator
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-type = air link
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-id  BaseType=string  ParentType= Link-type
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-location.latitude  BaseType=Int-latitude32  ParentType= GeoLocation
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-location.latitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-location.longitude  BaseType=Int-longitude32  ParentType= Latitude
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-location.longitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-location.horizontalDatum  BaseType=anySimpleType  ParentType= Longitude
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-location.horizontalDatum = wgs-84
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-location.height.altitude.mDec  BaseType=decimal  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-location.height.altitude.mDec = 1000.00
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-location.height.verticalDatum  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-begin-node-location.height.verticalDatum = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-end-node-id  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-end-node-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-end-node-location.latitude  BaseType=Int-latitude32  ParentType= GeoLocation
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-end-node-location.latitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-end-node-location.longitude  BaseType=Int-longitude32  ParentType= Latitude
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-end-node-location.longitude = 3
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-end-node-location.horizontalDatum  BaseType=anySimpleType  ParentType= Longitude
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-end-node-location.horizontalDatum = nad83
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-end-node-location.height.verticalLevel  BaseType=byte  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-end-node-location.height.verticalLevel = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.linear-reference  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.linear-reference = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.linear-reference-version  BaseType=unsignedByte  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.linear-reference-version = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-length  BaseType=unsignedInt  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-length = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-capacity  BaseType=unsignedInt  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-capacity = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-speed-limit  BaseType=unsignedByte  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-speed-limit = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-speed-limit-truck  BaseType=unsignedByte  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-speed-limit-truck = 6
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-speed-limit-units  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-speed-limit-units = 2
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-jurisdiction  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-jurisdiction = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-owner  BaseType=string  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.link-owner = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.left-shoulder-width  BaseType=unsignedShort  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.left-shoulder-width = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.right-shoulder-width  BaseType=unsignedShort  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.right-shoulder-width = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.lane-separator  BaseType=anySimpleType  ParentType= ***UnresolvableType****
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.lane-separator = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.last-update-time.date  BaseType=string  ParentType= Contact-mailing-address-entry
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.last-update-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.last-update-time.time  BaseType=string  ParentType= Date
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.last-update-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:linkInventoryMsg.link-inventory-item.link-list.link.last-update-time.offset  BaseType=string  ParentType= Time
+tmdd:linkInventoryMsg.link-inventory-item.link-list.link.last-update-time.offset = strin
+

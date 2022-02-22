@@ -1,0 +1,169 @@
+ 
+#<!--   
+#       Title:  TCS-5-dlEventIndexSubscription-EC-Valid
+#       Description:  This test case is used to verify the SUTs support of the dlEventIndexSubscription dialog as an EC using the variable values specified by the Test Plan.   This test case supports verification of requirements related to user need 2.3.3.1 [Need For An Index of Events]. This Test Case tests for a Valid response result.
+#       Related Procedure:  TPS-5-dlEventIndexSubscription-EC
+#       Version/Date: 2013/09/25 10:12:34
+#-->
+
+#ITERATION NAME = One
+#GROUP NAME = General
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+CheckOutcomePassed = true
+
+#PARAMETER TYPE = String
+#EDITABLE = false
+#DOCUMENTATION = This variable represents whether the Test Case is expected to pass.
+VerificationSpec = #VALUESPEC#Values#VALUESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable identifies the Application Layer Standard that will be used for this test.
+ApplicationLayerStandard = NTCIP2306v01
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Publication Message to be sent to the SUT.
+PublicationMessage = #MESSAGESPEC#Message#MESSAGESPEC#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates number of publication message transmissions expected as part of this test.
+PublicationCount = 1
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a Publication  error response is expected from the SUT.
+PublicationErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of Publication response error that is expected from the SUT.
+PublicationErrorTypeExpected = None
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This flag defines whether the Test Application will test for Authentication
+AuthenticationCheck = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected user name.
+Username = #CONTEXTVARIABLE#RI_USERNAME#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the expected password.
+Password = #CONTEXTVARIABLE#RI_PASSWORD#CONTEXTVARIABLE#
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Organization Identifier.
+OrganizationID = defaultOrgID
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether the SUT has the privilege to access the information requested.
+AllowAccess = True
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates whether a subscription request error is expected from the SUT.
+SubscriptionErrorResponseExpected = False
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable indicates the type of subscription request error that is expected from the SUT.
+SubscriptionErrorTypeExpected = None
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the Subscription Response Message to be sent to the SUT.
+SubscriptionResponseMessage = #MESSAGESPEC#SubResponseMessage#MESSAGESPEC#
+
+
+#GROUP NAME = Values
+
+#GROUP NAME = Message
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.informationalText 
+c2c:c2cMessagePublication.informationalText = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionID 
+c2c:c2cMessagePublication.subscriptionID = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionName 
+c2c:c2cMessagePublication.subscriptionName = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionFrequency 
+c2c:c2cMessagePublication.subscriptionFrequency = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = c2c:c2cMessagePublication.subscriptionCount 
+c2c:c2cMessagePublication.subscriptionCount = 7
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.feu-url.url-reference 
+tmdd:eventIndexMsg.eventIndex.feu-url.url-reference = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.feu-url.url-reference-medium  BaseType=string  ParentType= UrlReference
+tmdd:eventIndexMsg.eventIndex.feu-url.url-reference-medium = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.file-update-time.date 
+tmdd:eventIndexMsg.eventIndex.file-update-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.file-update-time.time 
+tmdd:eventIndexMsg.eventIndex.file-update-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.file-update-time.offset 
+tmdd:eventIndexMsg.eventIndex.file-update-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.event-update-time.date 
+tmdd:eventIndexMsg.eventIndex.event-update-time.date = stringst
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.event-update-time.time 
+tmdd:eventIndexMsg.eventIndex.event-update-time.time = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.event-update-time.offset 
+tmdd:eventIndexMsg.eventIndex.event-update-time.offset = strin
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.event-id  BaseType=string  ParentType= EventIndex
+tmdd:eventIndexMsg.eventIndex.event-id = string
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.event-update  BaseType=unsignedShort  ParentType= EventIndex
+tmdd:eventIndexMsg.eventIndex.event-update = 5
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = tmdd:eventIndexMsg.eventIndex.status  BaseType=anySimpleType  ParentType= EventIndex
+tmdd:eventIndexMsg.eventIndex.status = ended
+

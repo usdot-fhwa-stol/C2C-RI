@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-69-dlHARMessageInventoryRequest-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlHARMessageInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.9 [Need to Share HAR Messages] and is used for both valid and invalid test cases.
+       Version/Date: 2013/09/23 18:38:04-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlHARMessageInventoryRequest dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.5.7.9 [Need to Share HAR Messages] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <testStep functionId="Step 2 CONFIGURE: Determine whether Restrictions - HAR Message Inventory is required by the specification. (NRTM 3.3.5.8.7.5.2.1).  RECORD this information as: TMDD_N69R824_Restrictions___HAR_Message_Inventory_Supported = ${TMDD_N69R824_Restrictions___HAR_Message_Inventory_Supported}" passfailResult="False"/>
+     <testStep functionId="Step 3 CONFIGURE: Determine whether HAR Message Date and Time Change Information is required by the specification. (NRTM 3.3.5.8.7.5.2.2).  RECORD this information as: TMDD_N69R825_HAR_Message_Date_and_Time_Change_Information_Supported = ${TMDD_N69R825_HAR_Message_Date_and_Time_Change_Information_Supported}" passfailResult="False"/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.03a" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" riMode="EC">
+          <testStep functionId="Step 4 CONFIGURE: Define the message that will be sent to the SUT.  RECORD this information as: RequestMessage:  ${RequestMessage}" passfailResult="False"/>
+          <testStep functionId="Step 5 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: ErrorResponseExpected:  ${ErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${ErrorResponseExpected}">
+               <testStep functionId="Step 6 CONFIGURE: IF ErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  ErrorTypeExpected:  ${ErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 7 REQUEST-RESPONSE-EC with the following parameters:   DIALOG=dlHARMessageInventoryRequest RESPONSETIMEREQUIRED=TMDD_N69R818_Send_HAR_Messages_Upon_Request_Parameter REQUESTMESSAGE = RequestMessage ERRORRESPONSEEXPECTED = ErrorResponseExpected ERRORTYPEEXPECTED = ErrorTypeExpected ">
+               <REQUEST-RESPONSE-EC Dialog="dlHARMessageInventoryRequest" functionId="dlHARMessageInventoryRequest" RESPONSETIMEREQUIRED="${TMDD_N69R818_Send_HAR_Messages_Upon_Request_Parameter}" REQUESTMESSAGE="${RequestMessage}" ERRORRESPONSEEXPECTED="${ErrorResponseExpected}" ERRORTYPEEXPECTED="${ErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 8 IF ErrorResponseExpected is not equal to TRUE THEN CONTINUE, OTHERWISE skip the following substeps." passfailResult="False"/>
+          <jl:if test="${!ErrorResponseExpected}">
+               <testStep functionId="Step 8.1 VERIFY that element hARMessageInventoryMsg exists." passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="hARMessageInventoryMsg" instanceName="tmdd:hARMessageInventoryMsg" elementType="message" functionId="Looking for hARMessageInventoryMsg"/>
+               </testStep>
+               <testStep functionId="Step 8.2 VERIFY that element organization-information exists within each instance of hARMessageInventoryMsg.har-message-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="organization-information" instanceName="tmdd:hARMessageInventoryMsg.har-message-inventory-item" elementType="data-frame" functionId="Looking for hARMessageInventoryMsg.har-message-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 8.3 VERIFY that element device-id exists within each instance of hARMessageInventoryMsg.har-message-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="device-id" instanceName="tmdd:hARMessageInventoryMsg.har-message-inventory-item" elementType="data-element" functionId="Looking for hARMessageInventoryMsg.har-message-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 8.4 VERIFY that element message-number exists within each instance of hARMessageInventoryMsg.har-message-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="message-number" instanceName="tmdd:hARMessageInventoryMsg.har-message-inventory-item" elementType="data-element" functionId="Looking for hARMessageInventoryMsg.har-message-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 8.5 VERIFY that element current-message exists within each instance of hARMessageInventoryMsg.har-message-inventory-item" passfailResult="True">
+                    <ri-MessageVerify msgType="RESPONSE" elementName="current-message" instanceName="tmdd:hARMessageInventoryMsg.har-message-inventory-item" elementType="data-element" functionId="Looking for hARMessageInventoryMsg.har-message-inventory-item"/>
+               </testStep>
+               <testStep functionId="Step 8.6 IF TMDD_N69R824_Restrictions___HAR_Message_Inventory_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N69R824_Restrictions___HAR_Message_Inventory_Supported}">
+                    <testStep functionId="Step 8.6.1 VERIFY that element restrictions exists within each instance of hARMessageInventoryMsg.har-message-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="restrictions" instanceName="tmdd:hARMessageInventoryMsg.har-message-inventory-item" elementType="data-frame" functionId="Looking for hARMessageInventoryMsg.har-message-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 8.7 IF TMDD_N69R825_HAR_Message_Date_and_Time_Change_Information_Supported is equal to TRUE THEN CONTINUE; OTHERWISE skip the following substeps." passFailResult="False"/>
+               <jl:if test="${TMDD_N69R825_HAR_Message_Date_and_Time_Change_Information_Supported}">
+                    <testStep functionId="Step 8.7.1 VERIFY that element last-update-time exists within each instance of hARMessageInventoryMsg.har-message-inventory-item" passfailResult="True">
+                         <ri-MessageVerify msgType="RESPONSE" elementName="last-update-time" instanceName="tmdd:hARMessageInventoryMsg.har-message-inventory-item" elementType="data-frame" functionId="Looking for hARMessageInventoryMsg.har-message-inventory-item"/>
+                    </testStep>
+               </jl:if>
+               <testStep functionId="Step 8.8 VERIFY that the values within the RESPONSE message are correct per the TMDD standard and known operational conditions.">
+                    <AUTO-VERIFY-MESSAGE functionId="Automatically Verify message content" msgName="RESPONSE" verificationSpec="${VerificationSpec}"/>
+                    <USER-VERIFY-MESSAGE functionId="The User Verifies the message content" msgName="RESPONSE" optionList="TMDD_N69R824_Restrictions___HAR_Message_Inventory_Supported,restrictions,tmdd:hARMessageInventoryMsg.har-message-inventory-item;TMDD_N69R825_HAR_Message_Date_and_Time_Change_Information_Supported,last-update-time,tmdd:hARMessageInventoryMsg.har-message-inventory-item;" userDataFile="${RI_USERTCDATAFILE}"/>
+               </testStep>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

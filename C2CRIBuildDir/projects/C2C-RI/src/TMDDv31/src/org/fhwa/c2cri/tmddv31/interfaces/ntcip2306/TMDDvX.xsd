@@ -1,0 +1,961 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by Patrick Chan (Consensus Systems Technologies) -->
+<!-- edited with Liquid Studio 2019 - Developer Bundle by Patrick Chan (Consensus Systems Technologies) -->
+<!-- TMDD V3.1 Extensions - Standard -->
+<!--  Copyright 2020 AASHTO / ITE, All rights reserved -->
+<!--  -->
+<xs:schema xmlns="http://www.tmdd.org/X" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ntcip="http://www.ntcip.org/c2f-object-references" xmlns:c2c="http://www.ntcip.org/c2c-message-administration" xmlns:itis="http://www.ITIS-Adopted-03-00-02" xmlns:lrms="http://www.LRMS-Adopted-02-00-00" xmlns:tmdd="http://www.tmdd.org/303/messages" targetNamespace="http://www.tmdd.org/X" elementFormDefault="unqualified" attributeFormDefault="unqualified" version="3.1 Draft">
+	<xs:import namespace="http://www.ntcip.org/c2c-message-administration" schemaLocation="C2C.xsd"/>
+	<xs:import namespace="http://www.ntcip.org/c2f-object-references" schemaLocation="NTCIP-References.xsd"/>
+	<xs:import namespace="http://www.ITIS-Adopted-03-00-02" schemaLocation="ITIS-Adopted-03-00-02.xsd"/>
+	<xs:import namespace="http://www.LRMS-Adopted-02-00-00" schemaLocation="LRMS-Adopted-02-00-00.xsd"/>
+	<xs:import namespace="http://www.tmdd.org/303/messages" schemaLocation="TMDD.xsd"/>
+	<!--  -->
+	<xs:annotation>
+		<xs:documentation>
+			TMDD Extensions - V3.1 Standard
+            Last Updated: January 13, 2010 - Patrick Chan, ConSysTec
+            Added TMDDExtension data frame with references to improve support for backwards and forwards compatibility.
+        </xs:documentation>
+	</xs:annotation>
+    <!-- -->
+    <!-- Extension Element for external referencing -->
+    <!-- -->
+    <!-- CONNECTION MANAGEMENT Elements -->
+    <xs:element name="centerActiveVerificationResponseExt" type="CenterActiveVerificationResponseExt"/>
+    
+    <!-- DETECTOR Elements -->
+    <xs:element name="detectorDataDetailExt" type="DetectorDataDetailExt"/>
+    <xs:element name="detectorInventoryDetailsExt" type="DetectorInventoryDetailsExt"/>
+    <xs:element name="detectorMaintenanceHistoryDetailExt" type="DetectorMaintenanceHistoryDetailExt"/>
+    
+    <!-- DEVICE Elements -->
+    <xs:element name="deviceInformationRequestFilterExt" type="DeviceInformationRequestFilterExt"/>
+    <xs:element name="deviceInventoryHeaderExt" type="DeviceInventoryHeaderExt"/>
+    
+    <!-- EVENT Elements -->
+    <xs:element name="eventTimesExt" type="EventTimesExt"/>
+      
+    <!-- HAR Elements -->
+    <xs:element name="hARControlRequestExt" type="HARControlRequestExt"/>
+    <xs:element name="hARInventoryExt" type="HARInventoryExt"/>
+    <xs:element name="hARMessageInventoryExt" type="HARMessageInventoryExt"/>
+    <xs:element name="hARStatusExt" type="HARStatusExt"/>
+
+    <!-- IntersectionSignal Elements -->
+    <xs:element name="intersectionSignalStatusExt" type="IntersectionSignalStatusExt"/>
+  
+    <!--  -->
+	<!-- *********************************************************************************** -->
+	<!-- DATA FRAMES -->
+	<!-- *********************************************************************************** -->
+	<!--  -->
+	<!-- **************************************************** -->
+	<!-- CONNECTION MANAGEMENT Data Frames -->
+	<!-- **************************************************** -->
+	<!--  -->
+	<!-- CenterActiveVerificationResponseExt Data Frame -->
+	<!-- TMDD v3.1 Extension -->
+	<!--  -->
+	<xs:complexType name="CenterActiveVerificationResponseExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>ConnectionManagement</objectClass>
+				<definition>Data frame extension containing additional information content describing connection management information.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="version-id" type="Version-identifier">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1548</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+	<!--  -->
+	<!-- ***************************** -->
+	<!-- DETECTOR Data Frames -->
+	<!-- ***************************** -->
+	<!-- -->
+	<!-- DetectorDataDetailExt Data Frame -->
+	<!-- TMDD v3.1 Extension -->
+	<!-- -->
+	<xs:complexType name="DetectorDataDetailExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Detector</objectClass>
+				<definition>Data frame extension containing additional information content describing an owner center's detector data for a single station or sensor.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="vehicle-class-bin1" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1529</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin2" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1530</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin3" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1531</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin4" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1532</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin5" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1533</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin6" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1534</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin7" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1535</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin8" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1536</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin9" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1537</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin10" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1538</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin11" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1539</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin12" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1540</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin13" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1541</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="vehicle-class-bin14" type="tmdd:Detector-vehicle-count" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1542</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!-- DetectorInventoryDetailsExt Data Frame -->
+	<!-- TMDD v3.1 Extension -->
+	<!-- -->
+	<xs:complexType name="DetectorInventoryDetailsExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Detector</objectClass>
+				<definition>Data frame extension containing additional information content describing an entry in an owner center's detector/station inventory.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<!--  If used, detector-type should be set to other (11) -->
+			<xs:element name="detector-type-extended" type="Detector-type-extended" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ415</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+	<!-- -->
+	<!-- DetectorMaintenanceHistoryDetailExt Data Frame -->
+	<!-- TMDD v3.1 Extension -->
+	<!-- -->
+	<xs:complexType name="DetectorMaintenanceHistoryDetailExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Detector</objectClass>
+				<definition>Data frame extension containing additional information content describing an owner center's detector maintenance history for a single device.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<!--  If used, detector-type should be set to other (11) -->
+			<xs:element name="detector-type-extended" type="Detector-type-extended" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ401</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+	<!--  -->
+	<!-- ************************* -->
+	<!-- DEVICE Data Frames -->
+	<!-- ************************* -->
+	<!-- -->
+	<!-- DeviceInformationRequestFilterExt -->
+	<!-- TMDD v3.1 extension -->
+	<!-- -->
+	<xs:complexType name="DeviceInformationRequestFilterExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Device</objectClass>
+				<definition>Data frame extension containing additional information content describing filters that can be applied to a device information request.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="time-range" type="TimeRange" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1544</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+	<!-- -->
+	<!-- DeviceInventoryHeaderExt Data Frame -->
+	<!-- TMDD 3.1 Extension -->
+	<!-- -->
+	<xs:complexType name="DeviceInventoryHeaderExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Device</objectClass>
+				<definition>Data frame extension containing additional information content header included with all device inventories.</definition>
+				<requirement>REQ1094</requirement>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="device-url2" type="tmdd:UrlReference" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1553</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="device-url3" type="tmdd:UrlReference" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1553</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="device-url4" type="tmdd:UrlReference" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1553</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!--  -->
+	<!-- ************************ -->
+	<!-- EVENT Data Frames -->
+	<!-- ************************ -->
+	<!--  -->
+	<!-- EventTimesExt Data Frame-->
+	<!-- TMDD v3.1 Extension -->
+	<!--  -->
+	<xs:complexType name="EventTimesExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Event</objectClass>
+				<definition>Data frame extension containing additional information content describing a schedule of start and end times associated with an event.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="roadway-cleared-time" type="tmdd:DateTimeZone" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1526</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+	<!--  -->
+	<!-- ****************************************************** -->
+	<!-- GLOBAL Data Frames -->
+	<!-- ****************************************************** -->
+    <!--  -->
+	<!-- TimeRange Data Frame-->
+    <!-- TMDD v3.1 Extension -->
+	<!--  -->
+	<xs:complexType name="TimeRange">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Global</objectClass>
+				<definition>Specifies a time range where the start is anchored by a specified time and the range is specified by a period in seconds.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="start-time" type="tmdd:DateTimeZone">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="period-seconds" type="Time-duration">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!--  -->
+    <!-- TMDDExtension Data Frame-->
+    <!-- TMDD v3.1 Extension -->
+    <!--  -->
+    <xs:complexType name="TMDDExtension">
+        <xs:sequence>
+            <xs:any namespace="##local" processContents="skip" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+	<!--  -->
+	<!-- ************************ -->
+	<!-- HAR Data Frames -->
+	<!-- ************************ -->
+	<!-- -->
+	<!-- HARControlRequestExt Data Frame -->
+	<!-- TMDD v3.1 Extension -->
+	<!-- -->
+	<xs:complexType name="HARControlRequestExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>HAR</objectClass>
+				<definition>Data frame extension containing additional information content to request a control action of an owner center's highway advisory radio.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="har-beacon-control-list" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1525</requirement>
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence maxOccurs="8">
+						<xs:element name="har-beacon-control" type="ntcip:DmsMessageBeacon"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+	<!-- -->
+	<!-- HARInventoryExt Data Frame -->
+	<!-- TMDD v3.1 Extension -->
+	<!-- -->
+	<xs:complexType name="HARInventoryExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>HAR</objectClass>
+				<definition>Data frame extension containing additional information content describing the attributes of an owner center's highway advisory radio.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+            <xs:element name="har-message-extended" type="Har-message-extended">
+                <xs:annotation>
+                    <xs:documentation>
+                        <requirement>REQ1553</requirement>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+			<xs:element name="har-beacon1-location" type="lrms:GeoLocation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1545</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon1-description" type="tmdd:Organization-resource-name" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1546</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon2" type="tmdd:Device-beacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1547</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon2-location" type="lrms:GeoLocation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1545</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon2-description" type="tmdd:Organization-resource-name" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1546</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon3" type="tmdd:Device-beacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1547</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon3-location" type="lrms:GeoLocation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1545</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon3-description" type="tmdd:Organization-resource-name" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1546</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon4" type="tmdd:Device-beacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1547</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon4-location" type="lrms:GeoLocation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1545</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon4-description" type="tmdd:Organization-resource-name" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1546</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon5" type="tmdd:Device-beacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1547</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon5-location" type="lrms:GeoLocation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1545</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon5-description" type="tmdd:Organization-resource-name" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1546</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon6" type="tmdd:Device-beacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1547</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon6-location" type="lrms:GeoLocation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1545</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon6-description" type="tmdd:Organization-resource-name" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1546</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon7" type="tmdd:Device-beacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1547</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon7-location" type="lrms:GeoLocation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1545</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon7-description" type="tmdd:Organization-resource-name" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1546</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon8" type="tmdd:Device-beacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1547</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon8-location" type="lrms:GeoLocation" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1545</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-beacon8-description" type="tmdd:Organization-resource-name" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1546</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- -->
+	<!-- HARMessageInventoryExt Data Frame -->
+	<!-- TMDD v3.1 Extension -->
+	<!-- -->
+	<xs:complexType name="HARMessageInventoryExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>HAR</objectClass>
+				<definition>Data frame extension containing additional information content describing an owner center's highway advisory message library for a single device.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+            <!--  current-message-extended added to support 8196 string length -->
+			<xs:element name="current-message-extended" type="Har-message-extended" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1530</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="har-priority" type="Device-plan-priority" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1527</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+	<!-- -->
+	<!-- HARStatusExt Data Frame -->
+	<!-- TMDD v3.1 Extension -->
+	<!-- -->
+	<xs:complexType name="HARStatusExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>HAR</objectClass>
+				<definition>Data frame extension containing additional information content describing an owner center's highway advisory radio status for a single device.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<!--  Har-current-message-extended added to support 8196 string length -->
+			<xs:element name="har-current-message-extended" type="Har-message-extended" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1529</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message-duration" type="Device-plan-duration" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ1528</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message-beacon2" type="ntcip:DmsMessageBeacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ680</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message-beacon3" type="ntcip:DmsMessageBeacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ680</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message-beacon4" type="ntcip:DmsMessageBeacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ680</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message-beacon5" type="ntcip:DmsMessageBeacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ680</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message-beacon6" type="ntcip:DmsMessageBeacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ680</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message-beacon7" type="ntcip:DmsMessageBeacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ680</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="message-beacon8" type="ntcip:DmsMessageBeacon" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ680</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+	<!--  -->
+	<!-- ************************************ -->
+	<!-- IntersectionSignal Data Frames -->
+	<!-- ************************************ -->
+	<!-- -->
+	<!-- IntersectionSignalStatusExt Data Frame -->
+	<!-- TMDD 3.1 Extension -->
+	<!-- -->
+	<xs:complexType name="IntersectionSignalStatusExt">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>IntersectionSignal</objectClass>
+				<definition>Data frame extension containing additional information content describing an owner center's traffic signal status for a single device.</definition>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="signal-control-source-extended" type="Intersection-signal-control-source-extended">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ837</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="current-signal-timing-mode-extended" type="Intersection-signal-timing-mode-extended">
+				<xs:annotation>
+					<xs:documentation>
+						<requirement>REQ837</requirement>
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+            <xs:element name="extension" type="TMDDExtension" minOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+	<!--  -->
+	<!-- *********************************************************************************** -->
+	<!-- DATA ELEMENTS -->
+	<!-- *********************************************************************************** -->
+	<!--  -->
+	<!-- ******************************** -->
+	<!-- DETECTOR Data Elements -->
+	<!-- ******************************** -->
+	<!-- -->
+	<!-- Detector-type-extended_code -->
+	<!-- -->
+	<xs:simpleType name="Detector-type-extended">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Detector</objectClass>
+				<definition>Extended code describing the type of a vehicular detector providing traffic data.</definition>
+				<valueDomainTerm>cd</valueDomainTerm>
+				<units/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:unsignedInt">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="13"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="inductive loop"/>
+					<xs:enumeration value="magnetic"/>
+					<xs:enumeration value="magnetometers"/>
+					<xs:enumeration value="pressure cells"/>
+					<xs:enumeration value="microwave radar"/>
+					<xs:enumeration value="ultrasonic"/>
+					<xs:enumeration value="video Image"/>
+					<xs:enumeration value="laser"/>
+					<xs:enumeration value="infrared"/>
+					<xs:enumeration value="road tube"/>
+					<xs:enumeration value="other"/>
+					<xs:enumeration value="unknown"/>
+					<xs:enumeration value="probe"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<!--  -->
+	<!-- *************************** -->
+	<!-- DEVICE Data Elements -->
+	<!-- *************************** -->
+	<!-- -->
+	<!-- Device-plan-duration_quantity -->
+	<!-- -->
+	<xs:simpleType name="Device-plan-duration">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Device</objectClass>
+				<definition>The duration of the device plan.</definition>
+				<valueDomainTerm>qty</valueDomainTerm>
+				<units>seconds</units>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedInt">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="65535"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- -->
+	<!-- Device-plan-priority_number -->
+	<!-- -->
+	<xs:simpleType name="Device-plan-priority">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Device</objectClass>
+				<definition>A default priority number for a device plan.</definition>
+				<valueDomainTerm>nbr</valueDomainTerm>
+				<units/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedByte">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="10"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<!-- **************************** -->
+	<!-- GLOBAL Data Elements -->
+	<!-- **************************** -->
+	<!--  -->
+	<!-- Time-duration_qty-->
+	<!--  -->
+	<xs:simpleType name="Time-duration">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Global</objectClass>
+				<definition>Time period duration in seconds.</definition>
+				<valueDomainTerm>qty</valueDomainTerm>
+				<units>seconds</units>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1"/>
+			<xs:maxInclusive value="86401"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- -->
+	<!-- Version-identifier_number -->
+	<!-- -->
+	<xs:simpleType name="Version-identifier">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>Global</objectClass>
+				<definition>An integer representing the version of TMDD the system is conformant to.  Values are as follows: 1 = other; 2 = TMDD v2.0; 3 = TMDD v2.1, 4 = TMDD v3.00; 5 = TMDD v3.01; 6 = TMDD v3.02; 7 = TMDD v3.03c; 8 = TMDD v3.03d; 9 = TMDD v3.1</definition>
+				<valueDomainTerm>nbr</valueDomainTerm>
+				<units/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:unsignedByte">
+			<xs:minInclusive value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<!-- ************************ -->
+	<!-- HAR Data Elements -->
+	<!-- ************************ -->
+	<!-- -->
+	<!-- Har-message-extended_text -->
+	<!-- -->
+	<xs:simpleType name="Har-message-extended">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>HAR</objectClass>
+				<definition/>
+				<valueDomainTerm>txt</valueDomainTerm>
+				<units/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:maxLength value="8192"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--  -->
+	<!-- ************************************** -->
+	<!-- IntersectionSignal Data Elements -->
+	<!-- ************************************** -->
+	<!-- -->
+	<!-- Intersection-signal-control-source-extended_code -->
+	<!-- -->
+	<xs:simpleType name="Intersection-signal-control-source-extended">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>IntersectionSignal</objectClass>
+				<definition/>
+				<valueDomainTerm>cd</valueDomainTerm>
+				<units/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:unsignedInt">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="11"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="unknown"/>
+					<xs:enumeration value="other"/>
+					<xs:enumeration value="central time base coordination intersection"/>
+					<xs:enumeration value="central operator commanded intersection"/>
+					<xs:enumeration value="central time base coordination section"/>
+					<xs:enumeration value="central operator commanded section"/>
+					<xs:enumeration value="local"/>
+					<xs:enumeration value="local time base coordination"/>
+					<xs:enumeration value="local manual"/>
+					<xs:enumeration value="local backup loss of central"/>
+					<xs:enumeration value="central-adaptive"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<!-- -->
+	<!-- Intersection-signal-timing-mode-extended_code -->
+	<!-- -->
+	<xs:simpleType name="Intersection-signal-timing-mode-extended">
+		<xs:annotation>
+			<xs:documentation>
+				<objectClass>IntersectionSignal</objectClass>
+				<definition/>
+				<valueDomainTerm>cd</valueDomainTerm>
+				<units/>
+			</xs:documentation>
+		</xs:annotation>
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:unsignedInt">
+					<xs:minInclusive value="1"/>
+					<xs:maxInclusive value="25"/>
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="unknown"/>
+					<xs:enumeration value="other"/>
+					<xs:enumeration value="free"/>
+					<xs:enumeration value="fixed time"/>
+					<xs:enumeration value="actuated"/>
+					<xs:enumeration value="semi actuated"/>
+					<xs:enumeration value="critical intersection control"/>
+					<xs:enumeration value="traffic responsive"/>
+					<xs:enumeration value="adaptive"/>
+					<xs:enumeration value="flash-programmed"/>
+					<xs:enumeration value="conflict-flash"/>
+					<xs:enumeration value="free due to fault"/>
+					<xs:enumeration value="flash-automatic"/>
+					<xs:enumeration value="flash preempt"/>
+					<xs:enumeration value="flash local manual"/>
+					<xs:enumeration value="flash fault"/>
+					<xs:enumeration value="flash mmu-cmu"/>
+					<xs:enumeration value="flash reasons unknown"/>
+					<xs:enumeration value="flash startup"/>
+					<xs:enumeration value="special function"/>
+					<xs:enumeration value="coordinated alarm"/>
+					<xs:enumeration value="transition"/>
+					<xs:enumeration value="preempt"/>
+					<xs:enumeration value="signal-priority"/>
+					<xs:enumeration value="standby"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+	<!-- END of the output -->
+</xs:schema>

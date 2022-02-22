@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Title:  TPS-116-dlFullEventUpdateUpdate-OC
+       Description:  This test procedure is called by a test case and is used to verify the SUTs support of the dlFullEventUpdateUpdate dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.7.1.7 [Need for Event Data] and is used for both valid and invalid test cases.
+       Version/Date: 2011/12/27 12:43:57-->
+<testprocedure xmlns="jelly:jameleon" xmlns:jl="jelly:core">
+     <test-case-id>${C2CRITestCaseID}</test-case-id>
+     <test-case-summary>This test procedure is called by a test case and is used to verify the SUTs support of the dlFullEventUpdateUpdate dialog as an OC using variables provided by the calling test case.  
+This procedure supports verification of requirements related to user need 2.3.7.1.7 [Need for Event Data] and is used for both valid and invalid test cases.</test-case-summary>
+     <testStep functionId="Step 1 CONFIGURE: Determine the Application Layer Standard that will be used for this test.  RECORD this information as: ApplicationLayerStandard:  ${ApplicationLayerStandard}" passfailResult="False "/>
+     <C2CRI-session beginSession="true" infoStd="TMDDv3.01" appStd="${ApplicationLayerStandard}" useWSDL="true" testCaseIdentifier="${C2CRITestCaseID}" publicationDialog="dlFullEventUpdateUpdate" subscriptionDialog="dlFullEventUpdateSubscription" riMode="EC">
+          <testStep functionId="Step 2 CONFIGURE: Determine the number of publication message transmissions that will be received within this test.  RECORD this information as: PublicationsToReceive:  ${PublicationsToReceive}" passfailResult="False"/>
+          <testStep functionId="Step 3 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: PublicationErrorResponseExpected:  ${PublicationErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${PublicationErrorResponseExpected}">
+               <testStep functionId="Step 4 CONFIGURE: IF PublicationErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  PublicationErrorTypeExpected:  ${PublicationErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 5 CONFIGURE: Define the publication response message that will be sent to the SUT.  RECORD this information as: PublicationResponseMessage:  ${PublicationResponseMessage}" passfailResult="False"/>
+          <testStep functionId="Step 6 CONFIGURE: Define the publication message that will be sent to the SUT.  RECORD this information as: SubscriptionMessage:  ${SubscriptionMessage}" passfailResult="False"/>
+          <testStep functionId="Step 7 CONFIGURE: Determine whether an error response message is expected for this test.  RECORD this information as: SubscriptionErrorResponseExpected:  ${SubscriptionErrorResponseExpected}" passfailResult="False"/>
+          <jl:if test="${SubscriptionErrorResponseExpected}">
+               <testStep functionId="Step 8 CONFIGURE: IF SubscriptionErrorResponseExpected is true, determine the expected error code response for this test.  RECORD this information as:  SubscriptionErrorTypeExpected:  ${SubscriptionErrorTypeExpected}" passfailResult="False"/>
+          </jl:if>
+          <testStep functionId="Step 9 SUBSCRIPTION-EC with the following parameters:   Dialog=dlFullEventUpdateSubscription SubscriptionMessage SubscriptionErrorResponseExpected SubscriptionErrorTypeExpected ">
+               <SUBSCRIPTION-EC Dialog="dlFullEventUpdateSubscription" functionId="dlFullEventUpdateSubscription" SubscriptionMessage="${SubscriptionMessage}" SubscriptionErrorResponseExpected="${SubscriptionErrorResponseExpected}" SubscriptionErrorTypeExpected="${SubscriptionErrorTypeExpected}"/>
+          </testStep>
+          <testStep functionId="Step 10 IF SubscriptionErrorResponseExpected is not equal to [TRUE] then CONTINUE, Otherwise SKIP the following substeps."/>
+          <jl:if test="${!SubscriptionErrorResponseExpected.isTrue()}">
+               <testStep functionId="Step 10.1 WHILE PUBLICATION_COMPLETE is not equal to [TRUE] then CONTINUE, Otherwise SKIP the following substeps."/>
+               <jl:set var="PUBLICATION_COMPLETE" value="false"/>
+               <jl:while test="${!PUBLICATION_COMPLETE.isTrue()}">
+                    <testStep functionId="Step 10.1.1 PUBLICATION-EC-RECEIVE with the following parameters:   Dialog=dlFullEventUpdateUpdate PublicationsToReceive PublicationErrorResponseExpected PublicationErrorTypeExpected ">
+                         <PUBLICATION-EC-RECEIVE Dialog="dlFullEventUpdateUpdate" functionId="dlFullEventUpdateUpdate" PublicationsToReceive="${PublicationsToReceive}" PublicationErrorResponseExpected="${PublicationErrorResponseExpected}" PublicationErrorTypeExpected="${PublicationErrorTypeExpected}"/>
+                    </testStep>
+                    <testStep functionId="Step 10.1.2 IF PublicationErrorResponseExpected is not equal to [TRUE] then CONTINUE, Otherwise SKIP the following substeps."/>
+                    <jl:if test="${!PublicationErrorResponseExpected.isTrue()}">
+                         <testStep functionId=" Step 10.1.2.1 CONFIGURE: Set OptionalContentVerified to True" passfailResult="False">
+                              <jl:set var="OptionalContentVerified" value="true"/>
+                         </testStep>
+                         <postcondition>
+                              <testStep functionId="Step 10.1.2.2 POSTCONDITION: PUBLICATION-EC-REPLY with the following parameters:   Dialog=dlFullEventUpdateUpdate OptionalContentVerified PublicationResponseMessage ">
+                                   <PUBLICATION-EC-REPLY Dialog="dlFullEventUpdateUpdate" functionId="dlFullEventUpdateUpdate" OptionalContentVerified="${OptionalContentVerified}" PublicationResponseMessage="${PublicationResponseMessage}"/>
+                              </testStep>
+                         </postcondition>
+                    </jl:if>
+               </jl:while>
+          </jl:if>
+     </C2CRI-session>
+</testprocedure>

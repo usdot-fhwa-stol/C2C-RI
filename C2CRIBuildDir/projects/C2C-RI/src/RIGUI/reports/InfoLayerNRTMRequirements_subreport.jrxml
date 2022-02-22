@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="NRTMRequirements_subreport" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="NEEDID" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["2.3.1.1"]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     C2CRI_InfoLayerNRTM.`RequirementID` AS C2CRI_InfoLayerNRTM_RequirementID,
+     C2CRI_InfoLayerNRTM.`RequirementText` AS C2CRI_InfoLayerNRTM_RequirementText,
+     C2CRI_InfoLayerNRTM.`RequirementType` AS C2CRI_InfoLayerNRTM_RequirementType,
+     C2CRI_InfoLayerNRTM.`RequirementFlagName` AS C2CRI_InfoLayerNRTM_RequirementFlagName,
+     C2CRI_InfoLayerNRTM.`RequirementFlagValue` AS C2CRI_InfoLayerNRTM_RequirementFlagValue,
+     C2CRI_InfoLayerNRTM.`IsRequirementExtension` AS C2CRI_InfoLayerNRTM_IsRequirementExtension,
+     C2CRI_InfoLayerNRTM.`OtherRequirement` AS C2CRI_InfoLayerNRTM_OtherRequirement,
+     C2CRI_InfoLayerNRTM.`OtherRequirementValue` AS C2CRI_InfoLayerNRTM_OtherRequirementValue,
+     C2CRI_InfoLayerNRTM.`OtherRequirementValueName` AS C2CRI_InfoLayerNRTM_OtherRequirementValueName,
+     C2CRI_InfoLayerNRTM.`NeedID` AS C2CRI_InfoLayerNRTM_NeedID
+FROM
+     `C2CRI_InfoLayerNRTM` C2CRI_InfoLayerNRTM]]>
+	</queryString>
+	<field name="C2CRI_InfoLayerNRTM_RequirementID" class="java.lang.String"/>
+	<field name="C2CRI_InfoLayerNRTM_RequirementText" class="java.lang.String"/>
+	<field name="C2CRI_InfoLayerNRTM_RequirementType" class="java.lang.String"/>
+	<field name="C2CRI_InfoLayerNRTM_RequirementFlagName" class="java.lang.String"/>
+	<field name="C2CRI_InfoLayerNRTM_RequirementFlagValue" class="java.lang.String"/>
+	<field name="C2CRI_InfoLayerNRTM_IsRequirementExtension" class="java.lang.String"/>
+	<field name="C2CRI_InfoLayerNRTM_OtherRequirement" class="java.lang.String"/>
+	<field name="C2CRI_InfoLayerNRTM_OtherRequirementValue" class="java.lang.String"/>
+	<field name="C2CRI_InfoLayerNRTM_OtherRequirementValueName" class="java.lang.String"/>
+	<field name="C2CRI_InfoLayerNRTM_NeedID" class="java.lang.String"/>
+	<filterExpression><![CDATA[$F{C2CRI_InfoLayerNRTM_NeedID}.equals($P{NEEDID})]]></filterExpression>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement x="82" y="0" width="81" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Requirement ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="0" width="162" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Requirement Text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="0" width="143" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Other Requirements]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="468" y="0" width="87" height="20"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Other Requirement Value]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="82" y="0" width="81" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[($F{C2CRI_InfoLayerNRTM_IsRequirementExtension}.equalsIgnoreCase("true")?"*":"") + $F{C2CRI_InfoLayerNRTM_RequirementID}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="163" y="0" width="162" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{C2CRI_InfoLayerNRTM_RequirementText}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="325" y="0" width="143" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{C2CRI_InfoLayerNRTM_OtherRequirement}!=null?$F{C2CRI_InfoLayerNRTM_OtherRequirement}:""]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement stretchType="RelativeToBandHeight" x="468" y="0" width="87" height="20" isPrintWhenDetailOverflows="true"/>
+				<box>
+					<topPen lineWidth="0.5" lineStyle="Solid"/>
+					<leftPen lineWidth="0.5" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
+					<rightPen lineWidth="0.5" lineStyle="Solid"/>
+				</box>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{C2CRI_InfoLayerNRTM_OtherRequirementValue}!=null?$F{C2CRI_InfoLayerNRTM_OtherRequirementValue}:""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

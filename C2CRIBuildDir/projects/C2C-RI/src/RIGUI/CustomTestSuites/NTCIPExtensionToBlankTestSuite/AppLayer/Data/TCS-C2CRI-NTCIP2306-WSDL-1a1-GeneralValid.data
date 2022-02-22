@@ -1,0 +1,63 @@
+ 
+#<!--   
+#       Title:  TCS-C2CRI-NTCIP2306-WSDL-1a1-GeneralValid
+#       Description:  TCS-C2CRI-NTCIP2306-WSDL-1a1-GeneralValid
+#       Related Procedure:  null
+#       Version/Date: 2011/11/14 19:23:27
+#
+
+
+#ITERATION NAME = One
+#GROUP NAME = portType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the WSDL File to be verified.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a10.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomePassed = true
+
+#ITERATION NAME = Two
+#GROUP NAME = portType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents a non-existent WSDL File reference.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a11.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 9 VERIFY that the specified WSDL file exists.
+
+
+#ITERATION NAME = Three
+#GROUP NAME = portType
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents a WSDL document which does not conform to the W3C WSDL 1.1 standard named 2306TstData1a12.wsdl.
+WSDLFile = file:/c:/c2cri/testfiles/WSDLFiles/2306TstData1a12.wsdl
+
+#PARAMETER TYPE = boolean
+#EDITABLE = true
+#DOCUMENTATION = This variable represents whether the Test Case is expected to fail.
+CheckOutcomeFailed = true
+
+
+#PARAMETER TYPE = String
+#EDITABLE = true
+#DOCUMENTATION = This variable represents the text of the test step where a failure is expected.
+FailedTestStepText = Step 10 VALIDATE the WSDL file using the W3C WSDL 1.1 Schema
+
+
+
+
+
+
