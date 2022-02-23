@@ -88,24 +88,40 @@ Note: If the directory path does not currently exist the user will be asked whet
 
 ### Installing
 Step 1. Uninstall any earlier versions of the C2C RI application.
+
 Step 2. Copy the c2cri_Release 2 _Installer.exe to your Double click on the file to launch the install program.
+
 Step 3. The Main Install ation screen displays.
+
 Step 4. You are prompted to choose a directory in which to install the application. You may accept the default directory or create your own directory path. Click Next when done.
+
 Step 5. The Choose Start Menu Folder window displays a dialog.  This window allows you to choose where to install the shortcut in your Start Menu. Choose a folder and click the Install button to install the software.
+
 Step 6. An installation window displays, showing the status of the installation.
+
 Step 7. Once the installation is complete the Completing the C2C RI Setup Wizard window displays. Click the Finish button to complete the installation.
 
 ### Testing
 Step 1. Navigate to the directory where the C2C RI Application was installed.
+
 Step 2. Double-click the C2CRI.exe file to launch the C2C RI Application.
+
 Step 3. SELECT ‘File->New’ command from the C2C RI MENU BAR.  Verify that the New Test Configuration Dialog is displayed.  The Test Suite drop down menu for the Information Layer Standard should include standards TMDD v303c, TMDD v303d and TMDD v3.1 at a minimum.  The test suite drop down menu for the Application Layer Standard should include NTCIP 2306 v1.69 at a minimum.
+
 Step 4. Click the Cancel button and the New Test Configuration Dialog should close.
+
 Step 5. SELECT ‘File->Reports’ command from the C2C RI MENU BAR.  Verify that the Windows displays the Configuration and Log Report Tabs.  
+
 Step 6. Enter "SampleReport" in the Name field at the top of the Configuration Tab in the Report File Selection Frame.  The Configuration tab should include a list of test configuration files (with a .ricfg extension).  Select one of the configuration files.  Click the Configuration File Details Radio button in the Report Details Tab.  Click the Create Button at the bottom of the window.
+
 Step 7. A dialog will initially appear indicating the the the report is being created.  Once complete, a Report Status dialog will be presented indicating that the Report Creation has completed.  Click the OK button.
+
 Step 8. Click the View button at the bottom of the window.  The C2C RI Report Viewer should open and present the created report.  
+
 Step 9. Select File -> Exit from the C2C RI Report Viewer.  The PDF Viewer should close.
+
 Step 10. Click the Cancel button at the bottom of the C2C RI Main Window.  The main C2C RI User Interface screen should be showing.
+
 Step 11. Select 'File->Exit' command from the C2C RI MENU BAR.  The C2C RI Application should close.
 
 ### License
