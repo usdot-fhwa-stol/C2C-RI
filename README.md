@@ -55,43 +55,43 @@ The C2C RI, is intended to fill existing gaps in ITS standards consistency, inte
 Requires:
 - Windows 8 (or higher)
 
-Download Apache Ant 1.10.5 (http://mirror.metrocast.net/apache//ant/binaries/apache-ant-1.10.5-bin.zip)
+Download Apache Ant 1.10.5 (http://mirror.metrocast.net/apache//ant/binaries/apache-ant-1.10.5-bin.zip).<br/>
 Extract to a folder on the build computer (e.g. C:\Libraries\ant) and add to system path.
 
-Download Java OpenJDK 11.0.2_9 (https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.2%2B9/OpenJDK11U-jdk_x64_windows_hotspot_11.0.2_9.zip)
-Extract to folder on the build computer (e.g. C:\Libraries\jdk-11) and add to system path
+Download Java OpenJDK 11.0.2_9 (https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.2%2B9/OpenJDK11U-jdk_x64_windows_hotspot_11.0.2_9.zip).<br/>
+Extract to folder on the build computer (e.g. C:\Libraries\jdk-11) and add to system path<br/>
 Define a JAVA_HOME System Environment Variable for the directory where the file is unzipped.
 
-Download the launch4j 3.12 Win32 installation program (https://sourceforge.net/p/launch4j/git/ci/Release_launch4j-3_12/tree/bin/bin-win32)
+Download the launch4j 3.12 Win32 installation program (https://sourceforge.net/p/launch4j/git/ci/Release_launch4j-3_12/tree/bin/bin-win32).<br/>
 Run the installer keeping the default settings.
 
-Download the NSIS 3.04  installation program (https://sourceforge.net/projects/nsis/files/NSIS%203/3.04/nsis-3.04-setup.exe/download)
+Download the NSIS 3.04  installation program (https://sourceforge.net/projects/nsis/files/NSIS%203/3.04/nsis-3.04-setup.exe/download).<br/>
 Run the installer keeping the default settings.
 
 Download the C2C RI source code repository to the build computer.
 
 #### Build the source code
-Open a new windows command prompt.
+Open a new windows command prompt.<br/>
 Change the directory path to the C2CRIBuildDir\buildfiles path of the source code repository.
 
-type buildRICode and press enter
+Type **buildRICode** and press Enter
 
 
 #### Create the installer
 
-Open a windows command prompt.
+Open a windows command prompt.<br/>
 Change the directory path to the C2CRIBuildDir\buildfiles path of the source code repository.
 
-type build "path where installation files should be placed"
+Type **build** "*path where installation files should be placed"*<br/>
 Note: If the directory path does not currently exist the user will be asked whether the directory should be created by the script.
 
 
 ### Installing
 Step 1. Uninstall any earlier versions of the C2C RI application.
 
-Step 2. Copy the c2cri_Release 2 _Installer.exe to your Double click on the file to launch the install program.
+Step 2. Copy the c2cri_Release 2 _Installer.exe to your computer.  Double click on the file to launch the install program.
 
-Step 3. The Main Install ation screen displays.
+Step 3. The Main Installation screen displays.
 
 Step 4. You are prompted to choose a directory in which to install the application. You may accept the default directory or create your own directory path. Click Next when done.
 
@@ -106,23 +106,23 @@ Step 1. Navigate to the directory where the C2C RI Application was installed.
 
 Step 2. Double-click the C2CRI.exe file to launch the C2C RI Application.
 
-Step 3. SELECT ‘File->New’ command from the C2C RI MENU BAR.  Verify that the New Test Configuration Dialog is displayed.  The Test Suite drop down menu for the Information Layer Standard should include standards TMDD v303c, TMDD v303d and TMDD v3.1 at a minimum.  The test suite drop down menu for the Application Layer Standard should include NTCIP 2306 v1.69 at a minimum.
+Step 3. Select the ‘**File->New**’ command from the C2C RI MENU BAR.  Verify that the New Test Configuration Dialog is displayed.  The Test Suite drop down menu for the Information Layer Standard should include standards TMDD v303c, TMDD v303d and TMDD v3.1 at a minimum.  The test suite drop down menu for the Application Layer Standard should include NTCIP 2306 v1.69 at a minimum.
 
-Step 4. Click the Cancel button and the New Test Configuration Dialog should close.
+Step 4. Click the **Cancel** button and the New Test Configuration Dialog should close.
 
-Step 5. SELECT ‘File->Reports’ command from the C2C RI MENU BAR.  Verify that the Windows displays the Configuration and Log Report Tabs.  
+Step 5. Select the ‘**File->Reports**’ command from the C2C RI MENU BAR.  Verify that the application window displays the Configuration and Log Report Tabs.  
 
-Step 6. Enter "SampleReport" in the Name field at the top of the Configuration Tab in the Report File Selection Frame.  The Configuration tab should include a list of test configuration files (with a .ricfg extension).  Select one of the configuration files.  Click the Configuration File Details Radio button in the Report Details Tab.  Click the Create Button at the bottom of the window.
+Step 6. Enter "**SampleReport**" in the Name field at the top of the Configuration Tab in the Report File Selection Frame.  The Configuration tab should include a list of test configuration files (with a .ricfg extension).  Select one of the configuration files.  Click the Configuration File Details Radio button in the Report Details Tab.  Click the **Create** Button at the bottom of the window.
 
-Step 7. A dialog will initially appear indicating the the the report is being created.  Once complete, a Report Status dialog will be presented indicating that the Report Creation has completed.  Click the OK button.
+Step 7. A dialog will initially appear indicating the the the report is being created.  Once complete, a Report Status dialog will be presented indicating that the Report Creation has completed.  Click the **OK** button.
 
-Step 8. Click the View button at the bottom of the window.  The C2C RI Report Viewer should open and present the created report.  
+Step 8. Click the **View** button at the bottom of the window.  The C2C RI Report Viewer should open and present the created report.  
 
-Step 9. Select File -> Exit from the C2C RI Report Viewer.  The PDF Viewer should close.
+Step 9. Select '**File -> Exit**' from the C2C RI Report Viewer.  The PDF Viewer should close.
 
-Step 10. Click the Cancel button at the bottom of the C2C RI Main Window.  The main C2C RI User Interface screen should be showing.
+Step 10. Click the **Cancel** button at the bottom of the C2C RI Main Window.  The main C2C RI User Interface screen should be showing.
 
-Step 11. Select 'File->Exit' command from the C2C RI MENU BAR.  The C2C RI Application should close.
+Step 11. Select '**File->Exit**' command from the C2C RI MENU BAR.  The C2C RI Application should close.
 
 ### License
 
