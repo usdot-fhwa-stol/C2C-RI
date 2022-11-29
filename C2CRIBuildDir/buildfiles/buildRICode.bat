@@ -4,12 +4,22 @@ REM This batch file builds all of the C2C RI application projects
 ECHO OFF
 CLS
 Set CURRENTDIR=%~dp0
-Set JAVA_HOME=C:\Libraries\jdk-11
-Set PATH=%PATH%;c:\program files (x86)\launch4j\;c:\program files (x86)\nsis\;C:\Libraries\apache-ant-1.10.5\bin;C:\Libraries\jdk-11\bin
+
+java -version >nul 2>nul
+if %errorlevel% NEQ 0 (
+    @echo Java not found in path.
+    GOTO OOPS
+)
+ant -version >nul 2>nul
+if %errorlevel% NEQ 0 (
+    @echo Ant not found in path.
+    GOTO OOPS
+)
+Set PATH=%PATH%;c:\program files (x86)\launch4j\;c:\program files (x86)\nsis\
 ECHO.
 
 Echo Path is set to %PATH%
-Echo Java Home is set to %JAVAHOME%
+Echo Java Home is set to %JAVA_HOME%
 Echo Current Directory is %CURRENTDIR%
 
 :DOBATCH
