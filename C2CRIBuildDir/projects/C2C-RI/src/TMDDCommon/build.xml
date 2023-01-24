@@ -111,7 +111,9 @@
         <register-tags/>
     </target>
 
-
+    <target name="maven-register-tags">
+        <register-tags/>
+    </target>
 
   <!--
       This is used to register all tags in the Jameleon engine.

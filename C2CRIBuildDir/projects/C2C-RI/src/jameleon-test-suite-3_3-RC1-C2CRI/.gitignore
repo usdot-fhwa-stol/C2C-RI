@@ -1,0 +1,11 @@
+/jameleon-core/Build
+/jameleon-core/Dist
+/jameleon-core/C2CRIDebug.log
+/jameleon-core/C2CRIDebugTest.dbg
+/jameleon-core/velocity.log
+/ri-plugin/Build
+/ri-plugin/Dist
+/ri-plugin/lib/RI_Properties.jar
+/ri-plugin/lib/RICenterServices.jar
+/ri-plugin/lib/RITestCaseData.jar
+ri-plugin-*.zip

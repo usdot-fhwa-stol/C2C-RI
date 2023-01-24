@@ -24,9 +24,9 @@
   <delete file="${basedir}/lib/RICenterServices.jar"/>
   <delete file="${basedir}/lib/RITestCaseData.jar"/>
   <delete file="${basedir}/lib/RI_Properties.jar"/>
-  <copy file="../../RICenterServices/dist/RICenterServices.jar" todir="${basedir}/lib"/>
-  <copy file="../../RITestCaseData/dist/RITestCaseData.jar" todir="${basedir}/lib"/>
-  <copy file="../../RI_Properties/dist/RI_Properties.jar" todir="${basedir}/lib"/>
+  <copy file="../../RICenterServices/target/ri-centerservices-1.0-SNAPSHOT.jar" tofile="${basedir}/lib/RICenterServices.jar"/>
+  <copy file="../../RITestCaseData/target/ri-testcasedata-1.0-SNAPSHOT.jar" tofile="${basedir}/lib/RITestCaseData.jar"/>
+  <copy file="../../RI_Properties/target/ri-properties-1.0-SNAPSHOT.jar" tofile="${basedir}/lib/RI_Properties.jar"/>
   
   <import file="../jameleon-core/src/xml/standard-build.xml"/>
 
