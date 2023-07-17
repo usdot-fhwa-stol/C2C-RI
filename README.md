@@ -55,14 +55,13 @@ The C2C RI, is intended to fill existing gaps in ITS standards consistency, inte
 Requires:
 - Windows 8 (or higher)
 
-Download Apache Ant 1.10.5 (http://mirror.metrocast.net/apache//ant/binaries/apache-ant-1.10.5-bin.zip).<br/>
-Extract to a folder on the build computer (e.g. C:\Libraries\ant) and add to system path.
+Download Apache Ant 1.10.5 (https://archive.apache.org/dist/ant/binaries/apache-ant-1.10.5-bin.zip).<br/>
+Extract to a folder on the build computer (e.g. C:\Libraries\ant) and add to the Path System Environment Variable.
 
-Download Java OpenJDK 11.0.2_9 (https://github.com/AdoptOpenJDK/openjdk11-binaries/releases/download/jdk-11.0.2%2B9/OpenJDK11U-jdk_x64_windows_hotspot_11.0.2_9.zip).<br/>
-Extract to folder on the build computer (e.g. C:\Libraries\jdk-11) and add to system path<br/>
-Define a JAVA_HOME System Environment Variable for the directory where the file is unzipped.
+Download Temurin jdk-11.0.19+7 (https://adoptium.net/temurin/releases/?version=11).<br/>
+Select the correct .msi installer based on the Operating System and Architecture of the build computer. Run the installer and enable the "JavaSoft (Oracle) registry keys" and "Set JAVA_HOME variable".<br/>
 
-Download the launch4j 3.12 Win32 installation program (https://sourceforge.net/p/launch4j/git/ci/Release_launch4j-3_12/tree/bin/bin-win32).<br/>
+Download the launch4j 3.13 Win32 installation program (https://sourceforge.net/projects/launch4j/files/launch4j-3/3.13/launch4j-3.13-win32.exe/download).<br/>
 Run the installer keeping the default settings.
 
 Download the NSIS 3.04  installation program (https://sourceforge.net/projects/nsis/files/NSIS%203/3.04/nsis-3.04-setup.exe/download).<br/>
@@ -71,6 +70,10 @@ Run the installer keeping the default settings.
 Download the C2C RI source code repository to the build computer.
 
 #### Build the source code
+Run Notepad to open \<path where source code was installed\>C2CRIBuildDir\buildfiles\buildRICode.bat. 
+On line 12 change %JAVAHOME% to %JAVA_HOME%. 
+Erase line 7 (Set JAVA_HOME=C:\Libraries\jdk-11)<br/>
+
 Open a new windows command prompt.<br/>
 Change the directory path to the C2CRIBuildDir\buildfiles path of the source code repository.
 
@@ -93,7 +96,7 @@ Step 2. Copy the c2cri_Release 2 _Installer.exe to your computer.  Double click 
 
 Step 3. The Main Installation screen displays.
 
-Step 4. You are prompted to choose a directory in which to install the application. You may accept the default directory or create your own directory path. Click Next when done.
+Step 4. You are prompted to choose a directory in which to install the application. You may accept the default directory or create your own directory path (it is recommended to use the default directory). Click Next when done.
 
 Step 5. The Choose Start Menu Folder window displays a dialog.  This window allows you to choose where to install the shortcut in your Start Menu. Choose a folder and click the Install button to install the software.
 
