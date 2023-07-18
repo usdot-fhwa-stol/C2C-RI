@@ -70,10 +70,6 @@ Run the installer keeping the default settings.
 Download the C2C RI source code repository to the build computer.
 
 #### Build the source code
-Run Notepad to open \<path where source code was installed\>C2CRIBuildDir\buildfiles\buildRICode.bat. 
-On line 12 change %JAVAHOME% to %JAVA_HOME%. 
-Erase line 7 (Set JAVA_HOME=C:\Libraries\jdk-11)<br/>
-
 Open a new windows command prompt.<br/>
 Change the directory path to the C2CRIBuildDir\buildfiles path of the source code repository.
 
