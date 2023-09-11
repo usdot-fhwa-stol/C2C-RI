@@ -11,6 +11,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.ArrayList;
+import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.namespace.QName;
 import javax.xml.stream.Location;
@@ -142,6 +143,8 @@ public class XMLSignatureValidate {
          */       
         public LogFileStreamReader(InputStream stream) throws XMLStreamException{
             XMLInputFactory input = XMLInputFactory.newInstance();
+			input.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+			input.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             reader =  input.createXMLStreamReader(stream);                  
         }        
         

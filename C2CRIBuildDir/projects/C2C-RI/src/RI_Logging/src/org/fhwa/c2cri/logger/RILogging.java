@@ -25,6 +25,7 @@ import org.apache.log4j.FileAppender;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -369,11 +370,9 @@ public class RILogging implements Serializable {
         String line;
         StringBuffer sb = new StringBuffer();
         boolean successfulResult = false;
-        try {
-            FileInputStream fis = new FileInputStream(fname);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fis,StandardCharsets.UTF_8));
-            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(fname + ".tmp")),StandardCharsets.UTF_8.name()));
-
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fname),StandardCharsets.UTF_8));
+			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(fname + ".tmp")),StandardCharsets.UTF_8.name())))
+		{
             // Create a copy of the original xml file that includes additional "wrapper" tags.
             out.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
             out.write("<logFile>\n");
@@ -383,13 +382,9 @@ public class RILogging implements Serializable {
                 out.write(line + "\n");
                 out.flush();
             }
-            reader.close();
             out.write("</eventSet>\n");
             out.write("</logFile>\n");
-            out.flush();
-            out.close();
-            fis.close();
-            
+             
             // Delete the original xml file.
             File oldFileName = new File(fname);
             String oldFileNamePath = oldFileName.getAbsolutePath();
@@ -439,6 +434,8 @@ public class RILogging implements Serializable {
             Source xmlInputSource = new StreamSource(new File(xmlInput));
             StreamResult xmlOutput = new StreamResult(new File(xmlOutputFile));
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+			transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
@@ -474,11 +471,14 @@ public class RILogging implements Serializable {
      * @return the string
      */
     public static String removeElement(String inputXML, String targetElement) {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = null;
-        Document document = null;
+       
 
         try {
+			 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+			factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+			DocumentBuilder builder = null;
+			Document document = null;
             builder = factory.newDocumentBuilder();
             document = builder.parse(new ByteArrayInputStream(inputXML.getBytes(StandardCharsets.UTF_8)));
 
