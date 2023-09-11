@@ -27,6 +27,8 @@ class EchoServer implements Runnable {
 	
 	/** The exception. */
 	private Throwable exception;
+	
+	private boolean run = true;
 
 	// private Cleaner cleaner = new Cleaner();
 
@@ -57,7 +59,7 @@ class EchoServer implements Runnable {
 	public void run() {
 		Socket source = null;
 		// new Thread(cleaner).start();
-		while (true) {
+		while (run) {
 			try {
 				source = serverSocket.accept();
 				log.trace("accepted client connection");
@@ -70,6 +72,11 @@ class EchoServer implements Runnable {
 				return;
 			}
 		}
+	}
+	
+	public void stopRun()
+	{
+		run = false;
 	}
 
 	/**
