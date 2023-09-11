@@ -361,38 +361,34 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
         System.out.println("RETR: Before the Socket Declaration...");
 
         // get data socket
-        Socket dataSoc = new Socket(theClient, session.getDataConnection().getPort());
+        try (Socket dataSoc = new Socket(theClient, session.getDataConnection().getPort()))
+		{
 
-        if (dataSoc == null) {
-            System.out.println("RETR: Cannot open data connection");
-            throw new IOException("Cannot open data connection.");
-        }
+			if (dataSoc == null) {
+				System.out.println("RETR: Cannot open data connection");
+				throw new IOException("Cannot open data connection.");
+			}
 
-        // create output stream
-        OutputStream out = dataSoc.getOutputStream();
+			// create output stream
+			try (OutputStream out = dataSoc.getOutputStream())
+			{
 
+				TransferRateRequest transferRateRequest = new TransferRateRequest();
+				transferRateRequest = (TransferRateRequest) session.getUser().authorize(transferRateRequest);
+				int maxRate = 0;
+				if (transferRateRequest != null) {
+					maxRate = transferRateRequest.getMaxDownloadRate();
+				}
 
-        TransferRateRequest transferRateRequest = new TransferRateRequest();
-        transferRateRequest = (TransferRateRequest) session.getUser().authorize(transferRateRequest);
-        int maxRate = 0;
-        if (transferRateRequest != null) {
-            maxRate = transferRateRequest.getMaxDownloadRate();
-        }
-
-        String message = "";
-        try {
-            long result;
-            System.out.println("!!!!RETR: About to transfer the file.!!!");
-            result = transfer(session, true, in, out, maxRate);
-            System.out.println("!!!! The File was Transferred.  Returning the result in RETR !!!");
-            return result;
+				String message = "";
+				long result;
+				System.out.println("!!!!RETR: About to transfer the file.!!!");
+				result = transfer(session, true, in, out, maxRate);
+				System.out.println("!!!! The File was Transferred.  Returning the result in RETR !!!");
+				return result;
+			}
         } catch (Exception ex){
              throw new IOException("RETR: " + ex.getMessage());
-        } finally {
-            dataSoc.close();
-
-            System.out.println("*****ERROR Occurred transfering file in RETR****");
-            IoUtils.close(out);
         }
     }
 

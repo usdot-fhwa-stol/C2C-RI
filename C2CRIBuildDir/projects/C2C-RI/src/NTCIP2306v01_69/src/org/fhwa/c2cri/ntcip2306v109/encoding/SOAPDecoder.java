@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.MimeHeaders;
@@ -113,6 +114,8 @@ public class SOAPDecoder {
                     if (thisElement instanceof SOAPElement){
 
                     TransformerFactory tf = TransformerFactory.newInstance();
+					tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+					tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
                     Transformer trans = tf.newTransformer();
                     trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 
@@ -134,6 +137,8 @@ public class SOAPDecoder {
                     if (thisElement instanceof SOAPElement){
 
                     TransformerFactory tf = TransformerFactory.newInstance();
+					tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+					tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
                     Transformer trans = tf.newTransformer();
                     trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 

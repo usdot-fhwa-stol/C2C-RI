@@ -9,6 +9,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -228,6 +229,8 @@ public class SOAPEncoder {
     private SOAPElement stringToSOAPElement(String xmlText) throws Exception {
         // Load the XML text into a DOM Document
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+		builderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+		builderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         builderFactory.setNamespaceAware(true);
         InputStream stream = new ByteArrayInputStream(xmlText.getBytes());
         Document doc = builderFactory.newDocumentBuilder().parse(stream);
@@ -248,6 +251,8 @@ public class SOAPEncoder {
     private Document stringToDocument(String xmlText) throws Exception {
         // Load the XML text into a DOM Document
         DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
+		builderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+		builderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         builderFactory.setNamespaceAware(true);
         InputStream stream = new ByteArrayInputStream(xmlText.getBytes());
         Document doc = builderFactory.newDocumentBuilder().parse(stream);
