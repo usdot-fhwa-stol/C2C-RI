@@ -102,28 +102,28 @@ public class TMDDOperationResults implements InformationLayerOperationResults {
      */
     private void updateDialogParameters() {
         Connection conn = null;
-        Statement stmt = null;
+
 
         try {
             // Create a SQLite connection
             conn = TMDDConnectionPool.getConnection();
-            stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM TMDDDialogs where dialog = '" + this.dialog + "'");
+            try (Statement stmt = conn.createStatement())
+			{
+				ResultSet rs = stmt.executeQuery("SELECT * FROM TMDDDialogs where dialog = '" + this.dialog + "'");
 
-            String dialogName = "";
-            requestMessageName = "";
-            responseMessageName = "";
-            errorMessageName = "";
-            dialogType = "";
-            while (rs.next()) {
-                dialogName = rs.getString("dialog");
-                requestMessageName = rs.getString("input");
-                responseMessageName = rs.getString("output");
-                errorMessageName = rs.getString("error");
-                dialogType = rs.getString("dialogType");
-            }
-            rs.close();
-            stmt.close();
+				requestMessageName = "";
+				responseMessageName = "";
+				errorMessageName = "";
+				dialogType = "";
+				while (rs.next()) {
+					dialogName = rs.getString("dialog");
+					requestMessageName = rs.getString("input");
+					responseMessageName = rs.getString("output");
+					errorMessageName = rs.getString("error");
+					dialogType = rs.getString("dialogType");
+				}
+				rs.close();
+			}
 //            conn.close();
             TMDDConnectionPool.releaseConnection(conn);
 

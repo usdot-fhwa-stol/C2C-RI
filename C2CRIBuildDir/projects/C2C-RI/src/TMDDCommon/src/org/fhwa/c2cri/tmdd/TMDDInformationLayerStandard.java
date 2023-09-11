@@ -181,15 +181,14 @@ public abstract class TMDDInformationLayerStandard
         if (!f.exists())
         {
             // Store a copy of the TMDD database to disk for later use
-            BufferedInputStream inputStream = new BufferedInputStream(this.getClass().getResourceAsStream(getDatabaseFilePath()));
-            BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(f));
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1)
-                outputStream.write(buffer, 0, bytesRead);
-            outputStream.flush();
-            inputStream.close();
-            outputStream.close();
+			try (BufferedInputStream inputStream = new BufferedInputStream(this.getClass().getResourceAsStream(getDatabaseFilePath()));
+				 BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(f)))
+			{
+				byte[] buffer = new byte[1024];
+				int bytesRead;
+				while ((bytesRead = inputStream.read(buffer)) != -1)
+					outputStream.write(buffer, 0, bytesRead);
+			}
         }
         TMDDConnectionPool.Initialize(getDatabaseFileName());
         this.controller = new TMDDController(this.appStandard.getInformationLayerAdapter());
