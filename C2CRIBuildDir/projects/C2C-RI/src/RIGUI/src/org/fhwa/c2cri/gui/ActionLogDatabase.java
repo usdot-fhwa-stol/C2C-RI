@@ -249,34 +249,38 @@ import java.sql.Statement;
             String selectSQL = "SELECT Timestamp, Message, Result, TestId FROM Actions WHERE ActionID=?";
             ResultSet rs = null;
             Connection conn = null;
-            PreparedStatement pstmt = null;
             String response = "N/A";
             synchronized (lockObject) {
                 try {
                     if (!databaseCreated) createActionLogDatabase();
                     conn = connect();
-                    pstmt = conn.prepareStatement(selectSQL);
-                    pstmt.setInt(1, messageId);
-                    rs = pstmt.executeQuery();
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement(selectSQL))
+						{
+							pstmt.setInt(1, messageId);
+							rs = pstmt.executeQuery();
 
-                    while (rs.next()) {
-                        String timestamp = rs.getString("TimeStamp");
-                        String message = rs.getString("Message");
-                        String result = rs.getString("Result");
-                        int index = rs.getInt("TestId");
-                        switch (column){
-                            case 0: response = timestamp;
-                                break;
-                            case 1: response = message;
-                                break;
-                            case 2: response = result;
-                                break;
-                            case 3: response = String.valueOf(index);
-                                break;
-                            default: response = "N/A";
-                            break;
-                        }
-                    }
+							while (rs.next()) {
+								String timestamp = rs.getString("TimeStamp");
+								String message = rs.getString("Message");
+								String result = rs.getString("Result");
+								int index = rs.getInt("TestId");
+								switch (column){
+									case 0: response = timestamp;
+										break;
+									case 1: response = message;
+										break;
+									case 2: response = result;
+										break;
+									case 3: response = String.valueOf(index);
+										break;
+									default: response = "N/A";
+									break;
+								}
+							}
+						}
+					}
                 } catch (SQLException e) {
                     logException(e);
                     System.out.println(e.getMessage());
@@ -288,9 +292,6 @@ import java.sql.Statement;
                     try {
                         if (rs != null) {
                             rs.close();
-                        }
-                        if (pstmt != null) {
-                            pstmt.close();
                         }
 
                         if (conn != null) {
@@ -354,31 +355,35 @@ import java.sql.Statement;
             String selectSQL = "SELECT Timestamp, Message, TestId FROM Status WHERE StatusID=?";
             ResultSet rs = null;
             Connection conn = null;
-            PreparedStatement pstmt = null;
             String response = "N/A";
             synchronized (lockObject) {
                 try {
                     if (!databaseCreated) createActionLogDatabase();
                     conn = connect();
-                    pstmt = conn.prepareStatement(selectSQL);
-                    pstmt.setInt(1, statusId);
-                    rs = pstmt.executeQuery();
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement(selectSQL))
+						{
+							pstmt.setInt(1, statusId);
+							rs = pstmt.executeQuery();
 
-                    while (rs.next()) {
-                        String timestamp = rs.getString("TimeStamp");
-                        String message = rs.getString("Message");
-                        int testId = rs.getInt("TestId");
-                        switch (column){
-                            case 0: response = timestamp;
-                                break;
-                            case 1: response = message;
-                                break;
-                            case 2: response = String.valueOf(testId);
-                                break;
-                            default: response = "N/A";
-                            break;
-                        }
-                    }
+							while (rs.next()) {
+								String timestamp = rs.getString("TimeStamp");
+								String message = rs.getString("Message");
+								int testId = rs.getInt("TestId");
+								switch (column){
+									case 0: response = timestamp;
+										break;
+									case 1: response = message;
+										break;
+									case 2: response = String.valueOf(testId);
+										break;
+									default: response = "N/A";
+									break;
+								}
+							}
+						}
+					}
                 } catch (SQLException e) {
                     logException(e);
                     System.out.println(e.getMessage());
@@ -390,9 +395,6 @@ import java.sql.Statement;
                     try {
                         if (rs != null) {
                             rs.close();
-                        }
-                        if (pstmt != null) {
-                            pstmt.close();
                         }
 
                         if (conn != null) {

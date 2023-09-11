@@ -998,11 +998,10 @@ public class TestDefinitionCoordinator implements java.awt.event.ActionListener 
                             testConfig.setConfigurationAuthor(userName + ":" + System.getProperty("user.name"));
                         }
 
-                        ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName));
-                        output.writeObject(testConfig);
-                        output.flush();
-                        output.close();
-                        output = null;
+                        try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName)))
+						{
+							output.writeObject(testConfig);
+						}
                         configFileOpen = false;
                         testConfig.print();
                         this.mainUI.setTitle("C2C RI");
@@ -1060,11 +1059,10 @@ public class TestDefinitionCoordinator implements java.awt.event.ActionListener 
                             testConfig.setConfigurationAuthor(userName + ":" + System.getProperty("user.name"));
                         }
 
-                        ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName));
-                        output.writeObject(testConfig);
-                        output.flush();
-                        output.close();
-                        output = null;
+                        try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName)))
+						{
+							output.writeObject(testConfig);
+						}
                         configFileOpen = true;
                         testConfig.print();
                         System.out.println("File " + fileName + " was Succesfully Saved ");

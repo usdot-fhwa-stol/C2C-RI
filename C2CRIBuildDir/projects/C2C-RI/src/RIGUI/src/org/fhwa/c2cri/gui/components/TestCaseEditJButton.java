@@ -115,8 +115,9 @@ public class TestCaseEditJButton extends JButton {
         
         // CTCRI-787 Addressed by the use of this method.  The user should select a valid test parameter file.  An empty file is valid.
         private boolean isTextFile(String file){
-            try{
-                BufferedReader in = new BufferedReader(new FileReader(file)); 
+            try (BufferedReader in = new BufferedReader(new FileReader(file)))
+			{
+                
                 StringBuilder sb = new StringBuilder();
                 int lineCount = 0;
                 char[] characterArray = new char[1024];
