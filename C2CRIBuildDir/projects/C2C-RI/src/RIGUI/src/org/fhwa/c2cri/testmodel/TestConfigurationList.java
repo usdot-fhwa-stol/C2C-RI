@@ -163,7 +163,7 @@ public class TestConfigurationList {
         
         /** The initializing. */
         private boolean initializing;
-
+		private boolean isRunning = true;
         /**
          * Instantiates a new config file updater.
          * 
@@ -288,7 +288,7 @@ public class TestConfigurationList {
         @Override
         public void run() {
             initialize();
-            while (true) {
+            while (isRunning) {
 
                 try {
                     processEvents();
@@ -303,6 +303,10 @@ public class TestConfigurationList {
             }
         }
 
+		public void stopRunning()
+		{
+			isRunning = false;
+		}
         /**
          * Initialize.
          * 

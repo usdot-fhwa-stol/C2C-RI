@@ -229,21 +229,22 @@ public class RILoggingInfo implements Serializable{
     	String line;
     	StringBuffer sb = new StringBuffer();
     	try {
-    		FileInputStream fis = new FileInputStream(fname);
-    		BufferedReader reader=new BufferedReader ( new InputStreamReader(fis));
-    		while((line = reader.readLine()) != null) {
-    			line = line.replaceAll(oldPattern, replPattern);
-    			sb.append(line+"\n");
-    		}
-    		reader.close();
-    		BufferedWriter out=new BufferedWriter ( new FileWriter(fname));
+    		try (BufferedReader reader=new BufferedReader ( new InputStreamReader(new FileInputStream(fname))))
+			{
+				while((line = reader.readLine()) != null) {
+					line = line.replaceAll(oldPattern, replPattern);
+					sb.append(line+"\n");
+				}
+			}
+    		try (BufferedWriter out=new BufferedWriter ( new FileWriter(fname)))
+			{
                 out.write("<?xml version=\"1.0\" ?>\n");
                 out.write("<logFile>\n");
                 out.write("<eventSet version=\"1.2\" xmlns:log4j=\"http://jakarta.apache.org/log4j/\">");
                 out.write(sb.toString());
                 out.write("</eventSet>\n");
                 out.write("</logFile>\n");
-    		out.close();
+			}
     	}
     	catch (Throwable e) {
     	            System.err.println("*** exception ***");

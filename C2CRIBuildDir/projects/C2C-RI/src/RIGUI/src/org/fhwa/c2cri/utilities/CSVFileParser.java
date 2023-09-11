@@ -73,12 +73,12 @@ public class CSVFileParser {
      * @param csvFile the csv file
      */
     public void parse(URL csvFile) {
-
-        try {
+//create BufferedReader to read csv file
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(csvFile.openStream())))
+		{
             //csv file containing data
 //            String strFile = "C:/FileIO/example.csv";
-            //create BufferedReader to read csv file
-            BufferedReader br = new BufferedReader(new InputStreamReader(csvFile.openStream()));
+            
             String strLine = "";
             StringTokenizer st = null;
             int lineNumber = 0, tokenNumber = 0;
@@ -145,7 +145,6 @@ Matcher matcher = null;
 
                 }
             }
-            br.close();
         } catch (Exception e) {
             System.out.println("Exception while reading csv file: " + e);
             e.printStackTrace();
@@ -165,11 +164,11 @@ Matcher matcher = null;
      */
     public void parse2(URL csvFile) {
 
-        try {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(csvFile.openStream())))
+		{
             //csv file containing data
 //            String strFile = "C:/FileIO/example.csv";
             //create BufferedReader to read csv file
-            BufferedReader br = new BufferedReader(new InputStreamReader(csvFile.openStream()));
             String strLine = "";
             StringTokenizer st = null;
             int lineNumber = 0, tokenNumber = 0;
