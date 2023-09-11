@@ -574,17 +574,12 @@ public class XMLFileToTestCaseTool extends javax.swing.JFrame {
     }
 
     public void updateTCFile(String fileName) {
-        try {
-            File updateFile = new File(fileName);
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName)))
+		{
             String newLine = System.getProperty("line.separator");
-            BufferedWriter bw = new BufferedWriter(new FileWriter(updateFile));
             for (int ii = 0; ii < inputTestCaseFile.numIteration(); ii++) {
                 bw.write(inputTestCaseFile.iterationAt(ii).toText() + newLine);
             }
-
-            bw.flush();
-            bw.close();
-
             inputTestCaseFile.setModified(false);
         } catch (Exception e) {
             //System.out.println("Error when saving");
@@ -599,12 +594,13 @@ public class XMLFileToTestCaseTool extends javax.swing.JFrame {
     private byte[] toByteArray(File file) throws FileNotFoundException, IOException {
         int length = (int) file.length();
         byte[] array = new byte[length];
-        InputStream in = new FileInputStream(file);
-        int offset = 0;
-        while (offset < length) {
-            offset += in.read(array, offset, (length - offset));
-        }
-        in.close();
+        try (InputStream in = new FileInputStream(file))
+		{
+			int offset = 0;
+			while (offset < length) {
+				offset += in.read(array, offset, (length - offset));
+			}
+		}
         return array;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
