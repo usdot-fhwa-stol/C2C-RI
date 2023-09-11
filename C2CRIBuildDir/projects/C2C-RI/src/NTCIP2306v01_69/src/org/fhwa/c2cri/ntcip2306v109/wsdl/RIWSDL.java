@@ -47,6 +47,7 @@ import javax.wsdl.extensions.soap.SOAPAddress;
 import javax.wsdl.extensions.soap.SOAPBinding;
 import javax.wsdl.factory.WSDLFactory;
 import javax.wsdl.xml.WSDLReader;
+import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 
 import javax.xml.stream.XMLInputFactory;
@@ -382,6 +383,8 @@ public final class RIWSDL {
         Map foundSchemas = new HashMap<String, String>();
         // create the XMLInputFactory object
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+		inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+		inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         try {
             //create a XMLStreamReader object
             URL schemaURL = new URL(urlLocation);
