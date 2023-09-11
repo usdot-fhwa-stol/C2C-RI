@@ -389,29 +389,35 @@ public class MessageContentDBCache implements MessageContent {
             // update sql
             String selectSQL = "SELECT Message FROM Messages WHERE MsgID=?";
             ResultSet rs = null;
-            FileOutputStream fos = null;
+
             Connection conn = null;
-            PreparedStatement pstmt = null;
 
             synchronized (lockObject) {
                 try {
                     conn = connect();
-                    pstmt = conn.prepareStatement(selectSQL);
-                    pstmt.setInt(1, messageId);
-                    rs = pstmt.executeQuery();
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement(selectSQL))
+						{
+							pstmt.setInt(1, messageId);
+							rs = pstmt.executeQuery();
 
-                    // write binary stream into file
-                    File file = new File(filename);
-                    fos = new FileOutputStream(file);
+							// write binary stream into file
+							File file = new File(filename);
+							try (FileOutputStream fos = new FileOutputStream(file))
+							{
 
-                    System.out.println("Writing BLOB to file " + file.getAbsolutePath() + " with messageID " + messageId);
-                    while (rs.next()) {
-                        InputStream input = rs.getBinaryStream("Message");
-                        byte[] buffer = new byte[1024];
-                        while (input.read(buffer) > 0) {
-                            fos.write(buffer);
-                        }
-                    }
+								System.out.println("Writing BLOB to file " + file.getAbsolutePath() + " with messageID " + messageId);
+								while (rs.next()) {
+									InputStream input = rs.getBinaryStream("Message");
+									byte[] buffer = new byte[1024];
+									while (input.read(buffer) > 0) {
+										fos.write(buffer);
+									}
+								}
+							}
+						}
+					}
                 } catch (SQLException | IOException e) {
                     System.out.println(e.getMessage());
                 } finally {
@@ -419,18 +425,12 @@ public class MessageContentDBCache implements MessageContent {
                         if (rs != null) {
                             rs.close();
                         }
-                        if (pstmt != null) {
-                            pstmt.close();
-                        }
 
                         if (conn != null) {
                             conn.close();
                         }
-                        if (fos != null) {
-                            fos.close();
-                        }
 
-                    } catch (SQLException | IOException e) {
+                    } catch (SQLException e) {
                         System.out.println(e.getMessage());
                     }
                 }
@@ -453,24 +453,28 @@ public class MessageContentDBCache implements MessageContent {
             String selectSQL = "SELECT Message FROM Messages WHERE MsgID=?";
             ResultSet rs = null;
             Connection conn = null;
-            PreparedStatement pstmt = null;
             synchronized (lockObject) {
                 try {
                     conn = connect();
-                    pstmt = conn.prepareStatement(selectSQL);
-                    pstmt.setInt(1, messageId);
-                    rs = pstmt.executeQuery();
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement(selectSQL))
+						{
+							pstmt.setInt(1, messageId);
+							rs = pstmt.executeQuery();
 
-                    while (rs.next()) {
-                        InputStream input = rs.getBinaryStream("Message");
-                        while ((nRead = input.read(data, 0, data.length)) != -1) {
-                            buffer.write(data, 0, nRead);
-                        }
+							while (rs.next()) {
+								InputStream input = rs.getBinaryStream("Message");
+								while ((nRead = input.read(data, 0, data.length)) != -1) {
+									buffer.write(data, 0, nRead);
+								}
 
-                        buffer.flush();
-                        input.close();
+								buffer.flush();
+								input.close();
 
-                    }
+							}
+						}
+					}
                 } catch (SQLException | IOException e) {
                     javax.swing.JOptionPane.showMessageDialog(null, selectSQL + "("+messageId+")"+e.getMessage(), "MessageContentDBCache: toByteArray SQLException", javax.swing.JOptionPane.ERROR_MESSAGE);
                     System.out.println(e.getMessage());
@@ -482,9 +486,6 @@ public class MessageContentDBCache implements MessageContent {
                     try {
                         if (rs != null) {
                             rs.close();
-                        }
-                        if (pstmt != null) {
-                            pstmt.close();
                         }
 
                         if (conn != null) {
@@ -515,18 +516,22 @@ public class MessageContentDBCache implements MessageContent {
             String selectSQL = "SELECT Message FROM Messages WHERE MsgID=?";
             ResultSet rs = null;
             Connection conn = null;
-            PreparedStatement pstmt = null;
 
             synchronized (lockObject) {
                 try {
                     conn = connect();
-                    pstmt = conn.prepareStatement(selectSQL);
-                    pstmt.setInt(1, messageId);
-                    rs = pstmt.executeQuery();
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement(selectSQL))
+						{
+						  pstmt.setInt(1, messageId);
+						  rs = pstmt.executeQuery();
 
-                    while (rs.next()) {
-                        input = rs.getBinaryStream("Message");
-                    }
+						  while (rs.next()) {
+							  input = rs.getBinaryStream("Message");
+						  }
+						}
+					}
                 } catch (SQLException e) {
                     javax.swing.JOptionPane.showMessageDialog(null, selectSQL + "("+messageId+")"+e.getMessage(), "MessageContentDBCache: toByteArray SQLException", javax.swing.JOptionPane.ERROR_MESSAGE);
                     System.out.println(e.getMessage());
@@ -538,9 +543,6 @@ public class MessageContentDBCache implements MessageContent {
                     try {
                         if (rs != null) {
                             rs.close();
-                        }
-                        if (pstmt != null) {
-                            pstmt.close();
                         }
 
                         if (conn != null) {
