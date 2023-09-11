@@ -39,14 +39,15 @@ public class TMDDDatabase {
     }
 
     public void query(String strQry) {
-        Statement stmt = null;
         ResultSet rs = null;
 
         try {
             // SQL query command
             String SQL = strQry;
-            stmt = tmddConnection.createStatement();
-            rs = stmt.executeQuery(SQL);
+            try (Statement stmt = tmddConnection.createStatement())
+			{
+				rs = stmt.executeQuery(SQL);
+			}
             while (rs.next()) {
                 System.out.println(rs.getString("Procedure"));
             }
@@ -58,15 +59,16 @@ public class TMDDDatabase {
     }
 
     public ResultSet queryReturnRS(String strQry) {
-        Statement stmt = null;
         ResultSet rs = null;
 
         try {
             // SQL query command
             String SQL = strQry;
             if (tmddConnection == null)connectToDatabase();
-            stmt = tmddConnection.createStatement();
-            rs = stmt.executeQuery(SQL);            
+            try (Statement stmt = tmddConnection.createStatement())
+			{
+				rs = stmt.executeQuery(SQL);            
+			}
             
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -77,13 +79,13 @@ public class TMDDDatabase {
     }
 
     public void queryNoResult(String strQry) {
-        Statement stmt = null;
         try {
             // SQL query command
             String SQL = strQry;
-            stmt = tmddConnection.createStatement();
-            stmt.executeUpdate(SQL);
-            stmt.close();
+            try (Statement stmt = tmddConnection.createStatement())
+			{
+				stmt.executeUpdate(SQL);
+			}
 
 
         } catch (Exception ex) {
