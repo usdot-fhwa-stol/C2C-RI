@@ -63,30 +63,32 @@ class EchoServer {
             
             SSLServerSocketFactory sslserversocketfactory =
                     (SSLServerSocketFactory) SSLServerSocketFactory.getDefault();
-            SSLServerSocket sslserversocket =
-                    (SSLServerSocket) sslserversocketfactory.createServerSocket(internalPort);
-            SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
-//           ServerSocketFactory sslserversocketfactory =
- //                   (ServerSocketFactory) ServerSocketFactory.getDefault();
-//            SocketFactory tmpFactory = (SocketFactory)SocketFactory.getDefault();
-//            Socket tmpSocket = tmpFactory.createSocket("localhost", internalPort);
- //           ServerSocket sslserversocket = 
- //                   (ServerSocket) sslserversocketfactory.createServerSocket(internalPort);
+            try (SSLServerSocket sslserversocket =
+                    (SSLServerSocket) sslserversocketfactory.createServerSocket(internalPort))
+			{
+				SSLSocket sslsocket = (SSLSocket) sslserversocket.accept();
+	//           ServerSocketFactory sslserversocketfactory =
+	 //                   (ServerSocketFactory) ServerSocketFactory.getDefault();
+	//            SocketFactory tmpFactory = (SocketFactory)SocketFactory.getDefault();
+	//            Socket tmpSocket = tmpFactory.createSocket("localhost", internalPort);
+	 //           ServerSocket sslserversocket = 
+	 //                   (ServerSocket) sslserversocketfactory.createServerSocket(internalPort);
 
- //           Socket sslsocket = (Socket) sslserversocket.accept();
+	 //           Socket sslsocket = (Socket) sslserversocket.accept();
 
-            InputStream inputstream = sslsocket.getInputStream();
-            InputStreamReader inputstreamreader = new InputStreamReader(inputstream);
-            BufferedReader bufferedreader = new BufferedReader(inputstreamreader);
+				InputStream inputstream = sslsocket.getInputStream();
+				InputStreamReader inputstreamreader = new InputStreamReader(inputstream);
+				BufferedReader bufferedreader = new BufferedReader(inputstreamreader);
 
-            String string = null;
-            while ((string = bufferedreader.readLine()) != null) {
-                System.out.println(string);
-                System.out.flush();
-                
-            }
-            bufferedreader.close();
-            logger.removeAllAppenders();            
+				String string = null;
+				while ((string = bufferedreader.readLine()) != null) {
+					System.out.println(string);
+					System.out.flush();
+
+				}
+				bufferedreader.close();
+				logger.removeAllAppenders();
+			}
         } catch (Exception exception) {
             exception.printStackTrace();
         }

@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.io.StringReader;
 import java.io.StringWriter;
+import javax.xml.XMLConstants;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -34,6 +35,8 @@ public class TestPrettyPrint {
             StringWriter stringwriter = new StringWriter();
             StreamResult xmlOutput = new StreamResult(stringwriter);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
+			transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+			transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
             System.err.println("\n\nTransFormerFactory Class URL = "+transformerFactory.getClass().getProtectionDomain().getCodeSource().getLocation().toString());
             System.err.println("\n\nTransFormerFactory Class Name = "+transformerFactory.getClass().getName());
             System.err.println("\n\nTransFormerFactory Class Loader = "+transformerFactory.getClass().getClassLoader().toString());
