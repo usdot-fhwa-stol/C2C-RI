@@ -69,12 +69,13 @@ public class C2CMainUI extends javax.swing.JFrame {
             .whitelistPackages("org.fhwa.c2cri.applayer")   // Scan com.xyz and subpackages
             .scan()) {                      // Perform the scan and return a ScanResult
             // Use the ScanResult within the try block, e.g.
-           FileWriter writer = new FileWriter("ClassFile.txt", true);
-           for (ClassInfo widgetClassInfo : scanResult.getAllClasses()){
-                System.out.println(widgetClassInfo.getClasspathElementFile().getPath()+": "+widgetClassInfo.getName());
-                writer.write(widgetClassInfo.getClasspathElementFile().getPath()+": "+widgetClassInfo.getName()+"\n");
-            };
-            writer.close();
+           try (FileWriter writer = new FileWriter("ClassFile.txt", true))
+		   {
+			for (ClassInfo widgetClassInfo : scanResult.getAllClasses()){
+				 System.out.println(widgetClassInfo.getClasspathElementFile().getPath()+": "+widgetClassInfo.getName());
+				 writer.write(widgetClassInfo.getClasspathElementFile().getPath()+": "+widgetClassInfo.getName()+"\n");
+			 }
+		   }
             // ...
         } catch (IOException ioex){
             ioex.printStackTrace();
