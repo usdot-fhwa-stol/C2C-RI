@@ -141,9 +141,8 @@ public class TemporaryMessageFile {
             }
         }
 
-        try {
-            OutputStream f = new FileOutputStream(
-                    new File(this.filePath));
+        try (OutputStream f = new FileOutputStream(new File(this.filePath)))
+		{
 
             boolean keepReading = true;
             while (keepReading) {
@@ -154,7 +153,7 @@ public class TemporaryMessageFile {
                     f.write(inputByte);
                 }
             }
-            f.close();
+
             System.out.println("Temp File is "+this.filePath);
             fileStream = new ResetOnCloseInputStream(new BufferedInputStream(new FileInputStream(new File(this.filePath)),2048));
         } catch (Exception e) {
