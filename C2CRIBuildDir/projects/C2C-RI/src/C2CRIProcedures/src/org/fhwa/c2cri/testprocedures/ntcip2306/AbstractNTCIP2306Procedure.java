@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -140,15 +141,14 @@ public abstract class AbstractNTCIP2306Procedure implements TestProcedure {
 
         String finalLine = "</testprocedure>";
 
-        try {
-            Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + fileName), "UTF-8");
+        try (Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + fileName), StandardCharsets.UTF_8))
+		{
             out.write(header);
             out.write(intro);
             for (Section thisSection : subSections) {
                 out.write(thisSection.getScriptContent());
             }
             out.write(finalLine);
-            out.close();
         } catch (Exception ex) {
             System.out.println("****** Writing Error:*******\n");
             ex.printStackTrace();

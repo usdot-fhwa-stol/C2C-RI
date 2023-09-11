@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import tmddv3verification.utilities.TMDDDatabase;
@@ -27,8 +28,8 @@ public class TMDDMessageXSLTCreator {
 
     public void makeTMDDMessageXSLT(String path, String fileName){
 
-        try {
-            Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + fileName), "UTF-8");
+        try (Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + fileName), StandardCharsets.UTF_8))
+		{
         
             out.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
 "<!--\n" +
@@ -70,9 +71,6 @@ public class TMDDMessageXSLTCreator {
 "</xsl:stylesheet>");
         
 //        System.out.println(results.toString());
-        
-        out.close();
-        
         } catch (Exception ex){
             ex.printStackTrace();
         }
