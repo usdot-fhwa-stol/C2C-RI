@@ -153,8 +153,8 @@ public class TestCase implements XMLable {
     	if (file != null){
 	        File f = new File(file);
 	        if (f.exists() && f.isFile()) {
-	            try{
-	                BufferedReader reader = new BufferedReader(new FileReader(f));
+	            try (BufferedReader reader = new BufferedReader(new FileReader(f)))
+				{
 	                String line = null;
 	                while((line = reader.readLine()) != null){
 	                    contents.append(line+"\n");
