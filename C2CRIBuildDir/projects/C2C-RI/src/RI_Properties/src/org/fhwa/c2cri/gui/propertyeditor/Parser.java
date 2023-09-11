@@ -252,35 +252,36 @@ public class Parser {
      */
     public static void getGroups(EditorFile eFile) throws IOException {
         
-        BufferedReader br = new BufferedReader(new FileReader(eFile));
+        try (BufferedReader br = new BufferedReader(new FileReader(eFile)))
+		{
         
-        String groupData = ""; //current data for current group
-        
-        while(br.ready()) {
-            
-            String line = br.readLine();
-            //lineNumber++;
-            
-            if(groupName(line) != "") {
-                
-                if(groupData != "") {
-                    getParameters(groupData);
-                }
-                
-                g = new Group(groupName(line));
-                eFile.addGroup(g);
-                groupData = "";
-            }
-            else {
-                groupData += line + "\n";
-            }
-        }
-        
-        if(groupData != "") {
-            getParameters(groupData);
-        }
-        
-        br.close();
+			String groupData = ""; //current data for current group
+
+			while(br.ready()) {
+
+				String line = br.readLine();
+				//lineNumber++;
+
+				if(groupName(line) != "") {
+
+					if(groupData != "") {
+						getParameters(groupData);
+					}
+
+					g = new Group(groupName(line));
+					eFile.addGroup(g);
+					groupData = "";
+				}
+				else {
+					groupData += line + "\n";
+				}
+			}
+
+			if(groupData != "") {
+				getParameters(groupData);
+			}
+
+		}
     }
     
     /**
