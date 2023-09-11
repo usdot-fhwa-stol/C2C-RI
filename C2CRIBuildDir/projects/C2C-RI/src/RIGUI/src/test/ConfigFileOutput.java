@@ -32,9 +32,10 @@ public class ConfigFileOutput {
      * @param args the arguments
      */
     public static void main(String[] args) {
-        try {
-            String configFileName = "C:\\C2CRI-Phase2\\Installations\\PreRelease_2_23\\TestConfigurationFiles\\TMDDv303cEntityEmuOriginalOCS.ricfg";
-            ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(configFileName)));
+		 String configFileName = "C:\\C2CRI-Phase2\\Installations\\PreRelease_2_23\\TestConfigurationFiles\\TMDDv303cEntityEmuOriginalOCS.ricfg";
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(configFileName))))
+		{
+           
             TestConfiguration tc = (TestConfiguration)input.readObject();
 
             System.out.println("NeedID,NeedText,ReqID,ReqText");

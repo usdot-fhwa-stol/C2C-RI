@@ -30,16 +30,17 @@ public class ConfigFileApplicableTestCasesOutput {
      * @param args the arguments
      */
     public static void main(String[] args) {
-        try {
+		String configFileName = "c:\\c2cri\\TempCfg.ricfg";
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(configFileName))))
+		{
             RIParameters.getInstance().configure();
-            String configFileName = "c:\\c2cri\\TempCfg.ricfg";
-            ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(configFileName)));
+            
+            
             TestConfiguration tc = (TestConfiguration)input.readObject();
 
             List<TestCase> tcs = tc.getInfoLayerParams().getApplicableTestCases("EC");
 
 
-        input.close();
         } catch (Exception ex){
             ex.printStackTrace();
         }

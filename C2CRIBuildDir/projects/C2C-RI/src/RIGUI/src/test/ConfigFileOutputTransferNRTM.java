@@ -32,15 +32,18 @@ public class ConfigFileOutputTransferNRTM {
         String[] cfgList = new String[]{"TMDDv303cEntityEmuOriginalECS.ricfg","TMDDv303cEntityEmuOriginalOCS.ricfg","TMDDv303dEntityEmuOriginalECS.ricfg","TMDDv303dEntityEmuOriginalOCS.ricfg","TMDDv31EntityEmuOriginalECS.ricfg","TMDDv31EntityEmuOriginalOCS.ricfg",
                                         "TMDDv303cEntityEmuOriginalQueueECS.ricfg","TMDDv303cEntityEmuOriginalQueueOCS.ricfg","TMDDv303dEntityEmuOriginalQueueECS.ricfg","TMDDv303dEntityEmuOriginalQueueOCS.ricfg","TMDDv31EntityEmuOriginalQueueECS.ricfg","TMDDv31EntityEmuOriginalQueueOCS.ricfg"};
         for (String cfgFile : cfgList){
-            try {
+			String inputConfigFileName = "C:\\C2CRIInstallers\\Enhancements-trial8\\TestConfigurationFiles\\"+cfgFile;
+			String outputConfigFileName = "C:\\C2CRIDev\\C2CRIBuildDir\\projects\\C2C-RI\\src\\RIGUI\\TestConfigurationFiles\\"+cfgFile;
+            try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(inputConfigFileName)));
+				ObjectInputStream output = new ObjectInputStream(new FileInputStream(new File(outputConfigFileName))))
+			{
                 System.out.println("Processing "+cfgFile+" ...");
-                String inputConfigFileName = "C:\\C2CRIInstallers\\Enhancements-trial8\\TestConfigurationFiles\\"+cfgFile;
-                ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(inputConfigFileName)));
+                
+                
                 TestConfiguration tcIn = (TestConfiguration) input.readObject();
 
-                String outputConfigFileName = "C:\\C2CRIDev\\C2CRIBuildDir\\projects\\C2C-RI\\src\\RIGUI\\TestConfigurationFiles\\"+cfgFile;
-                ObjectInputStream output = new ObjectInputStream(new FileInputStream(new File(outputConfigFileName)));
-                TestConfiguration tcOut = (TestConfiguration) output.readObject();
+				TestConfiguration tcOut = (TestConfiguration) output.readObject();
+				
 
     //            System.out.println("Info Layer Processing");
     //            for (Need un : tcIn.getInfoLayerParams().getNrtm().getUserNeeds().needs) {
@@ -81,17 +84,10 @@ public class ConfigFileOutputTransferNRTM {
                 tcOut.getEmulationParameters().setCommandQueueLength(tcIn.getEmulationParameters().getCommandQueueLength());
                 tcOut.getEmulationParameters().setEntityDataMap(tcIn.getEmulationParameters().getEntityDataMap());
 
-                output.close();
-                output = null;
-
-                input.close();
-                input = null;
-
-                ObjectOutputStream outputFile = new ObjectOutputStream(new FileOutputStream(outputConfigFileName));
-                outputFile.writeObject(tcOut);
-                outputFile.flush();
-                outputFile.close();
-                outputFile = null;
+                try (ObjectOutputStream outputFile = new ObjectOutputStream(new FileOutputStream(outputConfigFileName)))
+				{
+					outputFile.writeObject(tcOut);
+				}
     //            FileOutputStream output = new FileOutputStream("c:\\c2cri\\EntityEmulationOut.xml");
     //            output.write(tc.to_LogFormat().getBytes());
     //            output.close();
