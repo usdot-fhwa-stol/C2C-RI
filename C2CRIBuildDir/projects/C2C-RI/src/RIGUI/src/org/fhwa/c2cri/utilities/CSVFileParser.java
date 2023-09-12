@@ -115,7 +115,7 @@ Matcher matcher = null;
                         } else {
                             if (match.startsWith("\"")){
                                 if (match.endsWith("\"")){
-                                    match.replaceFirst("\"", "");
+                                    match = match.replaceFirst("\"", "");
                                     match = match.substring(0, match.lastIndexOf("\"")-1);
                                 }
                             }
