@@ -463,14 +463,16 @@ public class MessageContentDBCache implements MessageContent {
 							pstmt.setInt(1, messageId);
 							rs = pstmt.executeQuery();
 
-							while (rs.next()) {
-								InputStream input = rs.getBinaryStream("Message");
-								while ((nRead = input.read(data, 0, data.length)) != -1) {
-									buffer.write(data, 0, nRead);
-								}
+							while (rs.next()) 
+							{
+								try (InputStream input = rs.getBinaryStream("Message"))
+								{
+									while ((nRead = input.read(data, 0, data.length)) != -1) {
+										buffer.write(data, 0, nRead);
+									}
 
-								buffer.flush();
-								input.close();
+									buffer.flush();
+								}
 
 							}
 						}
