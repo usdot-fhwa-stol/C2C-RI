@@ -34,8 +34,8 @@ public class ConfigFileOutputTransferNRTM {
         for (String cfgFile : cfgList){
 			String inputConfigFileName = "C:\\C2CRIInstallers\\Enhancements-trial8\\TestConfigurationFiles\\"+cfgFile;
 			String outputConfigFileName = "C:\\C2CRIDev\\C2CRIBuildDir\\projects\\C2C-RI\\src\\RIGUI\\TestConfigurationFiles\\"+cfgFile;
-            try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(inputConfigFileName)));
-				ObjectInputStream output = new ObjectInputStream(new FileInputStream(new File(outputConfigFileName))))
+            try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(inputConfigFileName));
+				ObjectInputStream output = new ObjectInputStream(new FileInputStream(outputConfigFileName)))
 			{
                 System.out.println("Processing "+cfgFile+" ...");
                 

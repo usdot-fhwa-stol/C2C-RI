@@ -31,7 +31,7 @@ public class ConfigFileApplicableTestCasesOutput {
      */
     public static void main(String[] args) {
 		String configFileName = "c:\\c2cri\\TempCfg.ricfg";
-        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(configFileName))))
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(configFileName)))
 		{
             RIParameters.getInstance().configure();
             

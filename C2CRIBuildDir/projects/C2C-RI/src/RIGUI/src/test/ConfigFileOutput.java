@@ -33,7 +33,7 @@ public class ConfigFileOutput {
      */
     public static void main(String[] args) {
 		 String configFileName = "C:\\C2CRI-Phase2\\Installations\\PreRelease_2_23\\TestConfigurationFiles\\TMDDv303cEntityEmuOriginalOCS.ricfg";
-        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(configFileName))))
+        try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(configFileName)))
 		{
            
             TestConfiguration tc = (TestConfiguration)input.readObject();

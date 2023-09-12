@@ -148,7 +148,7 @@ public class ConfigFileOutputTransferTestCaseUpdates {
             String inputConfigFileName = fullFileName;
             
 			TestConfiguration tcIn;
-			try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(inputConfigFileName))))
+			try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(inputConfigFileName)))
 			{
 				tcIn = (TestConfiguration) input.readObject();     
 			}
@@ -169,7 +169,7 @@ public class ConfigFileOutputTransferTestCaseUpdates {
                 default: break;
             }
 
-            try (ObjectInputStream output = new ObjectInputStream(new FileInputStream(new File(prototypeConfigFileName))))
+            try (ObjectInputStream output = new ObjectInputStream(new FileInputStream(prototypeConfigFileName)))
 			{
 				TestConfiguration tcOut = (TestConfiguration) output.readObject();
 			}
