@@ -1645,7 +1645,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      *
      * @return true, if is on change update
      */
-    private boolean isOnChangeUpdate() {
+    private synchronized boolean isOnChangeUpdate() {
         return onChangeUpdate;
     }
 
