@@ -159,7 +159,7 @@ public class ActionLogAppender implements org.apache.log4j.Appender {
      * Return the currently set {@link ErrorHandler} for this Appender.      *
      * @since 0.9.0
      */
-    public ErrorHandler getErrorHandler() {
+    public synchronized ErrorHandler getErrorHandler() {
         return this.errorHandler;
     }
 
