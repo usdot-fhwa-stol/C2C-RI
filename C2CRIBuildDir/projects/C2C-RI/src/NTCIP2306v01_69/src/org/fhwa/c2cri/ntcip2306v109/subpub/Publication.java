@@ -1259,7 +1259,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                 responseText = "OK";
             } else if (getState().equals(Publication.PUBLICATIONSTATE.UPDATING)) {
                 throw new Exception("The subscription is updating the associated publication.");
-            } else if (getState().equals(Publication.PUBLICATIONSTATE.ACTIVE)) {
+            } else {
                 throw new Exception("The publication associated with the subscription id is in an invalid state.");
             }
         }
