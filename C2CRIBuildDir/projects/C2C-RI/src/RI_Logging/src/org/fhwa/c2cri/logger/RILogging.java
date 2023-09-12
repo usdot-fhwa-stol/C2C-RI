@@ -371,7 +371,7 @@ public class RILogging implements Serializable {
         StringBuffer sb = new StringBuffer();
         boolean successfulResult = false;
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fname),StandardCharsets.UTF_8));
-			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(fname + ".tmp")),StandardCharsets.UTF_8.name())))
+			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fname + ".tmp"),StandardCharsets.UTF_8)))
 		{
             // Create a copy of the original xml file that includes additional "wrapper" tags.
             out.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
