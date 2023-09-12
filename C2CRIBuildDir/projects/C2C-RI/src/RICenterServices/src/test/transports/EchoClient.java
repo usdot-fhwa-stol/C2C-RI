@@ -63,22 +63,18 @@ class EchoClient {
 
 	//            InputStream inputstream = System.in;
 	//            InputStreamReader inputstreamreader = new InputStreamReader(inputstream);
-			StringReader stringreader = new StringReader("Line1\nLine2\nLine3");
 	//            BufferedReader bufferedreader = new BufferedReader(inputstreamreader);
-				BufferedReader bufferedreader = new BufferedReader(stringreader);
+				try (BufferedReader bufferedreader = new BufferedReader(new StringReader("Line1\nLine2\nLine3"));
+					BufferedWriter bufferedwriter = new BufferedWriter(new OutputStreamWriter(sslsocket.getOutputStream())))
+					{
 
-				OutputStream outputstream = sslsocket.getOutputStream();
-				OutputStreamWriter outputstreamwriter = new OutputStreamWriter(outputstream);
-				BufferedWriter bufferedwriter = new BufferedWriter(outputstreamwriter);
 
-				String string = null;
-				while ((string = bufferedreader.readLine()) != null) {
-					bufferedwriter.write(string + '\n');
-					bufferedwriter.flush();
+						String string = null;
+						while ((string = bufferedreader.readLine()) != null) {
+							bufferedwriter.write(string + '\n');
+							bufferedwriter.flush();
+						}
 				}
-
-				bufferedwriter.close();
-				bufferedreader.close();
 			}
             logger.removeAllAppenders();
         } catch (Exception exception) {
