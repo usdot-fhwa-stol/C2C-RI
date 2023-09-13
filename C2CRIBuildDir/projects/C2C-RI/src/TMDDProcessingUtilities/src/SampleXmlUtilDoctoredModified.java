@@ -742,7 +742,7 @@ public class SampleXmlUtilDoctoredModified {
                 sb.append('1');
                 increment = new BigDecimal(sb.toString());
             } else {
-                increment = new BigDecimal(1.0);
+                increment = BigDecimal.valueOf(1.0);
             }
         }
 
@@ -894,7 +894,7 @@ public class SampleXmlUtilDoctoredModified {
                 gdurb.setSecond(minExclusive.getSecond() + 1);
             }
             if (gdurb.getFraction().compareTo(minExclusive.getFraction()) <= 0) {
-                gdurb.setFraction(minExclusive.getFraction().add(new BigDecimal(0.001)));
+                gdurb.setFraction(minExclusive.getFraction().add(BigDecimal.valueOf(0.001)));
             }
         }
 
