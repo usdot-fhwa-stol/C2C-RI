@@ -19,6 +19,7 @@ public class UserVerificationStatus {
     /** The skip user verification. */
     private static Boolean skipUserVerification = false;
     
+	private static final Object LOCK = new Object();
     
     /**
      * Returns an instance of UserVerificationStatus.
@@ -44,7 +45,7 @@ public class UserVerificationStatus {
      * @param skip - a true value indicates that user verification steps should be skipped.
      */
     public void skipVerification(boolean skip){
-        synchronized (skipUserVerification){
+        synchronized (LOCK){
             skipUserVerification = skip;            
         }
     }
@@ -56,7 +57,7 @@ public class UserVerificationStatus {
      */
     public boolean isSkipVerificatonSet(){
        boolean results;
-        synchronized (skipUserVerification){
+        synchronized (LOCK){
             results = skipUserVerification;            
         }
        return results;
