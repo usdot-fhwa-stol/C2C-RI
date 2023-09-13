@@ -165,7 +165,7 @@ public class EntityDataValidator
             Matcher matcher = regPass.matcher(elementValue);
             
             //A loop control method that searches through the input string.
-            while(matcher.find())
+            if(matcher.find())
             {
                 //If a match is found, meaning that the DateTime is correct in the input string, the method returns.
                 return;
