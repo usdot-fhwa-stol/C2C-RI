@@ -18,7 +18,6 @@ public class ValueInRangeFilter implements DataFilter {
     private String rangeStart;
     private String rangeEnd;
     private String filteredItem;
-    private ArrayList valueSet;
     private int schemaId;
     private BaseType baseType;
     private String enumeration;
@@ -33,7 +32,6 @@ public class ValueInRangeFilter implements DataFilter {
         this.rangeStart = rangeStart;
         this.rangeEnd = rangeEnd;
         this.filteredItem = filteredItem;
-        this.valueSet = valueSet;
         this.entityDataType = entityDataType;
     }
 
