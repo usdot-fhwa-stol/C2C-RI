@@ -92,19 +92,11 @@ public class SelectSUTSettingsPage extends C2CRIWizardPage {
     }
 
     private void updateUserNameFields() {
-        if (sutPanel.getUserNameCheckBox().isSelected()) {
-            sutPanel.getUserNameTextField().setEnabled(true);
-        } else {
-            sutPanel.getUserNameTextField().setEnabled(true);
-        };
+		sutPanel.getUserNameTextField().setEnabled(true);
     }
 
     private void updatePasswordFields() {
-        if (sutPanel.getPasswordCheckBox().isSelected()) {
-            sutPanel.getPasswordTextField().setEnabled(true);
-        } else {
-            sutPanel.getPasswordTextField().setEnabled(true);
-        };
+		sutPanel.getPasswordTextField().setEnabled(true);
     }
 
     @Override
