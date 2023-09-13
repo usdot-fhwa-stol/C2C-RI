@@ -185,11 +185,7 @@ public class DefaultSubPubMapper implements SubPubMapper {
             ArrayList<OperationSpecification> pubSpecs = operationSpecCollection.getSpecsWithOperationName(publicationName);
             if (pubSpecs.size() > 0) {
                 OperationSpecification pubOpSpec = pubSpecs.get(0);
-                if (riCenterMode.equals(Center.RICENTERMODE.EC)) {
-                    return new OperationIdentifier(pubOpSpec.getRelatedToService(), pubOpSpec.getRelatedToPort(), pubOpSpec.getOperationName(), OperationIdentifier.SOURCETYPE.LISTENER);
-                } else {
-                    return new OperationIdentifier(pubOpSpec.getRelatedToService(), pubOpSpec.getRelatedToPort(), pubOpSpec.getOperationName(), OperationIdentifier.SOURCETYPE.LISTENER);
-                }
+                return new OperationIdentifier(pubOpSpec.getRelatedToService(), pubOpSpec.getRelatedToPort(), pubOpSpec.getOperationName(), OperationIdentifier.SOURCETYPE.LISTENER);
             }
             throw new SubPubMappingException("DefaultSubPubMapper:: Could not find a valid Publication Identifier for Operation " + subscriptionOperationName);
         } else {
