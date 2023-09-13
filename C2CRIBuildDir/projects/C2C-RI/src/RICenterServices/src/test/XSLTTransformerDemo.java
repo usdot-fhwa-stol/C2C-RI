@@ -108,11 +108,9 @@ public class XSLTTransformerDemo {
         parameterMap.put("validwsdl", "true");
         parameterMap.put("validwsdldeclaraion", "false");
 
-        if (level.equalsIgnoreCase("predefined")) {
-            wsdlVerificationFilePath = foo_xml;
-        } else {
-            wsdlVerificationFilePath = foo_xml;
-        }
+
+		wsdlVerificationFilePath = foo_xml;
+
 
         try {
             URL inputURL = new URL(foo_xml);
