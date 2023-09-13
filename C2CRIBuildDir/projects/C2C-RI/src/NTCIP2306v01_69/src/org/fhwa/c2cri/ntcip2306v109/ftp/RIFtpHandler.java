@@ -465,7 +465,6 @@ public class RIFtpHandler implements FtpHandler {
                 }
 
                 if (command != null) {
-                    synchronized (session) {
                         if (responseMsg != null) {
                             responseMsg.setTransportedTimeInMs(System.currentTimeMillis());
                             if (!responseMsg.isTransportErrorEncountered()) {
@@ -474,7 +473,6 @@ public class RIFtpHandler implements FtpHandler {
                         } else {
                             command.execute(session, context, request);
                         }
-                    }
                 } else {
                     session.write(LocalizedFtpReply.translate(session, request,
                             context,
