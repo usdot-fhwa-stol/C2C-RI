@@ -234,6 +234,8 @@ public class Publication implements Runnable, MessageUpdateListener {
      *  Thread for processing publication and response and results
      */
     private Thread nonScriptedPubResponseThread;
+	
+	private final Object LOCK = new Object();
     
     
     /**
@@ -849,7 +851,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @return the state
      */
     public PUBLICATIONSTATE getState() {
-        synchronized (this.state) {
+        synchronized (LOCK) {
             return state;
         }
     }
@@ -860,7 +862,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @param state the new state
      */
     private void setState(PUBLICATIONSTATE state) {
-        synchronized (this.state) {
+        synchronized (LOCK) {
             this.state = state;
         }
     }
@@ -1402,7 +1404,9 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @return the millis since last periodic subscription
      */
     public long getMillisSinceLastPeriodicPublication() {
-        return millisSinceLastPublication;
+		synchronized (LOCK) {
+			return millisSinceLastPublication;
+		}
     }
 
     /**
@@ -1413,7 +1417,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @param currentTimeInMillis the current time in millis
      */
     private void computeMillisSinceLastPublication(long currentTimeInMillis) {
-        synchronized (millisSinceLastPublication) {
+        synchronized (LOCK) {
             millisSinceLastPublication = currentTimeInMillis - lastPublicationTimeInMillis;
             lastPublicationTimeInMillis = currentTimeInMillis;
             System.out.println("Publication::computeMillisSinceLastPublication lastPublicationTimeInMillis = "+lastPublicationTimeInMillis);

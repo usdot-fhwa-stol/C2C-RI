@@ -7,11 +7,13 @@ package org.fhwa.c2cri.ntcip2306v109.subpub;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.datatype.XMLGregorianCalendar;
 import org.fhwa.c2cri.ntcip2306v109.c2cadmin.C2CMessageSubscription;
+import org.fhwa.c2cri.ntcip2306v109.c2cadmin.SubscriptionTimeFrame;
 import org.fhwa.c2cri.ntcip2306v109.centercontrol.Center;
 import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
 
@@ -77,6 +79,8 @@ public class Subscription {
     
     /** The related publication. */
     private Publication relatedPublication;
+	
+	private final Object LOCK = new Object();
 
     /**
      * Instantiates a new subscription.
@@ -100,7 +104,7 @@ public class Subscription {
      */
     public void replace(C2CMessageSubscription message) {
         setState(SUBSCRIPTIONSTATE.UPDATING);
-        synchronized (subscriptionHeaderContents) {
+        synchronized (LOCK) {
             subscriptionHeaderContents = message;
         }
 
@@ -154,7 +158,7 @@ public class Subscription {
      * @return the state
      */
     public SUBSCRIPTIONSTATE getState() {
-        synchronized (this.state){
+        synchronized (LOCK){
             return state;
         }
     }
@@ -165,7 +169,7 @@ public class Subscription {
      * @param state the new state
      */
     protected void setState(SUBSCRIPTIONSTATE state) {
-        synchronized (this.state) {
+        synchronized (LOCK) {
             this.state = state;
         }
     }
@@ -176,7 +180,9 @@ public class Subscription {
      * @return the subscription id
      */
     public String getSubscriptionID() {
-        return subscriptionHeaderContents.getSubscriptionID();
+		synchronized (LOCK) {
+			return subscriptionHeaderContents.getSubscriptionID();
+		}
     }
 
     /**
@@ -186,34 +192,38 @@ public class Subscription {
      */
     public SUBSCRIPTIONACTION getSubscriptionAction() {
         SUBSCRIPTIONACTION returnAction = SUBSCRIPTIONACTION.RESERVED;
+		List<String> oActions;
+		synchronized (LOCK)
+		{
+			oActions = subscriptionHeaderContents.getSubscriptionAction().getSubscriptionActionItem();
+		}
+		for (String subscriptionAction : oActions) {
+			if ((subscriptionAction.equals("replaceSubscription"))
+					|| subscriptionAction.equals("2")) {
+				returnAction = SUBSCRIPTIONACTION.REPLACESUBSCRIPTION;
+				break;
+			} else if ((subscriptionAction.equals("newSubscription"))
+					|| subscriptionAction.equals("1")) {
+				returnAction = SUBSCRIPTIONACTION.NEWSUBSCRIPTION;
+				break;
 
-        for (String subscriptionAction : subscriptionHeaderContents.getSubscriptionAction().getSubscriptionActionItem()) {
-            if ((subscriptionAction.equals("replaceSubscription"))
-                    || subscriptionAction.equals("2")) {
-                returnAction = SUBSCRIPTIONACTION.REPLACESUBSCRIPTION;
-                break;
-            } else if ((subscriptionAction.equals("newSubscription"))
-                    || subscriptionAction.equals("1")) {
-                returnAction = SUBSCRIPTIONACTION.NEWSUBSCRIPTION;
-                break;
+			} else if ((subscriptionAction.equals("cancelSubscription"))
+					|| subscriptionAction.equals("3")) {
+				returnAction = SUBSCRIPTIONACTION.CANCELSUBSCRIPTION;
+				break;
 
-            } else if ((subscriptionAction.equals("cancelSubscription"))
-                    || subscriptionAction.equals("3")) {
-                returnAction = SUBSCRIPTIONACTION.CANCELSUBSCRIPTION;
-                break;
+			} else if ((subscriptionAction.equals("cancelAllPriorSubscriptions"))
+					|| subscriptionAction.equals("4")) {
+				returnAction = SUBSCRIPTIONACTION.CANCELLALLPRIORSUBSCRIPTIONS;
+				break;
 
-            } else if ((subscriptionAction.equals("cancelAllPriorSubscriptions"))
-                    || subscriptionAction.equals("4")) {
-                returnAction = SUBSCRIPTIONACTION.CANCELLALLPRIORSUBSCRIPTIONS;
-                break;
+			} else if ((subscriptionAction.equals("reserved"))
+					|| subscriptionAction.equals("0")) {
+				returnAction = SUBSCRIPTIONACTION.RESERVED;
+				break;
 
-            } else if ((subscriptionAction.equals("reserved"))
-                    || subscriptionAction.equals("0")) {
-                returnAction = SUBSCRIPTIONACTION.RESERVED;
-                break;
-
-            }
-        }
+			}
+		}
         return returnAction;
     }
 
@@ -262,8 +272,10 @@ public class Subscription {
      * @return the subscription frequency
      */
     public long getSubscriptionFrequency() {
-        long frequency = subscriptionHeaderContents.getSubscriptionFrequency();
-        return frequency;
+        synchronized (LOCK)
+		{	
+			return subscriptionHeaderContents.getSubscriptionFrequency();
+		}
     }
 
     /**
@@ -283,8 +295,10 @@ public class Subscription {
      * @return the subscription name
      */
     public String getSubscriptionName() {
-        String name = subscriptionHeaderContents.getSubscriptionName();
-        return name;
+        synchronized (LOCK)
+		{
+			return subscriptionHeaderContents.getSubscriptionName();
+		}
     }
 
     /**
@@ -294,8 +308,7 @@ public class Subscription {
      * @return the subscription name
      */
     public static String getSubscriptionName(C2CMessageSubscription message) {
-        String name = message.getSubscriptionName();
-        return name;
+        return message.getSubscriptionName();
     }
 
     /**
@@ -304,8 +317,10 @@ public class Subscription {
      * @return the return address
      */
     public String getReturnAddress() {
-        String name = subscriptionHeaderContents.getReturnAddress();
-        return name;
+        synchronized (LOCK)
+		{
+			return subscriptionHeaderContents.getReturnAddress();
+		}
     }
 
     /**
@@ -315,8 +330,7 @@ public class Subscription {
      * @return the return address
      */
     public static String getReturnAddress(C2CMessageSubscription message) {
-        String name = message.getReturnAddress();
-        return name;
+			return message.getReturnAddress();
     }
     
     
@@ -327,7 +341,11 @@ public class Subscription {
      */
     public SUBSCRIPTIONTYPE getSubscriptionType() {
         SUBSCRIPTIONTYPE returnType = SUBSCRIPTIONTYPE.RESERVED;
-        String subscriptionType = subscriptionHeaderContents.getSubscriptionType().getSubscriptionTypeItem();
+		String subscriptionType;
+		synchronized (LOCK)
+		{
+			subscriptionType = subscriptionHeaderContents.getSubscriptionType().getSubscriptionTypeItem();
+		}
         if ((subscriptionType.equals("reserved"))
                 || subscriptionType.equals("0")) {
             returnType = SUBSCRIPTIONTYPE.RESERVED;
@@ -375,8 +393,13 @@ public class Subscription {
      * @return the subscription start time
      */
     public Date getSubscriptionStartTime() {
-        if (subscriptionHeaderContents.getSubscriptionTimeFrame() != null) {
-            XMLGregorianCalendar startTime = subscriptionHeaderContents.getSubscriptionTimeFrame().getStart();
+		SubscriptionTimeFrame oStf;
+		synchronized (LOCK)
+		{
+			oStf =  subscriptionHeaderContents.getSubscriptionTimeFrame();
+		}
+        if (oStf != null) {
+            XMLGregorianCalendar startTime = oStf.getStart();
             return startTime.toGregorianCalendar().getTime();
         } else {
             return new Date();
@@ -405,7 +428,11 @@ public class Subscription {
      */
     public Date getSubscriptionEndTime() {
         try{
-            XMLGregorianCalendar endTime = subscriptionHeaderContents.getSubscriptionTimeFrame().getEnd();
+			XMLGregorianCalendar endTime;
+			synchronized (LOCK)
+			{
+				endTime = subscriptionHeaderContents.getSubscriptionTimeFrame().getEnd();
+			}
             return endTime.toGregorianCalendar().getTime();
         } catch (Exception ex){
           ex.printStackTrace();

@@ -40,6 +40,8 @@ public class DefaultSubPubMapper implements SubPubMapper {
     
     /** The local map. */
     private static HashMap<OperationIdentifier, OperationIdentifier> localMap = new HashMap<>();
+	
+	private static final Object LOCK = new Object();
 
     /**
      * Instantiates a new default sub pub mapper.
@@ -102,7 +104,7 @@ public class DefaultSubPubMapper implements SubPubMapper {
      * @param subPubMap the sub pub map
      */
     public static void setLocalSubPubMapping(HashMap<OperationIdentifier, OperationIdentifier> subPubMap) {
-        synchronized (localMap) {
+        synchronized (LOCK) {
             localMap = subPubMap;
         }
     }
@@ -122,7 +124,7 @@ public class DefaultSubPubMapper implements SubPubMapper {
             publicationName = externalSubPubMapper.getRelatedPublicationName(subscriptionOperationName, requestMessage);
             return publicationName;
         } else {
-            synchronized (localMap) {
+            synchronized (LOCK) {
                 Iterator<OperationIdentifier> subIterator = localMap.keySet().iterator();
                 while (subIterator.hasNext()) {
                     OperationIdentifier thisSubOpId = subIterator.next();
@@ -153,7 +155,7 @@ public class DefaultSubPubMapper implements SubPubMapper {
                     C2CRIMessageAdapter.toC2CRIMessage(subscriptionOperationName, requestMsg));
             return publicationName;
         } else {
-            synchronized (localMap) {
+            synchronized (LOCK) {
                 Iterator<OperationIdentifier> subIterator = localMap.keySet().iterator();
                 while (subIterator.hasNext()) {
                     OperationIdentifier thisSubOpId = subIterator.next();
@@ -191,7 +193,7 @@ public class DefaultSubPubMapper implements SubPubMapper {
             }
             throw new SubPubMappingException("DefaultSubPubMapper:: Could not find a valid Publication Identifier for Operation " + subscriptionOperationName);
         } else {
-            synchronized (localMap) {
+            synchronized (LOCK) {
                 Iterator<OperationIdentifier> subIterator = localMap.keySet().iterator();
                 while (subIterator.hasNext()) {
                     OperationIdentifier thisSubOpId = subIterator.next();
@@ -220,7 +222,7 @@ public class DefaultSubPubMapper implements SubPubMapper {
             subscriptionName = externalSubPubMapper.getRelatedSubscriptionName(publicationOperationName);
             return subscriptionName;
         } else {
-            synchronized (localMap) {
+            synchronized (LOCK) {
                 Iterator<OperationIdentifier> subIterator = localMap.keySet().iterator();
                 while (subIterator.hasNext()) {
                     OperationIdentifier thisSubOpId = subIterator.next();
@@ -255,7 +257,7 @@ public class DefaultSubPubMapper implements SubPubMapper {
             }
             throw new SubPubMappingException("DefaultSubPubMapper:: Could not find a valid Subscription Identifier for Operation " + publicationOperationName);
         } else {
-            synchronized (localMap) {
+            synchronized (LOCK) {
                 Iterator<OperationIdentifier> subIterator = localMap.keySet().iterator();
                 while (subIterator.hasNext()) {
                     OperationIdentifier thisSubOpId = subIterator.next();
