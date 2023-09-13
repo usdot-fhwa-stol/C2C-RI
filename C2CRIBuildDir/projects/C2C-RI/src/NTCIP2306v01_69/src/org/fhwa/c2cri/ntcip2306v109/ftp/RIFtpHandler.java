@@ -485,15 +485,9 @@ public class RIFtpHandler implements FtpHandler {
                             session.getFtpletSession(), request, session
                             .getLastReply());
                     if (responseMsg != null) {
-                        if (retrieveProcessed) {
-                            responseMsg.getFtpStatus().setValidFTPProcessing(
-                                    (session.getLastReply().getCode() == session.getLastReply().REPLY_200_COMMAND_OKAY ? true : false));
-                            responseMsg.getFtpStatus().setStatusCode(session.getLastReply().getCode());
-                        } else {
-                            responseMsg.getFtpStatus().setValidFTPProcessing(
-                                    (session.getLastReply().getCode() == session.getLastReply().REPLY_200_COMMAND_OKAY ? true : false));
-                            responseMsg.getFtpStatus().setStatusCode(session.getLastReply().getCode());
-                        }
+						responseMsg.getFtpStatus().setValidFTPProcessing(
+								(session.getLastReply().getCode() == session.getLastReply().REPLY_200_COMMAND_OKAY));
+						responseMsg.getFtpStatus().setStatusCode(session.getLastReply().getCode());
                     }
                 } catch (Exception e) {
                     LOG.debug("Ftplet container threw exception", e);
