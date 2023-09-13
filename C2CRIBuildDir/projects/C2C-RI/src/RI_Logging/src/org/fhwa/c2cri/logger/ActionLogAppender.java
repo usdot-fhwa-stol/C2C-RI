@@ -63,7 +63,6 @@ public class ActionLogAppender implements org.apache.log4j.Appender {
      */
     public ActionLogAppender() {
         super();
-        this.listener = listener;
     }
 
     /**
@@ -75,7 +74,6 @@ public class ActionLogAppender implements org.apache.log4j.Appender {
      */
     protected ActionLogAppender(final boolean isActive) {
         super();
-        this.listener = listener;
     }
 
     /**
