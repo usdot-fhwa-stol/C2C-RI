@@ -37,6 +37,7 @@ public class ListenerManager implements SocketAssignmentListener {
     /** The listener id. */
     private static Integer listenerId=0;
 
+	private static final Object LOCK = new Object();
     /**
      * Instantiates a new listener manager.
      * 
@@ -103,7 +104,7 @@ public class ListenerManager implements SocketAssignmentListener {
      * @return the integer
      */
     private Integer incrementListenerId(){
-        synchronized(listenerId){
+        synchronized(LOCK){
             listenerId++;
         }
         return listenerId;
