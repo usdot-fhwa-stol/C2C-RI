@@ -35,7 +35,7 @@ import org.fhwa.c2cri.utilities.RIParameters;
 public class TestLogList {
 
     /** The log descriptions. */
-    private static ArrayList<TestLogDescription> logDescriptions = new ArrayList<>();
+    private static final ArrayList<TestLogDescription> logDescriptions = new ArrayList<>();
     
     /** The Constant NTHREDS. */
     private static final int NTHREDS = 1;
@@ -465,12 +465,8 @@ public class TestLogList {
          *
          * @return true, if is initializing
          */
-        public boolean isInitializing() {
-            boolean result;
-            synchronized (this.initializing) {
-                result = this.initializing;
-            }
-            return result;
+        public synchronized boolean isInitializing() {
+            return this.initializing;
         }
 
         /**
@@ -478,10 +474,8 @@ public class TestLogList {
          *
          * @param state the new initializing
          */
-        public void setInitializing(boolean state) {
-            synchronized (this.initializing) {
+        public synchronized void setInitializing(boolean state) {
                 this.initializing = state;
-            }
         }
 
         /**
@@ -492,12 +486,8 @@ public class TestLogList {
          *
          * @return true, if is pause flag
          */
-        private boolean isPauseFlag() {
-            boolean response;
-            synchronized(this.pauseFlag){
-                response = this.pauseFlag;
-            }
-            return response;
+        private synchronized boolean isPauseFlag() {
+            return this.pauseFlag;
         }
 
         /**
@@ -505,10 +495,8 @@ public class TestLogList {
          *
          * @param pauseFlag the new pause flag
          */
-        public void setPauseFlag(boolean pauseFlag) {
-            synchronized(this.pauseFlag){
+        public synchronized void setPauseFlag(boolean pauseFlag) {
                 this.pauseFlag = pauseFlag;
-            }
         }
         
         
