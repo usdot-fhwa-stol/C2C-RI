@@ -151,19 +151,11 @@ public class TestStepTag extends FunctionTag {
 //            System.out.println(" Before Reset - This is a testStep Tag? " + fResults.isTestStep() + " and has children? " + fResults.hasChildren());
                 //           fResults.setTestStep(true);
                 System.out.println(" This is a testStep Tag? " + fResults.isTestStep() + " Error in Child =" + addt.getFailedOnCurrentRow() + " and has children? " + fResults.hasChildren());
-                if (addt.getFailedOnCurrentRow()) {
-//                    fResults.setFailed();
-                    recordFunctionResult(startTime);
-                    eventHandler.endFunction(this, 1);
-                    traceMsg("END: " + functionId);
-                    //                   throw new JameleonScriptException("Error encountered in Test Step Contents.", this);
 
-                } else {
-                    recordFunctionResult(startTime);
-                    eventHandler.endFunction(this, 1);
-                    traceMsg("END: " + functionId);
+				recordFunctionResult(startTime);
+				eventHandler.endFunction(this, 1);
+				traceMsg("END: " + functionId);
 
-                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
