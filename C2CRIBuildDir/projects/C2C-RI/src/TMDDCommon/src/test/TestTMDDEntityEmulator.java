@@ -85,9 +85,9 @@ public class TestTMDDEntityEmulator {
         hcrtc.responseMessageExpected = "tmdd:ControlStatusResponseMsg";
         testEntity(hcrtc);
 
-//        testCCTVInventory();
-//        testCCTVStatus();
-//        testDetectorData();
+//        testCCTVInventory(args);
+//        testCCTVStatus(args);
+//        testDetectorData(args);
     }
 
     private static void testEntity(TestCase entityTestCase) throws EntityEmulationException, MalformedURLException {
@@ -176,10 +176,10 @@ public class TestTMDDEntityEmulator {
 
     }
 
-    private static void testCCTVInventory() throws EntityEmulationException {
-        boolean writeFile = false;
-        boolean readFile = true;
-        boolean updateValues = false;
+    private static void testCCTVInventory(String[] args) throws EntityEmulationException {
+        boolean writeFile = Boolean.parseBoolean(args[0]);
+        boolean readFile = Boolean.parseBoolean(args[1]);
+        boolean updateValues = Boolean.parseBoolean(args[2]);
         long startTime = System.currentTimeMillis();
 
         String[] fileLines = EmulationDataFileProcessor.getContent("ValidCCTV-deviceinformationRequestMsg.in").toString().split("\n");
@@ -288,10 +288,10 @@ public class TestTMDDEntityEmulator {
 
     }
 
-    private static void testCCTVStatus() throws EntityEmulationException {
-        boolean writeFile = false;
-        boolean readFile = true;
-        boolean updateValues = false;
+    private static void testCCTVStatus(String[] args) throws EntityEmulationException {
+        boolean writeFile = Boolean.parseBoolean(args[0]);
+        boolean readFile = Boolean.parseBoolean(args[1]);
+        boolean updateValues = Boolean.parseBoolean(args[2]);
         long startTime = System.currentTimeMillis();
 
         String[] fileLines = EmulationDataFileProcessor.getContent("ValidCCTV-Status-deviceinformationRequestMsg.in").toString().split("\n");
@@ -358,10 +358,10 @@ public class TestTMDDEntityEmulator {
 
     }
 
-    private static void testDetectorData() throws EntityEmulationException {
-        boolean writeFile = false;
-        boolean readFile = true;
-        boolean updateValues = false;
+    private static void testDetectorData(String[] args) throws EntityEmulationException {
+        boolean writeFile = Boolean.parseBoolean(args[0]);
+        boolean readFile = Boolean.parseBoolean(args[1]);
+        boolean updateValues = Boolean.parseBoolean(args[2]);
         long startTime = System.currentTimeMillis();
 
         String[] fileLines = EmulationDataFileProcessor.getContent(".\\test\\" + EntityEmulationData.EntityDataType.DETECTORDATA.name() + ".in").toString().split("\n");

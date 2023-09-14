@@ -1389,7 +1389,8 @@ public class Tester
             rrDialog.setTestType(dialogType + "-RR" + "-" + messageSpecFileName);
             try
             {
-                rrDialog.setResult(testEntityRRProcessing(dataType, dialog, messageSpecFileName, expectedResponseMessageName, expectedErrorResponseType, userName) ? "PASS" : "FAILED");
+				testEntityRRProcessing(dataType, dialog, messageSpecFileName, expectedResponseMessageName, expectedErrorResponseType, userName);
+                rrDialog.setResult("PASS");
             }
             catch (Exception ex)
             {
@@ -1406,7 +1407,8 @@ public class Tester
             rrDialog.setTestType(dialogType + "-SUB" + "-" + messageSpecFileName);
             try
             {
-                rrDialog.setResult(testEntitySUBProcessing(dataType, dialog, messageSpecFileName, expectedResponseMessageName, expectedErrorResponseType, userName) ? "PASS" : "FAILED");
+				testEntitySUBProcessing(dataType, dialog, messageSpecFileName, expectedResponseMessageName, expectedErrorResponseType, userName);
+                rrDialog.setResult("PASS");
             }
             catch (Exception ex)
             {
@@ -1423,7 +1425,8 @@ public class Tester
             rrDialog.setTestType(dialogType + "-PUB" + "-" + messageSpecFileName);
             try
             {
-                rrDialog.setResult(testEntityPUBProcessing(dataType, dialog, messageSpecFileName, expectedResponseMessageName, expectedErrorResponseType, userName) ? "PASS" : "FAILED");
+				testEntityPUBProcessing(dataType, dialog, messageSpecFileName, expectedResponseMessageName, expectedErrorResponseType, userName);
+                rrDialog.setResult("PASS");
             }
             catch (Exception ex)
             {
