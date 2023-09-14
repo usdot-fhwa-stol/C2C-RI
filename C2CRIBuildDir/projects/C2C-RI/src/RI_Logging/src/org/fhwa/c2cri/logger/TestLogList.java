@@ -184,6 +184,8 @@ public class TestLogList {
         
         /** The pause flag. */
         private Boolean pauseFlag;
+		
+		private boolean running;
 
         /**
          * Instantiates a new log file updater.
@@ -324,7 +326,7 @@ public class TestLogList {
         @Override
         public void run() {
             initialize();
-            while (true) {
+            while (running) {
 
                 try {
                     processEvents();
@@ -339,6 +341,10 @@ public class TestLogList {
             }
         }
 
+		public void stopRunning()
+		{
+			running = false;
+		}
         /**
          * Initialize.
          * 

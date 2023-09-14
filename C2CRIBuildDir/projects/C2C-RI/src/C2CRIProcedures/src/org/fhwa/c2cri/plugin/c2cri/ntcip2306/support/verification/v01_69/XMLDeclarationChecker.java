@@ -29,13 +29,14 @@ public class XMLDeclarationChecker {
     public static boolean validDeclarationHeader(byte[] inputDocument) {
         checkerResultReason = "";
         boolean result = false;
-        try {
-            // Open the file that is the first
+		// Open the file that is the first
             // command line parameter
-            ByteArrayInputStream inputStream = new ByteArrayInputStream(inputDocument);
             // Get the object of DataInputStream
-            DataInputStream in = new DataInputStream(inputStream);
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        try (DataInputStream in = new DataInputStream(new ByteArrayInputStream(inputDocument));
+			BufferedReader br = new BufferedReader(new InputStreamReader(in)))
+		{
+            
+
             String strLine;
             //Read File Line By Line
             if ((strLine = br.readLine()) != null) {
@@ -43,9 +44,6 @@ public class XMLDeclarationChecker {
                 result = strLine.equals(Declaration_String);
                 System.out.println("result is " + result + " for " + strLine);
             }
-            //Close the input stream
-            in.close();
-
         } catch (Exception e) {//Catch exception if any
             System.err.println("Error: " + e.getMessage());
         }
@@ -85,10 +83,11 @@ public class XMLDeclarationChecker {
     public static boolean validDeclarationHeader(URL inputDocument) {
         checkerResultReason = "";
         boolean result = false;
-        try {
-            // Get the object of DataInputStream
-            DataInputStream in = new DataInputStream(inputDocument.openStream());
-            BufferedReader br = new BufferedReader(new InputStreamReader(in));
+		// Get the object of DataInputStream
+        try (DataInputStream in = new DataInputStream(inputDocument.openStream());
+            BufferedReader br = new BufferedReader(new InputStreamReader(in)))
+		{
+            
             String strLine;
             //Read File Line By Line
             if ((strLine = br.readLine()) != null) {
@@ -100,9 +99,6 @@ public class XMLDeclarationChecker {
                 }
                 System.out.println("result is " + result + " for " + strLine);
             }
-            //Close the input stream
-            in.close();
-
         } catch (Exception e) {//Catch exception if any
             System.err.println("Error: " + e.getMessage());
         }

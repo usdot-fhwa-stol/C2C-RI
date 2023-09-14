@@ -26,18 +26,18 @@ public class TMDDMessageElementDefinitions {
             // Remove any index indicators from the entityElement.
             String simplifiedElement = entityElement.replaceAll("\\[\\d+\\]", "").replace("[]", "").replace("[*]", "");
             String schemaIdCommand = "select schemaId, BaseType, minOccurs, maxOccurs, minLength, maxLength, minInclusive, maxInclusive, enumeration from TMDDMessageElementDefinitionQuery where (ShortPath = \"" + simplifiedElement + "\")";
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(schemaIdCommand);
+			try (Statement stmt = connection.createStatement()) 
+			{
+				ResultSet rs = stmt.executeQuery(schemaIdCommand);
 
-            if (!rs.isBeforeFirst()) {
-                stmt.close();
-                rs.close();
-                throw new Exception("Unable to locate a defined element similar to " + entityElement);
-            } else {
-                schemaId = rs.getInt("schemaId");
-                stmt.close();
-                rs.close();
-            }
+				if (!rs.isBeforeFirst()) {
+					rs.close();
+					throw new Exception("Unable to locate a defined element similar to " + entityElement);
+				} else {
+					schemaId = rs.getInt("schemaId");
+					rs.close();
+				}
+			}
 
         } catch (ClassNotFoundException ex) {
             throw new Exception(ex);

@@ -44,6 +44,7 @@ public class Listener implements Runnable {
     private boolean enableSSL;
     private boolean serverConnection;
     private ArrayList<SocketAssignmentListener> addressListeners = new ArrayList<>();
+	private boolean running = true;
 
     public Throwable getException() {
         return exception;
@@ -155,7 +156,7 @@ public class Listener implements Runnable {
     public void run() {
         Socket source = null;
         new Thread(cleaner).start();
-        while (true) {
+        while (running) {
             try {
                 TargetConnector connector = new TargetConnector(to);
                 source = serverSocket.accept();
@@ -184,7 +185,7 @@ public class Listener implements Runnable {
             }
         }
     }
-
+	
     public void close() {
         if (!serverSocket.isClosed()) {
             try {
@@ -195,4 +196,10 @@ public class Listener implements Runnable {
         }
     }
     
+	
+		
+	public void stopRun()
+	{
+		running = false;
+	}
 }

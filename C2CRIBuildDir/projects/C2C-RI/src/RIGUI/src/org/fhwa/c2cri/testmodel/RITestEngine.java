@@ -416,17 +416,19 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
             if (TestSuites.getInstance().isPredefined(testSuite)) {
                 try {
                     URL jarURL = new URL(TestSuites.getInstance().getTestSuitePath(testSuite).replace("/.", "").replace("!", "").replace("jar:", ""));
-                    ZipInputStream zip = new ZipInputStream(jarURL.openStream());
-                    while (true) {
-                        ZipEntry e = zip.getNextEntry();
-                        if (e == null) {
-                            break;
-                        }
+                    try (ZipInputStream zip = new ZipInputStream(jarURL.openStream()))
+					{
+						while (true) {
+							ZipEntry e = zip.getNextEntry();
+							if (e == null) {
+								break;
+							}
 
-                        if (e.getName().endsWith(".properties") && !e.getName().equalsIgnoreCase("SuiteSpec.properties") && e.getName().indexOf("/") == -1) {
-                            System.out.println("Entry is :" + e.getName());
-                            results = results.concat(" " + e.getName().replace(".properties", ""));
-                        }
+							if (e.getName().endsWith(".properties") && !e.getName().equalsIgnoreCase("SuiteSpec.properties") && e.getName().indexOf("/") == -1) {
+								System.out.println("Entry is :" + e.getName());
+								results = results.concat(" " + e.getName().replace(".properties", ""));
+							}
+						}
                     }
                 } catch (Exception ex) {
                     System.err.println("TestSuitePathFailure: " + TestSuites.getInstance().getTestSuitePath(testSuite).replace("/.", "").replace("!", "").replace("jar:", ""));

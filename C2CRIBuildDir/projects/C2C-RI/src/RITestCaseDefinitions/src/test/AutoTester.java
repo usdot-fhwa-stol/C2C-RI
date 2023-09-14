@@ -113,16 +113,16 @@ public class AutoTester {
         private boolean oCSystemConnected;
         private boolean stopServer = false;
         private ServerSocket server;
-        private Socket connection;
-        private ObjectOutputStream output;
-        private ObjectInputStream input;            
+        private Socket connection = null;
+        private ObjectOutputStream output = null;
+        private ObjectInputStream input = null;            
         
         @Override
         public void run() {
             boolean serverStarted = false;
             while (!serverStarted&&!stopServer){
                 try{
-                   Thread.currentThread().wait(500);
+                   Thread.sleep(500);
                    server = new ServerSocket(8083);
                    serverStarted = true;
                 } catch (InterruptedException iex){
@@ -134,25 +134,28 @@ public class AutoTester {
             if (serverStarted){
                 while (!stopServer){
                     try{
-                    connection = server.accept();
-                    output = new ObjectOutputStream(connection.getOutputStream());
-                    input = new ObjectInputStream(connection.getInputStream());
+					if (connection == null)
+						connection = server.accept();
+					if (output == null)
+						output = new ObjectOutputStream(connection.getOutputStream());
+					if (input == null)
+						input = new ObjectInputStream(connection.getInputStream());
                     
-                    do {
-                        try{
-                            String message = (String) input.readObject();
-                            
-                            if (message.startsWith(STARTCOMMAND)){
-                                AutoTester.getInstance().setTestStartedByOC(true);
-                                
-                            } else if (message.startsWith(ENDCOMMAND)){
-                                AutoTester.getInstance().setTestStartedByOC(false);
-                                
-                            }
-                        } catch (ClassNotFoundException classNotFoundException){
-                            
-                        }
-                    } while (!stopServer);
+
+					try{
+						String message = (String) input.readObject();
+
+						if (message.startsWith(STARTCOMMAND)){
+							AutoTester.getInstance().setTestStartedByOC(true);
+
+						} else if (message.startsWith(ENDCOMMAND)){
+							AutoTester.getInstance().setTestStartedByOC(false);
+
+						}
+					} catch (ClassNotFoundException classNotFoundException){
+
+					}
+
                     
 
             
@@ -161,9 +164,12 @@ public class AutoTester {
                     }
                 }
                 try{
-                    output.close();
-                    input.close();
-                    connection.close();
+					if (output != null)
+						output.close();
+					if (input != null)
+						input.close();
+					if (connection != null)
+						connection.close();
                 } catch (IOException ioException){
                     ioException.printStackTrace();
                 }

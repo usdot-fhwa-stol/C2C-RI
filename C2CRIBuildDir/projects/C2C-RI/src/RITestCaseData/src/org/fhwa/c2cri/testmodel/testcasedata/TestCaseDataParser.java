@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.fhwa.c2cri.gui.testmodel.testcasedata.editor.Group;
@@ -358,41 +357,35 @@ public class TestCaseDataParser {
      */
     public static void getIterations(TestCaseFile tcFile) throws IOException {
 
-        BufferedReader br;
-        if (tcFile.isURLSource()){
-          URL theFileURL = tcFile.getPathURI().toURL();
-          br = new BufferedReader(new InputStreamReader(theFileURL.openStream()));
-        } else {
-          br = new BufferedReader(new FileReader(tcFile));
+		try (BufferedReader br = new BufferedReader(tcFile.isURLSource() ? new InputStreamReader(tcFile.getPathURI().toURL().openStream()) : new FileReader(tcFile)))
+		{
+			String iterationData = ""; //current data for current group
 
-        }
+			while (br.ready()) {
 
-        String iterationData = ""; //current data for current group
+				String line = br.readLine();
+				//lineNumber++;
 
-        while (br.ready()) {
+				if (iterationName(line) != "") {
 
-            String line = br.readLine();
-            //lineNumber++;
+					if (iterationData != "") {
+						getGroups(iterationData);
+					}
 
-            if (iterationName(line) != "") {
+					it = new Iteration(iterationName(line));
+					tcFile.addIteration(it);
+					iterationData = "";
+				} else {
+					iterationData += line + "\n";
+				}
+			}
 
-                if (iterationData != "") {
-                    getGroups(iterationData);
-                }
+			if (iterationData != "") {
+				getGroups(iterationData);
+			}
 
-                it = new Iteration(iterationName(line));
-                tcFile.addIteration(it);
-                iterationData = "";
-            } else {
-                iterationData += line + "\n";
-            }
-        }
-
-        if (iterationData != "") {
-            getGroups(iterationData);
-        }
-
-        br.close();
+			
+		}
     }
 
     /**

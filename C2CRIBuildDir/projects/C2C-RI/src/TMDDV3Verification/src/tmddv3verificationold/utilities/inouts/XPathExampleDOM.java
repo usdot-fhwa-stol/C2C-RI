@@ -11,6 +11,7 @@ import javax.xml.xpath.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import javax.xml.XMLConstants;
 
 /**
   * Class XPathExampleDOM:
@@ -66,6 +67,8 @@ public class XPathExampleDOM implements XPathVariableResolver {
 
         // Build the source document.
         DocumentBuilderFactory dfactory = DocumentBuilderFactory.newInstance();
+		dfactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+		dfactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         System.err.println("Using DocumentBuilderFactory " + dfactory.getClass());
 
         dfactory.setNamespaceAware(true);

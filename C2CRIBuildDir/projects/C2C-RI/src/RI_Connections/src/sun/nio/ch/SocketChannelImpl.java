@@ -464,7 +464,7 @@ class SocketChannelImpl
             } finally {
                 endRead(blocking, n > 0);
                 if (n <= 0 && isInputClosed)
-                    return IOStatus.EOF;
+                    n = IOStatus.EOF;
             }
                 if (n > 0) {
                     byte[] result = new byte[n];
@@ -527,7 +527,7 @@ class SocketChannelImpl
             } finally {
                 endRead(blocking, n > 0);
                 if (n <= 0 && isInputClosed)
-                    return IOStatus.EOF;
+                    n = IOStatus.EOF;
             }
             return IOStatus.normalize(n);
         } finally {
@@ -613,8 +613,10 @@ class SocketChannelImpl
             } finally {
                 endWrite(blocking, n > 0);
                 if (n <= 0 && isOutputClosed)
-                    throw new AsynchronousCloseException();
+                    n = Integer.MIN_VALUE;
             }
+			if (n == Integer.MIN_VALUE)
+				throw new AsynchronousCloseException();
             return IOStatus.normalize(n);
         } finally {
                 if ((tmpBuffer != null)&&(bufpos <= buflimit)) {
@@ -681,8 +683,10 @@ class SocketChannelImpl
             } finally {
                 endWrite(blocking, n > 0);
                 if (n <= 0 && isOutputClosed)
-                    throw new AsynchronousCloseException();
+                    n = Integer.MIN_VALUE;
             }
+			if (n == Integer.MIN_VALUE)
+				throw new AsynchronousCloseException();
             return IOStatus.normalize(n);
         } finally {
             writeLock.unlock();
@@ -717,8 +721,10 @@ class SocketChannelImpl
             } finally {
                 endWrite(blocking, n > 0);
                 if (n <= 0 && isOutputClosed)
-                    throw new AsynchronousCloseException();
+                    n = Integer.MIN_VALUE;
             }
+			if (n == Integer.MIN_VALUE)
+				throw new AsynchronousCloseException();
             return IOStatus.normalize(n);
         } finally {
             writeLock.unlock();

@@ -61,9 +61,11 @@ public class Checksum {
 	 */
 	public String getChecksum(String filename) throws Exception{
             System.out.println("Checksum::getChecksum filename = "+filename);
-            ObjectInputStream input = new ObjectInputStream(new FileInputStream(filename));
-            Object obj = (Object) input.readObject();
-            return getChecksum(obj);
+            try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(filename)))
+			{
+				Object obj = (Object) input.readObject();
+				return getChecksum(obj);
+			}
 //                                input.close();
 //                                input = null;
 //            

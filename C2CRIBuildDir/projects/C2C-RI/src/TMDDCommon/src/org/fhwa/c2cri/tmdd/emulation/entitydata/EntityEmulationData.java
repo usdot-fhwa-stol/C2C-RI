@@ -2191,24 +2191,27 @@ public class EntityEmulationData {
     private static void reorderEntityElements(EntityDataType entityDataType) throws EntityEmulationException {
         Connection conn = null;
         ResultSet rs = null;
-        Statement stmt = null;
         
         try {
             String getMaxMinEntityIndexCommand = "Select max(EntityIndex) from " + entityDataType.name();
             conn = EntityEmulationRepository.getConnection();
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(getMaxMinEntityIndexCommand);
-            int maxEntityIndex = rs.getInt(1);
-            stmt.close();
-            rs.close();
+			int maxEntityIndex;
+            try (Statement stmt = conn.createStatement())
+			{
+				rs = stmt.executeQuery(getMaxMinEntityIndexCommand);
+				maxEntityIndex = rs.getInt(1);
+				rs.close();
+			}
 
             if (maxEntityIndex > 1) {
                 int firstMissingIndex = 1;
                 boolean firstEmptyResult = false;
                 for (int ii = 1; ii <= maxEntityIndex; ii++) {
                     String checkIndexCommand = "Select count(*) from " + entityDataType.name() + " where EntityIndex =" + ii;
-                    stmt = conn.createStatement();
-                    rs = stmt.executeQuery(checkIndexCommand);
+                    try (Statement stmt = conn.createStatement())
+					{
+						rs = stmt.executeQuery(checkIndexCommand);
+					}
                     if (rs.getInt(1) == 0) {
                         if (!firstEmptyResult) {
                             firstEmptyResult = true;
@@ -2221,9 +2224,10 @@ public class EntityEmulationData {
 
                             String updateEntityIndexCommand = "Update " + entityDataType.name() + " set EntityIndex = \"" + firstMissingIndex + "\", EntityElement = " + replacementString + " where EntityIndex = " + ii;
 //                            System.out.println(updateEntityIndexCommand);
-                            stmt = conn.createStatement();
-                            stmt.execute(updateEntityIndexCommand);
-                            stmt.close();
+                            try (Statement stmt = conn.createStatement())
+							{
+								stmt.execute(updateEntityIndexCommand);
+							}
 
                             conn.commit();
 
@@ -2245,11 +2249,6 @@ public class EntityEmulationData {
         } finally {
             try{
                 if (rs != null) rs.close();   
-            } catch (Exception ex1){
-            }
-            
-            try{
-                if (stmt != null) stmt.close();
             } catch (Exception ex1){
             }
             

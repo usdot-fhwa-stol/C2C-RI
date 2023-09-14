@@ -119,15 +119,13 @@ public class PropEditor  {
      */
     public static void saveFile() {
         if(eFile.exists() && eFile.isModified()){
-            try{
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(eFile)))
+			{
 				String newLine = System.getProperty("line.separator");
-                BufferedWriter bw = new BufferedWriter(new FileWriter(eFile));
                 System.out.println(eFile.numGroup());
                 for (int i=0; i < eFile.numGroup(); i++) {
                     bw.write(eFile.groupAt(i).toText() + newLine);
-                }
-                bw.close();
-                
+                }                
                 eFile.setModified(false);
             } 
             catch(Exception e) {

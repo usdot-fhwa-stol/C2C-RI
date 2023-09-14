@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -233,24 +234,24 @@ public abstract class AbstractTMDDProcedure implements TestProcedure {
                 + "<test-case-summary>" + this.testProcedureDescription + "</test-case-summary>\n\n";
 
         String finalLine = "</testprocedure>";
-
-        try {
-
-            Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + "tempFile"), "UTF-8");
-            out.write(header);
-            out.write(intro);
-            for (Section thisSection : subSections) {
-                out.write(thisSection.getScriptContent());
-            }
-            out.write(finalLine);
-            out.close();
+		try
+		{
+			try (Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + "tempFile"), StandardCharsets.UTF_8))
+			{
+				out.write(header);
+				out.write(intro);
+				for (Section thisSection : subSections) {
+					out.write(thisSection.getScriptContent());
+				}
+				out.write(finalLine);
+			}
 
             newFile = new File(path + File.separatorChar + fileName);
             if (newFile.exists()) {
             newFile.delete();
             newFile = new File(path + File.separatorChar + fileName);
 
-        }
+			}
             XmlOptions newOptions = new XmlOptions();
             newOptions.setSavePrettyPrint();
             newOptions.setSavePrettyPrintIndent(5);

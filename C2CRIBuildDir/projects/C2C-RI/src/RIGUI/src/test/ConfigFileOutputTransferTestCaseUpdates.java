@@ -146,8 +146,12 @@ public class ConfigFileOutputTransferTestCaseUpdates {
     static boolean ConvertFile(String fileName, String fullFileName){
                 try {
             String inputConfigFileName = fullFileName;
-            ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(inputConfigFileName)));
-            TestConfiguration tcIn = (TestConfiguration) input.readObject();     
+            
+			TestConfiguration tcIn;
+			try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(inputConfigFileName)))
+			{
+				tcIn = (TestConfiguration) input.readObject();     
+			}
 
             
             
@@ -164,25 +168,21 @@ public class ConfigFileOutputTransferTestCaseUpdates {
                     break;
                 default: break;
             }
-            ObjectInputStream output = new ObjectInputStream(new FileInputStream(new File(prototypeConfigFileName)));
-            TestConfiguration tcOut = (TestConfiguration) output.readObject();    
-//            tcIn.getInfoLayerParams().setTestCases(tcOut.getInfoLayerParams().getTestCases());
-//            tcIn.getInfoLayerParams().setTestCaseMatrixProperty(tcOut.getInfoLayerParams().getTestCaseMatrix());
-            
-            input.close();
-            input = null;
-            
-            output.close();
-            output = null;
+
+            try (ObjectInputStream output = new ObjectInputStream(new FileInputStream(prototypeConfigFileName)))
+			{
+				TestConfiguration tcOut = (TestConfiguration) output.readObject();
+			}
+	//            tcIn.getInfoLayerParams().setTestCases(tcOut.getInfoLayerParams().getTestCases());
+	//            tcIn.getInfoLayerParams().setTestCaseMatrixProperty(tcOut.getInfoLayerParams().getTestCaseMatrix());
             
             String outputDir = "Regular";
             if (fileName.contains("EntityEmu"))outputDir = "EntityEmu";
             
-            ObjectOutputStream outputFile = new ObjectOutputStream(new FileOutputStream("C:\\c2cri\\Updates\\"+outputDir+"\\"+fileName));
-            outputFile.writeObject(tcIn);
-            outputFile.flush();
-            outputFile.close();
-            outputFile = null;
+            try (ObjectOutputStream outputFile = new ObjectOutputStream(new FileOutputStream("C:\\c2cri\\Updates\\"+outputDir+"\\"+fileName)))
+			{
+				outputFile.writeObject(tcIn);
+			}
 //            FileOutputStream output = new FileOutputStream("c:\\c2cri\\EntityEmulationOut.xml");
 //            output.write(tc.to_LogFormat().getBytes());
 //            output.close();            

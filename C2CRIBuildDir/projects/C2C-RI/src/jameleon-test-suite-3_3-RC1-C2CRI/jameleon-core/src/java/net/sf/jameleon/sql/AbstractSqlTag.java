@@ -63,22 +63,13 @@ public abstract class AbstractSqlTag extends FunctionTag {
     public void testBlock() {
         init();
         String sql = getSql();
-        Connection conn = null;
-        try{
-            conn = getConnection();
+        try (Connection conn = getConnection())
+		{
             executeSql(conn, sql);
             assertTrue(true);
         }catch (SQLException sqle){
             JameleonScriptException jse = new JameleonScriptException("problem with: "+sql, sqle, this);
             getFunctionResults().setError(jse);
-        }finally{
-            try{
-                if (conn != null && !conn.isClosed()) {
-                    conn.close();
-                }
-            }catch (SQLException sqle){
-                //do nothing. Couldn't close connection
-            }
         }
         destroy();
     }

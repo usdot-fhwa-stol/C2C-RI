@@ -82,11 +82,10 @@ public class DefaultTestConfigController implements TestConfigurationController 
                     testConfig.setConfigurationAuthor(userName + ":" + System.getProperty("user.name"));
                 }
 
-                ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName));
-                output.writeObject(testConfig);
-                output.flush();
-                output.close();
-                output = null;
+                try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(fileName)))
+				{
+					output.writeObject(testConfig);
+				}
                 Checksum cs = new Checksum();
                 try {
                     checkSum = (cs.getChecksum(fileName));
@@ -111,32 +110,25 @@ public class DefaultTestConfigController implements TestConfigurationController 
         if (file == null || file.getName().equals("")) {
             throw new Exception("Invalid File Name");
         } else {
-            try {
 
-                ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName));
-                try {
-                    testConfig = null;
-                    testConfig = (TestConfiguration) input.readObject();
-                    testConfig.print();
-                    input.close();
-                    input = null;
+			try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(fileName)))
+			{
+				testConfig = null;
+				testConfig = (TestConfiguration) input.readObject();
+				testConfig.print();
 
-                    Checksum cs = new Checksum();
-                    try {
-                        checkSum = cs.getChecksum(fileName);
-                    } catch (Exception ex) {
-                        throw new Exception("Error encountered computing checksum for file " + fileName);
-                    }
-                    this.fileName = fileName;
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                    throw new Exception("Error encountered reading the configuration file.");
-                }
+				Checksum cs = new Checksum();
+				try {
+					checkSum = cs.getChecksum(fileName);
+				} catch (Exception ex) {
+					throw new Exception("Error encountered computing checksum for file " + fileName);
+				}
+				this.fileName = fileName;
+			} catch (Exception e1) {
+				e1.printStackTrace();
+				throw new Exception("Error encountered reading the configuration file.");
+			}
 
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new Exception("Error Opening File:  " + fileName + "\n" + e.getMessage());
-            }
 
         }
     }
@@ -147,14 +139,9 @@ public class DefaultTestConfigController implements TestConfigurationController 
         testConfig.create(testDescription, infoLayerTestSuite, appLayerTestSuite, TestSuites.getInstance().getTestSuiteEmulationDataURLs(infoLayerTestSuite));
         String file = fileName + ".ricfg";
         System.out.println("The file name is " + file);
-        try {
-            ObjectOutputStream output;
-
-            output = new ObjectOutputStream(new FileOutputStream(file));
+        try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(file))){
             output.writeObject(testConfig);
             output.flush();
-            output.close();
-            output = null;
             this.fileName = file;
         } catch (Exception e) {
             e.printStackTrace();

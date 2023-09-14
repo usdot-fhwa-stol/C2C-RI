@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.net.URL;
+import javax.xml.XMLConstants;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
@@ -76,6 +77,8 @@ public class TMDDMessageTester {
         resourcePath = xslResourcePath;
         try {
             TransformerFactory xslf = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl", null);
+			xslf.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+			xslf.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
             transformer = xslf.newTransformer(new StreamSource(xslResourcePath.openStream()));
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -122,6 +125,8 @@ public class TMDDMessageTester {
     public MessageResults testMessage(byte[] message) throws Exception {
         URL xslURL = resourcePath;
         TransformerFactory xslf = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl", null);
+		xslf.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+		xslf.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
         Transformer transformer = xslf.newTransformer(new StreamSource(xslURL.openStream()));
         MessageResults results;
         try ( ByteArrayInputStream bais = new ByteArrayInputStream(message)) {
@@ -148,6 +153,8 @@ public class TMDDMessageTester {
     public MessageResults testMessage(InputStream message) throws Exception {
         URL xslURL = resourcePath;
         TransformerFactory xslf = TransformerFactory.newInstance("net.sf.saxon.TransformerFactoryImpl", null);
+		xslf.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+		xslf.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
         Transformer transformer = xslf.newTransformer(new StreamSource(xslURL.openStream()));
         MessageResults results;
         long start = System.currentTimeMillis();

@@ -71,7 +71,7 @@ public class TargetConnector {
             KeyManagerFactory tmf = KeyManagerFactory.getInstance("SunX509");
             tmf.init(ts, passwKey);
 // SSLContext sslContext = SSLContext.getInstance("TLS");
-            SSLContext sslContext = SSLContext.getInstance("SSL");
+            SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
             sslContext.init(tmf.getKeyManagers(), null, null);
             SSLSocketFactory factory = sslContext.getSocketFactory();
             HttpsURLConnection.setDefaultSSLSocketFactory(factory);

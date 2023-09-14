@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import javax.xml.XMLConstants;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
@@ -43,7 +44,8 @@ public class TestAssertionResults {
 
         // create the XMLInputFactory object
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-
+		inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+		inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         try {
             /*
              * Convert String to InputStream using ByteArrayInputStream

@@ -32,8 +32,11 @@ public class EmulationConfigFileOutput {
     public static void main(String[] args) {
         try {
             String configFileName = "C:\\C2CRI-Phase2\\C2CRIBuildDir\\projects\\C2C-RI\\src\\RIGUI\\TestConfigurationFiles\\TMDDv303cEntityEmuDefaultsECS.ricfg";
-            ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(configFileName)));
-            TestConfiguration tc = (TestConfiguration) input.readObject();
+			TestConfiguration tc;
+            try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(new File(configFileName))))
+			{
+				tc = (TestConfiguration) input.readObject();
+			}
 
 //            ArrayList<String> targetedTestCases = new ArrayList();
 //
@@ -379,16 +382,15 @@ public class EmulationConfigFileOutput {
                 thisEntity.setDataSetSource(RIEmulationEntityValueSet.ENTITYDATASTATE.Default);
 //                thisEntity.setDataSetSource(RIEmulationEntityValueSet.ENTITYDATASTATE.Updated);   
             }
+			
 
 //            long startTime = System.currentTimeMillis();
 //            RIEmulation.getInstance().initialize(TestSuites.getInstance().getBaselineTestSuite(tc.getSelectedInfoLayerTestSuite()), tc.getEmulationParameters());
 //            System.out.println("It took "+(System.currentTimeMillis() - startTime )+ " ms to complete.");
-            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(configFileName + ".updated"));
-            output.writeObject(tc);
-            output.flush();
-            output.close();
-            output = null;
-
+            try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(configFileName + ".updated")))
+			{
+				output.writeObject(tc);
+			}
 //            FileOutputStream output = new FileOutputStream("c:\\c2cri\\EntityEmulationOut.xml");
 //            output.write(tc.to_LogFormat().getBytes());
 //            output.close();

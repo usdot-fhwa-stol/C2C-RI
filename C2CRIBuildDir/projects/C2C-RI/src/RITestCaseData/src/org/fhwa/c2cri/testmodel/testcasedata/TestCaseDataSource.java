@@ -240,9 +240,8 @@ public class TestCaseDataSource
      */
     private String getValueFromFile(String fileAddress)
     {
-        try
+        try (BufferedReader file = new BufferedReader(new FileReader(fileAddress)))
         {
-            BufferedReader file = new BufferedReader(new FileReader(fileAddress));
             String line = file.readLine();
             String value = "";
 
@@ -677,17 +676,11 @@ public class TestCaseDataSource
      */
     public void updateTCFile(String fileName)
     {
-        try
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName)))
         {
-            File updateFile = new File(fileName);
             String newLine = System.getProperty("line.separator");
-            BufferedWriter bw = new BufferedWriter(new FileWriter(updateFile));
             for (int ii = 0; ii < baseTCFile.numIteration(); ii++)
                 bw.write(baseTCFile.iterationAt(ii).toText() + newLine);
-
-            bw.flush();
-            bw.close();
-
             baseTCFile.setModified(false);
         }
         catch (Exception e)

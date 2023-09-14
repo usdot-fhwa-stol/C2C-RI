@@ -12,6 +12,7 @@ import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -22,6 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import javax.wsdl.BindingOperation;
+import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.MimeHeaders;
@@ -412,8 +414,8 @@ public abstract class AbstractTMDDTestCase implements TestCase {
         String type = "#PARAMETER TYPE = String\n";
         String editable = "#EDITABLE = true\n";
 
-        try {
-            Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + fileName), "UTF-8");
+        try (Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + fileName), StandardCharsets.UTF_8))
+		{
             out.write(header);
 
             out.write(iteration);
@@ -689,8 +691,6 @@ public abstract class AbstractTMDDTestCase implements TestCase {
 //                }
 //
             }
-
-            out.close();
         } catch (Exception ex) {
             System.out.println("****** Writing Error:*******\n");
             ex.printStackTrace();
@@ -1778,9 +1778,8 @@ public abstract class AbstractTMDDTestCase implements TestCase {
 
         }
 
-        try {
-            Writer out = new OutputStreamWriter(new FileOutputStream(newFile), "UTF-8");
-
+        try (Writer out = new OutputStreamWriter(new FileOutputStream(newFile), StandardCharsets.UTF_8))
+		{
             MimeHeaders mhs = new MimeHeaders();
             ByteArrayInputStream byteInputStream = new ByteArrayInputStream(message.getBytes());
             SOAPMessage sm = MessageFactory.newInstance().createMessage(mhs, byteInputStream);
@@ -1796,6 +1795,8 @@ public abstract class AbstractTMDDTestCase implements TestCase {
                         SOAPElement thisElement = (SOAPElement) theElement;
 
                         TransformerFactory tf = TransformerFactory.newInstance();
+						tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+						tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
                         Transformer trans = tf.newTransformer();
                         trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 
@@ -1814,6 +1815,8 @@ public abstract class AbstractTMDDTestCase implements TestCase {
                     Object thisElement = childElementIterator.next();
 
                     TransformerFactory tf = TransformerFactory.newInstance();
+					tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+					tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
                     Transformer trans = tf.newTransformer();
                     trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 
@@ -1825,10 +1828,6 @@ public abstract class AbstractTMDDTestCase implements TestCase {
 
 
             }
-
-
-
-            out.close();
         } catch (Exception ex) {
             System.out.println("****** Writing Error:*******\n");
             ex.printStackTrace();

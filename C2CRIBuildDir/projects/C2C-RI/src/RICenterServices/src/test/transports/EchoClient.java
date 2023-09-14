@@ -55,30 +55,27 @@ class EchoClient {
             SSLSocketFactory sslsocketfactory = (SSLSocketFactory) SSLSocketFactory.getDefault();
 //////            int port = ListenerManager.getInstance().getListenerInternalServerPort("ECHO TEST LISTENER");
             int port = 2224;
-            SSLSocket sslsocket = (SSLSocket) sslsocketfactory.createSocket("127.0.0.1", port);
-//            SocketFactory sslsocketfactory = (SocketFactory) SocketFactory.getDefault();
-//            int port = ListenerManager.getInstance().getListenerInternalServerPort("ECHO TEST LISTENER");
-//            Socket sslsocket = (Socket) sslsocketfactory.createSocket("localhost", port);
+            try (SSLSocket sslsocket = (SSLSocket) sslsocketfactory.createSocket("127.0.0.1", port))
+			{
+	//            SocketFactory sslsocketfactory = (SocketFactory) SocketFactory.getDefault();
+	//            int port = ListenerManager.getInstance().getListenerInternalServerPort("ECHO TEST LISTENER");
+	//            Socket sslsocket = (Socket) sslsocketfactory.createSocket("localhost", port);
 
-//            InputStream inputstream = System.in;
-//            InputStreamReader inputstreamreader = new InputStreamReader(inputstream);
-	    StringReader stringreader = new StringReader("Line1\nLine2\nLine3");
-//            BufferedReader bufferedreader = new BufferedReader(inputstreamreader);
-            BufferedReader bufferedreader = new BufferedReader(stringreader);
+	//            InputStream inputstream = System.in;
+	//            InputStreamReader inputstreamreader = new InputStreamReader(inputstream);
+	//            BufferedReader bufferedreader = new BufferedReader(inputstreamreader);
+				try (BufferedReader bufferedreader = new BufferedReader(new StringReader("Line1\nLine2\nLine3"));
+					BufferedWriter bufferedwriter = new BufferedWriter(new OutputStreamWriter(sslsocket.getOutputStream())))
+					{
 
-            OutputStream outputstream = sslsocket.getOutputStream();
-            OutputStreamWriter outputstreamwriter = new OutputStreamWriter(outputstream);
-            BufferedWriter bufferedwriter = new BufferedWriter(outputstreamwriter);
 
-            String string = null;
-            while ((string = bufferedreader.readLine()) != null) {
-                bufferedwriter.write(string + '\n');
-                bufferedwriter.flush();
-            }
-            
-            bufferedwriter.close();
-            bufferedreader.close();
-            sslsocket.close();
+						String string = null;
+						while ((string = bufferedreader.readLine()) != null) {
+							bufferedwriter.write(string + '\n');
+							bufferedwriter.flush();
+						}
+				}
+			}
             logger.removeAllAppenders();
         } catch (Exception exception) {
             exception.printStackTrace();

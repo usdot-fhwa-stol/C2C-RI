@@ -456,12 +456,6 @@ public class NTCIP2306SSLSocketFactory implements LayeredSocketFactory {
         }        
         
         
-        SSLSocket sslSocket = (SSLSocket) this.socketfactory.createSocket(
-              newSocket,
-              localAddress,
-              localPort,
-              autoClose
-        );
             this.localAdd = socket.getLocalAddress().getHostAddress()+":"+socket.getLocalPort();
             this.remoteAdd = socket.getInetAddress().getHostAddress()+":"+socket.getPort();
             System.out.println("SSLTrialSocketFactory::socket Inet address Host was "+socket.getInetAddress().getHostAddress());
@@ -474,8 +468,7 @@ public class NTCIP2306SSLSocketFactory implements LayeredSocketFactory {
 
             
             
-//        hostnameVerifier.verify(host, sslSocket);
-        // verifyHostName() didn't blowup - good!
+
         return newSocket;
     }
 

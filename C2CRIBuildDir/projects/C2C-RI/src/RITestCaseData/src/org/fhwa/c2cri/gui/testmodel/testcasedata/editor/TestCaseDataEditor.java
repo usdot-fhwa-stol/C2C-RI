@@ -221,9 +221,9 @@ public class TestCaseDataEditor {
      */
     public static void saveFile() {
         if (tcFile.exists() && tcFile.isModified()) {
-            try {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(tcFile)))
+			{
                 String newLine = System.getProperty("line.separator");
-                BufferedWriter bw = new BufferedWriter(new FileWriter(tcFile));
                 for (int i = 0; i < tcFile.numIteration(); i++) {
                     System.out.println(tcFile.numGroup());
                     bw.write(tcFile.iterationAt(i).toText() + newLine);
@@ -231,8 +231,6 @@ public class TestCaseDataEditor {
                         bw.write(tcFile.iterationAt(i).groupAt(j).toText(true) + newLine);
                     }
                 }
-                bw.close();
-
                 tcFile.setModified(false);
             } catch (Exception e) {
                 //System.out.println("Error when saving");

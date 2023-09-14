@@ -114,9 +114,9 @@ public class UpdateTestCaseSteps {
 
         for (File thisFile : datalFiles) {
 
-            try {
+            try (BufferedReader file = new BufferedReader(new FileReader(thisFile)))
+			{
                 // input the file content to the String "input"
-                BufferedReader file = new BufferedReader(new FileReader(thisFile));
                 String line;
                 String input = "";
 
@@ -129,8 +129,10 @@ public class UpdateTestCaseSteps {
                 }
 
                 // write the new String with the replaced line OVER the same file
-                FileOutputStream outFile = new FileOutputStream(thisFile);
-                outFile.write(input.getBytes());
+                try (FileOutputStream outFile = new FileOutputStream(thisFile))
+				{
+					outFile.write(input.getBytes());
+				}
 
 
             } catch (Exception e) {

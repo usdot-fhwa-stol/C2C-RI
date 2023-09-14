@@ -399,8 +399,6 @@ private FilenameFilter logFilter;
          */
         @Override
         public ConfigDescription call() throws Exception {
-            ObjectInputStream inputFile;
-
             File f = new File(dir, file);
 
             ConfigDescription cfgDescription = new ConfigDescription();
@@ -408,8 +406,8 @@ private FilenameFilter logFilter;
             cfgDescription.setId(index);
             cfgDescription.setFileDates(new Date(f.lastModified()));
             String description = "";
-            try {
-                inputFile = new ObjectInputStream(new FileInputStream(f));
+            try (ObjectInputStream inputFile = new ObjectInputStream(new FileInputStream(f)))
+			{
                 try {
                     TestConfiguration testConfig = null;
                     testConfig = (TestConfiguration) inputFile.readObject();
@@ -420,8 +418,6 @@ private FilenameFilter logFilter;
                         description = "Invalid Config File";
                         cfgDescription.setValid(false);
                     }
-                    inputFile.close();
-                    inputFile = null;
                     testConfig = null;
                 } catch (Exception e1) {
                     description = "Invalid Config File";

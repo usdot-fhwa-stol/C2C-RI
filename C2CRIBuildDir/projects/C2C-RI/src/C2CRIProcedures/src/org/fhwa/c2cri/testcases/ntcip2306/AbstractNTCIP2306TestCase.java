@@ -141,9 +141,8 @@ public abstract class AbstractNTCIP2306TestCase implements TestCase {
         String type = "#PARAMETER TYPE = String\n";
         String editable = "#EDITABLE = true\n";
 
-        try {
+        try (Writer out = new OutputStreamWriter(new FileOutputStream(newFile))){
             //      Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + fileName), "UTF-8");
-            Writer out = new OutputStreamWriter(new FileOutputStream(newFile));
             System.out.println("Writing File: " + newFile.getName());
             out.write(header);
 
@@ -421,9 +420,6 @@ public abstract class AbstractNTCIP2306TestCase implements TestCase {
                 out.write("\n");
 
             }
-
-
-            out.close();
         } catch (Exception ex) {
             System.out.println("****** Writing Error:*******\n");
             ex.printStackTrace();

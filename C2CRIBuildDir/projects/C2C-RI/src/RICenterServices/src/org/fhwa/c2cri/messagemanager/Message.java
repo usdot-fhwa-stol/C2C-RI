@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
+import javax.xml.XMLConstants;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
@@ -273,6 +274,8 @@ Response}
                 ex.printStackTrace();
                 transformerFactory = TransformerFactory.newInstance();
             }
+			transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+			transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
 //            transformerFactory.setAttribute("indent-number", 2);
             Transformer transformer = transformerFactory.newTransformer();
             System.err.println("\n\nTranFormer Class URL = "+transformer.getClass().getProtectionDomain().getCodeSource().getLocation().toString());

@@ -248,15 +248,13 @@ public class RIParameters {
     public static void saveFile() {
         synchronized (eFile){
         if (eFile.exists() && eFile.isModified()) {
-            try {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(eFile)))
+			{
                 String newLine = System.getProperty("line.separator");
-                BufferedWriter bw = new BufferedWriter(new FileWriter(eFile));
                 System.out.println(eFile.numGroup());
                 for (int i = 0; i < eFile.numGroup(); i++) {
                     bw.write(eFile.groupAt(i).toText() + newLine);
                 }
-                bw.close();
-
                 eFile.setModified(false);
             } catch (Exception e) {
                 //System.out.println("Error when saving");
@@ -279,15 +277,12 @@ public class RIParameters {
         if (eFile != null) {
         synchronized (eFile){
             if (eFile.exists()) {
-                try {
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter(eFile))){
                     String newLine = System.getProperty("line.separator");
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(eFile));
                     System.out.println(eFile.numGroup());
                     for (int i = 0; i < eFile.numGroup(); i++) {
                         System.out.println(eFile.groupAt(i).toText() + newLine);
                     }
-                    bw.close();
-
                 } catch (Exception e) {
                     //System.out.println("Error when saving");
                     JOptionPane.showMessageDialog(null,

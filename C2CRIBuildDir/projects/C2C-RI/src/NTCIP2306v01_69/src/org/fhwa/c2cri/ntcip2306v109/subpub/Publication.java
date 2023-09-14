@@ -301,7 +301,8 @@ public class Publication implements Runnable, MessageUpdateListener {
             ex.printStackTrace();
         }
         while (!getState().equals(PUBLICATIONSTATE.COMPLETED) && (!shutdown)) {
-            if (!getState().equals(PUBLICATIONSTATE.UPDATING)) {
+            boolean bComplete = false;
+			if (!getState().equals(PUBLICATIONSTATE.UPDATING)) {
                 // Check to see if it's time to publish
                 // if so then publish
 
@@ -376,7 +377,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                     } catch (InterruptedException iex) {
                                         iex.printStackTrace();
                                         setState(PUBLICATIONSTATE.COMPLETED);
-                                        break;
+                                        bComplete = true;
                                     }
                                 }
                             } else {
@@ -397,7 +398,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                     } catch (InterruptedException iex) {
                                         iex.printStackTrace();
                                         setState(PUBLICATIONSTATE.COMPLETED);
-                                        break;
+                                        bComplete = true;
                                     }
                                 }
 
@@ -533,7 +534,8 @@ public class Publication implements Runnable, MessageUpdateListener {
                     setState(PUBLICATIONSTATE.COMPLETED);
                     break;
                 }
-
+				if (bComplete)
+					break;
             }
             try {
                 Thread.currentThread().sleep(500);

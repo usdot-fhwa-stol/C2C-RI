@@ -79,9 +79,15 @@ public class UpgradeTask extends Task{
             Properties uiProps = updateClasspathEntries();
             Properties confProps = new Properties();
             try{
-                confProps.load(new FileInputStream(config));
+				try (FileInputStream oFis = new FileInputStream(config))
+				{
+					confProps.load(oFis);
+				}
                 confProps.putAll(uiProps);
-                confProps.store(new FileOutputStream(config), null);
+				try (FileOutputStream oFos = new FileOutputStream(config))
+				{
+					confProps.store(oFos, null);
+				}
                 System.out.println("Applied properties in '"+jameleonGUIProperties.getPath() + "' towards '"+config.getPath()+"'.");
             }catch(IOException ioe){
                 throw new BuildException(ioe);

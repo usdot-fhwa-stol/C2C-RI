@@ -82,17 +82,13 @@ public class JarResourceExtractor {
 
     public void extractFile(ZipEntry entry, File extractDir)
             throws IOException {
-        InputStream in = getJarFile().getInputStream(entry);
-        File outputFile = new File(extractDir, entry.getName());
-        OutputStream out = new FileOutputStream(outputFile);
-        try{
+        try (InputStream in = getJarFile().getInputStream(entry);
+			 OutputStream out = new FileOutputStream(new File(extractDir, entry.getName())))
+			{
             int c;
             while ((c = in.read()) != -1){
                 out.write(c);
             }
-        }finally{
-            in.close();
-            out.close();
         }
     }
 }
