@@ -35,9 +35,9 @@ public class CCTVStatus extends TMDDDefaultEntityDataType{
     }
 
     public static void main(String[] args) throws Exception {
-        boolean writeFile = true;
-        boolean readFile = false;
-        boolean updateValues = true;
+        boolean writeFile = Boolean.parseBoolean(args[0]);
+        boolean readFile = Boolean.parseBoolean(args[1]);
+        boolean updateValues = Boolean.parseBoolean(args[2]);
 
         CCTVStatus cctv = new CCTVStatus(EntityEmulationData.EntityDataType.CCTVSTATUS);
 
