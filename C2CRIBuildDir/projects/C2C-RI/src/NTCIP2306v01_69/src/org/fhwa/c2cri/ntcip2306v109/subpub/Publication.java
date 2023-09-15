@@ -1067,7 +1067,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                             Message pubMessage = DefaultMessageContentGenerator.getInstance().getResponseMessage(opSpec.getOperationName(), nameSpace, name, C2CRIMessageAdapter.toC2CRIMessage(opSpec.getOperationName(), subscriptionMessage), appLayerOpResults);
 
                             // If the generated message is of an expected type then return the published content.  Otherwise return null.
-                            if (pubMessage.getMessageType().equals(name)) {
+                            if (pubMessage.getMessageType().equals(name) && newPublication != null) {
                                 newPublication.addMessagePart(nameSpace, name, pubMessage.getMessageBody());
                                 publicationMessages.add(newPublication);
 
