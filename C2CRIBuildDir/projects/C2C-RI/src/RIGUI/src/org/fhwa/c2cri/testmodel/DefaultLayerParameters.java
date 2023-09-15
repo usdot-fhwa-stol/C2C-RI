@@ -275,17 +275,18 @@ public class DefaultLayerParameters implements Serializable {
         for (Need userNeed : nrtm.getUserNeeds().needs) {
             if (userNeed != null) {
                 layerMap.put(userNeed.getFlagName(), userNeed.getFlagValue());
-            }
-            for (Requirement theRequirement : userNeed.getProjectRequirements().requirements) {
-                if (theRequirement != null) {
-                    layerMap.put(theRequirement.getFlagName(), theRequirement.getFlagValue());
-                }
-                for (OtherRequirement theOtherRequirement : theRequirement.getOtherRequirements().otherRequirements) {
-                    if (theOtherRequirement != null) {
-                        layerMap.put(theOtherRequirement.getValueName(), theOtherRequirement.getValue());
-                    }
-                }
-            }
+				for (Requirement theRequirement : userNeed.getProjectRequirements().requirements) {
+					if (theRequirement != null) {
+						layerMap.put(theRequirement.getFlagName(), theRequirement.getFlagValue());
+
+						for (OtherRequirement theOtherRequirement : theRequirement.getOtherRequirements().otherRequirements) {
+							if (theOtherRequirement != null) {
+								layerMap.put(theOtherRequirement.getValueName(), theOtherRequirement.getValue());
+							}
+						}
+					}
+				}
+			}
         }
 
         return layerMap;

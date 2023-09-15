@@ -249,36 +249,39 @@ public class TestConfigurationList {
                     System.err.println("WatchKey not recognized!!");
 //                continue;
                 }
-                for (WatchEvent<?> event : key.pollEvents()) {
-                    WatchEvent.Kind kind = event.kind();
-                    // TBD - provide example of how OVERFLOW event is handled                 
-                    if (kind == OVERFLOW) {
-                        continue;
-                    }
+				else
+				{
+					for (WatchEvent<?> event : key.pollEvents()) {
+						WatchEvent.Kind kind = event.kind();
+						// TBD - provide example of how OVERFLOW event is handled                 
+						if (kind == OVERFLOW) {
+							continue;
+						}
 
-                    // Context for directory entry event is the file name of entry                 
-                    WatchEvent<Path> ev = cast(event);
-                    Path name = ev.context();
-                    Path child = dir.resolve(name);
-                    // print out event                 
-                    if ((child.getFileName().toString().length()>5) &&(child.getFileName().toString().toUpperCase().endsWith(".RICFG"))) {                    
-                        System.out.format("%s: %s\n", event.kind().name(), child);
-                        update(child.getFileName().toString());
-                    }
-                    // if directory is created, and watching recursively, then                 
-                    // register it and its sub-directories                 
+						// Context for directory entry event is the file name of entry                 
+						WatchEvent<Path> ev = cast(event);
+						Path name = ev.context();
+						Path child = dir.resolve(name);
+						// print out event                 
+						if ((child.getFileName().toString().length()>5) &&(child.getFileName().toString().toUpperCase().endsWith(".RICFG"))) {                    
+							System.out.format("%s: %s\n", event.kind().name(), child);
+							update(child.getFileName().toString());
+						}
+						// if directory is created, and watching recursively, then                 
+						// register it and its sub-directories                 
 
-                }
-// reset key and remove from set if directory no longer accessible             
-                boolean valid = key.reset();
-                if (!valid) {
-                    keys.remove(key);
-// all directories are inaccessible                 
-                    if (keys.isEmpty()) {
-//                    break;
-                    }
-//            }
-                }
+					}
+	// reset key and remove from set if directory no longer accessible             
+					boolean valid = key.reset();
+					if (!valid) {
+						keys.remove(key);
+	// all directories are inaccessible                 
+						if (keys.isEmpty()) {
+	//                    break;
+						}
+	//            }
+					}
+				}
             }
         }
 
