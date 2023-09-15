@@ -85,6 +85,8 @@ public class EntityDataValidator
             throw new InvalidValueException("Element Value was null.");
         } else 
         {
+			if (elementValue == null)
+				throw new InvalidValueException("Null elementValue");
             // If minLength and maxLength = -1, then any non-null value is allowed.
             if ((Integer.parseInt(minLength)==-1) && (Integer.parseInt(maxLength)==-1)) {
                 return;
