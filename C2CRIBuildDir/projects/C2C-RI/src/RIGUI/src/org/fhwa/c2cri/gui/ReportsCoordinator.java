@@ -471,11 +471,9 @@ private ProgressReporter reporterReport;
                             listenerReport = new ProgressListener(reporterReport);
 
 
-                            ObjectInputStream input = null;
                             TestConfiguration testConfig = null;
-                            try {
-                                File f = new File(configPath, configFile);
-                                input = new ObjectInputStream(new FileInputStream(f));
+                            try (ObjectInputStream input= new ObjectInputStream(new FileInputStream(new File(configPath, configFile))))
+							{
                                 testConfig = (TestConfiguration) input.readObject();
                                 testConfig.print();
 
@@ -499,12 +497,6 @@ private ProgressReporter reporterReport;
                                 Logger.getLogger(ReportsCoordinator.class.getName()).log(Level.SEVERE, null, ex);
                             } catch (ClassNotFoundException ex) {
                                 Logger.getLogger(ReportsCoordinator.class.getName()).log(Level.SEVERE, null, ex);
-                            } finally {
-                                try {
-                                    input.close();
-                                } catch (IOException ex) {
-                                    Logger.getLogger(ReportsCoordinator.class.getName()).log(Level.SEVERE, null, ex);
-                                }
                             }
 
 

@@ -114,7 +114,8 @@ import java.sql.Statement;
                         File f = new File(testPath);
                         if (f.exists()) {
                             Connection con = connect();
-                            con.close();
+							if (con != null)
+								con.close();
                             createNewActionsTable();
                             createNewStatusTable();
                             fileNotFound = false;
@@ -147,9 +148,16 @@ import java.sql.Statement;
                     + "                       TestId INTEGER NOT NULL,\n"
                     + "                       CONSTRAINT pk PRIMARY KEY (ActionID));";
 
-            try ( Connection conn = connect();  Statement stmt = conn.createStatement()) {
-                // create a new table
-                stmt.execute(sql);
+            try (Connection conn = connect())
+			{
+				if (conn != null)
+				{
+					try (Statement stmt = conn.createStatement()) 
+					{
+						// create a new table
+						stmt.execute(sql);
+					}
+				}
             } catch (SQLException e) {
                 logException(e);
                 System.out.println(e.getMessage());
@@ -169,9 +177,16 @@ import java.sql.Statement;
                     + "                       TestId INTEGER NOT NULL,\n"
                     + "                       CONSTRAINT pk PRIMARY KEY (StatusID));";
 
-            try ( Connection conn = connect();  Statement stmt = conn.createStatement()) {
-                // create a new table
-                stmt.execute(sql);
+            try (Connection conn = connect())
+			{
+				if (conn != null)
+				{
+					try (Statement stmt = conn.createStatement()) 
+					{
+						// create a new table
+						stmt.execute(sql);
+					}
+				}
             } catch (SQLException e) {
                 logException(e);
                 System.out.println(e.getMessage());
@@ -216,18 +231,25 @@ import java.sql.Statement;
 
                 System.out.println("Writting record " + nextDatabaseActionIndex);
                 // update sql
-                try ( Connection conn = connect();  PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Actions" + "("
-                        + "ActionID, TimeStamp, Message, Result, TestId) VALUES (?,?,?,?,?)")) {
-                    pstmt.setInt(1, nextDatabaseActionIndex);
-                    pstmt.setString(2, timestamp);
-                    pstmt.setString(3, message);
-                    pstmt.setString(4, result);
-                    pstmt.setInt(5, testIndex);
-                    pstmt.execute();
+                try ( Connection conn = connect())
+				{
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Actions" + "("
+							+ "ActionID, TimeStamp, Message, Result, TestId) VALUES (?,?,?,?,?)"))
+						{
+							pstmt.setInt(1, nextDatabaseActionIndex);
+							pstmt.setString(2, timestamp);
+							pstmt.setString(3, message);
+							pstmt.setString(4, result);
+							pstmt.setInt(5, testIndex);
+							pstmt.execute();
 
-                    currentActionIndex = nextDatabaseActionIndex;
-                    nextDatabaseActionIndex++;
-                    return currentActionIndex;
+							currentActionIndex = nextDatabaseActionIndex;
+							nextDatabaseActionIndex++;
+							return currentActionIndex;
+						}
+					}
                 } catch (SQLException ex) {
                     logException(ex);
                     System.out.println(ex.getMessage());
@@ -323,17 +345,24 @@ import java.sql.Statement;
 
                 System.out.println("Writing record " + nextDatabaseStatusIndex);
                 // update sql
-                try ( Connection conn = connect();  PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Status" + "("
-                        + "StatusID, TimeStamp, Message, TestId) VALUES (?,?,?,?)")) {
-                    pstmt.setInt(1, nextDatabaseStatusIndex);
-                    pstmt.setString(2, timestamp);
-                    pstmt.setString(3, message);
-                    pstmt.setInt(4, testId);
-                    pstmt.execute();
+                try (Connection conn = connect())
+				{
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Status" + "("
+							+ "StatusID, TimeStamp, Message, TestId) VALUES (?,?,?,?)"))
+						{
+							pstmt.setInt(1, nextDatabaseStatusIndex);
+							pstmt.setString(2, timestamp);
+							pstmt.setString(3, message);
+							pstmt.setInt(4, testId);
+							pstmt.execute();
 
-                    currentStatusIndex = nextDatabaseStatusIndex;
-                    nextDatabaseStatusIndex++;
-                    return currentStatusIndex;
+							currentStatusIndex = nextDatabaseStatusIndex;
+							nextDatabaseStatusIndex++;
+							return currentStatusIndex;
+						}
+					}
                 } catch (SQLException ex) {
                     logException(ex);
                     System.out.println(ex.getMessage());
