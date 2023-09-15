@@ -216,7 +216,10 @@ public class SOAPDecoder implements NTCIP2306Decoder {
 //        MessageSpecification thisSpecification = msp.convertXMLtoMessageSpecification(encodedMessage);
         soapDecodeResults = xmlValidErrors;
         byte[] emptyBytes = null;
-        log.debug("validXmlv1 = "+validXmlv1 + " : with Message Length "+(validXmlv1?encodedMessage.length:0));
+		if (encodedMessage != null)
+			log.debug("validXmlv1 = "+validXmlv1 + " : with Message Length "+(validXmlv1?encodedMessage.length:0));
+		else
+			log.debug("validXmlv1 = "+validXmlv1 + " : with Message Length 0");
         return validXmlv1 ? encodedMessage : emptyBytes;
     }
 
