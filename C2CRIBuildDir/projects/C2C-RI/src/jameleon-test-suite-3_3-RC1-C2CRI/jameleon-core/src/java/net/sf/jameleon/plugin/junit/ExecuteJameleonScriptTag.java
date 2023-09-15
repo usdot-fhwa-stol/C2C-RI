@@ -203,13 +203,16 @@ public class ExecuteJameleonScriptTag extends JUnitFunctionTag {
                 }
 
                 assertNotNull("No matching line # found", res);
-                assertEquals("Failed Line #:", lineNumFailed, res.getLineNumber());
-                if (lineFailedReason != null) {
-                    assertEquals("Error Message: ", lineFailedReason, res.getErrorMsg());
-                }
-                if (lineFailedFunctionId != null) {
-                    assertEquals("Function ID: ", lineFailedFunctionId, res.getIdentifier());
-                }
+				if (res != null)
+				{
+					assertEquals("Failed Line #:", lineNumFailed, res.getLineNumber());
+					if (lineFailedReason != null) {
+						assertEquals("Error Message: ", lineFailedReason, res.getErrorMsg());
+					}
+					if (lineFailedFunctionId != null) {
+						assertEquals("Function ID: ", lineFailedFunctionId, res.getIdentifier());
+					}
+				}
             }catch(Exception e){
                 System.err.println("####################################");
                 e.printStackTrace();
