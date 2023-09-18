@@ -131,12 +131,17 @@ public class DefaultLayerParameters implements Serializable {
      * @return the other requirements
      */
     public OtherRequirements getOtherRequirements() {
-        for (Need theNeed: nrtm.getUserNeeds().needs){
-            for (Requirement theRequirement : theNeed.getProjectRequirements().requirements){
-                return theRequirement.getOtherRequirements();
-                }
+		OtherRequirements oReturn = null;
+		
+        for (Need theNeed: nrtm.getUserNeeds().needs)
+		{
+            if (oReturn == null && !theNeed.getProjectRequirements().requirements.isEmpty())
+			{
+				oReturn = theNeed.getProjectRequirements().requirements.get(0).getOtherRequirements();
+				break;
+			}
         }
-        return null;
+        return oReturn;
     }
 
     /**
