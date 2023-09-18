@@ -143,7 +143,7 @@ public class Processor implements Cleanable {
                 this.isCompleted = true;
                 if (cleaner != null) {
                     synchronized (cleaner) {
-                        cleaner.notifyAll();;
+                        cleaner.notifyAll();
                     }
                 }
             }
