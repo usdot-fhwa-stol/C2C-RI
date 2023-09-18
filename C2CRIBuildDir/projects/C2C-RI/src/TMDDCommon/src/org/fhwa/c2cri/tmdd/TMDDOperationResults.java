@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import org.fhwa.c2cri.applayer.ApplicationLayerOperationResults;
 import org.fhwa.c2cri.applayer.DialogResults;
@@ -236,7 +237,7 @@ public class TMDDOperationResults implements InformationLayerOperationResults {
         dialogResults.setOneMessageReceived(oneMessageReceived);
 
         System.out.println("This is the newer TMDDOperationResults Code!  Returning messageFieldsVerified = "+dialogResults.isMessageFieldsVerified() + " messageValuesVerified = "+dialogResults.isMessageValuesVerified());        
-        System.out.println(Thread.currentThread().getStackTrace().toString());
+        System.out.println(Arrays.toString(Thread.currentThread().getStackTrace()));
         
         return dialogResults;
     }

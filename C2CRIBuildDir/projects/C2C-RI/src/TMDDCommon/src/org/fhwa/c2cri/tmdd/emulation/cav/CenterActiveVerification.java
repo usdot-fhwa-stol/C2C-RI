@@ -35,9 +35,9 @@ public class CenterActiveVerification extends TMDDDefaultEntityDataType{
     }
 
     public static void main(String[] args) throws Exception {
-        boolean writeFile = false;
-        boolean readFile = true;
-        boolean updateValues = false;
+        boolean writeFile = Boolean.parseBoolean(args[0]);
+        boolean readFile = Boolean.parseBoolean(args[1]);
+        boolean updateValues = Boolean.parseBoolean(args[2]);
 
         CenterActiveVerification cav = new CenterActiveVerification(EntityEmulationData.EntityDataType.CENTERACTIVEVERIFICATION);
 

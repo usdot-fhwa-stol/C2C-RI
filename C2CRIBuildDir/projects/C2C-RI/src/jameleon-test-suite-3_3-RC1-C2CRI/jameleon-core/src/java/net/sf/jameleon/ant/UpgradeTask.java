@@ -130,7 +130,9 @@ public class UpgradeTask extends Task{
     }
 
     private void throwExceptionOnNoFile(File f, String attributeName) throws BuildException{
-        if (f == null || !f.exists() || f.isDirectory()) {
+        if (f == null)
+			throw new BuildException("Null File Object");
+		if (!f.exists() || f.isDirectory()) {
             throw new BuildException("'"+attributeName+"': "+f.getPath() + 
                                      ": is either a directory or is non-existent!");
         }

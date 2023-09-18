@@ -574,7 +574,8 @@ public class NTCIP2306HTTPServlet extends HttpServlet {
                                     // Store the XML Parsing errors related extracting the request message from SOAP.
                                 }
                             }
-                            em.setXmlStatus(xmlValidator.getXMLStatus());
+							if (em != null)
+								em.setXmlStatus(xmlValidator.getXMLStatus());
                         } else {
                               throw new Exception("SOAP Encoding Error");
   

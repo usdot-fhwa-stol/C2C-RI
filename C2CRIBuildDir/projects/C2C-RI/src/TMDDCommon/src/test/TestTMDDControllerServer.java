@@ -5,6 +5,7 @@
 package test;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import org.fhwa.c2cri.applayer.ApplicationLayerStandard;
@@ -91,6 +92,8 @@ public class TestTMDDControllerServer
 
         }
 
+		if (tmdd == null)
+			throw new IOException("Null tmdd");
         tmdd.initializeStandard("FakeName", "OC", als);
 
         InformationLayerController ilc = tmdd.getInformationLayerController();

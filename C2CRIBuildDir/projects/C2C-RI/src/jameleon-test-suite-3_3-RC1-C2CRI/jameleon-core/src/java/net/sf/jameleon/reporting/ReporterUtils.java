@@ -35,7 +35,7 @@ import java.util.Map;
  * A utility class for the reporting package
  */
 public class ReporterUtils {
-    private static final SimpleDateFormat shortFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
+    private static final String shortFormat = "yyyyMMddHHmmssSSS";
 
     private ReporterUtils(){}
 
@@ -44,7 +44,8 @@ public class ReporterUtils {
     }
 
     public static String formatTime(Calendar time){
-        return shortFormat.format(time.getTime());
+		SimpleDateFormat oSdf = new SimpleDateFormat(shortFormat);
+        return oSdf.format(time.getTime());
     }
 
     public static void outputToTemplate(Writer writer, String template, Map params){

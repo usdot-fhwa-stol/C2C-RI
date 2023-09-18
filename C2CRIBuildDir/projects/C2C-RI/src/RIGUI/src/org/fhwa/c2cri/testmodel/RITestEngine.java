@@ -71,6 +71,8 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      * The executing.
      */
     private static Boolean executing = false;
+	
+	private static final Object LOCK = new Object();
 
     /**
      * The debug.
@@ -277,7 +279,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      */
     public Boolean getStopExecution() {
         boolean results;
-        synchronized (RITestEngine.stopExecution) {
+        synchronized (LOCK) {
             results = RITestEngine.stopExecution;
         }
         return results;
@@ -289,7 +291,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      * @param stopExecution the new stop execution
      */
     public void setStopExecution(Boolean stopExecution) {
-        synchronized (RITestEngine.stopExecution) {
+        synchronized (LOCK) {
             RITestEngine.stopExecution = stopExecution;
         }
     }
@@ -301,7 +303,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      */
     public Boolean getExecuting() {
         boolean results;
-        synchronized (RITestEngine.executing) {
+        synchronized (LOCK) {
             results = RITestEngine.executing;
         }
         return results;
@@ -313,7 +315,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      * @param executing the new executing
      */
     public void setExecuting(Boolean executing) {
-        synchronized (RITestEngine.executing) {
+        synchronized (LOCK) {
             RITestEngine.executing = executing;
         }
     }

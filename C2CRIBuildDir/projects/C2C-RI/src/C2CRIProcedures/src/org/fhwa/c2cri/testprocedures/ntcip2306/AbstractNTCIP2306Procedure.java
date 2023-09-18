@@ -33,7 +33,6 @@ public abstract class AbstractNTCIP2306Procedure implements TestProcedure {
     private String testProcedureTitle;
     private String testProcedureDescription;
     private String testProcedureProductionDate;
-    private String needID;
 
     protected void initializeSummaryInformation(String target, String profile, String centerMode) {
         NTCIP2306TestProcedureNamer procedureNameMaker = new NTCIP2306TestProcedureNamer(target, profile, centerMode);
@@ -43,7 +42,6 @@ public abstract class AbstractNTCIP2306Procedure implements TestProcedure {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         testProcedureProductionDate = dateFormat.format(date);
-        this.needID = needID;
         if (target.equals(NTCIP2306Parameters.NTCIP2306_WSDL_TARGET)){
             relatedRequirements = NTCIP2306Specifications.getInstance().getWSDLRequirements();
         } else {

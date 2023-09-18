@@ -147,7 +147,7 @@ public class EntityPriorityQueueInformation {
          */
         public void setQueueHeadRequest(MessageSpecification queueHeadRequestEntry) {
             this.queueHeadRequest = new MessageSpecification(queueHeadRequestEntry.getMessageSpec());
-            System.out.println("EntityPriorityQueueInformation::setqueueHeader queueHeadRequest was set and not null "+(this.queueHeadRequest!=null?"true":"false"));
+            System.out.println("EntityPriorityQueueInformation::setqueueHeader queueHeadRequest was set and not null true");
         }
 
         /**
@@ -172,7 +172,7 @@ public class EntityPriorityQueueInformation {
                 otherMessages.add(new MessageSpecification(thisSpec.getMessageSpec()));
             }
             this.otherQueueMessages = otherMessages;
-            System.out.println("EntityPriorityQueueInformation::setOtherQueueHeader otherQueueHeadRequest was set and not null "+(this.otherQueueMessages!=null?"true":"false"));
+            System.out.println("EntityPriorityQueueInformation::setOtherQueueHeader otherQueueHeadRequest was set and not null true");
             System.out.println("EntityPriorityQueueInformation::setOtherQueueHeader QueueHeadRequest was set and not null "+(this.queueHeadRequest!=null?"true":"false"));
         }
 

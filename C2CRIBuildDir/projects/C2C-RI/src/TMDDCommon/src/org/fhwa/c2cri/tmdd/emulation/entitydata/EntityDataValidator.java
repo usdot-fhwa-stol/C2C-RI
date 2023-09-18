@@ -85,6 +85,8 @@ public class EntityDataValidator
             throw new InvalidValueException("Element Value was null.");
         } else 
         {
+			if (elementValue == null)
+				throw new InvalidValueException("Null elementValue");
             // If minLength and maxLength = -1, then any non-null value is allowed.
             if ((Integer.parseInt(minLength)==-1) && (Integer.parseInt(maxLength)==-1)) {
                 return;
@@ -165,7 +167,7 @@ public class EntityDataValidator
             Matcher matcher = regPass.matcher(elementValue);
             
             //A loop control method that searches through the input string.
-            while(matcher.find())
+            if(matcher.find())
             {
                 //If a match is found, meaning that the DateTime is correct in the input string, the method returns.
                 return;

@@ -313,7 +313,10 @@ public class FunctionalPoint implements XMLable, Cloneable {
     			fp.addAttribute(attr);
     		}
     	}catch(CloneNotSupportedException cnse){
-    		throw new JameleonException("Could not clone this tag " + fp.getDefaultTagName() +":", cnse);
+			if (fp == null)
+				throw new JameleonException("Could not clone, FunctionalPoint was null:", cnse);
+			else
+				throw new JameleonException("Could not clone this tag " + fp.getDefaultTagName() +":", cnse);
     	}
     	return fp;
     }

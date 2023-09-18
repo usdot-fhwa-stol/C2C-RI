@@ -241,20 +241,13 @@ class SocketChannelImpl
             if (socket == null) {
                 socket = SocketAdaptor.create(this);
             }
-            if (serverSocket) {
+            if (serverSocket && (socket != null) && (socket.getInetAddress() != null) && ConnectionsDirectory.getInstance().isDefinedConnection(socket.getLocalAddress().getHostName(), socket.getLocalAddress().getHostAddress(), socket.getLocalPort())) {
 
-                if ((socket != null) && (socket.getInetAddress() != null)) {
-                    if (ConnectionsDirectory.getInstance().isDefinedConnection(socket.getLocalAddress().getHostName(), socket.getLocalAddress().getHostAddress(), socket.getLocalPort())) {
-                        socketInformation = new ConnectionInformation(socket.getLocalAddress(), socket.getLocalPort(), socket.getInetAddress(), socket.getPort(), serverSocket);
-                        socketInformation.setTestCaseName(ConnectionsDirectory.getInstance().getTestCaseName());
-                        socketInformation.setLiveTestConnection(true);
-                        ConnectionsDirectory.getInstance().addConnection(socketInformation);
-                        System.out.println("SocketChannelImpl:: socket  ConnectionInfo Set!!!\n" + socket.getLocalAddress() + "\n" + socket.getLocalPort() + "\n" + socket.getInetAddress() + "\n" + socket.getPort() + "\n" + this);
-
-                    }
-                } else if ((socket != null) && (socket.getInetAddress() != null)) {
-                    System.out.println("SocketChannelImpl:: socket  ConnectionInfo Skipped!!!\n" + socket.getLocalAddress() + "\n" + socket.getLocalPort() + "\n" + socket.getInetAddress() + "\n" + socket.getPort() + "\n" + this);
-                }
+				socketInformation = new ConnectionInformation(socket.getLocalAddress(), socket.getLocalPort(), socket.getInetAddress(), socket.getPort(), serverSocket);
+				socketInformation.setTestCaseName(ConnectionsDirectory.getInstance().getTestCaseName());
+				socketInformation.setLiveTestConnection(true);
+				ConnectionsDirectory.getInstance().addConnection(socketInformation);
+				System.out.println("SocketChannelImpl:: socket  ConnectionInfo Set!!!\n" + socket.getLocalAddress() + "\n" + socket.getLocalPort() + "\n" + socket.getInetAddress() + "\n" + socket.getPort() + "\n" + this);
             }
             return socket;
         }

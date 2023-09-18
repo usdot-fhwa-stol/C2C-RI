@@ -241,7 +241,8 @@ public class MessageContentDBCache implements MessageContent {
                         File f = new File(testPath);
                         if (f.exists()) {
                             con = connect();
-                            con.close();
+							if (con != null)
+								con.close();
                             con = null;
                             createNewMessageTable();
                             fileNotFound = false;
@@ -274,9 +275,16 @@ public class MessageContentDBCache implements MessageContent {
                     + "                       Message   BLOB NOT NULL,\n"
                     + "                       CONSTRAINT pk PRIMARY KEY (MsgID));";
 
-            try ( Connection conn = connect();  Statement stmt = conn.createStatement()) {
-                // create a new table
-                stmt.execute(sql);
+            try (Connection conn = connect())
+			{
+				if (conn != null)
+				{
+					try (Statement stmt = conn.createStatement())
+					{
+						// create a new table
+						stmt.execute(sql);
+					}
+				}
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
@@ -317,21 +325,28 @@ public class MessageContentDBCache implements MessageContent {
 
                 System.out.println("Writting record " + nextDatabaseMessageIndex);
                 // update sql
-                try ( Connection conn = connect();  PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Messages" + "("
-                        + "MsgID, Namespace, Message) VALUES (?,?,?)")) {
-                    pstmt.setInt(1, nextDatabaseMessageIndex);
-                    StringBuilder stackHistory = new StringBuilder();
-                    for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
-                        stackHistory.append(ste.toString() + "\n");
-                    }
-                    pstmt.setString(2, stackHistory.toString());
-                    pstmt.setBytes(3, message.readAllBytes());
+                try (Connection conn = connect())
+				{
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Messages" + "("
+							+ "MsgID, Namespace, Message) VALUES (?,?,?)"))	
+						{
+							pstmt.setInt(1, nextDatabaseMessageIndex);
+							StringBuilder stackHistory = new StringBuilder();
+							for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
+								stackHistory.append(ste.toString() + "\n");
+							}
+							pstmt.setString(2, stackHistory.toString());
+							pstmt.setBytes(3, message.readAllBytes());
 
-                    pstmt.execute();
+							pstmt.execute();
 
-                    currentMessageIndex = nextDatabaseMessageIndex;
-                    nextDatabaseMessageIndex++;
-                    return currentMessageIndex;
+							currentMessageIndex = nextDatabaseMessageIndex;
+							nextDatabaseMessageIndex++;
+							return currentMessageIndex;
+						}
+					}
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
                 } catch (SQLException ex) {
@@ -355,21 +370,27 @@ public class MessageContentDBCache implements MessageContent {
 
                 System.out.println("Writting record " + nextDatabaseMessageIndex);
                 // update sql
-                try ( Connection conn = connect();  PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Messages" + "("
-                        + "MsgID, Namespace, Message) VALUES (?,?,?)")) {
-                    pstmt.setInt(1, nextDatabaseMessageIndex);
-                    StringBuilder stackHistory = new StringBuilder();
-                    for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
-                        stackHistory.append(ste.toString() + "\n");
-                    }
-                    pstmt.setString(2, stackHistory.toString());
-                    pstmt.setBytes(3, message);
+                try (Connection conn = connect())
+				{
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Messages" + "("
+							+ "MsgID, Namespace, Message) VALUES (?,?,?)")) {
+							pstmt.setInt(1, nextDatabaseMessageIndex);
+							StringBuilder stackHistory = new StringBuilder();
+							for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
+								stackHistory.append(ste.toString() + "\n");
+							}
+							pstmt.setString(2, stackHistory.toString());
+							pstmt.setBytes(3, message);
 
-                    pstmt.execute();
+							pstmt.execute();
 
-                    currentMessageIndex = nextDatabaseMessageIndex;
-                    nextDatabaseMessageIndex++;
-                    return currentMessageIndex;
+							currentMessageIndex = nextDatabaseMessageIndex;
+							nextDatabaseMessageIndex++;
+							return currentMessageIndex;
+						}
+					}
 
                 } catch (SQLException ex) {
                     System.out.println(ex.getMessage());

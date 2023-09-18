@@ -92,7 +92,7 @@ public class NTCIP2306InformationLayerAdapter implements InformationLayerAdapter
                     new String(responseMessage.getMessageBody(),"UTF-8"),disableAppLayerEncoding);            
         }
 //        System.out.println(results);
-        if (results.getResponseMessage()!= null)C2CRIMessageAdapter.updateC2CRIMessage(responseMessage, results.getResponseMessage());
+        if (results != null && results.getResponseMessage()!= null)C2CRIMessageAdapter.updateC2CRIMessage(responseMessage, results.getResponseMessage());
         return new NTCIP2306ApplicationLayerOperationResults(results);
     }
 
@@ -121,7 +121,7 @@ public class NTCIP2306InformationLayerAdapter implements InformationLayerAdapter
                        new String (requestMessage.getMessageBody(),"UTF-8"),disableAppLayerEncoding);                                        
         }
 //        System.out.println(results);
-        if (results.getRequestMessage()!= null)C2CRIMessageAdapter.updateC2CRIMessage(requestMessage, results.getRequestMessage());
+        if (results != null && results.getRequestMessage()!= null)C2CRIMessageAdapter.updateC2CRIMessage(requestMessage, results.getRequestMessage());
         return new NTCIP2306ApplicationLayerOperationResults(results);
     }
 
@@ -174,7 +174,7 @@ public class NTCIP2306InformationLayerAdapter implements InformationLayerAdapter
 
 //        results = controller.performFTPGetEC(opSpec.getRelatedToService(), opSpec.getRelatedToPort(), dialog);
 //        System.out.println(results);
-        if (results.getResponseMessage()!= null)C2CRIMessageAdapter.updateC2CRIMessage(responseMessage, results.getResponseMessage());
+        if (results != null && results.getResponseMessage()!= null)C2CRIMessageAdapter.updateC2CRIMessage(responseMessage, results.getResponseMessage());
         return new NTCIP2306ApplicationLayerOperationResults(results);
     }
 

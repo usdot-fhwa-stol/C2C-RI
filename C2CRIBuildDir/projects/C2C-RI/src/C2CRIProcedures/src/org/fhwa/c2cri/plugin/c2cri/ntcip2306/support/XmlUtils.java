@@ -73,12 +73,15 @@ public final class XmlUtils
 {
 	private static DocumentBuilder documentBuilder;
 	private final static Logger log = Logger.getLogger( XmlUtils.class );
-
+	private static final String NULLMSG = "Null DocumentBuilder";
 	static synchronized public Document parse( InputStream in )
 	{
 		try
 		{
-			return ensureDocumentBuilder().parse( in );
+			DocumentBuilder oDocBuilder = ensureDocumentBuilder();
+			if (oDocBuilder == null)
+				throw new SAXException(NULLMSG);
+			return oDocBuilder.parse( in );
 		}
 		catch( Exception e )
 		{
@@ -92,7 +95,10 @@ public final class XmlUtils
 	{
 		try
 		{
-			return ensureDocumentBuilder().parse( fileName );
+			DocumentBuilder oDocBuilder = ensureDocumentBuilder();
+			if (oDocBuilder == null)
+				throw new SAXException(NULLMSG);
+			return oDocBuilder.parse( fileName );
 		}
 		catch( SAXException e )
 		{
@@ -117,7 +123,10 @@ public final class XmlUtils
 	{
 		try
 		{
-			return ensureDocumentBuilder().parse( inputSource );
+			DocumentBuilder oDocBuilder = ensureDocumentBuilder();
+			if (oDocBuilder == null)
+				throw new SAXException(NULLMSG);
+			return oDocBuilder.parse( inputSource );
 		}
 		catch( SAXException e )
 		{

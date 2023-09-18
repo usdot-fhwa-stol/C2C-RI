@@ -386,15 +386,19 @@ public class SampleXmlUtilDoctored {
     private String getMinInclusive(SchemaType sType) {
         XmlDecimal xmlD;
         xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MIN_INCLUSIVE);
-        BigDecimal min = xmlD != null ? xmlD.getBigDecimalValue() : null;
-        return min.toString();
+		if (xmlD != null)
+			return xmlD.getBigDecimalValue().toString();
+		
+		return null;
     }
 
     private String getMaxInclusive(SchemaType sType) {
         XmlDecimal xmlD;
         xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MAX_INCLUSIVE);
-        BigDecimal max = xmlD != null ? xmlD.getBigDecimalValue() : null;
-        return max.toString();
+		if (xmlD != null)
+			return xmlD.getBigDecimalValue().toString();
+        
+		return null;
     }
 
     private String sampleDataForSimpleType(SchemaType sType) {
@@ -733,7 +737,7 @@ public class SampleXmlUtilDoctored {
                 sb.append('1');
                 increment = new BigDecimal(sb.toString());
             } else {
-                increment = new BigDecimal(1.0);
+                increment = BigDecimal.valueOf(1.0);
             }
         }
 
@@ -885,7 +889,7 @@ public class SampleXmlUtilDoctored {
                 gdurb.setSecond(minExclusive.getSecond() + 1);
             }
             if (gdurb.getFraction().compareTo(minExclusive.getFraction()) <= 0) {
-                gdurb.setFraction(minExclusive.getFraction().add(new BigDecimal(0.001)));
+                gdurb.setFraction(minExclusive.getFraction().add(BigDecimal.valueOf(0.001)));
             }
         }
 

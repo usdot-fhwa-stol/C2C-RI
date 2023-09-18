@@ -6,9 +6,7 @@ import java.io.FileDescriptor;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.lang.reflect.Field;
 import java.net.InetAddress;
-import java.net.Socket;
 import java.net.SocketAddress;
 import java.net.SocketException;
 import java.net.SocketImpl;
@@ -30,15 +28,6 @@ class C2CRISSLSocketImpl extends java.net.SocketImpl
         "java.net.SocksSocketImpl");
   }
 
-  private Socket getSocket() throws IOException {
-    try {
-       Field socket = SocketImpl.class.getDeclaredField("socket");
-       socket.setAccessible(true);
-       return (Socket) socket.get(this);
-    } catch (Exception e) {
-      throw new IOException("Could not discover real socket");
-    }
-  }
  
 
   public InputStream getInputStream() throws IOException {

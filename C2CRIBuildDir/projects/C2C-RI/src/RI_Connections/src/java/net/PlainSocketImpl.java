@@ -565,7 +565,7 @@ class PlainSocketImpl extends AbstractPlainSocketImpl {
         return logInputStream;
     }
 
-    void setInputStream(SocketInputStream in) {
+    synchronized void setInputStream(SocketInputStream in) {
         socketInputStream = in;
     }
 

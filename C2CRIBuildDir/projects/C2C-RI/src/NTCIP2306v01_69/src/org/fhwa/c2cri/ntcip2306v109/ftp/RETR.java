@@ -165,7 +165,6 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
 
             // send file data to client
             boolean failure = false;
-            InputStream is = null;
             InputStream nis = null;
             
             DataConnection dataConnection;
@@ -196,20 +195,7 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
                 long transSz = dataConnection.transferToClient(session.getFtpletSession(), nis);
                 // attempt to close the input stream so that errors in
                 // closing it will return an error to the client (FTPSERVER-119)
-                if(is != null) {
-                    is.close();
-                }
                 if(nis != null) {
-                    nis.close();
-                }
-
-
-                // attempt to close the input stream so that errors in
-                // closing it will return an error to the client (FTPSERVER-119)
-                if (is != null) {
-                    is.close();
-                }
-                if (nis != null) {
                     nis.close();
                 }
 
@@ -238,7 +224,6 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
                         "RETR", fileName));
             } finally {
                 // make sure we really close the input stream
-                IoUtils.close(is);
                 IoUtils.close(nis);
             }
 
@@ -363,12 +348,6 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
         // get data socket
         try (Socket dataSoc = new Socket(theClient, session.getDataConnection().getPort()))
 		{
-
-			if (dataSoc == null) {
-				System.out.println("RETR: Cannot open data connection");
-				throw new IOException("Cannot open data connection.");
-			}
-
 			// create output stream
 			try (OutputStream out = dataSoc.getOutputStream())
 			{

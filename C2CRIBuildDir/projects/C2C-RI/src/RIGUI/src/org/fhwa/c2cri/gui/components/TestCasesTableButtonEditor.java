@@ -74,7 +74,7 @@ public class TestCasesTableButtonEditor extends DefaultCellEditor {
 
         }
 
-        label = (value == null) ? "" : value.toString();
+        label = value.toString();
 
         isPushed = true;
         return button;

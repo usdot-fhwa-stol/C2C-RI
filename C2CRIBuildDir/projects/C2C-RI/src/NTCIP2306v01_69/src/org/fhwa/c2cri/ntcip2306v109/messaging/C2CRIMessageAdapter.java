@@ -125,17 +125,11 @@ public class C2CRIMessageAdapter {
             String sourceAddress;
             String destinationAddress;
 
-            if (inputMessage.getProtocolType().equals(PROTOCOLTYPE.FTP)) {
-                // FTP does not set address, So it wass stored under the HTTP Status
-                sourceAddress = inputMessage.getHttpStatus().getSource();
-                destinationAddress = inputMessage.getHttpStatus().getDestination();
-            } else {
-                sourceAddress = inputMessage.getHttpStatus().getSource();
-                destinationAddress = inputMessage.getHttpStatus().getDestination();
-            }
+			// FTP does not set address, So it wass stored under the HTTP Status
+			sourceAddress = inputMessage.getHttpStatus().getSource();
+			destinationAddress = inputMessage.getHttpStatus().getDestination();
 
-
-            message.setMessageBodyPartsFromContent(msgList);
+			message.setMessageBodyPartsFromContent(msgList);
             message.setMessageDestinationAddress(destinationAddress);
             message.setMessageEncoding(inputMessage.getEncodingType().name());
             message.setMessageSourceAddress(sourceAddress);

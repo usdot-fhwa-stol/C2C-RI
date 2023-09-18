@@ -234,6 +234,8 @@ public class Publication implements Runnable, MessageUpdateListener {
      *  Thread for processing publication and response and results
      */
     private Thread nonScriptedPubResponseThread;
+	
+	private final Object LOCK = new Object();
     
     
     /**
@@ -849,7 +851,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @return the state
      */
     public PUBLICATIONSTATE getState() {
-        synchronized (this.state) {
+        synchronized (LOCK) {
             return state;
         }
     }
@@ -860,7 +862,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @param state the new state
      */
     private void setState(PUBLICATIONSTATE state) {
-        synchronized (this.state) {
+        synchronized (LOCK) {
             this.state = state;
         }
     }
@@ -1065,7 +1067,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                             Message pubMessage = DefaultMessageContentGenerator.getInstance().getResponseMessage(opSpec.getOperationName(), nameSpace, name, C2CRIMessageAdapter.toC2CRIMessage(opSpec.getOperationName(), subscriptionMessage), appLayerOpResults);
 
                             // If the generated message is of an expected type then return the published content.  Otherwise return null.
-                            if (pubMessage.getMessageType().equals(name)) {
+                            if (pubMessage.getMessageType().equals(name) && newPublication != null) {
                                 newPublication.addMessagePart(nameSpace, name, pubMessage.getMessageBody());
                                 publicationMessages.add(newPublication);
 
@@ -1259,7 +1261,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                 responseText = "OK";
             } else if (getState().equals(Publication.PUBLICATIONSTATE.UPDATING)) {
                 throw new Exception("The subscription is updating the associated publication.");
-            } else if (getState().equals(Publication.PUBLICATIONSTATE.ACTIVE)) {
+            } else {
                 throw new Exception("The publication associated with the subscription id is in an invalid state.");
             }
         }
@@ -1402,7 +1404,9 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @return the millis since last periodic subscription
      */
     public long getMillisSinceLastPeriodicPublication() {
-        return millisSinceLastPublication;
+		synchronized (LOCK) {
+			return millisSinceLastPublication;
+		}
     }
 
     /**
@@ -1413,7 +1417,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @param currentTimeInMillis the current time in millis
      */
     private void computeMillisSinceLastPublication(long currentTimeInMillis) {
-        synchronized (millisSinceLastPublication) {
+        synchronized (LOCK) {
             millisSinceLastPublication = currentTimeInMillis - lastPublicationTimeInMillis;
             lastPublicationTimeInMillis = currentTimeInMillis;
             System.out.println("Publication::computeMillisSinceLastPublication lastPublicationTimeInMillis = "+lastPublicationTimeInMillis);
@@ -1645,7 +1649,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      *
      * @return true, if is on change update
      */
-    private boolean isOnChangeUpdate() {
+    private synchronized boolean isOnChangeUpdate() {
         return onChangeUpdate;
     }
 

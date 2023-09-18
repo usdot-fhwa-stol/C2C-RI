@@ -72,12 +72,7 @@ public class AutoTester {
     }
     
     public void startTest(){
-        if (ownerCenterFlag){
-            
-        } else {
-            
-        }
-        
+		// original implementation did nothing
     }
     
     public void stopAutoTester(){

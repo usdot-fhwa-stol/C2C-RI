@@ -90,9 +90,9 @@ public class CCTVHandler implements EntityControlRequestStatusCollector, EntityC
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        boolean writeFile = false;
-        boolean readFile = false;
-        boolean updateValues = true;
+        boolean writeFile = Boolean.parseBoolean(args[0]);
+        boolean readFile = Boolean.parseBoolean(args[1]);
+        boolean updateValues = Boolean.parseBoolean(args[2]);
 
         CCTVHandler cctv = new CCTVHandler();
 
