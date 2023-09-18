@@ -386,15 +386,19 @@ public class SampleXmlUtilDoctored {
     private String getMinInclusive(SchemaType sType) {
         XmlDecimal xmlD;
         xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MIN_INCLUSIVE);
-        BigDecimal min = xmlD != null ? xmlD.getBigDecimalValue() : null;
-        return min.toString();
+		if (xmlD != null)
+			return xmlD.getBigDecimalValue().toString();
+		
+		return null;
     }
 
     private String getMaxInclusive(SchemaType sType) {
         XmlDecimal xmlD;
         xmlD = (XmlDecimal) sType.getFacet(SchemaType.FACET_MAX_INCLUSIVE);
-        BigDecimal max = xmlD != null ? xmlD.getBigDecimalValue() : null;
-        return max.toString();
+		if (xmlD != null)
+			return xmlD.getBigDecimalValue().toString();
+		
+		return null;
     }
 
     private String sampleDataForSimpleType(SchemaType sType) {
