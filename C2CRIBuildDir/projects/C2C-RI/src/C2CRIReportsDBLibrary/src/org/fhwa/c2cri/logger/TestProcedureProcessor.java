@@ -991,7 +991,7 @@ public class TestProcedureProcessor {
      */
     private void processAppStepsEvent() throws SQLException {
 
-        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart() == (TESTPROCEDURESTEPS)))) {
+        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart().equals((TESTPROCEDURESTEPS))))) {
 
             try {
                 if (event.isStartElement()) {
