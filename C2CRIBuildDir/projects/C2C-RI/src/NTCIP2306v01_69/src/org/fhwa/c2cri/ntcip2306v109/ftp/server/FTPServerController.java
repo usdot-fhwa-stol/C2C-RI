@@ -85,6 +85,8 @@ public class FTPServerController implements Runnable{
             }
             shutdown();
         } catch (Exception ex){
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             ex.printStackTrace();
         }
 

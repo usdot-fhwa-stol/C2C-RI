@@ -140,6 +140,8 @@ public class FTPClientTransport implements Runnable {
                 }
                 Thread.currentThread().sleep(300);
             } catch (Exception ex) {
+				if (ex instanceof InterruptedException)
+					Thread.currentThread().interrupt();
                 ex.printStackTrace();
                 System.out.println(opSpecCollection == null ? "Ops Spec Collection was null!!" : "OK");
             }

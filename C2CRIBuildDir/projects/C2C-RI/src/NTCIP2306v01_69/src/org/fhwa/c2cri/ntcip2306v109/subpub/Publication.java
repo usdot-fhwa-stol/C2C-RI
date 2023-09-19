@@ -320,6 +320,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                         } catch (InterruptedException iex) {
                             iex.printStackTrace();
                             setState(PUBLICATIONSTATE.COMPLETED);
+							Thread.currentThread().interrupt();
                             break;
                         }
                     
@@ -368,6 +369,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                     }
                                 } catch (InterruptedException ex) {
                                     setState(PUBLICATIONSTATE.COMPLETED);
+									Thread.currentThread().interrupt();
                                     break;
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
@@ -380,6 +382,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                         iex.printStackTrace();
                                         setState(PUBLICATIONSTATE.COMPLETED);
                                         bComplete = true;
+										Thread.currentThread().interrupt();
                                     }
                                 }
                             } else {
@@ -389,6 +392,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                 } catch (InterruptedException iex) {
                                     iex.printStackTrace();
                                     setState(PUBLICATIONSTATE.COMPLETED);
+									Thread.currentThread().interrupt();
                                     break;
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
@@ -401,6 +405,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                         iex.printStackTrace();
                                         setState(PUBLICATIONSTATE.COMPLETED);
                                         bComplete = true;
+										Thread.currentThread().interrupt();
                                     }
                                 }
 
@@ -425,6 +430,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                             Thread.currentThread().sleep(2000);
                                         } catch (InterruptedException iex) {
                                             iex.printStackTrace();
+											Thread.currentThread().interrupt();
                                         }//                                } else {
                                         System.out.println("Publication::run PublicationCompleted for OC Not Scripted @" + System.currentTimeMillis());
                                         break;
@@ -449,6 +455,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                             Thread.currentThread().sleep(2000);
                                         } catch (InterruptedException iex) {
                                             iex.printStackTrace();
+											Thread.currentThread().interrupt();
                                         }//                                } else {
                                         System.out.println("Publication::run PublicationCompleted for OC Scripted  @" + System.currentTimeMillis());
                                         break;
@@ -456,6 +463,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                 }
                             } catch (InterruptedException ex) {
                                 setState(PUBLICATIONSTATE.COMPLETED);
+								Thread.currentThread().interrupt();
                             } catch (Exception ex) {
                                 ex.printStackTrace();
                                 publicationErrorCount++;
@@ -473,6 +481,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                 break;
                             } catch (InterruptedException ex) {
                                 setState(PUBLICATIONSTATE.COMPLETED);
+								Thread.currentThread().interrupt();
                                 break;
                             } catch (Exception ex) {
                                 ex.printStackTrace();
@@ -522,6 +531,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                 publishMessageEC(getOpId());
                             } catch (InterruptedException ex) {
                                 setState(PUBLICATIONSTATE.COMPLETED);
+								Thread.currentThread().interrupt();
                                 break;
                             } catch (Exception ex) {
                                 ex.printStackTrace();
@@ -544,6 +554,7 @@ public class Publication implements Runnable, MessageUpdateListener {
             } catch (InterruptedException iex) {
                 iex.printStackTrace();
                 setState(PUBLICATIONSTATE.COMPLETED);
+				Thread.currentThread().interrupt();
                 break;
             }
         }
@@ -657,6 +668,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                             } catch (InterruptedException ex) {
                                 log.debug("Publication::publishMessageOC Exiting the nonScriptedPubResponseThread after Thread Interrupt.");
                                 System.err.println("Publication::publishMessageOC Exiting the nonScriptedPubResponseThread after Thread Interrupt.");
+								Thread.currentThread().interrupt();
                                 break;
                             } catch (Exception ex) {
                                 ex.printStackTrace();
@@ -1088,6 +1100,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                 Thread.sleep(lastgenerationDuration + 1000);
                             }
                         } catch (InterruptedException ex) {
+							Thread.currentThread().interrupt();
                             break;
                         } catch (Exception ex) {
                             ex.printStackTrace();
@@ -1302,6 +1315,7 @@ public class Publication implements Runnable, MessageUpdateListener {
             throw new Exception("produceC2cMessagePublication Exception:", jaxbex);
         } catch (InterruptedException iex) {
             iex.printStackTrace();
+			Thread.currentThread().interrupt();
             throw new Exception("produceC2cMessagePublication Exception:", iex);
         } catch (Exception ex) {
             ex.printStackTrace();

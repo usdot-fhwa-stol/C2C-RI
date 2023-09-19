@@ -154,6 +154,7 @@ public class DefaultOperationListener implements Runnable {
             } catch (InterruptedException e) {
                 e.printStackTrace();
                 stopListener = true;
+				Thread.currentThread().interrupt();
             }
         }
         System.out.println("DefaultOperationListener has stopped per user request.  Queue=" + eqc);

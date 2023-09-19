@@ -422,6 +422,7 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
                         try {
                             Thread.sleep(50);
                         } catch (InterruptedException ex) {
+							Thread.currentThread().interrupt();
                             break;
                         }
                         continue;
