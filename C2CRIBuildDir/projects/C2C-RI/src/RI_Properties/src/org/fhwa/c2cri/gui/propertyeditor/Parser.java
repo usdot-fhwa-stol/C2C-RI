@@ -262,9 +262,9 @@ public class Parser {
 				String line = br.readLine();
 				//lineNumber++;
 
-				if(groupName(line) != "") {
+				if(!groupName(line).equals("")) {
 
-					if(groupData != "") {
+					if(!groupData.equals("")) {
 						getParameters(groupData);
 					}
 
@@ -277,7 +277,7 @@ public class Parser {
 				}
 			}
 
-			if(groupData != "") {
+			if(!groupData.equals("")) {
 				getParameters(groupData);
 			}
 
@@ -317,7 +317,7 @@ public class Parser {
         
         
         while(br.ready() && line != null) {
-            if(pName(line) != "") {
+            if(!pName(line).equals("")) {
                 createParameter(pData + line + "\n");
                 pData = "";
             }
@@ -355,12 +355,12 @@ public class Parser {
         
         
         
-        if(pName == "")
+        if(pName.equals(""))
             errors += "Error:No name for parameter of group '"
             + g.getName() + "' around line " + lineNumber + '\n'; //error
         
         else {
-            if(pType == "") pType = "string";
+            if(pType.equals("")) pType = "string";
             if(pType.compareToIgnoreCase("symbol") == 0) {
                 
                 if(pAValues == null) {
