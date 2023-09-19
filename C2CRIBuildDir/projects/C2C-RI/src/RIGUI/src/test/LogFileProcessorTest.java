@@ -598,7 +598,7 @@ private File outdb;
         }
 
 
-        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart() == (EVENT)))) {
+        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart().equals(EVENT)))) {
 
             try {
                 if (event.isStartElement()) {
