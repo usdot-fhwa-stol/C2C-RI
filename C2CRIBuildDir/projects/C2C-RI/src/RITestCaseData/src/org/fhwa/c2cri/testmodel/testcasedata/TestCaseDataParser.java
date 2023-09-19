@@ -366,9 +366,9 @@ public class TestCaseDataParser {
 				String line = br.readLine();
 				//lineNumber++;
 
-				if (iterationName(line) != "") {
+				if (!iterationName(line).equals("")) {
 
-					if (iterationData != "") {
+					if (!iterationData.equals("")) {
 						getGroups(iterationData);
 					}
 
@@ -380,7 +380,7 @@ public class TestCaseDataParser {
 				}
 			}
 
-			if (iterationData != "") {
+			if (!iterationData.equals("")) {
 				getGroups(iterationData);
 			}
 
@@ -408,9 +408,9 @@ public class TestCaseDataParser {
             //lineNumber++;
 
             if (line != null) {
-                if (groupName(line) != "") {
+                if (!groupName(line).equals("")) {
 
-                    if (groupData != "") {
+                    if (!groupData.equals("")) {
                         getParameters(groupData);
                     }
 
@@ -423,7 +423,7 @@ public class TestCaseDataParser {
             }
         }
 
-        if (groupData != "") {
+        if (!groupData.equals("")) {
             getParameters(groupData);
         }
 
@@ -464,7 +464,7 @@ public class TestCaseDataParser {
 
 
         while (br.ready() && line != null) {
-            if (pName(line) != "") {
+            if (!pName(line).equals("")) {
                 createParameter(pData + line + "\n");
                 pData = "";
             } else {
@@ -505,11 +505,11 @@ public class TestCaseDataParser {
 
 
 
-        if (pName == "") {
+        if (pName.equals("")) {
             errors += "Error:No name for parameter of group '"
                     + g.getName() + "' around line " + lineNumber + '\n'; //error
         } else {
-            if (pType == "") {
+            if (pType.equals("")) {
                 pType = "string";
             }
             if (pType.compareToIgnoreCase("symbol") == 0) {

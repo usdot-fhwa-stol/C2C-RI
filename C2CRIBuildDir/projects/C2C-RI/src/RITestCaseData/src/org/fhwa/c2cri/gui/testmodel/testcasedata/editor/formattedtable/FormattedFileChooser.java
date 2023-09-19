@@ -197,7 +197,7 @@ public abstract class FormattedFileChooser
 	 * Post-Conditions: N/A
 	 */
 	public void update() {
-		if(o.toString() != getText()) setText(o.toString());
+		if(!o.toString().equals(getText())) setText(o.toString());
 		jValue.requestFocus();
 	}
 	
