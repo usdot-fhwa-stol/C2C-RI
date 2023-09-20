@@ -1066,6 +1066,7 @@ class SocketChannelImpl
                         try {
                             stateLock.wait();
                         } catch (InterruptedException e) {
+							Thread.currentThread().interrupt();
                             interrupted = true;
                         }
                     }
