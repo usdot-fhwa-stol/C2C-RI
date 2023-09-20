@@ -20,6 +20,7 @@ package net.sf.jameleon.ui;
 
 import java.awt.Point;
 import java.io.File;
+import static java.lang.Thread.sleep;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -79,6 +80,7 @@ public class ProgressDialog extends JDialog {
                         sleep(interval);
                         progressBar.setValue(i);
                     } catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
                         keepGoing = false;
                         break;
                     }
