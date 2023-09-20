@@ -273,6 +273,8 @@ public class ProgressMonitor implements ProgressReporter {
                         }
                     }
                 } catch (Exception ex) {
+					if (ex instanceof InterruptedException)
+						Thread.currentThread().interrupt();
                     ex.printStackTrace();
                 }
             }
