@@ -465,6 +465,7 @@ public class ExecuteTestCase {
                     this.wait(waitTimeBetweenScripts); 
                 } catch (InterruptedException e) {
                     e.printStackTrace(); 
+					Thread.currentThread().interrupt();
                 }
             } 
         }

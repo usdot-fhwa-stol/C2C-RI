@@ -1804,7 +1804,8 @@ public abstract class FunctionTag extends JameleonTagSupport implements Storable
                 try {
                     this.wait(delayTime); 
                 } catch (InterruptedException e) {
-                    e.printStackTrace(); 
+                    e.printStackTrace();
+					Thread.currentThread().interrupt();
                 }
             } 
         }

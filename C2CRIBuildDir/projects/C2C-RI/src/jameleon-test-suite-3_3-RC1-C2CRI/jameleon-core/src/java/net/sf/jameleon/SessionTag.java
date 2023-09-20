@@ -350,6 +350,7 @@ public abstract class SessionTag extends JameleonTagSupport implements Storable,
                     this.wait(sessionDelay); 
                 } catch (InterruptedException e) {
                     e.printStackTrace(); 
+					Thread.currentThread().interrupt();
                 }
             } 
         }

@@ -258,6 +258,7 @@ public class TestCasePane extends JPanel {
                                     try{
                                         Thread.sleep(100);
                                     }catch(InterruptedException ie){
+										Thread.currentThread().interrupt();
                                         //Apparently people don't like a stack trace printing out to the screen.
                                         //ie.printStackTrace();
                                     }
