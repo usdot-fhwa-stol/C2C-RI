@@ -126,6 +126,7 @@ public class TestLogList {
                 Thread.currentThread().sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+				Thread.currentThread().interrupt();
             }
         }
         thisInstance.logUpdater.register(thisInstance.directory);
@@ -267,6 +268,7 @@ public class TestLogList {
                 try {
                     key = watcher.take();
                 } catch (InterruptedException x) {
+					Thread.currentThread().interrupt();
                     return;
                 }
                 Path dir = keys.get(key);
@@ -296,6 +298,7 @@ public class TestLogList {
 
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
+									Thread.currentThread().interrupt();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -334,6 +337,7 @@ public class TestLogList {
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+					Thread.currentThread().interrupt();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -374,6 +378,8 @@ public class TestLogList {
                            javax.swing.JOptionPane.showMessageDialog(null,"The Application encountered a "+result.getFileDescription()+" error while trying to process file "+result.getFilename()+".\n This file will not be available for reports."+(result.getFileDescription().equalsIgnoreCase("Java heap space")?"\nTry using the 64-bit version of the C2C RI, or contact C2C RI support.":""),"Log File Warning",javax.swing.JOptionPane.WARNING_MESSAGE);                                                                
                         }
                     } catch (InterruptedException | ExecutionException e) {
+						if (e instanceof InterruptedException)
+							Thread.currentThread().interrupt();
                         e.printStackTrace();
                     }
                 }
@@ -434,6 +440,8 @@ public class TestLogList {
                                 javax.swing.JOptionPane.showMessageDialog(null,"The Application encountered a "+result.getFileDescription()+" error while trying to process file "+result.getFilename()+".\n This file will not be available for reports."+(result.getFileDescription().equalsIgnoreCase("Java heap space")?"\nTry using the 64-bit version of the C2C RI, or contact C2C RI support.":""),"Log File Warning",javax.swing.JOptionPane.WARNING_MESSAGE);                                                                
                             }
                         } catch (InterruptedException | ExecutionException e) {
+							if (e instanceof InterruptedException)
+								Thread.currentThread().interrupt();
                             e.printStackTrace();
                         }
                     }
