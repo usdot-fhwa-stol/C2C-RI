@@ -121,6 +121,7 @@ public class AutoTester {
                    server = new ServerSocket(8083);
                    serverStarted = true;
                 } catch (InterruptedException iex){
+					Thread.currentThread().interrupt();
                     break;                
                 } catch (Exception ex){
                     ex.printStackTrace();
