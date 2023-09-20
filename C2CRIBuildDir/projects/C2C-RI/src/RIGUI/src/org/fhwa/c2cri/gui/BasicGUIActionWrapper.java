@@ -79,6 +79,8 @@ public class BasicGUIActionWrapper extends SwingWorker<Boolean, Void> {
         } catch (Exception ex) {
             ex.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(parentFrame, "An error was encountered trying to complete the " + this.theActionName + " action.\n"+ex.getMessage());
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
         }
     }
 

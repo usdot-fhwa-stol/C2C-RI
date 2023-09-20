@@ -40,6 +40,7 @@ public class ActionLogCache extends AbstractTableModel implements ActionLogAppen
             } catch (InterruptedException ie) {
                 ie.printStackTrace();
                 taQueue.clear();
+				Thread.currentThread().interrupt();
             }
         }
     };

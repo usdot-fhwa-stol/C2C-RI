@@ -34,6 +34,7 @@ public class StatusLogCache extends AbstractTableModel {
             } catch (InterruptedException ie) {
                 ie.printStackTrace();
                 tsQueue.clear();
+				Thread.currentThread().interrupt();
             }
         }
     };

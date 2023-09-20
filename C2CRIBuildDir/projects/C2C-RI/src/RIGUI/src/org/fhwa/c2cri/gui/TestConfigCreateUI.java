@@ -881,6 +881,8 @@ public class TestConfigCreateUI extends javax.swing.JDialog {
                         okPressed = true;
                         setVisible(false);
                     } catch (Exception e) {
+						if (e instanceof InterruptedException)
+							Thread.currentThread().interrupt();						
                         //Pop up the message dialog.
                         String message = "Error Encountered Creating the Config File.";
 
