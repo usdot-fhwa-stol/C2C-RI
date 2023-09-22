@@ -22,6 +22,7 @@ import net.sf.jameleon.bean.FunctionalPoint;
 import net.sf.jameleon.exception.JameleonScriptException;
 
 import java.io.*;
+import org.apache.log4j.LogManager;
 
 public class JameleonUtility {
 
@@ -177,7 +178,8 @@ public class JameleonUtility {
      */
     public static void deleteDirStructure(File f){
         if (f.isFile() || f.list().length == 0){
-            f.delete();
+            if (!f.delete())
+				LogManager.getLogger(JameleonUtility.class).error("Failed to delete " + f.getAbsolutePath());
         }else if (f.isDirectory()){
             File[] files = f.listFiles();
             for (int i = 0; i < files.length; i++){
