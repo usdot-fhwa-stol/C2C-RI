@@ -79,7 +79,8 @@ public class ConfigDialog extends JDialog{
                   Properties props = config.getProperties();
                   File f = new File(config.getConfigName());
                   if (!f.exists()) {
-                      f.createNewFile();
+                      if(!f.createNewFile())
+						  throw new IOException("Failed to create " + f.getAbsolutePath());
                   }
                   os = new FileOutputStream(f);
                   props.store(os, null);
