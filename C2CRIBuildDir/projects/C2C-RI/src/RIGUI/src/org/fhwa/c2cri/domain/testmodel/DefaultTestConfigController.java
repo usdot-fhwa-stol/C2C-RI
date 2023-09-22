@@ -8,11 +8,15 @@ package org.fhwa.c2cri.domain.testmodel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.log4j.LogManager;
 import org.fhwa.c2cri.centermodel.RIEmulationParameters;
 import org.fhwa.c2cri.testmodel.DefaultLayerParameters;
 import org.fhwa.c2cri.testmodel.SUT;
@@ -72,8 +76,15 @@ public class DefaultTestConfigController implements TestConfigurationController 
 
             fileName = file;
             try {
-                File configFile = new File(fileName);
-                configFile.delete();
+				try
+				{
+					Files.delete(Paths.get(fileName));
+				}
+				catch (IOException oEx)
+				{
+					LogManager.getLogger(getClass()).error(oEx, oEx);
+				}
+                
 
                 String userName = RIParameters.getInstance().getParameterValue(RIParameters.RI_USER_PARAMETER_GROUP, RIParameters.RI_USER_PARAMETER, RIParameters.DEFAULT_RI_USER_PARAMETER_VALUE);
                 if (userName.isEmpty()) {
