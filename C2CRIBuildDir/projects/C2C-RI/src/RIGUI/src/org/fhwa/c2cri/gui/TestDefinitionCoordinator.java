@@ -17,6 +17,9 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectInputStream;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.InputVerifier;
@@ -33,6 +36,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.tree.DefaultTreeModel;
+import org.apache.log4j.LogManager;
 import org.fhwa.c2cri.centermodel.EmulationDataFileProcessor;
 import org.fhwa.c2cri.centermodel.RIEmulationEntityValueSet;
 import org.fhwa.c2cri.centermodel.RIEmulationParameters;
@@ -989,8 +993,14 @@ public class TestDefinitionCoordinator implements java.awt.event.ActionListener 
 
                 if (n == 0) {
                     try {
-                        File file = new File(fileName);
-                        file.delete();
+                        try
+						{
+							Files.delete(Paths.get(fileName));
+						}
+						catch (IOException oEx)
+						{
+							LogManager.getLogger(getClass()).error(oEx, oEx);
+						}
                         String userName = RIParameters.getInstance().getParameterValue(RIParameters.RI_USER_PARAMETER_GROUP, RIParameters.RI_USER_PARAMETER, RIParameters.DEFAULT_RI_USER_PARAMETER_VALUE);
                         if (userName.isEmpty()) {
                             testConfig.setConfigurationAuthor(System.getProperty("user.name"));
@@ -1049,8 +1059,14 @@ public class TestDefinitionCoordinator implements java.awt.event.ActionListener 
 
                 if (n == 0) {
                     try {
-                        File file = new File(fileName);
-                        file.delete();
+						try
+						{
+							Files.delete(Paths.get(fileName));
+						}
+						catch (IOException oEx)
+						{
+							LogManager.getLogger(getClass()).error(oEx, oEx);
+						}
 
                         String userName = RIParameters.getInstance().getParameterValue(RIParameters.RI_USER_PARAMETER_GROUP, RIParameters.RI_USER_PARAMETER, RIParameters.DEFAULT_RI_USER_PARAMETER_VALUE);
                         if (userName.isEmpty()) {
@@ -1175,7 +1191,14 @@ public class TestDefinitionCoordinator implements java.awt.event.ActionListener 
                                 if (n == 0) {
 
                                     try {
-                                        Boolean deleted = new File(fullName).delete();
+										try
+										{
+											Files.delete(Paths.get(fullName));
+										}
+										catch (IOException oEx)
+										{
+											LogManager.getLogger(getClass()).error(oEx, oEx);
+										}
                                         // Add the config file extension to the file name
                                         String userName = RIParameters.getInstance().getParameterValue(RIParameters.RI_USER_PARAMETER_GROUP, RIParameters.RI_USER_PARAMETER, RIParameters.DEFAULT_RI_USER_PARAMETER_VALUE);
                                         if (userName.isEmpty()) {
