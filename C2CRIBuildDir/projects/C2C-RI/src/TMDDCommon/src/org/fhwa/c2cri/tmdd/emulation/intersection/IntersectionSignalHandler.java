@@ -631,6 +631,7 @@ public class IntersectionSignalHandler implements EntityControlRequestStatusColl
                 case "4":
                 case "other":
                     intersectionsignalRequestParameter = commandMessage.getElementValue("tmdd:intersectionSignalControlRequestMsg.intersectionsignal-command-parameters.intersectionsignal-position-preset");
+					break;
                 default:
                     break;
             }
