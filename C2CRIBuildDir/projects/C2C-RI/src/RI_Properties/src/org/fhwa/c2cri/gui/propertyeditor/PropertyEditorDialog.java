@@ -163,6 +163,7 @@ public class PropertyEditorDialog
 				switch (n) {
 					case 0 :
 						PropEditor.saveFile();
+						break;
 					case 1 :
 						break;
 				}
