@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.net.URI;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -68,7 +69,11 @@ public class TestCaseEditJButton extends JButton {
                                 // Create the new file if it does not already exist.
                                 if (!isTextFile(fileName))throw new Exception("File "+fileName+" does not appear to be a valid text file.");
                             }
-                            tcFile.createNewFile();
+							else
+							{
+								if (!tcFile.createNewFile())
+									throw new IOException("File " + fileName + "cannot be created");
+							}
                             testCase.setCustomDataLocation(fileName);
                             editTestCaseFile((JFrame) frame, fileName, testCase.getDataUrlLocation().toURI());
                             creationListener.testCaseCreatedUpdate(modelRow);
@@ -84,7 +89,11 @@ public class TestCaseEditJButton extends JButton {
                             if (tcFile.exists()){
                                 if (!isTextFile(fileName))throw new Exception("File "+fileName+" does not appear to be a valid text file.");
                             }
-                            tcFile.createNewFile();
+                            else
+							{
+								if (!tcFile.createNewFile())
+									throw new IOException("Failed to create " + fileName);
+							}
                             testCase.setCustomDataLocation(fileName);
                             editTestCaseFile(null, fileName, testCase.getDataUrlLocation().toURI());
                             creationListener.testCaseCreatedUpdate(modelRow);

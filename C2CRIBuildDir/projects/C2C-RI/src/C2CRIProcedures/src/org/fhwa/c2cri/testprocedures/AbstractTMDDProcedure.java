@@ -6,14 +6,18 @@ package org.fhwa.c2cri.testprocedures;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.apache.log4j.LogManager;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import tmddv3verification.DesignElement;
@@ -217,9 +221,17 @@ public abstract class AbstractTMDDProcedure implements TestProcedure {
 
     public final void toScriptFile(String path, String fileName) {
         File newFile = new File(path + File.separatorChar + "tempFile");
-        if (newFile.exists()) {
-            newFile.delete();
-            newFile = new File(path + File.separatorChar + "tempFile");
+        if (newFile.exists()) 
+		{
+			try
+			{
+				Files.delete(Paths.get(newFile.getAbsolutePath()));
+				newFile = new File(path + File.separatorChar + "tempFile");
+			}
+			catch (IOException oEx)
+			{
+				LogManager.getLogger(getClass()).error(oEx, oEx);
+			}
 
         }
         String header = "<?xml version=\"1.0\" ?> \n"
@@ -247,9 +259,17 @@ public abstract class AbstractTMDDProcedure implements TestProcedure {
 			}
 
             newFile = new File(path + File.separatorChar + fileName);
-            if (newFile.exists()) {
-            newFile.delete();
-            newFile = new File(path + File.separatorChar + fileName);
+            if (newFile.exists()) 
+			{
+				try
+				{
+					Files.delete(Paths.get(newFile.getAbsolutePath()));
+					newFile = new File(path + File.separatorChar + fileName);
+				}
+				catch (IOException oEx)
+				{
+					LogManager.getLogger(getClass()).error(oEx, oEx);
+				}
 
 			}
             XmlOptions newOptions = new XmlOptions();
@@ -260,7 +280,7 @@ public abstract class AbstractTMDDProcedure implements TestProcedure {
 
             newFile = new File(path + File.separatorChar + "tempFile");
             if (newFile.exists()) {
-                newFile.delete();
+                Files.delete(Paths.get(newFile.getAbsolutePath()));
             }
 
 

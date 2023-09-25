@@ -13,9 +13,14 @@ package org.fhwa.c2cri.gui;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.util.Date;
 import javax.swing.table.DefaultTableCellRenderer;
+import org.apache.log4j.LogManager;
 import org.fhwa.c2cri.utilities.Parameter;
 import org.fhwa.c2cri.utilities.RIParameters;
 
@@ -78,7 +83,8 @@ public class MaintenanceUI extends javax.swing.JDialog implements javax.swing.ev
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         fileTypeButtonGroup = new javax.swing.ButtonGroup();
         cancelButton = new javax.swing.JButton();
@@ -98,8 +104,10 @@ public class MaintenanceUI extends javax.swing.JDialog implements javax.swing.ev
 
         cancelButton.setText("Cancel");
         cancelButton.setToolTipText("Close this window");
-        cancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cancelButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cancelButtonActionPerformed(evt);
             }
         });
@@ -109,16 +117,20 @@ public class MaintenanceUI extends javax.swing.JDialog implements javax.swing.ev
         logFilesRadioButton.setSelected(true);
         logFilesRadioButton.setText("Log Files");
         logFilesRadioButton.setToolTipText("Show log files in path");
-        logFilesRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        logFilesRadioButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 logFilesRadioButtonActionPerformed(evt);
             }
         });
 
         configurationFilesRadioButton.setText("Configuration Files");
         configurationFilesRadioButton.setToolTipText("Show configuration files in path");
-        configurationFilesRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        configurationFilesRadioButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 configurationFilesRadioButtonActionPerformed(evt);
             }
         });
@@ -147,16 +159,20 @@ public class MaintenanceUI extends javax.swing.JDialog implements javax.swing.ev
         fileNameTextField.setEditable(false);
         fileNameTextField.setText("Jan-12-2010-C2C-v1223-2");
         fileNameTextField.setToolTipText("The name of the file to be deleted.");
-        fileNameTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        fileNameTextField.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 fileNameTextFieldActionPerformed(evt);
             }
         });
 
         browseButton.setText("Path...");
         browseButton.setToolTipText("Select the path for file search");
-        browseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        browseButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 browseButtonActionPerformed(evt);
             }
         });
@@ -168,21 +184,25 @@ public class MaintenanceUI extends javax.swing.JDialog implements javax.swing.ev
 
         deleteButton.setText("Delete");
         deleteButton.setToolTipText("Delete the selected file");
-        deleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        deleteButton.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 deleteButtonActionPerformed(evt);
             }
         });
 
         fileDeletionTable.setAutoCreateRowSorter(true);
         fileDeletionTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
@@ -230,7 +250,7 @@ public class MaintenanceUI extends javax.swing.JDialog implements javax.swing.ev
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(fileNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -360,10 +380,10 @@ public class MaintenanceUI extends javax.swing.JDialog implements javax.swing.ev
                     options[1]);
 
             if (n == 0) {
-                File theFile = new File(this.filePath+"\\"+this.fileNameTextField.getText());
+				Path theFile = Paths.get(this.filePath+"\\"+this.fileNameTextField.getText());
                 try {
-                    if (theFile.exists()){
-                        theFile.delete();
+                    if (Files.exists(theFile)){
+                        Files.delete(theFile);
 
                         // Refresh the file list
                         File dir = new File(filePath);

@@ -8,11 +8,14 @@ import java.io.ByteArrayInputStream;
 import org.fhwa.c2cri.testprocedures.*;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,6 +40,7 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import org.apache.log4j.LogManager;
 import org.apache.xmlbeans.XmlObject;
 import org.apache.xmlbeans.XmlOptions;
 import org.fhwa.c2cri.infolayer.MessageSpecification;
@@ -395,9 +399,17 @@ public abstract class AbstractTMDDTestCase implements TestCase {
 
     public final void toTestCaseFile(String path, String fileName) {
         File newFile = new File(path + File.separatorChar + fileName);
-        if (newFile.exists()) {
-            newFile.delete();
-            newFile = new File(path + File.separatorChar + fileName);
+        if (newFile.exists()) 
+		{
+			try
+			{
+				Files.delete(Paths.get(newFile.getAbsolutePath()));
+				newFile = new File(path + File.separatorChar + fileName);
+			}
+			catch (IOException oEx)
+			{
+				LogManager.getLogger(getClass()).error(oEx, oEx);
+			}
 
         }
         String header = " \n"
@@ -1773,9 +1785,15 @@ public abstract class AbstractTMDDTestCase implements TestCase {
     private void toXMLSampleTestCaseFile(String path, String fileName, String message) {
         File newFile = new File(path + File.separatorChar + "XMLSamples" + File.separatorChar + fileName + ".xml");
         if (newFile.exists()) {
-            newFile.delete();
-            newFile = new File(path + File.separatorChar + "XMLSamples" + File.separatorChar + fileName + ".xml");
-
+			try
+			{
+				Files.delete(Paths.get(newFile.getAbsolutePath()));
+				newFile = new File(path + File.separatorChar + "XMLSamples" + File.separatorChar + fileName + ".xml");
+			}
+			catch (IOException oEx)
+			{
+				LogManager.getLogger(getClass()).error(oEx, oEx);
+			}
         }
 
         try (Writer out = new OutputStreamWriter(new FileOutputStream(newFile), StandardCharsets.UTF_8))

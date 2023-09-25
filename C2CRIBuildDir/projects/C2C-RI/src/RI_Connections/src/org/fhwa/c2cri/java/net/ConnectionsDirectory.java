@@ -21,7 +21,7 @@ public class ConnectionsDirectory {
 final List<ConnectionInformation> allSockets = Collections.synchronizedList(new ArrayList<ConnectionInformation>());    
 
 /** The traffic logger. */
-private volatile static TrafficLogger trafficLogger;
+private static TrafficLogger trafficLogger;
 
 /** The test case name. */
 private volatile static String testCaseName;
@@ -221,7 +221,7 @@ final List<DefinedConnectionName> definedConnectionNames = Collections.synchroni
      *
      * @return the traffic logger
      */
-    public  TrafficLogger getTrafficLogger() {
+    public synchronized TrafficLogger getTrafficLogger() {
         return trafficLogger;
     }
 
@@ -230,7 +230,7 @@ final List<DefinedConnectionName> definedConnectionNames = Collections.synchroni
      *
      * @param inTrafficLogger the new traffic logger
      */
-    public void setTrafficLogger(TrafficLogger inTrafficLogger) {
+    public synchronized void setTrafficLogger(TrafficLogger inTrafficLogger) {
             this.trafficLogger = inTrafficLogger;                          
     }
 

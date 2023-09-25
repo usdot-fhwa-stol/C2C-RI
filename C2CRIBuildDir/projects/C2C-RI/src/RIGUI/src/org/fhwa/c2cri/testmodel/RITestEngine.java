@@ -526,6 +526,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                         try {
                             Thread.sleep(100);
                         } catch (InterruptedException ie) {
+							Thread.currentThread().interrupt();
                             javax.swing.JOptionPane.showMessageDialog(null,
                                     "Test Case " + thisTestCase.getName() + " thread failed: \n"
                                     + ie.getMessage(),
@@ -909,6 +910,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                         this.wait(250); // wait 250 ms
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+						Thread.currentThread().interrupt();
                     }
                 }
             }
@@ -966,6 +968,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                         this.wait(250); // wait 250 ms
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+						Thread.currentThread().interrupt();
                     }
                 }
             }
@@ -1143,6 +1146,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                             this.wait(250); // wait 250 ms
                         } catch (InterruptedException e) {
                             e.printStackTrace();
+							Thread.currentThread().interrupt();
                         }
                     }
                 }
@@ -1228,6 +1232,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                         this.wait(250); // wait 250 ms
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+						Thread.currentThread().interrupt();
                     }
                 }
             }

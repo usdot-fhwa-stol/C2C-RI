@@ -365,12 +365,7 @@ public class TestConfigCreatePageProvider implements C2CRIWizardPageProvider {
         };
 
 //        pages.add(thirdPage);
-        C2CRIWizardPage fourthPage = new SelectNeedsPage("Select Information Layer Needs", "Select the Information Layer Needs for the project", configController, false) {
-            {
-
-            }
-
-        };
+        C2CRIWizardPage fourthPage = new SelectNeedsPage("Select Information Layer Needs", "Select the Information Layer Needs for the project", configController, false);
 
 //        pages.add(fourthPage);
         C2CRIWizardPage fifthPage = new SelectSUTSettingsPage("Select System Under Test Settings", "Specify the parameters necessary for connecting to the System Under Test", configController);

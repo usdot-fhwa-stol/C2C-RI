@@ -13,6 +13,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import org.apache.log4j.LogManager;
 
 /**
  * The Class TemporaryMessageFile stores message content in a temporary file on disk.
@@ -169,11 +173,16 @@ public class TemporaryMessageFile {
         System.out.println("Finalize was called");
 
         if (filePath != null) {
-            File tmpFile = new File(filePath);
-            if (tmpFile.exists()) {
-                System.out.println("Finalize is deleting the file " + filePath);
-                tmpFile.delete();
-            }
+			Path tmpFile = Paths.get(filePath);
+			try
+			{
+				if (Files.deleteIfExists(tmpFile))
+					System.out.println("Finalize is deleting the file " + filePath);
+			}
+			catch (IOException oEx)
+			{
+				LogManager.getLogger(this.getClass()).error(oEx, oEx);
+			}
         }
     }
 

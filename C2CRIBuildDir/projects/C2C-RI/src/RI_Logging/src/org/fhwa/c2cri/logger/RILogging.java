@@ -11,6 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
@@ -35,6 +36,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
 import org.fhwa.c2cri.java.net.ConnectionsDirectory;
 import org.fhwa.c2cri.java.net.TrafficLogger;
 import org.fhwa.c2cri.utilities.RIParameters;
@@ -398,8 +400,14 @@ public class RILogging implements Serializable {
                 // If sucdessful delete the temporary file.
                 if (result) {
                     System.out.println("Rename Successfull = " + newFileName.renameTo(oldFileName));
-                    File tmpFileName = new File(fname + ".tmp");
-                    tmpFileName.delete();
+					try
+					{
+						Files.delete(Paths.get(fname + ".tmp"));
+					}
+					catch (IOException oEx)
+					{
+						LogManager.getLogger(RILogging.class).error(oEx, oEx);
+					}
                     successfulResult = true;
                 } else {
                     successfulResult = false;

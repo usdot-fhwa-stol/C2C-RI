@@ -127,6 +127,7 @@ public class TestConfigurationList {
             try {
                 Thread.currentThread().sleep(100);
             } catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
                 e.printStackTrace();
             }
         }
@@ -242,6 +243,7 @@ public class TestConfigurationList {
                 try {
                     key = watcher.take();
                 } catch (InterruptedException x) {
+					Thread.currentThread().interrupt();
                     return;
                 }
                 Path dir = keys.get(key);
@@ -298,6 +300,7 @@ public class TestConfigurationList {
                     Thread.currentThread().sleep(200);
 
                 } catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
                     e.printStackTrace();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -338,6 +341,8 @@ public class TestConfigurationList {
                         TestConfigurationList.cfgDescriptions.add(result);
 //                    }
                     } catch (InterruptedException | ExecutionException e) {
+						if (e instanceof InterruptedException)
+							Thread.currentThread().interrupt();
                         e.printStackTrace();
                     }
                 }
@@ -395,6 +400,8 @@ public class TestConfigurationList {
                             }
 //                    }
                         } catch (InterruptedException | ExecutionException e) {
+							if (e instanceof InterruptedException)
+								Thread.currentThread().interrupt();
                             e.printStackTrace();
                         }
                     }

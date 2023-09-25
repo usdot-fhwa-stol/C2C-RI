@@ -134,6 +134,8 @@ public class TMDDOperationResults implements InformationLayerOperationResults {
             }
             
         } catch (Exception ex) {
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null,
                     "Unable to update the parameters for the dialog because reading the TMDD Database failed: \n"

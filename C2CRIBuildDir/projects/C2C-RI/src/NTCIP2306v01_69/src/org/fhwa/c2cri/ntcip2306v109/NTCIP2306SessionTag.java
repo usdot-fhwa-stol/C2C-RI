@@ -121,6 +121,8 @@ public class NTCIP2306SessionTag extends SessionTag {
                 theService = new NTCIP2306Controller(theWSDL, ccc);
 
             } catch (Exception ex) {
+				if (ex instanceof InterruptedException)
+					Thread.currentThread().interrupt();
                 log.debug("*NTCIP2306SessionTag: Error Setting up the Service ->" + ex.getMessage());
                 JOptionPane.showMessageDialog(null, "Script Error: \n" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 throw new JameleonScriptException("*NTCIP2306SessionTag: Error Setting up the Service ->" + ex.getMessage(), this);

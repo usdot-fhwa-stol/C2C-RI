@@ -116,11 +116,13 @@ class SocketChannelImpl
     /** The otw logger. */
     private OverTheWireLogger otwLogger = new OverTheWireLogger();
     /** The connection information related to the Socket */
-    private volatile ConnectionInformation socketInformation;
+    private ConnectionInformation socketInformation;
     /** Flag indicating whether this is a Server Socket */
     private boolean serverSocket = true;
     /** Flag indicating whether this has been written */
     private boolean secondWrite = false;
+	
+	private final Object SOCKETLOCK = new Object();
 
     
     /** The read count. */
@@ -243,10 +245,13 @@ class SocketChannelImpl
             }
             if (serverSocket && (socket != null) && (socket.getInetAddress() != null) && ConnectionsDirectory.getInstance().isDefinedConnection(socket.getLocalAddress().getHostName(), socket.getLocalAddress().getHostAddress(), socket.getLocalPort())) {
 
-				socketInformation = new ConnectionInformation(socket.getLocalAddress(), socket.getLocalPort(), socket.getInetAddress(), socket.getPort(), serverSocket);
-				socketInformation.setTestCaseName(ConnectionsDirectory.getInstance().getTestCaseName());
-				socketInformation.setLiveTestConnection(true);
-				ConnectionsDirectory.getInstance().addConnection(socketInformation);
+				synchronized (SOCKETLOCK)
+				{
+					socketInformation = new ConnectionInformation(socket.getLocalAddress(), socket.getLocalPort(), socket.getInetAddress(), socket.getPort(), serverSocket);
+					socketInformation.setTestCaseName(ConnectionsDirectory.getInstance().getTestCaseName());
+					socketInformation.setLiveTestConnection(true);
+					ConnectionsDirectory.getInstance().addConnection(socketInformation);
+				}
 				System.out.println("SocketChannelImpl:: socket  ConnectionInfo Set!!!\n" + socket.getLocalAddress() + "\n" + socket.getLocalPort() + "\n" + socket.getInetAddress() + "\n" + socket.getPort() + "\n" + this);
             }
             return socket;
@@ -469,20 +474,23 @@ class SocketChannelImpl
                     }
 
                     System.out.println("SocketChannelImpl::read ByteBuffer Look Here ");
-                    if (socketInformation != null) {
-                        if (isOpen()&&isConnected()) {
-                            System.out.println("ReaderThread::" + readerThread + "\nfd:" + fd + "\nnd:" + nd + "\nbuf:" + buf + "\nn:" + n);
-                            System.out.print("StackTrace::");
-                            for (StackTraceElement element:Thread.currentThread().getStackTrace()){
-                                System.out.println(element.toString());
-                            }
-                            socketInformation.incrementSequenceCount();
-                            otwLogger.streamUpdate(result, result.length, 0, true, socketInformation);
-                        } else {
-                            System.out.println("SocketChannelImpl::read ByteBuffer Look Here didn't read "+result.length +" bytes.");                                
-                            
-                        }
-                    }
+					synchronized (SOCKETLOCK)
+					{
+						if (socketInformation != null) {
+							if (isOpen()&&isConnected()) {
+								System.out.println("ReaderThread::" + readerThread + "\nfd:" + fd + "\nnd:" + nd + "\nbuf:" + buf + "\nn:" + n);
+								System.out.print("StackTrace::");
+								for (StackTraceElement element:Thread.currentThread().getStackTrace()){
+									System.out.println(element.toString());
+								}
+								socketInformation.incrementSequenceCount();
+								otwLogger.streamUpdate(result, result.length, 0, true, socketInformation);
+							} else {
+								System.out.println("SocketChannelImpl::read ByteBuffer Look Here didn't read "+result.length +" bytes.");                                
+
+							}
+						}
+					}
                 }            
             return IOStatus.normalize(n);
         } finally {
@@ -621,22 +629,25 @@ class SocketChannelImpl
                         bb.flip();
                         byte[] result = new byte[bb.limit()];
                         bb.get(result);
-                        if (socketInformation != null) {
-                            if (isOpen()&&isConnected()) {
-                                if (!secondWrite&&result.length > 0){
-                                System.out.println("WriterThread::" + writerThread);
-                                System.out.print("StackTrace::");
-                                for (StackTraceElement element:Thread.currentThread().getStackTrace()){
-                                  System.out.println(element.toString());
-                                }
-                                socketInformation.incrementSequenceCount();
-                                otwLogger.streamUpdate(result, result.length, 0, false, socketInformation);
-                                secondWrite = false;
-                                } else secondWrite = false;
-                            } else {
-                                System.out.println("SocketChannelImpl::write ByteBuffer Look Here didn't write "+result.length +" bytes.");                                
-                            }
-                        }
+						synchronized (SOCKETLOCK)
+						{
+							if (socketInformation != null) {
+								if (isOpen()&&isConnected()) {
+									if (!secondWrite&&result.length > 0){
+									System.out.println("WriterThread::" + writerThread);
+									System.out.print("StackTrace::");
+									for (StackTraceElement element:Thread.currentThread().getStackTrace()){
+									  System.out.println(element.toString());
+									}
+									socketInformation.incrementSequenceCount();
+									otwLogger.streamUpdate(result, result.length, 0, false, socketInformation);
+									secondWrite = false;
+									} else secondWrite = false;
+								} else {
+									System.out.println("SocketChannelImpl::write ByteBuffer Look Here didn't write "+result.length +" bytes.");                                
+								}
+							}
+						}
                     } catch (Exception ex) {
                         ex.printStackTrace();
                     }
@@ -1066,6 +1077,7 @@ class SocketChannelImpl
                         try {
                             stateLock.wait();
                         } catch (InterruptedException e) {
+							Thread.currentThread().interrupt();
                             interrupted = true;
                         }
                     }

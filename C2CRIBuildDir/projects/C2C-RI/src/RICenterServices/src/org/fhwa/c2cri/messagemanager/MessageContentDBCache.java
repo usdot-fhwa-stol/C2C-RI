@@ -11,12 +11,17 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Priority;
 
 /**
  *
@@ -588,16 +593,20 @@ public class MessageContentDBCache implements MessageContent {
             synchronized (lockObject) {
                 closedMessagesIndex++;
                 if (closedMessagesIndex == currentMessageIndex) {
-                    File tmpFile = new File(messageFilePath);
-                    if (tmpFile.exists()) {
-                        System.out.println("Finalize is deleting the file " + messageFilePath);
-                        tmpFile.delete();
+					Path tmpFile = Paths.get(messageFilePath);
+					try
+					{
+						if (Files.deleteIfExists(tmpFile))
+							System.out.println("Finalize is deleting the file " + messageFilePath);
+  
+						tmpFile = Paths.get(messageFilePath + "-journal");
+						if (Files.deleteIfExists(tmpFile))
+							System.out.println("Finalize is deleting the journal file " + messageFilePath);
                     }
-                    tmpFile = new File(messageFilePath + "-journal");
-                    if (tmpFile.exists()) {
-                        System.out.println("Finalize is deleting the journal file " + messageFilePath);
-                        tmpFile.delete();
-                    }
+					catch (IOException oEx)
+					{
+						LogManager.getLogger(this.getClass()).error(oEx, oEx);
+					}
                     databaseCreated = false;
                 }
             }

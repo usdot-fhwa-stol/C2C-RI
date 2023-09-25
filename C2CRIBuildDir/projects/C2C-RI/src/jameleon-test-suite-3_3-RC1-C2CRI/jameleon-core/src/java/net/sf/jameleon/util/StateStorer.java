@@ -164,7 +164,9 @@ public class StateStorer {
         while (!available) {
             try{
                 wait();
-            } catch (InterruptedException e) { }
+            } catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			}
         }
         available = false;
         storables.add(s);
@@ -180,7 +182,9 @@ public class StateStorer {
         while (!available) {
             try{
                 wait();
-            } catch (InterruptedException e) { }
+            } catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			}
         }
         available = false;
         storables.remove(s);
@@ -192,7 +196,9 @@ public class StateStorer {
         while (!available) {
             try{
                 wait();
-            } catch (InterruptedException e) { }
+            } catch (InterruptedException e) {
+			Thread.currentThread().interrupt();
+			}
         }
         available = false;
         Iterator it = storables.iterator();

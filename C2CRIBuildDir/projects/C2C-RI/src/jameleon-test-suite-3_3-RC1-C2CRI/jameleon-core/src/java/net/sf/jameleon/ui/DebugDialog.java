@@ -46,8 +46,8 @@ public abstract class DebugDialog extends JDialog{
         Point rootLocation = rootFrame.getLocation();
         int height = (int)(rootFrame.getHeight()/2);
         int width = (int)(rootFrame.getWidth()/2);
-        int x = (int)(rootLocation.getX() + width/2);
-        int y = (int)(rootLocation.getY() + height/4 + 20);
+        int x = (int)(rootLocation.getX() + width/2.0);
+        int y = (int)(rootLocation.getY() + height/4.0 + 20);
         setBounds(x, y, width, height);
         setTitle(title);
         setModal(true);

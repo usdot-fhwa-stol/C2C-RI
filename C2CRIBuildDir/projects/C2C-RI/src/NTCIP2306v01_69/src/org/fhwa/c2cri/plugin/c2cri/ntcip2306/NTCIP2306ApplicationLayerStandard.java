@@ -496,6 +496,8 @@ public class NTCIP2306ApplicationLayerStandard implements ApplicationLayerStanda
         try{
         ccc2.initialzeServices();
         } catch (Exception ex){
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             throw new Exception("Error establishing the Application Layer Services: "+ex.getMessage());
         }
     }

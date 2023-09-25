@@ -20,7 +20,10 @@ import java.util.ArrayList;
 import org.fhwa.c2cri.testmodel.TestSuites;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.swing.SwingWorker;
+import org.apache.log4j.LogManager;
 import org.fhwa.c2cri.testmodel.TestConfiguration;
 import org.fhwa.c2cri.utilities.FilenameValidator;
 import org.fhwa.c2cri.utilities.Parameter;
@@ -643,11 +646,17 @@ public class TestConfigCreateUI extends javax.swing.JDialog {
                 } else {
                     System.out.println(" Trying ..." + f.getPath() + "    " + f.getName());
                     try {
-                        boolean b = f.createNewFile();
                         // if b is true , name may be correct
-                        if (b) {
+                        if (f.createNewFile()) {
                             // because the file is created for checking validity
-                            f.delete();
+							try
+							{
+								Files.delete(Paths.get(f.getAbsolutePath()));
+							}
+							catch (IOException oEx)
+							{
+								LogManager.getLogger(getClass()).error(oEx, oEx);
+							}
                         }
 
 
@@ -881,6 +890,8 @@ public class TestConfigCreateUI extends javax.swing.JDialog {
                         okPressed = true;
                         setVisible(false);
                     } catch (Exception e) {
+						if (e instanceof InterruptedException)
+							Thread.currentThread().interrupt();
                         //Pop up the message dialog.
                         String message = "Error Encountered Creating the Config File.";
 

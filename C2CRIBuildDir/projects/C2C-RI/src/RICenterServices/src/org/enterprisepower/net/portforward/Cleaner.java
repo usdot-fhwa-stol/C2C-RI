@@ -50,6 +50,7 @@ public class Cleaner implements Runnable {
 				wait(3000);
 			} catch (InterruptedException e) {
 				log.error("Cleaner Process Error in cleanup method: "+e.getMessage(), e);
+				Thread.currentThread().interrupt();
 			}
 		}
 	}

@@ -432,7 +432,7 @@ public class TestAction {
 
         XMLEvent event = thisEvent;
 
-        while (!(event.isEndDocument() && event.isEndElement() && (event.asEndElement().getName().getLocalPart() == (EVENT)))) {
+        while (!(event.isEndDocument() && event.isEndElement() && (event.asEndElement().getName().getLocalPart().equals(EVENT)))) {
 
             try {
                 if (event.isStartElement()) {

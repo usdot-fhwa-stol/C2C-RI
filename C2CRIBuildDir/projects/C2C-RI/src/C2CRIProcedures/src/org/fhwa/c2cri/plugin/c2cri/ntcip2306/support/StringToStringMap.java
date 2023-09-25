@@ -174,6 +174,14 @@ public class StringToStringMap extends HashMap<String, String>
 	{
 		return equalsOnThis ? this == o : super.equals( o );
 	}
+	
+	
+	@Override
+	public int hashCode()
+	{
+		return super.hashCode();
+	}
+	
 
 	public int getInt( String key, int def )
 	{
