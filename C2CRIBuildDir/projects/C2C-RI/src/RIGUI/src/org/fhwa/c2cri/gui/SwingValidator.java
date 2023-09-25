@@ -100,7 +100,7 @@ public class SwingValidator {
      */
     public static boolean isWithinRange(JTextComponent c, double min, double max, String title) {
         double d = Double.parseDouble(c.getText());
-        if (d < min | d > max) {
+        if (d < min || d > max) {
             showMessage(c, title + " must be between " + min + " and " + max + ".\n"
                     + "Please re-enter.");
             c.requestFocusInWindow();
