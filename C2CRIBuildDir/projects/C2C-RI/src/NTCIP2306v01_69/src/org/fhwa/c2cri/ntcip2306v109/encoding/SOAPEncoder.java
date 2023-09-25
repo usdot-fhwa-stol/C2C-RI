@@ -378,7 +378,7 @@ public class SOAPEncoder {
             case RR:
                 testAssertionList.add(new TestAssertion("4.2.1.a", soapEncoded, "The SOAP message shall consist of a <soap:Envelope> tag with two internal tags:  a <soap:Header> tag followed by a <soap:Body> tag. ", getEncodingErrorResults()));
                 testAssertionList.add(new TestAssertion("4.2.1.c", soapEncoderStatus.isValidAgainstSchemas(), "The <soap:Body> open and close tags encapsulate an XML Message that shall be capable of being validated using the XML Schema(s) referenced in the WSDL. ", soapEncoderStatus.isValidAgainstSchemas() ? "" : "The Message did not validate against the Schemas."));
-                validToSelectedProfile = soapEncoded&soapEncoderStatus.isValidAgainstSchemas();
+                validToSelectedProfile = soapEncoded&&soapEncoderStatus.isValidAgainstSchemas();
                 break;
             case PUB:
                 if (getNumMessageParts() == 1) {
@@ -400,7 +400,7 @@ public class SOAPEncoder {
                         testAssertionList.add(new TestAssertion("4.2.2.3.c", false, "The <soap:Body> shall contain a single child tag:  <c2cMessageReceipt>. The c2cMessageReceipt shall be capable of being validated using the XML Schema(s) referenced in the WSDL. ", "Test Error Encountered:  " + ex.getMessage() + "\n" + getEncodingErrorResults()));
                     }
                     validSubPubReceiptEncoding = receiptResults;
-                    validToSelectedProfile = soapEncoded&receiptResults;
+                    validToSelectedProfile = soapEncoded&&receiptResults;
 
 
                 } else {
@@ -420,7 +420,7 @@ public class SOAPEncoder {
                         ex.printStackTrace();
                         testAssertionList.add(new TestAssertion("4.2.2.2.c", false, "The <soap:Body> shall contain two child tags:  <c2cMessagePublication>, and one containing the message set standard XML, ... XML Messages shall be capable of being validated using the XML Schema(s) referenced in the WSDL. ", "Test Error Encountered:  " + ex.getMessage() + "\n" + getEncodingErrorResults()));
                     }
-                    validToSelectedProfile = soapEncoded&publicationResults;
+                    validToSelectedProfile = soapEncoded&&publicationResults;
                 }
 
                 break;
@@ -442,7 +442,7 @@ public class SOAPEncoder {
                         testAssertionList.add(new TestAssertion("4.2.2.3.c", false, "The <soap:Body> shall contain a single child tag:  <c2cMessageReceipt>. The c2cMessageReceipt shall be capable of being validated using the XML Schema(s) referenced in the WSDL. ", "Test Error Encountered:  " + ex.getMessage() + "\n" + getEncodingErrorResults()));
                     }
                     validSubPubReceiptEncoding = receiptResults;
-                    validToSelectedProfile = soapEncoded&receiptResults;
+                    validToSelectedProfile = soapEncoded&&receiptResults;
                 } else {
                     testAssertionList.add(new TestAssertion("4.2.2.1.a", soapEncoded, "The SOAP message shall consist of a <soap:Envelope> tag with two internal tags:  a <soap:Header> tag followed by a <soap:Body> tag. ", getEncodingErrorResults()));
 
@@ -460,7 +460,7 @@ public class SOAPEncoder {
                         ex.printStackTrace();
                         testAssertionList.add(new TestAssertion("4.2.2.1.c", false, "The <soap:Body> shall contain two child tags:  <c2cMessageSubscription>, and one containing the message set standard XML. The <soap:Body> open and close tags encapsulate an XML Message that shall be capable of being validated using the XML Schema(s) referenced in the WSDL. ", "Test Error Encountered:  " + ex.getMessage() + "\n" + getEncodingErrorResults()));
                     }
-                    validToSelectedProfile = soapEncoded&subscriptionResults;
+                    validToSelectedProfile = soapEncoded&&subscriptionResults;
                 }
                 break;
             default:
