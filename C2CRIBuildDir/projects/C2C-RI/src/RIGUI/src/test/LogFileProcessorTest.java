@@ -62,7 +62,7 @@ public class LogFileProcessorTest {
     private static String MESSAGE = "message";
     
     /** The initevent tag. */
-    private static String INITEVENT = "initEvent";
+    private static String INITEVENTTAG = "initEvent";
     
     /** The userevent tag. */
     private static String USEREVENT = "userEvent";
@@ -203,7 +203,7 @@ public class LogFileProcessorTest {
     private static String APPLICATIONLEVELSTANDARD = "applicationLevelStandard";
 
     /** The target of the testing. */
-    private static String RITESTTARGET = "testTarget";
+    private static String RITESTTARGETTAG = "testTarget";
     
     /** The need. */
     private static String NEED = "need";
@@ -304,7 +304,7 @@ private File outdb;
     private XMLEventReader eventReader = null;
     
     /** The event. */
-    private XMLEvent event = null;
+    private XMLEvent xmlevent = null;
     
     /** The init event. */
     private InitEvent initEvent = new InitEvent();
@@ -457,10 +457,10 @@ private File outdb;
             Long result = 0L;
             
             while (eventReader.hasNext()) {
-                event = eventReader.nextEvent();
+                xmlevent = eventReader.nextEvent();
 
-                if (event.isStartElement()) {
-                    StartElement startElement = event.asStartElement();
+                if (xmlevent.isStartElement()) {
+                    StartElement startElement = xmlevent.asStartElement();
                     // If we have a item element we create a new item
                     if (EVENT.equals(startElement.getName().getLocalPart())) {
                         result++;
@@ -508,10 +508,10 @@ private File outdb;
             System.out.println("LogFileProcessor: About to read each event. Total = "+result);
             while (eventReader.hasNext()) {
                 EventSet eventSet = new EventSet();
-                event = eventReader.nextEvent();
+                xmlevent = eventReader.nextEvent();
 
-                if (event.isStartElement()) {
-                    StartElement startElement = event.asStartElement();
+                if (xmlevent.isStartElement()) {
+                    StartElement startElement = xmlevent.asStartElement();
                     // If we have a item element we create a new item
                     if (EVENT.equals(startElement.getName().getLocalPart())) {
                         eventSet = processEvent(startElement);
@@ -519,8 +519,8 @@ private File outdb;
 
                 }
                 // If we reach the end of an item element we add it to the list
-                if (event.isEndElement()) {
-                    EndElement endElement = event.asEndElement();
+                if (xmlevent.isEndElement()) {
+                    EndElement endElement = xmlevent.asEndElement();
                     if (EVENT.equals(endElement.getName().getLocalPart())) {
                         eventSetList.add(eventSet);
                         eventId++;
@@ -598,20 +598,20 @@ private File outdb;
         }
 
 
-        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart().equals(EVENT)))) {
+        while (!(xmlevent.isEndElement() && (xmlevent.asEndElement().getName().getLocalPart().equals(EVENT)))) {
 
             try {
-                if (event.isStartElement()) {
-                    if (event.asStartElement().getName().getLocalPart().equals(MESSAGE)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            eventSet.setDebugInfo(event.asCharacters().getData());
+                if (xmlevent.isStartElement()) {
+                    if (xmlevent.asStartElement().getName().getLocalPart().equals(MESSAGE)) {
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            eventSet.setDebugInfo(xmlevent.asCharacters().getData());
                         }
                         continue;
                     }
                 }
-                if (event.isStartElement()) {
-                    if (event.asStartElement().getName().getLocalPart().equals(SCRIPTEVENT)) {
+                if (xmlevent.isStartElement()) {
+                    if (xmlevent.asStartElement().getName().getLocalPart().equals(SCRIPTEVENT)) {
                         eventSet.setEventType(SCRIPTEVENT);
                         ScriptEvent returnedScriptEvent = processScriptEvent();
                         returnedScriptEvent.setEventTypeID(eventSet.getEventID());
@@ -639,53 +639,53 @@ private File outdb;
                             System.out.println("Commented out Script Event DAO -- Step "+functionId.substring("Step ".length(),functionId.indexOf(" ","Step ".length()))+"  "+returnedScriptEvent.getOutcome()+" "+(currentTestCase==null?"":currentTestCase)+"  @"+(calendar.get(Calendar.MONTH)+1)+"/"+calendar.get(Calendar.DAY_OF_MONTH)+"/"+calendar.get(Calendar.YEAR)+" "+calendar.get(Calendar.HOUR_OF_DAY)+":"+calendar.get(Calendar.MINUTE)+":"+calendar.get(Calendar.SECOND)+"."+calendar.get(Calendar.MILLISECOND)+" "+returnedScriptEvent.getFile().substring(returnedScriptEvent.getFile().lastIndexOf("/")+1).replace(".xml", "")+" "+initEvent.getFileName() + " " + initEvent.getConfigFileName()+ " " + initEvent.getChecksum()+" " +(initEvent.getExternalCenterOperation().equals("true")?"EC":"OC")+" "+ initEvent.getC2criVersion());
                         }
 //                        scriptEventDAO.insert(returnedScriptEvent);
-                        event = eventReader.nextEvent();
+                        xmlevent = eventReader.nextEvent();
                         continue;
-                    } else if (event.asStartElement().getName().getLocalPart().equals(INITEVENT)) {
-                        eventSet.setEventType(INITEVENT);
+                    } else if (xmlevent.asStartElement().getName().getLocalPart().equals(INITEVENTTAG)) {
+                        eventSet.setEventType(INITEVENTTAG);
                         processInitEvent();
                         InitEventPK initEventPK = new InitEventPK();
                         initEventPK.setEventID(eventSet.getEventID());
                         initEventPK.setId(1);
                         initEvent.setInitEventPK(initEventPK);
-                        event = eventReader.nextEvent();
+                        xmlevent = eventReader.nextEvent();
                         continue;
-                    } else if (event.asStartElement().getName().getLocalPart().equals(USEREVENT)) {
+                    } else if (xmlevent.asStartElement().getName().getLocalPart().equals(USEREVENT)) {
                         UserEvent thisUserEvent = new UserEvent();
                         eventSet.setEventType(USEREVENT);
                         thisUserEvent = processUserEvent();
                         thisUserEvent.setId(eventSet.getEventID());
                         userEventList.add(thisUserEvent);
-                        event = eventReader.nextEvent();
+                        xmlevent = eventReader.nextEvent();
                         continue;
-                    } else if (event.asStartElement().getName().getLocalPart().equals(RAWOTWMESSAGE)) {
+                    } else if (xmlevent.asStartElement().getName().getLocalPart().equals(RAWOTWMESSAGE)) {
                         eventSet.setEventType(RAWOTWMESSAGE);
                         RawOTWMessage rawOTWMessage = processRawOTWMessage();
                         rawOTWMessage.setId(eventSet.getEventID());
 //                        RawOTWMessageDAO rawOTWMessageDAO = new RawOTWMessageDAO(outdb);
                         System.out.println("Commented out RAWOTWMessageDAO");
 //                        rawOTWMessageDAO.insert(rawOTWMessage);
-                        event = eventReader.nextEvent();
+                        xmlevent = eventReader.nextEvent();
                         continue;
-                    } else if (event.asStartElement().getName().getLocalPart().equals(LOGGEDMESSAGE)) {
+                    } else if (xmlevent.asStartElement().getName().getLocalPart().equals(LOGGEDMESSAGE)) {
                         eventSet.setEventType(LOGGEDMESSAGE);
                         LoggedMessage loggedMessage = processLoggedMessage();
                         loggedMessage.setId(eventSet.getEventID());
                         System.out.println("Commented out LoggedMessageDAO");
 //                        LoggedMessageDAO loggedMessageDAO = new LoggedMessageDAO(outdb);
 //                        loggedMessageDAO.insert(loggedMessage);
-                        event = eventReader.nextEvent();
+                        xmlevent = eventReader.nextEvent();
                         continue;
-                    } else if (event.asStartElement().getName().getLocalPart().equals(VERIFICATIONEVENT)) {
+                    } else if (xmlevent.asStartElement().getName().getLocalPart().equals(VERIFICATIONEVENT)) {
                         eventSet.setEventType(VERIFICATIONEVENT);
                         processVerificationEvent();
-                        event = eventReader.nextEvent();
+                        xmlevent = eventReader.nextEvent();
                         continue;
                     }
 
                 }
                 if (eventReader.hasNext()) {
-                    event = eventReader.nextEvent();
+                    xmlevent = eventReader.nextEvent();
 
                 } else {
                     System.out.println("No More Events");
@@ -711,13 +711,13 @@ private File outdb;
 
         ScriptEvent thisEvent = new ScriptEvent();
         thisEvent.setExecutionTimeMillis(0);
-        while (eventReader.hasNext() && !(event.isEndElement() && event.asEndElement().getName().getLocalPart().equals(TAG))) {
+        while (eventReader.hasNext() && !(xmlevent.isEndElement() && xmlevent.asEndElement().getName().getLocalPart().equals(TAG))) {
             try {
 
-                event = eventReader.nextEvent();
+                xmlevent = eventReader.nextEvent();
 
-                if (event.isStartElement()) {
-                    StartElement startElement = event.asStartElement();
+                if (xmlevent.isStartElement()) {
+                    StartElement startElement = xmlevent.asStartElement();
                     // If we have a item element we create a new item
                     if (startElement.getName().getLocalPart().equals(TAG)) {
                         Iterator<Attribute> scriptEventAttributes = startElement.getAttributes();
@@ -732,49 +732,49 @@ private File outdb;
                             }
                         }
                     } else if (startElement.getName().getLocalPart().equals(LINE)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisEvent.setLine(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisEvent.setLine(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(COLUMN)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisEvent.setColumn(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisEvent.setColumn(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(FILE)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisEvent.setFile(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisEvent.setFile(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(FUNCTIONID)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisEvent.setFunctionId(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisEvent.setFunctionId(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(TESTCASENAME)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisEvent.setTestCaseName(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisEvent.setTestCaseName(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(OUTCOME)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisEvent.setOutcome(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisEvent.setOutcome(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(EXECUTIONTIME)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisEvent.setExecutionTime(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisEvent.setExecutionTime(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(EXECUTIONTIMEMILLIS)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisEvent.setExecutionTimeMillis(new Integer(event.asCharacters().getData()));
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisEvent.setExecutionTimeMillis(new Integer(xmlevent.asCharacters().getData()));
                         }
                     } else if (startElement.getName().getLocalPart().equals(ERROR)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisEvent.setError(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisEvent.setError(xmlevent.asCharacters().getData());
                         }
                     }
                 }
@@ -793,85 +793,85 @@ private File outdb;
      */
     private void processInitEvent() {
 
-        while (eventReader.hasNext() && !(event.isEndElement() && event.asEndElement().getName().getLocalPart().equals(INITEVENT))) {
+        while (eventReader.hasNext() && !(xmlevent.isEndElement() && xmlevent.asEndElement().getName().getLocalPart().equals(INITEVENTTAG))) {
             try {
 
-                event = eventReader.nextEvent();
+                xmlevent = eventReader.nextEvent();
 
-                if (event.isStartElement()) {
-                    StartElement startElement = event.asStartElement();
+                if (xmlevent.isStartElement()) {
+                    StartElement startElement = xmlevent.asStartElement();
                     // If we have a item element we create a new item
                     if (startElement.getName().getLocalPart().equals(FILENAME)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setFileName(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setFileName(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(STARTTIME)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setStartTime(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setStartTime(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(CREATOR)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setCreator(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setCreator(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(DESCRIPTION)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setDescription(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setDescription(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(C2CRIVERSION)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setC2criVersion(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setC2criVersion(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(CONFIGFILENAME)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setConfigFileName(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setConfigFileName(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(CHECKSUM)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setChecksum(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setChecksum(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(CONFIGURATIONAUTHOR)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setConfigurationAuthor(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setConfigurationAuthor(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(SELECTEDAPPLAYERTESTSUITE)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setSelectedAppLayerTestSuite(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setSelectedAppLayerTestSuite(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(SELECTEDINFOLAYERTESTSUITE)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setSelectedInfoLayerTestSuite(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setSelectedInfoLayerTestSuite(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(CONFIGVERSION)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setConfigVersion(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setConfigVersion(xmlevent.asCharacters().getData());
                         }
                     }  else if (startElement.getName().getLocalPart().equals(EXTERNALCENTEROPERATION)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            initEvent.setExternalCenterOperation(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            initEvent.setExternalCenterOperation(xmlevent.asCharacters().getData());
                         }
                     }  else if(startElement.getName().getLocalPart().equals(ENABLEEMULATION)){
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters())
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters())
                         {
-                            initEvent.setEnableEmulation(event.asCharacters().getData());
+                            initEvent.setEnableEmulation(xmlevent.asCharacters().getData());
                         }
                     }  else if(startElement.getName().getLocalPart().equals(REINITIALIZEEMULATION)){
-                        event = eventReader.nextEvent();
-                        if(event.isCharacters())
+                        xmlevent = eventReader.nextEvent();
+                        if(xmlevent.isCharacters())
                         {
-                            initEvent.setReInitializeEmulation(event.asCharacters().getData());
+                            initEvent.setReInitializeEmulation(xmlevent.asCharacters().getData());
                         }
                     }
                     
@@ -893,13 +893,13 @@ private File outdb;
     private UserEvent processUserEvent() {
         UserEvent thisEvent = new UserEvent();
         try {
-            if (event.isStartElement()) {
-                StartElement startElement = event.asStartElement();
+            if (xmlevent.isStartElement()) {
+                StartElement startElement = xmlevent.asStartElement();
                 // If we have a item element we create a new item
                 if (startElement.getName().getLocalPart().equals(USEREVENT)) {
-                    event = eventReader.nextEvent();
-                    if (event.isCharacters()) {
-                        thisEvent.setDescription(event.asCharacters().getData());
+                    xmlevent = eventReader.nextEvent();
+                    if (xmlevent.isCharacters()) {
+                        thisEvent.setDescription(xmlevent.asCharacters().getData());
                     }
                 }
             }
@@ -920,59 +920,59 @@ private File outdb;
     private RawOTWMessage processRawOTWMessage() {
 
         RawOTWMessage thisRawMessageEvent = new RawOTWMessage();
-        while (eventReader.hasNext() && !(event.isEndElement() && event.asEndElement().getName().getLocalPart().equals(RAWOTWMESSAGE))) {
+        while (eventReader.hasNext() && !(xmlevent.isEndElement() && xmlevent.asEndElement().getName().getLocalPart().equals(RAWOTWMESSAGE))) {
             try {
 
-                event = eventReader.nextEvent();
+                xmlevent = eventReader.nextEvent();
 
-                if (event.isStartElement()) {
-                    StartElement startElement = event.asStartElement();
+                if (xmlevent.isStartElement()) {
+                    StartElement startElement = xmlevent.asStartElement();
                     // If we have a item element we create a new item
                     if (startElement.getName().getLocalPart().equals(TESTCASE)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisRawMessageEvent.setTestCase(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisRawMessageEvent.setTestCase(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(CONNECTIONNAME)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisRawMessageEvent.setConnectionName(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisRawMessageEvent.setConnectionName(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(PROCESSTYPE)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisRawMessageEvent.setProcessType(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisRawMessageEvent.setProcessType(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(SOURCEADDRESS)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisRawMessageEvent.setSourceAddress(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisRawMessageEvent.setSourceAddress(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(DESTINATIONADDRESS)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisRawMessageEvent.setDestinationAddress(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisRawMessageEvent.setDestinationAddress(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(SEQUENCECOUNT)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisRawMessageEvent.setSequenceCount(new Integer(event.asCharacters().getData()));
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisRawMessageEvent.setSequenceCount(new Integer(xmlevent.asCharacters().getData()));
                         }
                     } else if (startElement.getName().getLocalPart().equals(TIMESTAMPINMILLIS)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisRawMessageEvent.setTimeStampInMillis(new BigInteger(event.asCharacters().getData()));
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisRawMessageEvent.setTimeStampInMillis(new BigInteger(xmlevent.asCharacters().getData()));
                         }
                     } else if (startElement.getName().getLocalPart().equals(MESSAGE)) {
 //                        event = eventReader.nextEvent();
-                        if (!event.isCharacters()) event = eventReader.nextEvent();  // Get To CDATA!! (Sometimes Varies by Parser whether this step is needed)
+                        if (!xmlevent.isCharacters()) xmlevent = eventReader.nextEvent();  // Get To CDATA!! (Sometimes Varies by Parser whether this step is needed)
 
                         StringBuilder sb = new StringBuilder();
-                        if (event.isCharacters()) {
-                           sb.append(event.asCharacters().getData());
+                        if (xmlevent.isCharacters()) {
+                           sb.append(xmlevent.asCharacters().getData());
                            while (eventReader.peek().isCharacters()){  
-                               event = eventReader.nextEvent();
-                                sb.append(event.asCharacters().getData());
+                               xmlevent = eventReader.nextEvent();
+                                sb.append(xmlevent.asCharacters().getData());
                             };
                             thisRawMessageEvent.setMessage(sb.toString());
                         }
@@ -997,64 +997,64 @@ private File outdb;
     private LoggedMessage processLoggedMessage() {
 
         LoggedMessage thisLoggedMessageEvent = new LoggedMessage();
-        while (eventReader.hasNext() && !(event.isEndElement() && event.asEndElement().getName().getLocalPart().equals(LOGGEDMESSAGE))) {
+        while (eventReader.hasNext() && !(xmlevent.isEndElement() && xmlevent.asEndElement().getName().getLocalPart().equals(LOGGEDMESSAGE))) {
             try {
 
-                event = eventReader.nextEvent();
+                xmlevent = eventReader.nextEvent();
 
-                if (event.isStartElement()) {
-                    StartElement startElement = event.asStartElement();
+                if (xmlevent.isStartElement()) {
+                    StartElement startElement = xmlevent.asStartElement();
                     // If we have a item element we create a new item
                     if (startElement.getName().getLocalPart().equals(PARENTDIALOG)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisLoggedMessageEvent.setParentDialog(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisLoggedMessageEvent.setParentDialog(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(MESSAGENAME)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisLoggedMessageEvent.setMessageName(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisLoggedMessageEvent.setMessageName(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(MESSAGETYPE)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisLoggedMessageEvent.setMessageType(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisLoggedMessageEvent.setMessageType(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(MESSAGEENCODING)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisLoggedMessageEvent.setMessageEncoding(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisLoggedMessageEvent.setMessageEncoding(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(VIATRANSPORTPROTOCOL)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisLoggedMessageEvent.setViaTransportProtocol(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisLoggedMessageEvent.setViaTransportProtocol(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(MESSAGESOURCEADDRESS)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisLoggedMessageEvent.setMessageSourceAddress(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisLoggedMessageEvent.setMessageSourceAddress(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(MESSAGEDESTINATIONADDRESS)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisLoggedMessageEvent.setMessageDestinationAddress(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisLoggedMessageEvent.setMessageDestinationAddress(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(RELATEDCOMMAND)) {
-                        event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            thisLoggedMessageEvent.setRelatedCommand(event.asCharacters().getData());
+                        xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            thisLoggedMessageEvent.setRelatedCommand(xmlevent.asCharacters().getData());
                         }
                     } else if (startElement.getName().getLocalPart().equals(MESSAGEBODY)) {
 //                        event = eventReader.nextEvent();
                        
-                        if (!event.isCharacters()) event = eventReader.nextEvent();  // CDATA!!
+                        if (!xmlevent.isCharacters()) xmlevent = eventReader.nextEvent();  // CDATA!!
                         StringBuilder sb = new StringBuilder();
-                        if (event.isCharacters()) {
-                           sb.append(event.asCharacters().getData());
+                        if (xmlevent.isCharacters()) {
+                           sb.append(xmlevent.asCharacters().getData());
                            while (eventReader.peek().isCharacters()){  
-                               event = eventReader.nextEvent();
-                                sb.append(event.asCharacters().getData());
+                               xmlevent = eventReader.nextEvent();
+                                sb.append(xmlevent.asCharacters().getData());
                             }
                          thisLoggedMessageEvent.setMessageBody(sb.toString());
                        }
@@ -1086,23 +1086,23 @@ private File outdb;
         TestResultNeeds currentNeed = null;
         TestResultRequirements currentRequirement = null;
 
-        while (eventReader.hasNext() && !(event.isEndElement() && event.asEndElement().getName().getLocalPart().equals(TESTRESULTS))) {
+        while (eventReader.hasNext() && !(xmlevent.isEndElement() && xmlevent.asEndElement().getName().getLocalPart().equals(TESTRESULTS))) {
             try {
 
-                event = eventReader.nextEvent();
+                xmlevent = eventReader.nextEvent();
 
-                if (event.isStartElement()) {
-                    StartElement startElement = event.asStartElement();
+                if (xmlevent.isStartElement()) {
+                    StartElement startElement = xmlevent.asStartElement();
                     // If we have a item element we create a new item
                     if ((startElement.getName().getLocalPart().equals(INFORMATIONLEVELSTANDARD))
                             || (startElement.getName().getLocalPart().equals(APPLICATIONLEVELSTANDARD))) {
                         currentLevelStandard = startElement.getName().getLocalPart();
-                        event = eventReader.nextEvent();
-                    } else if (startElement.getName().getLocalPart().equals(RITESTTARGET)) {
+                        xmlevent = eventReader.nextEvent();
+                    } else if (startElement.getName().getLocalPart().equals(RITESTTARGETTAG)) {
                         
-                    event = eventReader.nextEvent();
-                        if (event.isCharacters()) {
-                            riTestTarget = event.asCharacters().getData();
+                    xmlevent = eventReader.nextEvent();
+                        if (xmlevent.isCharacters()) {
+                            riTestTarget = xmlevent.asCharacters().getData();
                         }
                             
                     } else if (startElement.getName().getLocalPart().equals(NEED)) {
