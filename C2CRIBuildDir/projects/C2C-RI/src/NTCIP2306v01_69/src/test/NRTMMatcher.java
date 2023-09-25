@@ -28,7 +28,7 @@ import javax.xml.stream.events.XMLEvent;
 public class NRTMMatcher {
 
     /** The event. */
-    private static String EVENT = "NRTMUpdateTable_Item";
+    private static String EVENTSTRING = "NRTMUpdateTable_Item";
     
     /** The idevent. */
     private static String IDEVENT = "ID";
@@ -94,7 +94,7 @@ public class NRTMMatcher {
             if (event.isStartElement()) {
                 StartElement startElement = event.asStartElement();
                 // If we have a item element we create a new item
-                if (EVENT.equals(startElement.getName().getLocalPart())) {
+                if (EVENTSTRING.equals(startElement.getName().getLocalPart())) {
                     eventSet = processEvent();
                 }
 
@@ -102,7 +102,7 @@ public class NRTMMatcher {
             // If we reach the end of an item element we add it to the list
             if (event.isEndElement()) {
                 EndElement endElement = event.asEndElement();
-                if (EVENT.equals(endElement.getName().getLocalPart())) {
+                if (EVENTSTRING.equals(endElement.getName().getLocalPart())) {
                     if (nrtmMatchMap.containsKey(eventSet.getNeedID())) {
                         nrtmMatchMap.get(eventSet.getNeedID()).add(eventSet);
                     } else {
@@ -157,7 +157,7 @@ public class NRTMMatcher {
         NRTMInstance eventSet = null;
         eventSet = new NRTMInstance();
 
-        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart().equals(EVENT)))) {
+        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart().equals(EVENTSTRING)))) {
 
             try {
                 if (event.isStartElement()) {
