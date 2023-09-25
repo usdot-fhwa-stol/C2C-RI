@@ -527,12 +527,15 @@ public class SOAPEncoder {
         switch (subProfile) {
             case RR:
                 soapStatus.setValidRRSOAPEncoding(validToSelectedProfile);
+				break;
             case SUB:
                 soapStatus.setValidSubSOAPEncoding(validToSelectedProfile);
                 soapStatus.setValidSubPubReceiptEncoding(validSubPubReceiptEncoding);
+				break;
             case PUB:
                 soapStatus.setValidPubSOAPEncoding(validToSelectedProfile);
                 soapStatus.setValidSubPubReceiptEncoding(validSubPubReceiptEncoding);
+				break;
             default:
                 break;
         }
