@@ -16,10 +16,7 @@ public class NamedThreadFactory implements ThreadFactory{
 
     /** The Constant poolNumber. */
     static final AtomicInteger poolNumber = new AtomicInteger(1);
-    
-    /** The group. */
-    final ThreadGroup group;
-    
+     
     /** The thread number. */
     final AtomicInteger threadNumber = new AtomicInteger(1);
     
@@ -35,8 +32,6 @@ public class NamedThreadFactory implements ThreadFactory{
      * @param name the name
      */
     public NamedThreadFactory(String name){
-        SecurityManager s = System.getSecurityManager();
-        group = (s != null)? s.getThreadGroup(): Thread.currentThread().getThreadGroup();
         namePrefix = name+"-" + poolNumber.getAndIncrement() + "-thread-";
     }
 
@@ -44,7 +39,7 @@ public class NamedThreadFactory implements ThreadFactory{
      * @see java.util.concurrent.ThreadFactory#newThread(java.lang.Runnable)
      */
     public Thread newThread(Runnable r){
-        Thread t = new Thread(group, r, namePrefix + threadNumber.getAndIncrement(),
+        Thread t = new Thread(null, r, namePrefix + threadNumber.getAndIncrement(),
                 0);
         t.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
                 @Override
