@@ -590,6 +590,7 @@ public class TestCaseEditorDialog
                 switch (n) {
                     case 0:
                         TestCaseDataEditor.saveFile();
+						break;
                     case 1:
                         break;
                 }
