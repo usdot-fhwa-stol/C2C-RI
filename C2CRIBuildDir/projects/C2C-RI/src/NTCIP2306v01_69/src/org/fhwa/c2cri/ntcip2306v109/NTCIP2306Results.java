@@ -196,13 +196,13 @@ import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
     private void processGZIPMessageEncoding(OperationResults opResults,  String messageType) {      
         if (messageType.equals(REQUESTMESSAGE)){
             boolean result = opResults.getRequestMessage().getGzipStatus().isNTCIP2306ValidGZIP()
-                        & opResults.getRequestMessage().getXmlStatus().isNTCIP2306ValidXML();
+                        && opResults.getRequestMessage().getXmlStatus().isNTCIP2306ValidXML();
             requestMap.put("4.1.2",
                         new RequirementResult(result,
                         "4.1.2", opResults.getRequestMessage().getGzipStatus().getGZIPErrors()));        
         } else {
             boolean result = opResults.getResponseMessage().getGzipStatus().isNTCIP2306ValidGZIP()
-                        & opResults.getResponseMessage().getXmlStatus().isNTCIP2306ValidXML();
+                        && opResults.getResponseMessage().getXmlStatus().isNTCIP2306ValidXML();
             responseMap.put("4.1.2",
                         new RequirementResult(result,
                         "4.1.2", opResults.getResponseMessage().getGzipStatus().getGZIPErrors()));                    
@@ -399,7 +399,7 @@ import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
      * @param opResults – the operation results
      */
     private void processHTTPTransport(OperationResults opResults) {
-            boolean result = opResults.getRequestMessage().getHttpStatus().isValidHTTPHeaders() & opResults.getResponseMessage().getHttpStatus().isValidHTTPHeaders();
+            boolean result = opResults.getRequestMessage().getHttpStatus().isValidHTTPHeaders() && opResults.getResponseMessage().getHttpStatus().isValidHTTPHeaders();
             String resultErrors = opResults.getRequestMessage().getHttpStatus().getHTTPErrors() +"\n"+ opResults.getResponseMessage().getHttpStatus().getHTTPErrors();
             resultsMap.put("5.1.1", 
                     new RequirementResult(result,
@@ -413,7 +413,7 @@ import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
      * @param opResults – the operation results
      */
     private void processHTTPSTransport(OperationResults opResults) {
-         boolean result = opResults.getRequestMessage().getHttpStatus().isValidHTTPHeaders() & opResults.getResponseMessage().getHttpStatus().isValidHTTPHeaders();
+         boolean result = opResults.getRequestMessage().getHttpStatus().isValidHTTPHeaders() && opResults.getResponseMessage().getHttpStatus().isValidHTTPHeaders();
          String resultErrors = opResults.getRequestMessage().getHttpStatus().getHTTPErrors() +"\n"+ opResults.getResponseMessage().getHttpStatus().getHTTPErrors();
          resultsMap.put("5.1.1", 
                     new RequirementResult(result,
@@ -431,7 +431,7 @@ import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
      * @param opResults – the operation results
      */
     private void processFTPTransport(OperationResults opResults) {
-         boolean result = opResults.getRequestMessage().getFtpStatus().isValidFTPProcessing() & opResults.getResponseMessage().getFtpStatus().isValidFTPProcessing();
+         boolean result = opResults.getRequestMessage().getFtpStatus().isValidFTPProcessing() && opResults.getResponseMessage().getFtpStatus().isValidFTPProcessing();
          String resultErrors = opResults.getRequestMessage().getFtpStatus().getFTPErrors() +"\n"+ opResults.getResponseMessage().getFtpStatus().getFTPErrors();
          resultsMap.put("5.2.1", 
                     new RequirementResult(result,
