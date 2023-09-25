@@ -35,7 +35,7 @@ public class TestAction {
     /**
      * The message tag.
      */
-    private static String MESSAGE = "message";
+    private static String MESSAGETAG = "message";
 
     /**
      * The userevent tag.
@@ -436,7 +436,7 @@ public class TestAction {
 
             try {
                 if (event.isStartElement()) {
-                    if (event.asStartElement().getName().getLocalPart().equals(MESSAGE)) {
+                    if (event.asStartElement().getName().getLocalPart().equals(MESSAGETAG)) {
                         event = eventReader.nextEvent();
                         continue;
                     }
@@ -664,7 +664,7 @@ public class TestAction {
                         if (event.isCharacters()) {
                             thisRawMessageEvent.setTimeStampInMillis(new BigInteger(event.asCharacters().getData()));
                         }
-                    } else if (startElement.getName().getLocalPart().equals(MESSAGE)) {
+                    } else if (startElement.getName().getLocalPart().equals(MESSAGETAG)) {
                         if (!event.isCharacters()) {
                             event = eventReader.nextEvent();  // Get To CDATA!! (Sometimes Varies by Parser whether this step is needed)
                         }
