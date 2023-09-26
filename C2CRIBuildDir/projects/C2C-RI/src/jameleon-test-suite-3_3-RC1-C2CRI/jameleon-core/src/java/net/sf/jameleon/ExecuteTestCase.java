@@ -459,19 +459,22 @@ public class ExecuteTestCase {
 
 
     protected void delay(){
-		synchronized (this)
+		if (waitTimeBetweenScripts > 0)
 		{
-			try
+			synchronized (this)
 			{
-				while (waitTimeBetweenScripts > 0)
+				try
 				{
-					this.wait(waitTimeBetweenScripts);
+					while (waitTimeBetweenScripts > 0)
+					{
+						this.wait(waitTimeBetweenScripts);
+					}
 				}
-			}
-			catch (InterruptedException e)
-			{
-				e.printStackTrace();
-				Thread.currentThread().interrupt();
+				catch (InterruptedException e)
+				{
+					e.printStackTrace();
+					Thread.currentThread().interrupt();
+				}
 			}
 		}
     }
