@@ -6,7 +6,7 @@ import java.awt.event.ItemListener;
 import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 
-import org.fhwa.c2cri.gui.testmodel.testcasedata.editor.utils.UIManager;
+import org.fhwa.c2cri.gui.testmodel.testcasedata.editor.utils.C2CRIUIManager;
 
 /**
  * The Class FormattedComboBox.
@@ -32,7 +32,7 @@ public abstract class FormattedComboBox extends JComboBox implements ItemListene
     public FormattedComboBox(Object o, Object[] data, Object selection) {
         super(data);
         this.o = o;
-        setFont(UIManager.getFont("Table.font"));
+        setFont(C2CRIUIManager.getFont("Table.font"));
         setBorder(BorderFactory.createEmptyBorder());
         
         setSelectedItem(selection);
