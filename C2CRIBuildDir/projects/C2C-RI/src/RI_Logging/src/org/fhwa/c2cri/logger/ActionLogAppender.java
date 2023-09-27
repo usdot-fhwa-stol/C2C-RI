@@ -142,7 +142,7 @@ public class ActionLogAppender implements org.apache.log4j.Appender {
      *
      * @since 0.8.4
      */
-    public void finalize() {
+    protected void finalize() {
         // An appender might be closed then garbage collected. There is no
         // point in closing twice.
         if (this.closed) {
