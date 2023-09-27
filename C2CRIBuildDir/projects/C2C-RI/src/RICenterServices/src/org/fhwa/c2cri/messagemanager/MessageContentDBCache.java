@@ -21,7 +21,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import org.apache.log4j.LogManager;
-import org.apache.log4j.Priority;
 
 /**
  *
@@ -175,7 +174,7 @@ public class MessageContentDBCache implements MessageContent {
      * @see java.lang.Object#finalize()
      */
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         super.finalize();
         System.out.println("Finalize was called");
 
