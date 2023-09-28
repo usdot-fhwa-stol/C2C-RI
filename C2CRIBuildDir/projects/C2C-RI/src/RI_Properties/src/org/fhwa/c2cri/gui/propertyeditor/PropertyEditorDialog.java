@@ -166,6 +166,9 @@ public class PropertyEditorDialog
 						break;
 					case 1 :
 						break;
+					default:
+						// do nothing
+						break;
 				}
 			}
 		});
