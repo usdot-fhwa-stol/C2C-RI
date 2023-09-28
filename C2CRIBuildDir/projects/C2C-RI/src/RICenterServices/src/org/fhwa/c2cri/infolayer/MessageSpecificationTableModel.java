@@ -80,9 +80,9 @@ private String[] columnNames = {"Value Element Name",
                 return spec.getMessageSpecItems().get(row).getValueName();
             case Value_Col:
                 return spec.getMessageSpecItems().get(row).getValue();
+			default:
+				throw new IllegalArgumentException("Illegal column: " + col);
         }
-        throw new IllegalArgumentException("Illegal column: "
-                + col);
     }
 
     /*
