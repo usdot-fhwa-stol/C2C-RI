@@ -38,7 +38,7 @@ public class C2CRIAppLayerTestProcedureStepsDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + APPLAYERTESTPROCEDURESTEPS_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.APPLAYERTESTPROCEDURESTEPS_TABLE + "("
                     + "keyid, Id, Procedure, Step, Action, PassFail) "
                     + " VALUES (?,?,?,?,?,?)");
 

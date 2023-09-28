@@ -15,7 +15,7 @@ import java.sql.Statement;
  *
  * @author TransCore ITS
  */
-public abstract class ReportsDAO implements ReportsDAOInterface {
+public abstract class ReportsDAO {
 
     protected Connection conn = null;
     protected PreparedStatement pstmt = null;

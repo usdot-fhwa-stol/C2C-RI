@@ -38,7 +38,7 @@ public class C2CRIInfoLayerTestProceduresDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + INFOLAYERTESTPROCEDURES_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.INFOLAYERTESTPROCEDURES_TABLE + "("
                     + "id, Procedure, ProcedureId, Description, Variables, Requirements, "
                     + "PassFailCriteria) VALUES (?,?,?,?,?,?,?)");
 
