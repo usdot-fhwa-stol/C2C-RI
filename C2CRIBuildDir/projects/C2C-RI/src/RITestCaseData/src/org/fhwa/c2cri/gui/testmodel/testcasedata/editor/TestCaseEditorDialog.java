@@ -593,6 +593,9 @@ public class TestCaseEditorDialog
 						break;
                     case 1:
                         break;
+					default:
+						// do nothing
+						break;
                 }
             }
         });
