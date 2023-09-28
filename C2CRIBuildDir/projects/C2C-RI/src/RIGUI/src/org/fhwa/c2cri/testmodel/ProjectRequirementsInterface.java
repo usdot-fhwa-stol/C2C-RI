@@ -11,8 +11,12 @@ package org.fhwa.c2cri.testmodel;
  * @author TransCore ITS, LLC
  * Last Updated:  1/8/2014
  */
-public interface ProjectRequirementsInterface {
+public abstract class ProjectRequirementsInterface {
     
+	private ProjectRequirementsInterface()
+	{
+	}
+	
     /** The Constant uniqueID_Header. */
     public final static String uniqueID_Header = "UniqueID";
     

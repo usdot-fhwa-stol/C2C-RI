@@ -11,7 +11,11 @@ package org.fhwa.c2cri.testmodel;
  * @author TransCore ITS, LLC
  * Last Updated:  1/8/2014
  */
-public interface PredicatesInterface {
+public abstract class PredicatesInterface {
+	
+	private PredicatesInterface()
+	{
+	}
     
     /** The Constant Predicate_Header. */
     public final static String Predicate_Header = "Predicate";
