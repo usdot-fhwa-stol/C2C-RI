@@ -92,7 +92,7 @@ public class C2CRIMessageAdapter {
                 // TODO Figure out why this might be happening.
                 if (!primaryMessageName.equals(updatedMessageName)){
                     System.err.println("C2CRIMessageAdapter::toC2CRIMessage Message name from 2306 message "+primaryMessageName + " does not match message from spec "+updatedMessageName+ " setting to the updated name.");
-                    primaryMessageName = updatedMessageName.indexOf(":")>0 ? updatedMessageName.substring(updatedMessageName.indexOf(":")+1) : updatedMessageName;
+                    primaryMessageName = updatedMessageName.indexOf(":")>=0 ? updatedMessageName.substring(updatedMessageName.indexOf(":")+1) : updatedMessageName;
                 }
             }
             newMessage.setMessageBodyPartsFromContent(msgList);
