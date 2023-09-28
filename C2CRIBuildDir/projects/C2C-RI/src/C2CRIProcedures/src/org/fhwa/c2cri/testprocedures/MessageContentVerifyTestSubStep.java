@@ -34,7 +34,7 @@ public class MessageContentVerifyTestSubStep extends TestProcedureStep{
         if (this.designElement.getDataConceptType().equalsIgnoreCase("Message")){
             parentVariableType = "message";
         } else {
-            if (parentVariable.indexOf(".")>0) {
+            if (parentVariable.indexOf(".")>=0) {
                 parentVariableType = "data frame";
             } else {
                 parentVariableType = "message";
@@ -53,7 +53,7 @@ public class MessageContentVerifyTestSubStep extends TestProcedureStep{
         }
         
         
-        this.setDescription("VERIFY that "+(parentVariable.indexOf(".")>0 ? (beginsWithVowel(this.designElement.getElementName())?"an ":"a ")+this.designElement.getElementName()+" "+variableType+ " exists within each instance of "+parentVariableType+" "+parentVariable: (beginsWithVowel(this.designElement.getElementName())?"an ":"a ") + this.designElement.getElementName()+" "+variableType+(parentVariable.equals(this.designElement.getElementName())?" was received.":" exists within "+parentVariableType+" "+parentVariable+".")));
+        this.setDescription("VERIFY that "+(parentVariable.indexOf(".")>=0 ? (beginsWithVowel(this.designElement.getElementName())?"an ":"a ")+this.designElement.getElementName()+" "+variableType+ " exists within each instance of "+parentVariableType+" "+parentVariable: (beginsWithVowel(this.designElement.getElementName())?"an ":"a ") + this.designElement.getElementName()+" "+variableType+(parentVariable.equals(this.designElement.getElementName())?" was received.":" exists within "+parentVariableType+" "+parentVariable+".")));
         this.setResults("PASS/FAIL ("+requirementID+")");
     }
 
@@ -90,7 +90,7 @@ public class MessageContentVerifyTestSubStep extends TestProcedureStep{
         if (this.designElement.getDataConceptType().equalsIgnoreCase("Message")){
             parentVariableType = "message";
         } else {
-            if (parentVariable.indexOf(".")>0) {
+            if (parentVariable.indexOf(".")>=0) {
                 parentVariableType = "data frame";
             } else {
                 parentVariableType = "message";
@@ -135,7 +135,7 @@ public class MessageContentVerifyTestSubStep extends TestProcedureStep{
             }
         }
 
-        result = "   <testStep functionId= \"Step "+this.getId()+" VERIFY that "+(parentVariable.indexOf(".")>0 ? (beginsWithVowel(this.designElement.getElementName())?"an ":"a ")+this.designElement.getElementName()+" "+variableType+ " exists within each instance of "+parentVariableType+" "+parentVariable: (beginsWithVowel(this.designElement.getElementName())?"an ":"a ") + this.designElement.getElementName()+" "+variableType+(parentVariable.equals(this.designElement.getElementName())?" was received.":" exists within "+parentVariableType+" "+parentVariable+"."))+"\""+ " passfailResult=\"True\">\n"+
+        result = "   <testStep functionId= \"Step "+this.getId()+" VERIFY that "+(parentVariable.indexOf(".")>=0 ? (beginsWithVowel(this.designElement.getElementName())?"an ":"a ")+this.designElement.getElementName()+" "+variableType+ " exists within each instance of "+parentVariableType+" "+parentVariable: (beginsWithVowel(this.designElement.getElementName())?"an ":"a ") + this.designElement.getElementName()+" "+variableType+(parentVariable.equals(this.designElement.getElementName())?" was received.":" exists within "+parentVariableType+" "+parentVariable+"."))+"\""+ " passfailResult=\"True\">\n"+
                 "        <ri-MessageVerify msgType=\""+messageName+"\" elementName=\""+ this.designElement.getElementName()+"\" instanceName=\"tmdd:"+ parentVariable+"\" elementType=\""+this.designElement.getDataConceptType()+"\" functionId=\"Looking for "+parentVariable+"\" />\n"+
                 "    </testStep>\n";
         return result;
