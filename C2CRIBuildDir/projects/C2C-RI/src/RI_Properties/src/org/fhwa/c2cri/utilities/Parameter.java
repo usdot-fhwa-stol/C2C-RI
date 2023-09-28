@@ -11,8 +11,12 @@ package org.fhwa.c2cri.utilities;
  * @author TransCore ITS, LLC
  * Last Updated: 9/2/2012
  */
-public interface Parameter {
+public abstract class Parameter {
 
+	private Parameter()
+	{
+	}
+	
     /** The config_file_path. */
     static String config_file_path = "Config_File_Path";
     
