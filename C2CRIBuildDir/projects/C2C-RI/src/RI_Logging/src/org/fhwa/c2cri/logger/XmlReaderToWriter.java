@@ -118,6 +118,9 @@ public final class XmlReaderToWriter {
             case XMLEvent.DTD:
                 writer.writeDTD(xmlr.getText());
                 break;
+			default:
+				// do nothing
+				break;
         }
     }
 }
