@@ -327,6 +327,9 @@ class PlainSocketImpl extends AbstractPlainSocketImpl {
             case SO_KEEPALIVE:
             case SO_REUSEADDR:
                 return (value == 0) ? -1 : 1;
+			default:
+				// do nothing
+				break;
         }
         return value;
     }
