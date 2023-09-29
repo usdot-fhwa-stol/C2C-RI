@@ -142,7 +142,7 @@ public class OverTheWireLogger {
             tmpByteCounter++;
         }
             return ":"
-                    + new String(tmpBytes, 0, width, "UTF-8").replaceAll("\r\n", ".").replaceAll(
+                    + new String(tmpBytes, 0, width, "UTF-8").replace("\r\n", ".").replace(
                     "\n",
                     ".").replaceAll(invalidString, ".").replaceAll(invalidString2, ".").replaceAll(invalidString3, ".").replaceAll(invalidString4, ".").replaceAll("[^\\x20-\\x7e]", ".") + "\n";
         } else {
