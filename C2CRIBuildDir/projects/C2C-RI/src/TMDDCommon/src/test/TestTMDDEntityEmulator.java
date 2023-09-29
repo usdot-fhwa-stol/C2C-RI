@@ -134,6 +134,7 @@ public class TestTMDDEntityEmulator {
                     TestCaseUpdateEntityElementUpdate updateEeu = (TestCaseUpdateEntityElementUpdate) tcu;
                     RIEmulation.getInstance().updateEntityElement(entityTestCase.getEntityTypeName(),
                             updateEeu.getEntityName(), updateEeu.getElementName(), updateEeu.getElementValue());
+					break;
                 case DeleteEntityElement:
                     TestCaseDeleteEntityElementUpdate deleteEeu = (TestCaseDeleteEntityElementUpdate) tcu;
                     RIEmulation.getInstance().deleteEntityElement(entityTestCase.getEntityTypeName(),

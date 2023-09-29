@@ -11,8 +11,11 @@ package org.fhwa.c2cri.testmodel;
  * @author TransCore ITS, LLC
  * Last Updated:  1/8/2014
  */
-public interface OtherRequirementsInterface {
+public abstract class OtherRequirementsInterface {
     
+	private OtherRequirementsInterface()
+	{
+	}
     /** The Constant ReqID_Header. */
     public final static String ReqID_Header = "ReqID";
     

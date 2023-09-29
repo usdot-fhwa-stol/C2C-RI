@@ -1326,6 +1326,9 @@ class SocketChannelImpl
                     if (isOutputClosed)
                         sb.append(" oshut");
                     break;
+				default:
+					// do nothing
+					break;
                 }
                 InetSocketAddress addr = localAddress();
                 if (addr != null) {

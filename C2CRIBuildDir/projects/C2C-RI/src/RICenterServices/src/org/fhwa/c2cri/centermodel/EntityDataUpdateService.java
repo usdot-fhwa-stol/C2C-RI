@@ -16,10 +16,6 @@ public class EntityDataUpdateService {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-
 	/**
 	 * 
 	 * @param dialog

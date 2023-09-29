@@ -11,8 +11,12 @@ package org.fhwa.c2cri.testmodel;
  * @author TransCore ITS, LLC
  * Last Updated:  1/8/2014
  */
-public interface NRTMInterface {
+public abstract class NRTMInterface {
     
+	private NRTMInterface()
+	{
+	}
+	
     /** The Constant ID_HEADER. */
     public final static String ID_HEADER = "ID";
     

@@ -322,9 +322,9 @@ public class DefaultTestConfigController implements TestConfigurationController 
         validationErrorsFound = false;
         boolean result = 
                  isValidConfigInput()
-                & isValidSUTInput()
-                & isValidAppLayerParamsInput()
-                & isValidInfoLayerParamsInput();
+                && isValidSUTInput()
+                && isValidAppLayerParamsInput()
+                && isValidInfoLayerParamsInput();
         
         return result;
     }

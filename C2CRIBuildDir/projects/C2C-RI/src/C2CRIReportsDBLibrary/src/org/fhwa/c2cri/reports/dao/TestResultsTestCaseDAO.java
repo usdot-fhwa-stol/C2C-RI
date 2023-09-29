@@ -33,7 +33,7 @@ public class TestResultsTestCaseDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + TESTRESULTSTESTCASE_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.TESTRESULTSTESTCASE_TABLE + "("
                     + "TCID, RequirementID, NeedID, errorDescription, result, TestCaseID,"
                     + "timeStamp) VALUES (?,?,?,?,?,?,?)");
 
@@ -66,7 +66,7 @@ public class TestResultsTestCaseDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + TESTRESULTSTESTCASE_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.TESTRESULTSTESTCASE_TABLE + "("
                     + "TCID, RequirementID, NeedID, errorDescription, result, TestCaseID,"
                     + "timeStamp) VALUES (?,?,?,?,?,?,?)");
 

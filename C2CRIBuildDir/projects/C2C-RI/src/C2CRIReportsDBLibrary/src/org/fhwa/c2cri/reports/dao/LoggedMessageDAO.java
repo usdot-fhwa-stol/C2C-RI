@@ -33,7 +33,7 @@ public class LoggedMessageDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + LOGGEDMESSAGE_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.LOGGEDMESSAGE_TABLE + "("
                     + "ID, parentDialog, messageName, messageType, messageEncoding, viaTransportProtocol,"
                     + "messageSourceAddress, messageDestinationAddress, relatedCommand, MessageBody) VALUES (?,?,?,?,?,?,?,?,?,?)");
 
@@ -69,7 +69,7 @@ public class LoggedMessageDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + LOGGEDMESSAGE_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.LOGGEDMESSAGE_TABLE + "("
                     + "ID, parentDialog, messageName, messageType, messageEncoding, viaTransportProtocol,"
                     + "messageSourceAddress, messageDestinationAddress, relatedCommand, MessageBody) VALUES (?,?,?,?,?,?,?,?,?,?)");
 

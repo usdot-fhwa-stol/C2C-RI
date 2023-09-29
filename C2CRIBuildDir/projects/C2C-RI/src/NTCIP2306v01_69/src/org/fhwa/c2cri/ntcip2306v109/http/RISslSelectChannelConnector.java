@@ -863,7 +863,7 @@ public class RISslSelectChannelConnector extends RISelectChannelConnector implem
      */
     protected KeyManager[] getKeyManagers() throws Exception
     {
-        KeyStore keyStore = getKeyStore(_keystorePath, _keystoreType, _password==null?null:_password.toString());
+        KeyStore keyStore = getKeyStoreObject(_keystorePath, _keystoreType, _password==null?null:_password.toString());
         
         KeyManagerFactory keyManagerFactory=KeyManagerFactory.getInstance(_sslKeyManagerFactoryAlgorithm);
         keyManagerFactory.init(keyStore,_keyPassword==null?(_password==null?null:_password.toString().toCharArray()):_keyPassword.toString().toCharArray());
@@ -887,7 +887,7 @@ public class RISslSelectChannelConnector extends RISelectChannelConnector implem
             _sslTrustManagerFactoryAlgorithm = _sslKeyManagerFactoryAlgorithm;
         }
         
-        KeyStore trustStore = getKeyStore(_truststorePath, _truststoreType, _trustPassword==null?null:_trustPassword.toString());
+        KeyStore trustStore = getKeyStoreObject(_truststorePath, _truststoreType, _trustPassword==null?null:_trustPassword.toString());
 
         TrustManagerFactory trustManagerFactory=TrustManagerFactory.getInstance(_sslTrustManagerFactoryAlgorithm);
         trustManagerFactory.init(trustStore);
@@ -904,7 +904,7 @@ public class RISslSelectChannelConnector extends RISelectChannelConnector implem
      * @return the key store
      * @throws Exception the exception
      */
-    protected KeyStore getKeyStore(String keystorePath, String keystoreType, String keystorePassword) throws Exception
+    protected KeyStore getKeyStoreObject(String keystorePath, String keystoreType, String keystorePassword) throws Exception
     {
     	KeyStore keystore;
     	InputStream keystoreInputStream = null;

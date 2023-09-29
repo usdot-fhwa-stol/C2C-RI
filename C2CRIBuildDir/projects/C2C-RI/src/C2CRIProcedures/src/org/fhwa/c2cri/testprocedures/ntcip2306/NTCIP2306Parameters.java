@@ -11,7 +11,12 @@ import org.fhwa.c2cri.testprocedures.*;
  *
  * @author TransCore ITS
  */
-public interface NTCIP2306Parameters {
+public abstract class NTCIP2306Parameters {
+	
+	private NTCIP2306Parameters()
+	{
+	}
+	
     public static String NTCIP2306_SUBSCRIPTION_SUFFIX = "Subscription";
     public static String NTCIP2306_PUBLICATION_SUFFIX = "Update";
     public static String NTCIP2306_REQUEST_SUFFIX = "Request";

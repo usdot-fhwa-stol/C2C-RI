@@ -146,7 +146,7 @@ public class XMLHelper {
         String msg = t.getMessage();
         if (msg != null) {
             msg = msg.replaceAll(" Nested exception:.*", "");
-            msg = msg.replaceAll(": ", ":\n");
+            msg = msg.replace(": ", ":\n");
         }
         return msg;
     }

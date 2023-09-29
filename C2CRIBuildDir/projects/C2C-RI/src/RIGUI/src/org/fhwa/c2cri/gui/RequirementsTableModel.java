@@ -107,9 +107,9 @@ private ArrayList<Requirement> requirementList = new ArrayList<Requirement>();
                 return projectRequirement.getType();
             case FlagVal_Col:
                 return projectRequirement.getFlagValue();
+			default:
+				throw new IllegalArgumentException("Illegal column: " + col);
         }
-        throw new IllegalArgumentException("Illegal column: "
-                + col);
     }
 
     /*

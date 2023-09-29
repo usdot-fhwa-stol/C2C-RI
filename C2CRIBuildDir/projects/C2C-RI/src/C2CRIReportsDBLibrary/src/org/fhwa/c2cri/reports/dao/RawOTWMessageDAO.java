@@ -37,7 +37,7 @@ public class RawOTWMessageDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + RAWOTWMESSAGE_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.RAWOTWMESSAGE_TABLE + "("
                     + "ID, testCase, connectionName, ProcessType, SourceAddress, DestinationAddress,"
                     + "sequenceCount,message,TimeStampInMillis) VALUES (?,?,?,?,?,?,?,?,?)");
 

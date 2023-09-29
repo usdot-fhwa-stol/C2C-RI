@@ -43,7 +43,7 @@ public class JameleonUI extends JFrame implements JameleonMain{
 	protected static final int TREE_TABS_WIDTH = 195;
 	protected static final int WINDOW_HEIGHT = 450;
     protected static final int WINDOW_WIDHT = 600;
-    protected String title = "Jameleon";
+    protected String jameleontitle = "Jameleon";
     protected static Logger log = Logger.getLogger(JameleonUI.class.getName());
 
     public static void main(String[] args){
@@ -70,18 +70,18 @@ public class JameleonUI extends JFrame implements JameleonMain{
 
     public JameleonUI(){
         super();
-        setTitle(title);
+        setTitle(jameleontitle);
         setUpFrame();
     }
 
     public JameleonUI(String title){
         super(title);
-        this.title = title;
+        this.jameleontitle = title;
         setUpFrame();
     }
 
     private void setUpFrame(){
-        setName(title);
+        setName(jameleontitle);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 

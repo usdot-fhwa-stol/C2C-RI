@@ -119,9 +119,9 @@ public class TestStepResultsTableModel extends AbstractTableModel implements Lis
                 return testStepResult.getTestStepDescription();
             case Result_Col:
                 return testStepResult.getResult().equals("FAILED")? testStepResult.getResult() + " - " + testStepResult.getErrorDescription():testStepResult.getResult();
+			default:
+				throw new IllegalArgumentException("Illegal column: " + col);
         }
-        throw new IllegalArgumentException("Illegal column: "
-                + col);
     }
 
     /*

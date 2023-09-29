@@ -182,7 +182,7 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
             setUtf8Encoded(false);
         }
        testAssertionList.add(new TestAssertion("4.1.1.b",isUtf8Encoded(),"The character set shall be UTF-8. ",utf8EncodingException));	   
-       return isValidXmlv1() & isUtf8Encoded() & (getXmlValidErrors().equals(""));
+       return isValidXmlv1() && isUtf8Encoded() && (getXmlValidErrors().equals(""));
     }
 
     /**

@@ -28,7 +28,7 @@ import org.fhwa.c2cri.gui.testmodel.testcasedata.editor.TestCaseDataEditor;
 public class TestCaseEditJButton extends JButton {
 
     private TestCase testCase;
-    private final TestCaseEditActionListener actionListener;
+    private final TestCaseEditActionListener c2criactionListener;
     private final TestCaseCreationListener creationListener;
     private final int modelRow;
     
@@ -38,8 +38,8 @@ public class TestCaseEditJButton extends JButton {
         this.setToolTipText("Edit the test case data.");
         this.creationListener = listener;
         this.modelRow = modelRow;
-        actionListener = new TestCaseEditActionListener();
-        this.addActionListener(actionListener);
+        c2criactionListener = new TestCaseEditActionListener();
+        this.addActionListener(c2criactionListener);
         this.setEnabled(true);
 
     }

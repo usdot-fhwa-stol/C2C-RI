@@ -114,9 +114,9 @@ public class TestCaseResultsTableModel extends AbstractTableModel {
                 } else {
                    return " ";
                 }
+			default:
+				throw new IllegalArgumentException("Illegal column: " + col);
         }
-        throw new IllegalArgumentException("Illegal column: "
-                + col);
     }
 
     /*

@@ -852,9 +852,9 @@ public class TestDefinitionCoordinator implements java.awt.event.ActionListener 
     private boolean isValidTestConfig() {
         validationErrorsFound = false;
         return isValidConfigInput()
-                & isValidSUTInput()
-                & isValidAppLayerParamsInput()
-                & isValidInfoLayerParamsInput();
+                && isValidSUTInput()
+                && isValidAppLayerParamsInput()
+                && isValidInfoLayerParamsInput();
     }
 
     /**

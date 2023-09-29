@@ -65,7 +65,7 @@ public class TestCasePane extends JPanel {
     protected TestCaseTree tcTree;
     protected TestCaseResultsPane resultsPane;
     protected JTabbedPane tabbedPane;
-    protected JFrame parent;
+    protected JFrame jameleonparent;
     protected boolean stopExecution = false;
     protected BasicHtmlBrowser bugBrowser = new BasicHtmlBrowser("Bug Info");
     protected BasicHtmlBrowser resultsBrowser = new BasicHtmlBrowser("Jameleon Test Run Results");
@@ -79,14 +79,14 @@ public class TestCasePane extends JPanel {
 
     public TestCasePane(JFrame parent) {
         super(new BorderLayout());
-        this.parent = parent;
+        this.jameleonparent = parent;
         resultsPane = new TestCaseResultsPane(parent);
         resultsPane.setSourceArea(tcSourcePane);
         genUI();
     }
 
     public JFrame getJameleonUI(){
-        return parent;
+        return jameleonparent;
     }
 
     public void setTestCaseTree(TestCaseTree tcTree) {

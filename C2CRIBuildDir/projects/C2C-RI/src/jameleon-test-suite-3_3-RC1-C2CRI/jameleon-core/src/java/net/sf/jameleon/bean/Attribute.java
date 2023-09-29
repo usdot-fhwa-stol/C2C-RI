@@ -70,6 +70,13 @@ public class Attribute implements XMLable, Cloneable{
         required = false;
         contextName = new String();
     }
+	
+	
+	Attribute(Attribute oCopy)
+	{
+		this();
+		value = oCopy.value;
+	}
 
     /**
      * @return The attribute's name
@@ -259,16 +266,5 @@ public class Attribute implements XMLable, Cloneable{
             str = name;
         }
         return str;
-    }
-    
-    public Object clone() throws CloneNotSupportedException {
-    	Attribute attr = null;
-    	try{
-    		attr = (Attribute) super.clone();
-    		attr.value = value;
-    	}catch(CloneNotSupportedException cnse){
-    		System.err.println("Could not create a clone of "+toXML());
-    	}
-    	return attr;
     }
 }

@@ -641,6 +641,7 @@ public class DMSHandler implements EntityControlRequestStatusCollector, EntityCo
                 case "4":
                 case "other":
                     dmsRequestParameter = commandMessage.getElementValue("tmdd:dMSControlRequestMsg.dms-command-parameters.dms-position-preset");
+					break;
                 default:
                     break;
             }

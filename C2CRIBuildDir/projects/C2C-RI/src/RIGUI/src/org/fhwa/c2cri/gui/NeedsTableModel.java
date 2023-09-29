@@ -102,9 +102,10 @@ public class NeedsTableModel extends AbstractTableModel {
                 return userNeed.getType();
             case FlagVal_Col:
                 return userNeed.getFlagValue();
+			default:
+				throw new IllegalArgumentException("Illegal column: " + col);
         }
-        throw new IllegalArgumentException("Illegal column: "
-                + col);
+        
     }
 
     /*

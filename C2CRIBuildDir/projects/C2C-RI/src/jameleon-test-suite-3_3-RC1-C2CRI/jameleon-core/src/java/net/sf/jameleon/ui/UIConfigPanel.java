@@ -101,7 +101,7 @@ public class UIConfigPanel extends JPanel{
                                 relativePath = absolutePath;
                             }
                             if (!cpEntriesM.contains(relativePath)) {
-                                cpEntriesM.addElement(relativePath.replaceAll("\\\\", "/"));
+                                cpEntriesM.addElement(relativePath.replace("\\\\", "/"));
                             }
                         }
                     }

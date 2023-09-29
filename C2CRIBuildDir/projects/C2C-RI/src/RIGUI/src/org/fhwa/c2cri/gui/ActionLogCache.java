@@ -171,7 +171,7 @@ public class ActionLogCache extends AbstractTableModel implements ActionLogAppen
      * @see java.lang.Object#finalize()
      */
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         super.finalize();
         System.out.println("Finalize was called");
 

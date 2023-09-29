@@ -106,9 +106,9 @@ public class TestCasesTableModel extends AbstractTableModel implements TestCaseC
                 final TestCaseViewJButton viewButton = new TestCaseViewJButton(testCase);
                 viewButton.setEnabled(true);
                 return viewButton;
+			default:
+				throw new IllegalArgumentException("Illegal column: " + col);
         }
-        throw new IllegalArgumentException("Illegal column: "
-                + col);
     }
 
     /*

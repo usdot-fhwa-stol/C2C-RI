@@ -760,6 +760,7 @@ public class CCTVHandler implements EntityControlRequestStatusCollector, EntityC
             case "12":
             case "other":
                 cctvRequestParameter = commandMessage.getElementValue("tmdd:cCTVControlRequestMsg.cctv-command-parameters.cctv-position-preset");
+				break;
             default:
                 break;
 
@@ -856,6 +857,7 @@ public class CCTVHandler implements EntityControlRequestStatusCollector, EntityC
                 case "12":
                 case "other":
                     cctvRequestParameter = commandMessage.getElementValue("tmdd:cCTVControlRequestMsg.cctv-command-parameters.cctv-position-preset");
+					break;
                 default:
                     break;
 

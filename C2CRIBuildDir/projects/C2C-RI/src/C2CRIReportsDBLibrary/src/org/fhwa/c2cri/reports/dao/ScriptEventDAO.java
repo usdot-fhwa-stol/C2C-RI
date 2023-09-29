@@ -38,7 +38,7 @@ public class ScriptEventDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + SCRIPTEVENT_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.SCRIPTEVENT_TABLE + "("
                     + "EventID, src, tag, type, line, column, [execution-time], [execution-time-millis], "
                     + "eventTypeID, file, functionId, [test-case-name], outcome, error) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 

@@ -33,7 +33,7 @@ public class UserEventDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + USEREVENT_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.USEREVENT_TABLE + "("
                     + "ID, Description) VALUES (?,?)");
 
 
@@ -60,7 +60,7 @@ public class UserEventDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + USEREVENT_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.USEREVENT_TABLE + "("
                     + "ID, Description) VALUES (?,?)");
 
             int col = 1;
