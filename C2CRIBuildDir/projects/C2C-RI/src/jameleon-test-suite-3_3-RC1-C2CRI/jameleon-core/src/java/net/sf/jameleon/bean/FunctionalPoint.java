@@ -26,7 +26,7 @@ import java.util.*;
  * documentation generation. Please see the docs on the instance variables for a full understanding of what
  * a FunctionalPoint is
  */
-public class FunctionalPoint implements XMLable, Cloneable {
+public class FunctionalPoint implements XMLable {
     private static final long serialVersionUID = 1L;
     /**
      * The name of the developer that wrote this <code>FunctionalPoint</code>
@@ -84,6 +84,22 @@ public class FunctionalPoint implements XMLable, Cloneable {
         applications = new ArrayList();
         className = new String();
     }
+	
+	
+	private FunctionalPoint(FunctionalPoint oCopy)
+	{
+		this();
+		applications = (ArrayList) oCopy.applications.clone();
+		steps = (ArrayList)oCopy.steps.clone();
+		tagNames = (ArrayList)oCopy.tagNames.clone();
+		attributes = new LinkedHashMap(oCopy.attributes.size());
+		Attribute attr;
+		for (Iterator it = oCopy.attributes.keySet().iterator(); it.hasNext(); ){
+			attr = (Attribute)oCopy.attributes.get(it.next());
+			addAttribute(new Attribute(attr));
+		}
+
+	}
 
     /**
      * Adds an <code>Attribute</code> to the list of attributes used by this <cod>FunctionalPoint</code>
@@ -298,37 +314,9 @@ public class FunctionalPoint implements XMLable, Cloneable {
         this.steps = steps;
     }
     
-    public Object clone() throws CloneNotSupportedException {
-    	FunctionalPoint fp = null;
-    	try{
-    		fp = (FunctionalPoint)super.clone();
-    		fp.applications = (ArrayList) applications.clone();
-    		fp.steps = (ArrayList)steps.clone();
-    		fp.tagNames = (ArrayList)tagNames.clone();
-    		fp.attributes = new LinkedHashMap(attributes.size());
-    		Attribute attr;
-    		for (Iterator it = attributes.keySet().iterator(); it.hasNext(); ){
-    			attr = (Attribute)attributes.get(it.next());
-    			attr = (Attribute)attr.clone();
-    			fp.addAttribute(attr);
-    		}
-    	}catch(CloneNotSupportedException cnse){
-			if (fp == null)
-				throw new JameleonException("Could not clone, FunctionalPoint was null:", cnse);
-			else
-				throw new JameleonException("Could not clone this tag " + fp.getDefaultTagName() +":", cnse);
-    	}
-    	return fp;
-    }
 
     public FunctionalPoint cloneFP(){
-        FunctionalPoint fp;
-        try{
-            fp = (FunctionalPoint)clone();
-        }catch(CloneNotSupportedException cnse){
-            fp = this;
-        }
-        return fp;
+        return new FunctionalPoint(this);
     }
 
     public String toXML(){
