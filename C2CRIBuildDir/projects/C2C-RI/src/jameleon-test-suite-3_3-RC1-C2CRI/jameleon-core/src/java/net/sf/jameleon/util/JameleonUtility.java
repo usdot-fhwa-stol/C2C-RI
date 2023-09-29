@@ -190,16 +190,16 @@ public class JameleonUtility {
     }
 
     public static String decodeXMLToText(String str){
-        str = str.replaceAll("\\&lt;","<");
-        str = str.replaceAll("\\&gt;",">");
-        str = str.replaceAll("\\&amp;","&");
+        str = str.replace("\\&lt;","<");
+        str = str.replace("\\&gt;",">");
+        str = str.replace("\\&amp;","&");
         return str;
     }
 
     public static String decodeTextToXML(String str){
-        str = str.replaceAll("&","\\&amp;");
-        str = str.replaceAll("<","\\&lt;");
-        str = str.replaceAll(">","\\&gt;");
+        str = str.replace("&","\\&amp;");
+        str = str.replace("<","\\&lt;");
+        str = str.replace(">","\\&gt;");
         return str;
     }
 
