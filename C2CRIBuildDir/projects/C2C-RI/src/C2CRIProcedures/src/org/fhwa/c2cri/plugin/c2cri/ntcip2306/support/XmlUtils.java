@@ -110,13 +110,13 @@ public final class XmlUtils
 
 	public static String entitize( String xml )
 	{
-		return xml.replaceAll( "&", "&amp;" ).replaceAll( "<", "&lt;" ).replaceAll( ">", "&gt;" ).replaceAll( "\"",
-				"&quot;" ).replaceAll( "'", "&apos;" );
+		return xml.replace( "&", "&amp;" ).replace( "<", "&lt;" ).replace( ">", "&gt;" ).replace( "\"",
+				"&quot;" ).replace( "'", "&apos;" );
 	}
 
 	public static String entitizeContent( String xml )
 	{
-		return xml.replaceAll( "&", "&amp;" ).replaceAll( "\"", "&quot;" ).replaceAll( "'", "&apos;" );
+		return xml.replace( "&", "&amp;" ).replace( "\"", "&quot;" ).replace( "'", "&apos;" );
 	}
 
 	static synchronized public Document parse( InputSource inputSource ) throws IOException
