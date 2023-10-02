@@ -147,7 +147,6 @@ public class NTCIP2306SessionTag extends SessionTag {
 //            theService.dialogHandler.getTransport().shutdown();
                 theService = null;
             }
-            System.gc();
             log.debug("NTCIP2306SessionTag.tearDownSession: The service has been torn down.!");
         } catch (Exception ex) {
             throw new JameleonScriptException("Error tearing down NTCIP2306SessionTag.  Could not shutdown the Transport. /n" + ex.getMessage(), this);
