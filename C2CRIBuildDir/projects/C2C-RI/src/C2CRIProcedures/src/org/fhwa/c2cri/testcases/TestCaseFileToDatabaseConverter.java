@@ -89,8 +89,6 @@ public class TestCaseFileToDatabaseConverter {
                             javax.swing.JOptionPane.ERROR_MESSAGE);
                 }
 
-                System.gc();
-
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
