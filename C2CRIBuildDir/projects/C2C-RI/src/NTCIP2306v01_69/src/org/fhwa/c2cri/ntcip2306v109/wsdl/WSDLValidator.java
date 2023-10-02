@@ -237,7 +237,6 @@ public class WSDLValidator implements ErrorHandler {
                     validator = null;
                     schema = null;
                     fOut.flush();
-                    System.gc();
                 }
             }
 
@@ -402,7 +401,6 @@ public class WSDLValidator implements ErrorHandler {
                     validator = null;
                     schema = null;
                     fOut.flush();
-                    System.gc();
                 }
             }
 
