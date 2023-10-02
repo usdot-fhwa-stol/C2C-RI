@@ -148,7 +148,6 @@ public class WSDLSessionTag extends SessionTag {
         riWSDLInstance = null;
         riWSDLTestFactory.clear();
         riWSDLTestFactory = null;
-        System.gc();
     }
 
     /**
