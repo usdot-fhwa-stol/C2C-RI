@@ -15,6 +15,7 @@ public class TMDDDatabase {
     Connection tmddConnection;
 
     public TMDDDatabase() {
+		// original implementation was empty
     }
 
     public static void main(String[] args) {
