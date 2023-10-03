@@ -236,6 +236,7 @@ public class TestConfiguration implements Serializable {
      * @param configurationFile the configuration file
      */
     public void initializeConfiguration(String configurationFile) {
+		// original implementation was empty
     }
 
     /**
@@ -243,6 +244,7 @@ public class TestConfiguration implements Serializable {
      * are valid.
      */
     public void verifyConfiguration() {
+		// original implementation was empty
     }
 
     /**
@@ -260,6 +262,7 @@ public class TestConfiguration implements Serializable {
      * @param configurationFile the configuration file
      */
     public void saveConfiguration(String configurationFile) {
+		// original implementation was empty
     }
 
     /**

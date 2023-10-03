@@ -1417,6 +1417,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      */
     @Override
     public void verificationUpdate(VerificationEvent event) {
+		// original implementation was empty
     }
     
 
