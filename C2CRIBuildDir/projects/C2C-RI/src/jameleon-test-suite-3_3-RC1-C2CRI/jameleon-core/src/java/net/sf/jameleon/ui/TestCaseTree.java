@@ -107,9 +107,9 @@ public class TestCaseTree extends JTree{
     protected void setTestCaseSource(final File f, final boolean activateSourceTab){
         if (f.exists() && f.canRead()) {
             StringBuffer contents = new StringBuffer();
-            BufferedReader in = null;
-            try{
-                in = new BufferedReader(new FileReader(f));
+
+            try (BufferedReader in= new BufferedReader(new FileReader(f)))
+			{
                 while (in.ready()) {
                     contents.append(in.readLine()).append("\n");
                 }
@@ -119,14 +119,6 @@ public class TestCaseTree extends JTree{
                 }
             }catch(IOException ioe){
                 ioe.printStackTrace();
-            }finally{
-                try{
-                    if (in != null){
-                        in.close();
-                    }
-                }catch(IOException ioe){
-                    //So I couldn't close the connection?
-                }
             }
         }
     }
