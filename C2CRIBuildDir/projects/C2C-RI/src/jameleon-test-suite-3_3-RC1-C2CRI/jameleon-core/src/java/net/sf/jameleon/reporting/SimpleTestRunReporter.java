@@ -98,7 +98,7 @@ public class SimpleTestRunReporter extends AbstractTestRunReporter{
     }
 
     public void reportTestRunStart(Calendar startTime) {
-        
+        // original implementation was empty
     }
 
 }
