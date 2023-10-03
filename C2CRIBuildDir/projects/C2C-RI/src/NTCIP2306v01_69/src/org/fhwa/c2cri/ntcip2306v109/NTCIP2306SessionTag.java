@@ -158,6 +158,7 @@ public class NTCIP2306SessionTag extends SessionTag {
      */
     @Override
     public void startApplication() {
+		// original implementation was empty
     }
 
     /**
