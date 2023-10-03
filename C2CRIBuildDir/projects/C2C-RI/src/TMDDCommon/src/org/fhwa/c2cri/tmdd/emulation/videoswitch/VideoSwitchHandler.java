@@ -449,6 +449,7 @@ public class VideoSwitchHandler implements EntityControlRequestStatusCollector, 
 
     @Override
     public void verifyCommand(MessageSpecification commandMessage) throws InvalidCommandException, EntityEmulationException {
+		// original implementation was empty
     }
 
     @Override
