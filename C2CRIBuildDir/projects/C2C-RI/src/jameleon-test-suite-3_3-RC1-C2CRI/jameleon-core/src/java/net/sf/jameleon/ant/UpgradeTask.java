@@ -41,6 +41,7 @@ public class UpgradeTask extends Task{
     protected File jameleonGUIProperties = new File("lib/jameleon-gui.properties");
 
     public UpgradeTask(){
+		// original implementation was empty
     }
 
     /**
