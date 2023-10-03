@@ -144,6 +144,7 @@ public class TestCaseDataDriver implements DataDriver {
      * Closes the handle to the data source.
      */
     public void close() {
+		// original implementation was empty
     }
 
     /**
