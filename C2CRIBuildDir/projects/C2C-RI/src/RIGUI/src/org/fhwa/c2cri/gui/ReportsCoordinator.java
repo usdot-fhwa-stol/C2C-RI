@@ -80,19 +80,25 @@ private ProgressReporter reporterReport;
             @Override
             public void insertUpdate(DocumentEvent e) {
                 if (configViewButton != null)
-                configViewButton.setEnabled(false);
+				{
+					configViewButton.setEnabled(false);
+				}
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 if (configViewButton != null)
-                configViewButton.setEnabled(false);
+				{
+					configViewButton.setEnabled(false);
+				}
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 if (configViewButton != null)
-                configViewButton.setEnabled(false);
+				{
+					configViewButton.setEnabled(false);
+				}
             }
             
         };
@@ -106,19 +112,25 @@ private ProgressReporter reporterReport;
             @Override
             public void insertUpdate(DocumentEvent e) {
                 if (logViewButton != null)
-                logViewButton.setEnabled(false);
+				{
+					logViewButton.setEnabled(false);
+				}
             }
 
             @Override
             public void removeUpdate(DocumentEvent e) {
                 if (logViewButton != null)
-                logViewButton.setEnabled(false);
+				{
+					logViewButton.setEnabled(false);
+				}
             }
 
             @Override
             public void changedUpdate(DocumentEvent e) {
                 if (logViewButton != null)
-                logViewButton.setEnabled(false);
+				{
+					logViewButton.setEnabled(false);
+				}
             }
             
         };
@@ -132,7 +144,9 @@ private ProgressReporter reporterReport;
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (configViewButton != null)
-                configViewButton.setEnabled(false);
+				{
+					configViewButton.setEnabled(false);
+				}
             }            
         };
         reportsPanel.configurationReport.allRadioButton.addActionListener(configRadioButtonListener);
@@ -145,7 +159,9 @@ private ProgressReporter reporterReport;
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (logViewButton != null)
-                logViewButton.setEnabled(false);
+				{
+					logViewButton.setEnabled(false);
+				}
             }            
         };
         
@@ -384,9 +400,11 @@ private ProgressReporter reporterReport;
                     }
                 } else {
                     if (continueFlag)
-                    javax.swing.JOptionPane.showMessageDialog(mainUI,
-                            "The Log File Report Destination must be specified.", "Error",
-                            javax.swing.JOptionPane.ERROR_MESSAGE);
+					{
+						javax.swing.JOptionPane.showMessageDialog(mainUI,
+							"The Log File Report Destination must be specified.", "Error",
+							javax.swing.JOptionPane.ERROR_MESSAGE);
+					}
                 }
             } else {
                 //Pop up the message dialog.
