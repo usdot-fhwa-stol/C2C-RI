@@ -179,6 +179,7 @@ public class CenterConfigurationController {
      * Start all services.
      */
     public void startServices() {
+		// original implementation was empty
     }
 
     /**
