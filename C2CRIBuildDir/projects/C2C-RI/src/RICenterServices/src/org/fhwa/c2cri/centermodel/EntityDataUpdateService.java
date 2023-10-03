@@ -13,7 +13,7 @@ package org.fhwa.c2cri.centermodel;
 public class EntityDataUpdateService {
 
 	public EntityDataUpdateService(){
-
+		// original implementation was empty
 	}
 
 	/**
@@ -21,7 +21,7 @@ public class EntityDataUpdateService {
 	 * @param dialog
 	 */
 	protected void notifySubscribers(String dialog){
-
+		// original implementation was empty
 	}
 
 	/**
@@ -32,7 +32,7 @@ public class EntityDataUpdateService {
 	 * @param subscriber
 	 */
 	protected void registerForUpdates(String dialog, EntityDataListener subscriber){
-
+		// original implementation was empty
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class EntityDataUpdateService {
 	 * @param entityDataListener
 	 */
 	protected void unregisterForUpdates(EntityDataListener entityDataListener){
-
+		// original implementation was empty
 	}
 
 }
