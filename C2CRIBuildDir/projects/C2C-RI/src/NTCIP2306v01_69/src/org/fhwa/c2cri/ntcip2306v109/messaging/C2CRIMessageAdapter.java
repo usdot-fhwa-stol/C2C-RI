@@ -139,8 +139,10 @@ public class C2CRIMessageAdapter {
             }
             message.setTransportTimeInMillis(inputMessage.getTransportedTimeInMs());
             message.setViaTransportProtocol(inputMessage.getProtocolType().name());
-            if (inputMessage.getNumberMessageParts()>0)
-            message.setEncodedMessageType(inputMessage.getMessagePartName(inputMessage.getNumberMessageParts()));
+            if (inputMessage.getNumberMessageParts() > 0)
+			{
+				message.setEncodedMessageType(inputMessage.getMessagePartName(inputMessage.getNumberMessageParts()));
+			}
         }       
     }
     
@@ -181,15 +183,19 @@ public class C2CRIMessageAdapter {
         for (byte[] messagePart : msgList) {
             if (messageSpec == null) {
                 messageSpec = msp.convertXMLtoMessageSpecification(messagePart);
-                if (messageSpec.getMessageTypes().size()>0)
-                primaryMessageName = messageSpec.getMessageTypes().get(messageSpec.getMessageTypes().size()-1);
+                if (messageSpec.getMessageTypes().size() > 0)
+				{
+					primaryMessageName = messageSpec.getMessageTypes().get(messageSpec.getMessageTypes().size()-1);
+				}
             } else {
                 MessageSpecification tmpSpec = msp.convertXMLtoMessageSpecification(messagePart);
                 for (String element : tmpSpec.getMessageSpec()) {
                     messageSpec.addElementToSpec(element);
                 }
-                if (tmpSpec.getMessageTypes().size()>0)
-                primaryMessageName = tmpSpec.getMessageTypes().get(tmpSpec.getMessageTypes().size()-1);
+                if (tmpSpec.getMessageTypes().size() > 0)
+				{
+					primaryMessageName = tmpSpec.getMessageTypes().get(tmpSpec.getMessageTypes().size()-1);
+				}
             }
         }
 

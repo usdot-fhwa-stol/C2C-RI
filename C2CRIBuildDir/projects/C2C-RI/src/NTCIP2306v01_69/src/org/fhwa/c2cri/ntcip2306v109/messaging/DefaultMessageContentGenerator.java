@@ -180,8 +180,11 @@ public class DefaultMessageContentGenerator implements MessageContentGenerator{
     public void registerMessageUpdateListener(MessageUpdateListener msgListener, String operationName) {
         if (externalGenerator != null){
             externalGenerator.registerMessageUpdateListener(msgListener, operationName);
-        } else
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        } 
+		else
+		{
+			throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		}
     }
 
     /**
@@ -196,8 +199,11 @@ public class DefaultMessageContentGenerator implements MessageContentGenerator{
     public void unregisterMessageUpdateListener(MessageUpdateListener msgListener) {
         if (externalGenerator != null){
             externalGenerator.unregisterMessageUpdateListener(msgListener);
-        } else
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        } 
+		else
+		{
+			throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		}
     }
 
     @Override
