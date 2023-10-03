@@ -82,6 +82,7 @@ public class NTCIP2306ApplicationLayerStandard implements ApplicationLayerStanda
      * Creates a new Instance of NTCIP2306ApplicationLayerStandard
      */
     public NTCIP2306ApplicationLayerStandard() {
+		// original implementation was empty
     }
 
     public void configureCenterServiceFromWSDL(String wsdlURL) throws Exception {
