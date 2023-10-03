@@ -94,7 +94,7 @@ public class AutoTester {
         }
         
         public void sendTestStartCommand(){
-            
+            // original implementation was empty
         }
         
         public boolean isTestMessageSent(){
