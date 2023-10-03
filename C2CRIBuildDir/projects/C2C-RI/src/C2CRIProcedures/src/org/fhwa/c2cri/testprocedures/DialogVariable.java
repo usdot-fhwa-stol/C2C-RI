@@ -34,6 +34,7 @@ private boolean localVariable;
 private String relatedKeyword;
 
     public void ProcedureVariable(){
+		// original implementation was empty
     }
 
     /**
