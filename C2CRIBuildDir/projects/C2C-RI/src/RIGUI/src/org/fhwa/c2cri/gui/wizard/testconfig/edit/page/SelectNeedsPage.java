@@ -93,6 +93,7 @@ public class SelectNeedsPage extends C2CRIWizardPage implements java.awt.event.A
 
             @Override
             public void flagValueSetUpdate(int tableRow) {
+				// original implementation was empty
             }
 
             @Override
