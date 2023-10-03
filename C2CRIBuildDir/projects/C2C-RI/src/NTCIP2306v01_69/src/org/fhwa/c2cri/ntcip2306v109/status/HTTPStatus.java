@@ -242,9 +242,11 @@ public class HTTPStatus {
                     "The HTTP Headers shall conform with IETF HTTP/1.1 RFC 2616.",
                     getHTTPErrors()));
             if (httpSOAPStatusUpdated)
-            testAssertionList.add(new TestAssertion("5.1.2", matchingSOAPAction,
+			{
+				testAssertionList.add(new TestAssertion("5.1.2", matchingSOAPAction,
                     "The SOAP Message shall conform with the requirements of W3C SOAP 1.1.",
                     getHTTPErrors()));
+			}
             
             if (useSecureSockets) {
                 testAssertionList.add(new TestAssertion("5.1.3", successfullyTransmitted,
