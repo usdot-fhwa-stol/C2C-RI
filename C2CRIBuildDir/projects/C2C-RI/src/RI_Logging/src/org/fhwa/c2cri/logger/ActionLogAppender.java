@@ -97,6 +97,7 @@ public class ActionLogAppender implements org.apache.log4j.Appender {
      * requires it.
      */
     public void activateOptions() {
+		// original implementation was empty
     }
 
     /**
