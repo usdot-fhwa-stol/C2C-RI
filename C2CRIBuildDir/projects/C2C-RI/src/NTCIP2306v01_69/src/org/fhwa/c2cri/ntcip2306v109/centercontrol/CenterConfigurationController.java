@@ -157,7 +157,9 @@ public class CenterConfigurationController {
 		
 		long lCount = 0;
         if (!readySignal.await(20, TimeUnit.SECONDS))
+		{
 			lCount = readySignal.getCount();
+		}
         if (getRiCenterMode().equals(RICENTERMODE.OC)) {
             if ((ftpServer != null) && !ftpServer.isInitializationCompleted()) {
                 stopServices();
