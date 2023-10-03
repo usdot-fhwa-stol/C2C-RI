@@ -968,10 +968,15 @@ public class SampleXmlUtil
             if (sp.getType() == null){
 //             xmlc.insertComment("Mandatory:");
             }else
-            if (sp.getType().getName() == null){
-//            xmlc.insertComment("Mandatory:");
-            }else
-            xmlc.insertComment("Mandatory: "+sp.getType().getName().getLocalPart());
+			{
+				if (sp.getType().getName() == null){
+	//            xmlc.insertComment("Mandatory:");
+				}
+				else
+				{
+					xmlc.insertComment("Mandatory: "+sp.getType().getName().getLocalPart());
+				}
+			}
             return minOccurs;
         }
 

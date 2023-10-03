@@ -40,7 +40,9 @@ public class TMDDMessageNameSpaceContext implements NamespaceContext{
                 else if ("http://www.ntcip.org/c2c-message-administration".equals(namespaceUri))
                     return "c2c";
                 else
-                return null;
+				{
+					return null;
+				}
             }
             public java.util.Iterator getPrefixes(String namespaceUri)
             {
