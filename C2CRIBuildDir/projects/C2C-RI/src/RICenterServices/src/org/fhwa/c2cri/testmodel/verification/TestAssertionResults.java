@@ -30,6 +30,7 @@ public class TestAssertionResults {
      * Post-Conditions: N/A
      */
     public TestAssertionResults() {
+		// original implementation was empty
     }
 
     /**
