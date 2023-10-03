@@ -43,7 +43,9 @@ public class Randomizer {
         int i = tempint %n;
 //        System.out.println("the value of the modulus operation = " + i);
         if (i <0)
+		{
 			i = -i;
+		}
 		return lo + i;
 	}
 
@@ -67,9 +69,11 @@ public class Randomizer {
         int i = tempint %n;
         System.out.println("the value of the modulus operation = " + i);
         if (i <0)
+		{
 			i = -i;
+		}
         
-            return (String)(selections.get(lo + i));
+		return (String)(selections.get(lo + i));
 	}
 
 	
