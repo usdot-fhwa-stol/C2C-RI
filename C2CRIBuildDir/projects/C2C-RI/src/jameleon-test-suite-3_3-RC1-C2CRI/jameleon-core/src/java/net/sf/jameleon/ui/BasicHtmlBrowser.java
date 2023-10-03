@@ -113,23 +113,31 @@ public class BasicHtmlBrowser extends JFrame{
 
     private class BrowserListener implements WebBrowserListener{
         public void documentCompleted(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void downloadCompleted(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void downloadError(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void downloadProgress(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void downloadStarted(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void statusTextChange(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void titleChange(WebBrowserEvent event) {
             setTitle(event.getData());
         }
         public void initializationCompleted(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void windowClose(WebBrowserEvent event) {
+			// original implementation was empty
         }
     }
 }

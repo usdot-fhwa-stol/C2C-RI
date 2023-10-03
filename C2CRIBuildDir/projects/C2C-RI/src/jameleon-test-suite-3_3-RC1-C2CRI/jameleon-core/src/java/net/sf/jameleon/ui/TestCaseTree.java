@@ -137,6 +137,7 @@ public class TestCaseTree extends JTree{
     public class TCTreeListener implements TreeWillExpandListener, TreeSelectionListener{
 
         public void treeWillCollapse(TreeExpansionEvent event){
+			// original implementation was empty
         }
 
         protected void addNodesToDir(TreePath path){
