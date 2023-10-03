@@ -88,6 +88,7 @@ public abstract class FormattedFileChooser
 
                             @Override
                             public void actionUpdate(ActionEvent e, FormattedTextField textField) {
+								// original implementation was empty
                             }
                                 
                                 
