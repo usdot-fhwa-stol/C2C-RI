@@ -36,7 +36,9 @@ public class TMDDMessageNameSpaceContext implements NamespaceContext{
                 else if ("http://schemas.xmlsoap.org/soap/envelope/".equals(namespaceUri))
                     return "soap";
                 else
-                return null;
+				{
+					return null;
+				}
             }
             public java.util.Iterator getPrefixes(String namespaceUri)
             {
