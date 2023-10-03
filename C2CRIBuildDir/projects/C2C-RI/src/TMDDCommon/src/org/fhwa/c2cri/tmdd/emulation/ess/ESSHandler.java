@@ -545,14 +545,17 @@ public class ESSHandler implements EntityControlRequestStatusCollector, EntityCo
 
     @Override
     public void verifyCommand(MessageSpecification commandMessage) throws InvalidCommandException, EntityEmulationException {
+		// original implementation was empty
     }
 
     @Override
     public void executeCommand(MessageSpecification commandMessage) throws EntityEmulationException {
+		// original implementation was empty
     }
 
     @Override
     public void queueCommand(MessageSpecification commandMessage) throws InvalidEntityControlRequestStatusException, InvalidEntityControlRequestLogException, EntityEmulationException {
+		// original implementation was empty
     }
 
     @Override
