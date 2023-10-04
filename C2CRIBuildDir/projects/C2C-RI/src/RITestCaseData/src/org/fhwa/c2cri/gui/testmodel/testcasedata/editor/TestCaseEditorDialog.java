@@ -23,7 +23,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -582,7 +581,7 @@ public class TestCaseEditorDialog
 //        cPane.add(jbSave, c);
 //        c.weightx = 0;
 //        cPane.add(jbCancel, c);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -650,7 +649,7 @@ public class TestCaseEditorDialog
         JScrollPane docScrollPane = new JScrollPane(docEditorPane);
         docScrollPane.setBorder(BorderFactory.createEtchedBorder());
         docScrollPane.setVerticalScrollBarPolicy(
-                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+                javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         JButton jbSave = new JButton("Save");
         jbSave.setToolTipText("Save Properties");
