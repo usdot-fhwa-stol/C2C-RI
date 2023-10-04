@@ -171,7 +171,7 @@ public class TestCasePane extends JPanel {
                                         6, 6);  //xPad, yPad
                                         
         add(northP, BorderLayout.NORTH);
-        tabbedPane = new JTabbedPane(JTabbedPane.BOTTOM);
+        tabbedPane = new JTabbedPane(javax.swing.SwingConstants.BOTTOM);
 
         tabbedPane.add(DOCS, new JScrollPane(tcDocsPane));
         tabbedPane.add(SOURCE, new JScrollPane(tcSourcePane));

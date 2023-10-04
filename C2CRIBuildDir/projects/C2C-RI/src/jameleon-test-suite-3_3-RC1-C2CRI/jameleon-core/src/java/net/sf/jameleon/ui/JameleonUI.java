@@ -82,7 +82,7 @@ public class JameleonUI extends JFrame implements JameleonMain{
 
     private void setUpFrame(){
         setName(jameleontitle);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     }
 
     public void genUI(){
@@ -101,7 +101,7 @@ public class JameleonUI extends JFrame implements JameleonMain{
                                         6, 6);  //xPad, yPad
 
 
-        final JTabbedPane treeTabs = new JTabbedPane(JTabbedPane.BOTTOM);
+        final JTabbedPane treeTabs = new JTabbedPane(javax.swing.SwingConstants.BOTTOM);
         treeTabs.setPreferredSize(new Dimension(TREE_TABS_WIDTH, WINDOW_HEIGHT));
 
         TestCaseTree tct = new TestCaseTree(tcPanel);
