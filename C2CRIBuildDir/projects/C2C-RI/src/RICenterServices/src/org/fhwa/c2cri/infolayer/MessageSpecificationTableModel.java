@@ -15,10 +15,10 @@ import javax.swing.table.AbstractTableModel;
 public class MessageSpecificationTableModel extends AbstractTableModel {
 
     /** The Constant ValueElementName_Col. */
-    public static final int ValueElementName_Col = 0;
+    public static final int VALUEELEMENTNAME_COL = 0;
     
     /** The Constant Value_Col. */
-    public static final int Value_Col = 1;
+    public static final int VALUE_COL = 1;
     
     /** The spec. */
     private MessageSpecification spec;
@@ -76,9 +76,9 @@ private String[] columnNames = {"Value Element Name",
      */
     public Object getValueAt(int row, int col) {
         switch (col) {
-            case ValueElementName_Col:
+            case VALUEELEMENTNAME_COL:
                 return spec.getMessageSpecItems().get(row).getValueName();
-            case Value_Col:
+            case VALUE_COL:
                 return spec.getMessageSpecItems().get(row).getValue();
 			default:
 				throw new IllegalArgumentException("Illegal column: " + col);
