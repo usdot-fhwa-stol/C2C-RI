@@ -47,7 +47,7 @@ public class TestCasesTableEditor extends DefaultCellEditor {
         ftf = (JFormattedTextField) getComponent();
         //Set up the editor for the default cells.        
         ftf.setFormatterFactory(new DefaultFormatterFactory());
-        ftf.setHorizontalAlignment(JTextField.TRAILING);
+        ftf.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         ftf.setFocusLostBehavior(JFormattedTextField.PERSIST);
 
         //React when the user presses Enter while the editor is        

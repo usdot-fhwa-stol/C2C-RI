@@ -63,7 +63,7 @@ public class SelectionFlagRenderer extends JCheckBox
             this.setBackground(table.getBackground());
         }
 
-        this.setHorizontalAlignment(JCheckBox.CENTER);
+        this.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
 //        setToolTipText("Selected row #" + row + "  = : " + flagValue + " Model Row = " + table.convertRowIndexToModel(row));
         return this;
