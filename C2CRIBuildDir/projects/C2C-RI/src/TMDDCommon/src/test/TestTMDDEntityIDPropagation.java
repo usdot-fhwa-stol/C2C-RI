@@ -752,7 +752,7 @@ public class TestTMDDEntityIDPropagation {
             
             System.out.println("\n\nDialog\t\t\tCount");            
             for (String entityType : entityTypes){
-                for (HashMap.Entry<String,Integer> entry : dialogUpdates.entrySet()){
+                for (java.util.Map.Entry<String,Integer> entry : dialogUpdates.entrySet()){
                     if (supportedDialogs.containsKey(entry.getKey())){
                         if (supportedDialogs.get(entry.getKey()).equals(entityType))
                             System.out.println(entityType + "-" +entry.getKey() + "\t\t\t: "+entry.getValue());
