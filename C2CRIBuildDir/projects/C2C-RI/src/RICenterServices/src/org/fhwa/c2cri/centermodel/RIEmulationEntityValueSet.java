@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 public class RIEmulationEntityValueSet implements Serializable {
 
     public static enum ENTITYDATASTATE {
-        Default, Updated
+        DEFAULT, UPDATED
     };
 
     @XmlElement(name = "dataSetName")
@@ -47,9 +47,9 @@ public class RIEmulationEntityValueSet implements Serializable {
     public void setEntityDataSet(byte[] entityDataSet) {
         this.entityDataSet = entityDataSet;
         if (this.dataSetSource == null) {
-            this.dataSetSource = ENTITYDATASTATE.Default;
+            this.dataSetSource = ENTITYDATASTATE.DEFAULT;
         } else {
-            this.dataSetSource = ENTITYDATASTATE.Updated;
+            this.dataSetSource = ENTITYDATASTATE.UPDATED;
         }
     }
 
