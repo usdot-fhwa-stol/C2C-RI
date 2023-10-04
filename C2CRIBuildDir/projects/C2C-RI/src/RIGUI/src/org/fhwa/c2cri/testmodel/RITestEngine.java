@@ -520,7 +520,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                             }
                             break;
                         } else {
-                            this.interrupted(); // clear an interruption if set otherwise do nothing
+                            Thread.interrupted(); // clear an interruption if set otherwise do nothing
                         }
                         try {
                             Thread.sleep(100);
