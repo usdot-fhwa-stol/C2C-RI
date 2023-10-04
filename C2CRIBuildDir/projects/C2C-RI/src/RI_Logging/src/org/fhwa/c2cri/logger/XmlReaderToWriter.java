@@ -23,7 +23,6 @@ package org.fhwa.c2cri.logger;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
-import javax.xml.stream.events.XMLEvent;
 
 /**
  * Transfers XML from the given reader to the given writer.
