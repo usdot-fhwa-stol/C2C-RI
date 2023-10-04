@@ -32,7 +32,7 @@ public abstract class FormattedComboBox extends JComboBox implements ItemListene
     public FormattedComboBox(Object o, Object[] data, Object selection) {
         super(data);
         this.o = o;
-        setFont(C2CRIUIManager.getFont("Table.font"));
+        setFont(javax.swing.UIManager.getFont("Table.font"));
         setBorder(BorderFactory.createEmptyBorder());
         
         setSelectedItem(selection);
