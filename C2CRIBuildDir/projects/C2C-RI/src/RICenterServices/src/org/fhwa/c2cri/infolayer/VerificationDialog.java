@@ -432,8 +432,8 @@ public class VerificationDialog extends javax.swing.JDialog {
         TableColumnModel msTableModel = this.messageSpecificationTable.getColumnModel();
         msTableModel.getSelectionModel().addListSelectionListener(listener);
         ValueTextAreaRenderer textAreaRenderer = new ValueTextAreaRenderer(specification);
-        msTableModel.getColumn(MessageSpecificationTableModel.VALUEELEMENTNAME_COL).setCellRenderer(textAreaRenderer);
-        msTableModel.getColumn(MessageSpecificationTableModel.VALUE_COL).setCellRenderer(textAreaRenderer);
+        msTableModel.getColumn(MessageSpecificationTableModel.ValueElementName_Col).setCellRenderer(textAreaRenderer);
+        msTableModel.getColumn(MessageSpecificationTableModel.Value_Col).setCellRenderer(textAreaRenderer);
         this.messageSpecificationTable.setColumnSelectionAllowed(false);
         this.messageSpecificationTable.setCellSelectionEnabled(false);
         this.messageSpecificationTable.setRowSelectionAllowed(true);
