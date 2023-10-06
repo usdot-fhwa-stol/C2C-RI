@@ -51,17 +51,10 @@ public class TemplateProcessor {
 
     public void transform(File toFile, Map params){
         JameleonUtility.createDirStructure(toFile.getParentFile());
-        VelocityWriter vw = null;
-        try{
-            vw = new VelocityWriter(new FileWriter(toFile));
+        try (VelocityWriter vw = new VelocityWriter(new FileWriter(toFile)))
+		{
             transformToWriter(vw, params);
-        }catch(IOException ioe){ioe.printStackTrace();}finally{
-            if (vw != null){
-                try {
-                    vw.close();
-                } catch (IOException e) {e.printStackTrace();}
-            }
-        }
+        }catch(IOException ioe){ioe.printStackTrace();}
     }
 
     public String transformToString(Map params){

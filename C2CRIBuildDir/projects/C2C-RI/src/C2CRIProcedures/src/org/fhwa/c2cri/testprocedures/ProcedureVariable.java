@@ -29,6 +29,7 @@ private String validValues;
 private boolean userEditable;
 
     public void ProcedureVariable(){
+		// original implementation was empty
     }
 
     /**

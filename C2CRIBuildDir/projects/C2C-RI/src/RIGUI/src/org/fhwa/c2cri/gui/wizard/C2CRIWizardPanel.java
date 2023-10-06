@@ -5,10 +5,6 @@
  */
 package org.fhwa.c2cri.gui.wizard;
 
-import java.awt.Dialog;
-import java.awt.Dimension;
-import javax.swing.JFrame;
-import javax.swing.UIManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JCheckBox;
@@ -38,7 +34,7 @@ public class C2CRIWizardPanel extends javax.swing.JPanel {
             java.awt.EventQueue.invokeLater(new Runnable() {
                 public void run() {
                     JFrame frame = new JFrame("C2CRI Wizard Test");
-                    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                    frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
                     C2CRIWizardPanel dialog = new C2CRIWizardPanel();
                     frame.addWindowListener(new java.awt.event.WindowAdapter() {
                         @Override

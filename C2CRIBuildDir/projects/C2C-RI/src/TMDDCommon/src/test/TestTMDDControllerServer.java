@@ -157,8 +157,6 @@ public class TestTMDDControllerServer
         }
 
         ilc.shutdown();
-        System.gc();
-
     }
 
     /**

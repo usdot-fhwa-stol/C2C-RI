@@ -43,9 +43,7 @@ public class TemporaryMessageFile {
      */
     public static void main(String[] args) throws Exception {
         tmpTest();
-        System.gc();
         tmpTest();
-        System.gc();
         System.out.println("Exiting Now.");
     }
     

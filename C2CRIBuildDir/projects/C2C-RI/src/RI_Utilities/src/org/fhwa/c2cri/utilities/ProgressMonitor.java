@@ -25,7 +25,6 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -428,14 +427,14 @@ public class ProgressMonitor implements ProgressReporter {
         if (!_options.contains(Options.NO_PROGRESS_BAR)) {
             _fProgress = new JProgressBar();
             _fProgress.setMinimumSize(new Dimension(150, 30));
-            _fProgress.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            _fProgress.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
             centerPanel.add(_fProgress);
         }
 
         if (_options.contains(Options.SHOW_STATUS)) {
             _fStatus = new JLabel();
             _fStatus.setPreferredSize(new Dimension(300, 36));
-            _fStatus.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            _fStatus.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
             centerPanel.add(Box.createVerticalStrut(8));
             centerPanel.add(_fStatus);
         }

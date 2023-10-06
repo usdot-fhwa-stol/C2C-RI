@@ -45,7 +45,7 @@ public class PDFViewUI extends javax.swing.JDialog {
 
 
         this.setSize(700, 500);
-        this.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         this.getContentPane().add(viewerComponentPanel);
 
 

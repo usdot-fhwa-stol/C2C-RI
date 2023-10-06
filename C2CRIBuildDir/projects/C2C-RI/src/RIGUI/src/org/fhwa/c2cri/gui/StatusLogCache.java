@@ -151,7 +151,6 @@ public class StatusLogCache extends AbstractTableModel {
 
         instance.stop();
  //       instance = null;
-        System.gc();
 
         System.out.println("Exiting Now.");
     }

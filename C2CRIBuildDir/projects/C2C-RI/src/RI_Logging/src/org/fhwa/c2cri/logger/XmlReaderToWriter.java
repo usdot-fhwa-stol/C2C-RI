@@ -23,7 +23,6 @@ package org.fhwa.c2cri.logger;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamWriter;
-import javax.xml.stream.events.XMLEvent;
 
 /**
  * Transfers XML from the given reader to the given writer.
@@ -45,7 +44,7 @@ public final class XmlReaderToWriter {
 
     public static void write(XMLStreamReader xmlr, XMLStreamWriter writer) throws XMLStreamException {
         switch (xmlr.getEventType()) {
-            case XMLEvent.START_ELEMENT:
+            case javax.xml.stream.XMLStreamConstants.START_ELEMENT:
                 final String localName = xmlr.getLocalName();
                 final String namespaceURI = xmlr.getNamespaceURI();
                 if (namespaceURI != null && namespaceURI.length() > 0) {
@@ -82,28 +81,28 @@ public final class XmlReaderToWriter {
 
                 }
                 break;
-            case XMLEvent.END_ELEMENT:
+            case javax.xml.stream.XMLStreamConstants.END_ELEMENT:
                 writer.writeEndElement();
                 break;
-            case XMLEvent.SPACE:
-            case XMLEvent.CHARACTERS:
+            case javax.xml.stream.XMLStreamConstants.SPACE:
+            case javax.xml.stream.XMLStreamConstants.CHARACTERS:
                 char[] text = new char[xmlr.getTextLength()];
                 xmlr.getTextCharacters(0, text, 0, xmlr.getTextLength());
                 writer.writeCharacters(text, 0, text.length);
                 break;
-            case XMLEvent.PROCESSING_INSTRUCTION:
+            case javax.xml.stream.XMLStreamConstants.PROCESSING_INSTRUCTION:
                 writer.writeProcessingInstruction(xmlr.getPITarget(), xmlr.getPIData());
                 break;
-            case XMLEvent.CDATA:
+            case javax.xml.stream.XMLStreamConstants.CDATA:
                 writer.writeCData(xmlr.getText());
                 break;
-            case XMLEvent.COMMENT:
+            case javax.xml.stream.XMLStreamConstants.COMMENT:
                 writer.writeComment(xmlr.getText());
                 break;
-            case XMLEvent.ENTITY_REFERENCE:
+            case javax.xml.stream.XMLStreamConstants.ENTITY_REFERENCE:
                 writer.writeEntityRef(xmlr.getLocalName());
                 break;
-            case XMLEvent.START_DOCUMENT:
+            case javax.xml.stream.XMLStreamConstants.START_DOCUMENT:
                 String encoding = xmlr.getCharacterEncodingScheme();
                 String version = xmlr.getVersion();
 
@@ -112,10 +111,10 @@ public final class XmlReaderToWriter {
                 else if (version != null)
                     writer.writeStartDocument(xmlr.getVersion());
                 break;
-            case XMLEvent.END_DOCUMENT:
+            case javax.xml.stream.XMLStreamConstants.END_DOCUMENT:
                 writer.writeEndDocument();
                 break;
-            case XMLEvent.DTD:
+            case javax.xml.stream.XMLStreamConstants.DTD:
                 writer.writeDTD(xmlr.getText());
                 break;
 			default:

@@ -23,6 +23,7 @@ private String verifyScriptText="";
 
 
     public void OptionalContentVerifiedVariable(){
+		// original implementation was empty
     }
 
     /**

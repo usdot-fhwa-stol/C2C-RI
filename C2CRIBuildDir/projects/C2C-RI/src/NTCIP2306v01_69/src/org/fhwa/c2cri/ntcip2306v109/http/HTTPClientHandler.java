@@ -1183,14 +1183,17 @@ public class HTTPClientHandler implements Runnable {
 
             @Override
             public void verify(String string, SSLSocket ssls) throws IOException {
+				// original implementation was empty
             }
 
             @Override
             public void verify(String string, X509Certificate xc) throws SSLException {
+				// original implementation was empty
             }
 
             @Override
             public void verify(String string, String[] strings, String[] strings1) throws SSLException {
+				// original implementation was empty
             }
 
             @Override

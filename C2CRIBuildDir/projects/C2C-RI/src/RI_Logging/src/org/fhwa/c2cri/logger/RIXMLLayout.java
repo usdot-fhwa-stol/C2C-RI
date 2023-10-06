@@ -90,6 +90,7 @@ public class RIXMLLayout extends Layout {
 
     /** No options to activate. */
     public void activateOptions() {
+		// original implementation was empty
     }
 
     /**

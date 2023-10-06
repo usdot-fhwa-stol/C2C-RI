@@ -19,6 +19,7 @@ public class SUT implements Serializable{
 	 * verifies that the parameters that are to be set are valid.
 	 */
 	public void verifySUTParameters(){
+		// original implementation was empty
 	}
 	
 	/** The SUT IP address. */

@@ -317,6 +317,7 @@ public class DefaultLayerParameters implements Serializable {
      * @param rtm
      */
     public void setRtm(ArrayList rtm) {
+		// original implementation was empty
     }
 
     /**

@@ -121,7 +121,6 @@ public class MessageContentDBCache implements MessageContent {
         tmdb = null;
         tmdb2 = null;
         tmdb3 = null;
-        System.gc();
 
 //        try {
 //            messageDatabase.finalize();

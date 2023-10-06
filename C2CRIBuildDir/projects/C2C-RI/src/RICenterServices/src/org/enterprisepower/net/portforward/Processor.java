@@ -213,7 +213,7 @@ public class Processor implements Cleanable {
                 if (index + offset < bytes.length) {
                     fs = fs.concat(String.format("%02x ", bytes[index + offset]));
                 } else {
-                    fs = fs.concat(String.format("	"));
+                    fs = fs.concat(String.format("\t"));
                 }
             }
             return fs;

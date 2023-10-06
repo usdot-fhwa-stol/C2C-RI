@@ -122,8 +122,10 @@ public class MessageDetailDesignMatcher {
                         alreadyThere = true;
                     }
                 }
-                if (!alreadyThere)   
-                returnList.add(thisElement);
+                if (!alreadyThere)
+				{
+					returnList.add(thisElement);
+				}
             }
         }
         
@@ -163,8 +165,10 @@ public class MessageDetailDesignMatcher {
                         alreadyThere = true;
                     }
                 }
-                if (!alreadyThere)   
-                returnList.add(thisElement);
+                if (!alreadyThere)
+				{
+					returnList.add(thisElement);
+				}
             }
         }
         
@@ -245,7 +249,9 @@ public class MessageDetailDesignMatcher {
                     }
                 }
                 if (!alreadyThere)
-                returnList.add(thisElement);
+				{
+					returnList.add(thisElement);
+				}
             }
         }
         
@@ -262,8 +268,10 @@ public class MessageDetailDesignMatcher {
                     }
                 }
                 if (!alreadyThere&&thisElement.getRequirementID().equals(requirementID))
-                if (!alreadyThere)
-                    returnList.add(thisElement);
+				{
+					if (!alreadyThere)
+						returnList.add(thisElement);
+				}
                 }
             }
             System.err.println("***THIS IS WHAT YOU DON'T WANT!!!*****\nCheck elementName: "+elementName+ " RequirementID: "+requirementID+"\n Returned "+returnList.size() + " elements.");

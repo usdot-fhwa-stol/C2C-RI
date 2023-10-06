@@ -28,6 +28,7 @@ private String validValues="True or False";
 
 
     public void OptionalProcedureVariable(){
+		// original implementation was empty
     }
 
     /**

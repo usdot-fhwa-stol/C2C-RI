@@ -165,7 +165,7 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
 
             // send file data to client
             boolean failure = false;
-            InputStream nis = null;
+            
             
             DataConnection dataConnection;
             try {
@@ -179,17 +179,14 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
             null));
             return;
             }
-             
-            try {
+			System.out.println("!!!! Inside the RETR Command Setting the Response Copy");
+			byte[] responseCopy = responseMessage;
+
+			System.out.println("!!!! Inside the Setting the InputStream");
+            try (InputStream nis = new ByteArrayInputStream(responseCopy))
+			{
                 
-                // open streams
-
-                System.out.println("!!!! Inside the RETR Command Setting the Response Copy");
-                byte[] responseCopy = responseMessage;
-
-                System.out.println("!!!! Inside the Setting the InputStream");
-                nis = new ByteArrayInputStream(responseCopy);
-                 
+                // open streams                 
 
                 // transfer data
                 long transSz = dataConnection.transferToClient(session.getFtpletSession(), nis);
@@ -222,9 +219,6 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
                         context,
                         FtpReply.REPLY_551_REQUESTED_ACTION_ABORTED_PAGE_TYPE_UNKNOWN,
                         "RETR", fileName));
-            } finally {
-                // make sure we really close the input stream
-                IoUtils.close(nis);
             }
 
             // if data transfer ok - send transfer complete message

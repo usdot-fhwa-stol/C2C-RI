@@ -190,7 +190,9 @@ public class WSDLTest_7_1_2_10 implements WSDLTest {
 
                         bindingName = getParentBindingName(xmlc);
                         if ((this.testSubPub && soapSPOperations.contains(operation))||(!this.testSubPub && soapRROperations.contains(operation)))
-                        useAttributeErrors.add("Binding " + bindingName + " contains an operation element " + operation + " which contains an output element whose soap:body element does not contain the use attribute. ");
+						{
+							useAttributeErrors.add("Binding " + bindingName + " contains an operation element " + operation + " which contains an output element whose soap:body element does not contain the use attribute. ");
+						}
                         xmlc.pop();
 
                     } else if (noAttributesFound){

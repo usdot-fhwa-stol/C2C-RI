@@ -57,6 +57,7 @@ public class EditorTableCellRenderer extends FormattedTableRenderer {
 				o = new FormattedTextField(cellValue) {
 					public void caretUpdate(CaretEvent e,
 							FormattedTextField textField) {
+						// original implementation was empty
 					}
 				};
 
@@ -69,6 +70,7 @@ public class EditorTableCellRenderer extends FormattedTableRenderer {
 								.toString()) {
 
 					public void itemStateChanged(ItemEvent e) {
+						// original implementation was empty
 					}
 
 				
@@ -82,6 +84,7 @@ public class EditorTableCellRenderer extends FormattedTableRenderer {
 								.toString()) {
 
 					public void itemStateChanged(ItemEvent e) {
+						// original implementation was empty
 					}
 				};
 
@@ -93,6 +96,7 @@ public class EditorTableCellRenderer extends FormattedTableRenderer {
 
 					public void caretUpdate(CaretEvent e,
 							FormattedTextField textField) {
+						// original implementation was empty
 					}
 
 					public void inputVerifier(FormattedLabel label) {
@@ -109,6 +113,7 @@ public class EditorTableCellRenderer extends FormattedTableRenderer {
 
 					public void fileChooserAction(ActionEvent e,
 							FormattedFileChooser formattedFileChooser) {
+						// original implementation was empty
 					}
 
 				};

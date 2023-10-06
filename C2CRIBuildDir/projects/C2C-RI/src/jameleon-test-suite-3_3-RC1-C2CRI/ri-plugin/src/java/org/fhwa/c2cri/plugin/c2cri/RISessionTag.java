@@ -317,6 +317,7 @@ public class RISessionTag extends SessionTag {
      */
     @Override
     public void startApplication() {
+		// original implementation was empty
     }
 
 

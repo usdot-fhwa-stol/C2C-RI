@@ -40,6 +40,7 @@ public class ObjectFactory {
      * 
      */
     public ObjectFactory() {
+		// original implementation was empty
     }
 
     /**

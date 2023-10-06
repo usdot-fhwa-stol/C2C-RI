@@ -511,7 +511,6 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                 for (TestCase thisTestCase : testCaseList) {
 //                    if (getExecuting()){
                     etcThread1 = executeTestCase(thisTestCase, debug, executor);
-                    System.gc();
                     while (getExecuting()) {
                         if (getStopExecution()) {
                             //                                      resultsPane.stopExecution();
@@ -521,7 +520,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                             }
                             break;
                         } else {
-                            this.interrupted(); // clear an interruption if set otherwise do nothing
+                            Thread.interrupted(); // clear an interruption if set otherwise do nothing
                         }
                         try {
                             Thread.sleep(100);
@@ -540,7 +539,6 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
 
                     if (!etcThread1.isAlive()) {
                         etcThread1 = null;
-                        System.gc();
                     };
 //                    }
                 }
@@ -552,7 +550,6 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                 executor.deregisterEventListeners();
                 executor = null;
                 RITestEngine.statusListener.testComplete();
-                System.gc();
             }
         };
         if (emulationEnabled && reinitializeEmulation) {
@@ -731,7 +728,6 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                     ddEventHandler.clearInstance();
                     vEventHandler.clearInstance();
                     runEventHandler.clearInstance();
-                    System.gc();
                     setExecuting(false);
 
                 }
@@ -1421,6 +1417,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      */
     @Override
     public void verificationUpdate(VerificationEvent event) {
+		// original implementation was empty
     }
     
 

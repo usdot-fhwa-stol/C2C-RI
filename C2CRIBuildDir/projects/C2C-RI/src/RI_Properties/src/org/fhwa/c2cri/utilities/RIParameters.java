@@ -307,6 +307,7 @@ public class RIParameters {
      * @param parameterMap the new parameter map
      */
     public void setParameterMap(HashMap parameterMap) {
+		// original implementation was empty
     }
 
     /**
@@ -322,11 +323,13 @@ public class RIParameters {
      * Stores the user selected parameters into a parameters file.
      */
     public void storeParametersMap() {
+		// original implementation was empty
     }
 
     /**
      * Loads the user selected parameters from the parameters file.
      */
     public void loadParametersMap() {
+		// original implementation was empty
     }
 }

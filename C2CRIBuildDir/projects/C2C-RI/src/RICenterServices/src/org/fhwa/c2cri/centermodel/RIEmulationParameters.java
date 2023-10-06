@@ -160,7 +160,7 @@ public class RIEmulationParameters implements Serializable {
      * @param entityEmulationData
      */
     public void setEntityEmulationDataList(List entityEmulationData) {
-
+		// original implementation was empty
     }
 
     /**

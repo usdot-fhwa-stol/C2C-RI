@@ -138,6 +138,6 @@ public void addValueSpecification(String valueSpecificationText) {
      * @param args the arguments
      */
     public static void main(String[] args) {
-
+		// original implementation was empty
     }
 }

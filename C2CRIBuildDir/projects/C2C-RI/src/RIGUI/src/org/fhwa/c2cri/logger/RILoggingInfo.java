@@ -139,6 +139,7 @@ public class RILoggingInfo implements Serializable{
 	 * verifies that the parameters that are to be set are valid.
 	 */
 	public void verifyLoggingParameters(){
+		// original implementation was empty
 	}
 
         /**

@@ -148,8 +148,6 @@ public class TestTMDDControllerClient
             ex.printStackTrace();
         }
         ilc.shutdown();
-        System.gc();
-
     }
 
     /**

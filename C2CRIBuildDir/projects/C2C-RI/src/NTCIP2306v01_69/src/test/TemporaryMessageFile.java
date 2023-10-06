@@ -43,9 +43,7 @@ public class TemporaryMessageFile {
      */
     public static void main(String[] args) throws Exception {
         tmpTest();
-        System.gc();
         tmpTest();
-        System.gc();
         System.out.println("Exiting Now.");
     }
     
@@ -169,7 +167,7 @@ public class TemporaryMessageFile {
      * @see java.lang.Object#finalize()
      */
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         super.finalize();
         System.out.println("Finalize was called");
 

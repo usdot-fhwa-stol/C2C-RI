@@ -108,8 +108,6 @@ public class TestNTCIP2306Server {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.gc();
-
     }
 
     /**

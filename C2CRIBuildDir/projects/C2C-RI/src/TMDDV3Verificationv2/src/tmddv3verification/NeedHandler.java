@@ -518,7 +518,9 @@ public final class NeedHandler {
             for (DataConcept theConcept : theRequirement.getDataConceptList()) {
                 if (theConcept.getDataConceptType().equals("data-element")) {
                     if (!elementList.contains(theConcept.getDataConceptName()))
-                    elementList.add(theConcept.getDataConceptName());
+					{
+						elementList.add(theConcept.getDataConceptName());
+					}
                 }
             }
         }

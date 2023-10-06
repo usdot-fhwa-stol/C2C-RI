@@ -183,7 +183,6 @@ public class TestOwnerCenter {
 	//        } catch (Exception ex) {
 	//            ex.printStackTrace();
 	//        }
-			System.gc();
 
 
 	//        RIWSDL theWSDL = new RIWSDL("file:/c:/c2cri/testfiles/release3.wsdl");

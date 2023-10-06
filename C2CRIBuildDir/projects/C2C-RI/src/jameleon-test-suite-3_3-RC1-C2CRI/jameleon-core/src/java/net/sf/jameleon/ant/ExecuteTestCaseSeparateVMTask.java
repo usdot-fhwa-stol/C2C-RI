@@ -123,6 +123,7 @@ public class ExecuteTestCaseSeparateVMTask extends Task {
     }
 
     public void setDebug(boolean debug){
+		// original implementation was empty
     }
 
     public void setBaseDir(File dir){

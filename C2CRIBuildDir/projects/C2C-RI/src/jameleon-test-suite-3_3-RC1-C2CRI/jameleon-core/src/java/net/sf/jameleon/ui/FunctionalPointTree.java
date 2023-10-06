@@ -175,6 +175,7 @@ public class FunctionalPointTree extends JTree {
         }
 
         public void treeWillCollapse(TreeExpansionEvent event) {
+			// original implementation was empty
         }
 
         public void treeWillExpand(TreeExpansionEvent event) {

@@ -21,7 +21,7 @@ public class MessageProcedureMaker extends AbstractProcedureMaker{
 
     public MessageProcedureMaker(String procedureName){
         super(procedureName);
-        this.procedureName = procedureName;
+        tmddprocedures.AbstractProcedureMaker.procedureName = procedureName;
     }
 
     @Override

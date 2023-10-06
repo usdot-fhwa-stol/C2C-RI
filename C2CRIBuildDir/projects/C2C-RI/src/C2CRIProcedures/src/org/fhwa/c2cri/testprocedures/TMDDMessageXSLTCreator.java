@@ -40,34 +40,34 @@ public class TMDDMessageXSLTCreator {
 "        Purpose of transformation follows.\n" +
 "-->\n" +
 "<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\" xmlns:fo=\"http://www.w3.org/1999/XSL/Format\" xmlns:tmdd=\"http://www.tmdd.org/301/messages\" xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:c2c=\"http://www.ntcip.org/c2c-message-administration\" xmlns:ext=\"http://exslt.org/common\">\n" +
-"	<xsl:output method=\"text\" version=\"1.0\" encoding=\"UTF-8\" indent=\"no\" doctype-public=\"yes\"/>\n" +
+"\t<xsl:output method=\"text\" version=\"1.0\" encoding=\"UTF-8\" indent=\"no\" doctype-public=\"yes\"/>\n" +
 "\n" +
-"	<xsl:template match=\"node()\">\n" +
-"		<xsl:apply-templates select=\"node()\"/>\n" +
-"	</xsl:template>	\n");
+"\t<xsl:template match=\"node()\">\n" +
+"\t\t<xsl:apply-templates select=\"node()\"/>\n" +
+"\t</xsl:template>\t\n");
         
         for (String message : getMessageList()) {
             out.write(createMessageTemplateXML(message));
             System.out.println(message);
         }
         
-        out.write("	<xsl:template name=\"requirementHandler\">\n" +
-"		<xsl:param name=\"requirements\"/>\n" +
-"		<xsl:param name=\"message\"/>\n" +
-"		<xsl:for-each select=\"$requirements/requirement\">\n" +
-"		<xsl:variable name=\"requirementNumber\" select=\"@number\"/>\n" +
-"		<xsl:variable name=\"requirementPassed\" select=\"count(test[condition=&quot;false&quot;])=0\"/>\n" +
-"		<xsl:for-each select=\"test\">\n" +
-"			<xsl:variable name=\"conditionresult\" select=\"condition\"/>\n" +
-"			<xsl:choose>\n" +
-"				<xsl:when test=\"$conditionresult=&quot;false&quot;\"><xsl:value-of select=\"$requirementNumber\"/>,<xsl:value-of select=\"$requirementPassed\"/>,<xsl:value-of select=\"$message\"/>,<xsl:value-of select=\"elementName\"/>,false,<xsl:value-of select=\"errorDescription\"/>|\n" +
+        out.write("\t<xsl:template name=\"requirementHandler\">\n" +
+"\t\t<xsl:param name=\"requirements\"/>\n" +
+"\t\t<xsl:param name=\"message\"/>\n" +
+"\t\t<xsl:for-each select=\"$requirements/requirement\">\n" +
+"\t\t<xsl:variable name=\"requirementNumber\" select=\"@number\"/>\n" +
+"\t\t<xsl:variable name=\"requirementPassed\" select=\"count(test[condition=&quot;false&quot;])=0\"/>\n" +
+"\t\t<xsl:for-each select=\"test\">\n" +
+"\t\t\t<xsl:variable name=\"conditionresult\" select=\"condition\"/>\n" +
+"\t\t\t<xsl:choose>\n" +
+"\t\t\t\t<xsl:when test=\"$conditionresult=&quot;false&quot;\"><xsl:value-of select=\"$requirementNumber\"/>,<xsl:value-of select=\"$requirementPassed\"/>,<xsl:value-of select=\"$message\"/>,<xsl:value-of select=\"elementName\"/>,false,<xsl:value-of select=\"errorDescription\"/>|\n" +
 "</xsl:when>\n" +
-"				<xsl:otherwise>	<xsl:value-of select=\"$requirementNumber\"/>,<xsl:value-of select=\"$requirementPassed\"/>,<xsl:value-of select=\"$message\"/>,<xsl:value-of select=\"elementName\"/>,true, \n" +
+"\t\t\t\t<xsl:otherwise>\t<xsl:value-of select=\"$requirementNumber\"/>,<xsl:value-of select=\"$requirementPassed\"/>,<xsl:value-of select=\"$message\"/>,<xsl:value-of select=\"elementName\"/>,true, \n" +
 "</xsl:otherwise>\n" +
-"			</xsl:choose>\n" +
-"		</xsl:for-each>\n" +
-"	</xsl:for-each>	\n" +
-"	</xsl:template>\n" +
+"\t\t\t</xsl:choose>\n" +
+"\t\t</xsl:for-each>\n" +
+"\t</xsl:for-each>\t\n" +
+"\t</xsl:template>\n" +
 "</xsl:stylesheet>");
         
 //        System.out.println(results.toString());
@@ -83,13 +83,13 @@ public class TMDDMessageXSLTCreator {
        for (String requirementID : getRequirementsList(message)) {
            results.append(createRequirementTestsXML(requirementID,getMessageDetailDesignElements(message,requirementID)));
        }       
-       results.append("		</xsl:variable>\n" +
-"		<xsl:variable name=\"requirements\" select=\"$requirement-mapper\"/>\n" +
-"		<xsl:call-template name=\"requirementHandler\">\n" +
-"			<xsl:with-param name=\"requirements\" select=\"$requirements\"/>\n" +
-"			<xsl:with-param name=\"message\" select=\"'"+message+"'\"/>			\n" +
-"		</xsl:call-template>\n" +
-"	</xsl:template>\n");
+       results.append("\t\t</xsl:variable>\n" +
+"\t\t<xsl:variable name=\"requirements\" select=\"$requirement-mapper\"/>\n" +
+"\t\t<xsl:call-template name=\"requirementHandler\">\n" +
+"\t\t\t<xsl:with-param name=\"requirements\" select=\"$requirements\"/>\n" +
+"\t\t\t<xsl:with-param name=\"message\" select=\"'"+message+"'\"/>\t\t\t\n" +
+"\t\t</xsl:call-template>\n" +
+"\t</xsl:template>\n");
        return results.toString();
    }
     

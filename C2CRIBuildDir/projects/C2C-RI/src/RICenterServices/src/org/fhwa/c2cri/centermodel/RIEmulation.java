@@ -233,7 +233,7 @@ public class RIEmulation implements RINRTMSelectionProvider {
      * @param entityListener
      */
     public void unRegisterForUpdates(String dialog, EntityDataListener entityListener) {
-
+		// original implementation was empty
     }
 
     /**

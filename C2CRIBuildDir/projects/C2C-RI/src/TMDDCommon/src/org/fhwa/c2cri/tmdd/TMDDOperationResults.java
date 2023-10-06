@@ -562,7 +562,9 @@ public class TMDDOperationResults implements InformationLayerOperationResults {
             if (!this.requestNameValid){
                 if (this.receivedRequestMessageName.isEmpty())getDialogResults(Message.MESSAGETYPE.Request);
                 if (!this.requestNameValid)
-               throw new Exception("The request message "+this.receivedRequestMessageName+" was not valid for the TMDD defined dialog.");
+				{
+					throw new Exception("The request message "+this.receivedRequestMessageName+" was not valid for the TMDD defined dialog.");
+				}
             }
             System.out.println("TMDDOperationResults::checkTMDDOperationResults requestMessageValid="+this.requestMessageValid);
             if (!receivedRequestMessageName.isEmpty() && !this.requestMessageValid ){
@@ -573,7 +575,9 @@ public class TMDDOperationResults implements InformationLayerOperationResults {
             if (!this.responseNameValid){
                 if (this.receivedResponseMessageName.isEmpty())getDialogResults(Message.MESSAGETYPE.Response);
                 if (!this.responseNameValid)
-                throw new Exception("The response message "+this.receivedResponseMessageName+" was not valid for the TMDD defined dialog.");
+				{
+					throw new Exception("The response message "+this.receivedResponseMessageName+" was not valid for the TMDD defined dialog.");
+				}
             }
             System.out.println("TMDDOperationResults::checkTMDDOperationResults responseMessageValid="+this.responseMessageValid);
             if (!receivedResponseMessageName.isEmpty() && !this.responseMessageValid ){

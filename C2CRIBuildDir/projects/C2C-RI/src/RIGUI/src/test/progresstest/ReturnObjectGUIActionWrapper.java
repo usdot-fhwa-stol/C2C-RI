@@ -86,5 +86,6 @@ public class ReturnObjectGUIActionWrapper extends SwingWorker<Object, Void> {
      * @param result the result
      */
     protected void wrapUp(Object result) {
+		// original implementation was empty
     }
 }

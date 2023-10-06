@@ -39,6 +39,7 @@ public class GenericDeviceHandler implements EntityControlRequestStatusCollector
     private EntityDataOrganizationInformationCollector orgInfoDataCollector;
 
     public void initialize() throws EntityEmulationException {
+		// original implementation was empty
     }
 
     private GenericDeviceHandler() {

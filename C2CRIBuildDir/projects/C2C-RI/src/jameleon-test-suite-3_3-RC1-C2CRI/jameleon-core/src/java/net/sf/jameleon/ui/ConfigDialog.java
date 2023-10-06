@@ -52,7 +52,7 @@ public class ConfigDialog extends JDialog{
     }
 
     private void init(){
-        tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane = new JTabbedPane(javax.swing.SwingConstants.TOP);
         generalPanel = new GeneralConfigPanel();
         envPanel = new EnvironmentConfigPanel();
         uiConfigPanel = new UIConfigPanel();

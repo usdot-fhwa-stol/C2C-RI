@@ -223,9 +223,8 @@ public class MakeOCTestCases {
 
     private static byte[] readFile(File file) throws IOException {
         // Open file
-        RandomAccessFile f = new RandomAccessFile(file, "r");
-
-        try {
+        try ( RandomAccessFile f = new RandomAccessFile(file, "r"))
+		{
             // Get and check length
             long longlength = f.length();
             int length = (int) longlength;
@@ -237,8 +236,6 @@ public class MakeOCTestCases {
             byte[] data = new byte[length];
             f.readFully(data);
             return data;
-        } finally {
-            f.close();
         }
     }
 }

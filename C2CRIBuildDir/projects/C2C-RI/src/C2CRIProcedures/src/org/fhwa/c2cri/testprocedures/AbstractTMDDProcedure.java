@@ -210,7 +210,6 @@ public abstract class AbstractTMDDProcedure implements TestProcedure {
                         + "'" + thisStep.getResults() + "')");
             stepNumber++;
             }
-            System.gc();
         }
         } catch (Exception ex) {
           ex.printStackTrace();

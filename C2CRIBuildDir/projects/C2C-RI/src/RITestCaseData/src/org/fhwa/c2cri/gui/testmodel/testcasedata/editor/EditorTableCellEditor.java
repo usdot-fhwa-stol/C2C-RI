@@ -94,6 +94,7 @@ public class EditorTableCellEditor extends FormattedTableEditor {
 					.getWidth(), false) {
 
 				public void inputVerifier(FormattedLabel label) {
+					// original implementation was empty
 				}
 
 				public void caretUpdate(CaretEvent e, FormattedTextField textField) {

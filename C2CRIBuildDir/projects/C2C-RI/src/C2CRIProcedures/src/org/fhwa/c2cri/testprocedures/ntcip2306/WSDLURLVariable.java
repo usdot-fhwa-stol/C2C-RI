@@ -23,6 +23,7 @@ private String recordScriptText="";
 private String verifyScriptText="";
 
     public void WSDLURLVariable(){
+		// original implementation was empty
     }
 
     /**

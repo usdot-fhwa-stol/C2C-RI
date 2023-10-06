@@ -161,7 +161,6 @@ public class ActionLogCache extends AbstractTableModel implements ActionLogAppen
 
         instance.stop();
  //       instance = null;
-        System.gc();
 
         System.out.println("Exiting Now.");
     }

@@ -445,6 +445,7 @@ import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
      * @param opResults – the operation results
      */
     private void processHTTPPost(OperationResults opResults) {
+		// original implementation was empty
     }
 
     /**
@@ -465,6 +466,7 @@ import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
      * @param opResults the op results
      */
     private void processFTPGet(OperationResults opResults) {
+		// original implementation was empty
     }
 
     /**
@@ -474,6 +476,7 @@ import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
      * @param messageType – the type of message
      */
     private void processRR(OperationResults opResults,  String messageType) {
+		// original implementation was empty
     }
 
     /**
@@ -483,6 +486,7 @@ import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
      * @param messageType the message type
      */
     private void processGet(OperationResults opResults,  String messageType) {
+		// original implementation was empty
     }
     
     /**

@@ -126,8 +126,6 @@ public class TestExternalCenter {
 				ex.printStackTrace();
 			}
 			ilc.shutdown();
-
-			System.gc();
 		}
 
 
