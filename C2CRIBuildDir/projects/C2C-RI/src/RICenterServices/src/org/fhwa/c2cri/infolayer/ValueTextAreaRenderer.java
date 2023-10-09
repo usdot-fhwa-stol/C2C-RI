@@ -26,7 +26,7 @@ public class ValueTextAreaRenderer extends JTextArea
   private final Map cellSizes = new HashMap();
   
   /** The input spec. */
-  private MessageSpecification inputSpec;
+  private transient  MessageSpecification inputSpec;
 
   /**
    * Instantiates a new value text area renderer.

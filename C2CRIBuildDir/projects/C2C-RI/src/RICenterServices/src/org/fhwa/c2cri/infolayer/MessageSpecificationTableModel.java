@@ -21,7 +21,7 @@ public class MessageSpecificationTableModel extends AbstractTableModel {
     public static final int Value_Col = 1;
     
     /** The spec. */
-    private MessageSpecification spec;
+    private transient MessageSpecification spec;
     /** The column names. */
 private String[] columnNames = {"Value Element Name",
         "Value"};
