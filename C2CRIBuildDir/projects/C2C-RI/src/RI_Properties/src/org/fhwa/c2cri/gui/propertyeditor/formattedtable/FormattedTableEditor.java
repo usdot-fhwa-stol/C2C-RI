@@ -16,7 +16,7 @@ import javax.swing.table.TableCellEditor;
 public abstract class FormattedTableEditor extends AbstractCellEditor implements TableCellEditor, FormattedTableInterface {
     
     /** The cell value. */
-    private Object cellValue;
+    private transient Object cellValue;
     
     /** The o. */
     private JComponent o = null;

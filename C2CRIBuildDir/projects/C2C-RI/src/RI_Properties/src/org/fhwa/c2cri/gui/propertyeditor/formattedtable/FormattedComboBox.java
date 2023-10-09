@@ -15,7 +15,7 @@ import javax.swing.JComboBox;
 public abstract class FormattedComboBox extends JComboBox implements ItemListener {
     
     /** The o. */
-    protected Object o;
+    protected transient Object o;
     
     /**
      * Instantiates a new formatted combo box.

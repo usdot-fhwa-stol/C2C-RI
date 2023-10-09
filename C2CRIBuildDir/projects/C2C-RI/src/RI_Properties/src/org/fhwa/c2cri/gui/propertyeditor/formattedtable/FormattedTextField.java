@@ -15,7 +15,7 @@ public abstract class FormattedTextField extends JTextField implements
 		CaretListener, FormattedTextInterface {
 
 	/** The o. */
-	Object o;
+	transient Object o;
 
 	/**
 	 * Instantiates a new formatted text field.
