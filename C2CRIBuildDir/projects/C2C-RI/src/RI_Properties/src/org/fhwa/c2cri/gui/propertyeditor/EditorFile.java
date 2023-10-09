@@ -18,7 +18,7 @@ public class EditorFile extends File {
     Vector groupArray = new Vector();
     
     /** The is modified. */
-    EditorModified isModified = new EditorModified();
+    transient EditorModified isModified = new EditorModified();
     
     /** The errors. */
     String errors;
