@@ -28,8 +28,8 @@ import org.fhwa.c2cri.gui.testmodel.testcasedata.editor.TestCaseDataEditor;
 public class TestCaseEditJButton extends JButton {
 
     private TestCase testCase;
-    private final TestCaseEditActionListener c2criactionListener;
-    private final TestCaseCreationListener creationListener;
+    private final transient TestCaseEditActionListener c2criactionListener;
+    private final transient TestCaseCreationListener creationListener;
     private final int modelRow;
     
     public TestCaseEditJButton(TestCase testCase, TestCaseCreationListener listener, int modelRow) {
