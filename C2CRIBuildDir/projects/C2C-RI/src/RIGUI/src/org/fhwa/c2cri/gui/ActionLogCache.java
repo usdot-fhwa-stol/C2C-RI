@@ -19,7 +19,7 @@ public class ActionLogCache extends AbstractTableModel implements ActionLogAppen
     private static ActionLogCache instance = null;
     private static int currentTestIndex=0;
     
-    Thread logActionThread = new Thread() {
+    transient Thread logActionThread = new Thread() {
         public void run() {
             try{
                 while (true){

@@ -34,13 +34,13 @@ public class ConfigFileTableModel extends javax.swing.table.AbstractTableModel {
 //    protected String[] fileDescriptions;
 //    protected Date[] fileDates;
     /** The log filter. */
-private FilenameFilter logFilter;
+private transient FilenameFilter logFilter;
     
     /** The config filter. */
-    private FilenameFilter configFilter;
+    private transient FilenameFilter configFilter;
     
     /** The cfg descriptions. */
-    private ArrayList<TestConfigurationDescription> cfgDescriptions = new ArrayList<>();
+    private transient ArrayList<TestConfigurationDescription> cfgDescriptions = new ArrayList<>();
     
     /** The Constant NTHREDS. */
     private static final int NTHREDS = 10;
@@ -56,7 +56,7 @@ private FilenameFilter logFilter;
     };
     
     /** The input. */
-    private ObjectInputStream input;
+    private transient ObjectInputStream input;
 
     // This table model works for any one given directory
     /**

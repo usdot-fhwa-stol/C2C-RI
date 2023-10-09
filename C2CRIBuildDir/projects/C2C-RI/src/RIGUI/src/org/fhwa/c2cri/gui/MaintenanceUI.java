@@ -490,10 +490,10 @@ public class MaintenanceUI extends javax.swing.JDialog implements javax.swing.ev
     protected String[] filenames;
   
   /** The log filter. */
-  private FilenameFilter logFilter;
+  private transient FilenameFilter logFilter;
   
   /** The config filter. */
-  private FilenameFilter configFilter;
+  private transient FilenameFilter configFilter;
 
   /** An array of column names for the table. */
   protected String[] columnNames = new String[] {

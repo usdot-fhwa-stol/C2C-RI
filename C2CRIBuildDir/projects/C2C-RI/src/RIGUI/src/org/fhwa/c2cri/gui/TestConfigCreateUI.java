@@ -59,10 +59,10 @@ public class TestConfigCreateUI extends javax.swing.JDialog {
     private TestConfiguration testConfiguration;
     
     /** The config creator. */
-    private TestConfigCreateAction configCreator;
+    private transient TestConfigCreateAction configCreator;
     
     /** The listener config file. */
-    private ProgressListener listenerConfigFile;
+    private transient ProgressListener listenerConfigFile;
     
     /** The reporter config file. */
     private ProgressReporter reporterConfigFile = new ProgressUI(null, true);
