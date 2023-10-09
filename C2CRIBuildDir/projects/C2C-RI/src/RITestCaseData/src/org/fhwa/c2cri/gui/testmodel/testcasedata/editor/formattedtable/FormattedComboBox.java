@@ -17,7 +17,7 @@ import org.fhwa.c2cri.gui.testmodel.testcasedata.editor.utils.C2CRIUIManager;
 public abstract class FormattedComboBox extends JComboBox implements ItemListener {
     
     /** The o. */
-    protected Object o;
+    protected transient Object o;
     
     /**
      * Instantiates a new formatted combo box.
