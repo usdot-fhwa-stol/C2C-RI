@@ -42,7 +42,7 @@ public class Session implements XMLable{
     /**
      * A list of <code>FunctionalPoint</code>s
      */
-    protected List functionalPoints;
+    protected transient List functionalPoints;
     /**
      * Default constructor only used to initialize variables
      */
