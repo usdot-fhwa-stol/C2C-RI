@@ -36,7 +36,7 @@ public class DataDrivableRowResult extends TestResultWithChildren{
     /**
      * The row data for the data-drivable tag
      */
-    protected Map rowData;
+    protected transient Map rowData;
 
     public DataDrivableRowResult(FunctionalPoint tag){
         super(tag);
