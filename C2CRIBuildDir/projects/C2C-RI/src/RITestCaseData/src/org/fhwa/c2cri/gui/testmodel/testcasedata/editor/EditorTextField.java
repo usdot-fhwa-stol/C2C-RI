@@ -7,7 +7,7 @@ import javax.swing.event.CaretListener;
 
 public class EditorTextField extends JTextField implements CaretListener {
 
-	Parameter p;
+	transient Parameter p;
 
 	/**
 	 * Instantiates a new editor text field.
