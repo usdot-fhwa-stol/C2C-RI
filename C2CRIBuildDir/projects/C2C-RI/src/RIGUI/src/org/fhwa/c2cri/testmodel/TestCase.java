@@ -51,7 +51,7 @@ public class TestCase implements Serializable{
     private boolean userOveride;
     
     /** The properties. */
-    private Map properties;
+    private transient Map properties;
 
     //Create private empty constructor to prevent creation without providing parameters.
     /**
