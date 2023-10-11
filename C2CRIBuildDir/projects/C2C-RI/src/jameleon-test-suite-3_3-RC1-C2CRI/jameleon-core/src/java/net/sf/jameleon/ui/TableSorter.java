@@ -63,7 +63,7 @@ import javax.swing.table.*;
  */
 
 public class TableSorter extends AbstractTableModel {
-    protected TableModel tableModel;
+    protected transient TableModel tableModel;
 
     public static final int DESCENDING = -1;
     public static final int NOT_SORTED = 0;
@@ -82,14 +82,14 @@ public class TableSorter extends AbstractTableModel {
         }
     };
 
-    private Row[] viewToModel;
+    private transient Row[] viewToModel;
     private int[] modelToView;
 
     private JTableHeader tableHeader;
-    private MouseListener mouseListener;
-    private TableModelListener tableModelListener;
-    private Map columnComparators = new HashMap();
-    private List sortingColumns = new ArrayList();
+    private transient MouseListener mouseListener;
+    private transient TableModelListener tableModelListener;
+    private transient Map columnComparators = new HashMap();
+    private transient List sortingColumns = new ArrayList();
 
     public TableSorter() {
         this.mouseListener = new MouseHandler();

@@ -31,7 +31,7 @@ public abstract class FormattedFileChooser
 	public static File DEFAULT_FILE = null;
 
 	/** The o. */
-	private Object o;
+	private transient Object o;
 	
 	/** The j value. */
 	private JComponent jValue;

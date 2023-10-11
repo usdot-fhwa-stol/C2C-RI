@@ -44,7 +44,7 @@ import net.sf.jameleon.util.SupportedTags;
 
 public class FunctionalPointTree extends JTree {
 
-    private Set usedClasses;
+    private transient Set usedClasses;
 
     public FunctionalPointTree(FPDisplayer fpDisplayer) {
         super();

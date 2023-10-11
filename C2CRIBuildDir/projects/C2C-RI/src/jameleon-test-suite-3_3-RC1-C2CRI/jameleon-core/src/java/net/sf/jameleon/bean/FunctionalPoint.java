@@ -64,7 +64,7 @@ public class FunctionalPoint implements XMLable {
     /**
      * A list of attributes that this functional point uses
      */
-    protected Map attributes;
+    protected LinkedHashMap attributes;
     /**
      * A list of steps that this FunctionalPoint uses during execution
      */
@@ -295,7 +295,7 @@ public class FunctionalPoint implements XMLable {
      * Sets A list of attributes that this functional point uses
      * @param attributes A list of attributes that this functional point uses
      */
-    public void setAttributes(Map attributes){
+    public void setAttributes(LinkedHashMap attributes){
         this.attributes = attributes;
     }
 

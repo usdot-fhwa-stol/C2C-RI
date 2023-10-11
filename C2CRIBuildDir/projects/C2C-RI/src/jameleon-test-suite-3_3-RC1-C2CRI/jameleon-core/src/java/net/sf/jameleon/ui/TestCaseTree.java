@@ -39,7 +39,7 @@ import net.sf.jameleon.util.JameleonDefaultValues;
 
 public class TestCaseTree extends JTree{
 
-    protected Configurator config;
+    protected transient Configurator config;
     protected TestCasePane testCasePane;
     private final int SECONDS_TO_WAIT = 3;
 

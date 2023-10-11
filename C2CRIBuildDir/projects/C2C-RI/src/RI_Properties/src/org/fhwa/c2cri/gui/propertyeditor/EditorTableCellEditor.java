@@ -24,7 +24,7 @@ import org.fhwa.c2cri.gui.propertyeditor.formattedtable.FormattedTextField;
 public class EditorTableCellEditor extends FormattedTableEditor {
 
 	/** The cell value. */
-	private Object cellValue = null;
+	private transient Object cellValue = null;
 
 	/** The o. */
 	private JComponent o = null;

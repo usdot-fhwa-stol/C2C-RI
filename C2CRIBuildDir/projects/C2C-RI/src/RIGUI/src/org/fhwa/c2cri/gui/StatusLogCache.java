@@ -19,7 +19,7 @@ public class StatusLogCache extends AbstractTableModel {
     private static int filteredTestIndex = 0;
 
 
-    Thread logStatusThread = new Thread() {
+    transient Thread logStatusThread = new Thread() {
         public void run() {
             try{
                 while (true){

@@ -57,7 +57,7 @@ public class TestConfiguration implements Serializable {
     /**
      * a reference to the currently available test suites recognized by the RI.
      */
-    private TestSuites availableSuites;
+    private transient TestSuites availableSuites;
 
     /**
      * The RI user that saved/created this test configuration.

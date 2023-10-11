@@ -37,7 +37,7 @@ public class SelectionFlagEditor extends AbstractCellEditor implements TableCell
     boolean notifyOnClear = false;
     
     /** The flag listener. */
-    SelectionFlagListener flagListener = null;
+    transient SelectionFlagListener flagListener = null;
     
     /** The current editing row. */
     int currentEditingRow=-1;

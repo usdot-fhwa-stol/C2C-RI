@@ -55,7 +55,7 @@ public abstract class JameleonTestResult implements XMLable, LocationAware {
     /**
      * The parent results
      */
-    protected HasChildResults parentResults;
+    protected transient HasChildResults parentResults;
     /**
      * Syntax for opening cdata value
      */

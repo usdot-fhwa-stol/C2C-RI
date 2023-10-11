@@ -29,7 +29,7 @@ import java.util.List;
 
 public abstract class AbstractConfigPanel extends JPanel{
 
-    protected List fieldProperties;
+    protected transient List fieldProperties;
 
     public AbstractConfigPanel(){
         super(new SpringLayout());

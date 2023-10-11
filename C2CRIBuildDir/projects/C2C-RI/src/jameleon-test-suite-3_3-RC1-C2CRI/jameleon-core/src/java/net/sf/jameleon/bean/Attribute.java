@@ -41,7 +41,7 @@ public class Attribute implements XMLable, Cloneable{
     /**
      * The value of the attribute
      */
-    protected Object value;
+    protected transient Object value;
     /**
      * The default value of the attribute
      */

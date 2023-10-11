@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 public class EditorComboBox extends JComboBox implements ItemListener {
     
     /** The p. */
-    Parameter p;
+    transient Parameter p;
     
     /** The j. */
     JLabel j;

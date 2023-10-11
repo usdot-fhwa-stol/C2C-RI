@@ -20,7 +20,6 @@ package net.sf.jameleon.ui;
 
 import java.awt.Point;
 import java.io.File;
-import static java.lang.Thread.sleep;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -33,10 +32,10 @@ public class ProgressDialog extends JDialog {
 
     protected int maxTimeInSeconds;
     protected JProgressBar progressBar;
-    protected Thread task;
+    protected transient Thread task;
     protected boolean keepGoing = true;
     protected final int MULTIPLIER = 10;
-    protected TestCaseDocsExecutor tcde;
+    protected transient TestCaseDocsExecutor tcde;
 
     public ProgressDialog(JFrame rootFrame, int maxTimeInSeconds, TestCasePane testCasePane, File script){
         super(rootFrame);

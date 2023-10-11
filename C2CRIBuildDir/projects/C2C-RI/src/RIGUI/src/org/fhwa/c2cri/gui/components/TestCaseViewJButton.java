@@ -24,7 +24,7 @@ import org.fhwa.c2cri.gui.testmodel.testcasedata.editor.TestCaseDataEditor;
 public class TestCaseViewJButton extends JButton {
 
     private TestCase testCase;
-    private final TestCaseViewActionListener c2criactionListener;
+    private final transient TestCaseViewActionListener c2criactionListener;
 
     public TestCaseViewJButton(TestCase testCase) {
         super("View");

@@ -33,7 +33,7 @@ public class TestCaseFile extends File {
     /**
      * The is modified.
      */
-    EditorModified isModified = new EditorModified();
+    transient EditorModified isModified = new EditorModified();
 
     /**
      * The errors.
@@ -53,7 +53,7 @@ public class TestCaseFile extends File {
     /**
      * The set of groups defined in the baseline test case file
      */
-    Map<String, List<String>> baselineGroups = new HashMap<>();
+    transient Map<String, List<String>> baselineGroups = new HashMap<>();
     /**
      * Instantiates a new test case file.
      *

@@ -26,10 +26,10 @@ import org.fhwa.c2cri.ntcip2306v109.wsdl.RIWSDL;
 public class TestNTCIP2306OperationGUI extends javax.swing.JFrame {
 
     /** The op spec list. */
-    ArrayList<OperationSpecification> opSpecList = new ArrayList();
+    transient ArrayList<OperationSpecification> opSpecList = new ArrayList();
     
     /** The wsdl. */
-    RIWSDL theWSDL = null;
+    transient RIWSDL theWSDL = null;
 
     /**
      * Creates new form TestNTCIP2306OperationGUI.

@@ -26,10 +26,10 @@ public class FileTableModel extends javax.swing.table.AbstractTableModel {
     protected String[] filenames;
     
     /** The log filter. */
-    private FilenameFilter logFilter;
+    private transient FilenameFilter logFilter;
     
     /** The config filter. */
-    private FilenameFilter configFilter;
+    private transient FilenameFilter configFilter;
     
     /** The date column name. */
     public static String DATE_COLUMN_NAME = "Last Modified";

@@ -87,7 +87,7 @@ public class TestCaseEditorDialog
 
     private String selectedIteration;
     private String selectedGroup;
-    private Parameter selectedParameter;
+    private transient Parameter selectedParameter;
 
     private static final String RENAME_ITERATION = "Rename Iteration";
     private static final String REPLACE_GROUP = "Replace Group";
@@ -351,7 +351,7 @@ public class TestCaseEditorDialog
         }
     };
 
-    private final ChangeListener iterationChangeListener = new ChangeListener() {
+    private final transient ChangeListener iterationChangeListener = new ChangeListener() {
         public void stateChanged(ChangeEvent changeEvent) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
             int index = sourceTabbedPane.getSelectedIndex();
@@ -362,7 +362,7 @@ public class TestCaseEditorDialog
         }
     };
 
-    private final ChangeListener groupChangeListener = new ChangeListener() {
+    private final transient ChangeListener groupChangeListener = new ChangeListener() {
         public void stateChanged(ChangeEvent changeEvent) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
             int index = sourceTabbedPane.getSelectedIndex();

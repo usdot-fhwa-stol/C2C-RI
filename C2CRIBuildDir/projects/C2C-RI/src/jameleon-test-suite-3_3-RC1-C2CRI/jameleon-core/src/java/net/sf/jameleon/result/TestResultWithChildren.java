@@ -33,11 +33,11 @@ public abstract class TestResultWithChildren extends JameleonTestResult implemen
     /**
      * A list of Child Results
      */
-    protected List childrenResults = new ArrayList();
+    protected transient List childrenResults = new ArrayList();
     /**
      * A list of failed Child Results
      */
-    protected List failedResults = new ArrayList();
+    protected transient List failedResults = new ArrayList();
 
     public TestResultWithChildren(){
         super();
