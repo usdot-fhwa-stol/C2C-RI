@@ -75,13 +75,13 @@ public class SampleXmlUtilDoctored {
     private int level = -1;
     private ArrayList<String> elementPathList = new ArrayList<String>();
     private ArrayList<String> elementPathTypeList = new ArrayList<String>();
-    private static String messageName;
-    private static String lastParentType;
-    private static String messageValue;
-    private static boolean messageValueStored;
+    static String messageName;
+    String lastParentType;
+    private String messageValue;
+    private boolean messageValueStored;
     private static ArrayList<String> elementRecords = new ArrayList<String>();
 
-    private SampleXmlUtilDoctored(boolean soapEnc) {
+    SampleXmlUtilDoctored(boolean soapEnc) {
         _soapEnc = soapEnc;
     }
 
@@ -103,27 +103,7 @@ public class SampleXmlUtilDoctored {
         messageValue = "";
     }
 
-    public static String createSampleForType(SchemaType sType) {
-        messageName = sType.getDocumentElementName().getLocalPart();
-        lastParentType = messageName;
-        XmlObject object = XmlObject.Factory.newInstance();
-        XmlCursor cursor = object.newCursor();
-        // Skip the document node
-        cursor.toNextToken();
-        // Using the type and the cursor, call the utility method to get a
-        // sample XML payload for that Schema element
-        new SampleXmlUtilDoctored(false).createSampleForType(sType, cursor);
-        // Cursor now contains the sample payload
-        // Pretty print the result.  Note that the cursor is positioned at the
-        // end of the doc so we use the original xml object that the cursor was
-        // created upon to do the xmlText() against.
-        XmlOptions options = new XmlOptions();
-        options.put(XmlOptions.SAVE_PRETTY_PRINT);
-        options.put(XmlOptions.SAVE_PRETTY_PRINT_INDENT, 2);
-        options.put(XmlOptions.SAVE_AGGRESSIVE_NAMESPACES);
-        String result = object.xmlText(options);
-        return result;
-    }
+
     Random _picker = new Random(1);
 
     /**
@@ -133,7 +113,7 @@ public class SampleXmlUtilDoctored {
      * After:
      * <theElement><lots of stuff/>^</theElement>
      */
-    private void createSampleForType(SchemaType stype, XmlCursor xmlc) {
+    void createSampleForType(SchemaType stype, XmlCursor xmlc) {
         if (stype.getName() != null) {
             level++;
             previousType = stype.getName().getLocalPart();
