@@ -23,7 +23,7 @@ import org.fhwa.c2cri.tmdd.emulation.exceptions.NRTMViolationException;
 public class TMDDNRTMSelections {
 
     private static TMDDNRTMSelections nrtmSelections;
-    private static String tMDDSchemaDetailTableName = "TMDDSchemaDetail";
+    private String tMDDSchemaDetailTableName = "TMDDSchemaDetail";
 
     private TMDDNRTMSelections() {
     }
