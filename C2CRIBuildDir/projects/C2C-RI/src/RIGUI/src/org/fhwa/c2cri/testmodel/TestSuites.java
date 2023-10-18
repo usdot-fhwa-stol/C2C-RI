@@ -56,7 +56,7 @@ public class TestSuites implements Runnable {
     /**
      * The test suites service state.
      */
-    private static TESTSUITESSERVICE_STATE testSuitesServiceState = TESTSUITESSERVICE_STATE.INITIAL;
+    private TESTSUITESSERVICE_STATE testSuitesServiceState = TESTSUITESSERVICE_STATE.INITIAL;
 
     /**
      * The Enum TESTSUITESSERVICE_STATE.
