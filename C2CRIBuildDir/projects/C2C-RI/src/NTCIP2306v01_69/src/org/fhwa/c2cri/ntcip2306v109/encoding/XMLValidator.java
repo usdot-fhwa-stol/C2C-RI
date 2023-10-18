@@ -72,7 +72,7 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
     protected static final boolean DEFAULT_MEMORY_USAGE = false;
     
     /** The parse result. */
-    protected static boolean parseResult = false;
+    protected boolean parseResult = false;
     
     /** The out. */
     protected PrintWriter fOut = new PrintWriter(System.out);
@@ -864,8 +864,8 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
      *
      * @return true, if is parses the result
      */
-    private static boolean isParseResult() {
-        return XMLValidator.parseResult;
+    private boolean isParseResult() {
+        return parseResult;
     }
 
     /**
@@ -873,8 +873,8 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
      *
      * @param parseResult the new parses the result
      */
-    private static void setParseResult(boolean parseResult) {
-        XMLValidator.parseResult = parseResult;
+    private void setParseResult(boolean parseResult) {
+        parseResult = parseResult;
     }
 
     /**
