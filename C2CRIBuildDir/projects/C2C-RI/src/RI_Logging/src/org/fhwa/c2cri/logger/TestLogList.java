@@ -44,7 +44,7 @@ public class TestLogList {
     private static TestLogList thisInstance = new TestLogList();
     
     /** The directory. */
-    private static File directory;
+    private File directory;
     
     /** The executor. */
     final ExecutorService executor = Executors.newCachedThreadPool();
@@ -359,13 +359,13 @@ public class TestLogList {
             synchronized (TestLogList.logDescriptions) {
                 setInitializing(true);
                 System.out.println("Getting the list of log files.");
-                String[] filenames = TestLogList.directory.list(thisInstance.configFilter);  // Store a list of files in the directory
+                String[] filenames = directory.list(thisInstance.configFilter);  // Store a list of files in the directory
                 TestLogList.logDescriptions.clear();
                 ExecutorService executor = Executors.newFixedThreadPool(NTHREDS);
                 ArrayList<Future<TestLogDescription>> logList = new ArrayList<>();
                 System.out.println("Starting the log File Workers");
                 for (int ii = 0; ii < filenames.length; ii++) {
-                    Callable<TestLogDescription> worker = new LogCallable(ii, TestLogList.directory.getAbsolutePath(), filenames[ii]);
+                    Callable<TestLogDescription> worker = new LogCallable(ii, directory.getAbsolutePath(), filenames[ii]);
                     Future<TestLogDescription> submit = executor.submit(worker);
                     logList.add(submit);
                 }
@@ -419,7 +419,7 @@ public class TestLogList {
                     if (!fileFound) {
                         index = TestLogList.logDescriptions.size();
                     }
-                    Callable<TestLogDescription> worker = new LogCallable(index, TestLogList.directory.getAbsolutePath(), fileName);
+                    Callable<TestLogDescription> worker = new LogCallable(index, directory.getAbsolutePath(), fileName);
                     Future<TestLogDescription> submit = executor.submit(worker);
                     logList.add(submit);
                     // Now retrieve the result

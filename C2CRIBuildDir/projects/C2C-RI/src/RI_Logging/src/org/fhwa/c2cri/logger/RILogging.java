@@ -142,7 +142,6 @@ public class RILogging implements Serializable {
 
             logFile = logFileName + "." + dateFormat.format(date) + ".xml";
 
-            riAppender = new FileAppender();
             log = Logger.getLogger("net.sf.jameleon");
             log.addAppender(riAppender);
             log.addAppender(riGUIAppender);
@@ -265,6 +264,11 @@ public class RILogging implements Serializable {
         Logger log = Logger.getLogger("net.sf.jameleon");
         log.info(theEvent);
     }
+	
+	public static void setNewAppender()
+	{
+		riAppender = new FileAppender();
+	}
 
     /**
      * Log the provided event.
