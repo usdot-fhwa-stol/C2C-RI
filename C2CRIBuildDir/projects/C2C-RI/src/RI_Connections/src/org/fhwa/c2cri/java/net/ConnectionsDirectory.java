@@ -24,9 +24,9 @@ final List<ConnectionInformation> allSockets = Collections.synchronizedList(new 
 private static TrafficLogger trafficLogger;
 
 /** The test case name. */
-private volatile static String testCaseName;
+private volatile String testCaseName;
 
-private volatile static boolean enableLiveLogging;
+private volatile boolean enableLiveLogging;
 
 /** The defined connection names. */
 final List<DefinedConnectionName> definedConnectionNames = Collections.synchronizedList(new ArrayList<DefinedConnectionName>());    
@@ -333,7 +333,7 @@ final List<DefinedConnectionName> definedConnectionNames = Collections.synchroni
     }
     
     public void setEnableLiveLogging(boolean enableLiveLogging) {
-        ConnectionsDirectory.enableLiveLogging = enableLiveLogging;
+        this.enableLiveLogging = enableLiveLogging;
     }
     
     /**
