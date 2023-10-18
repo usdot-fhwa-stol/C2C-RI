@@ -51,7 +51,7 @@ public class RIParameters {
     public static final String DEFAULT_RI_USER_PARAMETER_VALUE="";
     
     /** The e file. */
-    public static EditorFile eFile;
+    public EditorFile eFile;
 
     /** The Constant RI_USER_PARAMETER_GROUP. */
     public static final String RI_TESTING_PARAMETER_GROUP = "Testing";
@@ -238,14 +238,14 @@ public class RIParameters {
         }
         }
     }    
-    
+
     /**
      * Save file.
      * 
      * Pre-Conditions: N/A
      * Post-Conditions: N/A
      */
-    public static void saveFile() {
+    public void saveFile() {
         synchronized (eFile){
         if (eFile.exists() && eFile.isModified()) {
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(eFile)))
@@ -273,7 +273,7 @@ public class RIParameters {
      * Pre-Conditions: N/A
      * Post-Conditions: N/A
      */
-    public static void printParameters() {
+    public void printParameters() {
         if (eFile != null) {
         synchronized (eFile){
             if (eFile.exists()) {
