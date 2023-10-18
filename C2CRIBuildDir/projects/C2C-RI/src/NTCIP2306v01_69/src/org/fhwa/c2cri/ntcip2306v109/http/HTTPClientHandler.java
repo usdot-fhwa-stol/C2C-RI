@@ -133,10 +133,10 @@ public class HTTPClientHandler implements Runnable {
     private SOAPDecoder handlerSOAPDecoder;
     
     /** The sf. */
-    private static NTCIP2306SocketFactory sf;
+    private NTCIP2306SocketFactory sf;
     
     /** The sslsf. */
-    private static NTCIP2306SSLSocketFactory sslsf;
+    private NTCIP2306SSLSocketFactory sslsf;
     
     /** The response time. */
     private long responseTime = -1;
