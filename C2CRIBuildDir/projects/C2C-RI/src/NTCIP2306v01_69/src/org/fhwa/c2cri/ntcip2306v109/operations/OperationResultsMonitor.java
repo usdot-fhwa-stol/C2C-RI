@@ -17,7 +17,7 @@ public class OperationResultsMonitor {
     private static OperationResultsMonitor thisMonitor;
     
     /** The this observer. */
-    private static OperationResultsObserver thisObserver = null;
+    private OperationResultsObserver thisObserver = null;
     
     
     /**

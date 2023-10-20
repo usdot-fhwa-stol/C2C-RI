@@ -46,7 +46,7 @@ public class TestConfigurationList {
     private static TestConfigurationList thisInstance = new TestConfigurationList();
     
     /** The directory. */
-    private static File directory;
+    private File directory;
     
     /** The executor. */
     final ExecutorService executor = Executors.newCachedThreadPool();
@@ -323,13 +323,13 @@ public class TestConfigurationList {
             synchronized (TestConfigurationList.cfgDescriptions) {
                 initializing = true;
                 System.out.println("Getting the list of config files.");
-                String[] filenames = TestConfigurationList.directory.list(thisInstance.configFilter);  // Store a list of files in the directory
+                String[] filenames = directory.list(thisInstance.configFilter);  // Store a list of files in the directory
                 TestConfigurationList.cfgDescriptions.clear();
                 ExecutorService executor = Executors.newFixedThreadPool(NTHREDS);
                 ArrayList<Future<TestConfigurationDescription>> cfgList = new ArrayList<>();
                 System.out.println("Starting the config File Workers");
                 for (int ii = 0; ii < filenames.length; ii++) {
-                    Callable<TestConfigurationDescription> worker = new ConfigCallable(ii, TestConfigurationList.directory.getAbsolutePath(), filenames[ii]);
+                    Callable<TestConfigurationDescription> worker = new ConfigCallable(ii, directory.getAbsolutePath(), filenames[ii]);
                     Future<TestConfigurationDescription> submit = executor.submit(worker);
                     cfgList.add(submit);
                 }
@@ -382,7 +382,7 @@ public class TestConfigurationList {
                     if (!fileFound) {
                         index = TestConfigurationList.cfgDescriptions.size();
                     }
-                    Callable<TestConfigurationDescription> worker = new ConfigCallable(index, TestConfigurationList.directory.getAbsolutePath(), fileName);
+                    Callable<TestConfigurationDescription> worker = new ConfigCallable(index, directory.getAbsolutePath(), fileName);
                     Future<TestConfigurationDescription> submit = executor.submit(worker);
                     cfgList.add(submit);
                     // Now retrieve the result

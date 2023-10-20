@@ -20,7 +20,7 @@ public class MessageManager {
     private static HashMap<String, Message> messageMap;
     
     /** The parent test case. */
-    private static String parentTestCase;
+    private String parentTestCase;
     
     /** The manager. */
     private static MessageManager theManager;

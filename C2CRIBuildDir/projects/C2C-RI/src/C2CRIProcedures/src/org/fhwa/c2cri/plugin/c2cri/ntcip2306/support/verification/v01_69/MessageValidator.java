@@ -72,7 +72,7 @@ public class MessageValidator extends DefaultHandler implements ErrorHandler {
     /** Default memory usage report (false). */
     protected static final boolean DEFAULT_MEMORY_USAGE = false;
     /** Parse Error Variable (false). */
-    protected static boolean Parse_Result = false;
+    protected boolean Parse_Result = false;
     //
     // Data
     //

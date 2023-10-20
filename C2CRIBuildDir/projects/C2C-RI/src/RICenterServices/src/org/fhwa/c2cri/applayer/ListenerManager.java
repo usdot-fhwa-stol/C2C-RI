@@ -7,7 +7,6 @@ package org.fhwa.c2cri.applayer;
 import org.fhwa.c2cri.java.net.ConnectionsDirectory;
 import org.fhwa.c2cri.java.net.ConnectionInformation;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map.Entry;
 import org.enterprisepower.net.portforward.SocketAssignmentListener;
 
@@ -22,9 +21,6 @@ public class ListenerManager implements SocketAssignmentListener {
 
     /** The listener manager. */
     private static ListenerManager listenerManager;
-    
-    /** The test case id. */
-    private static String testCaseID;
     
     /** The internal to external address map. */
     private static HashMap<String,String>internalToExternalAddressMap = new HashMap();
@@ -117,7 +113,6 @@ public class ListenerManager implements SocketAssignmentListener {
      * @param testCaseID the new test case id
      */
     public void setTestCaseID(String testCaseID) {
-        this.testCaseID = testCaseID;
         ConnectionsDirectory.getInstance().setTestCaseName(testCaseID);
     }
 

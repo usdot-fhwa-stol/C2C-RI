@@ -28,7 +28,7 @@ public abstract class FormattedFileChooser
 	implements FormattedFileInterface {
 	
 	/** The default file. */
-	public static File DEFAULT_FILE = null;
+	public File DEFAULT_FILE = null;
 
 	/** The o. */
 	private transient Object o;

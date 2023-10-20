@@ -65,7 +65,7 @@ public class NTCIP2306SessionTag extends SessionTag {
     /**
      * the Service object managed by this Session
      */
-    private static NTCIP2306Controller theService;
+    private NTCIP2306Controller theService;
 
     private RIWSDL wsdlInstance;
 

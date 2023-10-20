@@ -66,7 +66,7 @@ import org.fhwa.c2cri.java.net.OverTheWireLogger;
 public class RIHttpConnection extends HttpConnection implements Connection
 {
     
-    private static LoggingOutputStream logOutputStream;
+    private LoggingOutputStream logOutputStream;
     
     /* ------------------------------------------------------------ */
     /** Constructor

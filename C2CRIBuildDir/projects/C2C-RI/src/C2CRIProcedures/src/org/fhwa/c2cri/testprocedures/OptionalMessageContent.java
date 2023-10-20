@@ -11,7 +11,7 @@ package org.fhwa.c2cri.testprocedures;
  */
 public class OptionalMessageContent {
     private static OptionalMessageContent thisInstance;
-    private static String optionalList = "";
+    private String optionalList = "";
     private OptionalMessageContent(){
     }
     

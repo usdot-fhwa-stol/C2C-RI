@@ -34,7 +34,7 @@ public class Configurator {
     protected String configName = DEFAULT_CONFIG_NAME;
     //Static because the Configurator instance gets cleared everytime between
     //test case executions.
-    protected static boolean warningMsgGiven = false;
+    protected boolean warningMsgGiven = false;
 
     protected Properties props;
 

@@ -10,8 +10,6 @@ import java.util.ArrayList;
 import javax.xml.namespace.QName;
 import org.fhwa.c2cri.ntcip2306v109.encoding.SOAPDecoder;
 import org.fhwa.c2cri.ntcip2306v109.encoding.XMLValidator;
-import org.fhwa.c2cri.tmdd.TMDDSettingsImpl;
-import org.fhwa.c2cri.utilities.RIParameters;
 
 /**
  * The Class NTCIP2306XMLValidator validates the message using the TMDD xml
@@ -75,7 +73,7 @@ public class NTCIP2306XMLValidator {
     /**
      * The schema validation errors.
      */
-    private static String schemaValidationErrors = "";
+    private String schemaValidationErrors = "";
 
     private static ArrayList<URL> schemaList = new ArrayList();
 

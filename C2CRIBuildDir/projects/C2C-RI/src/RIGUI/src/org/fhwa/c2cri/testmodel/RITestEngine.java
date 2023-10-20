@@ -123,12 +123,12 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
     /**
      * The t.
      */
-    private static Thread t;
+    private Thread t;
 
     /**
      * The etc thread1.
      */
-    private static Thread etcThread1;
+    private Thread etcThread1;
 
     /**
      * The test config.
@@ -175,7 +175,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
     private String primaryIteration = "";
     
     // reference to the last thread that provided a tag notification.
-    private static Thread lastTagThread;
+    private Thread lastTagThread;
     
     /**
      * Notify Jameleon to terminate the currently running test. Log this action.
@@ -371,7 +371,8 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
         } else {
             RIEmulation.getInstance().setEmulationEnabled(false);            
         }
-
+		
+		RILogging.setNewAppender();
         logger.configureLogging(testName, testConfigName, testDescription, checksum, emulationEnabled, reinitializeEmulation);
 
         // Remove any invalid XML characters that may exist.

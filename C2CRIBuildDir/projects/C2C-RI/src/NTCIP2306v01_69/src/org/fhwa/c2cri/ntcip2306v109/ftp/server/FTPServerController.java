@@ -6,7 +6,6 @@ package org.fhwa.c2cri.ntcip2306v109.ftp.server;
 
 import java.io.File;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,7 +13,6 @@ import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import org.apache.ftpserver.ConnectionConfigFactory;
 import org.apache.log4j.Logger;
-import org.apache.ftpserver.DataConnectionConfigurationFactory;
 import org.apache.ftpserver.FtpServer;
 import org.apache.ftpserver.FtpServerFactory;
 import org.apache.ftpserver.ftplet.Authentication;
@@ -50,8 +48,8 @@ import org.fhwa.c2cri.utilities.RIParameters;
  * @author TransCore ITS, LLC
  */
 public class FTPServerController implements Runnable{
-    private static FtpServer server;
-    private static Listener listener;
+    private FtpServer server;
+    private Listener listener;
     private RIFtplet riFtplet;
     protected static Logger log = Logger.getLogger(FTPServerController.class.getName());
     private final CountDownLatch readySignal;

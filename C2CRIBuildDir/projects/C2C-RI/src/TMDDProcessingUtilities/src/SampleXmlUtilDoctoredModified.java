@@ -75,13 +75,13 @@ public class SampleXmlUtilDoctoredModified {
     private static ArrayList<String> elementPathList = new ArrayList<String>();
     private static ArrayList<String> elementPathTypeList = new ArrayList<String>();
     private static String messageName;
-    private static String lastParent;
-    private static String lastParentType;
-    private static String messageValue;
-    private static Integer lastparentMinOccurs=-1;
-    private static Integer lastparentMaxOccurs=-1;
-    private static boolean messageValueStored;
-    private static Integer recordId=0;
+    private String lastParent;
+    private String lastParentType;
+    private String messageValue;
+    private Integer lastparentMinOccurs=-1;
+    private Integer lastparentMaxOccurs=-1;
+    private boolean messageValueStored;
+    private Integer recordId=0;
 
     private SampleXmlUtilDoctoredModified(boolean soapEnc) {
         _soapEnc = soapEnc;
@@ -105,32 +105,32 @@ public class SampleXmlUtilDoctoredModified {
         messageValue = "";
     }
 
-    public static String createSampleForType(SchemaType sType) {
-        messageName = sType.getDocumentElementName().getLocalPart();
-        lastParentType = messageName;
-        lastParent = messageName;
-        XmlObject object = XmlObject.Factory.newInstance();
-        XmlCursor cursor = object.newCursor();
-        // Skip the document node
-        cursor.toNextToken();
-        // Using the type and the cursor, call the utility method to get a
-        // sample XML payload for that Schema element
-        new SampleXmlUtilDoctoredModified(false).createSampleForType(sType, cursor);
-        lastParentType = "";
-        lastParent = "";
-        elementPathList.clear();
-        elementPathTypeList.clear();
-        // Cursor now contains the sample payload
-        // Pretty print the result.  Note that the cursor is positioned at the
-        // end of the doc so we use the original xml object that the cursor was
-        // created upon to do the xmlText() against.
-        XmlOptions options = new XmlOptions();
-        options.put(XmlOptions.SAVE_PRETTY_PRINT);
-        options.put(XmlOptions.SAVE_PRETTY_PRINT_INDENT, 2);
-        options.put(XmlOptions.SAVE_AGGRESSIVE_NAMESPACES);
-        String result = object.xmlText(options);
-        return result;
-    }
+//    public static String createSampleForType(SchemaType sType) {
+//        messageName = sType.getDocumentElementName().getLocalPart();
+//        lastParentType = messageName;
+//        lastParent = messageName;
+//        XmlObject object = XmlObject.Factory.newInstance();
+//        XmlCursor cursor = object.newCursor();
+//        // Skip the document node
+//        cursor.toNextToken();
+//        // Using the type and the cursor, call the utility method to get a
+//        // sample XML payload for that Schema element
+//        new SampleXmlUtilDoctoredModified(false).createSampleForType(sType, cursor);
+//        lastParentType = "";
+//        lastParent = "";
+//        elementPathList.clear();
+//        elementPathTypeList.clear();
+//        // Cursor now contains the sample payload
+//        // Pretty print the result.  Note that the cursor is positioned at the
+//        // end of the doc so we use the original xml object that the cursor was
+//        // created upon to do the xmlText() against.
+//        XmlOptions options = new XmlOptions();
+//        options.put(XmlOptions.SAVE_PRETTY_PRINT);
+//        options.put(XmlOptions.SAVE_PRETTY_PRINT_INDENT, 2);
+//        options.put(XmlOptions.SAVE_AGGRESSIVE_NAMESPACES);
+//        String result = object.xmlText(options);
+//        return result;
+//    }
     Random _picker = new Random(1);
 
     /**
