@@ -31,15 +31,10 @@ jobs:
         Remove-Item $outputFile
         $env:PATH += ";C:\sonarscanner\bin"
       shell: powershell
-    - name: Install SonarQube Scanner for MSBuild (if needed)
-      run: |
-        # If your project requires the SonarScanner for MSBuild, download and install it here.
-        # You can find the download link on the SonarQube website.
-      shell: powershell
 
     - name: Download and Install SonarQube
       run: |
-        $url = "https://downloads.sonarqube.org/sonarqube-9.6.0.41062.zip"
+        $url = "https://www.sonarsource.com/products/sonarqube/downloads/success-download-community-edition/"
         $outputFile = "sonarqube.zip"
         Invoke-WebRequest -Uri $url -OutFile $outputFile
         Expand-Archive -Path $outputFile -DestinationPath C:\sonarqube
