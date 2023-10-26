@@ -46,8 +46,6 @@ jobs:
         Remove-Item $outputFile
         $env:PATH += ";C:\sonarqube\bin\windows-x86-64"
       shell: powershell
-    
-      shell: powershell
 
     - name: Build C2CRI
       run: |
