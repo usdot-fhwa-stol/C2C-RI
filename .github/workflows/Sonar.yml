@@ -32,15 +32,15 @@ jobs:
         $env:PATH += ";C:\sonarscanner\bin"
       shell: powershell
 
-    - name: Download and Install SonarQube
-      run: |
-        $url = "https://www.sonarsource.com/products/sonarqube/downloads/success-download-community-edition/"
-        $outputFile = "sonarqube.zip"
-        Invoke-WebRequest -Uri $url -OutFile $outputFile
-        Expand-Archive -Path $outputFile -DestinationPath C:\sonarqube
-        Remove-Item $outputFile
-        $env:PATH += ";C:\sonarqube\bin\windows-x86-64"
-      shell: powershell
+    # - name: Download and Install SonarQube
+    #   run: |
+    #     $url = "https://www.sonarsource.com/products/sonarqube/downloads/success-download-community-edition/"
+    #     $outputFile = "sonarqube.zip"
+    #     Invoke-WebRequest -Uri $url -OutFile $outputFile
+    #     Expand-Archive -Path $outputFile -DestinationPath C:\sonarqube
+    #     Remove-Item $outputFile
+    #     $env:PATH += ";C:\sonarqube\bin\windows-x86-64"
+    #   shell: powershell
 
     - name: Build C2CRI
       run: |
