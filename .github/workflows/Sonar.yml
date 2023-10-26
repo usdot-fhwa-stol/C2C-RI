@@ -22,15 +22,15 @@ jobs:
         distribution: 'temurin'
 
 
-    - name: Install SonarQube Scanner
+    - name: Download SonarScanner
       run: |
-        # Download and extract SonarScanner 4.7
-        curl -Lo sonarscanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-windows.zip
-        Expand-Archive sonarscanner.zip -DestinationPath C:\sonarscanner
-        Remove-Item sonarscanner.zip
+        $url = "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-windows.zip"
+        $outputFile = "sonarscanner.zip"
+        Invoke-WebRequest -Uri $url -OutFile $outputFile
+        Expand-Archive $outputFile -DestinationPath C:\sonarscanner
+        Remove-Item $outputFile
         $env:PATH += ";C:\sonarscanner\bin"
       shell: powershell
-
     - name: Install SonarQube Scanner for MSBuild (if needed)
       run: |
         # If your project requires the SonarScanner for MSBuild, download and install it here.
