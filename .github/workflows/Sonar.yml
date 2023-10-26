@@ -1,0 +1,59 @@
+name: SonarQube Analysis
+
+on:
+  push:
+    branches:
+      - feature/sonar_cloud
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    - name: Set up JDK 11
+      uses: actions/setup-java@v2
+      with:
+        java-version: 11
+
+    - name: Install SonarQube Scanner
+      run: |
+        # Download and extract SonarScanner 4.7
+        curl -Lo sonarscanner.zip https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-windows.zip
+        Expand-Archive sonarscanner.zip -DestinationPath C:\sonarscanner
+        Remove-Item sonarscanner.zip
+        $env:PATH += ";C:\sonarscanner\bin"
+      shell: powershell
+
+    - name: Install SonarQube Scanner for MSBuild (if needed)
+      run: |
+        # If your project requires the SonarScanner for MSBuild, download and install it here.
+        # You can find the download link on the SonarQube website.
+      shell: powershell
+
+    - name: Install SonarQube
+      run: |
+        # Download and install SonarQube 9.6 (adjust the download link)
+        curl -Lo sonarqube.zip https://downloads.sonarqube.org/sonarqube-9.6.0.41062.zip
+        Expand-Archive sonarqube.zip -DestinationPath C:\sonarqube
+        Remove-Item sonarqube.zip
+        $env:PATH += ";C:\sonarqube\bin\windows-x86-64"
+        Start-Process -NoNewWindow -FilePath "C:\sonarqube\bin\windows-x86-64\StartSonar.bat"
+        # Wait for SonarQube to start (you may need to adjust the waiting time)
+        Start-Sleep -Seconds 30
+      shell: powershell
+
+    - name: Build C2CRI
+      run: |
+        cd $GITHUB_WORKSPACE/C2CRIBuildDir/buildfiles/
+        buildRIcode.bat
+        build.bat
+
+    - name: SonarQube Analysis
+      run: |
+        sonar-scanner -D"sonar.projectKey=RIGUI" -D"sonar.sources=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\src" -D"sonar.java.binaries=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\build\classes" -D"sonar.organization=usdot-fhwa-stol" -D"sonar.host.url=https://sonarcloud.io" -D"sonar.projectBaseDir=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI"
+      shell: powershell
