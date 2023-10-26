@@ -37,16 +37,16 @@ jobs:
         # You can find the download link on the SonarQube website.
       shell: powershell
 
-    - name: Install SonarQube
+    - name: Download and Install SonarQube
       run: |
-        # Download and install SonarQube 9.6 (adjust the download link)
-        curl -Lo sonarqube.zip https://downloads.sonarqube.org/sonarqube-9.6.0.41062.zip
-        Expand-Archive sonarqube.zip -DestinationPath C:\sonarqube
-        Remove-Item sonarqube.zip
+        $url = "https://downloads.sonarqube.org/sonarqube-9.6.0.41062.zip"
+        $outputFile = "sonarqube.zip"
+        Invoke-WebRequest -Uri $url -OutFile $outputFile
+        Expand-Archive -Path $outputFile -DestinationPath C:\sonarqube
+        Remove-Item $outputFile
         $env:PATH += ";C:\sonarqube\bin\windows-x86-64"
-        Start-Process -NoNewWindow -FilePath "C:\sonarqube\bin\windows-x86-64\StartSonar.bat"
-        # Wait for SonarQube to start (you may need to adjust the waiting time)
-        Start-Sleep -Seconds 30
+      shell: powershell
+    
       shell: powershell
 
     - name: Build C2CRI
