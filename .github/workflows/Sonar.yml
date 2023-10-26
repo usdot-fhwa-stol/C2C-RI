@@ -41,6 +41,12 @@ jobs:
     #     Remove-Item $outputFile
     #     $env:PATH += ";C:\sonarqube\bin\windows-x86-64"
     #   shell: powershell
+    - name: List Repository Contents
+      run: |
+        ls $GITHUB_WORKSPACE
+        pwd
+      shell: bash
+      
 
     - name: Build C2CRI
       run: |
