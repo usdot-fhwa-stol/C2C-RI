@@ -50,7 +50,7 @@ jobs:
 
     - name: Build C2CRI
       run: |
-        cd $GITHUB_WORKSPACE/C2CRIBuildDir/buildfiles/
+        cd /d/a/c2c-ri/c2c-ri/C2CRIBuildDir/buildfiles
         buildRIcode.bat
         build.bat
 
