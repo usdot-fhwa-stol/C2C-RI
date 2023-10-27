@@ -20,6 +20,7 @@ jobs:
       with:
         java-version: 11
         distribution: 'temurin'
+
     - name: Download SonarScanner
       run: |
         $url = "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-windows.zip"
@@ -30,22 +31,16 @@ jobs:
         $env:PATH += ";C:\sonarscanner\bin"
       shell: powershell
 
-    # - name: Download and Install SonarQube
-    #   run: |
-    #     $url = "https://www.sonarsource.com/products/sonarqube/downloads/success-download-community-edition/"
-    #     $outputFile = "sonarqube.zip"
-    #     Invoke-WebRequest -Uri $url -OutFile $outputFile
-    #     Expand-Archive -Path $outputFile -DestinationPath C:\sonarqube
-    #     Remove-Item $outputFile
-    #     $env:PATH += ";C:\sonarqube\bin\windows-x86-64"
-    #   shell: powershell
-    - name: List Repository Contents
+    - name: Set up Environment
       run: |
-        ls $GITHUB_WORKSPACE
-        pwd
         cd $GITHUB_WORKSPACE/C2CRIBuildDir/buildfiles
+      shell: powershell
+
+    - name: Build C2CRI
+      run: |
         buildRIcode.bat
-      shell: bash
+      shell: powershell
+
     - name: SonarQube Analysis
       run: |
         sonar-scanner -D"sonar.projectKey=RIGUI" -D"sonar.sources=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\src" -D"sonar.java.binaries=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\build\classes" -D"sonar.organization=usdot-fhwa-stol" -D"sonar.host.url=https://sonarcloud.io" -D"sonar.projectBaseDir=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI"
