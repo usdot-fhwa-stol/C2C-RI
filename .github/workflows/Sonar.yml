@@ -20,8 +20,6 @@ jobs:
       with:
         java-version: 11
         distribution: 'temurin'
-
-
     - name: Download SonarScanner
       run: |
         $url = "https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-windows.zip"
@@ -45,15 +43,9 @@ jobs:
       run: |
         ls $GITHUB_WORKSPACE
         pwd
-      shell: bash
-      
-
-    - name: Build C2CRI
-      run: |
-        cd /d/a/c2c-ri/c2c-ri/C2CRIBuildDir/buildfiles
+        cd $GITHUB_WORKSPACE/C2CRIBuildDir/buildfiles
         buildRIcode.bat
-        build.bat
-
+      shell: bash
     - name: SonarQube Analysis
       run: |
         sonar-scanner -D"sonar.projectKey=RIGUI" -D"sonar.sources=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\src" -D"sonar.java.binaries=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\build\classes" -D"sonar.organization=usdot-fhwa-stol" -D"sonar.host.url=https://sonarcloud.io" -D"sonar.projectBaseDir=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI"
