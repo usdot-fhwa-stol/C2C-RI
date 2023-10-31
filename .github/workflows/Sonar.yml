@@ -39,7 +39,7 @@ jobs:
 
     - name: SonarQube Analysis
       run: |
-        \a\c2c-ri\c2c-ri\C2CRIBuildDir\sonarscanner\bin
+        cd \a\c2c-ri\c2c-ri\C2CRIBuildDir\sonarscanner\bin
         dir
         sonar-scanner -D"sonar.projectKey=usdot-fhwa-stol_c2cri-rigui" -D"sonar.sources=\a\c2c-ri\c2c-ri\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\src" -D"sonar.java.binaries=\a\c2c-ri\c2c-ri\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\build\classes" -D"sonar.organization=usdot-fhwa-stol" -D"sonar.host.url=https://sonarcloud.io" -D"sonar.projectBaseDir=\a\c2c-ri\c2c-ri\C2CRIBuildDir\projects\C2C-RI\src\RIGUI"
       shell: powershell
