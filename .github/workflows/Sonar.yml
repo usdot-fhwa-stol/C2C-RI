@@ -32,7 +32,7 @@ jobs:
     - name: Build C2CRI
       run: |
         dir
-        cd C2CRIBuildDir
+        cd \a\c2c-ri\c2c-ri\C2CRIBuildDir\buildfiles
         buildRICode
       shell: powershell
     - name: SonarQube Analysis
