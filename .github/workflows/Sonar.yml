@@ -40,5 +40,6 @@ jobs:
     - name: SonarQube Analysis
       run: |
         cd \a\c2c-ri\c2c-ri\C2CRIBuildDir\projects\C2C-RI\src\RIGUI
-        Start-Process -Wait -FilePath .\a\c2c-ri\c2c-ri\C2CRIBuildDir\sonar-scanner-4.7.0.2747-windows\bin\sonar-scanner.bat -D"sonar.projectKey=usdot-fhwa-stol_c2cri-rigui" -D"sonar.sources=\a\c2c-ri\c2c-ri\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\src" -D"sonar.java.binaries=\a\c2c-ri\c2c-ri\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\build\classes" -D"sonar.organization=usdot-fhwa-stol" -D"sonar.host.url=https://sonarcloud.io" -D"sonar.projectBaseDir=\a\c2c-ri\c2c-ri\C2CRIBuildDir\projects\C2C-RI\src\RIGUI"
+        Start-Process -Wait -FilePath .\a\c2c-ri\c2c-ri\C2CRIBuildDir\sonar-scanner-4.7.0.2747-windows\bin\sonar-scanner.bat --ArgumentList @("-Dsonar.projectKey=usdot-fhwa-stol_c2cri-rigui", "-Dsonar.sources='\a\c2c-ri\c2c-ri\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\src'", "-Dsonar.java.binaries='\a\c2c-ri\c2c-ri\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\build\classes'", "-Dsonar.organization=usdot-fhwa-stol", "-Dsonar.host.url=https://sonarcloud.io", "-Dsonar.projectBaseDir='\a\c2c-ri\c2c-ri\C2CRIBuildDir\projects\C2C-RI\src\RIGUI'")
       shell: powershell
+    
