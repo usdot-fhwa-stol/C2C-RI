@@ -28,7 +28,7 @@ jobs:
         Expand-Archive $outputFile -DestinationPath \a\c2c-ri\c2c-ri\C2CRIBuildDir\
         Remove-Item $outputFile
         $env:PATH += ";\a\c2c-ri\c2c-ri\C2CRIBuildDir\sonar-scanner-cli-5.0.1.3006-windows\bin"
-        cd \a\c2c-ri\c2c-ri\C2CRIBuildDir\sonar-scanner-cli-5.0.1.3006-windows\
+        cd \a\c2c-ri\c2c-ri\C2CRIBuildDir\
         dir
       shell: powershell
 
