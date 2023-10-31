@@ -31,10 +31,10 @@ jobs:
       shell: powershell
     - name: Build C2CRI
       run: |
-        $batchFilePath = "$GITHUB_WORKSPACE/C2CRIBuildDir/buildfiles/buildRIcode.bat"
-        Start-Process -FilePath $batchFilePath -NoNewWindow -Wait
+        dir
+        cd C2CRIBuildDir
+        buildRICode
       shell: powershell
-
     - name: SonarQube Analysis
       run: |
         sonar-scanner -D"sonar.projectKey=RIGUI" -D"sonar.sources=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\src" -D"sonar.java.binaries=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI\build\classes" -D"sonar.organization=usdot-fhwa-stol" -D"sonar.host.url=https://sonarcloud.io" -D"sonar.projectBaseDir=$GITHUB_WORKSPACE\C2CRIBuildDir\projects\C2C-RI\src\RIGUI"
