@@ -29,12 +29,20 @@ jobs:
         Remove-Item $outputFile
         $env:PATH += ";C:\sonarscanner\bin"
       shell: powershell
+    - name: Find Sonar Scanner Path
+      id: find-sonar-scanner
+      run: |
+        $sonarScannerPath = Get-Command sonar-scanner.bat | Select-Object -ExpandProperty Source
+        echo "::set-output name=sonar_scanner_path::$sonarScannerPath"
+      shell: powershell
+          
     - name: Build C2CRI
       run: |
         cd \a\c2c-ri\c2c-ri\C2CRIBuildDir\buildfiles
         dir
         Start-Process -Wait -FilePath .\buildRICode.bat
       shell: powershell
+
     - name: SonarQube Analysis
       run: |
         cd C:\sonarscanner\bin
