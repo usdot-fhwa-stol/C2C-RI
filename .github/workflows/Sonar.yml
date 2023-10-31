@@ -31,9 +31,9 @@ jobs:
       shell: powershell
     - name: Build C2CRI
       run: |
-        dir
         cd \a\c2c-ri\c2c-ri\C2CRIBuildDir\buildfiles
-        buildRICode
+        dir
+        Start-Process -Wait -FilePath .\buildRICode.bat
       shell: powershell
     - name: SonarQube Analysis
       run: |
