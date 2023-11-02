@@ -129,4 +129,4 @@ Step 11. Select '**File->Exit**' command from the C2C RI MENU BAR.  The C2C RI A
 This project is licensed under the apache-2.0 License.
 
 ### Contact Information
-To initiate technical support, contact c2crisupport@transcore.com. Provide contact information and the C2C RI technical support team will contact you so they can understand the issue(s) you are facing. 
+To initiate technical support, contact CAVSupportServices@dot.gov. Provide contact information and the C2C RI technical support team will contact you so they can understand the issue(s) you are facing. 
