@@ -28,7 +28,6 @@ import org.apache.log4j.FileAppender;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.OutputKeys;
@@ -498,8 +497,6 @@ public class RILogging implements Serializable {
 
         try {
 			 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-			factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
 			DocumentBuilder builder = null;
 			Document document = null;
             builder = factory.newDocumentBuilder();

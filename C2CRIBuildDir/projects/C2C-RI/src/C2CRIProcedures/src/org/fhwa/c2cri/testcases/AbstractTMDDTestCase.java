@@ -26,7 +26,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import javax.wsdl.BindingOperation;
-import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.MimeHeaders;
@@ -1813,8 +1812,6 @@ public abstract class AbstractTMDDTestCase implements TestCase {
                         SOAPElement thisElement = (SOAPElement) theElement;
 
                         TransformerFactory tf = TransformerFactory.newInstance();
-						tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-						tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
                         Transformer trans = tf.newTransformer();
                         trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 
@@ -1833,8 +1830,6 @@ public abstract class AbstractTMDDTestCase implements TestCase {
                     Object thisElement = childElementIterator.next();
 
                     TransformerFactory tf = TransformerFactory.newInstance();
-					tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-					tf.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
                     Transformer trans = tf.newTransformer();
                     trans.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
 

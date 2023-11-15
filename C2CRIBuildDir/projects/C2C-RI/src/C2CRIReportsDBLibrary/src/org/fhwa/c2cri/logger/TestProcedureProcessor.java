@@ -16,7 +16,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import javax.swing.JOptionPane;
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -314,8 +313,6 @@ public class TestProcedureProcessor {
             IOException, XPathExpressionException, XPathFactoryConfigurationException {
         // Standard of reading a XML file
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-		factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         factory.setNamespaceAware(true);
         DocumentBuilder builder;
         Document doc = null;
@@ -358,8 +355,6 @@ public class TestProcedureProcessor {
             IOException, XPathExpressionException, XPathFactoryConfigurationException {
         // Standard of reading a XML file
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-		factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         factory.setNamespaceAware(true);
         DocumentBuilder builder;
         Document doc = null;
@@ -458,8 +453,6 @@ public class TestProcedureProcessor {
 
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
 
             // Setup a new eventReader
             eventReader = inputFactory.createXMLEventReader(fileURL.openStream());
@@ -574,8 +567,6 @@ public class TestProcedureProcessor {
 
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
 
             // Setup a new eventReader
             eventReader = inputFactory.createXMLEventReader(fileURL.openStream());
@@ -920,8 +911,6 @@ public class TestProcedureProcessor {
 
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
 
             // Setup a new eventReader
             eventReader = inputFactory.createXMLEventReader(fileURL.openStream());
@@ -1194,8 +1183,6 @@ public class TestProcedureProcessor {
 
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
 
             // Setup a new eventReader
             eventReader = inputFactory.createXMLEventReader(fileURL.openStream());

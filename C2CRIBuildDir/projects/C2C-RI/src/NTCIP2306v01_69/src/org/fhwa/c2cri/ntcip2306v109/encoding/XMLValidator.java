@@ -217,8 +217,6 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
         try {
             // Create SchemaFactory and configure
             SchemaFactory factory = SchemaFactory.newInstance(schemaLanguage);
-			factory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			factory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             factory.setErrorHandler(this);
 
             try {
@@ -571,8 +569,6 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
 
             //get a new instance of parser
             SAXParser sp = spf.newSAXParser();
-			sp.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			sp.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             System.out.println("Parser is validating " + sp.isValidating());
             System.out.println("Parser is namespaceaware " + sp.isNamespaceAware());
             //parse the file and also register this class for call backs

@@ -195,7 +195,7 @@ public class TMDDMessageDetailGenerator {
 //            if (msgName.equals("cCTVInventoryMsg")){
 //                System.out.println("Message Match");
    //         String result = SampleXmlUtilMessageAnalysis.createSampleForType(elem);
-             String result = SampleXmlUtilDoctored.createSampleForType(elem);
+ //            String result = SampleXmlUtilDoctored.createSampleForType(elem);
 //             System.out.println(result);
     //         addConcept(msgName, result, false, true, false, true);
 //            }

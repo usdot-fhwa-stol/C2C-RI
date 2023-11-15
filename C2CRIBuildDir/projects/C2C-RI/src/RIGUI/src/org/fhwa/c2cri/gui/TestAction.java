@@ -19,7 +19,6 @@ import org.fhwa.c2cri.reports.ScriptEvent;
 import org.fhwa.c2cri.reports.UserEvent;
 import javax.xml.stream.events.Attribute;
 import java.util.Iterator;
-import javax.xml.XMLConstants;
 
 /**
  *
@@ -386,8 +385,6 @@ public class TestAction {
         try {
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             // Setup a new eventReader
             InputStream in = new ByteArrayInputStream(rawEvent.getBytes());
             XMLEventReader eventReader = inputFactory.createXMLEventReader(in);
