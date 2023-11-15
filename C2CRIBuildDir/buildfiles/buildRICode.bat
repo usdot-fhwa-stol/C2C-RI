@@ -5,16 +5,6 @@ ECHO OFF
 CLS
 Set CURRENTDIR=%~dp0
 
-java -version >nul 2>nul
-if %errorlevel% NEQ 0 (
-    @echo Java not found in path.
-    GOTO OOPS
-)
-ant -version >nul 2>nul
-if %errorlevel% NEQ 0 (
-    @echo Ant not found in path.
-    GOTO OOPS
-)
 Set PATH=%PATH%;c:\program files (x86)\launch4j\;c:\program files (x86)\nsis\
 ECHO.
 
