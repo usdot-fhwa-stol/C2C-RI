@@ -162,8 +162,6 @@ public class GenEnveloped {
 			XMLStreamWriter xmlStreamWriter = new LogFileStreamWriter(baos, "UTF-8");
 
 			XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
-			xmlInputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			xmlInputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
 			XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(sourceDocument);
 
 			XmlReaderToWriter.writeAll(xmlStreamReader, xmlStreamWriter);

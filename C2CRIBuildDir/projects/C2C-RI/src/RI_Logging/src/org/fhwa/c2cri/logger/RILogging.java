@@ -18,9 +18,11 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import org.apache.log4j.Logger;
 import org.apache.log4j.FileAppender;
 import java.text.DateFormat;
@@ -136,7 +138,6 @@ public class RILogging implements Serializable {
     public void configureLogging(String logFileName, String configFileName, String logDescription, String checkSum, boolean enableEmulation, boolean reinitializeEmulation) {
 
         try {
-
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             Date date = new Date();
 
@@ -390,43 +391,55 @@ public class RILogging implements Serializable {
             }
             out.write("</eventSet>\n");
             out.write("</logFile>\n");
-             
-            // Delete the original xml file.
-            File oldFileName = new File(fname);
-            String oldFileNamePath = oldFileName.getAbsolutePath();
-            if (oldFileName.delete()) {
-                File newFileName = new File(fname + ".tmp");
-                
-                // Create a new file from the temporary file with the original file name.
-                // This file will be indented for easier readability.
-                boolean result = prettyPrint(newFileName.getAbsolutePath(), oldFileNamePath);
-                
-                // If sucdessful delete the temporary file.
-                if (result) {
-                    System.out.println("Rename Successfull = " + newFileName.renameTo(oldFileName));
-					try
-					{
-						Files.delete(Paths.get(fname + ".tmp"));
-					}
-					catch (IOException oEx)
-					{
-						LogManager.getLogger(RILogging.class).error(oEx, oEx);
-					}
-                    successfulResult = true;
-                } else {
-                    successfulResult = false;
-                    javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\n Was not able to successfully complete the pretty print process.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                System.out.println("Could not Delete File.");
-                javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\nCould not perform delete of old " + fname + " file.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } 
+            catch (Throwable e) 
+            {
+                System.err.println("*** exception ***");
+                StringWriter sw = new StringWriter();
+                e.printStackTrace(new PrintWriter(sw));
+                javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\n" + e.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Throwable e) {
-            System.err.println("*** exception ***");
-            StringWriter sw = new StringWriter();
-            e.printStackTrace(new PrintWriter(sw));
-            javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\n" + e.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
+             
+            try
+            {
+                // Delete the original xml file.
+                Path oOldPath = Paths.get(fname);
+                if (Files.deleteIfExists(oOldPath)) 
+                {
+                    Path oNewPath = Paths.get(fname + ".tmp");
+                    // Create a new file from the temporary file with the original file name.
+                    // This file will be indented for easier readability.
+                    boolean result = prettyPrint(oNewPath.toString(), oOldPath.toString());
+
+                    // If sucdessful delete the temporary file.
+                    if (result) 
+                    {
+                        Files.move(oNewPath, oOldPath, StandardCopyOption.REPLACE_EXISTING);
+                        try
+                        {
+                            Files.delete(oNewPath);
+                        }
+                        catch (IOException oEx)
+                        {
+                            LogManager.getLogger(RILogging.class).error(oEx, oEx);
+                        }
+                        successfulResult = true;
+                    } else {
+                        successfulResult = false;
+                        javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\n Was not able to successfully complete the pretty print process.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    System.out.println("Could not Delete File.");
+                    javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\nCould not perform delete of old " + fname + " file.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            catch (IOException oIoEx)
+            {
+                StringWriter sw = new StringWriter();
+                oIoEx.printStackTrace(new PrintWriter(sw));
+                javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\n" + oIoEx.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+
         return successfulResult;
     }
 
@@ -446,8 +459,6 @@ public class RILogging implements Serializable {
             Source xmlInputSource = new StreamSource(new File(xmlInput));
             StreamResult xmlOutput = new StreamResult(new File(xmlOutputFile));
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
-			transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
             Transformer transformer = transformerFactory.newTransformer();
             transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
