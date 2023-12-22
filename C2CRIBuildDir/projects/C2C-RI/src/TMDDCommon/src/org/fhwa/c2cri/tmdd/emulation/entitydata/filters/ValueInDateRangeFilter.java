@@ -148,7 +148,16 @@ public class ValueInDateRangeFilter implements MultipleElementDataFilter {
         
         String preparedDate = date.substring(0, 4)+"-"+date.substring(4, 6)+"-"+date.substring(6,8);
         String preparedTime = time==null?defaultTime:time.substring(0, 2)+":"+time.substring(2, 4)+":"+time.substring(4, 6)+"."+(time.length()>6?String.format("%1$-4s",time.substring(6)).replace(' ', '0'):defaultSubSeconds);
-        String preparedZone = offset == null?defaultOffset:offset.substring(0,3)+":"+offset.substring(3);
+        String preparedZone = defaultOffset;
+        if (offset != null)
+        {
+            preparedZone = offset;
+            if (!preparedZone.startsWith("-") || !preparedZone.startsWith("+"))
+                preparedZone = "+" + preparedZone;
+            if (!preparedZone.contains(":"))
+                preparedZone = preparedZone.substring(0,3) + ":" + preparedZone.substring(3);
+        }
+
         return ZonedDateTime.parse(preparedDate+"T"+preparedTime+  preparedZone+"[UTC]");
     }
     
