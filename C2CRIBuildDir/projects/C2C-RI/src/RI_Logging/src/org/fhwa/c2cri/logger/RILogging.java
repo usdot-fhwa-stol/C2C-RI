@@ -414,14 +414,6 @@ public class RILogging implements Serializable {
                     if (result) 
                     {
                         Files.move(oNewPath, oOldPath, StandardCopyOption.REPLACE_EXISTING);
-                        try
-                        {
-                            Files.delete(oNewPath);
-                        }
-                        catch (IOException oEx)
-                        {
-                            LogManager.getLogger(RILogging.class).error(oEx, oEx);
-                        }
                         successfulResult = true;
                     } else {
                         successfulResult = false;
