@@ -86,6 +86,8 @@ public class EntityControlRequestStatus {
                 theResult.setLastRevisedDate(rs.getString("LastRevisedDate"));
                 theResult.setLastRevisedTime(rs.getString("LastRevisedTime"));
                 theResult.setLastRevisedOffset(rs.getString("LastRevisedOffset"));
+                if (theResult.getLastRevisedOffset().compareToIgnoreCase("Z") == 0)
+                    theResult.setLastRevisedOffset("00:00");
 
                 rs.close();
                 stmt.close();

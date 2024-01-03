@@ -223,7 +223,7 @@ public class TMDDMessageDetailGeneratorModified {
    //         String result = SampleXmlUtilMessageAnalysis.createSampleForType(elem);
              theMapper.setConcept(msgName, "message");
              theMaker.initialize();
-             String result = SampleXmlUtilDoctoredModified.createSampleForType(elem);
+//             String result = SampleXmlUtilDoctoredModified.createSampleForType(elem);
 //             System.out.println(result);
     //         addConcept(msgName, result, false, true, false, true);
 //            }

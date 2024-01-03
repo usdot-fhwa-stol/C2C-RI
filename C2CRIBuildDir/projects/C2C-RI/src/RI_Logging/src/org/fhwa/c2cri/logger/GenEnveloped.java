@@ -23,7 +23,6 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
-import javax.xml.XMLConstants;
 import javax.xml.namespace.NamespaceContext;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -162,8 +161,6 @@ public class GenEnveloped {
 			XMLStreamWriter xmlStreamWriter = new LogFileStreamWriter(baos, "UTF-8");
 
 			XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
-			xmlInputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			xmlInputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
 			XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(sourceDocument);
 
 			XmlReaderToWriter.writeAll(xmlStreamReader, xmlStreamWriter);

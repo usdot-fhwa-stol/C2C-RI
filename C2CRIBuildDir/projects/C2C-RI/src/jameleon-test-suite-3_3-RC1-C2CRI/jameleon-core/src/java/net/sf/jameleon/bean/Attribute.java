@@ -68,14 +68,21 @@ public class Attribute implements XMLable, Cloneable{
         description = new String();
         type = new String();
         required = false;
-        contextName = new String();
+        contextName = new String();  
     }
 	
 	
 	Attribute(Attribute oCopy)
 	{
-		this();
-		value = oCopy.value;
+            name = oCopy.name;
+            description = oCopy.description;
+            type = oCopy.type;
+            required = oCopy.required;
+            contextName = oCopy.contextName;
+            defaultValue = oCopy.defaultValue;
+            instanceVariable = oCopy.instanceVariable;
+            valueSet = oCopy.valueSet;
+            value = oCopy.value;
 	}
 
     /**

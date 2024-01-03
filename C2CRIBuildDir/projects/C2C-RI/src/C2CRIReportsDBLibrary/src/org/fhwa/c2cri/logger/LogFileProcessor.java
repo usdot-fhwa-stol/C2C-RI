@@ -19,7 +19,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
-import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -383,8 +382,6 @@ public class LogFileProcessor {
         
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             System.out.println("LogFileProcessor: About to Set Up Event Reader.");
             // Setup a new eventReader
             InputStream in = new FileInputStream(logFileName);
@@ -439,8 +436,6 @@ public class LogFileProcessor {
 
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             System.out.println("LogFileProcessor: About to Set Up Event Reader.");
             // Setup a new eventReader
             InputStream in = new FileInputStream(logFile);

@@ -2209,33 +2209,35 @@ public class EntityEmulationData {
                 for (int ii = 1; ii <= maxEntityIndex; ii++) {
                     String checkIndexCommand = "Select count(*) from " + entityDataType.name() + " where EntityIndex =" + ii;
                     try (Statement stmt = conn.createStatement())
-					{
-						rs = stmt.executeQuery(checkIndexCommand);
-					}
-                    if (rs.getInt(1) == 0) {
-                        if (!firstEmptyResult) {
-                            firstEmptyResult = true;
-                            firstMissingIndex = ii;
-                        }
-                    } else // Update the Index to the first missing index value
                     {
-                        if (firstEmptyResult) {
-                            String replacementString = "replace(replace(EntityElement,'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + ii + "]', 'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + firstMissingIndex + "]'),'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + ".', 'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + firstMissingIndex + "].')";
+                        rs = stmt.executeQuery(checkIndexCommand);
+                        if (rs.getInt(1) == 0) 
+                        {
+                            if (!firstEmptyResult) 
+                            {
+                                firstEmptyResult = true;
+                                firstMissingIndex = ii;
+                            }
+                        } 
+                        else // Update the Index to the first missing index value
+                        {
+                            if (firstEmptyResult) 
+                            {
+                                String replacementString = "replace(replace(EntityElement,'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + ii + "]', 'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + firstMissingIndex + "]'),'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + ".', 'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + firstMissingIndex + "].')";
 
-                            String updateEntityIndexCommand = "Update " + entityDataType.name() + " set EntityIndex = \"" + firstMissingIndex + "\", EntityElement = " + replacementString + " where EntityIndex = " + ii;
-//                            System.out.println(updateEntityIndexCommand);
-                            try (Statement stmt = conn.createStatement())
-							{
-								stmt.execute(updateEntityIndexCommand);
-							}
+                                String updateEntityIndexCommand = "Update " + entityDataType.name() + " set EntityIndex = \"" + firstMissingIndex + "\", EntityElement = " + replacementString + " where EntityIndex = " + ii;
+    //                            System.out.println(updateEntityIndexCommand);
+                                try (Statement oUpdateStmt = conn.createStatement())
+                                {
+                                        oUpdateStmt.execute(updateEntityIndexCommand);
+                                }
 
-                            conn.commit();
+                                conn.commit();
 
-                            firstMissingIndex = firstMissingIndex + 1;
-
+                                firstMissingIndex = firstMissingIndex + 1;
+                            }
                         }
                     }
-
                 }
 
             }

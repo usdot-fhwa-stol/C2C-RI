@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -246,8 +245,6 @@ public class MessageValidator extends DefaultHandler implements ErrorHandler {
 			SAXParserFactory spf = SAXParserFactory.newInstance();
             //get a new instance of parser
             SAXParser sp = spf.newSAXParser();
-			sp.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			sp.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
 
             System.out.println("MessageValidator SAXParser package: " + sp.getClass().getPackage() + "  Class Name: " + sp.getClass().getName() + " To URL: " + sp.getClass().getClassLoader().getResource(sp.getClass().getName().replace(".", "/") + ".class"));
             System.out.println("Parser is validating " + sp.isValidating());

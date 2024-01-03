@@ -9,7 +9,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.soap.MessageFactory;
@@ -106,8 +105,6 @@ public class SOAPEncoder implements NTCIP2306Encoder {
         try {
             // Load the XML text into a DOM Document
             DocumentBuilderFactory builderFactory = DocumentBuilderFactory.newInstance();
-			builderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			builderFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             builderFactory.setNamespaceAware(true);
             InputStream stream  = new ByteArrayInputStream(xmlText.getBytes());
             Document doc = builderFactory.newDocumentBuilder().parse(stream);

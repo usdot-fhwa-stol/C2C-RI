@@ -19,7 +19,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
-import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
@@ -446,8 +445,6 @@ private File outdb;
         
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             System.out.println("LogFileProcessor: About to Set Up Event Reader.");
             // Setup a new eventReader
             InputStream in = new FileInputStream(logFileName);
@@ -493,8 +490,6 @@ private File outdb;
 
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-			inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
             System.out.println("LogFileProcessor: About to Set Up Event Reader.");
             // Setup a new eventReader
             InputStream in = new FileInputStream(logFile);

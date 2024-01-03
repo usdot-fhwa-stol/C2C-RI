@@ -318,26 +318,26 @@ public class AttributeBroker {
                 if ( objValue != null) {
                     //Looks like the instance is an object.
                     if (objValue instanceof String) {
-                        if (type.isAssignableFrom(List.class)) {
+                        if (type.getName().equals(List.class.getName())) {
                             //If objvalue isn't a List, let's make it one.
                             f.set(consumer,ContextHelper.makeList(objValue));
-                        }else if (type.isAssignableFrom(Boolean.class)) {
+                        }else if (type.getName().equals(Boolean.class.getName())) {
                             f.set(consumer, Boolean.valueOf((String)objValue));
-                        }else if (type.isAssignableFrom(Byte.class)){
+                        }else if (type.getName().equals(Byte.class.getName())){
                             f.set(consumer, Byte.valueOf((String)objValue));
-                        }else if (type.isAssignableFrom(Short.class)){
+                        }else if (type.getName().equals(Short.class.getName())){
                             f.set(consumer, Short.valueOf((String)objValue));
-                        }else if (type.isAssignableFrom(Character.class)){
+                        }else if (type.getName().equals(Character.class.getName())){
                             f.set(consumer, new Character(((String)objValue).charAt(0)));
-                        }else if (type.isAssignableFrom(Integer.class)){
+                        }else if (type.getName().equals(Integer.class.getName())){
                             f.set(consumer, Integer.valueOf((String)objValue));
-                        }else if (type.isAssignableFrom(Long.class)){
+                        }else if (type.getName().equals(Long.class.getName())){
                             f.set(consumer, Long.valueOf((String)objValue));
-                        }else if (type.isAssignableFrom(Float.class)){
+                        }else if (type.getName().equals(Float.class.getName())){
                             f.set(consumer, Float.valueOf((String)objValue));
-                        }else if (type.isAssignableFrom(Double.class)){
+                        }else if (type.getName().equals(Double.class.getName())){
                             f.set(consumer, Double.valueOf((String)objValue));
-                        }else if (type.isAssignableFrom(File.class)){
+                        }else if (type.getName().equals(File.class.getName())){
                             f.set(consumer, new File((String)objValue));
                         }else{
                             f.set(consumer, objValue);

@@ -11,7 +11,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import javax.xml.XMLConstants;
 import javax.xml.stream.XMLEventReader;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.events.EndElement;
@@ -77,8 +76,6 @@ public class NRTMMatcher {
 
         // First create a new XMLInputFactory
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-		inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_DTD, "");
-		inputFactory.setProperty(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         // Setup a new eventReader
         InputStream in = new FileInputStream(logFile);
         eventReader = inputFactory.createXMLEventReader(in);
