@@ -177,9 +177,12 @@ public class JameleonUtility {
      * @param f The directory/file to delete.
      */
     public static void deleteDirStructure(File f){
-        if (f.isFile() || f.list().length == 0){
+        if (f.isFile() || f.list().length == 0)
+        {
             if (!f.delete())
-				LogManager.getLogger(JameleonUtility.class).error("Failed to delete " + f.getAbsolutePath());
+            {
+                LogManager.getLogger(JameleonUtility.class).error("Failed to delete " + f.getAbsolutePath());
+            }
         }else if (f.isDirectory()){
             File[] files = f.listFiles();
             for (int i = 0; i < files.length; i++){
