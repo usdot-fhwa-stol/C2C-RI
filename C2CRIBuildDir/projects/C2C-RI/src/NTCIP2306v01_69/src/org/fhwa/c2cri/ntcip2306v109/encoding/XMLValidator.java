@@ -870,7 +870,7 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
      * @param parseResult the new parses the result
      */
     private void setParseResult(boolean parseResult) {
-        parseResult = parseResult;
+        this.parseResult = parseResult;
     }
 
     /**
