@@ -220,16 +220,31 @@ public class RILogging implements Serializable {
                 Files.deleteIfExists(out);
             }
         } catch (Exception ex) {
-            StringWriter sw = new StringWriter();
-            ex.printStackTrace(new PrintWriter(sw));
-            javax.swing.JOptionPane.showMessageDialog(null, "Error Signing the Log File:\n" + ex.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+            
+            try (StringWriter sw = new StringWriter(); 
+                PrintWriter oPw = new PrintWriter(sw))
+            {
+                ex.printStackTrace(oPw);
+                javax.swing.JOptionPane.showMessageDialog(null, "Error Signing the Log File:\n" + ex.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+            catch (Exception oEx)
+            {
+                log.debug(oEx, oEx);
+            }
         } catch (Error ex){
-            StringWriter sw = new StringWriter();
-            ex.printStackTrace(new PrintWriter(sw));
-            javax.swing.JOptionPane.showMessageDialog(null, "Error Signing the Log File:\n" + ex.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            javax.swing.JOptionPane.showMessageDialog(null,"The Application can not recover from this error and will be shutdown.  \nContact the Application Support team for assistance in recovering the Test Log file.","Error",javax.swing.JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+            try (StringWriter sw = new StringWriter(); 
+                PrintWriter oPw = new PrintWriter(sw))
+            {
+                ex.printStackTrace(oPw);
+                javax.swing.JOptionPane.showMessageDialog(null, "Error Signing the Log File:\n" + ex.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(null,"The Application can not recover from this error and will be shutdown.  \nContact the Application Support team for assistance in recovering the Test Log file.","Error",javax.swing.JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+            catch (Exception oEx)
+            {
+                log.debug(oEx, oEx);
+            }
             System.exit(1);            
         } finally {
             TestLogList.getInstance().resumeTestLogListing();
