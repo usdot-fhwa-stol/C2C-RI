@@ -415,20 +415,19 @@ public class ExecuteTestCaseSeparateVMTask extends Task {
         exe.setClasspath(command.getClasspath());
         exe.setSystemProperties(command.getSystemProperties());
         exe.setTimeout(timeout);
-        if (out != null) {
-            try {
-                outStream = 
-                    new PrintStream(new FileOutputStream(out.getAbsolutePath(),
-                                                         append));
+        if (out != null) 
+        {
+            try (PrintStream oLocalPS = new PrintStream(new FileOutputStream(out.getAbsolutePath(), append))) 
+            {
+                outStream = oLocalPS;
                 exe.execute(getProject());
                 System.out.flush();
                 System.err.flush();
             } catch (IOException io) {
                 throw new BuildException(io, getLocation());
-            } finally {
-                if (outStream != null) {
-                    outStream.close();
-                }
+            } finally 
+            {
+                outStream = null;
             }
         } else {
             exe.execute(getProject());
