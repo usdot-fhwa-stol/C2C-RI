@@ -18,6 +18,7 @@
 */
 package net.sf.jameleon.ant;
 
+import java.io.ByteArrayOutputStream;
 import java.util.LinkedList;
 
 import org.apache.tools.ant.BuildException;
@@ -41,6 +42,7 @@ import java.io.File;
 import java.io.PrintStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 
 import java.util.Vector;
 
@@ -438,17 +440,16 @@ public class ExecuteTestCaseSeparateVMTask extends Task {
      * Executes the given classname with the given arguments in a separate VM.
      */
     private int run(String[] command) throws BuildException {
-        FileOutputStream fos = null;
-        try {
+        try (OutputStream oOut = out != null ? new FileOutputStream(out.getAbsolutePath(), append) : new ByteArrayOutputStream(0))
+        {
             Execute exe = null;
-            if (out == null) {
-                exe = new Execute(new LogStreamHandler(this, Project.MSG_INFO,
-                                                       Project.MSG_WARN), 
-                                  createWatchdog());
-            } else {
-                fos = new FileOutputStream(out.getAbsolutePath(), append);
-                exe = new Execute(new PumpStreamHandler(fos),
-                                  createWatchdog());
+            if (out == null) 
+            {
+                exe = new Execute(new LogStreamHandler(this, Project.MSG_INFO, Project.MSG_WARN), createWatchdog());
+            } 
+            else 
+            {
+                exe = new Execute(new PumpStreamHandler(oOut), createWatchdog());
             }
             
             exe.setAntRun(getProject());
@@ -485,10 +486,6 @@ public class ExecuteTestCaseSeparateVMTask extends Task {
             }
         } catch (IOException io) {
             throw new BuildException(io, getLocation());
-        } finally {
-            if (fos != null) {
-                try {fos.close();} catch (IOException io) {}
-            }
         }
     }
 
