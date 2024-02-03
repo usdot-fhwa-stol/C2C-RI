@@ -21,6 +21,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import org.apache.log4j.LogManager;
 import org.fhwa.c2cri.centermodel.emulation.exceptions.EntityEmulationException;
 import org.fhwa.c2cri.tmdd.TMDDSettingsImpl;
 import org.fhwa.c2cri.tmdd.emulation.entitydata.filters.DataFilter;
@@ -151,10 +152,16 @@ public class EntityEmulationData {
             throw new EntityEmulationException(ex);
         } catch (SQLException ex) {
             System.out.println("SQLException !!\n" + Thread.currentThread().getStackTrace());
-            Writer result = new StringWriter();
-            PrintWriter printWriter = new PrintWriter(result);
-            ex.printStackTrace(printWriter);
-            System.out.println(result.toString());
+            try (Writer result = new StringWriter();
+                    PrintWriter printWriter = new PrintWriter(result))
+            {
+                ex.printStackTrace(printWriter);
+                System.out.println(result.toString());
+            }
+            catch (Exception oEx)
+            {
+                LogManager.getLogger(EntityEmulationData.class).debug(oEx, oEx);
+            }
             ex.printStackTrace();
             throw new EntityEmulationException(ex);
         } catch (Exception ex) {
