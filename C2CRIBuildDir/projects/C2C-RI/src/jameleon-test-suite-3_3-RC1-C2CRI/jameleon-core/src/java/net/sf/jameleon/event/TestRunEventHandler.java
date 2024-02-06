@@ -35,7 +35,7 @@ public class TestRunEventHandler{
         return eventHandler;
     }
 
-    public void clearInstance(){
+    public static void clearInstance(){
         eventHandler = null;
     }
 

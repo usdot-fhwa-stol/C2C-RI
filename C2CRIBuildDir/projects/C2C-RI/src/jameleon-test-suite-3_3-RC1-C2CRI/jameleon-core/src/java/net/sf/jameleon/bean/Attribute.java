@@ -20,7 +20,7 @@ import net.sf.jameleon.XMLable;
 
 import org.apache.commons.jelly.expression.Expression;
 
-public class Attribute implements XMLable, Cloneable{
+public class Attribute implements XMLable{
     private static final long serialVersionUID = 1L;
    /**
      * The attribute's name

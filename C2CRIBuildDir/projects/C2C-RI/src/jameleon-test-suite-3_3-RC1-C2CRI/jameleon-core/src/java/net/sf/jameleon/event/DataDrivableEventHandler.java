@@ -40,7 +40,7 @@ public class DataDrivableEventHandler{
         return eventHandler;
     }
 
-    public void clearInstance(){
+    public static void clearInstance(){
         eventHandler = null;
     }
 
