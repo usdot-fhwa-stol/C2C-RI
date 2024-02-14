@@ -71,6 +71,8 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      * The executing.
      */
     private static Boolean executing = false;
+	
+	private static final Object LOCK = new Object();
 
     /**
      * The debug.
@@ -121,12 +123,12 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
     /**
      * The t.
      */
-    private static Thread t;
+    private Thread t;
 
     /**
      * The etc thread1.
      */
-    private static Thread etcThread1;
+    private Thread etcThread1;
 
     /**
      * The test config.
@@ -173,7 +175,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
     private String primaryIteration = "";
     
     // reference to the last thread that provided a tag notification.
-    private static Thread lastTagThread;
+    private Thread lastTagThread;
     
     /**
      * Notify Jameleon to terminate the currently running test. Log this action.
@@ -277,7 +279,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      */
     public Boolean getStopExecution() {
         boolean results;
-        synchronized (RITestEngine.stopExecution) {
+        synchronized (LOCK) {
             results = RITestEngine.stopExecution;
         }
         return results;
@@ -289,7 +291,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      * @param stopExecution the new stop execution
      */
     public void setStopExecution(Boolean stopExecution) {
-        synchronized (RITestEngine.stopExecution) {
+        synchronized (LOCK) {
             RITestEngine.stopExecution = stopExecution;
         }
     }
@@ -301,7 +303,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      */
     public Boolean getExecuting() {
         boolean results;
-        synchronized (RITestEngine.executing) {
+        synchronized (LOCK) {
             results = RITestEngine.executing;
         }
         return results;
@@ -313,7 +315,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      * @param executing the new executing
      */
     public void setExecuting(Boolean executing) {
-        synchronized (RITestEngine.executing) {
+        synchronized (LOCK) {
             RITestEngine.executing = executing;
         }
     }
@@ -369,7 +371,8 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
         } else {
             RIEmulation.getInstance().setEmulationEnabled(false);            
         }
-
+		
+		RILogging.setNewAppender();
         logger.configureLogging(testName, testConfigName, testDescription, checksum, emulationEnabled, reinitializeEmulation);
 
         // Remove any invalid XML characters that may exist.
@@ -416,17 +419,19 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
             if (TestSuites.getInstance().isPredefined(testSuite)) {
                 try {
                     URL jarURL = new URL(TestSuites.getInstance().getTestSuitePath(testSuite).replace("/.", "").replace("!", "").replace("jar:", ""));
-                    ZipInputStream zip = new ZipInputStream(jarURL.openStream());
-                    while (true) {
-                        ZipEntry e = zip.getNextEntry();
-                        if (e == null) {
-                            break;
-                        }
+                    try (ZipInputStream zip = new ZipInputStream(jarURL.openStream()))
+					{
+						while (true) {
+							ZipEntry e = zip.getNextEntry();
+							if (e == null) {
+								break;
+							}
 
-                        if (e.getName().endsWith(".properties") && !e.getName().equalsIgnoreCase("SuiteSpec.properties") && e.getName().indexOf("/") == -1) {
-                            System.out.println("Entry is :" + e.getName());
-                            results = results.concat(" " + e.getName().replace(".properties", ""));
-                        }
+							if (e.getName().endsWith(".properties") && !e.getName().equalsIgnoreCase("SuiteSpec.properties") && e.getName().indexOf("/") == -1) {
+								System.out.println("Entry is :" + e.getName());
+								results = results.concat(" " + e.getName().replace(".properties", ""));
+							}
+						}
                     }
                 } catch (Exception ex) {
                     System.err.println("TestSuitePathFailure: " + TestSuites.getInstance().getTestSuitePath(testSuite).replace("/.", "").replace("!", "").replace("jar:", ""));
@@ -507,7 +512,6 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                 for (TestCase thisTestCase : testCaseList) {
 //                    if (getExecuting()){
                     etcThread1 = executeTestCase(thisTestCase, debug, executor);
-                    System.gc();
                     while (getExecuting()) {
                         if (getStopExecution()) {
                             //                                      resultsPane.stopExecution();
@@ -517,11 +521,12 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                             }
                             break;
                         } else {
-                            this.interrupted(); // clear an interruption if set otherwise do nothing
+                            Thread.interrupted(); // clear an interruption if set otherwise do nothing
                         }
                         try {
                             Thread.sleep(100);
                         } catch (InterruptedException ie) {
+							Thread.currentThread().interrupt();
                             javax.swing.JOptionPane.showMessageDialog(null,
                                     "Test Case " + thisTestCase.getName() + " thread failed: \n"
                                     + ie.getMessage(),
@@ -535,7 +540,6 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
 
                     if (!etcThread1.isAlive()) {
                         etcThread1 = null;
-                        System.gc();
                     };
 //                    }
                 }
@@ -547,7 +551,6 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                 executor.deregisterEventListeners();
                 executor = null;
                 RITestEngine.statusListener.testComplete();
-                System.gc();
             }
         };
         if (emulationEnabled && reinitializeEmulation) {
@@ -726,7 +729,6 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                     ddEventHandler.clearInstance();
                     vEventHandler.clearInstance();
                     runEventHandler.clearInstance();
-                    System.gc();
                     setExecuting(false);
 
                 }
@@ -905,6 +907,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                         this.wait(250); // wait 250 ms
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+						Thread.currentThread().interrupt();
                     }
                 }
             }
@@ -962,6 +965,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                         this.wait(250); // wait 250 ms
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+						Thread.currentThread().interrupt();
                     }
                 }
             }
@@ -1139,6 +1143,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                             this.wait(250); // wait 250 ms
                         } catch (InterruptedException e) {
                             e.printStackTrace();
+							Thread.currentThread().interrupt();
                         }
                     }
                 }
@@ -1224,6 +1229,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                         this.wait(250); // wait 250 ms
                     } catch (InterruptedException e) {
                         e.printStackTrace();
+						Thread.currentThread().interrupt();
                     }
                 }
             }
@@ -1412,6 +1418,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
      */
     @Override
     public void verificationUpdate(VerificationEvent event) {
+		// original implementation was empty
     }
     
 

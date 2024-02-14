@@ -22,6 +22,7 @@ import net.sf.jameleon.bean.FunctionalPoint;
 import net.sf.jameleon.exception.JameleonScriptException;
 
 import java.io.*;
+import org.apache.log4j.LogManager;
 
 public class JameleonUtility {
 
@@ -176,8 +177,12 @@ public class JameleonUtility {
      * @param f The directory/file to delete.
      */
     public static void deleteDirStructure(File f){
-        if (f.isFile() || f.list().length == 0){
-            f.delete();
+        if (f.isFile() || f.list().length == 0)
+        {
+            if (!f.delete())
+            {
+                LogManager.getLogger(JameleonUtility.class).error("Failed to delete " + f.getAbsolutePath());
+            }
         }else if (f.isDirectory()){
             File[] files = f.listFiles();
             for (int i = 0; i < files.length; i++){
@@ -188,16 +193,16 @@ public class JameleonUtility {
     }
 
     public static String decodeXMLToText(String str){
-        str = str.replaceAll("\\&lt;","<");
-        str = str.replaceAll("\\&gt;",">");
-        str = str.replaceAll("\\&amp;","&");
+        str = str.replace("\\&lt;","<");
+        str = str.replace("\\&gt;",">");
+        str = str.replace("\\&amp;","&");
         return str;
     }
 
     public static String decodeTextToXML(String str){
-        str = str.replaceAll("&","\\&amp;");
-        str = str.replaceAll("<","\\&lt;");
-        str = str.replaceAll(">","\\&gt;");
+        str = str.replace("&","\\&amp;");
+        str = str.replace("<","\\&lt;");
+        str = str.replace(">","\\&gt;");
         return str;
     }
 

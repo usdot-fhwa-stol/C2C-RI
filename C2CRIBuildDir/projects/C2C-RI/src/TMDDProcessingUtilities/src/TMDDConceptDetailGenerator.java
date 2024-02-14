@@ -41,7 +41,6 @@ import org.apache.xmlbeans.SchemaParticle;
 import org.apache.xmlbeans.XmlInteger;
 
 public class TMDDConceptDetailGenerator {
-
     public static void printUsage() {
         System.out.println("Generates a document based on the given Schema file");
         System.out.println("having the given element as root.");
@@ -279,36 +278,18 @@ public class TMDDConceptDetailGenerator {
                                         System.out.println(ii + "," + msgType + "," + (jj + 1) + "," + frameList[jj].getName().getLocalPart() + "," + type + "," + (frameList[jj].getType().isSimpleType() ? "data-element" : "data-frame") + ",");
 //                                    System.out.println(ii + "," + msgType + "," + (jj + 1) + "Element:  **** ERROR Couldn't handle this one At ALL!!!");
                                     } else {
-                                      // Sometimes there is a choice list inside of a sequence.  See if that's happening here
-                                       if(frameList[jj].getParticleType() == SchemaParticle.CHOICE){
-                                           SchemaParticle[] theParticles = frameList[jj].getParticleChildren();
-                                           for (SchemaParticle thisParticle : theParticles){
-                                                if ((thisParticle.getType() != null)&&(thisParticle.getType().getName()!=null)){
-                                                    type = thisParticle.getType().getName().getLocalPart();
-                                                    System.out.println(ii + "," + msgType + "," + (jj + 1) + "," + thisParticle.getName().getLocalPart() + "," + type + "," + (thisParticle.getType().isSimpleType() ? "data-element" : "data-frame") + ",");
+										// Looks like it is a sequence inside of a choice
+										SchemaParticle[] theParticles = frameList[jj].getParticleChildren();
+										for (SchemaParticle thisParticle : theParticles){
+											 if ((thisParticle.getType() != null)&&(thisParticle.getType().getName()!=null)){
+												 type = thisParticle.getType().getName().getLocalPart();
+												 System.out.println(ii + "," + msgType + "," + (jj + 1) + "," + thisParticle.getName().getLocalPart() + "," + type + "," + (thisParticle.getType().isSimpleType() ? "data-element" : "data-frame") + ",");
 
-                                                } else {
-                                                    System.out.println(ii + "," + msgType + "," + (jj + 1) + "," + thisParticle.getName().getLocalPart() + ",UNKNOWN," + (thisParticle.getType().isSimpleType() ? "data-element" : "data-frame") + ",");
+											 } else {
+												 System.out.println(ii + "," + msgType + "," + (jj + 1) + "," + thisParticle.getName().getLocalPart() + ",UNKNOWN," + (thisParticle.getType().isSimpleType() ? "data-element" : "data-frame") + ",");
 
-                                                }
+											 }
 
-                                           }
- //                                          System.out.println(ii + "," + msgType + ", !!!! Yes This is A Choice !!!!");
-
-                                       }else{
-                                           // Looks like it is a sequence inside of a choice
-                                           SchemaParticle[] theParticles = frameList[jj].getParticleChildren();
-                                           for (SchemaParticle thisParticle : theParticles){
-                                                if ((thisParticle.getType() != null)&&(thisParticle.getType().getName()!=null)){
-                                                    type = thisParticle.getType().getName().getLocalPart();
-                                                    System.out.println(ii + "," + msgType + "," + (jj + 1) + "," + thisParticle.getName().getLocalPart() + "," + type + "," + (thisParticle.getType().isSimpleType() ? "data-element" : "data-frame") + ",");
-
-                                                } else {
-                                                    System.out.println(ii + "," + msgType + "," + (jj + 1) + "," + thisParticle.getName().getLocalPart() + ",UNKNOWN," + (thisParticle.getType().isSimpleType() ? "data-element" : "data-frame") + ",");
-
-                                                }
-
-                                           }
 
 //                                       System.out.println(ii + "," + msgType + ", !!!! Figure Out how to handle embedded Complex Types !!!!???");
                                         }
@@ -383,16 +364,14 @@ public class TMDDConceptDetailGenerator {
             database += filename.trim() + ";DriverID=22;READONLY=true}"; // add on to the end
             // now we can get the connection from the DriverManager
 //        System.out.println(database);
-            Connection con = DriverManager.getConnection(database, "", "");
-
-            Statement s = con.createStatement();
+            try (Connection con = DriverManager.getConnection(database);
+				 Statement s = con.createStatement())
+			{
 //        s.execute("create table TEST12345 ( column_name integer )"); // create a table
 //        s.execute("insert into TEST12345 values(1)"); // insert some data into the table
             s.execute("insert into TCS_SOAPReady_Messages (Element, MessageData)" + "values('" + element + "','" + message + "')"); // insert the data into the table'
 //           s.execute("drop table TEST12345");
-            s.close(); // close the Statement to let the database know we're done with it
-            con.close(); // close the Connection to let the database know we're done with it
-
+			}
 
         } catch (Exception e) {
             System.out.println("Error: " + e);

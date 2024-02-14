@@ -85,6 +85,8 @@ public class EntityDataValidator
             throw new InvalidValueException("Element Value was null.");
         } else 
         {
+			if (elementValue == null)
+				throw new InvalidValueException("Null elementValue");
             // If minLength and maxLength = -1, then any non-null value is allowed.
             if ((Integer.parseInt(minLength)==-1) && (Integer.parseInt(maxLength)==-1)) {
                 return;
@@ -165,7 +167,7 @@ public class EntityDataValidator
             Matcher matcher = regPass.matcher(elementValue);
             
             //A loop control method that searches through the input string.
-            while(matcher.find())
+            if(matcher.find())
             {
                 //If a match is found, meaning that the DateTime is correct in the input string, the method returns.
                 return;
@@ -265,11 +267,11 @@ public class EntityDataValidator
                 */
                 if(minInclusive.equals("-1") && maxInclusive.equals("-1"))
                 {
-                    minInclusive = Integer.toString(-Integer.MIN_VALUE);
+                    minInclusive = Integer.toString(Integer.MIN_VALUE);
                     maxInclusive = Integer.toString(Integer.MAX_VALUE);
                 }
                 //Throw an exception if the element is outside of the specified range.
-                else if((Integer.parseInt(minInclusive) < -Integer.MIN_VALUE) || (Integer.parseInt(maxInclusive) > Integer.MAX_VALUE))
+                else if((Integer.parseInt(minInclusive) < Integer.MIN_VALUE) || (Integer.parseInt(maxInclusive) > Integer.MAX_VALUE))
                 {
                     throw new InvalidValueException("The value of minInclusive or maxInclusive did not meet the specifications of an Integer.");
                 }
@@ -314,7 +316,7 @@ public class EntityDataValidator
                     minInclusive = Integer.toString(-90000000);
                     maxInclusive = Integer.toString(90000000);
                 }
-                else if((Integer.parseInt(minInclusive) < -Integer.MIN_VALUE) || (Integer.parseInt(maxInclusive) > Integer.MAX_VALUE))
+                else if((Integer.parseInt(minInclusive) < Integer.MIN_VALUE) || (Integer.parseInt(maxInclusive) > Integer.MAX_VALUE))
                 {
                     throw new InvalidValueException("The value of minInclusive or maxInclusive did not meet the specifications of an IntLatitude32.");    
                 }
@@ -359,7 +361,7 @@ public class EntityDataValidator
                     maxInclusive = Integer.toString(180000000);
                 }
                 //Throw an exception if the NumberFormat has an error.
-                else if((Integer.parseInt(minInclusive) < -Integer.MIN_VALUE) || (Integer.parseInt(maxInclusive) > Integer.MAX_VALUE))
+                else if((Integer.parseInt(minInclusive) < Integer.MIN_VALUE) || (Integer.parseInt(maxInclusive) > Integer.MAX_VALUE))
                 {
                     throw new InvalidValueException("The value of minInclusive or maxInclusive did not meet the specifications of an IntLongitude32.");
                 }
@@ -503,7 +505,7 @@ public class EntityDataValidator
                     throw new InvalidValueException(" The value of " + elementValue + " did not meet the specifications of an Unsigned-Int.");
                 }
                 //Throw an exception if the NumberFormat has an error.
-                else if((Long.parseLong(minInclusive) < -Long.MIN_VALUE) || (Long.parseLong(maxInclusive) > Long.MAX_VALUE))
+                else if((Long.parseLong(minInclusive) < Long.MIN_VALUE) || (Long.parseLong(maxInclusive) > Long.MAX_VALUE))
                 {
                         throw new InvalidValueException("The value of minInclusive or maxInclusive did not meet the specifications of an Unsigned-Int BaseType UnsignedLong.");
                 }
@@ -576,7 +578,7 @@ public class EntityDataValidator
                 }
 
                 //Throw an exception if the NumberFormat has an error.
-                if((Integer.parseInt(minInclusive) < -Integer.MIN_VALUE) || (Integer.parseInt(maxInclusive) > Integer.MAX_VALUE))
+                if((Integer.parseInt(minInclusive) < Integer.MIN_VALUE) || (Integer.parseInt(maxInclusive) > Integer.MAX_VALUE))
                 {
                     throw new InvalidValueException("The value of minInclusive or maxInclusive did not meet the specifications of an Unsigned-Short BaseType UnsignedInt.");
                 }

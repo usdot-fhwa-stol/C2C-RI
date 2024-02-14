@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -55,7 +56,7 @@ public class TestSuites implements Runnable {
     /**
      * The test suites service state.
      */
-    private static TESTSUITESSERVICE_STATE testSuitesServiceState = TESTSUITESSERVICE_STATE.INITIAL;
+    private TESTSUITESSERVICE_STATE testSuitesServiceState = TESTSUITESSERVICE_STATE.INITIAL;
 
     /**
      * The Enum TESTSUITESSERVICE_STATE.
@@ -177,7 +178,10 @@ public class TestSuites implements Runnable {
                         Properties props = new Properties();
 
                         try {
-                            props.load(thisOne.openStream());
+							try (InputStream oIn = thisOne.openStream())
+							{
+								props.load(oIn);
+							}
                             System.out.println("thisOne content: " + props.toString());
                             TestSuite testSuiteNew = new TestSuite();
                             testSuiteNew.testSuiteName = props.getProperty("SuiteName");
@@ -235,8 +239,11 @@ public class TestSuites implements Runnable {
                     try {
                         URL thisOne = currentSpec.toURI().toURL();
                         System.out.println("Custom thisOne : " + thisOne.getFile() + " @ " + thisOne.getPath());
-
-                        props.load(thisOne.openStream());
+						
+						try (InputStream oIn = thisOne.openStream())
+						{
+							props.load(oIn);
+						}
                         System.out.println("Custom thisOne content: " + props.toString());
                         TestSuite testSuiteNew = new TestSuite();
                         testSuiteNew.testSuiteName = "*" + props.getProperty("SuiteName");
@@ -672,16 +679,17 @@ public class TestSuites implements Runnable {
                     final File jarFile = new File(url.toURI());
                     try {
                         // Assume the file is a jar file
-                        final JarFile jar = new JarFile(jarFile);
-                        final Enumeration<JarEntry> entries = jar.entries(); //gives ALL entries in jar
-                        while (entries.hasMoreElements()) {
-                            final JarEntry entry = entries.nextElement();
-                            if (entry.getName().startsWith(path) && !entry.isDirectory()) { //filter according to the path and files only            
-                                urlList.add(new URL(testSuitePath + "/" + entry.getName()));   // Add the required / back to the path.
-                                System.out.println("Entity Emulation File " + entry.getName());
-                            }
-                        }
-                        jar.close();
+                        try (final JarFile jar = new JarFile(jarFile))
+						{
+							final Enumeration<JarEntry> entries = jar.entries(); //gives ALL entries in jar
+							while (entries.hasMoreElements()) {
+								final JarEntry entry = entries.nextElement();
+								if (entry.getName().startsWith(path) && !entry.isDirectory()) { //filter according to the path and files only            
+									urlList.add(new URL(testSuitePath + "/" + entry.getName()));   // Add the required / back to the path.
+									System.out.println("Entity Emulation File " + entry.getName());
+								}
+							}
+						}
                     } catch (Exception ex) {
                         // Run with IDE
                         if (url != null) {

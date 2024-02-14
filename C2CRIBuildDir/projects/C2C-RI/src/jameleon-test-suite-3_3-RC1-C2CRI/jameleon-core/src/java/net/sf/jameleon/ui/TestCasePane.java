@@ -65,7 +65,7 @@ public class TestCasePane extends JPanel {
     protected TestCaseTree tcTree;
     protected TestCaseResultsPane resultsPane;
     protected JTabbedPane tabbedPane;
-    protected JFrame parent;
+    protected JFrame jameleonparent;
     protected boolean stopExecution = false;
     protected BasicHtmlBrowser bugBrowser = new BasicHtmlBrowser("Bug Info");
     protected BasicHtmlBrowser resultsBrowser = new BasicHtmlBrowser("Jameleon Test Run Results");
@@ -79,14 +79,14 @@ public class TestCasePane extends JPanel {
 
     public TestCasePane(JFrame parent) {
         super(new BorderLayout());
-        this.parent = parent;
+        this.jameleonparent = parent;
         resultsPane = new TestCaseResultsPane(parent);
         resultsPane.setSourceArea(tcSourcePane);
         genUI();
     }
 
     public JFrame getJameleonUI(){
-        return parent;
+        return jameleonparent;
     }
 
     public void setTestCaseTree(TestCaseTree tcTree) {
@@ -171,7 +171,7 @@ public class TestCasePane extends JPanel {
                                         6, 6);  //xPad, yPad
                                         
         add(northP, BorderLayout.NORTH);
-        tabbedPane = new JTabbedPane(JTabbedPane.BOTTOM);
+        tabbedPane = new JTabbedPane(javax.swing.SwingConstants.BOTTOM);
 
         tabbedPane.add(DOCS, new JScrollPane(tcDocsPane));
         tabbedPane.add(SOURCE, new JScrollPane(tcSourcePane));
@@ -258,6 +258,7 @@ public class TestCasePane extends JPanel {
                                     try{
                                         Thread.sleep(100);
                                     }catch(InterruptedException ie){
+										Thread.currentThread().interrupt();
                                         //Apparently people don't like a stack trace printing out to the screen.
                                         //ie.printStackTrace();
                                     }
@@ -427,17 +428,19 @@ public class TestCasePane extends JPanel {
     private void readReplace(String fname, String oldPattern, String replPattern){
     	String line;
     	StringBuffer sb = new StringBuffer();
-    	try {
-    		FileInputStream fis = new FileInputStream(fname);
-    		BufferedReader reader=new BufferedReader ( new InputStreamReader(fis));
-    		while((line = reader.readLine()) != null) {
-    			line = line.replaceAll(oldPattern, replPattern);
-    			sb.append(line+"\n");
-    		}
-    		reader.close();
-    		BufferedWriter out=new BufferedWriter ( new FileWriter(fname));
-    		out.write(sb.toString());
-    		out.close();
+    	try 
+		{
+			try (BufferedReader reader=new BufferedReader ( new InputStreamReader(new FileInputStream(fname))))
+			{
+				while((line = reader.readLine()) != null) {
+					line = line.replaceAll(oldPattern, replPattern);
+					sb.append(line+"\n");
+				}
+			}
+			try (BufferedWriter out=new BufferedWriter ( new FileWriter(fname)))
+			{
+				out.write(sb.toString());
+			}
     	}
     	catch (Throwable e) {
     	            System.err.println("*** exception ***");
@@ -446,10 +449,9 @@ public class TestCasePane extends JPanel {
 
     private void createLogXML(String fname)
     {    
-       Writer output = null;
        File file = new File(fname+".xml");
-       try {
-          output = new BufferedWriter(new FileWriter(file));
+       try (Writer output = new BufferedWriter(new FileWriter(file)))
+	   {
           
           output.write("<?xml version=\"1.0\" ?>\n");
           output.write("<!DOCTYPE log4j [<!ENTITY data SYSTEM \""+fname.substring(fname.lastIndexOf("\\")+1, fname.length())+"\">]>\n");
@@ -457,7 +459,6 @@ public class TestCasePane extends JPanel {
           output.write("<eventSet version=\"1.2\" xmlns:log4j=\"http://jakarta.apache.org/log4j/\"> &data; </eventSet>\n");
           output.write("</logFile>\n");    
     
-          output.close();
          System.out.println("Your file has been written");      
        } catch (Exception e){
         System.out.println("Error opening File " + fname + ": Exception: " + e.getMessage());          	

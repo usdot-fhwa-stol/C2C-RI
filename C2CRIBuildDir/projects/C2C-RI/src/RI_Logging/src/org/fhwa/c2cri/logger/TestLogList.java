@@ -35,7 +35,7 @@ import org.fhwa.c2cri.utilities.RIParameters;
 public class TestLogList {
 
     /** The log descriptions. */
-    private static ArrayList<TestLogDescription> logDescriptions = new ArrayList<>();
+    private static final ArrayList<TestLogDescription> logDescriptions = new ArrayList<>();
     
     /** The Constant NTHREDS. */
     private static final int NTHREDS = 1;
@@ -44,7 +44,7 @@ public class TestLogList {
     private static TestLogList thisInstance = new TestLogList();
     
     /** The directory. */
-    private static File directory;
+    private File directory;
     
     /** The executor. */
     final ExecutorService executor = Executors.newCachedThreadPool();
@@ -126,6 +126,7 @@ public class TestLogList {
                 Thread.currentThread().sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+				Thread.currentThread().interrupt();
             }
         }
         thisInstance.logUpdater.register(thisInstance.directory);
@@ -184,6 +185,8 @@ public class TestLogList {
         
         /** The pause flag. */
         private Boolean pauseFlag;
+		
+		private boolean running;
 
         /**
          * Instantiates a new log file updater.
@@ -265,6 +268,7 @@ public class TestLogList {
                 try {
                     key = watcher.take();
                 } catch (InterruptedException x) {
+					Thread.currentThread().interrupt();
                     return;
                 }
                 Path dir = keys.get(key);
@@ -294,6 +298,7 @@ public class TestLogList {
 
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
+									Thread.currentThread().interrupt();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
@@ -324,7 +329,7 @@ public class TestLogList {
         @Override
         public void run() {
             initialize();
-            while (true) {
+            while (running) {
 
                 try {
                     processEvents();
@@ -332,6 +337,7 @@ public class TestLogList {
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+					Thread.currentThread().interrupt();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -339,6 +345,10 @@ public class TestLogList {
             }
         }
 
+		public void stopRunning()
+		{
+			running = false;
+		}
         /**
          * Initialize.
          * 
@@ -349,13 +359,13 @@ public class TestLogList {
             synchronized (TestLogList.logDescriptions) {
                 setInitializing(true);
                 System.out.println("Getting the list of log files.");
-                String[] filenames = TestLogList.directory.list(thisInstance.configFilter);  // Store a list of files in the directory
+                String[] filenames = directory.list(thisInstance.configFilter);  // Store a list of files in the directory
                 TestLogList.logDescriptions.clear();
                 ExecutorService executor = Executors.newFixedThreadPool(NTHREDS);
                 ArrayList<Future<TestLogDescription>> logList = new ArrayList<>();
                 System.out.println("Starting the log File Workers");
                 for (int ii = 0; ii < filenames.length; ii++) {
-                    Callable<TestLogDescription> worker = new LogCallable(ii, TestLogList.directory.getAbsolutePath(), filenames[ii]);
+                    Callable<TestLogDescription> worker = new LogCallable(ii, directory.getAbsolutePath(), filenames[ii]);
                     Future<TestLogDescription> submit = executor.submit(worker);
                     logList.add(submit);
                 }
@@ -368,6 +378,8 @@ public class TestLogList {
                            javax.swing.JOptionPane.showMessageDialog(null,"The Application encountered a "+result.getFileDescription()+" error while trying to process file "+result.getFilename()+".\n This file will not be available for reports."+(result.getFileDescription().equalsIgnoreCase("Java heap space")?"\nTry using the 64-bit version of the C2C RI, or contact C2C RI support.":""),"Log File Warning",javax.swing.JOptionPane.WARNING_MESSAGE);                                                                
                         }
                     } catch (InterruptedException | ExecutionException e) {
+						if (e instanceof InterruptedException)
+							Thread.currentThread().interrupt();
                         e.printStackTrace();
                     }
                 }
@@ -407,7 +419,7 @@ public class TestLogList {
                     if (!fileFound) {
                         index = TestLogList.logDescriptions.size();
                     }
-                    Callable<TestLogDescription> worker = new LogCallable(index, TestLogList.directory.getAbsolutePath(), fileName);
+                    Callable<TestLogDescription> worker = new LogCallable(index, directory.getAbsolutePath(), fileName);
                     Future<TestLogDescription> submit = executor.submit(worker);
                     logList.add(submit);
                     // Now retrieve the result
@@ -428,6 +440,8 @@ public class TestLogList {
                                 javax.swing.JOptionPane.showMessageDialog(null,"The Application encountered a "+result.getFileDescription()+" error while trying to process file "+result.getFilename()+".\n This file will not be available for reports."+(result.getFileDescription().equalsIgnoreCase("Java heap space")?"\nTry using the 64-bit version of the C2C RI, or contact C2C RI support.":""),"Log File Warning",javax.swing.JOptionPane.WARNING_MESSAGE);                                                                
                             }
                         } catch (InterruptedException | ExecutionException e) {
+							if (e instanceof InterruptedException)
+								Thread.currentThread().interrupt();
                             e.printStackTrace();
                         }
                     }
@@ -459,12 +473,8 @@ public class TestLogList {
          *
          * @return true, if is initializing
          */
-        public boolean isInitializing() {
-            boolean result;
-            synchronized (this.initializing) {
-                result = this.initializing;
-            }
-            return result;
+        public synchronized boolean isInitializing() {
+            return this.initializing;
         }
 
         /**
@@ -472,10 +482,8 @@ public class TestLogList {
          *
          * @param state the new initializing
          */
-        public void setInitializing(boolean state) {
-            synchronized (this.initializing) {
+        public synchronized void setInitializing(boolean state) {
                 this.initializing = state;
-            }
         }
 
         /**
@@ -486,12 +494,8 @@ public class TestLogList {
          *
          * @return true, if is pause flag
          */
-        private boolean isPauseFlag() {
-            boolean response;
-            synchronized(this.pauseFlag){
-                response = this.pauseFlag;
-            }
-            return response;
+        private synchronized boolean isPauseFlag() {
+            return this.pauseFlag;
         }
 
         /**
@@ -499,10 +503,8 @@ public class TestLogList {
          *
          * @param pauseFlag the new pause flag
          */
-        public void setPauseFlag(boolean pauseFlag) {
-            synchronized(this.pauseFlag){
+        public synchronized void setPauseFlag(boolean pauseFlag) {
                 this.pauseFlag = pauseFlag;
-            }
         }
         
         

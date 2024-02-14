@@ -9,7 +9,12 @@ package org.fhwa.c2cri.testprocedures;
  *
  * @author TransCore ITS
  */
-public interface TMDDParameters {
+public abstract class TMDDParameters {
+	
+	private TMDDParameters()
+	{
+	}
+	
     public static String TMDD_SUBSCRIPTION_SUFFIX = "Subscription";
     public static String TMDD_PUBLICATION_SUFFIX = "Update";
     public static String TMDD_REQUEST_SUFFIX = "Request";

@@ -57,6 +57,8 @@ public class ReturnObjectGUIActionWrapper extends SwingWorker<Object, Void> {
         try {
             wrapUp(this.get());
         } catch (Exception ex) {
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             ex.printStackTrace();
             javax.swing.JOptionPane.showMessageDialog(parentFrame, "An error was encountered trying to complete the " + this.theActionName + " action.\n"+ex.getMessage());
         }
@@ -84,5 +86,6 @@ public class ReturnObjectGUIActionWrapper extends SwingWorker<Object, Void> {
      * @param result the result
      */
     protected void wrapUp(Object result) {
+		// original implementation was empty
     }
 }

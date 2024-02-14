@@ -5,10 +5,8 @@
  */
 package org.fhwa.c2cri.gui.wizard.testconfig.create.page;
 
-import com.github.cjwizard.WizardPage;
 import com.github.cjwizard.WizardSettings;
 import java.io.File;
-import java.util.List;
 import javax.swing.filechooser.FileFilter;
 import org.fhwa.c2cri.domain.testmodel.TestConfigurationController;
 import org.fhwa.c2cri.gui.wizard.C2CRIWizardPage;
@@ -21,7 +19,6 @@ public class CreateTestMainPage extends C2CRIWizardPage {
     private final TestConfigurationController controller;
     private String fileName;
     private boolean fileLoaded = false;
-    private static boolean fileOpenCanceled = false;
 
     public CreateTestMainPage(String title, String description, TestConfigurationController controller) {
         super(title, description);
@@ -235,8 +232,6 @@ public class CreateTestMainPage extends C2CRIWizardPage {
 
             } else if (returnVal == javax.swing.JFileChooser.CANCEL_OPTION) {
                 normalExit = true;
-                fileOpenCanceled = true;
-                System.out.println("User Cancelled FileOpenCancelled = " + fileOpenCanceled);
             }
         }
         fc.setVisible(false);

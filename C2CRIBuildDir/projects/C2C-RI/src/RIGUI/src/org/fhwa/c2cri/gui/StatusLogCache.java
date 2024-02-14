@@ -19,7 +19,7 @@ public class StatusLogCache extends AbstractTableModel {
     private static int filteredTestIndex = 0;
 
 
-    Thread logStatusThread = new Thread() {
+    transient Thread logStatusThread = new Thread() {
         public void run() {
             try{
                 while (true){
@@ -34,6 +34,7 @@ public class StatusLogCache extends AbstractTableModel {
             } catch (InterruptedException ie) {
                 ie.printStackTrace();
                 tsQueue.clear();
+				Thread.currentThread().interrupt();
             }
         }
     };
@@ -150,7 +151,6 @@ public class StatusLogCache extends AbstractTableModel {
 
         instance.stop();
  //       instance = null;
-        System.gc();
 
         System.out.println("Exiting Now.");
     }
@@ -160,7 +160,7 @@ public class StatusLogCache extends AbstractTableModel {
      * @see java.lang.Object#finalize()
      */
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         super.finalize();
         System.out.println("Finalize was called");
 

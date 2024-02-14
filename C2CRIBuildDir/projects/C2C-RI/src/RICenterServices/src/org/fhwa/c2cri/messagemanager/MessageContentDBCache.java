@@ -11,12 +11,16 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import org.apache.log4j.LogManager;
 
 /**
  *
@@ -117,7 +121,6 @@ public class MessageContentDBCache implements MessageContent {
         tmdb = null;
         tmdb2 = null;
         tmdb3 = null;
-        System.gc();
 
 //        try {
 //            messageDatabase.finalize();
@@ -170,7 +173,7 @@ public class MessageContentDBCache implements MessageContent {
      * @see java.lang.Object#finalize()
      */
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         super.finalize();
         System.out.println("Finalize was called");
 
@@ -241,7 +244,8 @@ public class MessageContentDBCache implements MessageContent {
                         File f = new File(testPath);
                         if (f.exists()) {
                             con = connect();
-                            con.close();
+							if (con != null)
+								con.close();
                             con = null;
                             createNewMessageTable();
                             fileNotFound = false;
@@ -274,9 +278,16 @@ public class MessageContentDBCache implements MessageContent {
                     + "                       Message   BLOB NOT NULL,\n"
                     + "                       CONSTRAINT pk PRIMARY KEY (MsgID));";
 
-            try ( Connection conn = connect();  Statement stmt = conn.createStatement()) {
-                // create a new table
-                stmt.execute(sql);
+            try (Connection conn = connect())
+			{
+				if (conn != null)
+				{
+					try (Statement stmt = conn.createStatement())
+					{
+						// create a new table
+						stmt.execute(sql);
+					}
+				}
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
             }
@@ -317,21 +328,28 @@ public class MessageContentDBCache implements MessageContent {
 
                 System.out.println("Writting record " + nextDatabaseMessageIndex);
                 // update sql
-                try ( Connection conn = connect();  PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Messages" + "("
-                        + "MsgID, Namespace, Message) VALUES (?,?,?)")) {
-                    pstmt.setInt(1, nextDatabaseMessageIndex);
-                    StringBuilder stackHistory = new StringBuilder();
-                    for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
-                        stackHistory.append(ste.toString() + "\n");
-                    }
-                    pstmt.setString(2, stackHistory.toString());
-                    pstmt.setBytes(3, message.readAllBytes());
+                try (Connection conn = connect())
+				{
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Messages" + "("
+							+ "MsgID, Namespace, Message) VALUES (?,?,?)"))	
+						{
+							pstmt.setInt(1, nextDatabaseMessageIndex);
+							StringBuilder stackHistory = new StringBuilder();
+							for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
+								stackHistory.append(ste.toString() + "\n");
+							}
+							pstmt.setString(2, stackHistory.toString());
+							pstmt.setBytes(3, message.readAllBytes());
 
-                    pstmt.execute();
+							pstmt.execute();
 
-                    currentMessageIndex = nextDatabaseMessageIndex;
-                    nextDatabaseMessageIndex++;
-                    return currentMessageIndex;
+							currentMessageIndex = nextDatabaseMessageIndex;
+							nextDatabaseMessageIndex++;
+							return currentMessageIndex;
+						}
+					}
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
                 } catch (SQLException ex) {
@@ -355,21 +373,27 @@ public class MessageContentDBCache implements MessageContent {
 
                 System.out.println("Writting record " + nextDatabaseMessageIndex);
                 // update sql
-                try ( Connection conn = connect();  PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Messages" + "("
-                        + "MsgID, Namespace, Message) VALUES (?,?,?)")) {
-                    pstmt.setInt(1, nextDatabaseMessageIndex);
-                    StringBuilder stackHistory = new StringBuilder();
-                    for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
-                        stackHistory.append(ste.toString() + "\n");
-                    }
-                    pstmt.setString(2, stackHistory.toString());
-                    pstmt.setBytes(3, message);
+                try (Connection conn = connect())
+				{
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Messages" + "("
+							+ "MsgID, Namespace, Message) VALUES (?,?,?)")) {
+							pstmt.setInt(1, nextDatabaseMessageIndex);
+							StringBuilder stackHistory = new StringBuilder();
+							for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
+								stackHistory.append(ste.toString() + "\n");
+							}
+							pstmt.setString(2, stackHistory.toString());
+							pstmt.setBytes(3, message);
 
-                    pstmt.execute();
+							pstmt.execute();
 
-                    currentMessageIndex = nextDatabaseMessageIndex;
-                    nextDatabaseMessageIndex++;
-                    return currentMessageIndex;
+							currentMessageIndex = nextDatabaseMessageIndex;
+							nextDatabaseMessageIndex++;
+							return currentMessageIndex;
+						}
+					}
 
                 } catch (SQLException ex) {
                     System.out.println(ex.getMessage());
@@ -389,29 +413,35 @@ public class MessageContentDBCache implements MessageContent {
             // update sql
             String selectSQL = "SELECT Message FROM Messages WHERE MsgID=?";
             ResultSet rs = null;
-            FileOutputStream fos = null;
+
             Connection conn = null;
-            PreparedStatement pstmt = null;
 
             synchronized (lockObject) {
                 try {
                     conn = connect();
-                    pstmt = conn.prepareStatement(selectSQL);
-                    pstmt.setInt(1, messageId);
-                    rs = pstmt.executeQuery();
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement(selectSQL))
+						{
+							pstmt.setInt(1, messageId);
+							rs = pstmt.executeQuery();
 
-                    // write binary stream into file
-                    File file = new File(filename);
-                    fos = new FileOutputStream(file);
+							// write binary stream into file
+							File file = new File(filename);
+							try (FileOutputStream fos = new FileOutputStream(file))
+							{
 
-                    System.out.println("Writing BLOB to file " + file.getAbsolutePath() + " with messageID " + messageId);
-                    while (rs.next()) {
-                        InputStream input = rs.getBinaryStream("Message");
-                        byte[] buffer = new byte[1024];
-                        while (input.read(buffer) > 0) {
-                            fos.write(buffer);
-                        }
-                    }
+								System.out.println("Writing BLOB to file " + file.getAbsolutePath() + " with messageID " + messageId);
+								while (rs.next()) {
+									InputStream input = rs.getBinaryStream("Message");
+									byte[] buffer = new byte[1024];
+									while (input.read(buffer) > 0) {
+										fos.write(buffer);
+									}
+								}
+							}
+						}
+					}
                 } catch (SQLException | IOException e) {
                     System.out.println(e.getMessage());
                 } finally {
@@ -419,18 +449,12 @@ public class MessageContentDBCache implements MessageContent {
                         if (rs != null) {
                             rs.close();
                         }
-                        if (pstmt != null) {
-                            pstmt.close();
-                        }
 
                         if (conn != null) {
                             conn.close();
                         }
-                        if (fos != null) {
-                            fos.close();
-                        }
 
-                    } catch (SQLException | IOException e) {
+                    } catch (SQLException e) {
                         System.out.println(e.getMessage());
                     }
                 }
@@ -453,24 +477,30 @@ public class MessageContentDBCache implements MessageContent {
             String selectSQL = "SELECT Message FROM Messages WHERE MsgID=?";
             ResultSet rs = null;
             Connection conn = null;
-            PreparedStatement pstmt = null;
             synchronized (lockObject) {
                 try {
                     conn = connect();
-                    pstmt = conn.prepareStatement(selectSQL);
-                    pstmt.setInt(1, messageId);
-                    rs = pstmt.executeQuery();
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement(selectSQL))
+						{
+							pstmt.setInt(1, messageId);
+							rs = pstmt.executeQuery();
 
-                    while (rs.next()) {
-                        InputStream input = rs.getBinaryStream("Message");
-                        while ((nRead = input.read(data, 0, data.length)) != -1) {
-                            buffer.write(data, 0, nRead);
-                        }
+							while (rs.next()) 
+							{
+								try (InputStream input = rs.getBinaryStream("Message"))
+								{
+									while ((nRead = input.read(data, 0, data.length)) != -1) {
+										buffer.write(data, 0, nRead);
+									}
 
-                        buffer.flush();
-                        input.close();
+									buffer.flush();
+								}
 
-                    }
+							}
+						}
+					}
                 } catch (SQLException | IOException e) {
                     javax.swing.JOptionPane.showMessageDialog(null, selectSQL + "("+messageId+")"+e.getMessage(), "MessageContentDBCache: toByteArray SQLException", javax.swing.JOptionPane.ERROR_MESSAGE);
                     System.out.println(e.getMessage());
@@ -482,9 +512,6 @@ public class MessageContentDBCache implements MessageContent {
                     try {
                         if (rs != null) {
                             rs.close();
-                        }
-                        if (pstmt != null) {
-                            pstmt.close();
                         }
 
                         if (conn != null) {
@@ -515,18 +542,22 @@ public class MessageContentDBCache implements MessageContent {
             String selectSQL = "SELECT Message FROM Messages WHERE MsgID=?";
             ResultSet rs = null;
             Connection conn = null;
-            PreparedStatement pstmt = null;
 
             synchronized (lockObject) {
                 try {
                     conn = connect();
-                    pstmt = conn.prepareStatement(selectSQL);
-                    pstmt.setInt(1, messageId);
-                    rs = pstmt.executeQuery();
+					if (conn != null)
+					{
+						try (PreparedStatement pstmt = conn.prepareStatement(selectSQL))
+						{
+						  pstmt.setInt(1, messageId);
+						  rs = pstmt.executeQuery();
 
-                    while (rs.next()) {
-                        input = rs.getBinaryStream("Message");
-                    }
+						  while (rs.next()) {
+							  input = rs.getBinaryStream("Message");
+						  }
+						}
+					}
                 } catch (SQLException e) {
                     javax.swing.JOptionPane.showMessageDialog(null, selectSQL + "("+messageId+")"+e.getMessage(), "MessageContentDBCache: toByteArray SQLException", javax.swing.JOptionPane.ERROR_MESSAGE);
                     System.out.println(e.getMessage());
@@ -538,9 +569,6 @@ public class MessageContentDBCache implements MessageContent {
                     try {
                         if (rs != null) {
                             rs.close();
-                        }
-                        if (pstmt != null) {
-                            pstmt.close();
                         }
 
                         if (conn != null) {
@@ -563,16 +591,20 @@ public class MessageContentDBCache implements MessageContent {
             synchronized (lockObject) {
                 closedMessagesIndex++;
                 if (closedMessagesIndex == currentMessageIndex) {
-                    File tmpFile = new File(messageFilePath);
-                    if (tmpFile.exists()) {
-                        System.out.println("Finalize is deleting the file " + messageFilePath);
-                        tmpFile.delete();
+					Path tmpFile = Paths.get(messageFilePath);
+					try
+					{
+						if (Files.deleteIfExists(tmpFile))
+							System.out.println("Finalize is deleting the file " + messageFilePath);
+  
+						tmpFile = Paths.get(messageFilePath + "-journal");
+						if (Files.deleteIfExists(tmpFile))
+							System.out.println("Finalize is deleting the journal file " + messageFilePath);
                     }
-                    tmpFile = new File(messageFilePath + "-journal");
-                    if (tmpFile.exists()) {
-                        System.out.println("Finalize is deleting the journal file " + messageFilePath);
-                        tmpFile.delete();
-                    }
+					catch (IOException oEx)
+					{
+						LogManager.getLogger(this.getClass()).error(oEx, oEx);
+					}
                     databaseCreated = false;
                 }
             }

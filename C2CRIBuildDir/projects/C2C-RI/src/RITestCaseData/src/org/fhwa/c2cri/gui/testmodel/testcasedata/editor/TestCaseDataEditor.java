@@ -1,6 +1,5 @@
 package org.fhwa.c2cri.gui.testmodel.testcasedata.editor;
 
-import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -11,11 +10,9 @@ import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
-import java.lang.reflect.Method;
 import java.net.URI;
 import java.net.URL;
 
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -221,9 +218,9 @@ public class TestCaseDataEditor {
      */
     public static void saveFile() {
         if (tcFile.exists() && tcFile.isModified()) {
-            try {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(tcFile)))
+			{
                 String newLine = System.getProperty("line.separator");
-                BufferedWriter bw = new BufferedWriter(new FileWriter(tcFile));
                 for (int i = 0; i < tcFile.numIteration(); i++) {
                     System.out.println(tcFile.numGroup());
                     bw.write(tcFile.iterationAt(i).toText() + newLine);
@@ -231,8 +228,6 @@ public class TestCaseDataEditor {
                         bw.write(tcFile.iterationAt(i).groupAt(j).toText(true) + newLine);
                     }
                 }
-                bw.close();
-
                 tcFile.setModified(false);
             } catch (Exception e) {
                 //System.out.println("Error when saving");
@@ -267,7 +262,7 @@ public class TestCaseDataEditor {
             JFrame frame = new JFrame("Property Editor Demo");
 
             frame.setSize(400, 300);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
             Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
             frame.setLocation((d.width - frame.getWidth()) / 2, (d.height - frame.getHeight()) / 2);

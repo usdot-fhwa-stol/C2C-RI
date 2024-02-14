@@ -82,48 +82,51 @@ public class MakeOCTestCases {
         subPubMap.put("TCS-79-dlDeviceInformationSubscription-EC-Valid.data", "dlRampMeterStatusUpdate");
         subPubMap.put("TCS-79-dlDeviceInformationSubscription-OC-Valid.data", "dlRampMeterStatusUpdate");
 
-        Connection conn = null;
         try {
             Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
             String url = "jdbc:odbc:Driver={Microsoft Access Driver "
                     + "(*.mdb, *.accdb)};DBQ=C:\\Temp\\Final TMDD Requirements.accdb";
-            conn = DriverManager.getConnection(url);
-            System.out.println("Connected!");
+            try (Connection conn = DriverManager.getConnection(url))
+			{
+				
+			
+				System.out.println("Connected!");
 
-            /**
-             * // SQL query command String SQL = "SELECT * FROM Customers";
-             * stmt = con.createStatement(); rs = stmt.executeQuery(SQL); while
-             * (rs.next()) { System.out.println(rs.getString("Company") + " : "
-             * + rs.getString("First Name")+ " : " + rs.getString("Last Name"));
-             * }
-             *
-             */
-            String SQL = "Select * from TestCaseDesignQuery";
+				/**
+				 * // SQL query command String SQL = "SELECT * FROM Customers";
+				 * stmt = con.createStatement(); rs = stmt.executeQuery(SQL); while
+				 * (rs.next()) { System.out.println(rs.getString("Company") + " : "
+				 * + rs.getString("First Name")+ " : " + rs.getString("Last Name"));
+				 * }
+				 *
+				 */
+				String SQL = "Select * from TestCaseDesignQuery";
 
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(SQL);
+				try (Statement stmt = conn.createStatement())
+				{
+					ResultSet rs = stmt.executeQuery(SQL);
 
-            ArrayList<TestCaseSpec> testCaseList = new ArrayList();
+					ArrayList<TestCaseSpec> testCaseList = new ArrayList();
 
-            Integer ii = 0;
-            while (rs.next()) {
-                if (rs.getString("Target").equals("EC")) {
-                    TestCaseSpec thisTC = new TestCaseSpec();
-                    thisTC.setNeedId(rs.getString("UNID"));
-                    thisTC.setTestCaseName(rs.getString("TCID"));
-                    thisTC.setTestCaseDataFile(rs.getString("DataFile"));
-                    thisTC.setTestCaseDescription(rs.getString("Description"));
-                    thisTC.setTestCasePubDataFile(rs.getString("UpdateDataFile"));
-                    thisTC.setTestCasePubDescription(rs.getString("UpdateDescription"));
-                    completeTestCaseSpec(thisTC);
-                    testCases.put(ii, thisTC);
-                    ii++;
-                    //              } 
-                }
-            }
-            rs.close();
-            stmt.close();
-            conn.close();
+					Integer ii = 0;
+					while (rs.next()) {
+						if (rs.getString("Target").equals("EC")) {
+							TestCaseSpec thisTC = new TestCaseSpec();
+							thisTC.setNeedId(rs.getString("UNID"));
+							thisTC.setTestCaseName(rs.getString("TCID"));
+							thisTC.setTestCaseDataFile(rs.getString("DataFile"));
+							thisTC.setTestCaseDescription(rs.getString("Description"));
+							thisTC.setTestCasePubDataFile(rs.getString("UpdateDataFile"));
+							thisTC.setTestCasePubDescription(rs.getString("UpdateDescription"));
+							completeTestCaseSpec(thisTC);
+							testCases.put(ii, thisTC);
+							ii++;
+							//              } 
+						}
+					}
+					rs.close();
+				}
+			}
 
         } catch (SQLException e) {
             System.out.println("SQL Exception: " + e.toString());
@@ -220,9 +223,8 @@ public class MakeOCTestCases {
 
     private static byte[] readFile(File file) throws IOException {
         // Open file
-        RandomAccessFile f = new RandomAccessFile(file, "r");
-
-        try {
+        try ( RandomAccessFile f = new RandomAccessFile(file, "r"))
+		{
             // Get and check length
             long longlength = f.length();
             int length = (int) longlength;
@@ -234,8 +236,6 @@ public class MakeOCTestCases {
             byte[] data = new byte[length];
             f.readFully(data);
             return data;
-        } finally {
-            f.close();
         }
     }
 }

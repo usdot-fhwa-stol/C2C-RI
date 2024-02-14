@@ -11,15 +11,18 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import org.apache.log4j.Logger;
 import org.apache.log4j.FileAppender;
 import java.text.DateFormat;
@@ -34,6 +37,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.apache.log4j.Level;
+import org.apache.log4j.LogManager;
 import org.fhwa.c2cri.java.net.ConnectionsDirectory;
 import org.fhwa.c2cri.java.net.TrafficLogger;
 import org.fhwa.c2cri.utilities.RIParameters;
@@ -133,13 +137,11 @@ public class RILogging implements Serializable {
     public void configureLogging(String logFileName, String configFileName, String logDescription, String checkSum, boolean enableEmulation, boolean reinitializeEmulation) {
 
         try {
-
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             Date date = new Date();
 
             logFile = logFileName + "." + dateFormat.format(date) + ".xml";
 
-            riAppender = new FileAppender();
             log = Logger.getLogger("net.sf.jameleon");
             log.addAppender(riAppender);
             log.addAppender(riGUIAppender);
@@ -218,16 +220,31 @@ public class RILogging implements Serializable {
                 Files.deleteIfExists(out);
             }
         } catch (Exception ex) {
-            StringWriter sw = new StringWriter();
-            ex.printStackTrace(new PrintWriter(sw));
-            javax.swing.JOptionPane.showMessageDialog(null, "Error Signing the Log File:\n" + ex.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+            
+            try (StringWriter sw = new StringWriter(); 
+                PrintWriter oPw = new PrintWriter(sw))
+            {
+                ex.printStackTrace(oPw);
+                javax.swing.JOptionPane.showMessageDialog(null, "Error Signing the Log File:\n" + ex.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+            catch (Exception oEx)
+            {
+                log.debug(oEx, oEx);
+            }
         } catch (Error ex){
-            StringWriter sw = new StringWriter();
-            ex.printStackTrace(new PrintWriter(sw));
-            javax.swing.JOptionPane.showMessageDialog(null, "Error Signing the Log File:\n" + ex.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            javax.swing.JOptionPane.showMessageDialog(null,"The Application can not recover from this error and will be shutdown.  \nContact the Application Support team for assistance in recovering the Test Log file.","Error",javax.swing.JOptionPane.ERROR_MESSAGE);
-            ex.printStackTrace();
+            try (StringWriter sw = new StringWriter(); 
+                PrintWriter oPw = new PrintWriter(sw))
+            {
+                ex.printStackTrace(oPw);
+                javax.swing.JOptionPane.showMessageDialog(null, "Error Signing the Log File:\n" + ex.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(null,"The Application can not recover from this error and will be shutdown.  \nContact the Application Support team for assistance in recovering the Test Log file.","Error",javax.swing.JOptionPane.ERROR_MESSAGE);
+                ex.printStackTrace();
+            }
+            catch (Exception oEx)
+            {
+                log.debug(oEx, oEx);
+            }
             System.exit(1);            
         } finally {
             TestLogList.getInstance().resumeTestLogListing();
@@ -262,6 +279,11 @@ public class RILogging implements Serializable {
         Logger log = Logger.getLogger("net.sf.jameleon");
         log.info(theEvent);
     }
+	
+	public static void setNewAppender()
+	{
+		riAppender = new FileAppender();
+	}
 
     /**
      * Log the provided event.
@@ -369,11 +391,9 @@ public class RILogging implements Serializable {
         String line;
         StringBuffer sb = new StringBuffer();
         boolean successfulResult = false;
-        try {
-            FileInputStream fis = new FileInputStream(fname);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fis,StandardCharsets.UTF_8));
-            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(fname + ".tmp")),StandardCharsets.UTF_8.name()));
-
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(fname),StandardCharsets.UTF_8));
+			BufferedWriter out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(fname + ".tmp"),StandardCharsets.UTF_8)))
+		{
             // Create a copy of the original xml file that includes additional "wrapper" tags.
             out.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
             out.write("<logFile>\n");
@@ -383,43 +403,49 @@ public class RILogging implements Serializable {
                 out.write(line + "\n");
                 out.flush();
             }
-            reader.close();
             out.write("</eventSet>\n");
             out.write("</logFile>\n");
-            out.flush();
-            out.close();
-            fis.close();
-            
-            // Delete the original xml file.
-            File oldFileName = new File(fname);
-            String oldFileNamePath = oldFileName.getAbsolutePath();
-            if (oldFileName.delete()) {
-                File newFileName = new File(fname + ".tmp");
-                
-                // Create a new file from the temporary file with the original file name.
-                // This file will be indented for easier readability.
-                boolean result = prettyPrint(newFileName.getAbsolutePath(), oldFileNamePath);
-                
-                // If sucdessful delete the temporary file.
-                if (result) {
-                    System.out.println("Rename Successfull = " + newFileName.renameTo(oldFileName));
-                    File tmpFileName = new File(fname + ".tmp");
-                    tmpFileName.delete();
-                    successfulResult = true;
-                } else {
-                    successfulResult = false;
-                    javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\n Was not able to successfully complete the pretty print process.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-                System.out.println("Could not Delete File.");
-                javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\nCould not perform delete of old " + fname + " file.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            } 
+            catch (Throwable e) 
+            {
+                System.err.println("*** exception ***");
+                StringWriter sw = new StringWriter();
+                e.printStackTrace(new PrintWriter(sw));
+                javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\n" + e.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Throwable e) {
-            System.err.println("*** exception ***");
-            StringWriter sw = new StringWriter();
-            e.printStackTrace(new PrintWriter(sw));
-            javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\n" + e.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
+             
+            try
+            {
+                // Delete the original xml file.
+                Path oOldPath = Paths.get(fname);
+                if (Files.deleteIfExists(oOldPath)) 
+                {
+                    Path oNewPath = Paths.get(fname + ".tmp");
+                    // Create a new file from the temporary file with the original file name.
+                    // This file will be indented for easier readability.
+                    boolean result = prettyPrint(oNewPath.toString(), oOldPath.toString());
+
+                    // If sucdessful delete the temporary file.
+                    if (result) 
+                    {
+                        Files.move(oNewPath, oOldPath, StandardCopyOption.REPLACE_EXISTING);
+                        successfulResult = true;
+                    } else {
+                        successfulResult = false;
+                        javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\n Was not able to successfully complete the pretty print process.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    }
+                } else {
+                    System.out.println("Could not Delete File.");
+                    javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\nCould not perform delete of old " + fname + " file.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            catch (IOException oIoEx)
+            {
+                StringWriter sw = new StringWriter();
+                oIoEx.printStackTrace(new PrintWriter(sw));
+                javax.swing.JOptionPane.showMessageDialog(null, "Error Processing the Log File:\n" + oIoEx.getMessage() + "\n" + sw.toString(), "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+
         return successfulResult;
     }
 
@@ -474,11 +500,12 @@ public class RILogging implements Serializable {
      * @return the string
      */
     public static String removeElement(String inputXML, String targetElement) {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-        DocumentBuilder builder = null;
-        Document document = null;
+       
 
         try {
+			 DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = null;
+			Document document = null;
             builder = factory.newDocumentBuilder();
             document = builder.parse(new ByteArrayInputStream(inputXML.getBytes(StandardCharsets.UTF_8)));
 

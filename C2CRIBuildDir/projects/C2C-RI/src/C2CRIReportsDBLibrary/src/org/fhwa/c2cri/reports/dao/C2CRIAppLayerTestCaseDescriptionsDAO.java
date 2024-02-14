@@ -38,7 +38,7 @@ public class C2CRIAppLayerTestCaseDescriptionsDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + APPLAYERTESTCASEDESCRIPTIONS_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.APPLAYERTESTCASEDESCRIPTIONS_TABLE + "("
                     + "id, TestCaseName, TestCaseDescription, ItemList, SpecialProcedureRequirements, DependencyDescription, "
                     + "HardwareEnvironmental, SoftwareEnvironmental, OtherEnvironmental, Inputs, InputProcedures, Outputs, OutputProcedures) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
 

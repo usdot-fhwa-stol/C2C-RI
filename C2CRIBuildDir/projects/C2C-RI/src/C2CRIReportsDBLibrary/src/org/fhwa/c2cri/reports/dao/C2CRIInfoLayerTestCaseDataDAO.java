@@ -38,7 +38,7 @@ public class C2CRIInfoLayerTestCaseDataDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + INFOLAYERTESTCASEDATA_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.INFOLAYERTESTCASEDATA_TABLE + "("
                     + "id, Standard, TestCase, Iteration, VariableName, Description, "
                     + "DataType, VariableValue, ValidValues, TestCaseIndex) VALUES (?,?,?,?,?,?,?,?,?,?)");
 

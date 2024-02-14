@@ -191,11 +191,11 @@ public class TestProcedureProcessor {
             outdb = new File("./temp.db3");
 
             // Make a temporary copy of C2C RI SQLite database
-            FileChannel sourceCh = new FileInputStream(sourcedb).getChannel();
-            FileChannel destCh = new FileOutputStream(outdb).getChannel();
-            sourceCh.transferTo(0, sourceCh.size(), destCh);
-            sourceCh.close();
-            destCh.close();
+			try (FileChannel sourceCh = new FileInputStream(sourcedb).getChannel();
+				 FileChannel destCh = new FileOutputStream(outdb).getChannel())
+			{
+				sourceCh.transferTo(0, sourceCh.size(), destCh);
+			}
 
             // Process the Application Layer Test Procedures
             this.testProcedureConfiguration = testProcedureConfiguration;
@@ -980,7 +980,7 @@ public class TestProcedureProcessor {
      */
     private void processAppStepsEvent() throws SQLException {
 
-        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart() == (TESTPROCEDURESTEPS)))) {
+        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart().equals((TESTPROCEDURESTEPS))))) {
 
             try {
                 if (event.isStartElement()) {

@@ -191,11 +191,11 @@ public class TestCaseProcessor {
             outdb = new File("./temp.db3");
 
             // Make a temporary copy of C2C RI SQLite database
-            FileChannel sourceCh = new FileInputStream(sourcedb).getChannel();
-            FileChannel destCh = new FileOutputStream(outdb).getChannel();
-            sourceCh.transferTo(0, sourceCh.size(), destCh);
-            sourceCh.close();
-            destCh.close();
+			try (FileChannel sourceCh = new FileInputStream(sourcedb).getChannel();
+				 FileChannel destCh = new FileOutputStream(outdb).getChannel())
+			{
+				sourceCh.transferTo(0, sourceCh.size(), destCh);
+			}
 
             // Process the Application Layer Test Cases
             this.testCaseConfiguration = testCaseConfiguration;
@@ -492,7 +492,6 @@ public class TestCaseProcessor {
 
             // First create a new XMLInputFactory
             XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-
             // Setup a new eventReader
             eventReader = inputFactory.createXMLEventReader(fileURL.openStream());
             // Read the XML document

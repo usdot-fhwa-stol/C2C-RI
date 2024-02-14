@@ -143,6 +143,8 @@ public class TMDDSubPubMapping
         }
         catch (Exception ex)
         {
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null,
                                           "Reading the TMDD Database failed: \n"
@@ -218,6 +220,8 @@ public class TMDDSubPubMapping
         }
         catch (Exception ex)
         {
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null,
                                           "Reading the TMDD Database failed: \n"

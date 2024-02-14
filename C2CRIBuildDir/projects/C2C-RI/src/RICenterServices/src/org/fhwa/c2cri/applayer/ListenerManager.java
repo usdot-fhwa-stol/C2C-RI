@@ -7,7 +7,7 @@ package org.fhwa.c2cri.applayer;
 import org.fhwa.c2cri.java.net.ConnectionsDirectory;
 import org.fhwa.c2cri.java.net.ConnectionInformation;
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Map.Entry;
 import org.enterprisepower.net.portforward.SocketAssignmentListener;
 
 /**
@@ -22,21 +22,19 @@ public class ListenerManager implements SocketAssignmentListener {
     /** The listener manager. */
     private static ListenerManager listenerManager;
     
-    /** The test case id. */
-    private static String testCaseID;
-    
     /** The internal to external address map. */
     private static HashMap<String,String>internalToExternalAddressMap = new HashMap();
     
     /** The listener map. */
-    private volatile static HashMap<Integer, ListenerInfo> listenerMap = new HashMap();
+    private static final HashMap<Integer, ListenerInfo> listenerMap = new HashMap();
     
     /** The listener id map. */
-    private volatile static HashMap<Integer,String> listenerIdMap = new HashMap();
+    private static final HashMap<Integer,String> listenerIdMap = new HashMap();
     
     /** The listener id. */
     private static Integer listenerId=0;
 
+	private static final Object LOCK = new Object();
     /**
      * Instantiates a new listener manager.
      * 
@@ -103,7 +101,7 @@ public class ListenerManager implements SocketAssignmentListener {
      * @return the integer
      */
     private Integer incrementListenerId(){
-        synchronized(listenerId){
+        synchronized(LOCK){
             listenerId++;
         }
         return listenerId;
@@ -115,7 +113,6 @@ public class ListenerManager implements SocketAssignmentListener {
      * @param testCaseID the new test case id
      */
     public void setTestCaseID(String testCaseID) {
-        this.testCaseID = testCaseID;
         ConnectionsDirectory.getInstance().setTestCaseName(testCaseID);
     }
 
@@ -136,37 +133,50 @@ public class ListenerManager implements SocketAssignmentListener {
      */
     public Integer createServerModeListener(String externalServerAddress, Integer externalServerPort, String internalServerAddress, Integer internalServerPort, boolean enableSSL, String connectionName) throws TransportException{
         Integer thisId = -1;
-        if (!listenerIdMap.containsValue(connectionName)) {
-            ConnectionInformation connInfo = ConnectionsDirectory.getInstance().getConnectionInfoForLocalHost(externalServerAddress, externalServerPort);
-            ListenerInfo listInfo;
-            if (connInfo != null){
-                connInfo.setConnectionName(connectionName);
-                listInfo = new ListenerInfo(connInfo, connectionName);
-                ConnectionsDirectory.getInstance().addDefinedConnectionName(connInfo.getLocalIPAddress(), connInfo.getLocalPort(), connectionName);
-            } else {
-                listInfo = new ListenerInfo(externalServerAddress, externalServerPort, connectionName);
-                ConnectionsDirectory.getInstance().addDefinedConnectionName(externalServerAddress, externalServerPort, connectionName);
-            }
-            
-            String externalSocketAddress = externalServerAddress + ":" + externalServerPort;
-            String internalSocketAddress = internalServerAddress + ":" + internalServerPort;
-            try {
-                thisId = incrementListenerId();
-                listenerIdMap.put(thisId, connectionName);
-                listenerMap.put(thisId, listInfo);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                javax.swing.JOptionPane.showMessageDialog(null, "ListenerManager:createServerModeListener \nError Occurred: "+ ex.getMessage() + "\n\nExternalSocketAddress= "+externalSocketAddress+"\nConnectionName= "+connectionName+"\nenableSSL= "+enableSSL, "ListenerManager", javax.swing.JOptionPane.ERROR_MESSAGE);
-                throw new TransportException("ListenerManager:createClientModeListener "+ex.getMessage(),TransportException.PROTOCOL_ERROR_TYPE);
-            }
-        } else {
-            System.err.println("ListenerManager:  Requested Listener " + connectionName + " already exists.");
-            Iterator listenerIterator = listenerIdMap.keySet().iterator();
-            while (listenerIterator.hasNext()){
-                thisId = (Integer)listenerIterator.next();
-                if (listenerIdMap.get(thisId).equals(connectionName)) break;
-            }
-        }
+		ListenerInfo listInfo = null;
+		boolean bAdd = false;
+		synchronized (listenerIdMap)
+		{
+			if (!listenerIdMap.containsValue(connectionName)) {
+				ConnectionInformation connInfo = ConnectionsDirectory.getInstance().getConnectionInfoForLocalHost(externalServerAddress, externalServerPort);
+				if (connInfo != null){
+					connInfo.setConnectionName(connectionName);
+					listInfo = new ListenerInfo(connInfo, connectionName);
+					ConnectionsDirectory.getInstance().addDefinedConnectionName(connInfo.getLocalIPAddress(), connInfo.getLocalPort(), connectionName);
+				} else {
+					listInfo = new ListenerInfo(externalServerAddress, externalServerPort, connectionName);
+					ConnectionsDirectory.getInstance().addDefinedConnectionName(externalServerAddress, externalServerPort, connectionName);
+				}
+
+				String externalSocketAddress = externalServerAddress + ":" + externalServerPort;
+				String internalSocketAddress = internalServerAddress + ":" + internalServerPort;
+				try {
+					thisId = incrementListenerId();
+					listenerIdMap.put(thisId, connectionName);
+					bAdd = true;
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+					javax.swing.JOptionPane.showMessageDialog(null, "ListenerManager:createServerModeListener \nError Occurred: "+ ex.getMessage() + "\n\nExternalSocketAddress= "+externalSocketAddress+"\nConnectionName= "+connectionName+"\nenableSSL= "+enableSSL, "ListenerManager", javax.swing.JOptionPane.ERROR_MESSAGE);
+					throw new TransportException("ListenerManager:createClientModeListener "+ex.getMessage(),TransportException.PROTOCOL_ERROR_TYPE);
+				}
+			} else {
+				System.err.println("ListenerManager:  Requested Listener " + connectionName + " already exists.");
+				for (Entry<Integer, String> oEntry : listenerIdMap.entrySet())
+				{
+					thisId = oEntry.getKey();
+					if (oEntry.getValue().equals(connectionName))
+						break;
+				}
+			}
+		}
+		if (bAdd)
+		{
+			synchronized (listenerMap)
+			{
+				listenerMap.put(thisId, listInfo);
+			}
+		}
         return thisId;
     }
 
@@ -185,44 +195,57 @@ public class ListenerManager implements SocketAssignmentListener {
      */
     public Integer createServerModeListener(String internalServerAddress, Integer internalServerPort, boolean enableSSL, String connectionName) throws TransportException{
         Integer thisId = -1;
-        if (!listenerIdMap.containsValue(connectionName)) {
+		ListenerInfo listInfo = null;
+		boolean bAdd = false;
+		synchronized (listenerIdMap)
+		{
+			if (!listenerIdMap.containsValue(connectionName)) {
 
-            String internalSocketAddress = internalServerAddress + ":" + internalServerPort;
-            ConnectionInformation connInfo = ConnectionsDirectory.getInstance().getConnectionInfoForLocalHost(internalServerAddress, internalServerPort);
-            ListenerInfo listInfo;
-            if (connInfo != null){
-                connInfo.setConnectionName(connectionName);
-                listInfo = new ListenerInfo(connInfo, connectionName);
-                ConnectionsDirectory.getInstance().addDefinedConnectionName(connInfo.getLocalIPAddress(), connInfo.getLocalPort(), connectionName);
-            } else {
-                listInfo = new ListenerInfo(internalServerAddress, internalServerPort, connectionName);
-                ConnectionsDirectory.getInstance().addDefinedConnectionName(internalServerAddress, internalServerPort, connectionName);
-            }
-            try {
-//                Listener thisListener =
-//                        new Listener(NetUtils.parseInetSocketAddress(internalSocketAddress), this.testCaseID, connectionName, enableSSL,true);
-//                Thread dataTransferListenerThread = new Thread(thisListener);
-//                dataTransferListenerThread.setName(connectionName);
-//             dataTransferListenerThread.setContextClassLoader(Thread.currentThread().getContextClassLoader());
-//                dataTransferListenerThread.setDaemon(true);
-//                thisListener.registerAddressListener(this);
-//                dataTransferListenerThread.start();
-                thisId = incrementListenerId();
-                listenerIdMap.put(thisId, connectionName);
-                listenerMap.put(thisId, listInfo);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                javax.swing.JOptionPane.showMessageDialog(null, "ListenerManager:createServerModeListener \nError Occurred: "+ ex.getMessage() + "\n\nInternalSocketAddress= "+internalSocketAddress+"\nConnectionName= "+connectionName+"\nenableSSL= "+enableSSL, "ListenerManager", javax.swing.JOptionPane.ERROR_MESSAGE);
-                throw new TransportException("ListenerManager:createClientModeListener "+ex.getMessage(),TransportException.PROTOCOL_ERROR_TYPE);
-            }
-        } else {
-            System.err.println("ListenerManager:  Requested Listener " + connectionName + " already exists.");
-            Iterator listenerIterator = listenerIdMap.keySet().iterator();
-            while (listenerIterator.hasNext()){
-                thisId = (Integer)listenerIterator.next();
-                if (listenerIdMap.get(thisId).equals(connectionName)) break;
-            }
-        }
+				String internalSocketAddress = internalServerAddress + ":" + internalServerPort;
+				ConnectionInformation connInfo = ConnectionsDirectory.getInstance().getConnectionInfoForLocalHost(internalServerAddress, internalServerPort);
+
+				if (connInfo != null){
+					connInfo.setConnectionName(connectionName);
+					listInfo = new ListenerInfo(connInfo, connectionName);
+					ConnectionsDirectory.getInstance().addDefinedConnectionName(connInfo.getLocalIPAddress(), connInfo.getLocalPort(), connectionName);
+				} else {
+					listInfo = new ListenerInfo(internalServerAddress, internalServerPort, connectionName);
+					ConnectionsDirectory.getInstance().addDefinedConnectionName(internalServerAddress, internalServerPort, connectionName);
+				}
+				try {
+	//                Listener thisListener =
+	//                        new Listener(NetUtils.parseInetSocketAddress(internalSocketAddress), this.testCaseID, connectionName, enableSSL,true);
+	//                Thread dataTransferListenerThread = new Thread(thisListener);
+	//                dataTransferListenerThread.setName(connectionName);
+	//             dataTransferListenerThread.setContextClassLoader(Thread.currentThread().getContextClassLoader());
+	//                dataTransferListenerThread.setDaemon(true);
+	//                thisListener.registerAddressListener(this);
+	//                dataTransferListenerThread.start();
+					thisId = incrementListenerId();
+					listenerIdMap.put(thisId, connectionName);
+					bAdd = true;
+				} catch (Exception ex) {
+					ex.printStackTrace();
+					javax.swing.JOptionPane.showMessageDialog(null, "ListenerManager:createServerModeListener \nError Occurred: "+ ex.getMessage() + "\n\nInternalSocketAddress= "+internalSocketAddress+"\nConnectionName= "+connectionName+"\nenableSSL= "+enableSSL, "ListenerManager", javax.swing.JOptionPane.ERROR_MESSAGE);
+					throw new TransportException("ListenerManager:createClientModeListener "+ex.getMessage(),TransportException.PROTOCOL_ERROR_TYPE);
+				}
+			} else {
+				System.err.println("ListenerManager:  Requested Listener " + connectionName + " already exists.");
+				for (Entry<Integer, String> oEntry : listenerIdMap.entrySet())
+				{
+					thisId = oEntry.getKey();
+					if (oEntry.getValue().equals(connectionName))
+						break;
+				}
+			}
+		}
+		if (bAdd)
+		{
+			synchronized (listenerMap)
+			{
+				listenerMap.put(thisId, listInfo);
+			}
+		}
         return thisId;
     }
 
@@ -242,47 +265,60 @@ public class ListenerManager implements SocketAssignmentListener {
      */
     public Integer createClientModeListener(String remoteServerAddress, Integer remoteServerPort, boolean enableSSL, String connectionName) throws TransportException {
         Integer thisId = -1;
-        if (!listenerIdMap.containsValue(connectionName)) {
+		boolean bAdd = false;
+		ListenerInfo listInfo = null;
+		synchronized (listenerIdMap)
+		{
+			if (!listenerIdMap.containsValue(connectionName)) {
 
-            String externalSocketAddress = remoteServerAddress + ":" + remoteServerPort;
-            ConnectionInformation connInfo = ConnectionsDirectory.getInstance().getConnectionInfoForLocalHost(remoteServerAddress, remoteServerPort);
-            ListenerInfo listInfo;
-            if (connInfo != null){
-                connInfo.setConnectionName(connectionName);
-                listInfo = new ListenerInfo(connInfo, connectionName);
-                ConnectionsDirectory.getInstance().addDefinedConnectionName(connInfo.getLocalIPAddress(), connInfo.getLocalPort(), connectionName);
-            } else {
-                listInfo = new ListenerInfo(remoteServerAddress, remoteServerPort, connectionName);
-                listInfo.setLocalIPAddress(remoteServerAddress);
-                listInfo.setLocalPort(remoteServerPort);
-                ConnectionsDirectory.getInstance().addDefinedConnectionName(remoteServerAddress, remoteServerPort, connectionName);
-            }
-            try {
-//                Listener thisListener =
-//                        new Listener(NetUtils.parseInetSocketAddress(externalSocketAddress), this.testCaseID, connectionName, enableSSL,false);
+				String externalSocketAddress = remoteServerAddress + ":" + remoteServerPort;
+				ConnectionInformation connInfo = ConnectionsDirectory.getInstance().getConnectionInfoForLocalHost(remoteServerAddress, remoteServerPort);
+				if (connInfo != null){
+					connInfo.setConnectionName(connectionName);
+					listInfo = new ListenerInfo(connInfo, connectionName);
+					ConnectionsDirectory.getInstance().addDefinedConnectionName(connInfo.getLocalIPAddress(), connInfo.getLocalPort(), connectionName);
+				} else {
+					listInfo = new ListenerInfo(remoteServerAddress, remoteServerPort, connectionName);
+					listInfo.setLocalIPAddress(remoteServerAddress);
+					listInfo.setLocalPort(remoteServerPort);
+					ConnectionsDirectory.getInstance().addDefinedConnectionName(remoteServerAddress, remoteServerPort, connectionName);
+				}
+				try {
+	//                Listener thisListener =
+	//                        new Listener(NetUtils.parseInetSocketAddress(externalSocketAddress), this.testCaseID, connectionName, enableSSL,false);
 
-//                Thread dataTransferListenerThread = new Thread(thisListener);
-//             dataTransferListenerThread.setContextClassLoader(Thread.currentThread().getContextClassLoader());
-//                dataTransferListenerThread.setName(connectionName);
-//                dataTransferListenerThread.setDaemon(true);
-//                thisListener.registerAddressListener(this);
-//                dataTransferListenerThread.start();
-                thisId = incrementListenerId();
-                listenerIdMap.put(thisId, connectionName);
-                listenerMap.put(thisId, listInfo);
-            } catch (Exception ex) {
-                ex.printStackTrace();
-                javax.swing.JOptionPane.showMessageDialog(null, "ListenerManager:createClientModeListener \nError Occurred: "+ ex.getMessage() + "\n\nExternalSocketAddress= "+externalSocketAddress+"\nConnectionName= "+connectionName+"\nenableSSL= "+enableSSL, "ListenerManager", javax.swing.JOptionPane.ERROR_MESSAGE);
-                throw new TransportException("ListenerManager:createClientModeListener "+ex.getMessage(),TransportException.PROTOCOL_ERROR_TYPE);
-            }
-        } else {
-            System.err.println("ListenerManager:  Requested Listener " + connectionName + " already exists.");
-            Iterator listenerIterator = listenerIdMap.keySet().iterator();
-            while (listenerIterator.hasNext()){
-                thisId = (Integer)listenerIterator.next();
-                if (listenerIdMap.get(thisId).equals(connectionName)) break;
-            }
-        }
+	//                Thread dataTransferListenerThread = new Thread(thisListener);
+	//             dataTransferListenerThread.setContextClassLoader(Thread.currentThread().getContextClassLoader());
+	//                dataTransferListenerThread.setName(connectionName);
+	//                dataTransferListenerThread.setDaemon(true);
+	//                thisListener.registerAddressListener(this);
+	//                dataTransferListenerThread.start();
+					thisId = incrementListenerId();
+					listenerIdMap.put(thisId, connectionName);
+					bAdd = true;
+					
+				} catch (Exception ex) {
+					ex.printStackTrace();
+					javax.swing.JOptionPane.showMessageDialog(null, "ListenerManager:createClientModeListener \nError Occurred: "+ ex.getMessage() + "\n\nExternalSocketAddress= "+externalSocketAddress+"\nConnectionName= "+connectionName+"\nenableSSL= "+enableSSL, "ListenerManager", javax.swing.JOptionPane.ERROR_MESSAGE);
+					throw new TransportException("ListenerManager:createClientModeListener "+ex.getMessage(),TransportException.PROTOCOL_ERROR_TYPE);
+				}
+			} else {
+				System.err.println("ListenerManager:  Requested Listener " + connectionName + " already exists.");
+				for (Entry<Integer, String> oEntry : listenerIdMap.entrySet())
+				{
+					thisId = oEntry.getKey();
+					if (oEntry.getValue().equals(connectionName))
+						break;
+				}
+			}
+		}
+		if (bAdd)
+		{
+			synchronized (listenerMap)
+			{
+				listenerMap.put(thisId, listInfo);
+			}
+		}
         return thisId;
     }
 
@@ -296,18 +332,9 @@ public class ListenerManager implements SocketAssignmentListener {
      * @param listenerName the listener name
      */
     public void stopListener(String listenerName) {
-        if (listenerIdMap.containsValue(listenerName)) {
-            Iterator idIterator = listenerIdMap.keySet().iterator();
-            while (idIterator.hasNext()){
-                Integer thisId = (Integer)idIterator.next();
-                if (listenerIdMap.get(thisId).equals(listenerName)){
-                    listenerMap.remove(thisId);
-                    listenerIdMap.remove(thisId);
-                    System.err.println("ListenerManager:  The Requested Listener " + listenerName + " has been stopped and removed.");
-                    break;
-                }
-            }
-        }
+		Integer nId = getListenerId(listenerName);
+		if (nId != Integer.MIN_VALUE)
+			stopListener(nId);
     }
 
     /**
@@ -319,9 +346,21 @@ public class ListenerManager implements SocketAssignmentListener {
      * @param listenerId the listener id
      */
     public void stopListener(Integer listenerId) {
-        if (listenerIdMap.containsKey(listenerId)) {
-                    listenerMap.remove(listenerId);
-                    listenerIdMap.remove(listenerId);
+		boolean bRemoved = false;
+		synchronized (listenerIdMap)
+		{
+			if (listenerIdMap.containsKey(listenerId))
+			{
+				listenerIdMap.remove(listenerId);
+				bRemoved = true;
+			}
+		}
+		synchronized (listenerMap)
+		{
+			if (listenerMap.containsKey(listenerId))
+				listenerMap.remove(listenerId);
+		}
+        if (bRemoved) {
                     System.err.println("ListenerManager:  The Requested Listener " + listenerId + " has been stopped and removed.");
         }
     }
@@ -338,7 +377,10 @@ public class ListenerManager implements SocketAssignmentListener {
      * @return true, if successful
      */
     public boolean listenerExists(String listenerName) {
-        return listenerIdMap.containsValue(listenerName);
+		synchronized (listenerIdMap)
+		{
+			return listenerIdMap.containsValue(listenerName);
+		}
     }
     
     /**
@@ -351,7 +393,20 @@ public class ListenerManager implements SocketAssignmentListener {
      * @return true, if successful
      */
     public boolean listenerExists(Integer listenerId) {
-        return listenerIdMap.containsKey(listenerId)&&listenerMap.containsKey(listenerId);
+		boolean bInIdMap = false;
+		boolean bInMap = false;
+		synchronized (listenerIdMap)
+		{
+			bInIdMap = listenerIdMap.containsKey(listenerId);
+		}
+		if (bInIdMap)
+		{
+			synchronized (listenerMap)
+			{
+				bInMap = listenerMap.containsKey(listenerId);
+			}
+		}
+        return bInIdMap && bInMap;
     }
     
     /**
@@ -362,17 +417,17 @@ public class ListenerManager implements SocketAssignmentListener {
      */
     public String getListenerInternalServerAddress(String listenerName){
         String address = "";
-        if (listenerIdMap.containsValue(listenerName)) {
-            Iterator idIterator = listenerIdMap.keySet().iterator();
-            while (idIterator.hasNext()){
-                Integer thisId = (Integer)idIterator.next();
-                if (listenerIdMap.get(thisId).equals(listenerName)){
-                    ListenerInfo theListener = listenerMap.get(thisId);
-                    address = theListener.getLocalIPAddress();
-                    break;
-                }
-            }
-        }        
+		Integer nId = getListenerId(listenerName);
+		
+		if (nId != Integer.MIN_VALUE)
+		{
+			synchronized (listenerMap)
+			{
+				if (listenerMap.containsKey(nId))
+					address = listenerMap.get(nId).getLocalIPAddress();
+			}
+		}
+        
         return address;
     }
 
@@ -384,13 +439,33 @@ public class ListenerManager implements SocketAssignmentListener {
      */
     public String getListenerInternalServerAddress(Integer listenerId){
         String address = "";
-        if (listenerMap.containsKey(listenerId)) {
-            ListenerInfo theListener = listenerMap.get(listenerId);
-            address = theListener.getLocalIPAddress();
-        }
+		synchronized (listenerMap)
+		{
+			if (listenerMap.containsKey(listenerId)) {
+				ListenerInfo theListener = listenerMap.get(listenerId);
+				address = theListener.getLocalIPAddress();
+			}
+		}
         return address;
     }
 
+	private Integer getListenerId(String listenerName)
+	{
+		Integer nId = Integer.MIN_VALUE;
+		synchronized (listenerIdMap)
+		{
+			for (Entry<Integer, String> oEntry : listenerIdMap.entrySet())
+			{
+				if (oEntry.getValue().equals(listenerName))
+				{
+					nId = oEntry.getKey();
+					break;
+				}
+			}
+		}
+		
+		return nId;
+	}
     /**
      * Gets the listener internal server port.
      *
@@ -399,17 +474,16 @@ public class ListenerManager implements SocketAssignmentListener {
      */
     public Integer getListenerInternalServerPort(String listenerName){
         Integer port=-1;
-        if (listenerIdMap.containsValue(listenerName)) {
-            Iterator idIterator = listenerIdMap.keySet().iterator();
-            while (idIterator.hasNext()){
-                Integer thisId = (Integer)idIterator.next();
-                if (listenerIdMap.get(thisId).equals(listenerName)){
-                    ListenerInfo theListener = listenerMap.get(thisId);
-                    port = theListener.getLocalPort();
-                    break;
-                }
-            }
-        }
+		Integer nId = getListenerId(listenerName);
+		if (nId != Integer.MIN_VALUE)
+		{
+			synchronized (listenerMap)
+			{
+				if (listenerMap.containsKey(nId))
+					port = listenerMap.get(nId).getLocalPort();
+			}
+		}
+
         return port;
     }
 
@@ -421,10 +495,13 @@ public class ListenerManager implements SocketAssignmentListener {
      */
     public Integer getListenerInternalServerPort(Integer listenerId){
         Integer port=-1;
-        if (listenerMap.containsKey(listenerId)) {
-            ListenerInfo theListener = listenerMap.get(listenerId);
-            port = theListener.getLocalPort();
-        }
+		synchronized (listenerMap)
+		{
+			if (listenerMap.containsKey(listenerId)) {
+				ListenerInfo theListener = listenerMap.get(listenerId);
+				port = theListener.getLocalPort();
+			}
+		}
         return port;
     }
 
@@ -437,12 +514,15 @@ public class ListenerManager implements SocketAssignmentListener {
      */
     public String getConnectionName(String serverAdddress, int serverPort){
         String results="";
-        for (Integer listenerId : listenerMap.keySet()){
-            ListenerInfo theListener = listenerMap.get(listenerId);
-            if (theListener.isConnectionMatch(serverAdddress, serverPort)){
-                return theListener.getConnectionName();
-            }
-        }
+		synchronized (listenerMap)
+		{
+			for (Integer listenerId : listenerMap.keySet()){
+				ListenerInfo theListener = listenerMap.get(listenerId);
+				if (theListener.isConnectionMatch(serverAdddress, serverPort)){
+					return theListener.getConnectionName();
+				}
+			}
+		}
         return results;
     }
     

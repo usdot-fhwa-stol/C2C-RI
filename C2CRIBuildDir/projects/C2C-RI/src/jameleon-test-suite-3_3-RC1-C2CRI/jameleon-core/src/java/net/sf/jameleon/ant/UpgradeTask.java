@@ -41,6 +41,7 @@ public class UpgradeTask extends Task{
     protected File jameleonGUIProperties = new File("lib/jameleon-gui.properties");
 
     public UpgradeTask(){
+		// original implementation was empty
     }
 
     /**
@@ -79,9 +80,15 @@ public class UpgradeTask extends Task{
             Properties uiProps = updateClasspathEntries();
             Properties confProps = new Properties();
             try{
-                confProps.load(new FileInputStream(config));
+				try (FileInputStream oFis = new FileInputStream(config))
+				{
+					confProps.load(oFis);
+				}
                 confProps.putAll(uiProps);
-                confProps.store(new FileOutputStream(config), null);
+				try (FileOutputStream oFos = new FileOutputStream(config))
+				{
+					confProps.store(oFos, null);
+				}
                 System.out.println("Applied properties in '"+jameleonGUIProperties.getPath() + "' towards '"+config.getPath()+"'.");
             }catch(IOException ioe){
                 throw new BuildException(ioe);
@@ -124,7 +131,12 @@ public class UpgradeTask extends Task{
     }
 
     private void throwExceptionOnNoFile(File f, String attributeName) throws BuildException{
-        if (f == null || !f.exists() || f.isDirectory()) {
+        if (f == null)
+        {
+            throw new BuildException("Null File Object");
+        }
+        if (!f.exists() || f.isDirectory()) 
+        {
             throw new BuildException("'"+attributeName+"': "+f.getPath() + 
                                      ": is either a directory or is non-existent!");
         }

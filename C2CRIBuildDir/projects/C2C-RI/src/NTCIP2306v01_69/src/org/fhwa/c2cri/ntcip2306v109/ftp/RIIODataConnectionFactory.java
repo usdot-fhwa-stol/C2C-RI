@@ -231,7 +231,8 @@ public class RIIODataConnectionFactory implements ServerDataConnectionFactory{
                 externalAddress = resolveAddress(dataCfg.getPassiveAddress());
                 address = resolveAddress(dataCfg.getPassiveAddress());
             }
-
+			if (address == null)
+				throw new DataConnectionException("Null address");
             if (secure) {
                 LOG
                         .debug(
@@ -248,7 +249,7 @@ public class RIIODataConnectionFactory implements ServerDataConnectionFactory{
                 // Instead, it creates a regular
                 // ServerSocket that will be wrapped as a SSL socket in createDataSocket()
                 servSoc = new ServerSocket(passivePort, 0, address);
-
+				
                 ListenerManager.getInstance().createServerModeListener(address.getHostAddress(),
                                             passivePort, address.getHostAddress(),
                                             passivePort, secure, "FTP DATA CONNECTION PASSIVE");

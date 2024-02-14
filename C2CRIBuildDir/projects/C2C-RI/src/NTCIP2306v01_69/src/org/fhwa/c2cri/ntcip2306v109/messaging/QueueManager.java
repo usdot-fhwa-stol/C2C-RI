@@ -87,6 +87,7 @@ public class QueueManager implements Runnable, QueueController {
                 Thread.currentThread().sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
+				Thread.currentThread().interrupt();
                 stopQueue = true;
             }
         }
@@ -101,6 +102,7 @@ public class QueueManager implements Runnable, QueueController {
             externalQueueSemaphore.notifyToWakeup();        
         } catch (InterruptedException e){
             e.printStackTrace();
+			Thread.currentThread().interrupt();
         }
         System.out.println("QueueManager has been stopped ..."+this);
 
@@ -119,6 +121,7 @@ public class QueueManager implements Runnable, QueueController {
             externalQueueSemaphore.notifyToWakeup();  
         } catch (InterruptedException ex){
             ex.printStackTrace();
+			Thread.currentThread().interrupt();
             stopQueue = true;
         }
     }
@@ -233,6 +236,8 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
             externalQueueSemaphore.notifyToWakeup();
         } catch (Exception ex) {
             ex.printStackTrace();
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
         }
     }
 
@@ -254,6 +259,7 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
             externalQueueSemaphore.notifyToWakeup();
         } catch (InterruptedException ex){     
             ex.printStackTrace();
+			Thread.currentThread().interrupt();
         }
         return requestQueueStatus;
     };
@@ -279,6 +285,7 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
                 }
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
+				Thread.currentThread().interrupt();
                 break;
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -313,6 +320,7 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
                 }
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
+				Thread.currentThread().interrupt();
                 break;
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -417,6 +425,8 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
             }
             externalQueueSemaphore.notifyToWakeup();
         } catch (Exception ex) {
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             ex.printStackTrace();
         }
     }
@@ -439,6 +449,7 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
             externalQueueSemaphore.notifyToWakeup();
         } catch (InterruptedException ex){     
             ex.printStackTrace();
+			Thread.currentThread().interrupt();
         }
         return responseQueueStatus;
     };
@@ -466,6 +477,7 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
 
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
+				Thread.currentThread().interrupt();
                 break;
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -501,6 +513,7 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
 
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
+				Thread.currentThread().interrupt();
                 break;
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -566,6 +579,8 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
             }
             externalQueueSemaphore.notifyToWakeup();
         } catch (Exception ex) {
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             ex.printStackTrace();
         }
     }
@@ -588,6 +603,7 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
             externalQueueSemaphore.notifyToWakeup();
         } catch (InterruptedException ex){     
             ex.printStackTrace();
+			Thread.currentThread().interrupt();
         }
         return operationResultsQueueStatus;
     };
@@ -614,6 +630,7 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
 
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
+				Thread.currentThread().interrupt();
                 break;
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -649,6 +666,7 @@ public void addToExtRequestQueue(OperationIdentifier operation, NTCIP2306Message
 
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
+				Thread.currentThread().interrupt();
                 break;
             } catch (Exception ex) {
                 ex.printStackTrace();

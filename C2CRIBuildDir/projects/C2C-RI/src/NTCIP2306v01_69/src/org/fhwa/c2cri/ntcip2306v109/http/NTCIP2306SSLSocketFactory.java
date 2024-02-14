@@ -363,11 +363,13 @@ public class NTCIP2306SSLSocketFactory implements LayeredSocketFactory {
             clientAddress = new InetSocketAddress(ListenerManager.getInstance().getListenerInternalServerAddress(listenerId),
                     ListenerManager.getInstance().getListenerInternalServerPort(listenerId));
             sslsock.connect(clientAddress, connTimeout);
-            this.localAdd = sock.getLocalAddress().getHostAddress()+":"+sock.getLocalPort();
-            System.out.println("SSLTrialSocketFactory::connectSocket localAdd set to "+localAdd);
+			if (sock == null)
+				throw new IOException("Null socket");
+			this.localAdd = sock.getLocalAddress().getHostAddress()+":"+sock.getLocalPort();
+			System.out.println("SSLTrialSocketFactory::connectSocket localAdd set to "+localAdd);
 
-            this.remoteAdd = sock.getInetAddress().getHostAddress()+":"+String.valueOf(sock.getPort());
-            System.out.println("SSLTrialSocketFactory::connectSocket remoteAdd set to "+remoteAdd);
+			this.remoteAdd = sock.getInetAddress().getHostAddress()+":"+String.valueOf(sock.getPort());
+			System.out.println("SSLTrialSocketFactory::connectSocket remoteAdd set to "+remoteAdd);
         } catch (SocketTimeoutException ex) {
             throw new ConnectTimeoutException("Connect to " + remoteAddress + " timed out");
         } catch (TransportException tex){
@@ -456,12 +458,6 @@ public class NTCIP2306SSLSocketFactory implements LayeredSocketFactory {
         }        
         
         
-        SSLSocket sslSocket = (SSLSocket) this.socketfactory.createSocket(
-              newSocket,
-              localAddress,
-              localPort,
-              autoClose
-        );
             this.localAdd = socket.getLocalAddress().getHostAddress()+":"+socket.getLocalPort();
             this.remoteAdd = socket.getInetAddress().getHostAddress()+":"+socket.getPort();
             System.out.println("SSLTrialSocketFactory::socket Inet address Host was "+socket.getInetAddress().getHostAddress());
@@ -474,8 +470,7 @@ public class NTCIP2306SSLSocketFactory implements LayeredSocketFactory {
 
             
             
-//        hostnameVerifier.verify(host, sslSocket);
-        // verifyHostName() didn't blowup - good!
+
         return newSocket;
     }
 

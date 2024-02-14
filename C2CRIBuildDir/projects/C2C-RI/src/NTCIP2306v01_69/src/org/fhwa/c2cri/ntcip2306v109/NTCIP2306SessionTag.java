@@ -65,7 +65,7 @@ public class NTCIP2306SessionTag extends SessionTag {
     /**
      * the Service object managed by this Session
      */
-    private static NTCIP2306Controller theService;
+    private NTCIP2306Controller theService;
 
     private RIWSDL wsdlInstance;
 
@@ -121,6 +121,8 @@ public class NTCIP2306SessionTag extends SessionTag {
                 theService = new NTCIP2306Controller(theWSDL, ccc);
 
             } catch (Exception ex) {
+				if (ex instanceof InterruptedException)
+					Thread.currentThread().interrupt();
                 log.debug("*NTCIP2306SessionTag: Error Setting up the Service ->" + ex.getMessage());
                 JOptionPane.showMessageDialog(null, "Script Error: \n" + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 throw new JameleonScriptException("*NTCIP2306SessionTag: Error Setting up the Service ->" + ex.getMessage(), this);
@@ -145,7 +147,6 @@ public class NTCIP2306SessionTag extends SessionTag {
 //            theService.dialogHandler.getTransport().shutdown();
                 theService = null;
             }
-            System.gc();
             log.debug("NTCIP2306SessionTag.tearDownSession: The service has been torn down.!");
         } catch (Exception ex) {
             throw new JameleonScriptException("Error tearing down NTCIP2306SessionTag.  Could not shutdown the Transport. /n" + ex.getMessage(), this);
@@ -157,6 +158,7 @@ public class NTCIP2306SessionTag extends SessionTag {
      */
     @Override
     public void startApplication() {
+		// original implementation was empty
     }
 
     /**

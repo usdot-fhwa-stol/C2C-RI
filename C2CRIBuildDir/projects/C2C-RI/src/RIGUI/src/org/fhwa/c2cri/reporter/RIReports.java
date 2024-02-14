@@ -348,9 +348,6 @@ public class RIReports {
     /** The conn. */
     Connection conn = null;
     
-    /** The pstmt. */
-    PreparedStatement pstmt = null;
-    
     /** The selected test config obj. */
     TestConfiguration selectedTestConfigObj = null;
 
@@ -379,11 +376,11 @@ public class RIReports {
             File tempdb = new File("./temp.db3");
 
             // Make a temporary copy of C2C RI SQLite database
-            FileChannel sourceCh = new FileInputStream(sourcedb).getChannel();
-            FileChannel destCh = new FileOutputStream(tempdb).getChannel();
-            sourceCh.transferTo(0, sourceCh.size(), destCh);
-            sourceCh.close();
-            destCh.close();
+            try (FileChannel sourceCh = new FileInputStream(sourcedb).getChannel();
+				FileChannel destCh = new FileOutputStream(tempdb).getChannel())
+			{
+				sourceCh.transferTo(0, sourceCh.size(), destCh);
+			}
 
             // Create a SQLite connection
             Class.forName("org.sqlite.JDBC");
@@ -469,11 +466,11 @@ public class RIReports {
             File tempdb = new File("./temp.db3");
 
             // Make a temporary copy of C2C RI SQLite database
-            FileChannel sourceCh = new FileInputStream(sourcedb).getChannel();
-            FileChannel destCh = new FileOutputStream(tempdb).getChannel();
-            sourceCh.transferTo(0, sourceCh.size(), destCh);
-            sourceCh.close();
-            destCh.close();
+            try (FileChannel sourceCh = new FileInputStream(sourcedb).getChannel();
+				FileChannel destCh = new FileOutputStream(tempdb).getChannel())
+			{
+				sourceCh.transferTo(0, sourceCh.size(), destCh);
+			}
 
             // Create a SQLite connection
             Class.forName("org.sqlite.JDBC");
@@ -876,15 +873,13 @@ public class RIReports {
      * @throws SQLException the sQL exception
      */
     void writeConfigDataToTempDB(String configFileName) throws SQLException {
-        try {
+        try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_CONFIG ("
+                    + "cfgFileName, cfgFileCreator, cfgFileCreationDate, cfgFileDesc, testSuiteName, testSuiteDesc, "
+                    + "infoLayerStd, appLayerStd, conformConpliance, extCenter, ownercenter) VALUES (?,?,?,?,?,?,?,?,?,?,?)")) 
+		{
             String DATE_FORMAT_NOW = "yyyy-MM-dd HH:mm:ss";
             Calendar cal = Calendar.getInstance();
             SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT_NOW);
-
-            pstmt = conn.prepareStatement("INSERT INTO C2CRI_CONFIG ("
-                    + "cfgFileName, cfgFileCreator, cfgFileCreationDate, cfgFileDesc, testSuiteName, testSuiteDesc, "
-                    + "infoLayerStd, appLayerStd, conformConpliance, extCenter, ownercenter) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-
             int col = 1;
             File cfgFile = new File(configFileName);
 
@@ -903,11 +898,6 @@ public class RIReports {
             pstmt.executeBatch();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        } finally {
-            try {
-                pstmt.close();
-            } catch (SQLException ex) {
-            }
         }
     }
 
@@ -917,10 +907,10 @@ public class RIReports {
      * @throws SQLException the sQL exception
      */
     private void writeSUTdataToTempDB() throws SQLException {
-        try {
+        try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_SUT ("
+                    + "ipAddress, ipPort, hostName, webServiceURL, userName, password, userNameRequired, passwordRequired) VALUES (?,?,?,?,?,?,?,?)"))
+		{
             // Store C2CRI_SUT table data
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_SUT ("
-                    + "ipAddress, ipPort, hostName, webServiceURL, userName, password, userNameRequired, passwordRequired) VALUES (?,?,?,?,?,?,?,?)");
 
             int col = 1;
             pstmt.setString(col++, selectedTestConfigObj.getSutParams().getIpAddress()); //ipAddress
@@ -933,11 +923,6 @@ public class RIReports {
             pstmt.setString(col++, selectedTestConfigObj.getSutParams().isPasswordRequired() ? "true" : "false"); //passwordRequired
             pstmt.addBatch();
             pstmt.executeBatch();
-        } finally {
-            try {
-                pstmt.close();
-            } catch (SQLException ex) {
-            }
         }
     }
 
@@ -947,87 +932,86 @@ public class RIReports {
      * @throws SQLException the sQL exception
      */
     private void writeInfoLayerNRTMDataToTempDB() throws SQLException {
-        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoLayerNRTM ("
+        try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoLayerNRTM ("
                 + "NeedID,NeedText,NeedFlagValue,NeedFlagName,NeedType,IsNeedExtension,"
                 + "RequirementID, RequirementText,RequirementType,RequirementFlagName,RequirementFlagValue,IsRequirementExtension,"
-                + "OtherRequirement,OtherRequirementValue,OtherRequirementValueName) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                + "OtherRequirement,OtherRequirementValue,OtherRequirementValueName) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"))
+		{
+			conn.setAutoCommit(false);
+			for (Need thisNeed : selectedTestConfigObj.getInfoLayerParams().getNrtm().getUserNeeds().needs) {
+				try {
+					if (thisNeed.getFlagValue()) {
+						for (Requirement thisRequirement : selectedTestConfigObj.getInfoLayerParams().getNrtm().getNeedRelatedRequirements(thisNeed.getTitle())) {
+							if (thisRequirement.getFlagValue()) {
 
-        conn.setAutoCommit(false);
-        for (Need thisNeed : selectedTestConfigObj.getInfoLayerParams().getNrtm().getUserNeeds().needs) {
-            try {
-                if (thisNeed.getFlagValue()) {
-                    for (Requirement thisRequirement : selectedTestConfigObj.getInfoLayerParams().getNrtm().getNeedRelatedRequirements(thisNeed.getTitle())) {
-                        if (thisRequirement.getFlagValue()) {
+								String otherRequirement = "";
+								String otherRequirementValue = "";
+								String otherRequirementValueName = "";
+								if (thisRequirement.getOtherRequirements().otherRequirements.size() > 0) {
+									otherRequirement = thisRequirement.getOtherRequirements().otherRequirements.get(0).getOtherRequirement();
+									otherRequirementValue = thisRequirement.getOtherRequirements().otherRequirements.get(0).getValue();
+									otherRequirementValueName = thisRequirement.getOtherRequirements().otherRequirements.get(0).getValueName();
+								}
+								// Store C2CRI_InfoLayerNeed table data
+								int col = 1;
 
-                            String otherRequirement = "";
-                            String otherRequirementValue = "";
-                            String otherRequirementValueName = "";
-                            if (thisRequirement.getOtherRequirements().otherRequirements.size() > 0) {
-                                otherRequirement = thisRequirement.getOtherRequirements().otherRequirements.get(0).getOtherRequirement();
-                                otherRequirementValue = thisRequirement.getOtherRequirements().otherRequirements.get(0).getValue();
-                                otherRequirementValueName = thisRequirement.getOtherRequirements().otherRequirements.get(0).getValueName();
-                            }
-                            // Store C2CRI_InfoLayerNeed table data
-                            int col = 1;
+								pstmt.setString(col++, thisNeed.getOfficialID());
+								pstmt.setString(col++, thisNeed.getText());
+								pstmt.setString(col++, thisNeed.getFlagValue().toString());
+								pstmt.setString(col++, thisNeed.getFlagName());
+								pstmt.setString(col++, thisNeed.getType());
+								pstmt.setString(col++, thisNeed.isExtension().toString());
+								pstmt.setString(col++, thisRequirement.getOfficialID());
+								pstmt.setString(col++, thisRequirement.getText());
+								pstmt.setString(col++, thisRequirement.getType());
+								pstmt.setString(col++, thisRequirement.getFlagName());
+								pstmt.setString(col++, thisRequirement.getFlagValue().toString());
+								pstmt.setString(col++, thisRequirement.isExtension().toString());
+								pstmt.setString(col++, otherRequirement);
+								pstmt.setString(col++, otherRequirementValue);
+								pstmt.setString(col++, otherRequirementValueName);
+								pstmt.addBatch();
+							}
 
-                            pstmt.setString(col++, thisNeed.getOfficialID());
-                            pstmt.setString(col++, thisNeed.getText());
-                            pstmt.setString(col++, thisNeed.getFlagValue().toString());
-                            pstmt.setString(col++, thisNeed.getFlagName());
-                            pstmt.setString(col++, thisNeed.getType());
-                            pstmt.setString(col++, thisNeed.isExtension().toString());
-                            pstmt.setString(col++, thisRequirement.getOfficialID());
-                            pstmt.setString(col++, thisRequirement.getText());
-                            pstmt.setString(col++, thisRequirement.getType());
-                            pstmt.setString(col++, thisRequirement.getFlagName());
-                            pstmt.setString(col++, thisRequirement.getFlagValue().toString());
-                            pstmt.setString(col++, thisRequirement.isExtension().toString());
-                            pstmt.setString(col++, otherRequirement);
-                            pstmt.setString(col++, otherRequirementValue);
-                            pstmt.setString(col++, otherRequirementValueName);
-                            pstmt.addBatch();
-                        }
-
-                    }
-                }
-            } finally {
-            }
-        }
-        System.out.println("About to write out Info Layer NRTM to Database...");
-        conn.setAutoCommit(true);
-        pstmt.executeBatch();
-        pstmt.close();
+						}
+					}
+				} finally {
+				}
+			}
+			System.out.println("About to write out Info Layer NRTM to Database...");
+			conn.setAutoCommit(true);
+			pstmt.executeBatch();
+		}
         System.out.println("About to write out Info Layer NRTM to Database...Done");
 
 
         List<TestCase> testCases = selectedTestConfigObj.getInfoLayerParams().getApplicableTestCases(selectedTestConfigObj.getTestMode().isExternalCenterOperation() ? "EC" : "OC");
-                pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoLayerTestCases ("
-                        + "TestCaseName,TestCaseDescription,TestCaseType,TestCaseDataURL,TestCaseCustomDataURL,TestProcedureScriptURL, IsOverriden) VALUES (?,?,?,?,?,?,?)");
-        for (TestCase thisTestCase : testCases) {
-            try {
+        try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoLayerTestCases ("
+                        + "TestCaseName,TestCaseDescription,TestCaseType,TestCaseDataURL,TestCaseCustomDataURL,TestProcedureScriptURL, IsOverriden) VALUES (?,?,?,?,?,?,?)"))
+		{
+			for (TestCase thisTestCase : testCases) {
+				try {
 
-                int col = 1;
+					int col = 1;
 
 
-                pstmt.setString(col++, thisTestCase.getName());
-                pstmt.setString(col++, thisTestCase.getDescription());
-                pstmt.setString(col++, thisTestCase.getType());
-                pstmt.setString(col++, thisTestCase.getDataUrlLocation().toString());
-                pstmt.setString(col++, thisTestCase.getCustomDataLocation());
-                pstmt.setString(col++, thisTestCase.getScriptUrlLocation().toString());
-                pstmt.setString(col++, thisTestCase.isOverriden() ? "true" : "false");
+					pstmt.setString(col++, thisTestCase.getName());
+					pstmt.setString(col++, thisTestCase.getDescription());
+					pstmt.setString(col++, thisTestCase.getType());
+					pstmt.setString(col++, thisTestCase.getDataUrlLocation().toString());
+					pstmt.setString(col++, thisTestCase.getCustomDataLocation());
+					pstmt.setString(col++, thisTestCase.getScriptUrlLocation().toString());
+					pstmt.setString(col++, thisTestCase.isOverriden() ? "true" : "false");
 
-                pstmt.addBatch();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+					pstmt.addBatch();
+				} catch (Exception ex) {
+					ex.printStackTrace();
 
-            } finally {
-            }
-
-        }
-        System.out.println("About to write out Info Layer TestCases to Database...");
-                pstmt.executeBatch();
-                pstmt.close();
+				}
+			}
+			System.out.println("About to write out Info Layer TestCases to Database...");
+            pstmt.executeBatch();
+		}
         System.out.println("About to write out Info Layer TestCases to Database...Done");
 
     }
@@ -1037,90 +1021,80 @@ public class RIReports {
      *
      * @throws SQLException the sQL exception
      */
-    private void writeAppLayerNRTMDataToTempDB() throws SQLException {
-                            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppLayerNRTM ("
-                                    + "NeedID,NeedText,NeedFlagValue,NeedFlagName,NeedType,IsNeedExtension,"
-                                    + "RequirementID, RequirementText,RequirementType,RequirementFlagName,RequirementFlagValue,IsRequirementExtension,"
-                                    + "OtherRequirement,OtherRequirementValue,OtherRequirementValueName) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-        for (Need thisNeed : selectedTestConfigObj.getAppLayerParams().getNrtm().getUserNeeds().needs) {
-            try {
-                if (thisNeed.getFlagValue()) {
-                    for (Requirement thisRequirement : selectedTestConfigObj.getAppLayerParams().getNrtm().getNeedRelatedRequirements(thisNeed.getTitle())) {
-                        if (thisRequirement.getFlagValue()) {
+    private void writeAppLayerNRTMDataToTempDB() throws SQLException 
+	{
+		try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppLayerNRTM ("
+				+ "NeedID,NeedText,NeedFlagValue,NeedFlagName,NeedType,IsNeedExtension,"
+				+ "RequirementID, RequirementText,RequirementType,RequirementFlagName,RequirementFlagValue,IsRequirementExtension,"
+				+ "OtherRequirement,OtherRequirementValue,OtherRequirementValueName) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"))
+		{
+			for (Need thisNeed : selectedTestConfigObj.getAppLayerParams().getNrtm().getUserNeeds().needs) {
+				if (thisNeed.getFlagValue()) {
+					for (Requirement thisRequirement : selectedTestConfigObj.getAppLayerParams().getNrtm().getNeedRelatedRequirements(thisNeed.getTitle())) {
+						if (thisRequirement.getFlagValue()) {
 
-                            String otherRequirement = "";
-                            String otherRequirementValue = "";
-                            String otherRequirementValueName = "";
-                            if (thisRequirement.getOtherRequirements().otherRequirements.size() > 0) {
-                                otherRequirement = thisRequirement.getOtherRequirements().otherRequirements.get(0).getOtherRequirement();
-                                otherRequirementValue = thisRequirement.getOtherRequirements().otherRequirements.get(0).getValue();
-                                otherRequirementValueName = thisRequirement.getOtherRequirements().otherRequirements.get(0).getValueName();
-                            }
-                            // Store C2CRI_InfoLayerNeed table data
+							String otherRequirement = "";
+							String otherRequirementValue = "";
+							String otherRequirementValueName = "";
+							if (thisRequirement.getOtherRequirements().otherRequirements.size() > 0) {
+								otherRequirement = thisRequirement.getOtherRequirements().otherRequirements.get(0).getOtherRequirement();
+								otherRequirementValue = thisRequirement.getOtherRequirements().otherRequirements.get(0).getValue();
+								otherRequirementValueName = thisRequirement.getOtherRequirements().otherRequirements.get(0).getValueName();
+							}
+							// Store C2CRI_InfoLayerNeed table data
 
-                            int col = 1;
+							int col = 1;
 
-                            pstmt.setString(col++, thisNeed.getOfficialID());
-                            pstmt.setString(col++, thisNeed.getText());
-                            pstmt.setString(col++, thisNeed.getFlagValue().toString());
-                            pstmt.setString(col++, thisNeed.getFlagName());
-                            pstmt.setString(col++, thisNeed.getType());
-                            pstmt.setString(col++, thisNeed.isExtension().toString());
-                            pstmt.setString(col++, thisRequirement.getOfficialID());
-                            pstmt.setString(col++, thisRequirement.getText());
-                            pstmt.setString(col++, thisRequirement.getType());
-                            pstmt.setString(col++, thisRequirement.getFlagName());
-                            pstmt.setString(col++, thisRequirement.getFlagValue().toString());
-                            pstmt.setString(col++, thisRequirement.isExtension().toString());
-                            pstmt.setString(col++, otherRequirement);
-                            pstmt.setString(col++, otherRequirementValue);
-                            pstmt.setString(col++, otherRequirementValueName);
-                            pstmt.addBatch();
-                        }
+							pstmt.setString(col++, thisNeed.getOfficialID());
+							pstmt.setString(col++, thisNeed.getText());
+							pstmt.setString(col++, thisNeed.getFlagValue().toString());
+							pstmt.setString(col++, thisNeed.getFlagName());
+							pstmt.setString(col++, thisNeed.getType());
+							pstmt.setString(col++, thisNeed.isExtension().toString());
+							pstmt.setString(col++, thisRequirement.getOfficialID());
+							pstmt.setString(col++, thisRequirement.getText());
+							pstmt.setString(col++, thisRequirement.getType());
+							pstmt.setString(col++, thisRequirement.getFlagName());
+							pstmt.setString(col++, thisRequirement.getFlagValue().toString());
+							pstmt.setString(col++, thisRequirement.isExtension().toString());
+							pstmt.setString(col++, otherRequirement);
+							pstmt.setString(col++, otherRequirementValue);
+							pstmt.setString(col++, otherRequirementValueName);
+							pstmt.addBatch();
+						}
 
-                    }
-                }
-            } finally {
-//                try {
-//                    pstmt.close();
-//                } catch (SQLException ex) {
-//                }
-            }
-        }
-        pstmt.executeBatch();
-        pstmt.close();
+					}
+				}
+			}
+			pstmt.executeBatch();
+		}
 
         List<TestCase> testCases = selectedTestConfigObj.getAppLayerParams().getApplicableTestCases(selectedTestConfigObj.getTestMode().isExternalCenterOperation() ? "EC" : "OC");
-                pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppLayerTestCases ("
-                        + "TestCaseName,TestCaseDescription,TestCaseType,TestCaseDataURL,TestCaseCustomDataURL,TestProcedureScriptURL, IsOverriden) VALUES (?,?,?,?,?,?,?)");
-        for (TestCase thisTestCase : testCases) {
-            try {
+		try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppLayerTestCases ("
+                        + "TestCaseName,TestCaseDescription,TestCaseType,TestCaseDataURL,TestCaseCustomDataURL,TestProcedureScriptURL, IsOverriden) VALUES (?,?,?,?,?,?,?)"))
+		{
+			for (TestCase thisTestCase : testCases) {
+				try {
 
-                int col = 1;
+					int col = 1;
 
 
-                pstmt.setString(col++, thisTestCase.getName());
-                pstmt.setString(col++, thisTestCase.getDescription());
-                pstmt.setString(col++, thisTestCase.getType());
-                pstmt.setString(col++, thisTestCase.getDataUrlLocation().toString());
-                pstmt.setString(col++, thisTestCase.getCustomDataLocation());
-                pstmt.setString(col++, thisTestCase.getScriptUrlLocation().toString());
-                pstmt.setString(col++, thisTestCase.isOverriden() ? "true" : "false");
+					pstmt.setString(col++, thisTestCase.getName());
+					pstmt.setString(col++, thisTestCase.getDescription());
+					pstmt.setString(col++, thisTestCase.getType());
+					pstmt.setString(col++, thisTestCase.getDataUrlLocation().toString());
+					pstmt.setString(col++, thisTestCase.getCustomDataLocation());
+					pstmt.setString(col++, thisTestCase.getScriptUrlLocation().toString());
+					pstmt.setString(col++, thisTestCase.isOverriden() ? "true" : "false");
 
-                pstmt.addBatch();
-            } catch (Exception ex) {
-                ex.printStackTrace();
+					pstmt.addBatch();
+				} catch (Exception ex) {
+					ex.printStackTrace();
 
-            } finally {
-//                try {
-//                    pstmt.close();
-//                } catch (SQLException ex) {
-//                }
-            }
-
-        }
-                pstmt.executeBatch();
-                pstmt.close();
+				}
+			}
+			pstmt.executeBatch();
+		}
 
     }
 
@@ -1158,10 +1132,10 @@ public class RIReports {
         }
 
         for (OtherRequirement theOther : selectedOtherReq) {
-            try {
+            try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoLayerOther ("
+                        + "requirement, param, val) VALUES (?,?,?)"))
+			{
                 // Store C2CRI_InfoLayerNeed table data
-                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoLayerOther ("
-                        + "requirement, param, val) VALUES (?,?,?)");
 
                 int col = 1;
                 pstmt.setString(col++, theOther.getReqID());            // OfficialID
@@ -1169,38 +1143,28 @@ public class RIReports {
                 pstmt.setString(col++, theOther.getValue());            // selected
                 pstmt.addBatch();
                 pstmt.executeBatch();
-            } finally {
-                try {
-                    pstmt.close();
-                } catch (SQLException ex) {
-                }
             }
         }
 
         for (Need theNeed : selectedNeedsList) {
-            try {
+            try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoLayerNeed ("
+                        + "need, selected) VALUES (?,?)"))
+			{
                 // Store C2CRI_InfoLayerNeed table data
-                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoLayerNeed ("
-                        + "need, selected) VALUES (?,?)");
 
                 int col = 1;
                 pstmt.setString(col++, theNeed.getTitle());    // OfficialID
                 pstmt.setString(col++, theNeed.getFlagValue() ? "Yes" : "No");               // selected
                 pstmt.addBatch();
                 pstmt.executeBatch();
-            } finally {
-                try {
-                    pstmt.close();
-                } catch (SQLException ex) {
-                }
             }
         }
 
         for (Requirement theReq : selectedReq) {
-            try {
+            try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoLayerReq ("
+                        + "requirement, selected) VALUES (?,?)"))
+			{
                 // Store C2CRI_InfoLayerNeed table data
-                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoLayerReq ("
-                        + "requirement, selected) VALUES (?,?)");
 
                 int col = 1;
                 pstmt.setString(col++, theReq.getTitle());      // OfficialID
@@ -1208,13 +1172,8 @@ public class RIReports {
 
                 pstmt.addBatch();
                 pstmt.executeBatch();
-            } finally {
-                try {
-                    pstmt.close();
-                } catch (SQLException ex) {
-                }
             }
-        }
+		}
     }
 
     /**
@@ -1250,10 +1209,10 @@ public class RIReports {
         }
 
         for (OtherRequirement theOther : selectedOtherReq) {
-            try {
+            try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppLayerOther ("
+                        + "requirement, param, val) VALUES (?,?,?)"))
+			{
                 // Store C2CRI_InfoLayerNeed table data
-                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppLayerOther ("
-                        + "requirement, param, val) VALUES (?,?,?)");
 
                 int col = 1;
                 pstmt.setString(col++, theOther.getReqID());            // OfficialID
@@ -1261,38 +1220,29 @@ public class RIReports {
                 pstmt.setString(col++, theOther.getValue());            // selected
                 pstmt.addBatch();
                 pstmt.executeBatch();
-            } finally {
-                try {
-                    pstmt.close();
-                } catch (SQLException ex) {
-                }
             }
-        }
+		}
 
         for (Need theNeed : selectedNeedsList) {
-            try {
+            try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppLayerNeed ("
+                        + "need, selected) VALUES (?,?)"))
+			{
                 // Store C2CRI_InfoLayerNeed table data
-                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppLayerNeed ("
-                        + "need, selected) VALUES (?,?)");
 
                 int col = 1;
                 pstmt.setString(col++, theNeed.getTitle());                     // OfficialID
                 pstmt.setString(col++, theNeed.getFlagValue() ? "Yes" : "No");      // selected
                 pstmt.addBatch();
                 pstmt.executeBatch();
-            } finally {
-                try {
-                    pstmt.close();
-                } catch (SQLException ex) {
-                }
             }
-        }
+		}
 
         for (Requirement theReq : selectedReq) {
-            try {
+            try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppLayerReq ("
+                        + "requirement, selected) VALUES (?,?)"))
+			{
                 // Store C2CRI_InfoLayerNeed table data
-                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppLayerReq ("
-                        + "requirement, selected) VALUES (?,?)");
+                
 
                 int col = 1;
                 pstmt.setString(col++, theReq.getTitle());                  // OfficialID
@@ -1300,11 +1250,6 @@ public class RIReports {
 
                 pstmt.addBatch();
                 pstmt.executeBatch();
-            } finally {
-                try {
-                    pstmt.close();
-                } catch (SQLException ex) {
-                }
             }
         }
     }
@@ -1322,124 +1267,113 @@ public class RIReports {
 
         StringBuilder contents = null;
         URL scriptURL = null;
-        PreparedStatement pstmt = null;
         ArrayList<String> infoTestScripts = new ArrayList<String>();
         ArrayList<String> appTestScripts = new ArrayList<String>();
-                    pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoTestCases ("
-                            + "scriptName, content) VALUES (?,?)");
-        for (TestCase infoTestCase : infoTestCases.testCases) {
-            if (!infoTestScripts.contains(infoTestCase.getScriptUrlLocation().getPath())) {
-                infoTestScripts.add(infoTestCase.getScriptUrlLocation().getPath());
-                try {
-                    // Write out to temp db
+        try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_InfoTestCases ("
+                            + "scriptName, content) VALUES (?,?)"))
+		{
+			for (TestCase infoTestCase : infoTestCases.testCases) {
+				if (!infoTestScripts.contains(infoTestCase.getScriptUrlLocation().getPath())) {
+					infoTestScripts.add(infoTestCase.getScriptUrlLocation().getPath());
+					try {
+						// Write out to temp db
 
-                    contents = new StringBuilder();
-                    scriptURL = infoTestCase.getScriptUrlLocation();
-                    URLConnection yc = scriptURL.openConnection();
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(
-                            yc.getInputStream()));
-                    String inputLine;
-                    String pad = "      ";
-                    Integer linecount = 0;
-                    while ((inputLine = in.readLine()) != null) {
-                        linecount++;
-                        contents.append(linecount+pad.substring(0, pad.length() - linecount.toString().length()));
-                        contents.append(inputLine);
-                        contents.append(System.getProperty("line.separator"));
-                    }
+						contents = new StringBuilder();
+						scriptURL = infoTestCase.getScriptUrlLocation();
+						URLConnection yc = scriptURL.openConnection();
+						try (BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream())))
+						{
+							String inputLine;
+							String pad = "      ";
+							Integer linecount = 0;
+							while ((inputLine = in.readLine()) != null) {
+								linecount++;
+								contents.append(linecount+pad.substring(0, pad.length() - linecount.toString().length()));
+								contents.append(inputLine);
+								contents.append(System.getProperty("line.separator"));
+							}
+						}
 
-                    in.close();
+						int col = 1;
+						pstmt.setString(col++, scriptURL.getPath());    // scriptName path
+						pstmt.setString(col++, contents.toString());    // content
+						pstmt.addBatch();
+					} catch (MalformedURLException ex) {
+						int col = 1;
+						pstmt.setString(col++, scriptURL.getPath());    // scriptName path
+						pstmt.setString(col++, "Either no legal protocol could be found in a specification string or the string could not be parsed.");    // content
+						pstmt.addBatch();
 
-                    int col = 1;
-                    pstmt.setString(col++, scriptURL.getPath());    // scriptName path
-                    pstmt.setString(col++, contents.toString());    // content
-                    pstmt.addBatch();
-                } catch (MalformedURLException ex) {
-                    int col = 1;
-                    pstmt.setString(col++, scriptURL.getPath());    // scriptName path
-                    pstmt.setString(col++, "Either no legal protocol could be found in a specification string or the string could not be parsed.");    // content
-                    pstmt.addBatch();
+					} catch (IOException ex) {
+						 int col = 1;
+						pstmt.setString(col++, scriptURL.getPath());    // scriptName path
+						pstmt.setString(col++, "IO Exception: "+ex.getMessage());    // content
+						pstmt.addBatch();   
+					}
+				}
+		   }
+		   pstmt.executeBatch();
+		}
 
-                } catch (IOException ex) {
-                     int col = 1;
-                    pstmt.setString(col++, scriptURL.getPath());    // scriptName path
-                    pstmt.setString(col++, "IO Exception: "+ex.getMessage());    // content
-                    pstmt.addBatch();   
-                }finally {
-//                    try {
-//                        pstmt.close();
-//                    } catch (SQLException ex) {
-//                    }
-                }
-            }
-       }
-       pstmt.executeBatch();
-       pstmt.close();
+        try (PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppTestCases ("
+                + "scriptName, content) VALUES (?,?)"))
+		{
+			for (TestCase appTestCase : appTestCases.testCases) {
+				if (!appTestScripts.contains(appTestCase.getScriptUrlLocation().getPath())) {
+					appTestScripts.add(appTestCase.getScriptUrlLocation().getPath());
+					try {
+						// Write out to temp db
 
-        pstmt = conn.prepareStatement("INSERT INTO C2CRI_AppTestCases ("
-                + "scriptName, content) VALUES (?,?)");
-        for (TestCase appTestCase : appTestCases.testCases) {
-            if (!appTestScripts.contains(appTestCase.getScriptUrlLocation().getPath())) {
-                appTestScripts.add(appTestCase.getScriptUrlLocation().getPath());
-                try {
-                    // Write out to temp db
+						contents = new StringBuilder();
+						scriptURL = appTestCase.getScriptUrlLocation();
 
-                    contents = new StringBuilder();
-                    scriptURL = appTestCase.getScriptUrlLocation();
+						URLConnection yc = scriptURL.openConnection();
+						BufferedReader in = new BufferedReader(
+								new InputStreamReader(
+								yc.getInputStream()));
+						String inputLine;
 
-                    URLConnection yc = scriptURL.openConnection();
-                    BufferedReader in = new BufferedReader(
-                            new InputStreamReader(
-                            yc.getInputStream()));
-                    String inputLine;
+						String pad = "      ";
+						Integer linecount = 0;
+						while ((inputLine = in.readLine()) != null) {
+							linecount++;
+							contents.append(linecount+pad.substring(0, pad.length() - linecount.toString().length()));
+							contents.append(inputLine);
+							contents.append(System.getProperty("line.separator"));
+						}
 
-                    String pad = "      ";
-                    Integer linecount = 0;
-                    while ((inputLine = in.readLine()) != null) {
-                        linecount++;
-                        contents.append(linecount+pad.substring(0, pad.length() - linecount.toString().length()));
-                        contents.append(inputLine);
-                        contents.append(System.getProperty("line.separator"));
-                    }
-
-                    in.close();
-                    int col = 1;
-                    pstmt.setString(col++, scriptURL.getPath());    // scriptName path
-                    pstmt.setString(col++, contents.toString());    // content
-                    pstmt.addBatch();
-                } catch (MalformedURLException ex) {
-                    int col = 1;
-                    pstmt.setString(col++, scriptURL.getPath());    // scriptName path
-                    pstmt.setString(col++, "Either no legal protocol could be found in a specification string or the string could not be parsed.");
-                    pstmt.addBatch();
-                } finally {
-//                    try {
-//                        pstmt.close();
-//                    } catch (SQLException ex) {
-//                    }
-                }
-            }
-        }
-                            pstmt.executeBatch();
-                        pstmt.close();
+						in.close();
+						int col = 1;
+						pstmt.setString(col++, scriptURL.getPath());    // scriptName path
+						pstmt.setString(col++, contents.toString());    // content
+						pstmt.addBatch();
+					} catch (MalformedURLException ex) {
+						int col = 1;
+						pstmt.setString(col++, scriptURL.getPath());    // scriptName path
+						pstmt.setString(col++, "Either no legal protocol could be found in a specification string or the string could not be parsed.");
+						pstmt.addBatch();
+						
+					} 
+				}
+			}
+		pstmt.executeBatch();
+		}
+                            
 
     }
     
     private void writeCommandQueueLength()
     {
-        try
+        try (PreparedStatement oPs = conn.prepareStatement("INSERT INTO C2CRI_EmulationCommandQueueLength ("
+                    + "CommandQueueLength) VALUES (?)"))
         {
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_EmulationCommandQueueLength ("
-                    + "CommandQueueLength) VALUES (?)");//+ selectedTestConfigObj.getEmulationParameters().getCommandQueueLength() +
             
-            pstmt.setInt(1, selectedTestConfigObj.getEmulationParameters().getCommandQueueLength());
+            oPs.setInt(1, selectedTestConfigObj.getEmulationParameters().getCommandQueueLength());
        
             System.out.println("The CommandQueueLength is: " + selectedTestConfigObj.getEmulationParameters().getCommandQueueLength());
             
-            pstmt.addBatch();
-            pstmt.executeBatch();
-            pstmt.close();
+            oPs.addBatch();
+            oPs.executeBatch();
         }
         catch(Exception Ex)
         {
@@ -1450,29 +1384,22 @@ public class RIReports {
     private void writeEntityEmulationData()
     {
         try
-        {             
-
-            String temp = null;
-            
+        {
             for(RIEmulationEntityValueSet emuEntityParam : selectedTestConfigObj.getEmulationParameters().getEntityDataMap())//int i = 1; i < selectedTestConfigObj.getEmulationParameters().getEntityDataMap().size() + 1; i++
             {
-                PreparedStatement pstmt = conn.prepareStatement("INSERT INTO C2CRI_EmulationEntityData ("
-                    + "EntityName, EntitySource, EntityData) VALUES (?, ?, ?)");
+                try (PreparedStatement oPs = conn.prepareStatement("INSERT INTO C2CRI_EmulationEntityData ("
+                    + "EntityName, EntitySource, EntityData) VALUES (?, ?, ?)"))
+				{
                 
                 int count = 1;
                 
-                pstmt.setString(count++, emuEntityParam.getValueSetName());
-                pstmt.setString(count++, emuEntityParam.getDataSetSource().name());
-                pstmt.setString(count++, EmulationDataFileProcessor.getContent(emuEntityParam.getEntityDataSet()).toString());
-                pstmt.addBatch();
-                pstmt.executeBatch();
-              
-                //pstmt.addBatch();
+					oPs.setString(count++, emuEntityParam.getValueSetName());
+					oPs.setString(count++, emuEntityParam.getDataSetSource().name());
+					oPs.setString(count++, EmulationDataFileProcessor.getContent(emuEntityParam.getEntityDataSet()).toString());
+					oPs.addBatch();
+					oPs.executeBatch();
+				}
             }
-           
-            
-            
-            pstmt.close();
         }
         catch(Exception Ex)
         {

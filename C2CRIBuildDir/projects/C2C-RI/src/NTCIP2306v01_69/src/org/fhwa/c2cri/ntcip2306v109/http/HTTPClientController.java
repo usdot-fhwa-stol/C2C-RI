@@ -147,6 +147,8 @@ public HTTPClientController(final QueueController queueController, ServiceSpecCo
                     Thread.currentThread().sleep(100);
                 }
             } catch (Exception ex) {
+				if (ex instanceof InterruptedException)
+					Thread.currentThread().interrupt();	
                 ex.printStackTrace();
             }
         }

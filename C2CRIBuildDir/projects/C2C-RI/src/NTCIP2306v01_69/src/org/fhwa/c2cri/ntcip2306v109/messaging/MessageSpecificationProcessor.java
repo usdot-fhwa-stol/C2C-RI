@@ -419,7 +419,7 @@ public class MessageSpecificationProcessor {
                previewMatch = previewMatch + 1;
                                 xmlc.toNextSelection();
                                 xmlc.toEndToken();
-                                    if (newElement.indexOf(':')>0){
+                                    if (newElement.indexOf(':')>=0){
                                         String[] elementParts = newElement.split(":");
                                         xmlc.insertElement(new QName(lookupNamespace(elementParts[0]),removeIndex(elementParts[1])));
                                         xmlc.toPrevToken();
@@ -477,7 +477,7 @@ public class MessageSpecificationProcessor {
                                     xmlc.toEndToken();
                                     xmlc.toNextToken();
                                     for (int jj = 0; jj < difference; jj++) {
-                                        if (partsOfMessageElementSpec[ii].indexOf(':')>0){
+                                        if (partsOfMessageElementSpec[ii].indexOf(':')>=0){
                                             String[] elementParts = partsOfMessageElementSpec[ii].split(":");
                                             xmlc.insertElement(new QName(lookupNamespace(elementParts[0]),elementParts[1].substring(0, partsOfMessageElementSpec[ii].lastIndexOf("["))));
                                             xmlc.toPrevToken();
@@ -510,7 +510,7 @@ public class MessageSpecificationProcessor {
                                         xmlc.toEndToken();
                                         //                               xmlc.toNextToken();
                                         for (int jj = 0; jj < totalNodes; jj++) {
-                                            if (partsOfMessageElementSpec[ii].indexOf(':')>0){
+                                            if (partsOfMessageElementSpec[ii].indexOf(':')>=0){
                                                  String[] elementParts = partsOfMessageElementSpec[ii].split(":");
                                                 xmlc.insertElement(new QName(lookupNamespace(elementParts[0]),elementParts[1].substring(0, partsOfMessageElementSpec[ii].lastIndexOf("["))));
                                                 xmlc.toPrevToken();
@@ -543,7 +543,7 @@ public class MessageSpecificationProcessor {
                                 if (xmlc.hasNextSelection()) {
                                     xmlc.toNextSelection();
                                     xmlc.toEndToken();
-                                    if (partsOfMessageElementSpec[ii].indexOf(':')>0){
+                                    if (partsOfMessageElementSpec[ii].indexOf(':')>=0){
                                         String[] elementParts = partsOfMessageElementSpec[ii].split(":");
                                         xmlc.insertElement(new QName(lookupNamespace(elementParts[0]),elementParts[1]));
                                         xmlc.toPrevToken();

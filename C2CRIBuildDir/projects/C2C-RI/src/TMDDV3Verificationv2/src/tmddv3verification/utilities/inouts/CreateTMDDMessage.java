@@ -32,7 +32,7 @@ public class CreateTMDDMessage {
         SchemaType[] globalElems = thisWSDL.getSchemaTypeSystem().documentTypes();
         for (int ii = 0; ii < globalElems.length; ii++) {
             if (globalElems[ii].getDocumentElementName().getLocalPart().equals(messageType)){
-             String result = SampleXmlUtilDoctored.createSampleForType(globalElems[ii]);
+             String result = PopulateDesignDetailTable.createSampleForType(globalElems[ii]);
 //             System.out.println(result);
              try{
                   XmlOptions thisOption = new XmlOptions();

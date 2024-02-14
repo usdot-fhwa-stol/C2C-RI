@@ -21,7 +21,7 @@ public class FrameProcedureMaker extends AbstractProcedureMaker {
 
     public FrameProcedureMaker(String procedureName) {
         super(procedureName);
-        this.procedureName = procedureName;
+        tmddprocedures.AbstractProcedureMaker.procedureName = procedureName;
     }
 
     @Override

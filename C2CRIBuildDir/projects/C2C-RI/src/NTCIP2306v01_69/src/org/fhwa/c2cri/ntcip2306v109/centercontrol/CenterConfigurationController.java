@@ -154,8 +154,12 @@ public class CenterConfigurationController {
             ftpClient = new FTPClientController((QueueController) externalQueueManager, getFTPClientServices(), readySignal);
             executor.submit(ftpClient);
         }
-
-        readySignal.await(20, TimeUnit.SECONDS);
+		
+		long lCount = 0;
+        if (!readySignal.await(20, TimeUnit.SECONDS))
+		{
+			lCount = readySignal.getCount();
+		}
         if (getRiCenterMode().equals(RICENTERMODE.OC)) {
             if ((ftpServer != null) && !ftpServer.isInitializationCompleted()) {
                 stopServices();
@@ -168,13 +172,14 @@ public class CenterConfigurationController {
             }
 
         }
-        System.out.println("\n\nCenterConfigurationController::initializeServices Completed with countdownn count " + readySignal.getCount() + "!! @ " + System.currentTimeMillis() + "\n\n");
+        System.out.println("\n\nCenterConfigurationController::initializeServices Completed with countdownn count " + lCount + "!! @ " + System.currentTimeMillis() + "\n\n");
     }
 
     /**
      * Start all services.
      */
     public void startServices() {
+		// original implementation was empty
     }
 
     /**

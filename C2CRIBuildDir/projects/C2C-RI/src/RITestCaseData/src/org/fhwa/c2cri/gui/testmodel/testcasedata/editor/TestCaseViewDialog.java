@@ -13,7 +13,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -85,7 +84,7 @@ public class TestCaseViewDialog
         StringBuffer sb = sw.getBuffer();
         updateContainer(sb.toString());
 
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
     }
 
@@ -108,9 +107,9 @@ public class TestCaseViewDialog
         final JScrollPane docScrollPane = new JScrollPane(docEditorPane);
         docScrollPane.setBorder(BorderFactory.createEtchedBorder());
         docScrollPane.setVerticalScrollBarPolicy(
-                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+                javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         docScrollPane.setHorizontalScrollBarPolicy(
-                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+                javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         docScrollPane.setBounds(0, 0, 700, 500);
         docScrollPane.setFocusable(true);
         docScrollPane.setName("TestCaseViewDialogScrollPane");

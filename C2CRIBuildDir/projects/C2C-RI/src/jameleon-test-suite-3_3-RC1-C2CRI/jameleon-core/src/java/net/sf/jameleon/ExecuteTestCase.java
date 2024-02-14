@@ -459,15 +459,24 @@ public class ExecuteTestCase {
 
 
     protected void delay(){
-        if (waitTimeBetweenScripts > 0) {
-            synchronized (this){ 
-                try {
-                    this.wait(waitTimeBetweenScripts); 
-                } catch (InterruptedException e) {
-                    e.printStackTrace(); 
-                }
-            } 
-        }
+		if (waitTimeBetweenScripts > 0)
+		{
+			synchronized (this)
+			{
+				try
+				{
+					while (waitTimeBetweenScripts > 0)
+					{
+						this.wait(waitTimeBetweenScripts);
+					}
+				}
+				catch (InterruptedException e)
+				{
+					e.printStackTrace();
+					Thread.currentThread().interrupt();
+				}
+			}
+		}
     }
 
     public void setContextVariablesforRI(JellyContext context){

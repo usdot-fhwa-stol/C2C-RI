@@ -72,6 +72,7 @@
     <cp>.\dist\lib\FTP\log4j-1.2.14.jar</cp>
     <cp>.\dist\lib\FTP\mina-core-2.0.0-RC1.jar</cp>
     <cp>.\dist\lib\NTCIP2306v01_69.jar</cp>
+    <cp>.\dist\lib\TMDDCommon.jar</cp>
     <cp>.\dist\lib\WSDL4j\qname.jar</cp>
     <cp>.\dist\lib\2-xerces-2_9_1\resolver.jar</cp>
     <cp>.\dist\lib\1-xmlbeans-2.6.0\resolver.jar</cp>

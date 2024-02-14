@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -72,7 +71,7 @@ public class MessageValidator extends DefaultHandler implements ErrorHandler {
     /** Default memory usage report (false). */
     protected static final boolean DEFAULT_MEMORY_USAGE = false;
     /** Parse Error Variable (false). */
-    protected static boolean Parse_Result = false;
+    protected boolean Parse_Result = false;
     //
     // Data
     //
@@ -241,9 +240,9 @@ public class MessageValidator extends DefaultHandler implements ErrorHandler {
 
 
         //get a factory
-        SAXParserFactory spf = SAXParserFactory.newInstance();
+        
         try {
-
+			SAXParserFactory spf = SAXParserFactory.newInstance();
             //get a new instance of parser
             SAXParser sp = spf.newSAXParser();
 

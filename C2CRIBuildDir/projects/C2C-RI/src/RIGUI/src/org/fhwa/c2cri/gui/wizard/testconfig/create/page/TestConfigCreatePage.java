@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import org.fhwa.c2cri.testmodel.TestSuites;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
@@ -220,7 +222,7 @@ public class TestConfigCreatePage extends C2CRIWizardPage {
                         // if b is true , name may be correct
                         if (b) {
                             // because the file is created for checking validity
-                            f.delete();
+                            Files.delete(Paths.get(f.getAbsolutePath()));
                             
                         }
 

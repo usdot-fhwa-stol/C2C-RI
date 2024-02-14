@@ -298,8 +298,9 @@ public class NTCIP2306HTTPServer implements Runnable {
             if (!countdownPerformed) {
                 if (readySignal != null) {
                     readySignal.countDown();
-                }
+				}
             }
+			Thread.currentThread().interrupt();
         } catch (Exception ex) {
             ex.printStackTrace();
             if (server.isRunning()) {
@@ -332,6 +333,8 @@ public class NTCIP2306HTTPServer implements Runnable {
             }
             System.out.println("NTCIP2306HTTPServer::shutdown Done waiting on shutdown.  IsStoppedState=" + server.isStopped());
         } catch (Exception ex) {
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             ex.printStackTrace();
         }
     }

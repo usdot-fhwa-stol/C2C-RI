@@ -25,11 +25,6 @@ import java.net.URL;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.File;
-
-import net.sf.jameleon.util.JameleonUtility;
-import net.sf.jameleon.util.Configurator;
-import net.sf.jameleon.util.JameleonDefaultValues;
 
 public class BasicHtmlBrowser extends JFrame{
 
@@ -40,7 +35,7 @@ public class BasicHtmlBrowser extends JFrame{
 
     public BasicHtmlBrowser(String title){
         super(title);
-	    setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+	    setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         init();
     }
 
@@ -113,23 +108,31 @@ public class BasicHtmlBrowser extends JFrame{
 
     private class BrowserListener implements WebBrowserListener{
         public void documentCompleted(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void downloadCompleted(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void downloadError(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void downloadProgress(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void downloadStarted(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void statusTextChange(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void titleChange(WebBrowserEvent event) {
             setTitle(event.getData());
         }
         public void initializationCompleted(WebBrowserEvent event) {
+			// original implementation was empty
         }
         public void windowClose(WebBrowserEvent event) {
+			// original implementation was empty
         }
     }
 }

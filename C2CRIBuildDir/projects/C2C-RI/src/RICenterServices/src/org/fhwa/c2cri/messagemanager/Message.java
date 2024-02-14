@@ -74,13 +74,13 @@ Response}
     private HashMap<String, String> soapHeaders;
     
     /** The message body. */
-    private volatile MessageContent messageBody;
+    private MessageContent messageBody;
     
     /** The message body parts. */
-    private volatile ArrayList<MessageContent> messageBodyParts = new ArrayList<>();
+    private ArrayList<MessageContent> messageBodyParts = new ArrayList<>();
     
     /** The message specification. */
-    private volatile MessageSpecification messageSpecification;
+    private MessageSpecification messageSpecification;
     
     /** The message encoding. */
     private volatile String messageEncoding="";
@@ -98,7 +98,7 @@ Response}
     private volatile String relatedCommand="";  //GET (RETRV), POST
     
     /** The storage time. */
-    private volatile Date storageTime;
+    private Date storageTime;
     
     /** The parent dialog. */
     private volatile String parentDialog="";
@@ -227,13 +227,14 @@ Response}
         if (this.messageEncoding != null) { // This value must have been set
             try {
                 String retVal = "";
-                if (this.messageSpecification == null || this.messageSpecification.getMessageSpec().isEmpty()){
-                    retVal =  stripInvalidCharacters(this.messageBody.toByteArray());
+				MessageSpecification oMS = getMessageSpecification();
+                if (oMS == null || oMS.getMessageSpec().isEmpty()){
+                    retVal =  stripInvalidCharacters(getMessageBody());
            //         retVal = new String(this.messageBody.toByteArray(),"UTF-8");
                     messageXMLRepresentation = messageXMLRepresentation.concat("   <MessageBody>\n<![CDATA[\n" + prettyPrint(retVal) + "]]>   </MessageBody>\n");
                 } else {
                    retVal ="";
-                   for (String messageElement : this.messageSpecification.getMessageSpec()){
+                   for (String messageElement : oMS.getMessageSpec()){
                        retVal = retVal.concat(messageElement.replaceAll("[^\\x20-\\x7e]", " ")+"\n");
                    }
                    messageXMLRepresentation = messageXMLRepresentation.concat("   <MessageBody>\n<![CDATA[\n" + retVal + "]]>   </MessageBody>\n");   
@@ -350,7 +351,7 @@ public HashMap<String, String> getHttpHeaders() {
      *
      * @return the message body
      */
-    public byte[] getMessageBody() {
+    public synchronized byte[] getMessageBody() {
         if (messageBody == null){
             ByteArrayInputStream bais = new ByteArrayInputStream("".getBytes());
             this.messageBody = MessageContentFactory.create("",bais);            
@@ -363,7 +364,7 @@ public HashMap<String, String> getHttpHeaders() {
      *
      * @param messageBody the new message body
      */
-    public void setMessageBody(byte[] messageBody) {
+    public synchronized void setMessageBody(byte[] messageBody) {
         ByteArrayInputStream bais = new ByteArrayInputStream(messageBody);
         this.messageBody = MessageContentFactory.create("",bais);
     }
@@ -506,7 +507,7 @@ public HashMap<String, String> getHttpHeaders() {
      *
      * @return the storage time
      */
-    public Date getStorageTime() {
+    public synchronized Date getStorageTime() {
         return storageTime;
     }
 
@@ -515,7 +516,7 @@ public HashMap<String, String> getHttpHeaders() {
      *
      * @param storageTime the new storage time
      */
-    public void setStorageTime(Date storageTime) {
+    public synchronized void setStorageTime(Date storageTime) {
         this.storageTime = storageTime;
     }
 
@@ -581,7 +582,7 @@ public HashMap<String, String> getHttpHeaders() {
      *
      * @return the message specification
      */
-    public MessageSpecification getMessageSpecification() {
+    public synchronized MessageSpecification getMessageSpecification() {
         return messageSpecification;
     }
 
@@ -590,7 +591,7 @@ public HashMap<String, String> getHttpHeaders() {
      *
      * @param messageSpecification the new message specification
      */
-    public void setMessageSpecification(MessageSpecification messageSpecification) {
+    public synchronized void setMessageSpecification(MessageSpecification messageSpecification) {
         this.messageSpecification = messageSpecification;
     }
 
@@ -617,7 +618,7 @@ public HashMap<String, String> getHttpHeaders() {
      *
      * @return the message body parts
      */
-    public ArrayList<byte[]> getMessageBodyParts() {
+    public synchronized ArrayList<byte[]> getMessageBodyParts() {
         ArrayList<byte[]> tmpList = new ArrayList();
         for (MessageContent tmpDatabase : messageBodyParts){
             tmpList.add(tmpDatabase.toByteArray());
@@ -630,7 +631,7 @@ public HashMap<String, String> getHttpHeaders() {
      *
      * @return the message body parts
      */
-    public ArrayList<MessageContent> getMessageBodyPartsReferences() {
+    public synchronized ArrayList<MessageContent> getMessageBodyPartsReferences() {
         return messageBodyParts;
     }    
     /**
@@ -638,7 +639,7 @@ public HashMap<String, String> getHttpHeaders() {
      *
      * @param messageBodyParts the new message body parts
      */
-    public void setMessageBodyParts(ArrayList<byte[]> messageBodyParts) {
+    public synchronized void setMessageBodyParts(ArrayList<byte[]> messageBodyParts) {
         ArrayList<MessageContent> tmpList = new ArrayList();
         for (byte[] thisArray : messageBodyParts){
             ByteArrayInputStream bais = new ByteArrayInputStream(thisArray);
@@ -652,7 +653,7 @@ public HashMap<String, String> getHttpHeaders() {
      *
      * @param messageBodyParts the new message body parts
      */
-    public void setMessageBodyPartsFromContent(ArrayList<MessageContent> messageBodyParts) {
+    public synchronized void setMessageBodyPartsFromContent(ArrayList<MessageContent> messageBodyParts) {
         this.messageBodyParts = messageBodyParts;
     }    
     /**

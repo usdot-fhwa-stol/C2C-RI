@@ -165,8 +165,7 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
 
             // send file data to client
             boolean failure = false;
-            InputStream is = null;
-            InputStream nis = null;
+            
             
             DataConnection dataConnection;
             try {
@@ -180,36 +179,20 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
             null));
             return;
             }
-             
-            try {
+			System.out.println("!!!! Inside the RETR Command Setting the Response Copy");
+			byte[] responseCopy = responseMessage;
+
+			System.out.println("!!!! Inside the Setting the InputStream");
+            try (InputStream nis = new ByteArrayInputStream(responseCopy))
+			{
                 
-                // open streams
-
-                System.out.println("!!!! Inside the RETR Command Setting the Response Copy");
-                byte[] responseCopy = responseMessage;
-
-                System.out.println("!!!! Inside the Setting the InputStream");
-                nis = new ByteArrayInputStream(responseCopy);
-                 
+                // open streams                 
 
                 // transfer data
                 long transSz = dataConnection.transferToClient(session.getFtpletSession(), nis);
                 // attempt to close the input stream so that errors in
                 // closing it will return an error to the client (FTPSERVER-119)
-                if(is != null) {
-                    is.close();
-                }
                 if(nis != null) {
-                    nis.close();
-                }
-
-
-                // attempt to close the input stream so that errors in
-                // closing it will return an error to the client (FTPSERVER-119)
-                if (is != null) {
-                    is.close();
-                }
-                if (nis != null) {
                     nis.close();
                 }
 
@@ -236,10 +219,6 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
                         context,
                         FtpReply.REPLY_551_REQUESTED_ACTION_ABORTED_PAGE_TYPE_UNKNOWN,
                         "RETR", fileName));
-            } finally {
-                // make sure we really close the input stream
-                IoUtils.close(is);
-                IoUtils.close(nis);
             }
 
             // if data transfer ok - send transfer complete message
@@ -361,38 +340,28 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
         System.out.println("RETR: Before the Socket Declaration...");
 
         // get data socket
-        Socket dataSoc = new Socket(theClient, session.getDataConnection().getPort());
+        try (Socket dataSoc = new Socket(theClient, session.getDataConnection().getPort()))
+		{
+			// create output stream
+			try (OutputStream out = dataSoc.getOutputStream())
+			{
 
-        if (dataSoc == null) {
-            System.out.println("RETR: Cannot open data connection");
-            throw new IOException("Cannot open data connection.");
-        }
+				TransferRateRequest transferRateRequest = new TransferRateRequest();
+				transferRateRequest = (TransferRateRequest) session.getUser().authorize(transferRateRequest);
+				int maxRate = 0;
+				if (transferRateRequest != null) {
+					maxRate = transferRateRequest.getMaxDownloadRate();
+				}
 
-        // create output stream
-        OutputStream out = dataSoc.getOutputStream();
-
-
-        TransferRateRequest transferRateRequest = new TransferRateRequest();
-        transferRateRequest = (TransferRateRequest) session.getUser().authorize(transferRateRequest);
-        int maxRate = 0;
-        if (transferRateRequest != null) {
-            maxRate = transferRateRequest.getMaxDownloadRate();
-        }
-
-        String message = "";
-        try {
-            long result;
-            System.out.println("!!!!RETR: About to transfer the file.!!!");
-            result = transfer(session, true, in, out, maxRate);
-            System.out.println("!!!! The File was Transferred.  Returning the result in RETR !!!");
-            return result;
+				String message = "";
+				long result;
+				System.out.println("!!!!RETR: About to transfer the file.!!!");
+				result = transfer(session, true, in, out, maxRate);
+				System.out.println("!!!! The File was Transferred.  Returning the result in RETR !!!");
+				return result;
+			}
         } catch (Exception ex){
              throw new IOException("RETR: " + ex.getMessage());
-        } finally {
-            dataSoc.close();
-
-            System.out.println("*****ERROR Occurred transfering file in RETR****");
-            IoUtils.close(out);
         }
     }
 
@@ -447,6 +416,7 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
                         try {
                             Thread.sleep(50);
                         } catch (InterruptedException ex) {
+							Thread.currentThread().interrupt();
                             break;
                         }
                         continue;

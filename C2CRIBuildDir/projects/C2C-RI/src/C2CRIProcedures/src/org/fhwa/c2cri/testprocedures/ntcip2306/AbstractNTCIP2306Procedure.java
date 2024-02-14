@@ -7,13 +7,19 @@ package org.fhwa.c2cri.testprocedures.ntcip2306;
 import org.fhwa.c2cri.testprocedures.*;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import org.apache.log4j.LogManager;
 import tmddv3verification.DesignElement;
 import tmddv3verification.NeedHandler;
 import tmddv3verification.Requirement;
@@ -32,7 +38,6 @@ public abstract class AbstractNTCIP2306Procedure implements TestProcedure {
     private String testProcedureTitle;
     private String testProcedureDescription;
     private String testProcedureProductionDate;
-    private String needID;
 
     protected void initializeSummaryInformation(String target, String profile, String centerMode) {
         NTCIP2306TestProcedureNamer procedureNameMaker = new NTCIP2306TestProcedureNamer(target, profile, centerMode);
@@ -42,7 +47,6 @@ public abstract class AbstractNTCIP2306Procedure implements TestProcedure {
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
         testProcedureProductionDate = dateFormat.format(date);
-        this.needID = needID;
         if (target.equals(NTCIP2306Parameters.NTCIP2306_WSDL_TARGET)){
             relatedRequirements = NTCIP2306Specifications.getInstance().getWSDLRequirements();
         } else {
@@ -122,10 +126,18 @@ public abstract class AbstractNTCIP2306Procedure implements TestProcedure {
     }
 
     public final void toScriptFile(String path, String fileName) {
-        File newFile = new File(path + File.separatorChar + fileName);
-        if (newFile.exists()) {
-            newFile.delete();
-            newFile = new File(path + File.separatorChar + fileName);
+		Path newFile = Paths.get(path + File.separatorChar + fileName);
+
+        if (Files.exists(newFile)) 
+		{
+            try
+			{
+				Files.delete(newFile);
+			}
+			catch (IOException oEx)
+			{
+				LogManager.getLogger(getClass()).error(oEx, oEx);
+			}
 
         }
         String header = "<?xml version=\"1.0\" ?> \n"
@@ -140,15 +152,14 @@ public abstract class AbstractNTCIP2306Procedure implements TestProcedure {
 
         String finalLine = "</testprocedure>";
 
-        try {
-            Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + fileName), "UTF-8");
+        try (Writer out = new OutputStreamWriter(new FileOutputStream(path + File.separatorChar + fileName), StandardCharsets.UTF_8))
+		{
             out.write(header);
             out.write(intro);
             for (Section thisSection : subSections) {
                 out.write(thisSection.getScriptContent());
             }
             out.write(finalLine);
-            out.close();
         } catch (Exception ex) {
             System.out.println("****** Writing Error:*******\n");
             ex.printStackTrace();

@@ -33,7 +33,7 @@ public class TestResultRequirementsDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + TESTRESULTREQUIREMENTS_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.TESTRESULTREQUIREMENTS_TABLE + "("
                     + "requirementID, needID, conformance, extension, otherReq, reqID, reqText,"
                     + "results, supported) VALUES (?,?,?,?,?,?,?,?,?)");
 
@@ -68,7 +68,7 @@ public class TestResultRequirementsDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + TESTRESULTREQUIREMENTS_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.TESTRESULTREQUIREMENTS_TABLE + "("
                     + "requirementID, needID, conformance, extension, otherReq, reqID, reqText,"
                     + "results, supported) VALUES (?,?,?,?,?,?,?,?,?)");
 

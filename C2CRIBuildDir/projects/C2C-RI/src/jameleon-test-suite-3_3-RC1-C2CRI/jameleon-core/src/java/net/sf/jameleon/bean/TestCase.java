@@ -64,7 +64,7 @@ public class TestCase implements XMLable {
     /**
      * The bug related to this test case
      */
-    protected Set bugs;
+    protected transient Set bugs;
     /**
      * The functional point tested by the test case
      */
@@ -72,7 +72,7 @@ public class TestCase implements XMLable {
     /**
      * The level(s) of the test case - SMOKE, FUNCTIONAL, REGRESSION, ACCEPTANCE, to list a few
      */
-    protected List testLevels;
+    protected transient List testLevels;
     /**
      * The test case file
      */
@@ -100,7 +100,7 @@ public class TestCase implements XMLable {
     /**
      * A list of sessions in this test case
      */
-    protected List sessions;
+    protected transient List sessions;
 
     /**
      * Default constructor only used to initialize variables
@@ -153,8 +153,8 @@ public class TestCase implements XMLable {
     	if (file != null){
 	        File f = new File(file);
 	        if (f.exists() && f.isFile()) {
-	            try{
-	                BufferedReader reader = new BufferedReader(new FileReader(f));
+	            try (BufferedReader reader = new BufferedReader(new FileReader(f)))
+				{
 	                String line = null;
 	                while((line = reader.readLine()) != null){
 	                    contents.append(line+"\n");

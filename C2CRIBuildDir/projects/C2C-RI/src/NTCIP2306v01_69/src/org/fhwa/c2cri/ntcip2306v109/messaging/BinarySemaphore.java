@@ -70,7 +70,7 @@ public class BinarySemaphore {
      */
     public synchronized void notifyToWakeup(){
         if (locked) {
-            notify();
+            notifyAll();
         }
         locked = false;
     }

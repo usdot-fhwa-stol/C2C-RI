@@ -34,7 +34,7 @@ public class TestAction {
     /**
      * The message tag.
      */
-    private static String MESSAGE = "message";
+    private static String MESSAGETAG = "message";
 
     /**
      * The userevent tag.
@@ -257,18 +257,18 @@ public class TestAction {
                 + "                  <column>58</column>\n"
                 + "                  <file>jar:file:/C:/C2CRIDev/C2CRIBuildDir/projects/C2C-RI/src/RIGUI/dist/RIGUI.jar!/org/fhwa/c2cri/testmodel/TestCaseLauncher.xml</file>\n"
                 + "\n"
-                + "		                <test-case-name>TCS-1-dlCenterActiveVerificationRequest-EC-Valid</test-case-name>\n"
+                + "\t\t                <test-case-name>TCS-1-dlCenterActiveVerificationRequest-EC-Valid</test-case-name>\n"
                 + "\n"
-                + "		                <outcome>PASSED</outcome>\n"
-                + "		                <execution-time>0.000s</execution-time>\n"
-                + "		                <execution-time-millis>0</execution-time-millis>\n"
-                + "		\n"
+                + "\t\t                <outcome>PASSED</outcome>\n"
+                + "\t\t                <execution-time>0.000s</execution-time>\n"
+                + "\t\t                <execution-time-millis>0</execution-time-millis>\n"
+                + "\t\t\n"
                 + "\n"
-                + "		                <outcome>PASSED</outcome>\n"
-                + "		                <execution-time>0.000s</execution-time>\n"
-                + "		                <execution-time-millis>0</execution-time-millis>\n"
-                + "		\n"
-                + "	              </tag>\n"
+                + "\t\t                <outcome>PASSED</outcome>\n"
+                + "\t\t                <execution-time>0.000s</execution-time>\n"
+                + "\t\t                <execution-time-millis>0</execution-time-millis>\n"
+                + "\t\t\n"
+                + "\t\t             </tag>\n"
                 + "            </scriptEvent>",2);
         TestAction ta3 = new TestAction(now.getTime(), "<rawOTWMessage>\n"
                 + "               <testCase>TCS-1-dlCenterActiveVerificationRequest-EC-Valid</testCase>\n"
@@ -429,11 +429,11 @@ public class TestAction {
 
         XMLEvent event = thisEvent;
 
-        while (!(event.isEndDocument() && event.isEndElement() && (event.asEndElement().getName().getLocalPart() == (EVENT)))) {
+        while (!(event.isEndDocument() && event.isEndElement() && (event.asEndElement().getName().getLocalPart().equals(EVENT)))) {
 
             try {
                 if (event.isStartElement()) {
-                    if (event.asStartElement().getName().getLocalPart().equals(MESSAGE)) {
+                    if (event.asStartElement().getName().getLocalPart().equals(MESSAGETAG)) {
                         event = eventReader.nextEvent();
                         continue;
                     }
@@ -661,7 +661,7 @@ public class TestAction {
                         if (event.isCharacters()) {
                             thisRawMessageEvent.setTimeStampInMillis(new BigInteger(event.asCharacters().getData()));
                         }
-                    } else if (startElement.getName().getLocalPart().equals(MESSAGE)) {
+                    } else if (startElement.getName().getLocalPart().equals(MESSAGETAG)) {
                         if (!event.isCharacters()) {
                             event = eventReader.nextEvent();  // Get To CDATA!! (Sometimes Varies by Parser whether this step is needed)
                         }

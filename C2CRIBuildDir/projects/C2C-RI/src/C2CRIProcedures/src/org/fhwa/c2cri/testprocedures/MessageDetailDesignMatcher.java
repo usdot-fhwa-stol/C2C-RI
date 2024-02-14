@@ -117,13 +117,15 @@ public class MessageDetailDesignMatcher {
             if (thisElement.getElementName().equals(elementName)) {
                 boolean alreadyThere = false;
                 for (MessageDetailDesignElement thiselement:returnList){
-                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID()==thisElement.getNeedListID())&&
+                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID().equals(thisElement.getNeedListID()))&&
                         thiselement.getRequirementID().equals(thisElement.getRequirementID())){
                         alreadyThere = true;
                     }
                 }
-                if (!alreadyThere)   
-                returnList.add(thisElement);
+                if (!alreadyThere)
+				{
+					returnList.add(thisElement);
+				}
             }
         }
         
@@ -134,7 +136,7 @@ public class MessageDetailDesignMatcher {
                 if (thisElement.getDataConcept().equals(elementName)) {
                 boolean alreadyThere = false;
                 for (MessageDetailDesignElement thiselement:returnList){
-                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID()==thisElement.getNeedListID())&&
+                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID().equals(thisElement.getNeedListID()))&&
                         thiselement.getRequirementID().equals(thisElement.getRequirementID())){
                         alreadyThere = true;
                     }
@@ -155,16 +157,18 @@ public class MessageDetailDesignMatcher {
         for (MessageDetailDesignElement thisElement : elementList) {
 //            System.out.println("Is "+ thisElement.getElementName() + " = "+ elementName+ "? "+thisElement.getElementName().equals(elementName) +
 //                               "   Is " + thisElement.getNeedListID() + " = " + needNumber + " ? "+(thisElement.getNeedListID()==needNumber));
-            if (thisElement.getElementName().equals(elementName) && (thisElement.getNeedListID()==needNumber)) {
+            if (thisElement.getElementName().equals(elementName) && (thisElement.getNeedListID().equals(needNumber))) {
                 boolean alreadyThere = false;
                 for (MessageDetailDesignElement thiselement:returnList){
-                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID()==needNumber)&&
+                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID().equals(needNumber))&&
                         thiselement.getRequirementID().equals(thisElement.getRequirementID())){
                         alreadyThere = true;
                     }
                 }
-                if (!alreadyThere)   
-                returnList.add(thisElement);
+                if (!alreadyThere)
+				{
+					returnList.add(thisElement);
+				}
             }
         }
         
@@ -175,12 +179,12 @@ public class MessageDetailDesignMatcher {
                 if (thisElement.getDataConcept().equals(elementName)) {
                 boolean alreadyThere = false;
                 for (MessageDetailDesignElement thiselement:returnList){
-                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID()==needNumber)&&
+                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID().equals(needNumber))&&
                         thiselement.getRequirementID().equals(thisElement.getRequirementID())){
                         alreadyThere = true;
                     }
                 }
-                if (!alreadyThere&&(thisElement.getNeedListID()==needNumber))
+                if (!alreadyThere&&(thisElement.getNeedListID().equals(needNumber)))
                     returnList.add(thisElement);
                 }
             }
@@ -195,11 +199,11 @@ public class MessageDetailDesignMatcher {
 
         for (MessageDetailDesignElement thisElement : elementList) {
             System.out.println("MessageDetailDesignMatcher:getMatchesForElementName::  Element: "+thisElement.getElementName() + "   needNumber: "+thisElement.getNeedID()+"   requirementID: "+thisElement.getRequirementID());
-            if (thisElement.getElementName().equals(elementName) && (thisElement.getNeedListID()==needNumber) &&
+            if (thisElement.getElementName().equals(elementName) && (thisElement.getNeedListID().equals(needNumber)) &&
                     thisElement.getRequirementID().equals(requirementID)) {
                 boolean alreadyThere = false;
                 for (MessageDetailDesignElement thiselement:returnList){
-                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID()==needNumber)&&
+                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID().equals(needNumber))&&
                         thiselement.getRequirementID().equals(requirementID)){
                         alreadyThere = true;
                     }
@@ -216,12 +220,12 @@ public class MessageDetailDesignMatcher {
                 if (thisElement.getDataConcept().equals(elementName)) {
                 boolean alreadyThere = false;
                 for (MessageDetailDesignElement thiselement:returnList){
-                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID()==needNumber)&&
+                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID().equals(needNumber))&&
                         thiselement.getRequirementID().equals(requirementID)){
                         alreadyThere = true;
                     }
                 }
-                if (!alreadyThere&&(thisElement.getNeedListID()==needNumber)&&thisElement.getRequirementID().equals(requirementID))
+                if (!alreadyThere&&(thisElement.getNeedListID().equals(needNumber))&&thisElement.getRequirementID().equals(requirementID))
                     returnList.add(thisElement);
                 }
             }
@@ -245,7 +249,9 @@ public class MessageDetailDesignMatcher {
                     }
                 }
                 if (!alreadyThere)
-                returnList.add(thisElement);
+				{
+					returnList.add(thisElement);
+				}
             }
         }
         
@@ -256,14 +262,16 @@ public class MessageDetailDesignMatcher {
                 if (thisElement.getDataConcept().equals(elementName)) {
                 boolean alreadyThere = false;
                 for (MessageDetailDesignElement thiselement:returnList){
-                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID()==thisElement.getNeedListID())&&
+                    if (thiselement.getElementName().equals(elementName)&&(thiselement.getNeedListID().equals(thisElement.getNeedListID()))&&
                         thiselement.getRequirementID().equals(requirementID)){
                         alreadyThere = true;
                     }
                 }
                 if (!alreadyThere&&thisElement.getRequirementID().equals(requirementID))
-                if (!alreadyThere)
-                    returnList.add(thisElement);
+				{
+					if (!alreadyThere)
+						returnList.add(thisElement);
+				}
                 }
             }
             System.err.println("***THIS IS WHAT YOU DON'T WANT!!!*****\nCheck elementName: "+elementName+ " RequirementID: "+requirementID+"\n Returned "+returnList.size() + " elements.");

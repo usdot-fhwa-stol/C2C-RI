@@ -16,10 +16,11 @@ import org.enterprisepower.net.portforward.Listener;
 public class ListenerManager {
 
     private static ListenerManager listenerManager;
-    private static String testCaseID;
+    private String testCaseID;
     private static HashMap<Integer, Listener> listenerMap = new HashMap<Integer, Listener>();
     private static HashMap<Integer,String> listenerIdMap = new HashMap<Integer, String>();
     private static Integer listenerId=0;
+	private static final Object LOCK = new Object();
 
     private ListenerManager() {
     }
@@ -32,7 +33,7 @@ public class ListenerManager {
     }
 
     private Integer incrementListenerId(){
-        synchronized(listenerId){
+        synchronized(LOCK){
             listenerId++;
         }
         return listenerId;

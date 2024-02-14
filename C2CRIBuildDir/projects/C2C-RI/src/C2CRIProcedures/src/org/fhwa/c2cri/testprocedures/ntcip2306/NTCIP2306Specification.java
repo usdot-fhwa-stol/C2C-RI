@@ -30,6 +30,7 @@ private String xslPredicate;
 
 
     public void WSDLStepDescription(){
+		// original implementation was empty
     }
 
     public String getMandatory() {

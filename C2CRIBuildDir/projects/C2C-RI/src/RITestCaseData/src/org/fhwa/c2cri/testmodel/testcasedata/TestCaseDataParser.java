@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.fhwa.c2cri.gui.testmodel.testcasedata.editor.Group;
@@ -358,41 +357,35 @@ public class TestCaseDataParser {
      */
     public static void getIterations(TestCaseFile tcFile) throws IOException {
 
-        BufferedReader br;
-        if (tcFile.isURLSource()){
-          URL theFileURL = tcFile.getPathURI().toURL();
-          br = new BufferedReader(new InputStreamReader(theFileURL.openStream()));
-        } else {
-          br = new BufferedReader(new FileReader(tcFile));
+		try (BufferedReader br = new BufferedReader(tcFile.isURLSource() ? new InputStreamReader(tcFile.getPathURI().toURL().openStream()) : new FileReader(tcFile)))
+		{
+			String iterationData = ""; //current data for current group
 
-        }
+			while (br.ready()) {
 
-        String iterationData = ""; //current data for current group
+				String line = br.readLine();
+				//lineNumber++;
 
-        while (br.ready()) {
+				if (!iterationName(line).equals("")) {
 
-            String line = br.readLine();
-            //lineNumber++;
+					if (!iterationData.equals("")) {
+						getGroups(iterationData);
+					}
 
-            if (iterationName(line) != "") {
+					it = new Iteration(iterationName(line));
+					tcFile.addIteration(it);
+					iterationData = "";
+				} else {
+					iterationData += line + "\n";
+				}
+			}
 
-                if (iterationData != "") {
-                    getGroups(iterationData);
-                }
+			if (!iterationData.equals("")) {
+				getGroups(iterationData);
+			}
 
-                it = new Iteration(iterationName(line));
-                tcFile.addIteration(it);
-                iterationData = "";
-            } else {
-                iterationData += line + "\n";
-            }
-        }
-
-        if (iterationData != "") {
-            getGroups(iterationData);
-        }
-
-        br.close();
+			
+		}
     }
 
     /**
@@ -415,9 +408,9 @@ public class TestCaseDataParser {
             //lineNumber++;
 
             if (line != null) {
-                if (groupName(line) != "") {
+                if (!groupName(line).equals("")) {
 
-                    if (groupData != "") {
+                    if (!groupData.equals("")) {
                         getParameters(groupData);
                     }
 
@@ -430,7 +423,7 @@ public class TestCaseDataParser {
             }
         }
 
-        if (groupData != "") {
+        if (!groupData.equals("")) {
             getParameters(groupData);
         }
 
@@ -471,7 +464,7 @@ public class TestCaseDataParser {
 
 
         while (br.ready() && line != null) {
-            if (pName(line) != "") {
+            if (!pName(line).equals("")) {
                 createParameter(pData + line + "\n");
                 pData = "";
             } else {
@@ -512,11 +505,11 @@ public class TestCaseDataParser {
 
 
 
-        if (pName == "") {
+        if (pName.equals("")) {
             errors += "Error:No name for parameter of group '"
                     + g.getName() + "' around line " + lineNumber + '\n'; //error
         } else {
-            if (pType == "") {
+            if (pType.equals("")) {
                 pType = "string";
             }
             if (pType.compareToIgnoreCase("symbol") == 0) {

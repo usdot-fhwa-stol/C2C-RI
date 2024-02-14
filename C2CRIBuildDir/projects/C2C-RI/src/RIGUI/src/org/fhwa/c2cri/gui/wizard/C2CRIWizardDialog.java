@@ -92,8 +92,8 @@ public class C2CRIWizardDialog extends javax.swing.JDialog {
     /**
      * Commons logging log instance
      */
-    private final Logger log = Logger.getLogger(C2CRIWizardDialog.class.getSimpleName());
-    final private C2CRWizardFactory c2criWizardFactory;
+    private final transient Logger log = Logger.getLogger(C2CRIWizardDialog.class.getSimpleName());
+    final private transient C2CRWizardFactory c2criWizardFactory;
 
     private javax.swing.JTree jTreeNavigation;
 //    private javax.swing.JList<String> jListNavigation;

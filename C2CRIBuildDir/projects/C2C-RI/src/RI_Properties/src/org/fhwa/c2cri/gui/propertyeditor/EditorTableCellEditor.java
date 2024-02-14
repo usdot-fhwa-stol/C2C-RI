@@ -24,7 +24,7 @@ import org.fhwa.c2cri.gui.propertyeditor.formattedtable.FormattedTextField;
 public class EditorTableCellEditor extends FormattedTableEditor {
 
 	/** The cell value. */
-	private Object cellValue = null;
+	private transient Object cellValue = null;
 
 	/** The o. */
 	private JComponent o = null;
@@ -87,6 +87,7 @@ public class EditorTableCellEditor extends FormattedTableEditor {
 					.getWidth(), false) {
 
 				public void inputVerifier(FormattedLabel label) {
+					// original implementation was empty
 				}
 
 				public void caretUpdate(CaretEvent e, FormattedTextField textField) {

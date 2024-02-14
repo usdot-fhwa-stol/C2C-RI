@@ -140,6 +140,8 @@ public class FTPClientTransport implements Runnable {
                 }
                 Thread.currentThread().sleep(300);
             } catch (Exception ex) {
+				if (ex instanceof InterruptedException)
+					Thread.currentThread().interrupt();
                 ex.printStackTrace();
                 System.out.println(opSpecCollection == null ? "Ops Spec Collection was null!!" : "OK");
             }
@@ -360,8 +362,11 @@ public void get(OperationSpecification opSpec, NTCIP2306Message inMessage) throw
                 em.setMessageType(NTCIP2306Message.MESSAGETYPE.RESPONSE);
 
             } catch (IOException ex) {
-                em.setTransportErrorEncountered(true);
-                em.setTransportErrorDescription(ex.getMessage());
+				if (em != null)
+				{
+					em.setTransportErrorEncountered(true);
+					em.setTransportErrorDescription(ex.getMessage());
+				}
 
                 // In case of an IOException the connection will be released
                 // back to the connection manager automatically
@@ -372,10 +377,13 @@ public void get(OperationSpecification opSpec, NTCIP2306Message inMessage) throw
                 // In case of an unexpected exception you may want to abort
                 // the HTTP request in order to shut down the underlying
                 // connection and release it back to the connection manager.
-                em.getFtpStatus().setValidFTPProcessing(false);
-                em.getFtpStatus().addFTPError("FTPClientTransport::processResponse RunTimeException - " + ex.getMessage());
-                em.setTransportErrorEncountered(true);
-                em.setTransportErrorDescription(ex.getMessage());
+				if (em != null)
+				{
+					em.getFtpStatus().setValidFTPProcessing(false);
+					em.getFtpStatus().addFTPError("FTPClientTransport::processResponse RunTimeException - " + ex.getMessage());
+					em.setTransportErrorEncountered(true);
+					em.setTransportErrorDescription(ex.getMessage());
+				}
                 throw ex;
 
             } finally {

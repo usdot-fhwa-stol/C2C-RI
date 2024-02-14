@@ -18,7 +18,6 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
@@ -109,7 +108,7 @@ public class PropertyEditorDialog
 		JScrollPane docScrollPane = new JScrollPane(docEditorPane);
 		docScrollPane.setBorder(BorderFactory.createEtchedBorder());
 		docScrollPane.setVerticalScrollBarPolicy(
-			JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+			javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
 		JButton jbOk = new JButton("  Ok  ");
 		jbOk.setToolTipText("Save Properties");
@@ -155,7 +154,7 @@ public class PropertyEditorDialog
 		c.weightx = 0;
 		cPane.add(jbCancel, c);
 
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
 		addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -163,7 +162,11 @@ public class PropertyEditorDialog
 				switch (n) {
 					case 0 :
 						PropEditor.saveFile();
+						break;
 					case 1 :
+						break;
+					default:
+						// do nothing
 						break;
 				}
 			}

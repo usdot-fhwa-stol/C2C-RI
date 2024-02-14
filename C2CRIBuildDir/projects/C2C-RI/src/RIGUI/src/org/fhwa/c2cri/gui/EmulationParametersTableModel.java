@@ -140,8 +140,9 @@ public class EmulationParametersTableModel extends AbstractTableModel {
                     }
                 case Data:
                     return emulationParam.getEntityDataMap().get(row).getEntityDataSet();
+				default:
+					throw new IllegalArgumentException("Illegal column: " + col);
             }
-            throw new IllegalArgumentException("Illegal column: " + col);
         } else {
             return null;
         }

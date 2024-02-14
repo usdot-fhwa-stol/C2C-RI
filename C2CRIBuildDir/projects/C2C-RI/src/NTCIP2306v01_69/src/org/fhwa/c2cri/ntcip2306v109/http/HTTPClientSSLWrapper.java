@@ -56,9 +56,11 @@ public class HTTPClientSSLWrapper {
             X509TrustManager tm = new X509TrustManager() {
 
                 public void checkClientTrusted(X509Certificate[] xcs, String string) throws CertificateException {
+					// original implementation was empty
                 }
 
                 public void checkServerTrusted(X509Certificate[] xcs, String string) throws CertificateException {
+					// original implementation was empty
                 }
 
                 public X509Certificate[] getAcceptedIssuers() {

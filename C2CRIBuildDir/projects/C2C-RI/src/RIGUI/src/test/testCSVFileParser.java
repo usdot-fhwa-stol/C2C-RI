@@ -6,7 +6,6 @@ package test;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
@@ -86,10 +85,9 @@ public class testCSVFileParser {
                         newParser.parse(newFile);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
+						System.err.println(suiteSpecString + " not found. Using default settings.");
       //              } catch (URISyntaxException e) {
        //                 e.printStackTrace();
-                    } catch (IOException e) {
-                        System.err.println(suiteSpecString + " not found. Using default settings.");
                     } catch (NullPointerException npe) {
                         System.err.println(npe.getMessage());
                     }
@@ -117,10 +115,9 @@ public class testCSVFileParser {
                         newParser.parse(newFile);
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
+						System.err.println(thisOne.getFile() + " not found. Using default settings.");
       //              } catch (URISyntaxException e) {
        //                 e.printStackTrace();
-                    } catch (IOException e) {
-                        System.err.println(thisOne.getFile() + " not found. Using default settings.");
                     } catch (NullPointerException npe) {
                         System.err.println(npe.getMessage());
                     }

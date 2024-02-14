@@ -20,7 +20,7 @@ import net.sf.jameleon.XMLable;
 
 import org.apache.commons.jelly.expression.Expression;
 
-public class Attribute implements XMLable, Cloneable{
+public class Attribute implements XMLable{
     private static final long serialVersionUID = 1L;
    /**
      * The attribute's name
@@ -41,7 +41,7 @@ public class Attribute implements XMLable, Cloneable{
     /**
      * The value of the attribute
      */
-    protected Object value;
+    protected transient Object value;
     /**
      * The default value of the attribute
      */
@@ -68,8 +68,22 @@ public class Attribute implements XMLable, Cloneable{
         description = new String();
         type = new String();
         required = false;
-        contextName = new String();
+        contextName = new String();  
     }
+	
+	
+	Attribute(Attribute oCopy)
+	{
+            name = oCopy.name;
+            description = oCopy.description;
+            type = oCopy.type;
+            required = oCopy.required;
+            contextName = oCopy.contextName;
+            defaultValue = oCopy.defaultValue;
+            instanceVariable = oCopy.instanceVariable;
+            valueSet = oCopy.valueSet;
+            value = oCopy.value;
+	}
 
     /**
      * @return The attribute's name
@@ -259,16 +273,5 @@ public class Attribute implements XMLable, Cloneable{
             str = name;
         }
         return str;
-    }
-    
-    public Object clone() throws CloneNotSupportedException {
-    	Attribute attr = null;
-    	try{
-    		attr = (Attribute) super.clone();
-    		attr.value = value;
-    	}catch(CloneNotSupportedException cnse){
-    		System.err.println("Could not create a clone of "+toXML());
-    	}
-    	return attr;
     }
 }

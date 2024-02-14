@@ -48,19 +48,20 @@ public class RIEmulationParameters implements Serializable {
                 final URL jarURL = new URL(jarFilePath);
                 final File jarFile = new File(jarURL.toURI());
                 if (jarFile.isFile()) {  // Run with JAR file
-                    final JarFile jar = new JarFile(jarFile);
-                    final Enumeration<JarEntry> entries = jar.entries(); //gives ALL entries in jar
-                    while (entries.hasMoreElements()) {
-                        final JarEntry entry = entries.nextElement();
-                        if (entry.getName().startsWith(path) && !entry.isDirectory()) { //filter according to the path and files only            
-                            System.out.println(entry.getName());
-                            RIEmulationEntityValueSet thisEntityValueSet = new RIEmulationEntityValueSet();
-                            thisEntityValueSet.setValueSetName(entry.getName());
-                            thisEntityValueSet.setEntityDataSet(EmulationDataFileProcessor.getByteArray(new URL("jar:"+jarFilePath +"!/"+ entry.getName())));
-                            entityDataMap.add(thisEntityValueSet);
-                        }
-                    }
-                    jar.close();
+                    try (final JarFile jar = new JarFile(jarFile))
+					{
+						final Enumeration<JarEntry> entries = jar.entries(); //gives ALL entries in jar
+						while (entries.hasMoreElements()) {
+							final JarEntry entry = entries.nextElement();
+							if (entry.getName().startsWith(path) && !entry.isDirectory()) { //filter according to the path and files only            
+								System.out.println(entry.getName());
+								RIEmulationEntityValueSet thisEntityValueSet = new RIEmulationEntityValueSet();
+								thisEntityValueSet.setValueSetName(entry.getName());
+								thisEntityValueSet.setEntityDataSet(EmulationDataFileProcessor.getByteArray(new URL("jar:"+jarFilePath +"!/"+ entry.getName())));
+								entityDataMap.add(thisEntityValueSet);
+							}
+						}
+					}
                 } else { // Run with IDE
                     final URL url = Launcher.class.getResource("/" + path);
                     if (url != null) {
@@ -159,7 +160,7 @@ public class RIEmulationParameters implements Serializable {
      * @param entityEmulationData
      */
     public void setEntityEmulationDataList(List entityEmulationData) {
-
+		// original implementation was empty
     }
 
     /**

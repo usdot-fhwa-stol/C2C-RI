@@ -155,19 +155,16 @@ public class GenEnveloped {
         //Print Maximum available memory
         System.out.println("Max Memory:" + runtime.maxMemory() / mb);         
          // Read in plaintext document
-        InputStream sourceDocument
-                = new FileInputStream(fileName);
-        
-       
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        XMLStreamWriter xmlStreamWriter = new LogFileStreamWriter(baos, "UTF-8");
+		 ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try (InputStream sourceDocument = new FileInputStream(fileName))
+		{
+			XMLStreamWriter xmlStreamWriter = new LogFileStreamWriter(baos, "UTF-8");
 
-        XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
-        XMLStreamReader xmlStreamReader
-                = xmlInputFactory.createXMLStreamReader(sourceDocument);
+			XMLInputFactory xmlInputFactory = XMLInputFactory.newInstance();
+			XMLStreamReader xmlStreamReader = xmlInputFactory.createXMLStreamReader(sourceDocument);
 
-        XmlReaderToWriter.writeAll(xmlStreamReader, xmlStreamWriter);
-        xmlStreamWriter.close();
+			XmlReaderToWriter.writeAll(xmlStreamReader, xmlStreamWriter);
+		}
 
         try ( OutputStream outputStream = new FileOutputStream(fileName)) {
             baos.writeTo(outputStream);

@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.net.URI;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
@@ -27,8 +28,8 @@ import org.fhwa.c2cri.gui.testmodel.testcasedata.editor.TestCaseDataEditor;
 public class TestCaseEditJButton extends JButton {
 
     private TestCase testCase;
-    private final TestCaseEditActionListener actionListener;
-    private final TestCaseCreationListener creationListener;
+    private final transient TestCaseEditActionListener c2criactionListener;
+    private final transient TestCaseCreationListener creationListener;
     private final int modelRow;
     
     public TestCaseEditJButton(TestCase testCase, TestCaseCreationListener listener, int modelRow) {
@@ -37,8 +38,8 @@ public class TestCaseEditJButton extends JButton {
         this.setToolTipText("Edit the test case data.");
         this.creationListener = listener;
         this.modelRow = modelRow;
-        actionListener = new TestCaseEditActionListener();
-        this.addActionListener(actionListener);
+        c2criactionListener = new TestCaseEditActionListener();
+        this.addActionListener(c2criactionListener);
         this.setEnabled(true);
 
     }
@@ -68,7 +69,11 @@ public class TestCaseEditJButton extends JButton {
                                 // Create the new file if it does not already exist.
                                 if (!isTextFile(fileName))throw new Exception("File "+fileName+" does not appear to be a valid text file.");
                             }
-                            tcFile.createNewFile();
+							else
+							{
+								if (!tcFile.createNewFile())
+									throw new IOException("File " + fileName + "cannot be created");
+							}
                             testCase.setCustomDataLocation(fileName);
                             editTestCaseFile((JFrame) frame, fileName, testCase.getDataUrlLocation().toURI());
                             creationListener.testCaseCreatedUpdate(modelRow);
@@ -84,7 +89,11 @@ public class TestCaseEditJButton extends JButton {
                             if (tcFile.exists()){
                                 if (!isTextFile(fileName))throw new Exception("File "+fileName+" does not appear to be a valid text file.");
                             }
-                            tcFile.createNewFile();
+                            else
+							{
+								if (!tcFile.createNewFile())
+									throw new IOException("Failed to create " + fileName);
+							}
                             testCase.setCustomDataLocation(fileName);
                             editTestCaseFile(null, fileName, testCase.getDataUrlLocation().toURI());
                             creationListener.testCaseCreatedUpdate(modelRow);
@@ -115,8 +124,9 @@ public class TestCaseEditJButton extends JButton {
         
         // CTCRI-787 Addressed by the use of this method.  The user should select a valid test parameter file.  An empty file is valid.
         private boolean isTextFile(String file){
-            try{
-                BufferedReader in = new BufferedReader(new FileReader(file)); 
+            try (BufferedReader in = new BufferedReader(new FileReader(file)))
+			{
+                
                 StringBuilder sb = new StringBuilder();
                 int lineCount = 0;
                 char[] characterArray = new char[1024];

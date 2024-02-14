@@ -11,8 +11,12 @@ package org.fhwa.c2cri.testmodel;
  * @author TransCore ITS, LLC
  * Last Updated:  1/8/2014
  */
-public interface TestCaseMatrixInterface {
+public abstract class TestCaseMatrixInterface {
     
+	private TestCaseMatrixInterface()
+	{
+	}
+	
     /** The Constant NEEDID_Header. */
     public final static String NEEDID_Header = "NeedID";
     

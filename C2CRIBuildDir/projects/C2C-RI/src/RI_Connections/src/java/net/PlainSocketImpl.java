@@ -327,6 +327,9 @@ class PlainSocketImpl extends AbstractPlainSocketImpl {
             case SO_KEEPALIVE:
             case SO_REUSEADDR:
                 return (value == 0) ? -1 : 1;
+			default:
+				// do nothing
+				break;
         }
         return value;
     }
@@ -565,7 +568,7 @@ class PlainSocketImpl extends AbstractPlainSocketImpl {
         return logInputStream;
     }
 
-    void setInputStream(SocketInputStream in) {
+    synchronized void setInputStream(SocketInputStream in) {
         socketInputStream = in;
     }
 

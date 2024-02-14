@@ -33,13 +33,13 @@ public class TestStepResultsTableModel extends AbstractTableModel implements Lis
     public static final int Result_Col = 2;
     
     /** The tc results. */
-    private TestCaseResults tcResults;
+    private transient TestCaseResults tcResults;
     
     /** The test case results table. */
     private JTable testCaseResultsTable;
     
     /** The test step list. */
-    private ArrayList<TestStepResult> testStepList = new ArrayList<TestStepResult>();
+    private transient ArrayList<TestStepResult> testStepList = new ArrayList<TestStepResult>();
     
     /**  The test case description Text Area Reference  */
     private JTextArea testDescriptionText;
@@ -119,9 +119,9 @@ public class TestStepResultsTableModel extends AbstractTableModel implements Lis
                 return testStepResult.getTestStepDescription();
             case Result_Col:
                 return testStepResult.getResult().equals("FAILED")? testStepResult.getResult() + " - " + testStepResult.getErrorDescription():testStepResult.getResult();
+			default:
+				throw new IllegalArgumentException("Illegal column: " + col);
         }
-        throw new IllegalArgumentException("Illegal column: "
-                + col);
     }
 
     /*

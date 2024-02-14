@@ -23,7 +23,7 @@ import java.util.Map;
 
 public class DataDrivableEvent extends EventObject{
 
-    protected Map rowData;
+    protected transient Map rowData;
 
     public DataDrivableEvent(Object source){
         super(source);

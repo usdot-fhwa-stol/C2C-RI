@@ -52,7 +52,7 @@ public class TestCaseResultsPane extends JSplitPane implements TestCaseListener,
 	private static final long serialVersionUID = 1L;
     protected DefaultTableModel tcModel, tcReasonModel;
     protected JTable tcTable, tcReasonTable;
-    protected Map testCases = new HashMap();
+    protected transient Map testCases = new HashMap();
     private static final int TC_NUM = 0;
     private static final int STATUS = 1;
     private static final int TEST_CASE = 2;
@@ -62,7 +62,7 @@ public class TestCaseResultsPane extends JSplitPane implements TestCaseListener,
     private static final int PASS = 6;
     private static final int TC = 7;
     protected ImageIcon passedImg, failedImg, runningImg, snapShotImg;
-    private List results = new ArrayList();
+    private transient List results = new ArrayList();
     private JTextArea stackTrace = new JTextArea();
     private TestCaseTree tcTree;
     private JTextArea sourceArea;

@@ -252,35 +252,36 @@ public class Parser {
      */
     public static void getGroups(EditorFile eFile) throws IOException {
         
-        BufferedReader br = new BufferedReader(new FileReader(eFile));
+        try (BufferedReader br = new BufferedReader(new FileReader(eFile)))
+		{
         
-        String groupData = ""; //current data for current group
-        
-        while(br.ready()) {
-            
-            String line = br.readLine();
-            //lineNumber++;
-            
-            if(groupName(line) != "") {
-                
-                if(groupData != "") {
-                    getParameters(groupData);
-                }
-                
-                g = new Group(groupName(line));
-                eFile.addGroup(g);
-                groupData = "";
-            }
-            else {
-                groupData += line + "\n";
-            }
-        }
-        
-        if(groupData != "") {
-            getParameters(groupData);
-        }
-        
-        br.close();
+			String groupData = ""; //current data for current group
+
+			while(br.ready()) {
+
+				String line = br.readLine();
+				//lineNumber++;
+
+				if(!groupName(line).equals("")) {
+
+					if(!groupData.equals("")) {
+						getParameters(groupData);
+					}
+
+					g = new Group(groupName(line));
+					eFile.addGroup(g);
+					groupData = "";
+				}
+				else {
+					groupData += line + "\n";
+				}
+			}
+
+			if(!groupData.equals("")) {
+				getParameters(groupData);
+			}
+
+		}
     }
     
     /**
@@ -316,7 +317,7 @@ public class Parser {
         
         
         while(br.ready() && line != null) {
-            if(pName(line) != "") {
+            if(!pName(line).equals("")) {
                 createParameter(pData + line + "\n");
                 pData = "";
             }
@@ -354,12 +355,12 @@ public class Parser {
         
         
         
-        if(pName == "")
+        if(pName.equals(""))
             errors += "Error:No name for parameter of group '"
             + g.getName() + "' around line " + lineNumber + '\n'; //error
         
         else {
-            if(pType == "") pType = "string";
+            if(pType.equals("")) pType = "string";
             if(pType.compareToIgnoreCase("symbol") == 0) {
                 
                 if(pAValues == null) {

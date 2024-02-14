@@ -39,7 +39,7 @@ import net.sf.jameleon.util.JameleonDefaultValues;
 
 public class TestCaseTree extends JTree{
 
-    protected Configurator config;
+    protected transient Configurator config;
     protected TestCasePane testCasePane;
     private final int SECONDS_TO_WAIT = 3;
 
@@ -107,9 +107,9 @@ public class TestCaseTree extends JTree{
     protected void setTestCaseSource(final File f, final boolean activateSourceTab){
         if (f.exists() && f.canRead()) {
             StringBuffer contents = new StringBuffer();
-            BufferedReader in = null;
-            try{
-                in = new BufferedReader(new FileReader(f));
+
+            try (BufferedReader in= new BufferedReader(new FileReader(f)))
+			{
                 while (in.ready()) {
                     contents.append(in.readLine()).append("\n");
                 }
@@ -119,14 +119,6 @@ public class TestCaseTree extends JTree{
                 }
             }catch(IOException ioe){
                 ioe.printStackTrace();
-            }finally{
-                try{
-                    if (in != null){
-                        in.close();
-                    }
-                }catch(IOException ioe){
-                    //So I couldn't close the connection?
-                }
             }
         }
     }
@@ -145,6 +137,7 @@ public class TestCaseTree extends JTree{
     public class TCTreeListener implements TreeWillExpandListener, TreeSelectionListener{
 
         public void treeWillCollapse(TreeExpansionEvent event){
+			// original implementation was empty
         }
 
         protected void addNodesToDir(TreePath path){

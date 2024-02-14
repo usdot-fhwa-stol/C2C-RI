@@ -42,8 +42,10 @@ public class Randomizer {
 
         int i = tempint %n;
 
-        if (i <0)
+        if (i < 0)
+		{
 			i = -i;
+		}
 		return lo + i;
 	}
 

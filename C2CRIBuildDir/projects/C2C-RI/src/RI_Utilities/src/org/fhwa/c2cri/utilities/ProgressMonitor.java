@@ -25,7 +25,6 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -95,7 +94,7 @@ public class ProgressMonitor implements ProgressReporter {
     private volatile Integer _min;
     private volatile Integer _max;
     private volatile Integer _cur;
-    private Integer dialogToken=0;
+	private final Object LOCK = new Object();
     
     private ProgressMonitor() {
     }
@@ -213,7 +212,7 @@ public class ProgressMonitor implements ProgressReporter {
         System.out.println("ProgressMonitor:  About to Show the ProgressMonitor: " + _text);
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                synchronized (dialogToken) {
+                synchronized (LOCK) {
                     if (_theDialog == null) {
                         constructDialog();
                     }
@@ -244,7 +243,7 @@ public class ProgressMonitor implements ProgressReporter {
                     SwingUtilities.invokeAndWait(new Runnable() {
                         @Override
                         public void run() {
-                            synchronized (dialogToken) {
+                            synchronized (LOCK) {
                                 if (_theDialog == null) {
                                     constructDialog();
                                 }
@@ -257,12 +256,12 @@ public class ProgressMonitor implements ProgressReporter {
                         }
 
 
-                    synchronized (dialogToken) {
+                    synchronized (LOCK) {
                         if (_theDialog != null) {
                             SwingUtilities.invokeLater(new Runnable() {
                                 @Override
                                 public void run() {
-                                    synchronized (dialogToken) {
+                                    synchronized (LOCK) {
                                         if (_theDialog != null) {
                                             internalSetProgress();
                                             SwingUtil.centerAndShow(_theDialog, _owner);
@@ -273,6 +272,8 @@ public class ProgressMonitor implements ProgressReporter {
                         }
                     }
                 } catch (Exception ex) {
+					if (ex instanceof InterruptedException)
+						Thread.currentThread().interrupt();
                     ex.printStackTrace();
                 }
             }
@@ -289,7 +290,7 @@ public class ProgressMonitor implements ProgressReporter {
         System.out.println("ProgressMonitor:  About to Hide the ProgressMonitor: " + _text);
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                synchronized (dialogToken) {
+                synchronized (LOCK) {
                     _theDialog.setVisible(false);
                     reset();
                 }
@@ -305,7 +306,7 @@ public class ProgressMonitor implements ProgressReporter {
         System.out.println("ProgressMonitor:  About to Dispose the ProgressMonitor: " + _text);
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                synchronized (dialogToken) {
+                synchronized (LOCK) {
                     if (_theDialog != null) {
                         _fProgress.setIndeterminate(false);
                         _theDialog.dispose();
@@ -426,14 +427,14 @@ public class ProgressMonitor implements ProgressReporter {
         if (!_options.contains(Options.NO_PROGRESS_BAR)) {
             _fProgress = new JProgressBar();
             _fProgress.setMinimumSize(new Dimension(150, 30));
-            _fProgress.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            _fProgress.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
             centerPanel.add(_fProgress);
         }
 
         if (_options.contains(Options.SHOW_STATUS)) {
             _fStatus = new JLabel();
             _fStatus.setPreferredSize(new Dimension(300, 36));
-            _fStatus.setAlignmentX(JComponent.CENTER_ALIGNMENT);
+            _fStatus.setAlignmentX(java.awt.Component.CENTER_ALIGNMENT);
             centerPanel.add(Box.createVerticalStrut(8));
             centerPanel.add(_fStatus);
         }
@@ -445,7 +446,7 @@ public class ProgressMonitor implements ProgressReporter {
             panel.add(button);
             contentPane.add(panel, BorderLayout.SOUTH);
         }
-        synchronized (dialogToken) {
+        synchronized (LOCK) {
             _theDialog = new JDialog(_owner, _title, _options.contains(Options.MODAL));
             _theDialog.setContentPane(contentPane);
             _theDialog.pack();

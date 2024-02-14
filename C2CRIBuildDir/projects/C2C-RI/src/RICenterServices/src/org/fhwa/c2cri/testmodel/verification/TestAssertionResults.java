@@ -29,6 +29,7 @@ public class TestAssertionResults {
      * Post-Conditions: N/A
      */
     public TestAssertionResults() {
+		// original implementation was empty
     }
 
     /**
@@ -43,7 +44,6 @@ public class TestAssertionResults {
 
         // create the XMLInputFactory object
         XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-
         try {
             /*
              * Convert String to InputStream using ByteArrayInputStream
@@ -87,18 +87,19 @@ public class TestAssertionResults {
 
                         } else if (elementName.equals("failureMessage")) {
                             reader.next();
-                            ta.setTestResultDescription(reader.getText());
+							if (ta != null)
+	                            ta.setTestResultDescription(reader.getText());
                         }
                         break;
                     case XMLStreamConstants.END_ELEMENT:
                         elementName = reader.getLocalName();
-                        if (elementName.equals("assertionResult")) {
-                            if (assertionResults.containsKey(ta.getTestAssertionID())) {
-                                assertionResults.remove(ta.getTestAssertionID());
-                                assertionResults.put(ta.getTestAssertionID(), ta);
-                            } else {
-                                assertionResults.put(ta.getTestAssertionID(), ta);
-                            }
+                        if (elementName.equals("assertionResult") && ta != null) {
+								if (assertionResults.containsKey(ta.getTestAssertionID())) {
+									assertionResults.remove(ta.getTestAssertionID());
+									assertionResults.put(ta.getTestAssertionID(), ta);
+								} else {
+									assertionResults.put(ta.getTestAssertionID(), ta);
+								}
                         }
                         break;
                     default:

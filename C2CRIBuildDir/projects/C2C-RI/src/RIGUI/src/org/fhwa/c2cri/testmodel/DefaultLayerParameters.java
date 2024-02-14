@@ -131,12 +131,17 @@ public class DefaultLayerParameters implements Serializable {
      * @return the other requirements
      */
     public OtherRequirements getOtherRequirements() {
-        for (Need theNeed: nrtm.getUserNeeds().needs){
-            for (Requirement theRequirement : theNeed.getProjectRequirements().requirements){
-                return theRequirement.getOtherRequirements();
-                }
+		OtherRequirements oReturn = null;
+		
+        for (Need theNeed: nrtm.getUserNeeds().needs)
+		{
+            if (oReturn == null && !theNeed.getProjectRequirements().requirements.isEmpty())
+			{
+				oReturn = theNeed.getProjectRequirements().requirements.get(0).getOtherRequirements();
+				break;
+			}
         }
-        return null;
+        return oReturn;
     }
 
     /**
@@ -275,17 +280,18 @@ public class DefaultLayerParameters implements Serializable {
         for (Need userNeed : nrtm.getUserNeeds().needs) {
             if (userNeed != null) {
                 layerMap.put(userNeed.getFlagName(), userNeed.getFlagValue());
-            }
-            for (Requirement theRequirement : userNeed.getProjectRequirements().requirements) {
-                if (theRequirement != null) {
-                    layerMap.put(theRequirement.getFlagName(), theRequirement.getFlagValue());
-                }
-                for (OtherRequirement theOtherRequirement : theRequirement.getOtherRequirements().otherRequirements) {
-                    if (theOtherRequirement != null) {
-                        layerMap.put(theOtherRequirement.getValueName(), theOtherRequirement.getValue());
-                    }
-                }
-            }
+				for (Requirement theRequirement : userNeed.getProjectRequirements().requirements) {
+					if (theRequirement != null) {
+						layerMap.put(theRequirement.getFlagName(), theRequirement.getFlagValue());
+
+						for (OtherRequirement theOtherRequirement : theRequirement.getOtherRequirements().otherRequirements) {
+							if (theOtherRequirement != null) {
+								layerMap.put(theOtherRequirement.getValueName(), theOtherRequirement.getValue());
+							}
+						}
+					}
+				}
+			}
         }
 
         return layerMap;
@@ -311,6 +317,7 @@ public class DefaultLayerParameters implements Serializable {
      * @param rtm
      */
     public void setRtm(ArrayList rtm) {
+		// original implementation was empty
     }
 
     /**

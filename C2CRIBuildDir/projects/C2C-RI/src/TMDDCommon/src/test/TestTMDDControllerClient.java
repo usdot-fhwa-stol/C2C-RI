@@ -5,6 +5,7 @@
 package test;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.HashMap;
@@ -90,7 +91,9 @@ public class TestTMDDControllerClient
             ex.printStackTrace();
 
         }
-
+		
+		if (tmdd == null)
+			throw new IOException("Null tmdd");
         tmdd.initializeStandard("FakeName", "EC", als);
 
         InformationLayerController ilc = tmdd.getInformationLayerController();
@@ -145,8 +148,6 @@ public class TestTMDDControllerClient
             ex.printStackTrace();
         }
         ilc.shutdown();
-        System.gc();
-
     }
 
     /**

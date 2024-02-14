@@ -77,56 +77,56 @@ public class TestExternalCenter {
 
                     }
         
-        
-        tmdd.initializeStandard("FakeName", "EC", als);
-       
+        if (tmdd != null)
+		{
+			tmdd.initializeStandard("FakeName", "EC", als);
 
-        InformationLayerController ilc = tmdd.getInformationLayerController();
-        ilc.setDisableAppLayerEncoding(tc.isSkipEncoding());
 
-        try {
-            if (tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.FTPGET)
-                    || tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPGET)) {
-                results = ilc.performGetEC(tc.getOperationName());
+			InformationLayerController ilc = tmdd.getInformationLayerController();
+			ilc.setDisableAppLayerEncoding(tc.isSkipEncoding());
 
-            } else if (tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPPOST)
-                    || tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPSOAPRR)
-                    || (tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPSOAPRR))) {
-                Message requestMsg = MessageManager.getInstance().createMessage("Request");
-                requestMsg.setMessageBody(tc.getRequestMessage());
-                results = ilc.performRequestResponseEC(tc.getOperationName(),
-                        requestMsg);
+			try {
+				if (tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.FTPGET)
+						|| tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPGET)) {
+					results = ilc.performGetEC(tc.getOperationName());
 
-            } else if (tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPSOAPSUB)) {
-                Message requestMsg = MessageManager.getInstance().createMessage("Request");
-                requestMsg.setMessageBody(tc.getRequestMessage());
-                results = ilc.performSubscriptionEC(tc.getOperationName(),
-                        requestMsg);
-                System.out.println("\n\nSUB RESULTS\n");
-                System.out.println("SubscriptionActive: " + results.isSubscriptionActive() + "  PubComplete: " + results.isPublicationComplete() + "  Pub Count" + results.getPublicationCount());
+				} else if (tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPPOST)
+						|| tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPSOAPRR)
+						|| (tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPSOAPRR))) {
+					Message requestMsg = MessageManager.getInstance().createMessage("Request");
+					requestMsg.setMessageBody(tc.getRequestMessage());
+					results = ilc.performRequestResponseEC(tc.getOperationName(),
+							requestMsg);
 
-                while (results.isSubscriptionActive() && (!results.isPublicationComplete()) && (results.getPublicationCount() <= tc.getNumPublicationsExpected())) {
-                    System.out.println("Current Subscription Status = " + results.isSubscriptionActive() + " Pub Count: " + results.getPublicationCount());
-                    results = ilc.performPublicationECReceive(tc.getRelatedOperationName());
-                    System.out.println("\n\nPUB REQUEST RESULTS\n");
-                    System.out.println("SubscriptionActive: " + results.isSubscriptionActive() + "  PubComplete: " + results.isPublicationComplete() + "  Pub Count" + results.getPublicationCount());
-//
-                    Message relatedResponseMsg = MessageManager.getInstance().createMessage("Response");
-                    relatedResponseMsg.setMessageBody(tc.getRelatedResponseMessage());
-                    results = ilc.performPublicationECResponse(tc.getRelatedOperationName(),
-                            relatedResponseMsg, tc.isMessageErrorExpected());
-                    System.out.println("\n\nPUB RESPONSE RESULTS\n");
-                    System.out.println("SubscriptionActive: " + results.isSubscriptionActive() + "  PubComplete: " + results.isPublicationComplete() + "  Pub Count" + results.getPublicationCount());
-                }
+				} else if (tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPSOAPSUB)) {
+					Message requestMsg = MessageManager.getInstance().createMessage("Request");
+					requestMsg.setMessageBody(tc.getRequestMessage());
+					results = ilc.performSubscriptionEC(tc.getOperationName(),
+							requestMsg);
+					System.out.println("\n\nSUB RESULTS\n");
+					System.out.println("SubscriptionActive: " + results.isSubscriptionActive() + "  PubComplete: " + results.isPublicationComplete() + "  Pub Count" + results.getPublicationCount());
 
-            } else if (tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPSOAPPUB)) {
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        ilc.shutdown();
+					while (results.isSubscriptionActive() && (!results.isPublicationComplete()) && (results.getPublicationCount() <= tc.getNumPublicationsExpected())) {
+						System.out.println("Current Subscription Status = " + results.isSubscriptionActive() + " Pub Count: " + results.getPublicationCount());
+						results = ilc.performPublicationECReceive(tc.getRelatedOperationName());
+						System.out.println("\n\nPUB REQUEST RESULTS\n");
+						System.out.println("SubscriptionActive: " + results.isSubscriptionActive() + "  PubComplete: " + results.isPublicationComplete() + "  Pub Count" + results.getPublicationCount());
+	//
+						Message relatedResponseMsg = MessageManager.getInstance().createMessage("Response");
+						relatedResponseMsg.setMessageBody(tc.getRelatedResponseMessage());
+						results = ilc.performPublicationECResponse(tc.getRelatedOperationName(),
+								relatedResponseMsg, tc.isMessageErrorExpected());
+						System.out.println("\n\nPUB RESPONSE RESULTS\n");
+						System.out.println("SubscriptionActive: " + results.isSubscriptionActive() + "  PubComplete: " + results.isPublicationComplete() + "  Pub Count" + results.getPublicationCount());
+					}
 
-        System.gc();
+				} else if (tc.getOperationType().equals(TestCaseSpec.OPERATIONTYPE.HTTPSOAPPUB)) {
+				}
+			} catch (Exception ex) {
+				ex.printStackTrace();
+			}
+			ilc.shutdown();
+		}
 
 
 

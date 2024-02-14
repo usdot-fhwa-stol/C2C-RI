@@ -3008,15 +3008,14 @@ targetedTestCases.add("TCS-99-dlSectionControlRequest-OC-Valid");
     
     public static void copyFiles(String inputFile, String outputFile, COPYTYPE copyType) {
         System.out.println("Copying "+inputFile+" as type "+copyType.name()+" ...");
-        try {
-            FileReader inputFileReader = new FileReader(inputFile);
-            BufferedReader br1 = new BufferedReader(inputFileReader);
+        try (BufferedReader br1 = new BufferedReader(new FileReader(inputFile));
+			 BufferedWriter bw1 = new BufferedWriter(new FileWriter(outputFile, true)))
+		{
+
             // Read the first line from the file.
             String line1 = br1.readLine();
 
             StringBuilder holdHere = new StringBuilder();
-
-            BufferedWriter bw1 = new BufferedWriter(new FileWriter(outputFile, true));
             boolean beforeMessage = true;
             String lastNonBlankLine = "";
             // As long as the line isn�t null, keep going.
@@ -3050,9 +3049,6 @@ targetedTestCases.add("TCS-99-dlSectionControlRequest-OC-Valid");
 //                }
                 line1 = br1.readLine();
             }
-            bw1.close();
-            br1.close();
-            inputFileReader.close();
         } catch (FileNotFoundException fne) {
             fne.printStackTrace();
         } catch (IOException ioe) {

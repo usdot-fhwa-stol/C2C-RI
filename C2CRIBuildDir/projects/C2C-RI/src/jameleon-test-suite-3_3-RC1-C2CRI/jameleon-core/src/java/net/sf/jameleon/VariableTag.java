@@ -84,15 +84,18 @@ public abstract class VariableTag extends TagSupport {
                     l.add(to);
                 }
             }
-            if (value instanceof List) {
-                Iterator it = ((List)value).iterator();
-                while (it.hasNext()) {
-                    l.add(it.next());
-                }
-            }else{
-                l.add(value);
-            }
-            setVariable(toVariable,l);
+			if (l != null)
+			{
+				if (value instanceof List) {
+					Iterator it = ((List)value).iterator();
+					while (it.hasNext()) {
+						l.add(it.next());
+					}
+				}else{
+					l.add(value);
+				}
+				setVariable(toVariable,l);
+			}
         }
     }
 

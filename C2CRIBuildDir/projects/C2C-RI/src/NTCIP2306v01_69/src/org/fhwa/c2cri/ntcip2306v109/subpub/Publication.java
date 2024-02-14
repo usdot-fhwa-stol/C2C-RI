@@ -234,6 +234,8 @@ public class Publication implements Runnable, MessageUpdateListener {
      *  Thread for processing publication and response and results
      */
     private Thread nonScriptedPubResponseThread;
+	
+	private final Object LOCK = new Object();
     
     
     /**
@@ -301,7 +303,8 @@ public class Publication implements Runnable, MessageUpdateListener {
             ex.printStackTrace();
         }
         while (!getState().equals(PUBLICATIONSTATE.COMPLETED) && (!shutdown)) {
-            if (!getState().equals(PUBLICATIONSTATE.UPDATING)) {
+            boolean bComplete = false;
+			if (!getState().equals(PUBLICATIONSTATE.UPDATING)) {
                 // Check to see if it's time to publish
                 // if so then publish
 
@@ -317,6 +320,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                         } catch (InterruptedException iex) {
                             iex.printStackTrace();
                             setState(PUBLICATIONSTATE.COMPLETED);
+							Thread.currentThread().interrupt();
                             break;
                         }
                     
@@ -365,6 +369,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                     }
                                 } catch (InterruptedException ex) {
                                     setState(PUBLICATIONSTATE.COMPLETED);
+									Thread.currentThread().interrupt();
                                     break;
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
@@ -376,7 +381,8 @@ public class Publication implements Runnable, MessageUpdateListener {
                                     } catch (InterruptedException iex) {
                                         iex.printStackTrace();
                                         setState(PUBLICATIONSTATE.COMPLETED);
-                                        break;
+                                        bComplete = true;
+										Thread.currentThread().interrupt();
                                     }
                                 }
                             } else {
@@ -386,6 +392,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                 } catch (InterruptedException iex) {
                                     iex.printStackTrace();
                                     setState(PUBLICATIONSTATE.COMPLETED);
+									Thread.currentThread().interrupt();
                                     break;
                                 } catch (Exception ex) {
                                     ex.printStackTrace();
@@ -397,7 +404,8 @@ public class Publication implements Runnable, MessageUpdateListener {
                                     } catch (InterruptedException iex) {
                                         iex.printStackTrace();
                                         setState(PUBLICATIONSTATE.COMPLETED);
-                                        break;
+                                        bComplete = true;
+										Thread.currentThread().interrupt();
                                     }
                                 }
 
@@ -422,6 +430,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                             Thread.currentThread().sleep(2000);
                                         } catch (InterruptedException iex) {
                                             iex.printStackTrace();
+											Thread.currentThread().interrupt();
                                         }//                                } else {
                                         System.out.println("Publication::run PublicationCompleted for OC Not Scripted @" + System.currentTimeMillis());
                                         break;
@@ -446,6 +455,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                             Thread.currentThread().sleep(2000);
                                         } catch (InterruptedException iex) {
                                             iex.printStackTrace();
+											Thread.currentThread().interrupt();
                                         }//                                } else {
                                         System.out.println("Publication::run PublicationCompleted for OC Scripted  @" + System.currentTimeMillis());
                                         break;
@@ -453,6 +463,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                 }
                             } catch (InterruptedException ex) {
                                 setState(PUBLICATIONSTATE.COMPLETED);
+								Thread.currentThread().interrupt();
                             } catch (Exception ex) {
                                 ex.printStackTrace();
                                 publicationErrorCount++;
@@ -470,6 +481,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                 break;
                             } catch (InterruptedException ex) {
                                 setState(PUBLICATIONSTATE.COMPLETED);
+								Thread.currentThread().interrupt();
                                 break;
                             } catch (Exception ex) {
                                 ex.printStackTrace();
@@ -519,6 +531,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                 publishMessageEC(getOpId());
                             } catch (InterruptedException ex) {
                                 setState(PUBLICATIONSTATE.COMPLETED);
+								Thread.currentThread().interrupt();
                                 break;
                             } catch (Exception ex) {
                                 ex.printStackTrace();
@@ -533,13 +546,15 @@ public class Publication implements Runnable, MessageUpdateListener {
                     setState(PUBLICATIONSTATE.COMPLETED);
                     break;
                 }
-
+				if (bComplete)
+					break;
             }
             try {
                 Thread.currentThread().sleep(500);
             } catch (InterruptedException iex) {
                 iex.printStackTrace();
                 setState(PUBLICATIONSTATE.COMPLETED);
+				Thread.currentThread().interrupt();
                 break;
             }
         }
@@ -653,6 +668,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                             } catch (InterruptedException ex) {
                                 log.debug("Publication::publishMessageOC Exiting the nonScriptedPubResponseThread after Thread Interrupt.");
                                 System.err.println("Publication::publishMessageOC Exiting the nonScriptedPubResponseThread after Thread Interrupt.");
+								Thread.currentThread().interrupt();
                                 break;
                             } catch (Exception ex) {
                                 ex.printStackTrace();
@@ -847,7 +863,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @return the state
      */
     public PUBLICATIONSTATE getState() {
-        synchronized (this.state) {
+        synchronized (LOCK) {
             return state;
         }
     }
@@ -858,7 +874,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @param state the new state
      */
     private void setState(PUBLICATIONSTATE state) {
-        synchronized (this.state) {
+        synchronized (LOCK) {
             this.state = state;
         }
     }
@@ -1063,7 +1079,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                             Message pubMessage = DefaultMessageContentGenerator.getInstance().getResponseMessage(opSpec.getOperationName(), nameSpace, name, C2CRIMessageAdapter.toC2CRIMessage(opSpec.getOperationName(), subscriptionMessage), appLayerOpResults);
 
                             // If the generated message is of an expected type then return the published content.  Otherwise return null.
-                            if (pubMessage.getMessageType().equals(name)) {
+                            if (pubMessage.getMessageType().equals(name) && newPublication != null) {
                                 newPublication.addMessagePart(nameSpace, name, pubMessage.getMessageBody());
                                 publicationMessages.add(newPublication);
 
@@ -1084,6 +1100,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                                 Thread.sleep(lastgenerationDuration + 1000);
                             }
                         } catch (InterruptedException ex) {
+							Thread.currentThread().interrupt();
                             break;
                         } catch (Exception ex) {
                             ex.printStackTrace();
@@ -1257,7 +1274,7 @@ public class Publication implements Runnable, MessageUpdateListener {
                 responseText = "OK";
             } else if (getState().equals(Publication.PUBLICATIONSTATE.UPDATING)) {
                 throw new Exception("The subscription is updating the associated publication.");
-            } else if (getState().equals(Publication.PUBLICATIONSTATE.ACTIVE)) {
+            } else {
                 throw new Exception("The publication associated with the subscription id is in an invalid state.");
             }
         }
@@ -1298,6 +1315,7 @@ public class Publication implements Runnable, MessageUpdateListener {
             throw new Exception("produceC2cMessagePublication Exception:", jaxbex);
         } catch (InterruptedException iex) {
             iex.printStackTrace();
+			Thread.currentThread().interrupt();
             throw new Exception("produceC2cMessagePublication Exception:", iex);
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -1400,7 +1418,9 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @return the millis since last periodic subscription
      */
     public long getMillisSinceLastPeriodicPublication() {
-        return millisSinceLastPublication;
+		synchronized (LOCK) {
+			return millisSinceLastPublication;
+		}
     }
 
     /**
@@ -1411,7 +1431,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      * @param currentTimeInMillis the current time in millis
      */
     private void computeMillisSinceLastPublication(long currentTimeInMillis) {
-        synchronized (millisSinceLastPublication) {
+        synchronized (LOCK) {
             millisSinceLastPublication = currentTimeInMillis - lastPublicationTimeInMillis;
             lastPublicationTimeInMillis = currentTimeInMillis;
             System.out.println("Publication::computeMillisSinceLastPublication lastPublicationTimeInMillis = "+lastPublicationTimeInMillis);
@@ -1643,7 +1663,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      *
      * @return true, if is on change update
      */
-    private boolean isOnChangeUpdate() {
+    private synchronized boolean isOnChangeUpdate() {
         return onChangeUpdate;
     }
 

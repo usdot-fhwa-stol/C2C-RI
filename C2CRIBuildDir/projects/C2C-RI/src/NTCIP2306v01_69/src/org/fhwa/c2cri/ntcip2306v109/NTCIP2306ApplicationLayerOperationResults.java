@@ -96,7 +96,7 @@ public class NTCIP2306ApplicationLayerOperationResults implements ApplicationLay
         if (results!=null){
             dialogName = results.getOperationName();
         }
-        return C2CRIMessageAdapter.toC2CRIMessage(dialogName, results.getRequestMessage());
+        return C2CRIMessageAdapter.toC2CRIMessage(dialogName, results != null ? results.getRequestMessage() : null);
     }
 
     /**
@@ -110,7 +110,7 @@ public class NTCIP2306ApplicationLayerOperationResults implements ApplicationLay
         if (results!=null){
             dialogName = results.getOperationName();
         }
-        return C2CRIMessageAdapter.toC2CRIMessage(dialogName, results.getResponseMessage());
+        return C2CRIMessageAdapter.toC2CRIMessage(dialogName, results != null ? results.getResponseMessage() : null);
     }
 
     /**

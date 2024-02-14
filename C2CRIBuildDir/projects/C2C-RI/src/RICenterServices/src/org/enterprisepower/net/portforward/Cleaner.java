@@ -30,7 +30,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class Cleaner implements Runnable {
 	private static final Log log = LogFactory.getLog(Cleaner.class);
-
+	private boolean run = true;
 	List<Cleanable> list = new ArrayList<Cleanable>();
 
 	public void run() {
@@ -38,7 +38,7 @@ public class Cleaner implements Runnable {
 	}
 
 	public synchronized void cleanup() {
-		while (true) {
+		while (run) {
 			for (Iterator<Cleanable> itr = list.iterator(); itr.hasNext();) {
 				Cleanable p = itr.next();
 				if (p.isCompleted()) {
@@ -50,10 +50,18 @@ public class Cleaner implements Runnable {
 				wait(3000);
 			} catch (InterruptedException e) {
 				log.error("Cleaner Process Error in cleanup method: "+e.getMessage(), e);
+				Thread.currentThread().interrupt();
 			}
 		}
 	}
-
+	
+	
+	public void stopRun()
+	{
+		run = false;
+	}
+	
+	
 	public synchronized void add(Cleanable p) {
 		list.add(p);
 	}

@@ -23,7 +23,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -88,7 +87,7 @@ public class TestCaseEditorDialog
 
     private String selectedIteration;
     private String selectedGroup;
-    private Parameter selectedParameter;
+    private transient Parameter selectedParameter;
 
     private static final String RENAME_ITERATION = "Rename Iteration";
     private static final String REPLACE_GROUP = "Replace Group";
@@ -352,7 +351,7 @@ public class TestCaseEditorDialog
         }
     };
 
-    private final ChangeListener iterationChangeListener = new ChangeListener() {
+    private final transient ChangeListener iterationChangeListener = new ChangeListener() {
         public void stateChanged(ChangeEvent changeEvent) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
             int index = sourceTabbedPane.getSelectedIndex();
@@ -363,7 +362,7 @@ public class TestCaseEditorDialog
         }
     };
 
-    private final ChangeListener groupChangeListener = new ChangeListener() {
+    private final transient ChangeListener groupChangeListener = new ChangeListener() {
         public void stateChanged(ChangeEvent changeEvent) {
             JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
             int index = sourceTabbedPane.getSelectedIndex();
@@ -582,7 +581,7 @@ public class TestCaseEditorDialog
 //        cPane.add(jbSave, c);
 //        c.weightx = 0;
 //        cPane.add(jbCancel, c);
-        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         addWindowListener(new WindowAdapter() {
             public void windowClosing(WindowEvent e) {
@@ -590,8 +589,12 @@ public class TestCaseEditorDialog
                 switch (n) {
                     case 0:
                         TestCaseDataEditor.saveFile();
+						break;
                     case 1:
                         break;
+					default:
+						// do nothing
+						break;
                 }
             }
         });
@@ -646,7 +649,7 @@ public class TestCaseEditorDialog
         JScrollPane docScrollPane = new JScrollPane(docEditorPane);
         docScrollPane.setBorder(BorderFactory.createEtchedBorder());
         docScrollPane.setVerticalScrollBarPolicy(
-                JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+                javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         JButton jbSave = new JButton("Save");
         jbSave.setToolTipText("Save Properties");

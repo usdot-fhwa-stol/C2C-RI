@@ -39,7 +39,7 @@ public class TestCaseResultsTableModel extends AbstractTableModel {
     public static final int TestCaseExecutionTime_Col = 6;
     
     /** The tc results. */
-    private TestCaseResults tcResults;
+    private transient TestCaseResults tcResults;
 
     /** The column names. */
     private String[] columnNames = {"#",
@@ -114,9 +114,9 @@ public class TestCaseResultsTableModel extends AbstractTableModel {
                 } else {
                    return " ";
                 }
+			default:
+				throw new IllegalArgumentException("Illegal column: " + col);
         }
-        throw new IllegalArgumentException("Illegal column: "
-                + col);
     }
 
     /*

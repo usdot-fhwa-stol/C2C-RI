@@ -319,12 +319,12 @@ public class NTCIP2306HTTPServlet extends HttpServlet {
                                 + "   \n"
                                 + "      <SOAP-ENV:Fault>\n"
                                 + "         <faultcode>SOAP-ENV:Client</faultcode>\n"
-                                + "		 \n"
+                                + "\t\t \n"
                                 + "         <faultstring>\n"
                                 + "         SOAP POST Request Error" + "\n"
                                 + "         There are no operations that match this SOAP Post Request"                                 
                                 + "         </faultstring>\n"
-                                + "		 \n"
+                                + "\t\t \n"
                                 + "      </SOAP-ENV:Fault>\n"
                                 + "   </SOAP-ENV:Body>\n"
                                 + "   \n"
@@ -346,11 +346,11 @@ public class NTCIP2306HTTPServlet extends HttpServlet {
                                 + "   \n"
                                 + "      <SOAP-ENV:Fault>\n"
                                 + "         <faultcode>SOAP-ENV:Client</faultcode>\n"
-                                + "		 \n"
+                                + "\t\t \n"
                                 + "         <faultstring>\n"
                                 + ex.getMessage()
                                 + "         </faultstring>\n"
-                                + "		 \n"
+                                + "\t\t \n"
                                 + "      </SOAP-ENV:Fault>\n"
                                 + "   </SOAP-ENV:Body>\n"
                                 + "   \n"
@@ -574,7 +574,8 @@ public class NTCIP2306HTTPServlet extends HttpServlet {
                                     // Store the XML Parsing errors related extracting the request message from SOAP.
                                 }
                             }
-                            em.setXmlStatus(xmlValidator.getXMLStatus());
+							if (em != null)
+								em.setXmlStatus(xmlValidator.getXMLStatus());
                         } else {
                               throw new Exception("SOAP Encoding Error");
   
@@ -736,12 +737,12 @@ public class NTCIP2306HTTPServlet extends HttpServlet {
                                 + "   \n"
                                 + "      <SOAP-ENV:Fault>\n"
                                 + "         <faultcode>SOAP-ENV:Client</faultcode>\n"
-                                + "		 \n"
+                                + "\t\t \n"
                                 + "         <faultstring>\n"
                                 + "         SOAP POST Request Error\n"
                                 + handlerSOAPEncoder.getEncodingErrorResults()                                
                                 + "         </faultstring>\n"
-                                + "		 \n"
+                                + "\t\t \n"
                                 + "      </SOAP-ENV:Fault>\n"
                                 + "   </SOAP-ENV:Body>\n"
                                 + "   \n"
@@ -774,12 +775,12 @@ public class NTCIP2306HTTPServlet extends HttpServlet {
                                 + "   \n"
                                 + "      <SOAP-ENV:Fault>\n"
                                 + "         <faultcode>SOAP-ENV:Client</faultcode>\n"
-                                + "		 \n"
+                                + "\t\t \n"
                                 + "         <faultstring>\n"
                                 + "         SOAP POST Request Error\n"
                                 + handlerSOAPEncoder.getEncodingErrorResults()                                
                                 + "         </faultstring>\n"
-                                + "		 \n"
+                                + "\t\t \n"
                                 + "      </SOAP-ENV:Fault>\n"
                                 + "   </SOAP-ENV:Body>\n"
                                 + "   \n"

@@ -329,6 +329,7 @@ public class C2CRISessionTag extends SessionTag {
      */
     @Override
     public void startApplication() {
+		// original implementation was empty
     }
 
 

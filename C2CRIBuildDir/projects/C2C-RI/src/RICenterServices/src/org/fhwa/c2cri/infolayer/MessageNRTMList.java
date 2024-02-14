@@ -26,6 +26,7 @@ public class MessageNRTMList {
      * Post-Conditions: N/A
      */
     public MessageNRTMList(){
+		// original implementation was empty
     }
 
     /**

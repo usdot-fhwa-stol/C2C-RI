@@ -63,7 +63,7 @@ import javax.swing.table.*;
  */
 
 public class TableSorter extends AbstractTableModel {
-    protected TableModel tableModel;
+    protected transient TableModel tableModel;
 
     public static final int DESCENDING = -1;
     public static final int NOT_SORTED = 0;
@@ -82,14 +82,14 @@ public class TableSorter extends AbstractTableModel {
         }
     };
 
-    private Row[] viewToModel;
+    private transient Row[] viewToModel;
     private int[] modelToView;
 
     private JTableHeader tableHeader;
-    private MouseListener mouseListener;
-    private TableModelListener tableModelListener;
-    private Map columnComparators = new HashMap();
-    private List sortingColumns = new ArrayList();
+    private transient MouseListener mouseListener;
+    private transient TableModelListener tableModelListener;
+    private transient Map columnComparators = new HashMap();
+    private transient List sortingColumns = new ArrayList();
 
     public TableSorter() {
         this.mouseListener = new MouseHandler();
@@ -408,7 +408,7 @@ public class TableSorter extends AbstractTableModel {
             Color color = c == null ? Color.GRAY : c.getBackground();             
             // In a compound sort, make each succesive triangle 20% 
             // smaller than the previous one. 
-            int dx = (int)(size/2*Math.pow(0.8, priority));
+            int dx = (int)(size/2.0*Math.pow(0.8, priority));
             int dy = descending ? dx : -dx;
             // Align icon (roughly) with font baseline. 
             y = y + 5*size/6 + (descending ? -dy : 0);
@@ -463,7 +463,7 @@ public class TableSorter extends AbstractTableModel {
                     value, isSelected, hasFocus, row, column);
             if (c instanceof JLabel) {
                 JLabel l = (JLabel) c;
-                l.setHorizontalTextPosition(JLabel.LEFT);
+                l.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
                 int modelColumn = table.convertColumnIndexToModel(column);
                 l.setIcon(getHeaderRendererIcon(modelColumn, l.getFont().getSize()));
             }

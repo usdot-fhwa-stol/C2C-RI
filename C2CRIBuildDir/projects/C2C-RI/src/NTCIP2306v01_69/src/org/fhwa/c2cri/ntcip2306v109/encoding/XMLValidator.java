@@ -72,7 +72,7 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
     protected static final boolean DEFAULT_MEMORY_USAGE = false;
     
     /** The parse result. */
-    protected static boolean parseResult = false;
+    protected boolean parseResult = false;
     
     /** The out. */
     protected PrintWriter fOut = new PrintWriter(System.out);
@@ -182,7 +182,7 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
             setUtf8Encoded(false);
         }
        testAssertionList.add(new TestAssertion("4.1.1.b",isUtf8Encoded(),"The character set shall be UTF-8. ",utf8EncodingException));	   
-       return isValidXmlv1() & isUtf8Encoded() & (getXmlValidErrors().equals(""));
+       return isValidXmlv1() && isUtf8Encoded() && (getXmlValidErrors().equals(""));
     }
 
     /**
@@ -569,7 +569,6 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
 
             //get a new instance of parser
             SAXParser sp = spf.newSAXParser();
-
             System.out.println("Parser is validating " + sp.isValidating());
             System.out.println("Parser is namespaceaware " + sp.isNamespaceAware());
             //parse the file and also register this class for call backs
@@ -861,8 +860,8 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
      *
      * @return true, if is parses the result
      */
-    private static boolean isParseResult() {
-        return XMLValidator.parseResult;
+    private boolean isParseResult() {
+        return parseResult;
     }
 
     /**
@@ -870,8 +869,8 @@ public class XMLValidator extends DefaultHandler implements ErrorHandler {
      *
      * @param parseResult the new parses the result
      */
-    private static void setParseResult(boolean parseResult) {
-        XMLValidator.parseResult = parseResult;
+    private void setParseResult(boolean parseResult) {
+        this.parseResult = parseResult;
     }
 
     /**

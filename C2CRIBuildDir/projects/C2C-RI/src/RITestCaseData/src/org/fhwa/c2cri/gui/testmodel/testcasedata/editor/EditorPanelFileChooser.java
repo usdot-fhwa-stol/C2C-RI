@@ -21,7 +21,7 @@ import javax.swing.JPanel;
 public class EditorPanelFileChooser extends JPanel {
 
 	/** The p. */
-	ParameterFile p;
+	transient ParameterFile p;
 	
 	/** The j value. */
 	JComponent jValue;

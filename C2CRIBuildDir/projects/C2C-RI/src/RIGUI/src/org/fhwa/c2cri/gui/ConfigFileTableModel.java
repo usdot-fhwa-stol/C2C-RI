@@ -34,13 +34,13 @@ public class ConfigFileTableModel extends javax.swing.table.AbstractTableModel {
 //    protected String[] fileDescriptions;
 //    protected Date[] fileDates;
     /** The log filter. */
-private FilenameFilter logFilter;
+private transient FilenameFilter logFilter;
     
     /** The config filter. */
-    private FilenameFilter configFilter;
+    private transient FilenameFilter configFilter;
     
     /** The cfg descriptions. */
-    private ArrayList<TestConfigurationDescription> cfgDescriptions = new ArrayList<>();
+    private transient ArrayList<TestConfigurationDescription> cfgDescriptions = new ArrayList<>();
     
     /** The Constant NTHREDS. */
     private static final int NTHREDS = 10;
@@ -56,7 +56,7 @@ private FilenameFilter logFilter;
     };
     
     /** The input. */
-    private ObjectInputStream input;
+    private transient ObjectInputStream input;
 
     // This table model works for any one given directory
     /**
@@ -399,8 +399,6 @@ private FilenameFilter logFilter;
          */
         @Override
         public ConfigDescription call() throws Exception {
-            ObjectInputStream inputFile;
-
             File f = new File(dir, file);
 
             ConfigDescription cfgDescription = new ConfigDescription();
@@ -408,8 +406,8 @@ private FilenameFilter logFilter;
             cfgDescription.setId(index);
             cfgDescription.setFileDates(new Date(f.lastModified()));
             String description = "";
-            try {
-                inputFile = new ObjectInputStream(new FileInputStream(f));
+            try (ObjectInputStream inputFile = new ObjectInputStream(new FileInputStream(f)))
+			{
                 try {
                     TestConfiguration testConfig = null;
                     testConfig = (TestConfiguration) inputFile.readObject();
@@ -420,8 +418,6 @@ private FilenameFilter logFilter;
                         description = "Invalid Config File";
                         cfgDescription.setValid(false);
                     }
-                    inputFile.close();
-                    inputFile = null;
                     testConfig = null;
                 } catch (Exception e1) {
                     description = "Invalid Config File";

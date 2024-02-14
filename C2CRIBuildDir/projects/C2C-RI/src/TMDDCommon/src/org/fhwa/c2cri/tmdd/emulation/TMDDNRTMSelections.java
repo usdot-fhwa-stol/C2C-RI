@@ -23,7 +23,7 @@ import org.fhwa.c2cri.tmdd.emulation.exceptions.NRTMViolationException;
 public class TMDDNRTMSelections {
 
     private static TMDDNRTMSelections nrtmSelections;
-    private static String tMDDSchemaDetailTableName = "TMDDSchemaDetail";
+    private String tMDDSchemaDetailTableName = "TMDDSchemaDetail";
 
     private TMDDNRTMSelections() {
     }
@@ -43,6 +43,7 @@ public class TMDDNRTMSelections {
     
     public void initialize() throws EntityEmulationException {
         Connection conn = null;
+		EntityEmulationException oEEE = null;
         try {
             conn = EntityEmulationRepository.getConnection();
 
@@ -64,15 +65,17 @@ public class TMDDNRTMSelections {
                 try{
                     EntityEmulationRepository.releaseConnection(conn);                
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);                    
+                    oEEE = new EntityEmulationException(ex);
                 }
             }
         }
-
+		if (oEEE != null)
+			throw oEEE;
     }
 
     public void addNRTM(String needID, String requirementID) throws EntityEmulationException {
         Connection conn = null;
+		EntityEmulationException oEEE = null;
         try {
             // Clear all existing records from the entity data type table
             String insertNRTMSelectionsCommand = "INSERT INTO TMDDSelectedNeedsAndRequirements ( NeedID, RequirementID) VALUES (\""
@@ -95,11 +98,12 @@ public class TMDDNRTMSelections {
                 try{
                    EntityEmulationRepository.releaseConnection(conn);                    
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);                    
+                    oEEE = new EntityEmulationException(ex);
                 }
             }
         }
-
+		if (oEEE != null)
+			throw oEEE;
     }
 
     // For each required element of a message (per NRTM selections) perform an inspection of the inputMessage to confirm
@@ -111,6 +115,7 @@ public class TMDDNRTMSelections {
         Connection conn = null;
         PreparedStatement verifyMessagreNRTMCommand = null;
         ResultSet rs = null;
+		EntityEmulationException oEEE = null;
         
         //TODO  Add code to restrict the query in cases where there are multiple needs that match the combination of dialog, message, entityType
         try {
@@ -236,7 +241,7 @@ public class TMDDNRTMSelections {
                 try{
                     verifyMessagreNRTMCommand.close();
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);            
+                    oEEE = new EntityEmulationException(ex);
                 }
             }
             
@@ -244,18 +249,19 @@ public class TMDDNRTMSelections {
                 try{
                     rs.close();
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);            
+                    oEEE = new EntityEmulationException(ex);
                 }
             }            
             if (conn != null){
                 try{
                     EntityEmulationRepository.releaseConnection(conn);                    
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);            
+                    oEEE = new EntityEmulationException(ex);
                 }
             }
         }
-
+		if (oEEE != null)
+			throw oEEE;
     }
 
     public boolean isAuthenticationRequired(String dialog, MessageSpecification inputMessage, TMDDEntityType.EntityType entityType) throws NRTMViolationException, EntityEmulationException {
@@ -263,6 +269,7 @@ public class TMDDNRTMSelections {
         Connection conn = null;
         PreparedStatement checkAuthenticationRequirementCommand = null;
         ResultSet rs = null;
+		EntityEmulationException oEEE = null;
         
         // Check the TMDDNRTMSelectionsToDesignLookupQuery to determine whether a need/requirement selection exists with Dialog = dialogname (provided), Message = Message Name (provided) and DC Instance Name = "authentication"
         try {
@@ -312,7 +319,7 @@ public class TMDDNRTMSelections {
                 try{
                     rs.close();            
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);            
+                    oEEE = new EntityEmulationException(ex);
                 }
             }            
             
@@ -320,7 +327,7 @@ public class TMDDNRTMSelections {
                 try{
                     checkAuthenticationRequirementCommand.close();            
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);            
+                    oEEE = new EntityEmulationException(ex);
                 }
             }            
             
@@ -328,11 +335,12 @@ public class TMDDNRTMSelections {
                 try{
                     EntityEmulationRepository.releaseConnection(conn);            
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);            
+                    oEEE = new EntityEmulationException(ex);
                 }
             }
         }
-
+		if (oEEE != null)
+			throw oEEE;
         return result;
     }
 
@@ -342,6 +350,7 @@ public class TMDDNRTMSelections {
         Connection conn = null;
         PreparedStatement checkAuthenticationRequirementCommand = null;
         ResultSet rs = null;
+		EntityEmulationException oEEE = null;
         
         // Check the TMDDNRTMSelectionsToDesignLookupQuery to determine whether a need/requirement selection exists with Dialog = dialogname (provided), Message = Message Name (provided) and DC Instance Name = "operator-id"
         try {
@@ -391,7 +400,7 @@ public class TMDDNRTMSelections {
                 try{
                     rs.close();                    
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);                    
+                    oEEE = new EntityEmulationException(ex);
                 }
             }
             
@@ -399,7 +408,7 @@ public class TMDDNRTMSelections {
                 try{
                     checkAuthenticationRequirementCommand.close();                    
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);                    
+                    oEEE = new EntityEmulationException(ex);
                 }
             }
 
@@ -408,11 +417,12 @@ public class TMDDNRTMSelections {
                 try{
                     EntityEmulationRepository.releaseConnection(conn);                    
                 } catch (Exception ex){
-                    throw new EntityEmulationException(ex);                    
+                    oEEE = new EntityEmulationException(ex);
                 }
             }
         }
-
+		if (oEEE != null)
+			throw oEEE;
         return result;
     }
 

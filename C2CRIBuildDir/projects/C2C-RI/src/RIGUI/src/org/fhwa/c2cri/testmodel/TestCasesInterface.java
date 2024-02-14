@@ -11,8 +11,12 @@ package org.fhwa.c2cri.testmodel;
  * @author TransCore ITS, LLC
  * Last Updated:  1/8/2014
  */
-public interface TestCasesInterface {
+public abstract class TestCasesInterface {
 
+	private TestCasesInterface()
+	{
+	}
+	
     /** The Constant name_Header. */
     public final static String name_Header = "Name";
     

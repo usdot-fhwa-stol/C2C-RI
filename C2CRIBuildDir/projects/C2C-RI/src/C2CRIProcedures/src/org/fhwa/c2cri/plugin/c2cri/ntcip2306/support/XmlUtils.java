@@ -73,12 +73,15 @@ public final class XmlUtils
 {
 	private static DocumentBuilder documentBuilder;
 	private final static Logger log = Logger.getLogger( XmlUtils.class );
-
+	private static final String NULLMSG = "Null DocumentBuilder";
 	static synchronized public Document parse( InputStream in )
 	{
 		try
 		{
-			return ensureDocumentBuilder().parse( in );
+			DocumentBuilder oDocBuilder = ensureDocumentBuilder();
+			if (oDocBuilder == null)
+				throw new SAXException(NULLMSG);
+			return oDocBuilder.parse( in );
 		}
 		catch( Exception e )
 		{
@@ -92,7 +95,10 @@ public final class XmlUtils
 	{
 		try
 		{
-			return ensureDocumentBuilder().parse( fileName );
+			DocumentBuilder oDocBuilder = ensureDocumentBuilder();
+			if (oDocBuilder == null)
+				throw new SAXException(NULLMSG);
+			return oDocBuilder.parse( fileName );
 		}
 		catch( SAXException e )
 		{
@@ -104,20 +110,23 @@ public final class XmlUtils
 
 	public static String entitize( String xml )
 	{
-		return xml.replaceAll( "&", "&amp;" ).replaceAll( "<", "&lt;" ).replaceAll( ">", "&gt;" ).replaceAll( "\"",
-				"&quot;" ).replaceAll( "'", "&apos;" );
+		return xml.replace( "&", "&amp;" ).replace( "<", "&lt;" ).replace( ">", "&gt;" ).replace( "\"",
+				"&quot;" ).replace( "'", "&apos;" );
 	}
 
 	public static String entitizeContent( String xml )
 	{
-		return xml.replaceAll( "&", "&amp;" ).replaceAll( "\"", "&quot;" ).replaceAll( "'", "&apos;" );
+		return xml.replace( "&", "&amp;" ).replace( "\"", "&quot;" ).replace( "'", "&apos;" );
 	}
 
 	static synchronized public Document parse( InputSource inputSource ) throws IOException
 	{
 		try
 		{
-			return ensureDocumentBuilder().parse( inputSource );
+			DocumentBuilder oDocBuilder = ensureDocumentBuilder();
+			if (oDocBuilder == null)
+				throw new SAXException(NULLMSG);
+			return oDocBuilder.parse( inputSource );
 		}
 		catch( SAXException e )
 		{

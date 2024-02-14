@@ -49,7 +49,7 @@ public class VerificationEventHandler{
      * Pre-Conditions: N/A
      * Post-Conditions: N/A
      */
-    public void clearInstance(){
+    public static void clearInstance(){
         eventHandler = null;
     }
 

@@ -63,13 +63,13 @@ import org.xml.sax.SAXException;
 public class LogFileProcessor {
 
     /** The event tag. */
-    private static String EVENT = "event";
+    private static String EVENTTAG = "event";
     
     /** The message tag. */
     private static String MESSAGE = "message";
     
     /** The initevent tag. */
-    private static String INITEVENT = "initEvent";
+    private static String INITEVENTTAG = "initEvent";
     
     /** The userevent tag. */
     private static String USEREVENT = "userEvent";
@@ -335,11 +335,11 @@ public class LogFileProcessor {
             outdb = new File("./tempOutDb.db3");
 
             // Make a temporary copy of C2C RI SQLite database
-            FileChannel sourceCh = new FileInputStream(sourcedb).getChannel();
-            FileChannel destCh = new FileOutputStream(outdb).getChannel();
-            sourceCh.transferTo(0, sourceCh.size(), destCh);
-            sourceCh.close();
-            destCh.close();
+			try (FileChannel sourceCh = new FileInputStream(sourcedb).getChannel();
+				 FileChannel destCh = new FileOutputStream(outdb).getChannel())
+			{
+				sourceCh.transferTo(0, sourceCh.size(), destCh);
+			}
 
             // Create a SQLite connection
             Class.forName("org.sqlite.JDBC");
@@ -396,7 +396,7 @@ public class LogFileProcessor {
                 if (event.isStartElement()) {
                     StartElement startElement = event.asStartElement();
                     // If we have a item element we create a new item
-                    if (EVENT.equals(startElement.getName().getLocalPart())) {
+                    if (EVENTTAG.equals(startElement.getName().getLocalPart())) {
                         result++;
                     }
 
@@ -454,7 +454,7 @@ public class LogFileProcessor {
                 if (event.isStartElement()) {
                     StartElement startElement = event.asStartElement();
                     // If we have a item element we create a new item
-                    if (EVENT.equals(startElement.getName().getLocalPart())) {
+                    if (EVENTTAG.equals(startElement.getName().getLocalPart())) {
                         eventSet = processEvent(startElement);
                     }
 
@@ -462,7 +462,7 @@ public class LogFileProcessor {
                 // If we reach the end of an item element we add it to the list
                 if (event.isEndElement()) {
                     EndElement endElement = event.asEndElement();
-                    if (EVENT.equals(endElement.getName().getLocalPart())) {
+                    if (EVENTTAG.equals(endElement.getName().getLocalPart())) {
                         eventSetList.add(eventSet);
                         eventId++;
                         monitor.setProgress(0, eventId, result.intValue());
@@ -551,7 +551,7 @@ public class LogFileProcessor {
         }
 
 
-        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart().equals(EVENT)))) {
+        while (!(event.isEndElement() && (event.asEndElement().getName().getLocalPart().equals(EVENTTAG)))) {
 
             try {
                 if (event.isStartElement()) {
@@ -573,8 +573,8 @@ public class LogFileProcessor {
                         scriptEventDAO.insert(returnedScriptEvent);
                         event = eventReader.nextEvent();
                         continue;
-                    } else if (event.asStartElement().getName().getLocalPart().equals(INITEVENT)) {
-                        eventSet.setEventType(INITEVENT);
+                    } else if (event.asStartElement().getName().getLocalPart().equals(INITEVENTTAG)) {
+                        eventSet.setEventType(INITEVENTTAG);
                         processInitEvent();
                         InitEventPK initEventPK = new InitEventPK();
                         initEventPK.setEventID(eventSet.getEventID());
@@ -759,7 +759,7 @@ public class LogFileProcessor {
      */
     private void processInitEvent() {
 
-        while (eventReader.hasNext() && !(event.isEndElement() && event.asEndElement().getName().getLocalPart().equals(INITEVENT))) {
+        while (eventReader.hasNext() && !(event.isEndElement() && event.asEndElement().getName().getLocalPart().equals(INITEVENTTAG))) {
             try {
 
                 event = eventReader.nextEvent();

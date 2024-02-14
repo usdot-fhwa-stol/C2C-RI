@@ -33,7 +33,7 @@ public class EventSetDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = super.conn.prepareStatement("INSERT INTO " + EVENTSET_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.EVENTSET_TABLE + "("
                     + "EventID, level, logger, thread, timestamp, eventType, "
                     + "eventTypeID, debugInfo) VALUES (?,?,?,?,?,?,?,?)");
 
@@ -63,7 +63,7 @@ public class EventSetDAO extends ReportsDAO {
      */
     public void insert(EventSet eventSet) {
         try {
-            pstmt = super.conn.prepareStatement("INSERT INTO " + EVENTSET_TABLE + "("
+            pstmt = super.conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.EVENTSET_TABLE + "("
                     + "EventID, level, logger, thread, timestamp, eventType, "
                     + "eventTypeID, debugInfo) VALUES (?,?,?,?,?,?,?,?)");
 

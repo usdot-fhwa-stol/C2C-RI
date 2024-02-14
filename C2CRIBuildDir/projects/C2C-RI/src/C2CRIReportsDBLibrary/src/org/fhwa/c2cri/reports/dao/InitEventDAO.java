@@ -32,7 +32,7 @@ public class InitEventDAO extends ReportsDAO {
             // Disable auto-commit
             conn.setAutoCommit(false);
 
-            pstmt = conn.prepareStatement("INSERT INTO " + INITEVENT_TABLE + "("
+            pstmt = conn.prepareStatement("INSERT INTO " + ReportsDAOInterface.INITEVENT_TABLE + "("
                     + "ID, EventID, fileName, startTime, creator, description, c2criVersion, configFileName, "
                     + "checksum, selectedAppLayerTestSuite, selectedInfoLayerTestSuite, configVersion, configurationAuthor, externalCenterOperation, emulationEnabled, emulationInitialization) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 

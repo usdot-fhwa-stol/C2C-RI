@@ -93,6 +93,7 @@ public class SelectNeedsPage extends C2CRIWizardPage implements java.awt.event.A
 
             @Override
             public void flagValueSetUpdate(int tableRow) {
+				// original implementation was empty
             }
 
             @Override
@@ -117,12 +118,7 @@ public class SelectNeedsPage extends C2CRIWizardPage implements java.awt.event.A
                 new ListSelectionListener() {
 
             public void valueChanged(ListSelectionEvent event) {
-                int viewRow = standardNeedsTable.getSelectedRow();
-                if (viewRow < 0) {
-                    //Selection got filtered away.
-                } else {
-
-                }
+				// original implementation did nothing
             }
         });
 

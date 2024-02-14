@@ -63,7 +63,6 @@ public class ActionLogAppender implements org.apache.log4j.Appender {
      */
     public ActionLogAppender() {
         super();
-        this.listener = listener;
     }
 
     /**
@@ -75,7 +74,6 @@ public class ActionLogAppender implements org.apache.log4j.Appender {
      */
     protected ActionLogAppender(final boolean isActive) {
         super();
-        this.listener = listener;
     }
 
     /**
@@ -99,6 +97,7 @@ public class ActionLogAppender implements org.apache.log4j.Appender {
      * requires it.
      */
     public void activateOptions() {
+		// original implementation was empty
     }
 
     /**
@@ -144,7 +143,7 @@ public class ActionLogAppender implements org.apache.log4j.Appender {
      *
      * @since 0.8.4
      */
-    public void finalize() {
+    protected void finalize() {
         // An appender might be closed then garbage collected. There is no
         // point in closing twice.
         if (this.closed) {
@@ -159,7 +158,7 @@ public class ActionLogAppender implements org.apache.log4j.Appender {
      * Return the currently set {@link ErrorHandler} for this Appender.      *
      * @since 0.9.0
      */
-    public ErrorHandler getErrorHandler() {
+    public synchronized ErrorHandler getErrorHandler() {
         return this.errorHandler;
     }
 

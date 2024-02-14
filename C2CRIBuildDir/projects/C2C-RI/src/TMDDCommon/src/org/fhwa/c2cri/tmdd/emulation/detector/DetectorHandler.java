@@ -279,6 +279,9 @@ public class DetectorHandler implements EntityControlRequestStatusCollector, Ent
                            DlDeviceInformationSubscription dlDeviceDataProcessor = new DlDeviceInformationSubscription();
                            responseMsg = dlDeviceDataProcessor.handle(requestMessage, EntityEmulationRequests.EntityRequestMessageType.DEVICEINFORMATIONREQUESTMSG, TMDDEntityType.EntityType.DETECTOR, EntityEmulationData.EntityDataType.DETECTORDATA, detectorData, this);
                            break;
+						default:
+							// do nothing
+							break;
                     }
                     break;   
 //                    throw new EntityEmulationException("The DetectorHandler is unable to process dialog "+dialog);

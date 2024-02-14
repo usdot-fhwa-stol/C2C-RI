@@ -52,7 +52,7 @@ public class ConfigDialog extends JDialog{
     }
 
     private void init(){
-        tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+        tabbedPane = new JTabbedPane(javax.swing.SwingConstants.TOP);
         generalPanel = new GeneralConfigPanel();
         envPanel = new EnvironmentConfigPanel();
         uiConfigPanel = new UIConfigPanel();
@@ -74,25 +74,22 @@ public class ConfigDialog extends JDialog{
               generalPanel.updateProperties();
               uiConfigPanel.updateProperties();
               Configurator config = Configurator.getInstance();
-              OutputStream os = null;
               try{
                   Properties props = config.getProperties();
                   File f = new File(config.getConfigName());
-                  if (!f.exists()) {
-                      f.createNewFile();
-                  }
-                  os = new FileOutputStream(f);
-                  props.store(os, null);
-              }catch(IOException ioe){
-                  ioe.printStackTrace();
-              }finally{
-                  if (os != null) {
-                      try{
-                          os.close();
-                      }catch(IOException ioe){
-                          //So what, we couldn't close the file?
+                  if (!f.exists()) 
+                  {
+                      if(!f.createNewFile())
+                      {
+                        throw new IOException("Failed to create " + f.getAbsolutePath());
                       }
                   }
+                  try (OutputStream os = new FileOutputStream(f))
+                  {
+                    props.store(os, null);
+                  }
+              }catch(IOException ioe){
+                  ioe.printStackTrace();
               }
               Configurator.clearInstance();
               setVisible(false);

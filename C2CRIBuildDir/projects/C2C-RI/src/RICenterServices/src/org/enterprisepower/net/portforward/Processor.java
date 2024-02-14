@@ -143,7 +143,7 @@ public class Processor implements Cleanable {
                 this.isCompleted = true;
                 if (cleaner != null) {
                     synchronized (cleaner) {
-                        cleaner.notify();
+                        cleaner.notifyAll();
                     }
                 }
             }
@@ -213,7 +213,7 @@ public class Processor implements Cleanable {
                 if (index + offset < bytes.length) {
                     fs = fs.concat(String.format("%02x ", bytes[index + offset]));
                 } else {
-                    fs = fs.concat(String.format("	"));
+                    fs = fs.concat(String.format("\t"));
                 }
             }
             return fs;
@@ -240,7 +240,7 @@ public class Processor implements Cleanable {
             if (index < bytes.length) {
                 width = Math.min(width, bytes.length - index);
                 return ":"
-                        + new String(bytes, index, width, "UTF-8").replaceAll("\r\n", " ").replaceAll(
+                        + new String(bytes, index, width, "UTF-8").replace("\r\n", " ").replace(
                         "\n",
                         " ").replaceAll(invalidString, "").replaceAll(invalidString2, "").replaceAll(invalidString3, "").replaceAll(invalidString4, "") + "\n";
             } else {

@@ -195,7 +195,7 @@ public class TMDDMessageDetailGenerator {
 //            if (msgName.equals("cCTVInventoryMsg")){
 //                System.out.println("Message Match");
    //         String result = SampleXmlUtilMessageAnalysis.createSampleForType(elem);
-             String result = SampleXmlUtilDoctored.createSampleForType(elem);
+ //            String result = SampleXmlUtilDoctored.createSampleForType(elem);
 //             System.out.println(result);
     //         addConcept(msgName, result, false, true, false, true);
 //            }
@@ -213,16 +213,14 @@ public static void addConcept(String element, String message, boolean range, boo
         database+= filename.trim() + ";DriverID=22;READONLY=true}"; // add on to the end
         // now we can get the connection from the DriverManager
 //        System.out.println(database);
-        Connection con = DriverManager.getConnection( database ,"","");
-
-        Statement s = con.createStatement();
+        try (Connection con = DriverManager.getConnection( database);
+			 Statement s = con.createStatement())
+		{
 //        s.execute("create table TEST12345 ( column_name integer )"); // create a table
 //        s.execute("insert into TEST12345 values(1)"); // insert some data into the table
         s.execute("insert into TCS_SOAPReady_Messages (Element, MessageData)" + "values('" + element+"','" + message+"')"); // insert the data into the table'
 //           s.execute("drop table TEST12345");
-        s.close(); // close the Statement to let the database know we're done with it
-        con.close(); // close the Connection to let the database know we're done with it
-
+		}
 
     }
 

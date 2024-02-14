@@ -18,20 +18,9 @@ public class TestStepMaker {
             (centerMode.equals("OC")&&dialog.endsWith("Update"))){
             theStep.setDescription("SETUP: Prepare the SUT to initiate the "+dialog+" dialog.");
             theStep.setResults("");
-        } else if (centerMode.equals("OC")){
-            if (dialog.endsWith("Subscription")){
+        } else {
              theStep.setDescription("SETUP: Prepare the SUT to process the "+dialog+" dialog.");
              theStep.setResults("");
-
-            } else {
-             theStep.setDescription("SETUP: Prepare the SUT to process the "+dialog+" dialog.");
-             theStep.setResults("");
-
-            }
-        } else if (centerMode.equals("EC")){
-             theStep.setDescription("SETUP: Prepare the SUT to process the "+dialog+" dialog.");
-             theStep.setResults("");
-
         }
         return theStep;
     }

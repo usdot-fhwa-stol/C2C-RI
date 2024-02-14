@@ -26,7 +26,7 @@ public class RIUserPromptTag extends FunctionTag {
     protected boolean skipConfirmation = false;
 
     /** The return string. */
-    private static String returnString;
+    private String returnString;
 
     /**
      * Promptuser.
@@ -36,7 +36,7 @@ public class RIUserPromptTag extends FunctionTag {
      *
      * @param strPrompt the str prompt
      */
-    public static void promptuser(String strPrompt, boolean skipFeedback) {
+    public void promptuser(String strPrompt, boolean skipFeedback) {
         String str = JOptionPane.showInputDialog(null, strPrompt,
                 "C2C RI", 1);
         if (str != null) {

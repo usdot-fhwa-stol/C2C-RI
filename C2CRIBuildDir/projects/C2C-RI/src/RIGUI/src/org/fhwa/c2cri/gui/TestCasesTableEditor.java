@@ -12,7 +12,6 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import java.awt.event.ActionEvent;
@@ -47,7 +46,7 @@ public class TestCasesTableEditor extends DefaultCellEditor {
         ftf = (JFormattedTextField) getComponent();
         //Set up the editor for the default cells.        
         ftf.setFormatterFactory(new DefaultFormatterFactory());
-        ftf.setHorizontalAlignment(JTextField.TRAILING);
+        ftf.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         ftf.setFocusLostBehavior(JFormattedTextField.PERSIST);
 
         //React when the user presses Enter while the editor is        

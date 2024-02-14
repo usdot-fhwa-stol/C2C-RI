@@ -51,7 +51,7 @@ public class RIParameters {
     public static final String DEFAULT_RI_USER_PARAMETER_VALUE="";
     
     /** The e file. */
-    public static EditorFile eFile;
+    public EditorFile eFile;
 
     /** The Constant RI_USER_PARAMETER_GROUP. */
     public static final String RI_TESTING_PARAMETER_GROUP = "Testing";
@@ -238,25 +238,23 @@ public class RIParameters {
         }
         }
     }    
-    
+
     /**
      * Save file.
      * 
      * Pre-Conditions: N/A
      * Post-Conditions: N/A
      */
-    public static void saveFile() {
+    public void saveFile() {
         synchronized (eFile){
         if (eFile.exists() && eFile.isModified()) {
-            try {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(eFile)))
+			{
                 String newLine = System.getProperty("line.separator");
-                BufferedWriter bw = new BufferedWriter(new FileWriter(eFile));
                 System.out.println(eFile.numGroup());
                 for (int i = 0; i < eFile.numGroup(); i++) {
                     bw.write(eFile.groupAt(i).toText() + newLine);
                 }
-                bw.close();
-
                 eFile.setModified(false);
             } catch (Exception e) {
                 //System.out.println("Error when saving");
@@ -275,19 +273,16 @@ public class RIParameters {
      * Pre-Conditions: N/A
      * Post-Conditions: N/A
      */
-    public static void printParameters() {
+    public void printParameters() {
         if (eFile != null) {
         synchronized (eFile){
             if (eFile.exists()) {
-                try {
+                try (BufferedWriter bw = new BufferedWriter(new FileWriter(eFile))){
                     String newLine = System.getProperty("line.separator");
-                    BufferedWriter bw = new BufferedWriter(new FileWriter(eFile));
                     System.out.println(eFile.numGroup());
                     for (int i = 0; i < eFile.numGroup(); i++) {
                         System.out.println(eFile.groupAt(i).toText() + newLine);
                     }
-                    bw.close();
-
                 } catch (Exception e) {
                     //System.out.println("Error when saving");
                     JOptionPane.showMessageDialog(null,
@@ -312,6 +307,7 @@ public class RIParameters {
      * @param parameterMap the new parameter map
      */
     public void setParameterMap(HashMap parameterMap) {
+		// original implementation was empty
     }
 
     /**
@@ -327,11 +323,13 @@ public class RIParameters {
      * Stores the user selected parameters into a parameters file.
      */
     public void storeParametersMap() {
+		// original implementation was empty
     }
 
     /**
      * Loads the user selected parameters from the parameters file.
      */
     public void loadParametersMap() {
+		// original implementation was empty
     }
 }

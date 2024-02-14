@@ -133,10 +133,10 @@ public class HTTPClientHandler implements Runnable {
     private SOAPDecoder handlerSOAPDecoder;
     
     /** The sf. */
-    private static NTCIP2306SocketFactory sf;
+    private NTCIP2306SocketFactory sf;
     
     /** The sslsf. */
-    private static NTCIP2306SSLSocketFactory sslsf;
+    private NTCIP2306SSLSocketFactory sslsf;
     
     /** The response time. */
     private long responseTime = -1;
@@ -204,6 +204,8 @@ public class HTTPClientHandler implements Runnable {
                 }
                 Thread.currentThread().sleep(300);
             } catch (Exception ex) {
+				if (ex instanceof InterruptedException)
+					Thread.currentThread().interrupt();
                 ex.printStackTrace();
                 System.out.println(opSpecCollection == null ? "Ops Spec Collection was null!!" : "OK");
             }
@@ -1181,14 +1183,17 @@ public class HTTPClientHandler implements Runnable {
 
             @Override
             public void verify(String string, SSLSocket ssls) throws IOException {
+				// original implementation was empty
             }
 
             @Override
             public void verify(String string, X509Certificate xc) throws SSLException {
+				// original implementation was empty
             }
 
             @Override
             public void verify(String string, String[] strings, String[] strings1) throws SSLException {
+				// original implementation was empty
             }
 
             @Override

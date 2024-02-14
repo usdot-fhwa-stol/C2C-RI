@@ -41,18 +41,13 @@ public class InstanceSerializer{
      * @throws IOException if the file can't be serialized
      */
     public static void serialize(Object obj, File file) throws IOException{
-        ObjectOutputStream s = null;
         if (file.getParentFile() != null) {
             JameleonUtility.createDirStructure(file.getParentFile());
         }
-        try{
-            s = new ObjectOutputStream(new FileOutputStream(file));
+        try (ObjectOutputStream s = new ObjectOutputStream(new FileOutputStream(file)))
+		{
             s.writeObject(obj);
             s.flush();
-        }finally{
-            if (s != null) {
-                s.close();
-            }
         }
     }
 
@@ -76,15 +71,10 @@ public class InstanceSerializer{
      */
     public static Object deserialize(InputStream in) throws IOException, ClassNotFoundException{
         Object obj = null;
-        ObjectInputStream s = null;
         if (in != null) {
-            try{
-                s = new ObjectInputStream(in);
+            try (ObjectInputStream s = new ObjectInputStream(in))
+			{
                 obj = s.readObject();
-            }finally{
-                if (s != null) {
-                    s.close();
-                }
             }
         }
         return obj;

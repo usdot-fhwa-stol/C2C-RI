@@ -49,7 +49,7 @@ public class JsseSettings {
         };
 
         try {
-            SSLContext sc = SSLContext.getInstance("SSL");
+            SSLContext sc = SSLContext.getInstance("TLSv1.2");
             sc.init(null, trustAllCerts, new SecureRandom());
             HttpsURLConnectionOldImpl.setDefaultSSLSocketFactory(sc.getSocketFactory());
             HttpsURLConnectionOldImpl.setDefaultHostnameVerifier(doNotVerifyHost);

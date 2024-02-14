@@ -30,7 +30,7 @@ import net.sf.jameleon.function.FunctionTag;
 
 public class FunctionDebugDialog extends DebugDialog{
 
-    private FunctionTag functionTag;
+    private transient FunctionTag functionTag;
 
     public FunctionDebugDialog(Object source, JFrame rootFrame, TestCaseResultsPane tcrf, String title){
         super(source, rootFrame, tcrf, title);

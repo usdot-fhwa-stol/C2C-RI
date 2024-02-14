@@ -35,6 +35,7 @@ public class TMDDv31InformationLayerStandard
      */
     public TMDDv31InformationLayerStandard()
     {
+		// original implementation was empty
     }
 
     /**

@@ -622,6 +622,7 @@ public class HARHandler implements EntityControlRequestStatusCollector, EntityCo
                 case "4":
                 case "other":
                     harRequestParameter = commandMessage.getElementValue("tmdd:hARControlRequestMsg.har-command-parameters.har-message");
+					break;
                 default:
                     break;
             }

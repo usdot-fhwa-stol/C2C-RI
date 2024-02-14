@@ -92,7 +92,7 @@ public class C2CRIMessageAdapter {
                 // TODO Figure out why this might be happening.
                 if (!primaryMessageName.equals(updatedMessageName)){
                     System.err.println("C2CRIMessageAdapter::toC2CRIMessage Message name from 2306 message "+primaryMessageName + " does not match message from spec "+updatedMessageName+ " setting to the updated name.");
-                    primaryMessageName = updatedMessageName.indexOf(":")>0 ? updatedMessageName.substring(updatedMessageName.indexOf(":")+1) : updatedMessageName;
+                    primaryMessageName = updatedMessageName.indexOf(":")>=0 ? updatedMessageName.substring(updatedMessageName.indexOf(":")+1) : updatedMessageName;
                 }
             }
             newMessage.setMessageBodyPartsFromContent(msgList);
@@ -125,17 +125,11 @@ public class C2CRIMessageAdapter {
             String sourceAddress;
             String destinationAddress;
 
-            if (inputMessage.getProtocolType().equals(PROTOCOLTYPE.FTP)) {
-                // FTP does not set address, So it wass stored under the HTTP Status
-                sourceAddress = inputMessage.getHttpStatus().getSource();
-                destinationAddress = inputMessage.getHttpStatus().getDestination();
-            } else {
-                sourceAddress = inputMessage.getHttpStatus().getSource();
-                destinationAddress = inputMessage.getHttpStatus().getDestination();
-            }
+			// FTP does not set address, So it wass stored under the HTTP Status
+			sourceAddress = inputMessage.getHttpStatus().getSource();
+			destinationAddress = inputMessage.getHttpStatus().getDestination();
 
-
-            message.setMessageBodyPartsFromContent(msgList);
+			message.setMessageBodyPartsFromContent(msgList);
             message.setMessageDestinationAddress(destinationAddress);
             message.setMessageEncoding(inputMessage.getEncodingType().name());
             message.setMessageSourceAddress(sourceAddress);
@@ -145,8 +139,10 @@ public class C2CRIMessageAdapter {
             }
             message.setTransportTimeInMillis(inputMessage.getTransportedTimeInMs());
             message.setViaTransportProtocol(inputMessage.getProtocolType().name());
-            if (inputMessage.getNumberMessageParts()>0)
-            message.setEncodedMessageType(inputMessage.getMessagePartName(inputMessage.getNumberMessageParts()));
+            if (inputMessage.getNumberMessageParts() > 0)
+			{
+				message.setEncodedMessageType(inputMessage.getMessagePartName(inputMessage.getNumberMessageParts()));
+			}
         }       
     }
     
@@ -187,15 +183,19 @@ public class C2CRIMessageAdapter {
         for (byte[] messagePart : msgList) {
             if (messageSpec == null) {
                 messageSpec = msp.convertXMLtoMessageSpecification(messagePart);
-                if (messageSpec.getMessageTypes().size()>0)
-                primaryMessageName = messageSpec.getMessageTypes().get(messageSpec.getMessageTypes().size()-1);
+                if (messageSpec.getMessageTypes().size() > 0)
+				{
+					primaryMessageName = messageSpec.getMessageTypes().get(messageSpec.getMessageTypes().size()-1);
+				}
             } else {
                 MessageSpecification tmpSpec = msp.convertXMLtoMessageSpecification(messagePart);
                 for (String element : tmpSpec.getMessageSpec()) {
                     messageSpec.addElementToSpec(element);
                 }
-                if (tmpSpec.getMessageTypes().size()>0)
-                primaryMessageName = tmpSpec.getMessageTypes().get(tmpSpec.getMessageTypes().size()-1);
+                if (tmpSpec.getMessageTypes().size() > 0)
+				{
+					primaryMessageName = tmpSpec.getMessageTypes().get(tmpSpec.getMessageTypes().size()-1);
+				}
             }
         }
 

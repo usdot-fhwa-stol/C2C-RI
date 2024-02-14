@@ -103,6 +103,7 @@ public class ReportCreateAction extends SwingWorker<String, String> {
      * Pre-Conditions: N/A
      * Post-Conditions: N/A
      */
-    public void performPostAction(){        
+    public void performPostAction(){
+		// original implementation was empty
     }
 }

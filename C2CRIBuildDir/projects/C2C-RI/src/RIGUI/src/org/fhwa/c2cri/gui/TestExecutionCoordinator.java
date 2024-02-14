@@ -1304,6 +1304,7 @@ public class TestExecutionCoordinator implements java.awt.event.ActionListener, 
          * Pre-Conditions: N/A Post-Conditions: N/A
          */
         public TestCaseRenderer() {
+			// original implementation was empty
         }
 
         /* (non-Javadoc)

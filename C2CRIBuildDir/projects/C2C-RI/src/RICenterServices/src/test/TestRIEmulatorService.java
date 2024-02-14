@@ -6,6 +6,7 @@
 package test;
 
 import java.net.URL;
+import java.util.Arrays;
 import org.fhwa.c2cri.centermodel.RIEmulationEntityValueSet;
 import org.fhwa.c2cri.centermodel.RIEmulationParameters;
 
@@ -23,7 +24,7 @@ urlList[0]=new URL("jar:file:/C:/C2CRI-Phase2/C2CRIBuildDir/projects/C2C-RI/src/
 urlList[1]=new URL("jar:file:/C:/C2CRI-Phase2/C2CRIBuildDir/projects/C2C-RI/src/TMDDv303/dist/TMDDv303.jar!/InfoLayer/EmulationData/CCTVSTATUS.out");
 RIEmulationParameters temp = new RIEmulationParameters(urlList);
 for (RIEmulationEntityValueSet thisOne : temp.getEntityDataMap()){
-System.out.println(" Output = "+thisOne.getValueSetName() + "  bytelength = "+thisOne.getEntityDataSet().length + "\n\n"+thisOne.getEntityDataSet().toString());
+System.out.println(" Output = "+thisOne.getValueSetName() + "  bytelength = "+thisOne.getEntityDataSet().length + "\n\n"+Arrays.toString(thisOne.getEntityDataSet()));
     
 }
 

@@ -108,9 +108,9 @@ private NRTM nrtm;
                 return thisRequirement.getOtherRequirement();
             case Value_Col:
                 return thisRequirement.getValue();
+			default:
+				throw new IllegalArgumentException("Illegal column: " + col);
         }
-        throw new IllegalArgumentException("Illegal column: "
-                + col);
     }
 
     /*

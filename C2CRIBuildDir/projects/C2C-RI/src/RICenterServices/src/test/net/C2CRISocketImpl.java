@@ -30,7 +30,7 @@ class C2CRISocketImpl extends java.net.SocketImpl
         "java.net.SocksSocketImpl");
   }
 
-  private Socket getSocket() throws IOException {
+  private Socket getRealSocket() throws IOException {
     try {
        System.out.println("getSocket()");
        Field socket = SocketImpl.class.getDeclaredField("socket");
@@ -83,12 +83,12 @@ class C2CRISocketImpl extends java.net.SocketImpl
   public void bind(InetAddress host, int port)
       throws IOException {
     delegator.invoke(host, port);
-    System.out.println("bind(InetAddress host, int port) result = " +getSocket());
+    System.out.println("bind(InetAddress host, int port) result = " +getRealSocket());
   }
 
   public void listen(int backlog) throws IOException {
     delegator.invoke(backlog);
-    System.out.println("listen(int backlog) result = " + getSocket());
+    System.out.println("listen(int backlog) result = " + getRealSocket());
   }
 
   

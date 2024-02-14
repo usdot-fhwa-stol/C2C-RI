@@ -101,14 +101,13 @@ public class TestNTCIP2306Server {
 
         ccc2.stopServices();
         System.out.println("\n\n\n");
-        System.out.println(results.toString());
+		if (results != null)
+			System.out.println(results.toString());
         try {
             testMessage(results, "Request");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        System.gc();
-
     }
 
     /**

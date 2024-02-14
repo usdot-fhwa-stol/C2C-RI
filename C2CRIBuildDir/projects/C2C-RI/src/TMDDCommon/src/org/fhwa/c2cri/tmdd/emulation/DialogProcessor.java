@@ -26,8 +26,8 @@ import org.fhwa.c2cri.utilities.RIParameters;
  * @author TransCore ITS, LLC Created: Mar 26, 2016
  */
 public abstract class DialogProcessor {
-    private static String dialogName;
-    private static boolean isPublication;
+    private String dialogName;
+    private boolean isPublication;
     
     public final MessageSpecification handle(MessageSpecification requestMessage, EntityEmulationRequests.EntityRequestMessageType requestMessageType, TMDDEntityType.EntityType entityType, EntityEmulationData.EntityDataType entityDataType, EntityDataInformationCollector dataCollector, EntityCommandProcessor commandProcessor) {
         MessageSpecification responseMsg = null;
@@ -88,11 +88,11 @@ public abstract class DialogProcessor {
     }
 
     protected void setDialogName(String dialogName) {
-        DialogProcessor.dialogName = dialogName;
+        this.dialogName = dialogName;
     }
 
     protected void setIsPublication(boolean isPublication) {
-        DialogProcessor.isPublication = isPublication;
+        this.isPublication = isPublication;
     }        
     
     protected abstract void preprocessing(EntityEmulationRequests.EntityRequestMessageType requestMessageType, MessageSpecification requestMessage) throws TMDDCenterDoesNotSupportMessageError, TMDDMissingInformationError;

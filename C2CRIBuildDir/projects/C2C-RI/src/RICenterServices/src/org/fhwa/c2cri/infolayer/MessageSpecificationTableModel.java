@@ -21,7 +21,7 @@ public class MessageSpecificationTableModel extends AbstractTableModel {
     public static final int Value_Col = 1;
     
     /** The spec. */
-    private MessageSpecification spec;
+    private transient MessageSpecification spec;
     /** The column names. */
 private String[] columnNames = {"Value Element Name",
         "Value"};
@@ -80,9 +80,9 @@ private String[] columnNames = {"Value Element Name",
                 return spec.getMessageSpecItems().get(row).getValueName();
             case Value_Col:
                 return spec.getMessageSpecItems().get(row).getValue();
+			default:
+				throw new IllegalArgumentException("Illegal column: " + col);
         }
-        throw new IllegalArgumentException("Illegal column: "
-                + col);
     }
 
     /*

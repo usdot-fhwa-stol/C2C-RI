@@ -82,6 +82,7 @@ public class NTCIP2306ApplicationLayerStandard implements ApplicationLayerStanda
      * Creates a new Instance of NTCIP2306ApplicationLayerStandard
      */
     public NTCIP2306ApplicationLayerStandard() {
+		// original implementation was empty
     }
 
     public void configureCenterServiceFromWSDL(String wsdlURL) throws Exception {
@@ -291,7 +292,8 @@ public class NTCIP2306ApplicationLayerStandard implements ApplicationLayerStanda
                         log.debug("The port name = " + portName);
                         log.debug("Is thisSpecification = null? " + (thisSpecification == null ? "True" : "False"));
                         log.debug("this.transportOperations = null? " + (this.transportOperations == null ? "True" : "False"));
-                        this.transportOperations.put(portName, thisSpecification);
+						if (this.transportOperations != null)
+							this.transportOperations.put(portName, thisSpecification);
                         transportType = testConfigWSDL.getServicePortTransportType((QName) services.get(theService), portName);
                         if (transportType != null) {
                             if (transportType.equals("SOAP")) {
@@ -365,7 +367,7 @@ public class NTCIP2306ApplicationLayerStandard implements ApplicationLayerStanda
                         if (faultEncodingType != null) {
                             if (faultEncodingType.equals(OperationSpecification.GZIP_ENCODING)) {
                                 faultEncodingType = NTCIP2306ApplicationLayerStandard.NTCIP2306GZIPEncoding;
-                            } else if (outputEncodingType.equals(OperationSpecification.XML_ENCODING)) {
+                            } else if (outputEncodingType != null && outputEncodingType.equals(OperationSpecification.XML_ENCODING)) {
                                 faultEncodingType = NTCIP2306ApplicationLayerStandard.NTCIP2306XMLEncoding;
 
                             } else if (faultEncodingType.equals(OperationSpecification.SOAP_ENCODING)) {
@@ -495,6 +497,8 @@ public class NTCIP2306ApplicationLayerStandard implements ApplicationLayerStanda
         try{
         ccc2.initialzeServices();
         } catch (Exception ex){
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             throw new Exception("Error establishing the Application Layer Services: "+ex.getMessage());
         }
     }

@@ -144,7 +144,9 @@ public class MessageResults {
             resultString.append("  Element: "+element);
             resultString.append("  Element Testing Passed?: "+elementResult);
             if(!elementResult)
-            resultString.append("  Error Description: "+errorDescription);            
+			{
+				resultString.append("  Error Description: "+errorDescription);
+			}
             
             return resultString.toString();
         }

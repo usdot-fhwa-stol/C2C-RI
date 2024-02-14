@@ -399,7 +399,7 @@ public class StringUtils
 		}
 		else
 		{
-			xml = xml.replaceAll( "\r\n", System.getProperty( "line.separator" ) );
+			xml = xml.replace( "\r\n", System.getProperty( "line.separator" ) );
 		}
 
 		return xml;

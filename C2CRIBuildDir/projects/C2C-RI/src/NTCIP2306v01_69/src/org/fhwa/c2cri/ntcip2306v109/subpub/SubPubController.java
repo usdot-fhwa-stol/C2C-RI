@@ -33,6 +33,7 @@ import org.fhwa.c2cri.messagemanager.Message;
 import org.fhwa.c2cri.ntcip2306v109.NTCIP2306ApplicationLayerOperationResults;
 import org.fhwa.c2cri.ntcip2306v109.NTCIP2306Controller;
 import org.fhwa.c2cri.ntcip2306v109.NTCIP2306ControllerResults;
+import org.fhwa.c2cri.ntcip2306v109.NTCIP2306TransportException;
 import org.fhwa.c2cri.ntcip2306v109.messaging.C2CRIMessageAdapter;
 import org.fhwa.c2cri.ntcip2306v109.messaging.DefaultMessageContentGenerator;
 import org.fhwa.c2cri.ntcip2306v109.status.NTCIP2306Status;
@@ -237,6 +238,7 @@ public class SubPubController implements Runnable {
             } catch (InterruptedException iex) {
                 iex.printStackTrace();
                 setShutdown(true);
+				Thread.currentThread().interrupt();
             }
         }
         
@@ -428,6 +430,7 @@ public class SubPubController implements Runnable {
             System.out.println("SubPubController::run  Shutdown complete after " + (System.currentTimeMillis() - startTime)+" ms.");
         } catch (InterruptedException ex) {
             ex.printStackTrace();
+			Thread.currentThread().interrupt();
         }        
     }
 
@@ -510,6 +513,7 @@ public class SubPubController implements Runnable {
         } catch (InterruptedException iex) {
             iex.printStackTrace();
             shutdown();
+			Thread.currentThread().interrupt();
         } catch (Exception ex){
             ex.printStackTrace();
             System.out.println("Error Unmarshalling message: Exception-> " + ex.getMessage());
@@ -701,15 +705,18 @@ public class SubPubController implements Runnable {
         
         System.out.println("SubPubController::verifySubscriptionRequest Looking for Subscription Match.");
         boolean subscriptionMatch = false;
-        if (getSubscriptions().containsKey(opId)) {
-            for (Subscription thisSubscription : getSubscriptions().get(opId)) {
-                if (thisSubscription.getSubscriptionID().equals(thisSub.getSubscriptionID())) {
-                    if (!thisSubscription.getState().equals(Subscription.SUBSCRIPTIONSTATE.COMPLETED)){
-                        subscriptionMatch = true;                        
-                    }                                                                        
-                }
-            }
-        }
+		if (thisSub != null)
+		{
+			if (getSubscriptions().containsKey(opId)) {
+				for (Subscription thisSubscription : getSubscriptions().get(opId)) {
+					if (thisSubscription.getSubscriptionID().equals(thisSub.getSubscriptionID())) {
+						if (!thisSubscription.getState().equals(Subscription.SUBSCRIPTIONSTATE.COMPLETED)){
+							subscriptionMatch = true;                        
+						}                                                                        
+					}
+				}
+			}
+		}
         System.out.println("SubPubController::verifySubscriptionRequest Checking Subscription Action.");
         if (Subscription.getSubscriptionAction(thisSub).equals(
                 Subscription.SUBSCRIPTIONACTION.NEWSUBSCRIPTION)) {
@@ -853,7 +860,8 @@ public class SubPubController implements Runnable {
             System.out.println("SubPubController::processSubscriptionResults  About to verify operation results!!");
             subOperationResults.verifyOperationResults();
             System.out.println("SubPubController::processSubscriptionResults  Made it past verify operation results!!");
-
+			if (thisSub == null)
+				throw new NTCIP2306TransportException("Null C2CMessageSubscription");
             if (Subscription.getSubscriptionAction(thisSub).equals(
                     Subscription.SUBSCRIPTIONACTION.NEWSUBSCRIPTION)) {
                 System.out.println("SubPubController::processSubscriptionResults  operation Verified about to add new subscription!!");

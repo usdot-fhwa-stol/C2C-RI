@@ -35,7 +35,7 @@ public class VerificationDialog extends javax.swing.JDialog {
     private boolean skipRemainingUserVerifications = false;
     
     /** The specification. */
-    private MessageSpecification specification;
+    private transient MessageSpecification specification;
     
     /** The user tc file. */
     private String userTCFile="";

@@ -46,7 +46,7 @@ public class TestConfigurationList {
     private static TestConfigurationList thisInstance = new TestConfigurationList();
     
     /** The directory. */
-    private static File directory;
+    private File directory;
     
     /** The executor. */
     final ExecutorService executor = Executors.newCachedThreadPool();
@@ -127,6 +127,7 @@ public class TestConfigurationList {
             try {
                 Thread.currentThread().sleep(100);
             } catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
                 e.printStackTrace();
             }
         }
@@ -163,7 +164,7 @@ public class TestConfigurationList {
         
         /** The initializing. */
         private boolean initializing;
-
+		private boolean isRunning = true;
         /**
          * Instantiates a new config file updater.
          * 
@@ -242,6 +243,7 @@ public class TestConfigurationList {
                 try {
                     key = watcher.take();
                 } catch (InterruptedException x) {
+					Thread.currentThread().interrupt();
                     return;
                 }
                 Path dir = keys.get(key);
@@ -249,36 +251,39 @@ public class TestConfigurationList {
                     System.err.println("WatchKey not recognized!!");
 //                continue;
                 }
-                for (WatchEvent<?> event : key.pollEvents()) {
-                    WatchEvent.Kind kind = event.kind();
-                    // TBD - provide example of how OVERFLOW event is handled                 
-                    if (kind == OVERFLOW) {
-                        continue;
-                    }
+				else
+				{
+					for (WatchEvent<?> event : key.pollEvents()) {
+						WatchEvent.Kind kind = event.kind();
+						// TBD - provide example of how OVERFLOW event is handled                 
+						if (kind == OVERFLOW) {
+							continue;
+						}
 
-                    // Context for directory entry event is the file name of entry                 
-                    WatchEvent<Path> ev = cast(event);
-                    Path name = ev.context();
-                    Path child = dir.resolve(name);
-                    // print out event                 
-                    if ((child.getFileName().toString().length()>5) &&(child.getFileName().toString().toUpperCase().endsWith(".RICFG"))) {                    
-                        System.out.format("%s: %s\n", event.kind().name(), child);
-                        update(child.getFileName().toString());
-                    }
-                    // if directory is created, and watching recursively, then                 
-                    // register it and its sub-directories                 
+						// Context for directory entry event is the file name of entry                 
+						WatchEvent<Path> ev = cast(event);
+						Path name = ev.context();
+						Path child = dir.resolve(name);
+						// print out event                 
+						if ((child.getFileName().toString().length()>5) &&(child.getFileName().toString().toUpperCase().endsWith(".RICFG"))) {                    
+							System.out.format("%s: %s\n", event.kind().name(), child);
+							update(child.getFileName().toString());
+						}
+						// if directory is created, and watching recursively, then                 
+						// register it and its sub-directories                 
 
-                }
-// reset key and remove from set if directory no longer accessible             
-                boolean valid = key.reset();
-                if (!valid) {
-                    keys.remove(key);
-// all directories are inaccessible                 
-                    if (keys.isEmpty()) {
-//                    break;
-                    }
-//            }
-                }
+					}
+	// reset key and remove from set if directory no longer accessible             
+					boolean valid = key.reset();
+					if (!valid) {
+						keys.remove(key);
+	// all directories are inaccessible                 
+						if (keys.isEmpty()) {
+	//                    break;
+						}
+	//            }
+					}
+				}
             }
         }
 
@@ -288,13 +293,14 @@ public class TestConfigurationList {
         @Override
         public void run() {
             initialize();
-            while (true) {
+            while (isRunning) {
 
                 try {
                     processEvents();
                     Thread.currentThread().sleep(200);
 
                 } catch (InterruptedException e) {
+					Thread.currentThread().interrupt();
                     e.printStackTrace();
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -303,6 +309,10 @@ public class TestConfigurationList {
             }
         }
 
+		public void stopRunning()
+		{
+			isRunning = false;
+		}
         /**
          * Initialize.
          * 
@@ -313,13 +323,13 @@ public class TestConfigurationList {
             synchronized (TestConfigurationList.cfgDescriptions) {
                 initializing = true;
                 System.out.println("Getting the list of config files.");
-                String[] filenames = TestConfigurationList.directory.list(thisInstance.configFilter);  // Store a list of files in the directory
+                String[] filenames = directory.list(thisInstance.configFilter);  // Store a list of files in the directory
                 TestConfigurationList.cfgDescriptions.clear();
                 ExecutorService executor = Executors.newFixedThreadPool(NTHREDS);
                 ArrayList<Future<TestConfigurationDescription>> cfgList = new ArrayList<>();
                 System.out.println("Starting the config File Workers");
                 for (int ii = 0; ii < filenames.length; ii++) {
-                    Callable<TestConfigurationDescription> worker = new ConfigCallable(ii, TestConfigurationList.directory.getAbsolutePath(), filenames[ii]);
+                    Callable<TestConfigurationDescription> worker = new ConfigCallable(ii, directory.getAbsolutePath(), filenames[ii]);
                     Future<TestConfigurationDescription> submit = executor.submit(worker);
                     cfgList.add(submit);
                 }
@@ -331,6 +341,8 @@ public class TestConfigurationList {
                         TestConfigurationList.cfgDescriptions.add(result);
 //                    }
                     } catch (InterruptedException | ExecutionException e) {
+						if (e instanceof InterruptedException)
+							Thread.currentThread().interrupt();
                         e.printStackTrace();
                     }
                 }
@@ -370,7 +382,7 @@ public class TestConfigurationList {
                     if (!fileFound) {
                         index = TestConfigurationList.cfgDescriptions.size();
                     }
-                    Callable<TestConfigurationDescription> worker = new ConfigCallable(index, TestConfigurationList.directory.getAbsolutePath(), fileName);
+                    Callable<TestConfigurationDescription> worker = new ConfigCallable(index, directory.getAbsolutePath(), fileName);
                     Future<TestConfigurationDescription> submit = executor.submit(worker);
                     cfgList.add(submit);
                     // Now retrieve the result
@@ -388,6 +400,8 @@ public class TestConfigurationList {
                             }
 //                    }
                         } catch (InterruptedException | ExecutionException e) {
+							if (e instanceof InterruptedException)
+								Thread.currentThread().interrupt();
                             e.printStackTrace();
                         }
                     }

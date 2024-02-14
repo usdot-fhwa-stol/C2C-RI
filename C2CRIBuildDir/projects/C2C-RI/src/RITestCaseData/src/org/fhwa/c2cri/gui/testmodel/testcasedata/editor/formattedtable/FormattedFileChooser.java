@@ -28,10 +28,10 @@ public abstract class FormattedFileChooser
 	implements FormattedFileInterface {
 	
 	/** The default file. */
-	public static File DEFAULT_FILE = null;
+	public File DEFAULT_FILE = null;
 
 	/** The o. */
-	private Object o;
+	private transient Object o;
 	
 	/** The j value. */
 	private JComponent jValue;
@@ -88,6 +88,7 @@ public abstract class FormattedFileChooser
 
                             @Override
                             public void actionUpdate(ActionEvent e, FormattedTextField textField) {
+								// original implementation was empty
                             }
                                 
                                 
@@ -197,7 +198,7 @@ public abstract class FormattedFileChooser
 	 * Post-Conditions: N/A
 	 */
 	public void update() {
-		if(o.toString() != getText()) setText(o.toString());
+		if(!o.toString().equals(getText())) setText(o.toString());
 		jValue.requestFocus();
 	}
 	

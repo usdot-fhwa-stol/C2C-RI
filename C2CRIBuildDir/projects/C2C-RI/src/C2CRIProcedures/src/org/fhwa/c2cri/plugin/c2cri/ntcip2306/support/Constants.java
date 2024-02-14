@@ -18,8 +18,12 @@ package org.fhwa.c2cri.plugin.c2cri.ntcip2306.support;
  * @author ole.matzura
  */
 
-public interface Constants
+public abstract class Constants
 {
+	private Constants()
+	{
+	}
+	
 	public static final String XSD_NS = "http://www.w3.org/2001/XMLSchema";
 	public static final String XML_NS = "http://www.w3.org/2000/xmlns/";
 	public static final String WSDL11_NS = "http://schemas.xmlsoap.org/wsdl/";

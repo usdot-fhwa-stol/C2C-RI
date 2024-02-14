@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 import org.fhwa.c2cri.applayer.ApplicationLayerOperationResults;
 import org.fhwa.c2cri.applayer.DialogResults;
@@ -102,28 +103,28 @@ public class TMDDOperationResults implements InformationLayerOperationResults {
      */
     private void updateDialogParameters() {
         Connection conn = null;
-        Statement stmt = null;
+
 
         try {
             // Create a SQLite connection
             conn = TMDDConnectionPool.getConnection();
-            stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM TMDDDialogs where dialog = '" + this.dialog + "'");
+            try (Statement stmt = conn.createStatement())
+			{
+				ResultSet rs = stmt.executeQuery("SELECT * FROM TMDDDialogs where dialog = '" + this.dialog + "'");
 
-            String dialogName = "";
-            requestMessageName = "";
-            responseMessageName = "";
-            errorMessageName = "";
-            dialogType = "";
-            while (rs.next()) {
-                dialogName = rs.getString("dialog");
-                requestMessageName = rs.getString("input");
-                responseMessageName = rs.getString("output");
-                errorMessageName = rs.getString("error");
-                dialogType = rs.getString("dialogType");
-            }
-            rs.close();
-            stmt.close();
+				requestMessageName = "";
+				responseMessageName = "";
+				errorMessageName = "";
+				dialogType = "";
+				while (rs.next()) {
+					dialogName = rs.getString("dialog");
+					requestMessageName = rs.getString("input");
+					responseMessageName = rs.getString("output");
+					errorMessageName = rs.getString("error");
+					dialogType = rs.getString("dialogType");
+				}
+				rs.close();
+			}
 //            conn.close();
             TMDDConnectionPool.releaseConnection(conn);
 
@@ -133,6 +134,8 @@ public class TMDDOperationResults implements InformationLayerOperationResults {
             }
             
         } catch (Exception ex) {
+			if (ex instanceof InterruptedException)
+				Thread.currentThread().interrupt();
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null,
                     "Unable to update the parameters for the dialog because reading the TMDD Database failed: \n"
@@ -236,7 +239,7 @@ public class TMDDOperationResults implements InformationLayerOperationResults {
         dialogResults.setOneMessageReceived(oneMessageReceived);
 
         System.out.println("This is the newer TMDDOperationResults Code!  Returning messageFieldsVerified = "+dialogResults.isMessageFieldsVerified() + " messageValuesVerified = "+dialogResults.isMessageValuesVerified());        
-        System.out.println(Thread.currentThread().getStackTrace().toString());
+        System.out.println(Arrays.toString(Thread.currentThread().getStackTrace()));
         
         return dialogResults;
     }
@@ -559,7 +562,9 @@ public class TMDDOperationResults implements InformationLayerOperationResults {
             if (!this.requestNameValid){
                 if (this.receivedRequestMessageName.isEmpty())getDialogResults(Message.MESSAGETYPE.Request);
                 if (!this.requestNameValid)
-               throw new Exception("The request message "+this.receivedRequestMessageName+" was not valid for the TMDD defined dialog.");
+				{
+					throw new Exception("The request message "+this.receivedRequestMessageName+" was not valid for the TMDD defined dialog.");
+				}
             }
             System.out.println("TMDDOperationResults::checkTMDDOperationResults requestMessageValid="+this.requestMessageValid);
             if (!receivedRequestMessageName.isEmpty() && !this.requestMessageValid ){
@@ -570,7 +575,9 @@ public class TMDDOperationResults implements InformationLayerOperationResults {
             if (!this.responseNameValid){
                 if (this.receivedResponseMessageName.isEmpty())getDialogResults(Message.MESSAGETYPE.Response);
                 if (!this.responseNameValid)
-                throw new Exception("The response message "+this.receivedResponseMessageName+" was not valid for the TMDD defined dialog.");
+				{
+					throw new Exception("The response message "+this.receivedResponseMessageName+" was not valid for the TMDD defined dialog.");
+				}
             }
             System.out.println("TMDDOperationResults::checkTMDDOperationResults responseMessageValid="+this.responseMessageValid);
             if (!receivedResponseMessageName.isEmpty() && !this.responseMessageValid ){

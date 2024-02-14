@@ -21,6 +21,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import org.apache.log4j.LogManager;
 import org.fhwa.c2cri.centermodel.emulation.exceptions.EntityEmulationException;
 import org.fhwa.c2cri.tmdd.TMDDSettingsImpl;
 import org.fhwa.c2cri.tmdd.emulation.entitydata.filters.DataFilter;
@@ -151,10 +152,16 @@ public class EntityEmulationData {
             throw new EntityEmulationException(ex);
         } catch (SQLException ex) {
             System.out.println("SQLException !!\n" + Thread.currentThread().getStackTrace());
-            Writer result = new StringWriter();
-            PrintWriter printWriter = new PrintWriter(result);
-            ex.printStackTrace(printWriter);
-            System.out.println(result.toString());
+            try (Writer result = new StringWriter();
+                    PrintWriter printWriter = new PrintWriter(result))
+            {
+                ex.printStackTrace(printWriter);
+                System.out.println(result.toString());
+            }
+            catch (Exception oEx)
+            {
+                LogManager.getLogger(EntityEmulationData.class).debug(oEx, oEx);
+            }
             ex.printStackTrace();
             throw new EntityEmulationException(ex);
         } catch (Exception ex) {
@@ -2191,47 +2198,53 @@ public class EntityEmulationData {
     private static void reorderEntityElements(EntityDataType entityDataType) throws EntityEmulationException {
         Connection conn = null;
         ResultSet rs = null;
-        Statement stmt = null;
         
         try {
             String getMaxMinEntityIndexCommand = "Select max(EntityIndex) from " + entityDataType.name();
             conn = EntityEmulationRepository.getConnection();
-            stmt = conn.createStatement();
-            rs = stmt.executeQuery(getMaxMinEntityIndexCommand);
-            int maxEntityIndex = rs.getInt(1);
-            stmt.close();
-            rs.close();
+			int maxEntityIndex;
+            try (Statement stmt = conn.createStatement())
+			{
+				rs = stmt.executeQuery(getMaxMinEntityIndexCommand);
+				maxEntityIndex = rs.getInt(1);
+				rs.close();
+			}
 
             if (maxEntityIndex > 1) {
                 int firstMissingIndex = 1;
                 boolean firstEmptyResult = false;
                 for (int ii = 1; ii <= maxEntityIndex; ii++) {
                     String checkIndexCommand = "Select count(*) from " + entityDataType.name() + " where EntityIndex =" + ii;
-                    stmt = conn.createStatement();
-                    rs = stmt.executeQuery(checkIndexCommand);
-                    if (rs.getInt(1) == 0) {
-                        if (!firstEmptyResult) {
-                            firstEmptyResult = true;
-                            firstMissingIndex = ii;
-                        }
-                    } else // Update the Index to the first missing index value
+                    try (Statement stmt = conn.createStatement())
                     {
-                        if (firstEmptyResult) {
-                            String replacementString = "replace(replace(EntityElement,'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + ii + "]', 'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + firstMissingIndex + "]'),'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + ".', 'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + firstMissingIndex + "].')";
+                        rs = stmt.executeQuery(checkIndexCommand);
+                        if (rs.getInt(1) == 0) 
+                        {
+                            if (!firstEmptyResult) 
+                            {
+                                firstEmptyResult = true;
+                                firstMissingIndex = ii;
+                            }
+                        } 
+                        else // Update the Index to the first missing index value
+                        {
+                            if (firstEmptyResult) 
+                            {
+                                String replacementString = "replace(replace(EntityElement,'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + ii + "]', 'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + firstMissingIndex + "]'),'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + ".', 'tmdd:" + entityDataType.relatedMessage() + "." + entityDataType.entityItemReference() + "[" + firstMissingIndex + "].')";
 
-                            String updateEntityIndexCommand = "Update " + entityDataType.name() + " set EntityIndex = \"" + firstMissingIndex + "\", EntityElement = " + replacementString + " where EntityIndex = " + ii;
-//                            System.out.println(updateEntityIndexCommand);
-                            stmt = conn.createStatement();
-                            stmt.execute(updateEntityIndexCommand);
-                            stmt.close();
+                                String updateEntityIndexCommand = "Update " + entityDataType.name() + " set EntityIndex = \"" + firstMissingIndex + "\", EntityElement = " + replacementString + " where EntityIndex = " + ii;
+    //                            System.out.println(updateEntityIndexCommand);
+                                try (Statement oUpdateStmt = conn.createStatement())
+                                {
+                                        oUpdateStmt.execute(updateEntityIndexCommand);
+                                }
 
-                            conn.commit();
+                                conn.commit();
 
-                            firstMissingIndex = firstMissingIndex + 1;
-
+                                firstMissingIndex = firstMissingIndex + 1;
+                            }
                         }
                     }
-
                 }
 
             }
@@ -2245,11 +2258,6 @@ public class EntityEmulationData {
         } finally {
             try{
                 if (rs != null) rs.close();   
-            } catch (Exception ex1){
-            }
-            
-            try{
-                if (stmt != null) stmt.close();
             } catch (Exception ex1){
             }
             

@@ -19,7 +19,7 @@ public class ActionLogCache extends AbstractTableModel implements ActionLogAppen
     private static ActionLogCache instance = null;
     private static int currentTestIndex=0;
     
-    Thread logActionThread = new Thread() {
+    transient Thread logActionThread = new Thread() {
         public void run() {
             try{
                 while (true){
@@ -40,6 +40,7 @@ public class ActionLogCache extends AbstractTableModel implements ActionLogAppen
             } catch (InterruptedException ie) {
                 ie.printStackTrace();
                 taQueue.clear();
+				Thread.currentThread().interrupt();
             }
         }
     };
@@ -160,7 +161,6 @@ public class ActionLogCache extends AbstractTableModel implements ActionLogAppen
 
         instance.stop();
  //       instance = null;
-        System.gc();
 
         System.out.println("Exiting Now.");
     }
@@ -170,7 +170,7 @@ public class ActionLogCache extends AbstractTableModel implements ActionLogAppen
      * @see java.lang.Object#finalize()
      */
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         super.finalize();
         System.out.println("Finalize was called");
 

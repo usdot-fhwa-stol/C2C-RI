@@ -32,10 +32,10 @@ public class ProgressDialog extends JDialog {
 
     protected int maxTimeInSeconds;
     protected JProgressBar progressBar;
-    protected Thread task;
+    protected transient Thread task;
     protected boolean keepGoing = true;
     protected final int MULTIPLIER = 10;
-    protected TestCaseDocsExecutor tcde;
+    protected transient TestCaseDocsExecutor tcde;
 
     public ProgressDialog(JFrame rootFrame, int maxTimeInSeconds, TestCasePane testCasePane, File script){
         super(rootFrame);
@@ -79,6 +79,7 @@ public class ProgressDialog extends JDialog {
                         sleep(interval);
                         progressBar.setValue(i);
                     } catch (InterruptedException e) {
+						Thread.currentThread().interrupt();
                         keepGoing = false;
                         break;
                     }

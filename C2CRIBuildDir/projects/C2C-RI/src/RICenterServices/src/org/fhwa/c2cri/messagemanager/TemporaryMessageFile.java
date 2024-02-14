@@ -13,6 +13,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import org.apache.log4j.LogManager;
 
 /**
  * The Class TemporaryMessageFile stores message content in a temporary file on disk.
@@ -39,9 +43,7 @@ public class TemporaryMessageFile {
      */
     public static void main(String[] args) throws Exception {
         tmpTest();
-        System.gc();
         tmpTest();
-        System.gc();
         System.out.println("Exiting Now.");
     }
     
@@ -141,10 +143,8 @@ public class TemporaryMessageFile {
             }
         }
 
-        try {
-            OutputStream f = new FileOutputStream(
-                    new File(this.filePath));
-
+        try (OutputStream f = new FileOutputStream(new File(this.filePath)))
+		{
             boolean keepReading = true;
             while (keepReading) {
                 int inputByte = inMessage.read();
@@ -154,7 +154,6 @@ public class TemporaryMessageFile {
                     f.write(inputByte);
                 }
             }
-            f.close();
             System.out.println("Temp File is "+this.filePath);
             fileStream = new ResetOnCloseInputStream(new BufferedInputStream(new FileInputStream(new File(this.filePath)),2048));
         } catch (Exception e) {
@@ -167,16 +166,21 @@ public class TemporaryMessageFile {
      * @see java.lang.Object#finalize()
      */
     @Override
-    public void finalize() throws Throwable {
+    protected void finalize() throws Throwable {
         super.finalize();
         System.out.println("Finalize was called");
 
         if (filePath != null) {
-            File tmpFile = new File(filePath);
-            if (tmpFile.exists()) {
-                System.out.println("Finalize is deleting the file " + filePath);
-                tmpFile.delete();
-            }
+			Path tmpFile = Paths.get(filePath);
+			try
+			{
+				if (Files.deleteIfExists(tmpFile))
+					System.out.println("Finalize is deleting the file " + filePath);
+			}
+			catch (IOException oEx)
+			{
+				LogManager.getLogger(this.getClass()).error(oEx, oEx);
+			}
         }
     }
 
