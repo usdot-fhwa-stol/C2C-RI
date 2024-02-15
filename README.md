@@ -40,9 +40,7 @@ The source code was programmed in Apache Netbeans with Java.
 The C2C RI, is intended to fill existing gaps in ITS standards consistency, interoperability, and conformance. The USDOT developed this tool in response to existing gaps as identified through surveys of public and private entities that implement ITS standards.
 
 ## Release Notes
-
-#### Release 1.0.0 (February 21, 2022)
-- Initial release
+The current version and release history of the C2C-RI Application: [C2C-RI Release Notes](<docs/Release_notes.md>)
 
 ## Getting Started
 
