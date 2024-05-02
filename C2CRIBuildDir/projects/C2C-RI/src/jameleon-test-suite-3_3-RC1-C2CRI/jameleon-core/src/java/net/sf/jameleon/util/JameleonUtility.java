@@ -22,7 +22,7 @@ import net.sf.jameleon.bean.FunctionalPoint;
 import net.sf.jameleon.exception.JameleonScriptException;
 
 import java.io.*;
-import org.apache.log4j.LogManager;
+import org.apache.logging.log4j.LogManager;
 
 public class JameleonUtility {
 

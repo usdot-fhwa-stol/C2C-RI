@@ -21,7 +21,8 @@ package net.sf.jameleon.data;
 
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Iterates over all nested tags one time per object in a Collection. 
@@ -61,7 +62,7 @@ public class IterateTag extends AbstractDataDrivableTag {
      * @return the logger used for this tag.
      */
     protected Logger getLogger() {
-        return Logger.getLogger(IterateTag.class.getName());
+        return LogManager.getLogger(IterateTag.class.getName());
     }
 
     /**
