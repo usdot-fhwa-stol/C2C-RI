@@ -68,11 +68,11 @@
     <cp>.\dist\lib\jspf-1_0_2\jspf.remote.xmlrpcdelight-1.0.2.jar</cp>
     <cp>.\dist\lib\1-xmlbeans-2.6.0\jsr173_1.0_api.jar</cp>
     <cp>.\dist\lib\jameleon-core\junit.jar</cp>
-    <cp>.\dist\lib\log4j-1.2.14.jar</cp>
-    <cp>.\dist\lib\FTP\log4j-1.2.14.jar</cp>
     <cp>.\dist\lib\FTP\mina-core-2.0.0-RC1.jar</cp>
     <cp>.\dist\lib\NTCIP2306v01_69.jar</cp>
     <cp>.\dist\lib\TMDDCommon.jar</cp>
+    <cp>.\dist\lib\log4j-api-2.23.1.jar</cp>
+    <cp>.\dist\lib\log4j-core-2.23.1.jar</cp>
     <cp>.\dist\lib\WSDL4j\qname.jar</cp>
     <cp>.\dist\lib\2-xerces-2_9_1\resolver.jar</cp>
     <cp>.\dist\lib\1-xmlbeans-2.6.0\resolver.jar</cp>
@@ -87,8 +87,6 @@
     <cp>.\dist\lib\saxonhe9-2-1-2j\saxon9he.jar</cp>
     <cp>.\dist\lib\2-xerces-2_9_1\serializer.jar</cp>
     <cp>.\dist\lib\jetty\servlet-api-2.5.jar</cp>
-    <cp>.\dist\lib\FTP\slf4j-api-1.5.2.jar</cp>
-    <cp>.\dist\lib\FTP\slf4j-log4j12-1.5.2.jar</cp>
     <cp>.\dist\lib\sqlite-jdbc-3.7.15-M1.jar</cp>
     <cp>.\dist\lib\TMDDv303.jar</cp>
     <cp>.\dist\lib\velocity-dep-1.5.jar</cp>
