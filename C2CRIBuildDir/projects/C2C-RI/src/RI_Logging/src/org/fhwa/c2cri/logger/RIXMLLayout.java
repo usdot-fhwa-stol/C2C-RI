@@ -4,10 +4,11 @@
  */
 package org.fhwa.c2cri.logger;
 
-import org.apache.log4j.Layout;
-import org.apache.log4j.helpers.Transform;
-import org.apache.log4j.spi.LoggingEvent;
-import org.apache.log4j.spi.LocationInfo;
+import java.nio.charset.Charset;
+import org.apache.logging.log4j.ThreadContext;
+import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.core.layout.AbstractStringLayout;
+import org.apache.logging.log4j.core.util.Transform;
 
 
 /**
@@ -50,127 +51,85 @@ import org.apache.log4j.spi.LocationInfo;
  * 
  * Used to support logging for the C2C RI.
  */
-public class RIXMLLayout extends Layout {
+public class RIXMLLayout extends AbstractStringLayout
+{
 
-    private boolean locationInfo = false;
+    protected RIXMLLayout(Charset oCs)
+	{
+		super(oCs);
+	}
+	
 
-    /**
-     * Default constructor.
-     *
-     * @since 1.3
-     */
-    public RIXMLLayout() {
-        super();
-        // The XMLLayout prints and does not ignore exceptions. Hence the
-        // return value <code>false</code>.
-
-    }
-
-    /**
-     * The <b>LocationInfo </b> option takes a boolean value. By default, it is
-     * set to false which means there will be no location information output by
-     * this layout. If the the option is set to true, then the file name and line
-     * number of the statement at the origin of the log statement will be output.
-     *
-     * <p>
-     * If you are embedding this layout within an {@link
-     * org.apache.log4j.net.SMTPAppender} then make sure to set the
-     * <b>LocationInfo </b> option of that appender as well.
-     */
-    public void setLocationInfo(boolean flag) {
-        locationInfo = flag;
-    }
-
-    /**
-     * Returns the current value of the <b>LocationInfo </b> option.
-     */
-    public boolean getLocationInfo() {
-        return locationInfo;
-    }
-
-    /** No options to activate. */
-    public void activateOptions() {
-		// original implementation was empty
-    }
-
-    /**
-     * Formats a {@link LoggingEvent}in conformance with the log4j.dtd.
-     */
-    public String format(LoggingEvent event) {
-        StringBuffer buf = new StringBuffer();
+	@Override
+	public String toSerializable(LogEvent event)
+	{
+		StringBuilder buf = new StringBuilder();
         // We yield to the \r\n heresy.
         buf.append("<log4j:event logger=\"");
         buf.append(event.getLoggerName());
         buf.append("\" timestamp=\"");
-        buf.append(Long.toString(event.timeStamp));
+        buf.append(Long.toString(event.getInstant().getEpochMillisecond()));
         buf.append("\" level=\"");
         buf.append(event.getLevel().toString());
         buf.append("\" thread=\"");
         buf.append(event.getThreadName());
         buf.append("\">\r\n");
 
-        if (event.getRenderedMessage().startsWith("<")) {
+        if (event.getMessage().getFormattedMessage().startsWith("<")) {
             buf.append("<log4j:message>\r\n");
-            buf.append(event.getRenderedMessage() + "</log4j:message>\r\n");
+            buf.append(event.getMessage().getFormattedMessage()).append("</log4j:message>\r\n");
         } else {
             buf.append("<log4j:message><![CDATA[");
 
             // Append the rendered message. Also make sure to escape any
             // existing CDATA sections.
-            Transform.appendEscapingCDATA(buf, event.getRenderedMessage());
+            Transform.appendEscapingCData(buf, event.getMessage().getFormattedMessage());
             buf.append("]]></log4j:message>\r\n");
 
         }
 
-        String ndc = event.getNDC();
+        ThreadContext.ContextStack oCtxStack = event.getContextStack();
 
-        if (ndc != null) {
+        if (oCtxStack != null && !oCtxStack.isEmpty()) {
             buf.append("<log4j:NDC><![CDATA[");
-            buf.append(ndc);
+            buf.append(oCtxStack);
             buf.append("]]></log4j:NDC>\r\n");
         }
 
 
-        if (!ignoresThrowable()) {
-            String[] s = event.getThrowableStrRep();
+		Throwable oThrow = event.getThrown();
+		if (oThrow != null)
+		{
+			StackTraceElement[] oSTE = event.getThrown().getStackTrace();
 
-            if (s != null) {
+			if (oSTE!= null) {
 
-                buf.append("<log4j:throwable><![CDATA[");
+				buf.append("<log4j:throwable><![CDATA[");
 
-                for (int i = 0; i < s.length; i++) {
-                    buf.append(s[i]);
-                    buf.append("\r\n");
-                }
+				for (int i = 0; i < oSTE.length; i++) {
+					buf.append(oSTE[i].toString()).append("\r\n");
+				}
 
-                buf.append("]]></log4j:throwable>\r\n");
-            }
-        }
+				buf.append("]]></log4j:throwable>\r\n");
+			}
+		}
 
-        if (locationInfo) {
-            LocationInfo locationInfo = event.getLocationInformation();
+
+        if (event.isIncludeLocation()) {
+			StackTraceElement oSTE = event.getSource();
             buf.append("<log4j:locationInfo class=\"");
-            buf.append(Transform.escapeTags(locationInfo.getClassName()));
+            buf.append(Transform.escapeHtmlTags(oSTE.getClassName()));
             buf.append("\" method=\"");
-            buf.append(Transform.escapeTags(locationInfo.getMethodName()));
+            buf.append(Transform.escapeHtmlTags(oSTE.getMethodName()));
             buf.append("\" file=\"");
-            buf.append(locationInfo.getFileName());
+            buf.append(oSTE.getFileName());
             buf.append("\" line=\"");
-            buf.append(locationInfo.getLineNumber());
+            buf.append(oSTE.getLineNumber());
             buf.append("\"/>\r\n");
         }
-
 
         buf.append("</log4j:event>\r\n\r\n");
         
         return buf.toString();
-    }
-
-
-    
-    
-    @Override
-    public boolean ignoresThrowable() {
-        return false;
-    }
+	}
 }
