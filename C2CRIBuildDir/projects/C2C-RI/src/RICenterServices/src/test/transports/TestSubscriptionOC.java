@@ -11,8 +11,8 @@ import org.fhwa.c2cri.applayer.DialogResults;
 import org.fhwa.c2cri.infolayer.MessageSpecification;
 import org.fhwa.c2cri.messagemanager.Message;
 import org.fhwa.c2cri.messagemanager.MessageManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  *
@@ -54,7 +54,7 @@ public class TestSubscriptionOC {
     private String subscriptionDialog = "dlCenterActiveVerificationSubscription";
     private String wsdlURL = "file:/c:/c2cri/testfiles/tmddv301/tmdd-fixed.wsdl";
     private String testCasePath = "file:C:/projects/Release2/projects/C2C-RI/src/RIGUI/CustomTestSuites/TMDDV301ExtensionToBlankTestSuite/InfoLayer/Data/TCS-1-dlCenterActiveVerificationRequest-EC-Valid.data";
-    private final Logger log = LoggerFactory.getLogger(TestSubscriptionOC.class);
+    private final Logger log = LogManager.getLogger(TestSubscriptionOC.class);
 
     public static void main(String[] args)  {
         TestSubscriptionOC rrec = new TestSubscriptionOC();

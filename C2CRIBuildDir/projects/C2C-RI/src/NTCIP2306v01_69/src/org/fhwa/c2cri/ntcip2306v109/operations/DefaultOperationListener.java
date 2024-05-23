@@ -12,7 +12,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import javax.xml.namespace.QName;
-import org.apache.log4j.Logger;
 import org.fhwa.c2cri.applayer.MessageContentGenerator;
 import org.fhwa.c2cri.ntcip2306v109.NTCIP2306ApplicationLayerOperationResults;
 import org.fhwa.c2cri.ntcip2306v109.NTCIP2306Controller;
@@ -83,11 +82,6 @@ public class DefaultOperationListener implements Runnable {
      * The stop listener.
      */
     private volatile boolean stopListener = false;
-
-    /**
-     * The logger to used for storing message to the log file.
-     */
-    private Logger log = Logger.getLogger(DefaultOperationListener.class.getName());
     
     /**
      * Instantiates a new default operation listener.

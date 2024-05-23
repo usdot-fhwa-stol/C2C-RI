@@ -36,7 +36,8 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.params.HttpProtocolParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.VersionInfo;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.ntcip2306v109.encoding.GZIPDecoder;
 import org.fhwa.c2cri.ntcip2306v109.encoding.GZIPEncoder;
 import org.fhwa.c2cri.ntcip2306v109.messaging.NTCIP2306Message;
@@ -103,7 +104,7 @@ public class HTTPClientHandler implements Runnable {
     private HashMap<String, String> httpHeaders;
     
     /** The log. */
-    protected static Logger log = Logger.getLogger(HTTPClientHandler.class.getName());
+    protected static Logger log = LogManager.getLogger(HTTPClientHandler.class.getName());
     
     /** The is initialized. */
     private boolean isInitialized = false;

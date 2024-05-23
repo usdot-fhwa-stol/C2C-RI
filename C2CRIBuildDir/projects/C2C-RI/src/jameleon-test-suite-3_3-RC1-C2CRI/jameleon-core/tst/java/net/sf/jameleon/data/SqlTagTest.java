@@ -29,7 +29,7 @@ import junit.framework.TestSuite;
 import net.sf.jameleon.MockTestCaseTag;
 
 import org.apache.commons.jelly.JellyContext;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 public class SqlTagTest extends TestCase {
 

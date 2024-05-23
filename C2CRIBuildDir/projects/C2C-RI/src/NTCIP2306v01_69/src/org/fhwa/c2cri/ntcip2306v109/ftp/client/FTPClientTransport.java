@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketTimeoutException;
 import java.net.URL;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.ntcip2306v109.encoding.GZIPDecoder;
 import org.fhwa.c2cri.ntcip2306v109.messaging.NTCIP2306Message;
 import org.fhwa.c2cri.ntcip2306v109.operations.OperationIdentifier;
@@ -64,7 +65,7 @@ public class FTPClientTransport implements Runnable {
     private int destinationPort = 2221;
     
     /** The log. */
-    protected static Logger log = Logger.getLogger(FTPClientTransport.class.getName());
+    protected static Logger log = LogManager.getLogger(FTPClientTransport.class.getName());
     
     /** The shutdown status. */
     private boolean shutdownStatus = false;

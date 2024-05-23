@@ -11,7 +11,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.java.net.ConnectionsDirectory;
 import org.fhwa.c2cri.ntcip2306v109.operations.DefaultOperationListener;
 import org.fhwa.c2cri.ntcip2306v109.http.server.NTCIP2306HTTPServer;
@@ -45,7 +46,7 @@ public class CenterConfigurationController {
     /**
      * The logger associated with this class.
      */
-    protected static Logger log = Logger.getLogger(CenterConfigurationController.class.getName());
+    protected static Logger log = LogManager.getLogger(CenterConfigurationController.class.getName());
     
     /** the WSDL associated with the standard. */
     private RIWSDL standardWSDL;

@@ -14,7 +14,8 @@ import java.util.List;
 import java.util.Map;
 import javax.xml.namespace.QName;
 import net.xeoh.plugins.base.annotations.PluginImplementation;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.applayer.ApplicationLayerStandard;
 import org.fhwa.c2cri.applayer.InformationLayerAdapter;
 import org.fhwa.c2cri.applayer.ListenerManager;
@@ -75,7 +76,7 @@ public class NTCIP2306ApplicationLayerStandard implements ApplicationLayerStanda
     private String subscriptionDialog;
     private String publicationDialog;
     private boolean useWSDL;
-    protected static Logger log = Logger.getLogger(NTCIP2306ApplicationLayerStandard.class.getName());
+    protected static Logger log = LogManager.getLogger(NTCIP2306ApplicationLayerStandard.class.getName());
     private CenterConfigurationController ccc2;
 
     /**

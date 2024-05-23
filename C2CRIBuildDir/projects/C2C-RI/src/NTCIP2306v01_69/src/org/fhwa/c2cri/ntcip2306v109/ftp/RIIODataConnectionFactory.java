@@ -26,8 +26,8 @@ import org.apache.ftpserver.impl.ServerDataConnectionFactory;
 import org.apache.ftpserver.ssl.ClientAuth;
 import org.apache.ftpserver.ssl.SslConfiguration;
 import org.fhwa.c2cri.applayer.ListenerManager;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 
 
@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
 public class RIIODataConnectionFactory implements ServerDataConnectionFactory{
 
     /** The log. */
-    private final Logger LOG = LoggerFactory
+    private final Logger LOG = LogManager
             .getLogger(RIIODataConnectionFactory.class);
 
     /** The server context. */
@@ -236,8 +236,7 @@ public class RIIODataConnectionFactory implements ServerDataConnectionFactory{
             if (secure) {
                 LOG
                         .debug(
-                                "Opening SSL passive data connection on address \"{}\" and port {}",
-                                address, passivePort);
+                                "Opening SSL passive data connection on address \"" + address + "\" and port " + passivePort);
                 SslConfiguration ssl = getSslConfiguration();
                 if (ssl == null) {
                     throw new DataConnectionException(
@@ -256,13 +255,11 @@ public class RIIODataConnectionFactory implements ServerDataConnectionFactory{
 
                 LOG
                         .debug(
-                                "SSL Passive data connection created on address \"{}\" and port {}",
-                                address, passivePort);
+                                "SSL Passive data connection created on address \"" + address + "\" and port " + passivePort);
             } else {
                 LOG
                         .debug(
-                                "Opening passive data connection on address \"{}\" and port {}",
-                                address, passivePort);
+                                "Opening passive data connection on address \"" + address + "\" and port " + passivePort);
                 servSoc = new ServerSocket(passivePort, 0, address);
 
                 ListenerManager.getInstance().createServerModeListener(address.getHostAddress(),
@@ -270,8 +267,7 @@ public class RIIODataConnectionFactory implements ServerDataConnectionFactory{
                                             passivePort, secure, "FTP DATA CONNECTION PASSIVE");
                 LOG
                         .debug(
-                                "Passive data connection created on address \"{}\" and port {}",
-                                address, passivePort);
+                                "Passive data connection created on address \"" + address + "\" and port " + passivePort);
             }
             port = servSoc.getLocalPort();
             servSoc.setSoTimeout(dataCfg.getIdleTime() * 1000);
@@ -390,7 +386,7 @@ public class RIIODataConnectionFactory implements ServerDataConnectionFactory{
 
                 SocketAddress localSocketAddress = new InetSocketAddress(localAddr, dataConfig.getActiveLocalPort());
 
-                LOG.debug("Binding active data connection to {}", localSocketAddress);
+                LOG.debug("Binding active data connection to " + localSocketAddress);
 
                 dataSoc.bind(null);
                 ListenerManager.getInstance().createClientModeListener(address.getHostAddress(),

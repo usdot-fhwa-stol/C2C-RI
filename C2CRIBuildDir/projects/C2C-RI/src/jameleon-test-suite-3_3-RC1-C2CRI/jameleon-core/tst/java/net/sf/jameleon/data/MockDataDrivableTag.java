@@ -20,7 +20,8 @@ package net.sf.jameleon.data;
 
 import java.util.Collection;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Used to test the getKeyMapping method
@@ -39,7 +40,7 @@ public class MockDataDrivableTag extends AbstractDataDrivableTag {
      * @return the logger used for this tag.
      */
     protected Logger getLogger() {
-        return Logger.getLogger(MockDataDrivableTag.class.getName());
+        return LogManager.getLogger(MockDataDrivableTag.class.getName());
     }
 
     /**

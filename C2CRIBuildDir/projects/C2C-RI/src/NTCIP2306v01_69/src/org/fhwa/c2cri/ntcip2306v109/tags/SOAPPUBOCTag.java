@@ -3,7 +3,7 @@
  */
 package org.fhwa.c2cri.ntcip2306v109.tags;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.messagemanager.Message;
 import org.fhwa.c2cri.messagemanager.MessageManager;
 import org.fhwa.c2cri.ntcip2306v109.messaging.C2CRIMessageAdapter;
@@ -59,7 +59,7 @@ public class SOAPPUBOCTag extends NTCIP2306FunctionTag {
      * Post-Conditions: N/A
      */
     public void testBlock() {
-        log = Logger.getLogger(SOAPPUBOCTag.class.getName());
+        log = LogManager.getLogger(SOAPPUBOCTag.class.getName());
 
         if ((PUBLICATIONSERVICENAME != null) && (PUBLICATIONPORTNAME != null) && (PUBLICATIONOPERATIONNAME != null)) {
             this.initializeReturnParameters();

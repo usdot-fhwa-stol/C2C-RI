@@ -53,7 +53,8 @@ import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.stream.XMLStreamException;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.xmlbeans.SchemaGlobalElement;
 import org.apache.xmlbeans.SchemaTypeSystem;
 import org.apache.xmlbeans.XmlBeans;
@@ -134,7 +135,7 @@ public final class RIWSDL {
     /**
      * The log.
      */
-    protected static Logger log = Logger.getLogger(RIWSDL.class.getName());
+    protected static Logger log = LogManager.getLogger(RIWSDL.class.getName());
 
     /**
      * Clear.

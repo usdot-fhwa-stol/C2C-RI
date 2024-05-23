@@ -36,7 +36,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.tree.DefaultTreeModel;
-import org.apache.log4j.LogManager;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.centermodel.EmulationDataFileProcessor;
 import org.fhwa.c2cri.centermodel.RIEmulationEntityValueSet;
 import org.fhwa.c2cri.centermodel.RIEmulationParameters;

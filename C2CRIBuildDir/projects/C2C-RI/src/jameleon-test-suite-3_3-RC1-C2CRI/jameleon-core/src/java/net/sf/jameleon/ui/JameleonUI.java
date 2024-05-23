@@ -35,9 +35,6 @@ import net.sf.jameleon.util.JameleonUtility;
 import net.sf.jameleon.util.Configurator;
 import net.sf.jameleon.util.JameleonDefaultValues;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.core.LoggerContext;
 
 public class JameleonUI extends JFrame implements JameleonMain{
 	private static final long serialVersionUID = 1L;
@@ -45,19 +42,9 @@ public class JameleonUI extends JFrame implements JameleonMain{
 	protected static final int WINDOW_HEIGHT = 450;
     protected static final int WINDOW_WIDHT = 600;
     protected String jameleontitle = "Jameleon";
-    protected static Logger log = LogManager.getLogger(JameleonUI.class.getName());
 
     public static void main(String[] args){
         final JameleonUI ui = new JameleonUI();
- 
-        /*
-         *   *****************Added for RI POC*****************8
-         */
-    	((LoggerContext)LogManager.getContext(false)).setConfigLocation(new File("log4j.properties").toURI());
-        /*
-         *   *****************End of Added for RI POC*****************8
-         */
-        
         ui.startJameleon();
     }
 

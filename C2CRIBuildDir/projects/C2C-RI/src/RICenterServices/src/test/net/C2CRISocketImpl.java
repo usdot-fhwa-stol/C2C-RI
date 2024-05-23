@@ -13,7 +13,8 @@ import java.net.SocketAddress;
 import java.net.SocketException;
 import java.net.SocketImpl;
 import java.nio.ByteBuffer;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /*
  *
@@ -184,7 +185,7 @@ class C2CRISocketImpl extends java.net.SocketImpl
 //
      private static class LoggingOutputStream extends OutputStream {
 
-        private static final Logger logger = Logger.getLogger(C2CRISocketImpl.LoggingOutputStream.class);
+        private static final Logger logger = LogManager.getLogger(C2CRISocketImpl.LoggingOutputStream.class);
         //I'm using a fixed charset because my app always uses the same. 
         private static final String CHARSET = "ISO-8859-1";
         private OutputStream sktOutputStream;
@@ -236,7 +237,7 @@ class C2CRISocketImpl extends java.net.SocketImpl
 
     private static class LoggingInputStream extends InputStream {
 
-        private static final Logger logger = Logger.getLogger(C2CRISocketImpl.LoggingInputStream.class);
+        private static final Logger logger = LogManager.getLogger(C2CRISocketImpl.LoggingInputStream.class);
         //I'm using a fixed charset because my app always uses the same. 
         private static final String CHARSET = "ISO-8859-1";
         private InputStream sktInputStream;

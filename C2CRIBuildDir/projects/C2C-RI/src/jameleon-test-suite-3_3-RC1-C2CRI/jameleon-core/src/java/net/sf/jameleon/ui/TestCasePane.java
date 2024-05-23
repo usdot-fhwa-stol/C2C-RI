@@ -27,8 +27,8 @@ import net.sf.jameleon.util.Configurator;
 import net.sf.jameleon.util.JameleonDefaultValues;
 import net.sf.jameleon.util.TemplateProcessor;
 import org.apache.commons.jelly.JellyException;
-import org.apache.log4j.Logger;
-import org.apache.log4j.FileAppender;
+//import org.apache.log4j.Logger;
+//import org.apache.log4j.FileAppender;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -291,6 +291,7 @@ public class TestCasePane extends JPanel {
                         /**
                          * Change the output of logging messages to go to the new log file.
                          */
+						/*
                         boolean fileChanged = false;
                         String fileName = "";
                         
@@ -312,7 +313,7 @@ public class TestCasePane extends JPanel {
                         }
                         catch (Exception ex) {
                         	System.out.println("No STDOUT Appender was found");
-                        }
+                        }*/
                         /***********************************************************
                          * End Added for RI POC 
                          *
@@ -338,6 +339,7 @@ public class TestCasePane extends JPanel {
                                  * Added for RI POC 
                                  *
                                  */
+								/*
                                 if (fileChanged) {
                                    Logger templog = Logger.getRootLogger();
                                    FileAppender tempstdOutAppender = (FileAppender)templog.getAppender("STDOUT");
@@ -349,8 +351,9 @@ public class TestCasePane extends JPanel {
                                    createLogXML(fileName);
                                    System.out.println("Now Finished creating the LogXML file "+ fileName + ".xml");
                                    fileChanged = false;
+								
                                 
-                                }
+                                }*/
                                 /***********************************************************
                                  * End Added for RI POC 
                                  *
