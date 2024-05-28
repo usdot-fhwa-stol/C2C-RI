@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="org.fhwa.c2cri.logger" status="WARN" monitorInterval="30">
+	<Appenders>
+		<RollingFile name="STDOUT" fileName="C2CRIOutput.dat" append="false" >
+			<RIXMLLayout />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="2"/>
+		</RollingFile>
+	</Appenders>
+	
+	<Loggers>		
+		<Root level="ALL">
+			<AppenderRef ref="STDOUT" />
+		</Root>
+	</Loggers>
+	
+</Configuration>

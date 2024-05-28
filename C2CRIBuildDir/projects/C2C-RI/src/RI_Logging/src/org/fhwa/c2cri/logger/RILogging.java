@@ -148,7 +148,7 @@ public class RILogging implements Serializable {
 			LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
 			logFile = logFileName + "." + dateFormat.format(date) + ".xml";
 			riAppender = FileAppender.newBuilder().withFileName(logFile)
-				.setName("STDOUT").withImmediateFlush(true).withBufferedIo(true).setLayout(riGUIAppender.getLayout()).build();
+				.setName("STDOUT").setImmediateFlush(true).setBufferedIo(true).setLayout(riGUIAppender.getLayout()).build();
             
 			
             log = (Logger)LogManager.getLogger("net.sf.jameleon");
@@ -202,6 +202,7 @@ public class RILogging implements Serializable {
     public void stopLogging() {
         TestLogList.getInstance().pauseTestLogListing();
         //remove the custom appender to stop logging to the file.
+		LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
         log.removeAppender(riAppender);
         log2.removeAppender(riAppender);
 
@@ -210,6 +211,8 @@ public class RILogging implements Serializable {
         log.removeAppender(riGUIAppender);
         log2.removeAppender(riGUIAppender);
         riGUIAppender.close();
+		
+		ctx.updateLoggers();
         System.out.println("Now Altering file " + logFile + " to remove log4j: references");
         GenEnveloped xmlSigner = new GenEnveloped();
         try {

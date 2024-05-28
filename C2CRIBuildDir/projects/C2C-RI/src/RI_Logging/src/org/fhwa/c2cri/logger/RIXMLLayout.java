@@ -5,8 +5,13 @@
 package org.fhwa.c2cri.logger;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import org.apache.logging.log4j.ThreadContext;
+import org.apache.logging.log4j.core.Layout;
 import org.apache.logging.log4j.core.LogEvent;
+import org.apache.logging.log4j.core.config.Node;
+import org.apache.logging.log4j.core.config.plugins.Plugin;
+import org.apache.logging.log4j.core.config.plugins.PluginFactory;
 import org.apache.logging.log4j.core.layout.AbstractStringLayout;
 import org.apache.logging.log4j.core.util.Transform;
 
@@ -51,12 +56,20 @@ import org.apache.logging.log4j.core.util.Transform;
  * 
  * Used to support logging for the C2C RI.
  */
+@Plugin(name = "RIXMLLayout", category = Node.CATEGORY, elementType = Layout.ELEMENT_TYPE, printObject = true)
 public class RIXMLLayout extends AbstractStringLayout
 {
 
     protected RIXMLLayout(Charset oCs)
 	{
 		super(oCs);
+	}
+	
+	
+	@PluginFactory
+	public static RIXMLLayout createLayout()
+	{
+		return new RIXMLLayout(StandardCharsets.UTF_8);
 	}
 	
 
