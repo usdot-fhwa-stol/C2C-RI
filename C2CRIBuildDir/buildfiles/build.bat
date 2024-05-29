@@ -110,6 +110,8 @@ ECHO This slipped through the crack!! %~f1
         ECHO 32. Copying the NTCIP 2306 SUT Test Files folder to %~f1
         mkdir %~f1\NTCIP2306SUTTestFiles
         xcopy /E /Q ..\projects\C2C-RI\src\RIGUI\NTCIP2306SUTTestFiles %~f1\NTCIP2306SUTTestFiles
+        ECHO 33. Copying the log4j2.xml File to %~f1
+        xcopy /Q ..\projects\C2C-RI\src\RIGUI\log4j2.xml %~f1
 
         chdir /d %~f1
         launch4jc.exe %CURRENTDIR%\C2CRILaunch4jConfig.xml

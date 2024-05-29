@@ -135,6 +135,7 @@
 	<opt>-Xmx4096m</opt>
 	<opt>-Xms64m</opt>
 	<opt>-Djdk.tls.client.protocols=TLSv1.2</opt>
+        <opt>-Dlog4j.configurationFile=.\log4j2.xml</opt>
     <opt>--patch-module java.base=./dist/lib/RI_Connections.jar</opt>
     <opt>--add-exports java.base/org.fhwa.c2cri.java.net=ALL-UNNAMED</opt>
 	<opt>-Dsun.java2d.uiScale.enabled=false</opt>

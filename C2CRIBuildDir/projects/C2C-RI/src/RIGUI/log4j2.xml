@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration packages="org.fhwa.c2cri.logger" status="WARN" monitorInterval="30">
+<Configuration packages="org.fhwa.c2cri.logger" status="WARN" monitorInterval="30" dest="log4j.status">
 	<Appenders>
-		<RollingFile name="STDOUT" fileName="C2CRIOutput.dat" append="false" >
+		<RollingFile name="STDOUT" fileName="C2CRIOutput.dat" append="false" filePattern="C2CRIOutput-%i.dat">
 			<RIXMLLayout />
 			<Policies>
 				<SizeBasedTriggeringPolicy size="100MB" />
