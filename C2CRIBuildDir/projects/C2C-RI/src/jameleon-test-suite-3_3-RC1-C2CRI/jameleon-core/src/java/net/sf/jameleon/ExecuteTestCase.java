@@ -92,7 +92,7 @@ public class ExecuteTestCase {
 
     public ExecuteTestCase(){
         contextVars = new HashMap();
-		((LoggerContext)LogManager.getContext(false)).setConfigLocation(new File("log4j.properties").toURI());
+		//((LoggerContext)LogManager.getContext(false)).setConfigLocation(new File("log4j.properties").toURI());
         log.info("Check for Loaded the Config File - plain");
     }
     

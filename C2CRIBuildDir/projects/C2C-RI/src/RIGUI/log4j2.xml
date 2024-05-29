@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration packages="org.fhwa.c2cri.logger" status="WARN" monitorInterval="30" dest="log4j.status">
+<Configuration packages="org.fhwa.c2cri.logger" status="WARN" monitorInterval="30" dest="log4j_status.log">
 	<Appenders>
-		<RollingFile name="STDOUT" fileName="C2CRIOutput.dat" append="false" filePattern="C2CRIOutput-%i.dat">
+		<RollingFile name="C2CRIOutput" fileName="C2CRIOutput.dat" append="false" filePattern="C2CRIOutput-%i.dat">
 			<RIXMLLayout />
 			<Policies>
 				<SizeBasedTriggeringPolicy size="100MB" />
@@ -12,8 +12,14 @@
 	
 	<Loggers>		
 		<Root level="ALL">
-			<AppenderRef ref="STDOUT" />
+			<AppenderRef ref="C2CRIOutput" />
 		</Root>
+		<Logger name="org.fhwa.c2cri" additivity="false" level="INFO">
+			<AppenderRef ref="C2CRIOutput" />
+		</Logger>
+		<Logger name="net.sf.jameleon" additivity="false" level="INFO">
+			<AppenderRef ref="C2CRIOutput" />
+		</Logger>
 	</Loggers>
 	
 </Configuration>

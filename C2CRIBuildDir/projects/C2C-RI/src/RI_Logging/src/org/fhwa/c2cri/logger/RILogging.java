@@ -145,10 +145,10 @@ public class RILogging implements Serializable {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             Date date = new Date();
 
-			LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
-			logFile = logFileName + "." + dateFormat.format(date) + ".xml";
-			riAppender = FileAppender.newBuilder().withFileName(logFile)
-				.setName("STDOUT").setImmediateFlush(true).setBufferedIo(true).setLayout(riGUIAppender.getLayout()).build();
+	LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+	logFile = logFileName + "." + dateFormat.format(date) + ".xml";
+	riAppender = FileAppender.newBuilder().withFileName(logFile).setName("riAppender").setImmediateFlush(true).setBufferedIo(true).setLayout(riGUIAppender.getLayout()).build();
+	riAppender.start();
             
 			
             log = (Logger)LogManager.getLogger("net.sf.jameleon");
@@ -157,12 +157,10 @@ public class RILogging implements Serializable {
             log2 = (Logger)LogManager.getLogger("org.fhwa.c2cri");
             log2.addAppender(riAppender);
             log2.addAppender(riGUIAppender);
-			log.setLevel(Level.INFO);
-			log2.setLevel(Level.INFO);
 			
-			ctx.updateLoggers();
+	ctx.updateLoggers();
             System.out.println("Set the file for riAppender to --> " + logFile);
-            System.out.println("STDOUT riAppender was created and successfully activated");
+            System.out.println("riAppender was created and successfully activated");
 
             TrafficLogger tmpLogger = new TrafficLogger() {
 
@@ -189,7 +187,7 @@ public class RILogging implements Serializable {
             logEvent(RILogging.class.getName(), RILogging.RI_INIT_EVENT, initLogEvent);
 
         } catch (Exception ex) {
-            System.out.println("No STDOUT Appender was found");
+            System.out.println("No Appender was found");
         }
 
     }
