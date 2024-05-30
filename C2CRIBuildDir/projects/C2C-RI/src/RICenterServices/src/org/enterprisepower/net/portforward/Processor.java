@@ -31,9 +31,8 @@ import org.enterprisepower.io.CopyStreamObserver;
  *
  */
 public class Processor implements Cleanable {
-//	private static final Log log = LogFactory.getLog(Processor.class);
+    private static final Logger log = LogManager.getLogger(Processor.class);
 
-    private static final Logger log = LogManager.getLogger("net.sf.jameleon");
     private Socket source;
     private Socket target;
     private InetSocketAddress extAddress;

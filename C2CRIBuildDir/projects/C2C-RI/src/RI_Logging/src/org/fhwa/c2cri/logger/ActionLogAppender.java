@@ -62,7 +62,7 @@ public class ActionLogAppender extends AbstractAppender {
 		{
 			Filter oF = getFilter();
             if (event.getLevel().isLessSpecificThan(Level.INFO) && oF == null || oF.filter(event) == Filter.Result.ACCEPT)
-                this.listener.appenderUpdate(event.getInstant().getEpochMillisecond(), getLayout().toSerializable(event).toString());
+                this.listener.appenderUpdate(event.getInstant().getEpochMillisecond(), event.getMessage().getFormattedMessage());
         }
     }
 

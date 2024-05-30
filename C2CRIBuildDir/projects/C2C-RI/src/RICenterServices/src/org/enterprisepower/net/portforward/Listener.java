@@ -32,9 +32,8 @@ import javax.net.ssl.SSLSocketFactory;
  * 
  */
 public class Listener implements Runnable {
-//	private static Log log = LogFactory.getLog(Listener.class);
+    private static Log log = LogFactory.getLog(Listener.class);
 
-    private static Log log = LogFactory.getLog("net.sf.jameleon");
     private ServerSocket serverSocket;
     private InetSocketAddress from, to;
     private Throwable exception;

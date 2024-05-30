@@ -59,7 +59,7 @@ import org.apache.logging.log4j.core.util.Transform;
 @Plugin(name = "RIXMLLayout", category = Node.CATEGORY, elementType = Layout.ELEMENT_TYPE, printObject = true)
 public class RIXMLLayout extends AbstractStringLayout
 {
-
+    boolean m_bUseCdata = true;
     protected RIXMLLayout(Charset oCs)
 	{
 		super(oCs);
@@ -87,18 +87,31 @@ public class RIXMLLayout extends AbstractStringLayout
         buf.append("\" thread=\"");
         buf.append(event.getThreadName());
         buf.append("\">\r\n");
-
-        if (event.getMessage().getFormattedMessage().startsWith("<")) {
-            buf.append("<log4j:message>\r\n");
-            buf.append(event.getMessage().getFormattedMessage()).append("</log4j:message>\r\n");
-        } else {
+        
+        
+        if (m_bUseCdata)
+        {
             buf.append("<log4j:message><![CDATA[");
 
             // Append the rendered message. Also make sure to escape any
             // existing CDATA sections.
             Transform.appendEscapingCData(buf, event.getMessage().getFormattedMessage());
             buf.append("]]></log4j:message>\r\n");
+        }
+        else
+        {
+            if (event.getMessage().getFormattedMessage().startsWith("<")) {
+                buf.append("<log4j:message>\r\n");
+                buf.append(event.getMessage().getFormattedMessage()).append("</log4j:message>\r\n");
+            } else {
+                buf.append("<log4j:message><![CDATA[");
 
+                // Append the rendered message. Also make sure to escape any
+                // existing CDATA sections.
+                Transform.appendEscapingCData(buf, event.getMessage().getFormattedMessage());
+                buf.append("]]></log4j:message>\r\n");
+
+            }
         }
 
         ThreadContext.ContextStack oCtxStack = event.getContextStack();

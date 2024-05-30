@@ -32,6 +32,7 @@ import org.apache.commons.jelly.JellyException;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import org.fhwa.c2cri.logger.RIXMLLayout;
 
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
@@ -53,6 +54,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Enumeration;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.appender.FileAppender;
 
 public class TestCasePane extends JPanel {
 
@@ -291,9 +296,18 @@ public class TestCasePane extends JPanel {
                         /**
                          * Change the output of logging messages to go to the new log file.
                          */
+						DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+                        Date date = new Date();
+						String fileName = fn.getFile().toString() + "-" + dateFormat.format(date);
+						LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+						Logger log = (Logger)LogManager.getRootLogger();
+						FileAppender oAppender = FileAppender.newBuilder().withFileName(fileName)
+				.setName("riPOCAppender").setImmediateFlush(true).setBufferedIo(true).setLayout(RIXMLLayout.createLayout()).build();
+						log.addAppender(oAppender);
+						ctx.updateLoggers();
 						/*
                         boolean fileChanged = false;
-                        String fileName = "";
+                        
                         
                         try{
                         Logger log = Logger.getRootLogger();
@@ -339,7 +353,16 @@ public class TestCasePane extends JPanel {
                                  * Added for RI POC 
                                  *
                                  */
+								oAppender.stop();
+								log.removeAppender(oAppender);
+								ctx.updateLoggers();
+								System.out.println("Now Altering file "+ fileName + " to remove log4j: references");
+
+								readReplace(fileName, "log4j:", "");
+								createLogXML(fileName);
+								System.out.println("Now Finished creating the LogXML file "+ fileName + ".xml");
 								/*
+								
                                 if (fileChanged) {
                                    Logger templog = Logger.getRootLogger();
                                    FileAppender tempstdOutAppender = (FileAppender)templog.getAppender("STDOUT");

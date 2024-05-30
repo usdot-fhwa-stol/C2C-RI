@@ -88,7 +88,7 @@ public class RILogging implements Serializable {
     /**
      * The log2.
      */
-    private Logger log, log2;
+    private Logger log;
 
     /**
      * The log file.
@@ -98,9 +98,12 @@ public class RILogging implements Serializable {
     /**
      * The ri gui appender.  
      */
-    private static ActionLogAppender riGUIAppender = new ActionLogAppender("RIGUIIAppender", null, new RIXMLLayout(StandardCharsets.UTF_8), true, new Property[0]);
+    private static ActionLogAppender riGUIAppender;
     static
 	{
+            RIXMLLayout oLayout = RIXMLLayout.createLayout();
+            oLayout.m_bUseCdata = false;
+            riGUIAppender = new ActionLogAppender("RIGUIIAppender", null, oLayout, true, new Property[0]);
 		riGUIAppender.start();
 	}
     //Basic Constructor for the RILogging Class
@@ -147,16 +150,18 @@ public class RILogging implements Serializable {
 
 	LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
 	logFile = logFileName + "." + dateFormat.format(date) + ".xml";
-	riAppender = FileAppender.newBuilder().withFileName(logFile).setName("riAppender").setImmediateFlush(true).setBufferedIo(true).setLayout(riGUIAppender.getLayout()).build();
+        RIXMLLayout oLayout = RIXMLLayout.createLayout();
+        oLayout.m_bUseCdata = false;
+	riAppender = FileAppender.newBuilder().withFileName(logFile).setName("riAppender").setImmediateFlush(true).setBufferedIo(true).setLayout(oLayout).build();
 	riAppender.start();
-            
+        Logger oRoot = (Logger)LogManager.getRootLogger();
+        oRoot.addAppender(riAppender);
+        oRoot.addAppender(riGUIAppender);
 			
-            log = (Logger)LogManager.getLogger("net.sf.jameleon");
+
+            log = (Logger)LogManager.getLogger("C2CRIDebug");
             log.addAppender(riAppender);
             log.addAppender(riGUIAppender);
-            log2 = (Logger)LogManager.getLogger("org.fhwa.c2cri");
-            log2.addAppender(riAppender);
-            log2.addAppender(riGUIAppender);
 			
 	ctx.updateLoggers();
             System.out.println("Set the file for riAppender to --> " + logFile);
@@ -167,7 +172,7 @@ public class RILogging implements Serializable {
                 @Override
                 public void log(TrafficLogger.LoggingLevel level, String trafficData) {
                     System.out.println("Logging Data !!!\n" + trafficData);
-                    log2.info(trafficData);
+                    log.info(trafficData);
                 }
 
             };
@@ -201,13 +206,14 @@ public class RILogging implements Serializable {
         TestLogList.getInstance().pauseTestLogListing();
         //remove the custom appender to stop logging to the file.
 		LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+        Logger oRoot = (Logger)LogManager.getRootLogger();
+        oRoot.removeAppender(riAppender);
+        oRoot.removeAppender(riGUIAppender);
         log.removeAppender(riAppender);
-        log2.removeAppender(riAppender);
 
 		riAppender.stop();
 
         log.removeAppender(riGUIAppender);
-        log2.removeAppender(riGUIAppender);
         riGUIAppender.close();
 		
 		ctx.updateLoggers();

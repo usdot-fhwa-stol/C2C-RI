@@ -379,7 +379,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
         // jdk 7
         Pattern xmlInvalidChars =
          Pattern.compile("[^\\u0009\\u000A\\u000D\\u0020-\\uD7FF\\uE000-\\uFFFD\\x{10000}-\\x{10FFFF}]");
-        logger.logEvent(RITestEngine.class.getName(), RILogging.RI_INIT_EVENT, xmlInvalidChars.matcher(testConfig.to_LogFormat()).replaceAll(""));
+        logger.logEvent("C2CRIDebug", RILogging.RI_INIT_EVENT, xmlInvalidChars.matcher(testConfig.to_LogFormat()).replaceAll(""));
 
     }
 
