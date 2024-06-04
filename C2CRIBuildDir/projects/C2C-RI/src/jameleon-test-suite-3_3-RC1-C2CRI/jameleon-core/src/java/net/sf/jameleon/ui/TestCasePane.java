@@ -27,8 +27,6 @@ import net.sf.jameleon.util.Configurator;
 import net.sf.jameleon.util.JameleonDefaultValues;
 import net.sf.jameleon.util.TemplateProcessor;
 import org.apache.commons.jelly.JellyException;
-//import org.apache.log4j.Logger;
-//import org.apache.log4j.FileAppender;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
