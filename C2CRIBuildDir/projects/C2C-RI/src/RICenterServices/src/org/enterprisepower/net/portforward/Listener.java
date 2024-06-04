@@ -15,8 +15,6 @@
  */
 package org.enterprisepower.net.portforward;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import java.net.*;
 import java.io.*;
 import java.util.ArrayList;
@@ -25,6 +23,8 @@ import javax.net.ServerSocketFactory;
 import javax.net.SocketFactory;
 import javax.net.ssl.SSLServerSocketFactory;
 import javax.net.ssl.SSLSocketFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * 
@@ -32,7 +32,7 @@ import javax.net.ssl.SSLSocketFactory;
  * 
  */
 public class Listener implements Runnable {
-    private static Log log = LogFactory.getLog(Listener.class);
+    private static Logger log = LogManager.getLogger(Listener.class);
 
     private ServerSocket serverSocket;
     private InetSocketAddress from, to;
