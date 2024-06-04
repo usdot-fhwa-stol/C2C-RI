@@ -103,7 +103,6 @@ public class TestConfiguration implements Serializable {
      * @param modes the modes
      * @param options the options
      * @param sut the sut
-     * @param log the log
      * @param apps the apps
      * @param info the info
      */
