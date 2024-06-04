@@ -55,7 +55,11 @@ public class ActionLogAppender extends AbstractAppender {
         listener = null;
     }    
 
-
+    /**
+     * If there is a listener defined, the Level is less specific than INFO (ignores DEBUG and TRACE), and if there is a filter and the event is accepted,
+     * updates the listener with the timestamp and log message
+     * @param event log4j2 LogEvent
+     */
 	@Override
     public void append(LogEvent event){
         if (this.listener != null)
