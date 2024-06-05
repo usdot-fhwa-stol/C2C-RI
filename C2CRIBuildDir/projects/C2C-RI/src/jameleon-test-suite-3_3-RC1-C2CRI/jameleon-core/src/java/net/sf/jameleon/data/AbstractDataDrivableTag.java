@@ -29,7 +29,7 @@ import org.apache.commons.jelly.JellyTagException;
 import org.apache.commons.jelly.LocationAware;
 import org.apache.commons.jelly.MissingAttributeException;
 import org.apache.commons.jelly.XMLOutput;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.FileNotFoundException;

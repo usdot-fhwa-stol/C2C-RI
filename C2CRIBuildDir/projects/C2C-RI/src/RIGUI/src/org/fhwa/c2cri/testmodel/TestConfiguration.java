@@ -14,7 +14,6 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import org.fhwa.c2cri.centermodel.RIEmulationParameters;
-import org.fhwa.c2cri.logger.RILoggingInfo;
 import org.fhwa.c2cri.utilities.ErrorMessage;
 import org.fhwa.c2cri.utilities.RIParameters;
 
@@ -104,11 +103,10 @@ public class TestConfiguration implements Serializable {
      * @param modes the modes
      * @param options the options
      * @param sut the sut
-     * @param log the log
      * @param apps the apps
      * @param info the info
      */
-    public TestConfiguration(TestMode modes, TestOptions options, SUT sut, RILoggingInfo log, DefaultLayerParameters apps, DefaultLayerParameters info) {
+    public TestConfiguration(TestMode modes, TestOptions options, SUT sut, DefaultLayerParameters apps, DefaultLayerParameters info) {
         this.testMode = modes;
         this.sutParams = sut;
         this.appLayerParams = apps;

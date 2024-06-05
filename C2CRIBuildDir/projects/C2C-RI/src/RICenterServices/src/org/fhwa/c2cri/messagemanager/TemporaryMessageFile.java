@@ -16,7 +16,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import org.apache.log4j.LogManager;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * The Class TemporaryMessageFile stores message content in a temporary file on disk.

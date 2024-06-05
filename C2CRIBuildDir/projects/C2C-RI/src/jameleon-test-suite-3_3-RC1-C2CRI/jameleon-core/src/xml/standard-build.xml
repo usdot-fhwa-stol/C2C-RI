@@ -17,6 +17,12 @@
     <fileset dir="lib">
       <include name="*.jar"/>
     </fileset>
+    <fileset dir="${jameleon.home}/../../../../../lib">
+      <include name="*.jar"/>
+    </fileset>
+    <fileset dir="${jameleon.home}/../../RI_Logging/dist">
+      <include name="*.jar"/>
+    </fileset>
     <path refid="jameleon.classpath"/>
   </path>
   

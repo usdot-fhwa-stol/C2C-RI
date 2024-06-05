@@ -18,13 +18,13 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.io.StringWriter;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.CopyOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import org.apache.log4j.Logger;
-import org.apache.log4j.FileAppender;
+import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.appender.FileAppender;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -36,8 +36,10 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import org.apache.log4j.Level;
-import org.apache.log4j.LogManager;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.LoggerContext;
+
+import org.apache.logging.log4j.core.config.Property;
 import org.fhwa.c2cri.java.net.ConnectionsDirectory;
 import org.fhwa.c2cri.java.net.TrafficLogger;
 import org.fhwa.c2cri.utilities.RIParameters;
@@ -86,7 +88,7 @@ public class RILogging implements Serializable {
     /**
      * The log2.
      */
-    private Logger log, log2;
+    private Logger log;
 
     /**
      * The log file.
@@ -96,8 +98,14 @@ public class RILogging implements Serializable {
     /**
      * The ri gui appender.  
      */
-    private static ActionLogAppender riGUIAppender = new ActionLogAppender();
-    
+    private static ActionLogAppender riGUIAppender;
+    static
+	{
+            RIXMLLayout oLayout = RIXMLLayout.createLayout();
+            oLayout.m_bUseCdata = false;
+            riGUIAppender = new ActionLogAppender("RIGUIIAppender", null, oLayout, true, new Property[0]);
+		riGUIAppender.start();
+	}
     //Basic Constructor for the RILogging Class
     /**
      * Instantiates a new rI logging.
@@ -140,31 +148,31 @@ public class RILogging implements Serializable {
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
             Date date = new Date();
 
-            logFile = logFileName + "." + dateFormat.format(date) + ".xml";
+	LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+	logFile = logFileName + "." + dateFormat.format(date) + ".xml";
+        RIXMLLayout oLayout = RIXMLLayout.createLayout();
+        oLayout.m_bUseCdata = false;
+	riAppender = FileAppender.newBuilder().withFileName(logFile).setName("riAppender").setImmediateFlush(true).setBufferedIo(true).setLayout(oLayout).build();
+	riAppender.start();
+        Logger oRoot = (Logger)LogManager.getRootLogger();
+        oRoot.addAppender(riAppender);
+        oRoot.addAppender(riGUIAppender);
+			
 
-            log = Logger.getLogger("net.sf.jameleon");
+            log = (Logger)LogManager.getLogger("C2CRIDebug");
             log.addAppender(riAppender);
             log.addAppender(riGUIAppender);
-            log2 = Logger.getLogger("org.fhwa.c2cri");
-            log2.addAppender(riAppender);
-            log2.addAppender(riGUIAppender);
-            riAppender.setName("STDOUT");
-            riAppender.setFile(logFile);
-            riAppender.setThreshold(Level.INFO);
-            RIXMLLayout xmlLayout = new RIXMLLayout();
-            riAppender.setLayout(xmlLayout);
-            riAppender.setBufferedIO(true);
-            riAppender.activateOptions();
-            riGUIAppender.setThreshold(Level.INFO);
+			
+	ctx.updateLoggers();
             System.out.println("Set the file for riAppender to --> " + logFile);
-            System.out.println("STDOUT riAppender was created and successfully activated");
+            System.out.println("riAppender was created and successfully activated");
 
             TrafficLogger tmpLogger = new TrafficLogger() {
 
                 @Override
                 public void log(TrafficLogger.LoggingLevel level, String trafficData) {
                     System.out.println("Logging Data !!!\n" + trafficData);
-                    log2.info(trafficData);
+                    log.info(trafficData);
                 }
 
             };
@@ -184,7 +192,7 @@ public class RILogging implements Serializable {
             logEvent(RILogging.class.getName(), RILogging.RI_INIT_EVENT, initLogEvent);
 
         } catch (Exception ex) {
-            System.out.println("No STDOUT Appender was found");
+            System.out.println("No Appender was found");
         }
 
     }
@@ -197,18 +205,18 @@ public class RILogging implements Serializable {
     public void stopLogging() {
         TestLogList.getInstance().pauseTestLogListing();
         //remove the custom appender to stop logging to the file.
+		LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+        Logger oRoot = (Logger)LogManager.getRootLogger();
+        oRoot.removeAppender(riAppender);
+        oRoot.removeAppender(riGUIAppender);
         log.removeAppender(riAppender);
-        log2.removeAppender(riAppender);
-        riAppender.setImmediateFlush(true);
-        riAppender.activateOptions();
-        // With this version of the FileAppender we are not able to close the File directly.
-        // So change the file name and activate, which closes the current file.
-        riAppender.setFile("temp");
-        riAppender.activateOptions();
-        riAppender.close();
+
+		riAppender.stop();
+
         log.removeAppender(riGUIAppender);
-        log2.removeAppender(riGUIAppender);
         riGUIAppender.close();
+		
+		ctx.updateLoggers();
         System.out.println("Now Altering file " + logFile + " to remove log4j: references");
         GenEnveloped xmlSigner = new GenEnveloped();
         try {
@@ -276,14 +284,9 @@ public class RILogging implements Serializable {
      * @param theEvent the the event
      */
     public static void logEvent(String theEvent) {
-        Logger log = Logger.getLogger("net.sf.jameleon");
+        Logger log = (Logger)LogManager.getLogger("net.sf.jameleon");
         log.info(theEvent);
     }
-	
-	public static void setNewAppender()
-	{
-		riAppender = new FileAppender();
-	}
 
     /**
      * Log the provided event.
@@ -297,7 +300,6 @@ public class RILogging implements Serializable {
     public static void logEvent(String logName, String eventType, String theEvent) {
         if (eventType.equals(RILogging.RI_INIT_EVENT)) {
             RILogging.logInitEvent(logName, theEvent);
-            riAppender.setImmediateFlush(true);
         } else if (eventType.equals(RILogging.RI_MESSAGE_EVENT)) {
             RILogging.logMessageEvent(logName, theEvent);
         } else if (eventType.equals(RILogging.RI_USER_EVENT)) {
@@ -306,7 +308,6 @@ public class RILogging implements Serializable {
             RILogging.logScriptEvent(logName, theEvent);
         } else if (eventType.equals(RILogging.RI_VERIFICATION_EVENT)) {
             RILogging.logVerificationEvent(logName, theEvent);
-            riAppender.setImmediateFlush(true);
         }
     }
 
@@ -319,7 +320,7 @@ public class RILogging implements Serializable {
      * @param theEvent the details of the event
      */
     private static void logInitEvent(String logName, String theEvent) {
-        Logger log = Logger.getLogger(logName);
+        Logger log = (Logger)LogManager.getLogger(logName);
         StringBuffer output = new StringBuffer();
         output.append("<initEvent>\n");
         output.append(theEvent);
@@ -336,7 +337,7 @@ public class RILogging implements Serializable {
      * @param theEvent the details of the event
      */
     private static void logUserEvent(String logName, String theEvent) {
-        Logger log = Logger.getLogger(logName);
+        Logger log = (Logger)LogManager.getLogger(logName);
         log.info("<userEvent>\n" + theEvent + "</userEvent>");
     }
 
@@ -349,7 +350,7 @@ public class RILogging implements Serializable {
      * @param theEvent the details of the event
      */
     private static void logMessageEvent(String logName, String theEvent) {
-        Logger log = Logger.getLogger(logName);
+        Logger log = (Logger)LogManager.getLogger(logName);
         log.info("<messageEvent>\n" + theEvent + "</messageEvent>");
     }
 
@@ -362,7 +363,7 @@ public class RILogging implements Serializable {
      * @param theEvent the the event
      */
     private static void logScriptEvent(String logName, String theEvent) {
-        Logger log = Logger.getLogger(logName);
+        Logger log = (Logger)LogManager.getLogger(logName);
         log.info("<scriptEvent>\n" + theEvent + "</scriptEvent>");
     }
 
@@ -375,7 +376,7 @@ public class RILogging implements Serializable {
      * @param theEvent the details of the event
      */
     private static void logVerificationEvent(String logName, String theEvent) {
-        Logger log = Logger.getLogger(logName);
+        Logger log = (Logger)LogManager.getLogger(logName);
         log.info("<verificationEvent>\n" + theEvent + "</verificationEvent>");
     }
 

@@ -3,30 +3,20 @@ package test.transports;
 import javax.net.ssl.SSLSocket;
 import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
-import org.apache.log4j.FileAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.xml.XMLLayout;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.java.net.ConnectionsDirectory;
 import org.fhwa.c2cri.java.net.TrafficLogger;
 public
 class EchoClient {
-   private static final Logger logger = Logger.getLogger(EchoClient.class);
+   private static final Logger logger = LogManager.getLogger(EchoClient.class);
 
    public
             static
     void
             main(String[] arstring) {
 
-            FileAppender riAppender = new FileAppender();
-            logger.addAppender(riAppender);
-            riAppender.setName("STDOUT");
-            riAppender.setFile("EchoClientFile");
-            XMLLayout xmlLayout = new XMLLayout();
-            riAppender.setLayout(xmlLayout);
-            riAppender.setThreshold(Level.INFO);
-            riAppender.setBufferedIO(true);
-            riAppender.activateOptions();
+
        
         try {
 
@@ -76,7 +66,6 @@ class EchoClient {
 						}
 				}
 			}
-            logger.removeAllAppenders();
         } catch (Exception exception) {
             exception.printStackTrace();
         }

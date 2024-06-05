@@ -21,7 +21,6 @@ import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPFault;
 import javax.xml.soap.SOAPMessage;
-import org.apache.log4j.Logger;
 import org.fhwa.c2cri.ntcip2306v109.status.SOAPStatus;
 import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
 import org.fhwa.c2cri.testmodel.verification.TestAssertion;
@@ -35,10 +34,6 @@ import org.xml.sax.SAXException;
  * Last Updated:  1/8/2014
  */
 public class SOAPEncoder {
-
-    /** The log. */
-    protected static Logger log = Logger.getLogger(SOAPEncoder.class.getName());
-    
     /** The senderfaultcode. */
     public static String SENDERFAULTCODE = "Sender";
     

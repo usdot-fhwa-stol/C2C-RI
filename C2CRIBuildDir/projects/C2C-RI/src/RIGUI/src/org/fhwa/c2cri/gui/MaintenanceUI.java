@@ -20,7 +20,7 @@ import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.util.Date;
 import javax.swing.table.DefaultTableCellRenderer;
-import org.apache.log4j.LogManager;
+
 import org.fhwa.c2cri.utilities.Parameter;
 import org.fhwa.c2cri.utilities.RIParameters;
 

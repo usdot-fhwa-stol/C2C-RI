@@ -18,7 +18,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.messagemanager.Message;
 import org.fhwa.c2cri.ntcip2306v109.NTCIP2306Settings;
 import org.fhwa.c2cri.ntcip2306v109.operations.OperationIdentifier;
@@ -39,7 +40,7 @@ import org.fhwa.c2cri.utilities.RIParameters;
 public class NTCIP2306HTTPServlet extends HttpServlet {
 
     /** The log. */
-    protected static Logger log = Logger.getLogger(NTCIP2306HTTPServlet.class.getName());
+    protected static Logger log = LogManager.getLogger(NTCIP2306HTTPServlet.class.getName());
     
     /** The operation. */
     private String operation = "Hello World";

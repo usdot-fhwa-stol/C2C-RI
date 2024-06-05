@@ -19,7 +19,6 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import org.apache.log4j.Logger;
 import org.fhwa.c2cri.ntcip2306v109.messaging.NTCIP2306Message;
 import org.fhwa.c2cri.ntcip2306v109.operations.OperationIdentifier;
 import org.fhwa.c2cri.ntcip2306v109.operations.OperationResults;
@@ -127,12 +126,7 @@ public class SubPubController implements Runnable {
      * The shutdown signal.
      */
     private volatile boolean shutdownSignal = false;
- 
-    /**
-     * The logger to used for storing message to the log file.
-     */
-    private Logger log = Logger.getLogger(SubPubController.class.getName());
-    
+     
     /**
      * Instantiates a new sub pub controller.
      *

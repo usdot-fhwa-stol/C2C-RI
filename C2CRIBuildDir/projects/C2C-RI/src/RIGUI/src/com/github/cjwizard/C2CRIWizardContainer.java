@@ -20,8 +20,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import com.github.cjwizard.pagetemplates.DefaultPageTemplate;
 import com.github.cjwizard.pagetemplates.PageTemplate;
@@ -45,7 +45,7 @@ public class C2CRIWizardContainer extends JPanel implements WizardController, C2
     /**
      * Log instance
      */
-    private final Logger log = LoggerFactory.getLogger(C2CRIWizardContainer.class);
+    private final Logger log = LogManager.getLogger(C2CRIWizardContainer.class);
 
     /**
      * Resource to translate GUI elements.

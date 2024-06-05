@@ -34,7 +34,7 @@ import net.sf.jameleon.result.FunctionResult;
 import net.sf.jameleon.util.Configurator;
 import net.sf.jameleon.util.StateStorer;
 import org.apache.commons.jelly.JellyException;
-import org.apache.log4j.helpers.Transform;
+import org.apache.logging.log4j.core.util.Transform;
 import org.fhwa.c2cri.centermodel.RIEmulation;
 import org.fhwa.c2cri.centermodel.RINRTMSelection;
 import org.fhwa.c2cri.centermodel.emulation.exceptions.EntityEmulationException;
@@ -372,7 +372,6 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
             RIEmulation.getInstance().setEmulationEnabled(false);            
         }
 		
-		RILogging.setNewAppender();
         logger.configureLogging(testName, testConfigName, testDescription, checksum, emulationEnabled, reinitializeEmulation);
 
         // Remove any invalid XML characters that may exist.
@@ -380,7 +379,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
         // jdk 7
         Pattern xmlInvalidChars =
          Pattern.compile("[^\\u0009\\u000A\\u000D\\u0020-\\uD7FF\\uE000-\\uFFFD\\x{10000}-\\x{10FFFF}]");
-        logger.logEvent(RITestEngine.class.getName(), RILogging.RI_INIT_EVENT, xmlInvalidChars.matcher(testConfig.to_LogFormat()).replaceAll(""));
+        logger.logEvent("C2CRIDebug", RILogging.RI_INIT_EVENT, xmlInvalidChars.matcher(testConfig.to_LogFormat()).replaceAll(""));
 
     }
 
@@ -1180,9 +1179,9 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
 
             // Append the rendered message. Also make sure to escape any
             // existing CDATA sections.
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
 
-            Transform.appendEscapingCDATA(buf, ft.getFunctionResults().getErrorMsg());
+            Transform.appendEscapingCData(buf, ft.getFunctionResults().getErrorMsg());
 
             if (((ft.getFunctionResults().isTestStep()) && (ft.getElementName().equals("testStep")))) {
                 List failedResults = ft.getFunctionResults().getParentResults().getFailedResults();
@@ -1196,7 +1195,7 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
                         }
                     }
                 }
-                Transform.appendEscapingCDATA(buf, errorResults);
+                Transform.appendEscapingCData(buf, errorResults);
             }
 
             extraInfo = extraInfo.concat("<error><![CDATA[" + buf.toString() + "]]></error>\n");

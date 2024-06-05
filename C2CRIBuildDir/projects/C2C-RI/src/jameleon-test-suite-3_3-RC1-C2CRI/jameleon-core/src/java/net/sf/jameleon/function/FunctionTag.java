@@ -34,7 +34,8 @@ import net.sf.jameleon.util.JameleonUtility;
 import net.sf.jameleon.util.StateStorer;
 import org.apache.commons.jelly.MissingAttributeException;
 import org.apache.commons.jelly.XMLOutput;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -156,7 +157,7 @@ public abstract class FunctionTag extends JameleonTagSupport implements Storable
      */
     protected StateStorer state;
     
-    protected static Logger log = Logger.getLogger(FunctionTag.class.getName());
+    protected static Logger log = LogManager.getLogger(FunctionTag.class.getName());
     
     AssertLevel assertLevelManager = AssertLevel.getInstance();
 

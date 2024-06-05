@@ -28,9 +28,7 @@ import net.sf.jameleon.reporting.ResultsReporter;
 import net.sf.jameleon.reporting.TestCaseCounter;
 import net.sf.jameleon.result.*;
 import net.sf.jameleon.util.JameleonUtility;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.spi.LoggerRepository;
-import org.apache.log4j.varia.DenyAllFilter;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;
@@ -141,7 +139,6 @@ public class ExecuteJameleonScriptTag extends JUnitFunctionTag {
     protected StringWriter htmlResults;
     protected Writer timestampedResults;
     protected ExecuteTestCase jmln;
-    protected DenyAllFilter denyAll;
     protected static SAXReader parser = new SAXReader();
     protected TestCaseResult result;
     protected TestCaseCounter originalCounter;
@@ -237,7 +234,6 @@ public class ExecuteJameleonScriptTag extends JUnitFunctionTag {
 
     public void setup(){
         postcondition = true;
-        denyAll = new DenyAllFilter();
         jmln = new ExecuteTestCase(DEBUG);
         timestampedResults = ResultsReporter.getInstance().getHtmlTestRunReporter().getWriter();
         htmlResults = new StringWriter();
@@ -247,7 +243,6 @@ public class ExecuteJameleonScriptTag extends JUnitFunctionTag {
         stdOutWriter = reporter.getSimpleTestRunReporter().getWriter();
         reporter.getSimpleTestRunReporter().setWriter(new StringWriter());
         reporter.setTestCaseCounter(new TestCaseCounter());
-        LoggerRepository repos = LogManager.getLoggerRepository();
 
         TestCaseEventHandler.getInstance().addTestCaseListener(listener);
     }

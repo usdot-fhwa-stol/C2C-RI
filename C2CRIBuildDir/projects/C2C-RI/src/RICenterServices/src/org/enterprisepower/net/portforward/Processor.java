@@ -21,7 +21,8 @@ import java.net.Socket;
 
 import org.enterprisepower.io.IOUtils;
 import org.enterprisepower.net.NetUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.enterprisepower.io.CopyStreamObserver;
 
 /**
@@ -30,9 +31,8 @@ import org.enterprisepower.io.CopyStreamObserver;
  *
  */
 public class Processor implements Cleanable {
-//	private static final Log log = LogFactory.getLog(Processor.class);
+    private static final Logger log = LogManager.getLogger(Processor.class);
 
-    private static final Logger log = Logger.getLogger("net.sf.jameleon");
     private Socket source;
     private Socket target;
     private InetSocketAddress extAddress;

@@ -15,11 +15,9 @@ import java.util.StringTokenizer;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import javax.swing.SwingUtilities;
-import org.apache.log4j.Level;
-
 
 import org.apache.tools.ant.launch.Locator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.testmodel.TestSuites;
 
 /**
@@ -87,18 +85,18 @@ public class C2CRILauncher {
                 == File.pathSeparatorChar) {
             baseClassPath.setLength(baseClassPath.length() - 1);
         }
-        Logger.getLogger(C2CRILauncher.class.getName()).log(Level.INFO, "*** OriginalBaseClassPath ****\n" + baseClassPath);
+        LogManager.getLogger(C2CRILauncher.class.getName()).info("*** OriginalBaseClassPath ****\n" + baseClassPath);
 
-        Logger.getLogger(C2CRILauncher.class.getName()).log(Level.INFO, "*** Found Jars List: ****");
+        LogManager.getLogger(C2CRILauncher.class.getName()).info("*** Found Jars List: ****");
         for (int i = 0; i < jars.length; ++i) {
             baseClassPath.append(File.pathSeparatorChar);
             baseClassPath.append(Locator.fromURI(jars[i].toString()));
-            Logger.getLogger(C2CRILauncher.class.getName()).log(Level.INFO, jars[i].toString());
+            LogManager.getLogger(C2CRILauncher.class.getName()).info(jars[i].toString());
 
         }
 
         System.setProperty("java.class.path", baseClassPath.toString());
-        Logger.getLogger(C2CRILauncher.class.getName()).log(Level.INFO, "\n\n*** FinalBaseClassPath ****\n" + baseClassPath);
+        LogManager.getLogger(C2CRILauncher.class.getName()).info("\n\n*** FinalBaseClassPath ****\n" + baseClassPath);
 
         ClassLoader sysClassLoader = ClassLoader.getSystemClassLoader();
         URLClassLoader loader = new URLClassLoader(jars,sysClassLoader);

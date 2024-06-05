@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.xmlbeans.XmlError;
 import org.fhwa.c2cri.plugin.c2cri.ntcip2306.support.verification.v01_69.MessageValidator;
 import org.fhwa.c2cri.plugin.c2cri.ntcip2306.support.verification.v01_69.SOAPMessageValidator;
@@ -35,7 +36,7 @@ public class SOAPDecoder implements NTCIP2306Decoder {
     private ArrayList<String> parserErrorList = new ArrayList<String>();
     private ArrayList<String> fieldErrorList = new ArrayList<String>();
     private ArrayList<String> valueErrorList = new ArrayList<String>();
-    protected static Logger log = Logger.getLogger(SOAPDecoder.class.getName());
+    protected static Logger log = LogManager.getLogger(SOAPDecoder.class.getName());
 
     public SOAPDecoder(String decoderType) {
         this.decoderType = decoderType;

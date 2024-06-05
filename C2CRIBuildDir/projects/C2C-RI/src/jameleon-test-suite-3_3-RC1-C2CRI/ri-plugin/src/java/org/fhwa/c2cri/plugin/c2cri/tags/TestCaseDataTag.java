@@ -3,7 +3,8 @@ package org.fhwa.c2cri.plugin.c2cri.tags;
 import org.fhwa.c2cri.plugin.c2cri.data.TestCaseDataDriver;
 import java.io.File;
 import java.net.URL;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import net.sf.jameleon.data.AbstractFileDrivableTag;
 import net.sf.jameleon.data.DataDriver;
@@ -171,7 +172,7 @@ public class TestCaseDataTag extends AbstractFileDrivableTag {
      * @return the logger used for this tag.
      */
     protected Logger getLogger() {
-        return Logger.getLogger(TestCaseDataTag.class.getName());
+        return LogManager.getLogger(TestCaseDataTag.class.getName());
     }
 
     /**

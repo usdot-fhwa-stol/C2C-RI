@@ -29,7 +29,8 @@ import org.apache.commons.jelly.*;
 import org.apache.commons.jelly.expression.CompositeExpression;
 import org.apache.commons.jelly.expression.Expression;
 import org.apache.commons.jelly.expression.jexl.JexlExpressionFactory;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -192,7 +193,7 @@ public class TestCaseTag extends AbstractCsvTag {
      * @return the logger used for this tag.
      */
     protected Logger getLogger(){
-        return Logger.getLogger(TestCaseTag.class.getName());
+        return LogManager.getLogger(TestCaseTag.class.getName());
     }
 
     /**

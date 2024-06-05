@@ -62,7 +62,6 @@
 	<classpathentry kind="lib" path="jameleon-core/lib/jdic.jar"/>
 	<classpathentry kind="lib" path="jameleon-core/lib/junit.jar"/>
 	<classpathentry kind="lib" path="jameleon-core/lib/linux/jdic_stub.jar"/>
-	<classpathentry kind="lib" path="jameleon-core/lib/log4j-1.2.14.jar"/>
 	<classpathentry kind="lib" path="jameleon-core/lib/mac/jdic_stub.jar"/>
 	<classpathentry kind="lib" path="jameleon-core/lib/qdox-1.6.1.jar"/>
 	<classpathentry kind="lib" path="jameleon-core/lib/sunos/jdic_stub.jar"/>

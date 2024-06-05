@@ -30,9 +30,9 @@ import net.sf.jameleon.util.JameleonUtility;
 import org.apache.commons.jelly.JellyContext;
 import org.apache.commons.jelly.JellyException;
 import org.apache.commons.jelly.XMLOutput;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,6 +41,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.util.*;
+
 
 /**
  * Executes a Jameleon Test Case.
@@ -80,7 +81,7 @@ public class ExecuteTestCase {
      * A line of underscores
      */
     protected static final String US = "\n_______________________________________________________________\n";
-    protected final Logger log = Logger.getLogger(ExecuteTestCase.class.getName());
+    protected final Logger log = LogManager.getLogger(ExecuteTestCase.class.getName());
     private ResultsReporter reporter;
 
     protected final static TestCaseTagLibrary tagLibrary = new TestCaseTagLibrary();
@@ -91,7 +92,7 @@ public class ExecuteTestCase {
 
     public ExecuteTestCase(){
         contextVars = new HashMap();
-        PropertyConfigurator.configure("log4j.properties");
+		//((LoggerContext)LogManager.getContext(false)).setConfigLocation(new File("log4j.properties").toURI());
         log.info("Check for Loaded the Config File - plain");
     }
     
@@ -268,7 +269,7 @@ public class ExecuteTestCase {
      * This is a workaround to the fact the shutdown is not called in log4j.
      */
     public static void closeAllLogs(){
-    	LogManager.getLoggerRepository().shutdown();
+		LogManager.shutdown();
     }
 
     /**
