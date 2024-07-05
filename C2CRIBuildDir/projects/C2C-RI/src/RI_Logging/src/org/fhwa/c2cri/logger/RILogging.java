@@ -162,8 +162,7 @@ public class RILogging implements Serializable {
             log = (Logger)LogManager.getLogger("C2CRIDebug");
             log.addAppender(riAppender);
             log.addAppender(riGUIAppender);
-			
-	ctx.updateLoggers();
+            ctx.updateLoggers();
             System.out.println("Set the file for riAppender to --> " + logFile);
             System.out.println("riAppender was created and successfully activated");
 
@@ -189,8 +188,8 @@ public class RILogging implements Serializable {
             initLogEvent = initLogEvent + "<checksum>" + checkSum + "</checksum>";
             initLogEvent = initLogEvent + "<enableEmulation>" + enableEmulation + "</enableEmulation>";
             initLogEvent = initLogEvent + "<reinitializeEmulation>" + reinitializeEmulation + "</reinitializeEmulation>";
-            logEvent(RILogging.class.getName(), RILogging.RI_INIT_EVENT, initLogEvent);
-
+            logEvent("C2CRIDebug", RILogging.RI_INIT_EVENT, initLogEvent);
+            
         } catch (Exception ex) {
             System.out.println("No Appender was found");
         }
@@ -210,6 +209,7 @@ public class RILogging implements Serializable {
         oRoot.removeAppender(riAppender);
         oRoot.removeAppender(riGUIAppender);
         log.removeAppender(riAppender);
+        log.removeAppender(oRoot.getAppenders().get("C2CRIOutput"));
 
 		riAppender.stop();
 
@@ -284,7 +284,7 @@ public class RILogging implements Serializable {
      * @param theEvent the the event
      */
     public static void logEvent(String theEvent) {
-        Logger log = (Logger)LogManager.getLogger("net.sf.jameleon");
+        Logger log = (Logger)LogManager.getLogger(RILogging.class);
         log.info(theEvent);
     }
 
@@ -398,7 +398,7 @@ public class RILogging implements Serializable {
             // Create a copy of the original xml file that includes additional "wrapper" tags.
             out.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>\n");
             out.write("<logFile>\n");
-            out.write("<eventSet version=\"1.2\" xmlns:log4j=\"http://jakarta.apache.org/log4j/\">");
+            out.write("<eventSet version=\"2.23.1\" xmlns:log4j=\"https://logging.apache.org/log4j/2.0/events\">");
             while ((line = reader.readLine()) != null) {
                 line = line.replaceAll(oldPattern, replPattern);
                 out.write(line + "\n");

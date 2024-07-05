@@ -144,9 +144,9 @@ public class RIXMLLayout extends AbstractStringLayout
         if (event.isIncludeLocation()) {
 			StackTraceElement oSTE = event.getSource();
             buf.append("<log4j:locationInfo class=\"");
-            buf.append(Transform.escapeHtmlTags(oSTE.getClassName()));
+            buf.append(oSTE.getClassName().replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
             buf.append("\" method=\"");
-            buf.append(Transform.escapeHtmlTags(oSTE.getMethodName()));
+            buf.append(oSTE.getMethodName().replaceAll("<", "&lt;").replaceAll(">", "&gt;"));
             buf.append("\" file=\"");
             buf.append(oSTE.getFileName());
             buf.append("\" line=\"");
