@@ -34,6 +34,9 @@ import net.sf.jameleon.result.FunctionResult;
 import net.sf.jameleon.util.Configurator;
 import net.sf.jameleon.util.StateStorer;
 import org.apache.commons.jelly.JellyException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
 import org.apache.logging.log4j.core.util.Transform;
 import org.fhwa.c2cri.centermodel.RIEmulation;
 import org.fhwa.c2cri.centermodel.RINRTMSelection;
@@ -380,6 +383,11 @@ public class RITestEngine implements TestCaseListener, FunctionListener, DataDri
         Pattern xmlInvalidChars =
          Pattern.compile("[^\\u0009\\u000A\\u000D\\u0020-\\uD7FF\\uE000-\\uFFFD\\x{10000}-\\x{10FFFF}]");
         logger.logEvent("C2CRIDebug", RILogging.RI_INIT_EVENT, xmlInvalidChars.matcher(testConfig.to_LogFormat()).replaceAll(""));
+        
+        LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+        Logger oRoot = (Logger)LogManager.getRootLogger();
+        ((Logger)LogManager.getLogger("C2CRIDebug")).addAppender(oRoot.getAppenders().get("C2CRIOutput")); // add after the init event so the test case info doesn't get put in the C2CRIOutput.log
+        ctx.updateLoggers();
 
     }
 
