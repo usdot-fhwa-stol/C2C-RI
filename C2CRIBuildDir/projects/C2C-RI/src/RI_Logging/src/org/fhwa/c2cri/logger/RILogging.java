@@ -37,6 +37,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.Appender;
 import org.apache.logging.log4j.core.LoggerContext;
 
 import org.apache.logging.log4j.core.config.Property;
@@ -209,7 +210,9 @@ public class RILogging implements Serializable {
         oRoot.removeAppender(riAppender);
         oRoot.removeAppender(riGUIAppender);
         log.removeAppender(riAppender);
-        log.removeAppender(oRoot.getAppenders().get("C2CRIOutput"));
+        Appender oOutput = oRoot.getAppenders().get("C2CRIOutput");
+        if (oOutput != null)
+            log.removeAppender(oOutput);
 
 		riAppender.stop();
 
