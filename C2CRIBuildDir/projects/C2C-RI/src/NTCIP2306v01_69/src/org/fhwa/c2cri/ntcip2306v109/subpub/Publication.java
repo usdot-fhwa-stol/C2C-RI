@@ -15,7 +15,8 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.applayer.MessageUpdateListener;
 import org.fhwa.c2cri.messagemanager.Message;
 import org.fhwa.c2cri.ntcip2306v109.NTCIP2306ApplicationLayerOperationResults;
@@ -223,7 +224,7 @@ public class Publication implements Runnable, MessageUpdateListener {
      */
     private OperationIdentifier subscriptionOpId;
  
-    private Logger log = Logger.getLogger(Publication.class.getName());
+    private Logger log = LogManager.getLogger(Publication.class.getName());
     
     /**
      *  The periodic publish message Thread

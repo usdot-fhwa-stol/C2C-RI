@@ -25,7 +25,8 @@ import net.sf.jameleon.result.JameleonTestResult;
 import net.sf.jameleon.result.TestCaseResult;
 import net.sf.jameleon.util.JameleonUtility;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -37,7 +38,7 @@ import java.util.List;
  */
 public class SimpleTestRunReporter extends AbstractTestRunReporter{
 
-	protected final Logger log = Logger.getLogger(SimpleTestRunReporter.class.getName());
+	protected final Logger log = LogManager.getLogger(SimpleTestRunReporter.class.getName());
 
     public void reportScriptResult(TestCaseTag tct, TestCaseCounter counter) {
         try{

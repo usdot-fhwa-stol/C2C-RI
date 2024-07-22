@@ -5,7 +5,6 @@
 
 package org.fhwa.c2cri.infolayer;
 
-import org.apache.log4j.Logger;
 import org.fhwa.c2cri.applayer.ApplicationLayerStandard;
 import org.fhwa.c2cri.center.CenterMonitor;
 
@@ -37,9 +36,6 @@ public class InformationLayerStandardFactory {
     
     /** The information layer standard name. */
     private String informationLayerStandardName;
-    
-    /** The log. */
-    protected static Logger log = Logger.getLogger(InformationLayerStandardFactory.class.getName());
 
 
 

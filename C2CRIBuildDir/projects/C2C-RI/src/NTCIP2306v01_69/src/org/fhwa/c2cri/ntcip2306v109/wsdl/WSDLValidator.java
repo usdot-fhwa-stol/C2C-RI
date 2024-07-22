@@ -18,7 +18,8 @@ import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import org.xml.sax.ErrorHandler;
 import org.xml.sax.InputSource;
@@ -78,7 +79,7 @@ public class WSDLValidator implements ErrorHandler {
     private List<String> errorList = new ArrayList<String>();
     
     /** The log. */
-    protected static Logger log = Logger.getLogger(WSDLValidator.class.getName());
+    protected static Logger log = LogManager.getLogger(WSDLValidator.class.getName());
 
     //
     // Data

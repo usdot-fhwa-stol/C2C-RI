@@ -12,7 +12,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.CountDownLatch;
 import org.apache.ftpserver.ConnectionConfigFactory;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.ftpserver.FtpServer;
 import org.apache.ftpserver.FtpServerFactory;
 import org.apache.ftpserver.ftplet.Authentication;
@@ -51,7 +52,7 @@ public class FTPServerController implements Runnable{
     private FtpServer server;
     private Listener listener;
     private RIFtplet riFtplet;
-    protected static Logger log = Logger.getLogger(FTPServerController.class.getName());
+    protected static Logger log = LogManager.getLogger(FTPServerController.class.getName());
     private final CountDownLatch readySignal;
 
     QueueController queueController;

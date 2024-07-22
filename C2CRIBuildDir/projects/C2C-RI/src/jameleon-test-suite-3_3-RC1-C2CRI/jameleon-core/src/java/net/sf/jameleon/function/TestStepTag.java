@@ -34,9 +34,7 @@ import net.sf.jameleon.util.StateStorer;
 import org.apache.commons.jelly.JellyTagException;
 import org.apache.commons.jelly.MissingAttributeException;
 import org.apache.commons.jelly.XMLOutput;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.spi.LoggerRepository;
-import org.apache.log4j.varia.DenyAllFilter;
+
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Node;

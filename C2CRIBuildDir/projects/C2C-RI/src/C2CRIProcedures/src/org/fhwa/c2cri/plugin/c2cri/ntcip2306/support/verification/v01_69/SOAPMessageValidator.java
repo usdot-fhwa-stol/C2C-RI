@@ -9,7 +9,8 @@ import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.namespace.QName;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.xmlbeans.SchemaType;
 import org.apache.xmlbeans.XmlCursor;
 import org.apache.xmlbeans.XmlError;
@@ -43,7 +44,7 @@ public class SOAPMessageValidator {
     private final static QName bodyQName = new QName(SOAP11_ENVELOPE_NS, "Body");
     private final static QName faultQName = new QName(SOAP11_ENVELOPE_NS, "Fault");
     private final static QName headerQName = new QName(SOAP11_ENVELOPE_NS, "Header");
-    protected static Logger log = Logger.getLogger(SOAPMessageValidator.class.getName());
+    protected static Logger log = LogManager.getLogger(SOAPMessageValidator.class.getName());
     /**
     SchemaTypeLoader soapSchema;
     SchemaType soapEnvelopeType;

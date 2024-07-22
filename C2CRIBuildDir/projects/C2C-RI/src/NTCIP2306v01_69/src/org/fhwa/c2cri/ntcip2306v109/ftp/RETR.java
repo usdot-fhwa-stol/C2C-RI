@@ -33,8 +33,8 @@ import org.apache.ftpserver.impl.LocalizedFtpReply;
 import org.apache.ftpserver.impl.ServerFtpStatistics;
 import org.apache.ftpserver.usermanager.impl.TransferRateRequest;
 import org.apache.ftpserver.util.IoUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * <strong>Internal class, do not use directly.</strong>
@@ -56,7 +56,7 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
     private static final byte[] EOL = System.getProperty("line.separator").getBytes();
     
     /** The log. */
-    private final Logger LOG = LoggerFactory.getLogger(RETR.class);
+    private final Logger LOG = LogManager.getLogger(RETR.class);
     
     /** The response message. */
     private byte[] responseMessage;
@@ -196,7 +196,7 @@ public class RETR extends AbstractCommand implements RIRETRResponseReceiver {
                     nis.close();
                 }
 
-                LOG.info("File downloaded {}", fileName);
+                LOG.info("File downloaded " + fileName);
 
                 // notify the statistics component
                 ServerFtpStatistics ftpStat = (ServerFtpStatistics) context.getFtpStatistics();

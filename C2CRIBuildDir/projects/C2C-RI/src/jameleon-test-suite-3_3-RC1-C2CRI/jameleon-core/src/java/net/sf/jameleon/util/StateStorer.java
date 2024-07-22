@@ -20,7 +20,8 @@ package net.sf.jameleon.util;
 
 import net.sf.jameleon.Storable;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.File;
 import java.io.IOException;
@@ -85,7 +86,7 @@ public class StateStorer {
      */
     public final static int DEFAULT_EVENT         = ON_ERROR_EVENT;
     
-    protected static Logger log = Logger.getLogger(StateStorer.class.getName());
+    protected static Logger log = LogManager.getLogger(StateStorer.class.getName());
     protected boolean available = true;
     /**
      * Since this is a singleton, a private constructor is in order.

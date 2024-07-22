@@ -16,7 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.log4j.LogManager;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.centermodel.RIEmulationParameters;
 import org.fhwa.c2cri.testmodel.DefaultLayerParameters;
 import org.fhwa.c2cri.testmodel.SUT;

@@ -7,7 +7,7 @@ package org.fhwa.c2cri.applayer;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * A factory for creating Thread objects that can be identified by a specified name.
@@ -44,7 +44,7 @@ public class NamedThreadFactory implements ThreadFactory{
         t.setUncaughtExceptionHandler(new Thread.UncaughtExceptionHandler() {
                 @Override
                 public void uncaughtException(Thread t, Throwable e){
-                    Logger.getLogger(t.getName()).error(e.getMessage(), e);
+                    LogManager.getLogger(t.getName()).error(e.getMessage(), e);
                 }
         });
         if (t.isDaemon())

@@ -67,7 +67,8 @@ import org.apache.http.conn.ssl.AllowAllHostnameVerifier;
 import org.apache.http.conn.ssl.BrowserCompatHostnameVerifier;
 import org.apache.http.conn.ssl.StrictHostnameVerifier;
 import org.apache.http.conn.ssl.X509HostnameVerifier;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Layered socket factory for TLS/SSL connections, based on JSSE.
@@ -544,7 +545,7 @@ public class CleanSSLSocketFactory implements LayeredSocketFactory {
 
 
         private static class LoggingOutputStream extends FilterOutputStream {
-            private static final Logger logger = Logger.getLogger(WireLogSocket.LoggingOutputStream.class);
+            private static final Logger logger = LogManager.getLogger(WireLogSocket.LoggingOutputStream.class);
             //I'm using a fixed charset because my app always uses the same. 
             private static final String CHARSET = "ISO-8859-1";
             private StringBuffer sb = new StringBuffer();
@@ -579,7 +580,7 @@ public class CleanSSLSocketFactory implements LayeredSocketFactory {
         }
         
          private static class LoggingInputStream extends FilterInputStream {
-            private static final Logger logger = Logger.getLogger(WireLogSocket.LoggingOutputStream.class);
+            private static final Logger logger = LogManager.getLogger(WireLogSocket.LoggingOutputStream.class);
             //I'm using a fixed charset because my app always uses the same. 
             private static final String CHARSET = "ISO-8859-1";
             private StringBuffer sb = new StringBuffer();

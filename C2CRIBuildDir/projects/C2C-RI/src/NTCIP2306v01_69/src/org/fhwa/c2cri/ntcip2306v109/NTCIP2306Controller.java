@@ -9,7 +9,8 @@ import java.io.IOException;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.automation.AutomationHandler;
 import org.fhwa.c2cri.automation.AutomationListener;
 import org.fhwa.c2cri.ntcip2306v109.c2cadmin.C2CMessageSubscription;
@@ -46,7 +47,7 @@ public class NTCIP2306Controller {
     private CenterConfigurationController ccc;
 
     /** The log. */
-    protected static Logger log = Logger.getLogger(NTCIP2306Controller.class.getName());
+    protected static Logger log = LogManager.getLogger(NTCIP2306Controller.class.getName());
      
     /**
      * Constructor.

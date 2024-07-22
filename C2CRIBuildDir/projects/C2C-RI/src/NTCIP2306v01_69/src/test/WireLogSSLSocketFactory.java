@@ -12,7 +12,8 @@ import java.net.Socket;
 import javax.net.ssl.HandshakeCompletedListener;
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocket;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 
 /**
@@ -258,7 +259,7 @@ private static class WireLogSocket extends SSLSocket {
         private static class LoggingOutputStream extends FilterOutputStream {
             
             /** The Constant logger. */
-            private static final Logger logger = Logger.getLogger(WireLogSocket.LoggingOutputStream.class);
+            private static final Logger logger = LogManager.getLogger(WireLogSocket.LoggingOutputStream.class);
             //I'm using a fixed charset because my app always uses the same. 
             /** The Constant CHARSET. */
             private static final String CHARSET = "ISO-8859-1";

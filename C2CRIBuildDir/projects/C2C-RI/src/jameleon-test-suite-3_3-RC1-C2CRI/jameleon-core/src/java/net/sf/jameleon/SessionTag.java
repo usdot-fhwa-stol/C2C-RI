@@ -27,7 +27,8 @@ import org.apache.commons.jelly.JellyTagException;
 import org.apache.commons.jelly.LocationAware;
 import org.apache.commons.jelly.MissingAttributeException;
 import org.apache.commons.jelly.XMLOutput;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.io.IOException;
 import java.util.List;
@@ -104,7 +105,7 @@ public abstract class SessionTag extends JameleonTagSupport implements Storable,
      * @jameleon.attribute default="0"
      */
     protected long sessionDelay;
-    protected static Logger log = Logger.getLogger(SessionTag.class.getName());
+    protected static Logger log = LogManager.getLogger(SessionTag.class.getName());
     protected Properties props;
     protected TestCaseTag tc;
     protected AbstractDataDrivableTag addt;

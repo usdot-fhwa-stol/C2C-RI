@@ -27,11 +27,10 @@ import net.sf.jameleon.util.Configurator;
 import net.sf.jameleon.util.JameleonDefaultValues;
 import net.sf.jameleon.util.TemplateProcessor;
 import org.apache.commons.jelly.JellyException;
-import org.apache.log4j.Logger;
-import org.apache.log4j.FileAppender;
 import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import org.fhwa.c2cri.logger.RIXMLLayout;
 
 import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
@@ -53,6 +52,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Enumeration;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.appender.FileAppender;
 
 public class TestCasePane extends JPanel {
 
@@ -283,40 +286,19 @@ public class TestCasePane extends JPanel {
             Thread t = new Thread(){
                     public void run() {
                         tcTree.setTestCaseSource(fn.getFile(), false);
-                        /***********************************************************
-                         * Added for RI POC 
-                         *
-                         */
                         
                         /**
                          * Change the output of logging messages to go to the new log file.
                          */
-                        boolean fileChanged = false;
-                        String fileName = "";
-                        
-                        try{
-                        Logger log = Logger.getRootLogger();
-                        System.out.println("The rootLogger returned -->" + log.getName());
-                        Enumeration appender_enum = log.getAllAppenders();
-                        System.out.println("The first appender returned = " + appender_enum.toString());
-                        FileAppender stdOutAppender = (FileAppender)log.getAppender("STDOUT");
-                        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss");
                         Date date = new Date();
-                        System.out.println("The current output file is set to --> " + stdOutAppender.getFile());	
-                        System.out.println("Setting the file to -->" + fn.getFile().toString());
-                        fileName = fn.getFile().toString() + "-" + dateFormat.format(date);
-                        stdOutAppender.setFile(fn.getFile().toString() + "-" + dateFormat.format(date));
-                        stdOutAppender.activateOptions();
-                    	System.out.println("STDOUT Appender was found and successfully activated");
-                    	fileChanged = true;
-                        }
-                        catch (Exception ex) {
-                        	System.out.println("No STDOUT Appender was found");
-                        }
-                        /***********************************************************
-                         * End Added for RI POC 
-                         *
-                         */
+			String fileName = fn.getFile().toString() + "-" + dateFormat.format(date);
+			LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+			Logger log = (Logger)LogManager.getRootLogger();
+			FileAppender oAppender = FileAppender.newBuilder().withFileName(fileName)
+				.setName("riPOCAppender").setImmediateFlush(true).setBufferedIo(true).setLayout(RIXMLLayout.createLayout()).build();
+			log.addAppender(oAppender);
+			ctx.updateLoggers();
 
                         
                         TestCaseEventHandler tcEventHandler = TestCaseEventHandler.getInstance();
@@ -333,28 +315,15 @@ public class TestCasePane extends JPanel {
                             try {
                                 executor.runScript(fn.getFile());
 
-                            
-                                /***********************************************************
-                                 * Added for RI POC 
-                                 *
-                                 */
-                                if (fileChanged) {
-                                   Logger templog = Logger.getRootLogger();
-                                   FileAppender tempstdOutAppender = (FileAppender)templog.getAppender("STDOUT");
+				oAppender.stop();
+				log.removeAppender(oAppender);
+				ctx.updateLoggers();
+				System.out.println("Now Altering file "+ fileName + " to remove log4j: references");
 
-                                   tempstdOutAppender.close();
-                                   System.out.println("Now Altering file "+ fileName + " to remove log4j: references");
+				readReplace(fileName, "log4j:", "");
+				createLogXML(fileName);
+				System.out.println("Now Finished creating the LogXML file "+ fileName + ".xml");
 
-                                   readReplace(fileName, "log4j:", "");
-                                   createLogXML(fileName);
-                                   System.out.println("Now Finished creating the LogXML file "+ fileName + ".xml");
-                                   fileChanged = false;
-                                
-                                }
-                                /***********************************************************
-                                 * End Added for RI POC 
-                                 *
-                                 */
                             
                             } catch (IOException ioe) {
                                 ioe.printStackTrace();

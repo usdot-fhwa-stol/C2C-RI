@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import javax.swing.SwingWorker;
-import org.apache.log4j.LogManager;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.testmodel.TestConfiguration;
 import org.fhwa.c2cri.utilities.FilenameValidator;
 import org.fhwa.c2cri.utilities.Parameter;

@@ -17,7 +17,6 @@ import javax.xml.soap.SOAPConstants;
 import javax.xml.soap.SOAPElement;
 import javax.xml.soap.SOAPException;
 import javax.xml.soap.SOAPMessage;
-import org.apache.log4j.Logger;
 import org.fhwa.c2cri.messagemanager.Message;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -27,7 +26,6 @@ import org.xml.sax.SAXException;
  * @author TransCore ITS
  */
 public class SOAPEncoder implements NTCIP2306Encoder {
-    protected static Logger log = Logger.getLogger(SOAPEncoder.class.getName());
     private String encoderType = "SOAP";
     private boolean isEncoded = false;
 

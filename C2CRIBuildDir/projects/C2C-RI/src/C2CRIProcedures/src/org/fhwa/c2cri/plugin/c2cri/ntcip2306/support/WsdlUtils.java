@@ -61,7 +61,7 @@ import javax.wsdl.xml.WSDLReader;
 import javax.xml.XMLConstants;
 import javax.xml.namespace.QName;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
 import org.apache.xmlbeans.SchemaGlobalElement;
 import org.apache.xmlbeans.SchemaType;
 import org.apache.xmlbeans.XmlException;
@@ -76,6 +76,7 @@ import org.xml.sax.InputSource;
 import com.ibm.wsdl.util.xml.QNameUtils;
 import com.ibm.wsdl.xml.WSDLReaderImpl;
 import com.ibm.wsdl.xml.WSDLWriterImpl;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * Wsdl-related tools
@@ -85,7 +86,7 @@ import com.ibm.wsdl.xml.WSDLWriterImpl;
 
 public class WsdlUtils
 {
-	private final static Logger log = Logger.getLogger( WsdlUtils.class );
+	private final static Logger log = LogManager.getLogger( WsdlUtils.class );
 	private static WSDLReader wsdlReader;
 	private final static String WSDL_NAMESPACE = "http://schemas.xmlsoap.org/wsdl/";
 

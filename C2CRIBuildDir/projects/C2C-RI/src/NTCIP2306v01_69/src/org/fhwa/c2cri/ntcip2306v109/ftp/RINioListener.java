@@ -61,8 +61,8 @@ import org.apache.mina.transport.socket.SocketSessionConfig;
 import org.apache.mina.transport.socket.nio.NioSocketAcceptor;
 import org.fhwa.c2cri.applayer.ListenerManager;
 import org.fhwa.c2cri.applayer.TransportException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * <strong>Internal class, do not use directly.</strong>
@@ -76,7 +76,7 @@ import org.slf4j.LoggerFactory;
  */
 public class RINioListener extends AbstractListener {
 
-    private final Logger LOG = LoggerFactory.getLogger(RINioListener.class);
+    private final Logger LOG = LogManager.getLogger(RINioListener.class);
 
     private SocketAcceptor acceptor;
 

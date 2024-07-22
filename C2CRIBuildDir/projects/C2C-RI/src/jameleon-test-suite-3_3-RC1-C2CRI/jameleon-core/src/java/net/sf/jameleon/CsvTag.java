@@ -18,7 +18,8 @@
 */
 package net.sf.jameleon;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 /**
  * Iterates over all nested tags one time per row of a CSV file.
  * The name of the CSV file is based on the <code>testEnvironment</code>, <code>organization</code>, and the 
@@ -69,7 +70,7 @@ public class CsvTag extends AbstractCsvTag {
      * @return the logger used for this tag.
      */
     protected Logger getLogger(){
-        return Logger.getLogger(CsvTag.class.getName());
+        return LogManager.getLogger(CsvTag.class.getName());
     }
 
     /**

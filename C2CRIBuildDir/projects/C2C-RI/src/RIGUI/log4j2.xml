@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="org.fhwa.c2cri.logger" status="TRACE" monitorInterval="30" dest="log4j_status.log">
+	<Appenders>
+		<RollingFile name="C2CRIOutput" fileName="C2CRIOutput.log" append="false" filePattern="C2CRIOutput-%i.log">
+			<RIXMLLayout />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="100MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="2"/>
+		</RollingFile>
+		<File name="C2CRIDebugFile" bufferedIO="true" fileName="C2CRIDebug.log" append="false">
+			<RIXMLLayout />
+		</File>
+	</Appenders>
+	
+	<Loggers>		
+		<Root level="INFO">
+			<AppenderRef ref="C2CRIOutput" />
+		</Root>
+		<Logger name="C2CRIDebug" additivity="false" level="DEBUG">
+			<AppenderRef ref="C2CRIDebugFile" />
+		</Logger>
+	</Loggers>
+	
+</Configuration>

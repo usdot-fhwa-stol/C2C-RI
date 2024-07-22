@@ -19,7 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import org.apache.log4j.LogManager;
+import org.apache.logging.log4j.LogManager;
 import tmddv3verification.DesignElement;
 import tmddv3verification.NeedHandler;
 import tmddv3verification.Requirement;

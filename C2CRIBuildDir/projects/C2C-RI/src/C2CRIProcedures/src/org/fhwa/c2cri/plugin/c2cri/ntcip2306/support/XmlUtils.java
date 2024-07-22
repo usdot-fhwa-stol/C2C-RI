@@ -40,7 +40,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import net.sf.saxon.expr.Token;
 import net.sf.saxon.expr.Tokenizer;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
 import org.apache.xmlbeans.SchemaType;
@@ -72,7 +73,7 @@ import org.xml.sax.SAXException;
 public final class XmlUtils
 {
 	private static DocumentBuilder documentBuilder;
-	private final static Logger log = Logger.getLogger( XmlUtils.class );
+	private final static Logger log = LogManager.getLogger( XmlUtils.class );
 	private static final String NULLMSG = "Null DocumentBuilder";
 	static synchronized public Document parse( InputStream in )
 	{

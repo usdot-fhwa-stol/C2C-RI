@@ -6,7 +6,8 @@
 package org.fhwa.c2cri.applayer;
 
 import java.net.URL;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import org.fhwa.c2cri.center.CenterMonitor;
 
 
@@ -49,7 +50,7 @@ public class ApplicationLayerStandardFactory {
     private String testSuiteSpecificationURL;
     
     /** The log. */
-    protected static Logger log = Logger.getLogger(ApplicationLayerStandardFactory.class.getName());
+    protected static Logger log = LogManager.getLogger(ApplicationLayerStandardFactory.class.getName());
 
 
 

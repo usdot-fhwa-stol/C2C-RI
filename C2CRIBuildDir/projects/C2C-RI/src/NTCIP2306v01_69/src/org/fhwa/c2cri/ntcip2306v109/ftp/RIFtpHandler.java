@@ -56,8 +56,8 @@ import org.fhwa.c2cri.ntcip2306v109.encoding.XMLValidatorFactory;
 import org.fhwa.c2cri.ntcip2306v109.messaging.C2CRIMessageAdapter;
 import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecCollection;
 import org.fhwa.c2cri.ntcip2306v109.wsdl.OperationSpecification;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * <strong>Internal class, do not use directly.</strong>
@@ -70,7 +70,7 @@ public class RIFtpHandler implements FtpHandler {
     /**
      * The log.
      */
-    private final Logger LOG = LoggerFactory.getLogger(RIFtpHandler.class);
+    private final Logger LOG = LogManager.getLogger(RIFtpHandler.class);
 
     /**
      * The Constant NON_AUTHENTICATED_COMMANDS.
@@ -263,14 +263,14 @@ public class RIFtpHandler implements FtpHandler {
             // decode it
 
             LOG.warn(
-                    "Client sent command that could not be decoded: {}",
+                    "Client sent command that could not be decoded: " +
                     ((ProtocolDecoderException) cause).getHexdump());
             session.write(new DefaultFtpReply(FtpReply.REPLY_501_SYNTAX_ERROR_IN_PARAMETERS_OR_ARGUMENTS, "Invalid character in command"));
         } else if (cause instanceof WriteToClosedSessionException) {
             WriteToClosedSessionException writeToClosedSessionException
                     = (WriteToClosedSessionException) cause;
             LOG.warn(
-                    "Client closed connection before all replies could be sent, last reply was {}",
+                    "Client closed connection before all replies could be sent, last reply was " +
                     writeToClosedSessionException.getRequest());
             session.close(false).awaitUninterruptibly(10000);
         } else {

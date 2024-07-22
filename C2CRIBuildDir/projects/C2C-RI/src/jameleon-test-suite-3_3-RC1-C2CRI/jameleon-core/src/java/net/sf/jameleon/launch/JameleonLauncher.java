@@ -31,8 +31,6 @@ import java.util.StringTokenizer;
 import net.sf.jameleon.function.FunctionTag;
 
 import org.apache.tools.ant.launch.Locator;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 /**
  * This is the launcher for Jameleon. It loads in all required
@@ -85,13 +83,6 @@ public class JameleonLauncher {
         Thread.currentThread().setContextClassLoader(loader);
         try {
 
-        /*
-         *   *****************Added for RI Debugging*****************8
-         */
-    	PropertyConfigurator.configure("log4j.properties");
-        /*
-         *   *****************End of Added for RI Debugging*****************8
-         */
 
             Class mainClass = loader.loadClass(MAIN_CLASS);
             JameleonMain main = (JameleonMain) mainClass.newInstance();

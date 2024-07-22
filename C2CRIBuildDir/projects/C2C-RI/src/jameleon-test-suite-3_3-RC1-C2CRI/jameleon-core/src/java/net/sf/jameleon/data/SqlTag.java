@@ -18,7 +18,8 @@
 */
 package net.sf.jameleon.data;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 /**
  * Used to iterate over all tags it is surrounding one time per row in a SQL ResultSet.
  * This tag should work with any RDBMS that provides a JDBC driver.
@@ -64,7 +65,7 @@ public class SqlTag extends AbstractDataDrivableTag {
      * @return the logger used for this tag.
      */
     protected Logger getLogger() {
-        return Logger.getLogger(SqlTag.class.getName());
+        return LogManager.getLogger(SqlTag.class.getName());
     }
 
     /**

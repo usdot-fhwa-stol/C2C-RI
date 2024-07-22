@@ -8,7 +8,6 @@ package org.fhwa.c2cri.tmdd.emulation;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import org.apache.log4j.Logger;
 import org.fhwa.c2cri.applayer.ApplicationLayerOperationResults;
 import org.fhwa.c2cri.applayer.DialogResults;
 import org.fhwa.c2cri.applayer.MessageContentGenerator;
@@ -29,11 +28,6 @@ import org.fhwa.c2cri.tmdd.emulation.entitydata.EntityEmulationRequests;
  * @author TransCore ITS, LLC Created: Apr 15, 2016
  */
 public class TMDDMessageContentGenerator implements MessageContentGenerator {
-
-    /**
-     * The log.
-     */
-    protected static Logger log = Logger.getLogger(TMDDMessageContentGenerator.class.getName());
 
     final static String[] STANDARDSSUPPORTED = {"NTCIP 2306v1", "NTCIP 2306 v1.69"};
 
