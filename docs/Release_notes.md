@@ -28,3 +28,20 @@ TMDDv303d databases.
 configuration parameters that caused test cases to fail.
 - Fixed bug causing log files to be written incorrectly to disk.
 
+Version 1.1.0, released on July 22nd, 2024
+----------------------------------------
+
+### **Summary**
+Center-To-Center Reference Implementation (C2C RI) Tool release version 1.1.0 focuses on updating the logging framework to the current version of Log4j2 and simplifying the logging configuration. This release includes updating all instances of Log4j and SLF4j usage, ensuring consistent and efficient logging across the application. Along with these enhancements and fixes, we verified the code quality of our source code by executing SonarQube analysis to ensure no new issues are introduced.
+
+**<ins>Enhancements related to this release:</ins>**
+- Updated imports to use the current version of Log4j2 (2.23.1).
+- Simplified and consolidated Log4j configuration for improved maintainability and readability.
+- Implemented analogous or new APIs to update all instances of Log4j and SLF4j usage, ensuring consistent logging accoss application.
+- Added Plugin code to use custom layout in configuration file.
+- Updated classpath for new jar's and removed references to old log4j version in all individual projects directories of application. 
+
+**<ins>Fixes related to the application:</ins>**
+- Fixed the Log4j version, which was still 1.2, the same as the old version.
+- Fixed new log event issues where the locationInfo tag had a trailing $1 and some new log event methods had a less than sign (<).
+- Fixed <rawOTWMessage> not appearing in the output log file compared to the previous release.
