@@ -28,7 +28,7 @@ TMDDv303d databases.
 configuration parameters that caused test cases to fail.
 - Fixed bug causing log files to be written incorrectly to disk.
 
-Version 1.1.0, released on July 22nd, 2024
+Version 1.1.0, released on July 23rd, 2024
 ----------------------------------------
 
 ### **Summary**
